@@ -143,6 +143,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
     <br><br>
     <h2 class="h330">Novedades de Proyectos:</h2>
     <br>  
+    <div id="exports" style="float:right;padding-bottom:10px;">
+                    <img src="../img/imprimir.png">
+                    <img src="../img/email.png">
+                    <img src="../img/pdf.png">
+                    <a href='../ExportarUsuario.php'><img src="../img/excel.png" title="Exportar a Exccel"></a></div>
 	   <table id="tabla" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>

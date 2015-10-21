@@ -215,6 +215,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             ?>  
     <br>  
     <form name="filtro" class="formRegistro" action="../controlador/ControladorFiltros.php" method="POST">
+        <div id="exports" style="float:right;padding-bottom:10px;">
+                    <img src="../img/imprimir.png">
+                    <img src="../img/email.png">
+                    <img src="../img/pdf.png">
+                    <a href='../ExportarClienteActivo.php'"><img src="../img/excel.png" title="Exportar a Exccel"></a></div>
 	   <table id="tabla" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -340,8 +345,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     ?>                                
                 </div>                    
             </div>
-    <button class="boton-verde"  onclick="location.href='clientesActivos.php'" >Actualizar Lista</button>
-    <button type="button" class="button-verde" onclick="location.href='../ExportarClienteActivo.php'">Exportar Excel</button>
+    <button class="boton-verde"  onclick="location.href='clientesActivos.php'" >Actualizar Lista</button>    
         </div>
 	 <footer class="footer-distributed">
             <div class="footer-left">

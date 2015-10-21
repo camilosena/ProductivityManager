@@ -75,9 +75,9 @@ class UsuarioDAO {
 
     public function listarUsuarios(PDO $cnn) {
         try {
-            $listarUsuarios = "Select idUsuario,identificacion,nombres,apellidos,direccion,telefono,fechaNacimiento,email,rol 
-                                from usuarios, personas, roles 
-                                where estado='Activo' and identificacion=idLogin and rolesId=idRoles and rol<>'Administrador'";
+            $listarUsuarios = "Select idUsuario,identificacion,nombres,apellidos,direccion,telefono,fechaNacimiento,email,foto,rol, 
+                                nombreArea from usuarios, personas, roles, areas
+                                where estado='Activo' and identificacion=idLogin and rolesId=idRoles and areas_idAreas=idAreas";
             $query = $cnn->prepare($listarUsuarios);
             $query->execute();
             return $query->fetchAll();

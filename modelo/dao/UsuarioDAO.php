@@ -2,19 +2,20 @@
 
 class UsuarioDAO {
 
-    public function RegistrarUsuario(UsuarioDTO $dto, PDO $cnn) {
+    public function registrarUsuario(UsuarioDTO $dto, PDO $cnn) {
         $mensaje = "";
         try {
-            $sentencia = $cnn->prepare("INSERT INTO usuarios VALUES(?,?,?,?,?,?,?,?,'Activo',?)");
-            $sentencia->bindParam(1, $dto->getIdUsuario());
-            $sentencia->bindParam(2, $dto->getIdentificacion());
-            $sentencia->bindParam(3, $dto->getNombre());
-            $sentencia->bindParam(4, $dto->getApellido());
-            $sentencia->bindParam(5, $dto->getDireccion());
-            $sentencia->bindParam(6, $dto->getTelefono());
-            $sentencia->bindParam(7, $dto->getFecha());
-            $sentencia->bindParam(8, $dto->getEmail());
+            $sentencia = $cnn->prepare("INSERT INTO personas VALUES(DEFAULT,?,?,?,?,?,?,?,?,?,?)");            
+            $sentencia->bindParam(1, $dto->getIdentificacion());
+            $sentencia->bindParam(2, $dto->getNombre());
+            $sentencia->bindParam(3, $dto->getApellido());
+            $sentencia->bindParam(4, $dto->getDireccion());
+            $sentencia->bindParam(5, $dto->getTelefono());
+            $sentencia->bindParam(6, $dto->getFecha());
+            $sentencia->bindParam(7, $dto->getEmail());
+            $sentencia->bindParam(8, $dto->getEstado());
             $sentencia->bindParam(9, $dto->getFoto());
+            $sentencia->bindParam(10, $dto->getArea());
             $sentencia->execute();
             $mensaje = "Usuario Registrado Con Éxito";
         } catch (Exception $ex) {
@@ -27,7 +28,7 @@ class UsuarioDAO {
     public function insertarLogin(UsuarioDTO $dto, PDO $cnn) {
         $mensaje = '';
         try {
-            $sentencia = $cnn->prepare("INSERT INTO users VALUES(?,md5(?),?)");
+            $sentencia = $cnn->prepare("INSERT INTO usuarios VALUES(?,md5(?),?)");
             $sentencia->bindParam(1, $dto->getIdentificacion());
             $sentencia->bindParam(2, $dto->getContrasena());
             $sentencia->bindParam(3, $dto->getRol());
@@ -42,7 +43,7 @@ class UsuarioDAO {
 
     public function idConsecutivo(PDO $cnn) {
         try {
-            $consecutivoId = 'select max(idUsuario) from usuarios';
+            $consecutivoId = 'select max(idUsuario) from personas';
             $query = $cnn->prepare($consecutivoId);
             $query->execute();
             return $query->fetchColumn();
@@ -51,7 +52,7 @@ class UsuarioDAO {
         }
     }
 
-    public function ModificarUsuario(UsuarioDTO $usuarioDto, PDO $cnn) {
+    public function modificarUsuario(UsuarioDTO $usuarioDto, PDO $cnn) {
         $mensaje = "";
         try {
             $query = $cnn->prepare("UPDATE  Usuarios SET identificacion=?,nombres=?,apellidos=?,direccion=?,telefono=?, fechaNacimiento=?, email=? where idUsuario=?");
@@ -230,7 +231,7 @@ class UsuarioDAO {
         try {
             $sql = "select * from areas";
             if (!is_null($idRol) && !is_null($cnn)) {
-                $sql .= " where Roles_idRoles=?";
+                $sql .= " where roles_idRoles=?";
                 $query = $cnn->prepare($sql);
                 $query->bindParam(1, $idRol);
             } else {
@@ -262,8 +263,7 @@ class UsuarioDAO {
     
        public function cantidadUsuariosPorRol($rol, PDO $cnn) {
         try {
-            $query = $cnn->prepare('SELECT count(idUsuario) from personas,areas, roles where areas_idAreas=idAreas 
-            and roles_idRoles = idRoles and rol = "'.$rol.'"');
+            $query = $cnn->prepare("SELECT count(rol) from roles where rol='".$rol."'");
             $query->execute();
             return $query->fetchColumn();
         } catch (Exception $ex) {

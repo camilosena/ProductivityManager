@@ -56,7 +56,7 @@ class AreasDAO {
         
           $mensaje = "";
         try {
-            $query = $cnn->prepare("update areas set Roles_idRoles=0 where Roles_idRoles=?");
+            $query = $cnn->prepare("update areas set roles_idRoles=1 where Roles_idRoles=?");
             $query->bindParam(1, $idRol);
             
             $query->execute();
@@ -71,7 +71,7 @@ class AreasDAO {
     function obtenarAreas($idRol,PDO $cnn){
         
         try {
-            $sql = 'SELECT idAreas areas from areas where Roles_idRoles=?';
+            $sql = 'SELECT idAreas areas from areas where roles_idRoles=?';
             $query = $cnn->prepare($sql);
             $query->bindParam(1, $idRol);
             $query->execute();

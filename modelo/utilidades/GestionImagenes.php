@@ -13,7 +13,7 @@ class GestionImagenes {
             $uploadedfileload = "false";
         }
         $file_name = $dto->getNombreImagen();
-        $add = "../../".$dto->getCarpeta()."/$file_name";
+        $add = "../".$dto->getCarpeta()."/$file_name";
         if ($uploadedfileload == "true") {
             if (move_uploaded_file($dto->getNombreTemporal(), $add)) {
               return  $msg = " Ha sido subido satisfactoriamente";

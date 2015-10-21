@@ -1,24 +1,19 @@
 <?php
 require_once '../modelo/dto/UsuarioDTO.php';
 require_once '../modelo/dao/UsuarioDAO.php';
-require_once '../modelo/dto/EmpleadoDTO.php';
-require_once '../modelo/dao/EmpleadoDAO.php';
-require_once '../modelo/dto/GerenteDTO.php';
-require_once '../modelo/dto/JefeDTO.php';
-require_once '../modelo/dao/JefeDAO.php';
 require_once '../modelo/dto/CorreosDTO.php';
 require_once '../modelo/dto/ImagenesDTO.php';
-require_once '../modelo/dao/GerenteDAO.php';
-require_once '../modelo/utilidades/Conexion.php';
 require_once '../modelo/utilidades/GestionImagenes.php';
+require_once '../modelo/dto/CorreosDTO.php';
 require_once '../modelo/utilidades/EnvioCorreos.php';
+require_once '../PHPMailer/PHPMailerAutoload.php';
+require_once '../modelo/utilidades/Conexion.php';
 require_once '../facades/FacadeUsuarios.php';
-require_once '../facades/FacadeGerente.php';
-require_once '../facades/FacadeJefe.php';
-require_once '../facades/FacadeEmpleado.php';
+require_once '../facades/FacadeCorreos.php';
 
 //  Registrar Usuarios
 if (isset($_POST['crearUsuario'])) {
+    $idUsuario='';
     $identificacion = $_POST['identificacion'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
@@ -26,12 +21,30 @@ if (isset($_POST['crearUsuario'])) {
     $telefono = $_POST['telefono'];
     $fecha = $_POST['fechaNacimiento'];
     $email = $_POST['email'];       
-    $dto = new UsuarioDTO($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email);    
-    //insertar logo
+    $estado = 'Activo';
+    $rol=$_POST['selectRol'];
+    $contrasena=$_POST['password'];
+    $area=$_POST['selectArea'];
+    //Enviar correo de confirmacion
+    $correoDTO = new CorreosDTO();    
+    $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
+     $correoDTO->setNombreRemitente("Productivity Manager");
+    $correoDTO->setAsunto("Registro Productivity Manager");
+    $correoDTO->setContrasena("adsi2015");
+    $correoDTO->setDestinatario($email);
+    $correoDTO->setContenido("Bienvenido Su usuario de ingreso es: ".$identificacion."<br>Su contraseña de ingreso es: ".$contrasena);
+    $facadeCorreo = new FacadeCorreos();
+    $confirmacion=$facadeCorreo->EnvioCorreo($correoDTO);
+    if ($confirmacion!='True') {
+       $mensajeCorreo=$confirmacion;  
+       $mensaje2="Error no se pudo realizar el registro";
+       $consecutivos = 0;
+    } else {        
+    //insertar imagen
         if ($_FILES['uploadedfile']['name'] == '') {
-            $dto->setFoto('perfil.png');
+            $foto ='perfil.png';
         } else {
-            $dto->setFoto($_FILES['uploadedfile']['name']);
+            $foto = $_FILES['uploadedfile']['name'];
         }
         $carpeta = "fotos";
         $nombreImagen = $_FILES['uploadedfile']['name'];
@@ -40,34 +53,18 @@ if (isset($_POST['crearUsuario'])) {
         $nombreTemporal = $_FILES['uploadedfile']['tmp_name'];
         $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
        $cargaFoto = new GestionImagenes();
-       $mensajeFoto =$cargaFoto->subirImagen($dtoImagen);
-    $dto->setEstado("Activo");
+       $msg =$cargaFoto->subirImagen($dtoImagen);        
+    $dto = new UsuarioDTO($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email, $estado, $foto, $contrasena, $rol, $area);       
     $facadeUsuario = new FacadeUsuarios();
-    $mensaje = $facadeUsuario->insertarUsuario($dto);
-    //  Insertar tabla de users login
-    $dto->setRol($_POST['tipoUsuario']);
-    $dto->setContrasena($_POST['password']);
-    $logeo = $facadeUsuario->insertarLogeo($dto);
-    //  Insertar a tabla de  GerentesDeProyecto
-    if ($dto->getRol() == 1) {
-        $perfil = $_POST['perfil'];
-        $dtoGerente = new GerenteDTO($perfil, $facadeUsuario->consecutivoUsuario());
-        $facateGerente = new FacadeGerente;
-        $mensaje2 = $facateGerente->insertarGerente($dtoGerente);
-    } //  Insertar a tabla de  Jefes
-        else if ($dto->getRol() == 2) {
-        $areaJefe = $_POST['areaJefe'];
-        $dtoJefe = new JefeDTO($areaJefe, $facadeUsuario->consecutivoUsuario());
-        $facadeJefe = new FacadeJefe;
-        $mensaje2 = $facadeJefe->insertarJefe($dtoJefe);
-    } //  Insertar a tabla de  Empleados
-        else if ($dto->getRol() == 3) {
-        $cargoEmpleado = $_POST['cargoEmpleado'];
-        $dtoEmpleado = new EmpleadoDTO($cargoEmpleado, $facadeUsuario->consecutivoUsuario());
-        $facadeEmpleado = new FacadeEmpleado;
-        $mensaje2 = $facadeEmpleado->insertarEmpleado($dtoEmpleado);
+    //Insertar Tabla de personas
+    $mensaje2 = $facadeUsuario->registrarUsuario($dto);
+    //  Insertar tabla de usuarios login    
+    $logeo = $facadeUsuario->insertarLogeo($dto);  
+    $mensajeCorreo=$confirmacion;    
+    //Consecutivo de Usuario
+    $consecutivos = $facadeUsuario->consecutivoUsuario();
     }
-header("location: ../vista/registrarUsuario.php?mensaje=" . $mensaje2 . "&consecutivo=" . $facadeUsuario->consecutivoUsuario()."&foto=".$msg);
+    header("location: ../vista/registrarUsuario.php?mensaje=" . $mensaje2 . "&consecutivo=" .$consecutivos."&foto=".$msg."&correo=".$mensajeCorreo);
 }//  Modificar
 else if (isset($_GET['modificar'])) {
     $uDTO = new UsuarioDTO($_GET['id'], $_GET['identificacion'], $_GET['nombre'], ($_GET['apellido']), $_GET['direccion'], $_GET['telefono'], $_GET['fechaNacimiento'], $_GET['email']);

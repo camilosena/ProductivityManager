@@ -190,6 +190,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             ?>
             <br>  
             <form name="filtro" class="formRegistro" action="../controlador/ControladorFiltros.php" method="POST">
+                <div id="exports" style="float:right;padding-bottom:10px;">
+                    <img src="../img/imprimir.png">
+                    <img src="../img/email.png">
+                    <img src="../img/pdf.png">
+                    <a href='../ExportarUsuario.php'><img src="../img/excel.png" title="Exportar a Exccel"></a></div>
                 <table id="tabla" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>                    
@@ -284,14 +289,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         
                     } else {
                         require_once '../modelo/dto/UsuarioDTO.php';
-                        require_once '../modelo/dao/UsuarioDAO.php';
-                        require_once '../modelo/dto/GerenteDTO.php';
-                        require_once '../modelo/dao/GerenteDAO.php';
-                        require_once '../facades/FacadeUsuarios.php';
-                        require_once '../facades/FacadeGerente.php';
+                        require_once '../modelo/dao/UsuarioDAO.php';                       
+                        require_once '../facades/FacadeUsuarios.php';                      
                         require_once '../modelo/utilidades/Conexion.php';
-                        $facadeUsuario = new FacadeUsuarios;
-                        $FacadeGerente = new FacadeGerente;
+                        $facadeUsuario = new FacadeUsuarios;                       
                         $todos = $facadeUsuario->listadoUsuario();
                         $_SESSION['consultaUsuario']=$todos;
                         foreach ($todos as $user) {
@@ -362,8 +363,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     ?>                                
                 </div>                    
             </div>
-            <button class="boton-verde"  onclick="location.href='listarUsuarios.php'" >Actualizar Lista</button>
-            <button type="button" class="button-verde" onclick="location.href='../ExportarUsuario.php'">Exportar Excel</button>
+            <button class="boton-verde"  onclick="location.href='listarUsuarios.php'" >Actualizar Lista</button>            
         </div>
         <footer class="footer-distributed">
             <div class="footer-left">

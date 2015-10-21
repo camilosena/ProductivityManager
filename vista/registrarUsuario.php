@@ -489,22 +489,16 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 
                     <tr style="color: #0DA068">
                         <td>Clientes</td><td>
-                            <?php
-                            require_once '../modelo/dto/GerenteDTO.php';
-                            require_once '../modelo/dao/GerenteDAO.php';
+                            <?php                           
                             require_once '../modelo/dto/ClienteDTO.php';
-                            require_once '../modelo/dao/ClienteDAO.php';
-                            require_once '../facades/FacadeGerente.php';
-                            require_once '../facades/FacadeJefe.php';
-                            require_once '../facades/FacadeEmpleado.php';
+                            require_once '../modelo/dao/ClienteDAO.php';                           
                             require_once '../facades/FacadeCliente.php';
                             require_once '../facades/FacadeCreateRol.php';
                             require_once '../modelo/dao/CrearRolDAO.php';
                             require_once '../facades/FacadeUsuarios.php';
                             require_once '../modelo/dao/UsuarioDAO.php';
                             require_once '../modelo/utilidades/Conexion.php';
-                            $facadeUsuario = new FacadeUsuarios;
-                            $FacadeGerente = new FacadeGerente;             
+                            $facadeUsuario = new FacadeUsuarios;                                      
                             $FacadeCliente = new FacadeCliente;
                             $facadeRol = new FacadeCreateRol;
                             echo $FacadeCliente->totalClientes();
@@ -517,11 +511,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     </tr>
 
                     <tr style="color: #ED9C13">
-                        <td>Gerentes</td><td><?php echo $facadeUsuario->cantidadUsuariosPorRol("Gerentes"); ?></td>
+                        <td>Gerentes</td><td><?php echo $facadeUsuario->cantidadUsuariosPorRol("Gerente"); ?></td>
                     </tr>
 
                     <tr style="color: #ED5713">
-                        <td>Empleados</td><td><?php echo $facadeUsuario->cantidadUsuariosPorRol("Empleados"); ?></td>
+                        <td>Empleados</td><td><?php echo $facadeUsuario->cantidadUsuariosPorRol("Empleado"); ?></td>
                     </tr>                    
                 </table>
                 <canvas id="chart" width="600" height="500"></canvas>
@@ -551,7 +545,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                          echo '<option disabled selected>' . "Seleccione un Área" . '</option>';
                         foreach ($areas as $area) {
 
-                            echo '<option value="' . $area['NombreArea'] . '">' . $area['NombreArea'] . '</option>';
+                            echo '<option value="' . $area['idAreas'] . '">' . $area['nombreArea'] . '</option>';
                         }
                         ?>
                     </select>
@@ -639,6 +633,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 
                 <?php
                 if (isset($_GET['mensaje'])) {
+                    if($_GET['consecutivo']!=0){
                     echo '<script>
             Command: toastr["success"]("Su Nuevo Consecutivo es: ' . $_GET['consecutivo'] . '", "' . $_GET['mensaje'] . '")
 
@@ -660,6 +655,32 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                   "hideMethod": "fadeOut"
                 }
             </script>';
+                }                
+                }
+                 if (isset($_GET['mensaje'])) {
+                    if($_GET['consecutivo']==0){
+                    echo '<script>
+            Command: toastr["error"]("'. $_GET['mensaje'] .'")
+
+                toastr.options = {
+                  "closeButton": false,
+                  "debug": false,
+                  "newestOnTop": false,
+                  "progressBar": false,
+                  "positionClass": "toast-top-right",
+                  "preventDuplicates": false,
+                  "onclick": null,
+                  "showDuration": "300",
+                  "hideDuration": "1000",
+                  "timeOut": "5000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                }
+            </script>';
+                }                
                 }
                 ?>
             </div>            

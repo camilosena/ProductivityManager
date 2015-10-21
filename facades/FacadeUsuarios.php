@@ -10,16 +10,16 @@ class FacadeUsuarios {
         $this->conexionBase = Conexion::getConexion();
     }
 
-    public function insertarUsuario(UsuarioDTO $usuarioDTO) {
-        return $this->objetoDAO->RegistrarUsuario($usuarioDTO, $this->conexionBase);
+    public function registrarUsuario(UsuarioDTO $usuarioDTO) {
+        return $this->objetoDAO->registrarUsuario($usuarioDTO, $this->conexionBase);
     }
 
     public function consecutivoUsuario() {
         return $this->objetoDAO->idConsecutivo($this->conexionBase);
     }
-
+    
     public function actualizarUsuario(UsuarioDTO $usuarioDTO) {
-        return $this->objetoDAO->ModificarUsuario($usuarioDTO, $this->conexionBase);
+        return $this->objetoDAO->modificarUsuario($usuarioDTO, $this->conexionBase);
     }
 
     public function desactivarUsuario($idUsuario, $estado) {

@@ -1,20 +1,22 @@
 <?php
 
 class UsuarioDTO {
+
     private $idUsuario;
     private $identificacion;
     private $nombre;
     private $apellido;
     private $direccion;
     private $telefono;
-    private $fecha;    
+    private $fecha;
     private $email;
+    private $estado;
+    private $foto;
     private $contrasena;
     private $rol;
-    private $foto;
-    private $estado;
-            
-    function __construct($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email) {
+    private $area;
+
+    function __construct($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email, $estado, $foto, $contrasena, $rol, $area) {
         $this->idUsuario = $idUsuario;
         $this->identificacion = $identificacion;
         $this->nombre = $nombre;
@@ -23,8 +25,13 @@ class UsuarioDTO {
         $this->telefono = $telefono;
         $this->fecha = $fecha;
         $this->email = $email;
+        $this->estado = $estado;
+        $this->foto = $foto;
+        $this->contrasena = $contrasena;
+        $this->rol = $rol;
+        $this->area = $area;
     }
-    
+
     function getIdUsuario() {
         return $this->idUsuario;
     }
@@ -57,6 +64,14 @@ class UsuarioDTO {
         return $this->email;
     }
 
+    function getEstado() {
+        return $this->estado;
+    }
+
+    function getFoto() {
+        return $this->foto;
+    }
+
     function getContrasena() {
         return $this->contrasena;
     }
@@ -65,18 +80,10 @@ class UsuarioDTO {
         return $this->rol;
     }
 
-    function getFoto() {
-        return $this->foto;
-    }
-    function getEstado() {
-        return $this->estado;
+    function getArea() {
+        return $this->area;
     }
 
-    function setEstado($estado) {
-        $this->estado = $estado;
-    }
-
-    
     function setIdUsuario($idUsuario) {
         $this->idUsuario = $idUsuario;
     }
@@ -109,6 +116,14 @@ class UsuarioDTO {
         $this->email = $email;
     }
 
+    function setEstado($estado) {
+        $this->estado = $estado;
+    }
+
+    function setFoto($foto) {
+        $this->foto = $foto;
+    }
+
     function setContrasena($contrasena) {
         $this->contrasena = $contrasena;
     }
@@ -117,11 +132,8 @@ class UsuarioDTO {
         $this->rol = $rol;
     }
 
-    function setFoto($foto) {
-        $this->foto = $foto;
+    function setArea($area) {
+        $this->area = $area;
     }
 
-
-    
 }
-    

@@ -1,0 +1,69 @@
+
+/* BASIC RESET */
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,macbook,p,blockquote,fieldset,input{margin:0; padding:0;}
+
+/* HTML ELEMENTS */
+
+/* COMMON CLASSES */
+.break { clear:both; }
+
+/* CONTENT */
+#content { }
+#content h2 { font: bold 20px Helvetica, Arial, Sans-serif; color:#7f7f7f; text-shadow: 0px 1px 2px #333; margin-left:400px; padding-top:20px; }
+
+/* BAR CHART */
+#bar { list-style:none; margin:70px 0 0 200px; width:400px; }
+#bar li { margin-top:-40px; }
+
+/* First top should have a different colour */
+#bar li:first-child div.top { background-color:rgba(186,211,215,0.5); }
+
+/* Ellipse top */
+#bar li div.top { background-color:rgba(140,172,176,0.5); position:relative;
+	width:100px; height:40px; -moz-border-radius: 100px/40px; -webkit-border-radius: 100px 40px; border-radius: 100px/40px; }
+#bar li div.top img { margin-left:18px; margin-top:-32px; display:none; }
+
+/* Bar bottom */
+#bar li div.bottom { background-color:rgba(184,203,205,0.5); margin-top:-40px; position:relative;
+	width:100px; -moz-border-radius: 100px/40px; -webkit-border-radius: 100px 40px; border-radius: 100px/40px; }
+#bar li div.bottom div.infobox { padding:45px 0 0 200px; }
+#bar li div.bottom div.infobox h3 { font-family:Georgia,serif,Times; font-size: 11px; white-space: nowrap;}
+#bar li div.bottom div.infobox p { font-family:"Lucida Grande",Arial,Helvetica,Sans-Serif; }
+/* General hover actions */
+#bar li:hover div.top img { display:inline; }
+#bar li:hover div.bottom div.infobox { color:#555; text-shadow: 0px 1px 2px #000; }
+
+/* iPhone bar */
+#iphone div.top { z-index:99; }
+#iphone div.bottom { z-index:98; height:100px; }
+#iphone:hover div.top { z-index:999; background-color:#1f81ac; }
+#iphone:hover div.bottom { z-index:998; background-color:#1a6c90;
+	background:-moz-linear-gradient(-90deg, #1a6c90, #14506b); background:-webkit-gradient(linear, 0 top, 0 bottom, from(#1a6c90), to(#14506b)); }
+
+/* MacBook bar */
+#macbook div.top { z-index:97; }
+#macbook div.bottom { z-index:96; height:120px; }
+#macbook:hover div.top { z-index:997; background-color:#bc003c; }
+#macbook:hover div.bottom { z-index:996; background-color:#9d0032;
+	background:-moz-linear-gradient(-90deg, #9d0032, #7a0027); background:-webkit-gradient(linear, 0 top, 0 bottom, from(#9d0032), to(#7a0027)); }
+
+/* iPod bar */
+#ipod div.top { z-index:95; }
+#ipod div.bottom { z-index:94; height:150px; }
+#ipod:hover div.top { z-index:995; background-color:#d98f23; }
+#ipod:hover div.bottom { z-index:994; background-color:#b6781e;
+	background:-moz-linear-gradient(-90deg, #b6781e, #916018); background:-webkit-gradient(linear, 0 top, 0 bottom, from(#b6781e), to(#916018)); }
+
+/* Cinema Display bar */
+#cinema div.top { z-index:93; }
+#cinema div.bottom { z-index:92; height:100px; }
+#cinema:hover div.top { z-index:993; background-color:#7da864; }
+#cinema:hover div.bottom { z-index:992; background-color:#698d54;
+	background:-moz-linear-gradient(-90deg, #698d54, #506b40); background:-webkit-gradient(linear, 0 top, 0 bottom, from(#698d54), to(#506b40)); }
+
+/* Mac Mini bar */
+#macmini div.top { z-index:91; }
+#macmini div.bottom { z-index:90; height:120px; }
+#macmini:hover div.top { z-index:991; background-color:#3f1150; }
+#macmini:hover div.bottom { z-index:990; background-color:#340e43;
+	background:-moz-linear-gradient(-90deg, #340e43, #1a0721); background:-webkit-gradient(linear, 0 top, 0 bottom, from(#340e43), to(#1a0721)); }

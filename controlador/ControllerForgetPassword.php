@@ -10,8 +10,8 @@
     require_once '../modelo/dao/ForgetPasswordDAO.php';  
     require_once '../modelo/utilidades/Conexion.php';
     require_once '../facades/FacadeForgetPassword.php';
-    require_once '../PHPmailer.php';
-    require_once '../SMTP.php';
+    require_once '../PHPMailer/PHPMailerAutoload.php';
+
   
     
      if(isset($_POST['solicitarContrasena'])){  

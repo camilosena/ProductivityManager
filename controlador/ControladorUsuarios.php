@@ -82,7 +82,7 @@ else if (isset($_POST['modificar'])) {
     $mensaje = $facadeUsuario->actualizarUsuario($uDTO);   
     $facadeLogin = new FacadeLogin;
     $msg2 = $facadeLogin->modificarLogin($uDTO);
-    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje.$msg2);
+    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje);
 }//  Eliminar 
 else if (isset($_GET['idEliminar'])) {
     $facadeUsuario = new FacadeUsuarios();

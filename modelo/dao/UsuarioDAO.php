@@ -115,7 +115,7 @@ and areas_idAreas=idAreas");
     public function eliminarUsuario($idUsuario, $estado, PDO $cnn) {
         $mensaje = '';
         try {
-            $query = $cnn->prepare('Update Usuarios set estado=? WHERE idUsuario = ?');
+            $query = $cnn->prepare('Update personas set estado=? WHERE idUsuario = ?');
             $query->bindParam(1, $estado);
             $query->bindParam(2, $idUsuario);
             $query->execute();
@@ -130,7 +130,7 @@ and areas_idAreas=idAreas");
     public function activarUsuario($idUsuario, $estado, PDO $cnn) {
         $mensaje = '';
         try {
-            $query = $cnn->prepare('Update Usuarios set estado=? WHERE idUsuario = ?');
+            $query = $cnn->prepare('Update personas set estado=? WHERE idUsuario = ?');
             $query->bindParam(1, $estado);
             $query->bindParam(2, $idUsuario);
             $query->execute();

@@ -27,22 +27,7 @@ if (empty($_SESSION['id'])) {
     </head>
     <body>
         <header>
-            <?php
-            require_once '../modelo/dao/LoginDAO.php';
-            require_once '../modelo/dao/PermisosDAO.php';
-            require_once '../modelo/utilidades/Conexion.php';
-            require_once '../facades/FacadeLogin.php';
-            require_once '../facades/FacadePermisos.php';
-
-            $facadePermmisos = new FacadePermisos;
-            $menuGeneral = $facadePermmisos->menuGeneral($_SESSION['rol']);
-            $proyecto = $facadePermmisos->permisoProyecto($_SESSION['rol']);
-            $novedad = $facadePermmisos->permisoNovedad($_SESSION['rol']);
-            $persona = $facadePermmisos->permisoPersonal($_SESSION['rol']);
-            $audita = $facadePermmisos->permisoAuditoria($_SESSION['rol']);
-            $clientes = $facadePermmisos->permisoCliente($_SESSION['rol']);
-            $roles = $facadePermmisos->permisoRoles($_SESSION['rol']);
-            ?>       
+              
             <div class="wrapper">
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
@@ -50,46 +35,10 @@ if (empty($_SESSION['id'])) {
                     <div id="menu">
                         <ul>
                             <?php
-                            foreach ($menuGeneral as $general) {
-                                echo '<li class="nivel1"><a href="" class="nivel1">' . $general['nombreRuta'] . '<img src="../img/derecha.png"></a>';
-                                if ($general['nombreRuta'] == 'Proyectos') {
-                                    echo '<ul class="uno">';
-                                    foreach ($proyecto as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                                if ($general['nombreRuta'] == 'Novedades') {
-                                    echo '<ul class="dos">';
-                                    foreach ($novedad as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                                if ($general['nombreRuta'] == 'Personal') {
-                                    echo '<ul class="tres">';
-                                    foreach ($persona as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                                if ($general['nombreRuta'] == 'Auditorias') {
-                                    echo '<ul class="cuatro">';
-                                    foreach ($audita as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                                if ($general['nombreRuta'] == 'Clientes') {
-                                    echo '<ul class="cinco">';
-                                    foreach ($clientes as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                                if ($general['nombreRuta'] == 'Roles') {
-                                    echo '<ul class="seis">';
-                                    foreach ($roles as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                            }
-                            ?>               
+                            require_once './Menu.php';
+                            $menu = new Menu;
+                            $menu->permisosMenu();
+                            ?>                 
                         </ul>
                     </div>
                 </nav>
@@ -137,13 +86,6 @@ if (empty($_SESSION['id'])) {
             <div id="panelUnico">
                 <br>
                 <br><h2 class="h330">Agregar Insumos:</h2><hr>
-                <?php
-                require_once '../facades/FacadeUsuarios.php';
-                require_once '../modelo/dao/UsuarioDAO.php';
-                $facadeUsuarios = new FacadeUsuarios();
-                
-                ?> 
-
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <form class="formRegistro" method="Get" action="../controlador/ControladorInsumos.php"> 
                                       

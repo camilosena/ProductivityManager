@@ -55,7 +55,7 @@ class UsuarioDAO {
     public function modificarUsuario(UsuarioDTO $usuarioDto, PDO $cnn) {
         $mensaje = "";
         try {
-            $query = $cnn->prepare("UPDATE  Usuarios SET identificacion=?,nombres=?,apellidos=?,direccion=?,telefono=?, fechaNacimiento=?, email=? where idUsuario=?");
+            $query = $cnn->prepare("UPDATE  personas SET identificacion=?,nombres=?,apellidos=?,direccion=?,telefono=?, fechaNacimiento=?, email=? where idUsuario=?");
             $query->bindParam(1, $usuarioDto->getIdentificacion());
             $query->bindParam(2, $usuarioDto->getNombre());
             $query->bindParam(3, $usuarioDto->getApellido());

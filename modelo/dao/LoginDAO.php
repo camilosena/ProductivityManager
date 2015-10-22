@@ -12,7 +12,21 @@ class LoginDAO {
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }        
-    }  
+    }
+        public function modificarLogin(UsuarioDTO $usuarioDto, PDO $cnn) {
+        $mensaje = "";
+        try {
+            $query = $cnn->prepare("UPDATE  usuarios SET idLogin=? where idLogin=?");
+            $query->bindParam(1, $usuarioDto->getIdentificacion());
+            $query->bindParam(2, $usuarioDto->getIdentificacion());            
+            $query->execute();
+            $mensaje = "Usuario Actualizado";
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+        }
+        $cnn = null;
+        return $mensaje;
+    }
      public function seguridadPaginas($rol, PDO $cnn) {        
          try {            
             $query=$cnn->prepare('call seguridadPaginas(?)');   

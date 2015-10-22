@@ -13,6 +13,10 @@ class FacadeLogin {
     return $this->loginDAO->login($user, $pass, $this->conexion);
     }
     
+   public function modificarLogin(UsuarioDTO $usuarioDTO) {
+        return $this->loginDAO->modificarLogin($usuarioDTO, $this->conexion);
+    }
+    
     public function seguridadPaginas($rol){
     return $this->loginDAO->seguridadPaginas($rol, $this->conexion);
     }

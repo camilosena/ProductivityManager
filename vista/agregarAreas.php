@@ -47,17 +47,14 @@ if (empty($_SESSION['id'])) {
                     <li><a class="twitter" href="https://twitter.com/Productivity_Mg"></a></li>
                     <li><a class="gplus" href="mailto:productivitymanagersoftware@gmail.com"></a></li>
                 </ul>
-                <p style="text-align:right; font-size:12px; font-family: sans-serif; font-weight:bold; color: white">
-                    <?php
-                    require_once '../modelo/dao/UsuarioDAO.php';
-                    require_once '../modelo/utilidades/Conexion.php';
-                    require_once '../facades/FacadeUsuarios.php';
-
-                    $facadeUsuario = new FacadeUsuarios;
-                    $_SESSION['nombre'] = $facadeUsuario->nombreUsuario($_SESSION['id']);
+                 <div class="logoFoto">
+                    <div><img src="../fotos/<?php echo $_SESSION['foto'];?>"></div>
+                <p style="text-align:right; font-size:12px; font-family: sans-serif; font-weight:bold; color: white"><br><br><br><br><br>
+                    <?php                  
                     echo 'Bienvenido(a) ' . $_SESSION['nombre'];
                     ?>
                 </p>
+            </div>
             </div>
         </header>        
         <div class="wrapper">

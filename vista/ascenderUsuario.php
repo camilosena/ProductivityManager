@@ -483,80 +483,54 @@ if (empty($_SESSION['id'])) {
                     </tr>
 
                     <tr style="color: #0DA068">
-                        <td>Clientes</td><td>
-                            <?php
-                            require_once '../modelo/dto/GerenteDTO.php';
-                            require_once '../modelo/dao/GerenteDAO.php';
-                            require_once '../modelo/dto/JefeDTO.php';
-                            require_once '../modelo/dao/JefeDAO.php';
-                            require_once '../modelo/dto/EmpleadoDTO.php';
-                            require_once '../modelo/dao/EmpleadoDAO.php';
+                      <td>Clientes</td><td>
+                            <?php                           
                             require_once '../modelo/dto/ClienteDTO.php';
-                            require_once '../modelo/dao/ClienteDAO.php';
-                            require_once '../facades/FacadeGerente.php';
-                            require_once '../facades/FacadeJefe.php';
-                            require_once '../facades/FacadeEmpleado.php';
+                            require_once '../modelo/dao/ClienteDAO.php';                           
                             require_once '../facades/FacadeCliente.php';
+                            require_once '../facades/FacadeCreateRol.php';
+                            require_once '../modelo/dao/CrearRolDAO.php';
+                            require_once '../facades/FacadeUsuarios.php';
+                            require_once '../modelo/dao/UsuarioDAO.php';
                             require_once '../modelo/utilidades/Conexion.php';
-                            $FacadeGerente = new FacadeGerente;
-                            $FacadeJefe = new FacadeJefe;
-                            $FacadeEmpleado = new FacadeEmpleado;
+                            $facadeUsuario = new FacadeUsuarios;                                      
                             $FacadeCliente = new FacadeCliente;
+                            $facadeRol = new FacadeCreateRol;
                             echo $FacadeCliente->totalClientes();
                             ?></td>
                     </tr>
 
                     <tr style="color: #194E9C">
-                        <td>Gerentes</td>
-                        <td><?php echo $FacadeGerente->totalGerentes(); ?></td>
+                        <td>Administración</td>
+                        <td><?php echo $facadeUsuario->cantidadUsuariosPorRol("Administrador"); ?></td>
                     </tr>
 
                     <tr style="color: #ED9C13">
-                        <td>Jefes de Área</td><td><?php echo $FacadeJefe->totalJefes(); ?></td>
+                        <td>Gerentes</td><td><?php echo $facadeUsuario->cantidadUsuariosPorRol("Gerente"); ?></td>
                     </tr>
 
                     <tr style="color: #ED5713">
-                        <td>Empleados</td><td><?php echo $FacadeEmpleado->totalEmpleados(); ?></td>
-                    </tr>                    
+                        <td>Empleados</td><td><?php echo $facadeUsuario->cantidadUsuariosPorRol("Empleado"); ?></td>
+                    </tr>                        
                 </table>
                 <canvas id="chart" width="600" height="500"></canvas>
             </div>
             <div id="panelDer">
-                <br>
+                  <br>
                 <?php
                 require_once '../modelo/dto/UsuarioDTO.php';
                 require_once '../modelo/dao/UsuarioDAO.php';
-                require_once '../facades/FacadeUsuarios.php';
-                require_once '../modelo/dto/GerenteDTO.php';
-                require_once '../modelo/dao/GerenteDAO.php';
-                require_once '../modelo/dto/JefeDTO.php';
-                require_once '../modelo/dao/JefeDAO.php';
-                require_once '../modelo/dto/EmpleadoDTO.php';
-                require_once '../modelo/dao/EmpleadoDAO.php';
-                require_once '../facades/FacadeGerente.php';
-                require_once '../facades/FacadeJefe.php';
-                require_once '../facades/FacadeEmpleado.php';
-                require_once '../facades/FacadeCreateRol.php';
-                require_once '../modelo/dao/CrearRolDAO.php';
+                require_once '../facades/FacadeUsuarios.php';                              
                 require_once '../modelo/utilidades/Conexion.php';
 
                 if ($_GET['id'] != NULL) {
                     $facadeUsuario = new FacadeUsuarios;
-                    $facadeRol = new FacadeCreateRol;
-                    $usuario = $facadeUsuario->consultarUsuario($_GET['id']);
-                    $FacadeGerente = new FacadeGerente;
-                    if ($usuario['rol'] == 'Gerente') {
-                        $gerente = $FacadeGerente->consultarGerente($_GET['id']);
-                    } else if ($usuario['rol'] == 'Jefe') {
-                        $jefe = $FacadeJefe->consultarJefe($_GET['id']);
-                    } else if ($usuario['rol'] == 'Empleado') {
-                        $empleado = $FacadeEmpleado->consultarEmpleado($_GET['id']);
-                    }
+                    $usuario = $facadeUsuario->consultarUsuario($_GET['id']);                                       
                 }
                 ?> 
                 <br><br><h2 class="h330">Ascender <?php echo $usuario['rol']; ?>:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="Get" action="../controlador/ControladorUsuarios.php">                
+                <form class="formRegistro" method="post" action="../controlador/ControladorUsuarios.php">                
                     <label class="tag" for="id"><span id="documento" class="h331">Código: </span></label>
                     <input class="input" name="id" value ="<?php echo $usuario['idUsuario']; ?>" required type="number" pattern="[0-9]{1,15}"  title="Dato no modificable" maxlength="128" id="txtEmail" class="field1" style="text-align: center" readonly>
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
@@ -594,7 +568,7 @@ if (empty($_SESSION['id'])) {
                          
                         foreach ($areas as $area) {
 
-                            echo '<option value="' . $area['nombreArea'] . '">' . $area['nombreArea'] . '</option>';
+                            echo '<option value="' . $area['idAreas'] . '">' . $area['nombreArea'] . '</option>';
                         }
                         ?>
                     </select>

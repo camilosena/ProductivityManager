@@ -77,7 +77,11 @@ class FacadeUsuarios {
 
     function ascenderUsuario($idRol, $identificion) {
 
-        return $this->objetoDAO->ascenderUsiario($idRol, $identificion, $this->conexionBase);
+        return $this->objetoDAO->ascenderUsuario($idRol, $identificion, $this->conexionBase);
+    }
+     function actualizarArea($idUsuario,$area) {
+
+        return $this->objetoDAO->actualizarArea($idUsuario, $area, $this->conexionBase);
     }
     
     public function cantidadUsuariosPorRol($rol) {

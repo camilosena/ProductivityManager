@@ -224,14 +224,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 </script>
                 <?php
                 require_once '../modelo/dto/UsuarioDTO.php';
-                require_once '../modelo/dao/UsuarioDAO.php';
-                require_once '../modelo/dto/GerenteDTO.php';
-                require_once '../modelo/dao/GerenteDAO.php';
-                require_once '../facades/FacadeUsuarios.php';
-                require_once '../facades/FacadeGerente.php';
+                require_once '../modelo/dao/UsuarioDAO.php';          
+                require_once '../facades/FacadeUsuarios.php';   
                 require_once '../modelo/utilidades/Conexion.php';
-                $facadeUsuario = new FacadeUsuarios;
-                 $FacadeGerente = new FacadeGerente;
+                $facadeUsuario = new FacadeUsuarios;                 
                 $todos = $facadeUsuario->listarUsuariosInactivos();                    
                 foreach ($todos as $user) {
                     ?>

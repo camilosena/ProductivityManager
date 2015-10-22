@@ -1,6 +1,7 @@
 <?php
 require_once '../modelo/dto/UsuarioDTO.php';
 require_once '../modelo/dao/UsuarioDAO.php';
+require_once '../modelo/dao/LoginDAO.php';
 require_once '../modelo/dto/CorreosDTO.php';
 require_once '../modelo/dto/ImagenesDTO.php';
 require_once '../modelo/utilidades/GestionImagenes.php';
@@ -10,6 +11,7 @@ require_once '../PHPMailer/PHPMailerAutoload.php';
 require_once '../modelo/utilidades/Conexion.php';
 require_once '../facades/FacadeUsuarios.php';
 require_once '../facades/FacadeCorreos.php';
+require_once '../facades/FacadeLogin.php';
 
 //  Registrar Usuarios
 if (isset($_POST['crearUsuario'])) {
@@ -66,31 +68,21 @@ if (isset($_POST['crearUsuario'])) {
     }
     header("location: ../vista/registrarUsuario.php?mensaje=" . $mensaje2 . "&consecutivo=" .$consecutivos."&foto=".$msg."&correo=".$mensajeCorreo);
 }//  Modificar
-else if (isset($_GET['modificar'])) {
-    $uDTO = new UsuarioDTO($_GET['id'], $_GET['identificacion'], $_GET['nombre'], ($_GET['apellido']), $_GET['direccion'], $_GET['telefono'], $_GET['fechaNacimiento'], $_GET['email']);
+else if (isset($_POST['modificar'])) {
+     $idUsuario=$_POST['id'];
+    $identificacion = $_POST['identificacion'];
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $direccion = $_POST['direccion'];
+    $telefono = $_POST['telefono'];
+    $fecha = $_POST['fechaNacimiento'];
+    $email = $_POST['email'];       
+    $uDTO = new UsuarioDTO($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email, $estado, $foto, $contrasena, $rol, $area);    
     $facadeUsuario = new FacadeUsuarios();
-    $mensaje = $facadeUsuario->actualizarUsuario($uDTO);
-    $uDTO->setRol($_GET['tipoUser']);
-    if ($uDTO->getRol() == 'Gerente') {
-        $dtoGerente = new GerenteDTO;
-        $FacadeGerente = new FacadeGerente;
-        $dtoGerente->setPerfil($_GET['perfil']);
-        $dtoGerente->setIdUsuario($_GET['id']);
-        $mensaje = $FacadeGerente->actualizarGerente($dtoGerente);
-    } else if ($uDTO->getRol() == 'Jefe') {
-        $dtoJefe = new JefeDTO;
-        $FacadeJefe = new FacadeJefe;
-        $dtoJefe->setAreaJefe($_GET['areaJefe']);
-        $dtoJefe->setIdUsuario($_GET['id']);
-        $mensaje = $FacadeJefe->actualizarJefe($dtoJefe);
-    } else if ($uDTO->getRol() == 'Empleado') {
-        $dtoEmpleado = new EmpleadoDTO;
-        $FacadeEmpleado = new FacadeEmpleado;
-        $dtoEmpleado->setCargoEmpleado($_GET['cargoEmpleado']);
-        $dtoEmpleado->setIdUsuario($_GET['id']);
-        $mensaje = $FacadeEmpleado->actualizarEmpleado($dtoEmpleado);
-    }
-    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje);
+    $mensaje = $facadeUsuario->actualizarUsuario($uDTO);   
+    $facadeLogin = new FacadeLogin;
+    $msg2 = $facadeLogin->modificarLogin($uDTO);
+    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje.$msg2);
 }//  Eliminar 
 else if (isset($_GET['idEliminar'])) {
     $facadeUsuario = new FacadeUsuarios();

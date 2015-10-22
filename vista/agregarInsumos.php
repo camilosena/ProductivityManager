@@ -136,40 +136,32 @@ if (empty($_SESSION['id'])) {
 
             <div id="panelUnico">
                 <br>
-                <br><h2 class="h330">Asignar Permisos:</h2><hr>
+                <br><h2 class="h330">Agregar Insumos:</h2><hr>
                 <?php
                 require_once '../facades/FacadeUsuarios.php';
                 require_once '../modelo/dao/UsuarioDAO.php';
                 $facadeUsuarios = new FacadeUsuarios();
-                $all = $facadeUsuarios->listarAreas();
+                
                 ?> 
 
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="Get" action="../controlador/ControladorRol.php"> 
-                    
-
-                    <?php
-                    require_once '../modelo/dao/CrearRolDAO.php';
-                    require_once '../facades/FacadeCreateRol.php';
-                    $facadeCreateRol = new FacadeCreateRol();
-
-                    $todosR = $facadeCreateRol->ListarRoles();
-                    ?>
-                    
-                   
-                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Areas: </span></label>
+                <form class="formRegistro" method="Get" action="../controlador/ControladorInsumos.php"> 
+                                      
+                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Insumos: </span></label>
                     <table>
                         <?php
-                        require_once '../facades/FacadeUsuarios.php';
-                        require_once '../modelo/dao/UsuarioDAO.php';
-                        $facadeUsuarios = new FacadeUsuarios();
-                        $all = $facadeUsuarios->listarAreas();
+                        require_once '../facades/FacadeInsumos.php';
+                        require_once '../modelo/dao/InsumosDAO.php';
+                        $facadeInsumos = new FacadeInsumos();
+                        $all = $facadeInsumos->listarInsumos();
                         foreach ($all as $unit) {
                             ?>     
                             <tr>
-                                <td> <input name="idAreas" value ="<?php echo $unit['idAreas']; ?>" readonly ></td>
-                                <td> <input name="permiso" value ="<?php echo $unit['nombreArea']; ?>" disabled ></td>
-                                 <td><a name="eliminarArea" title="Eliminar Area" class="me"  href="../controlador/ControladorRol.php?idEliminar=<?php echo $unit['idAreas']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
+                                <td> <input size="2" name="idInsumo" value ="<?php echo $unit['numero']; ?>" readonly ></td>
+                                <td> <input size="10" name="nombres" value ="<?php echo $unit['nombre']; ?>" disabled ></td>
+                                <td> <input size="10" name="unidades" value ="<?php echo $unit['unidad']; ?>" readonly ></td>
+                                <td> <input size="10" name="precios" value ="<?php echo $unit['precio']; ?>" disabled ></td>
+                                <td><a name="eliminarInsumo" title="Eliminar Insumo" class="me"  href="../controlador/ControladorInsumos.php?idEliminar=<?php echo $unit['numero']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
                                         
 
                             </tr>
@@ -183,19 +175,23 @@ if (empty($_SESSION['id'])) {
                     </table>
                     
                     <?php
-                         require_once '../facades/FacadeAreas.php';
-                        require_once '../modelo/dao/AreasDAO.php';
-                        $facadeArea = new FacadeAreas();
-                $consecutivo=$facadeArea->ConsecutivoAreas();
+                         require_once '../facades/FacadeInsumos.php';
+                        require_once '../modelo/dao/InsumosDAO.php';
+                        $facadeInsumos = new FacadeInsumos();
+                $consecutivo=$facadeInsumos->consecutivoInsumos();
                 ?>
                     
                 <br>  
-                    <label class="tag" id="IdRol" for="IdArea"><span id="NameRol" class="h331" style="display: inline-block">Número de Área: </span></label>
-                    <input name="IdArea" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nueva Área: </span></label>
-                    <input name="NombreArea" type="text" id="txtName"  placeholder="Pedro"   style="display: inline-block"><br>
+                    <label class="tag" id="IdRol" for="IdInsumo"><span id="NameRol" class="h331" style="display: inline-block">Número de Insumo: </span></label>
+                    <input name="numero" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Insumo: </span></label>
+                    <input name="NombreInsumo" type="text" id="txtName"  placeholder="Madera"   style="display: inline-block"><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Unidad de medida: </span></label>
+                    <input name="unidad" type="text" id="txtName"  placeholder="m3"   style="display: inline-block"><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Precio base: $ </span></label>
+                    <input name="precio" type="text" id="txtName"  placeholder="10000"   style="display: inline-block"><br>
                     
-                    <button type="submit" value="Enviar" name="AgregarArea" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
+                    <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
                     <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
                     </form><br>
                 

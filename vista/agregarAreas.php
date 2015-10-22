@@ -88,6 +88,12 @@ if (empty($_SESSION['id'])) {
                                         echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
                                     } echo '</ul></li>';
                                 }
+                                if ($general['nombreRuta'] == 'Insumos') {
+                                    echo '<ul class="siete">';
+                                    foreach ($insumos as $pagina) {
+                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
+                                    } echo '</ul></li>';
+                                }
                             }
                             ?>               
                         </ul>

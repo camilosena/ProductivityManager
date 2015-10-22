@@ -243,19 +243,33 @@ and areas_idAreas=idAreas");
     function ascenderUsuario($idRol, $identificion, PDO $cnn) {
         $mensaje = "";
         try {
-            $query = $cnn->prepare("update users set rolesId=? where idLogin=?");
+            $query = $cnn->prepare("update usuarios set rolesId=? where idLogin=?");
             $query->bindParam(1, $idRol);
             $query->bindParam(2, $identificion);
 
             $query->execute();
-            $mensaje = "Registro Actualizado";
+            $mensaje = "Rol Actualizado";
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }
         $cnn = null;
         return $mensaje;
     }
-    
+        function actualizarArea($idUsuario, $area, PDO $cnn) {
+        $mensaje = "";
+        try {
+            $query = $cnn->prepare("update personas set areas_idAreas=? where idUsuario=?");
+            $query->bindParam(1, $area);
+            $query->bindParam(2, $idUsuario);
+
+            $query->execute();
+            $mensaje = "Area Actualizada";
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+        }
+        $cnn = null;
+        return $mensaje;
+    }
        public function cantidadUsuariosPorRol($rol, PDO $cnn) {
         try {
             $query = $cnn->prepare("SELECT count(rol) from roles where rol='".$rol."'");

@@ -102,30 +102,11 @@ else if (isset($_GET['idActivar'])) {
     echo $mensaje3;
     header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje3);
 } // Ascender Usuarios
-else  if (isset($_GET['ascender'])) {
-     $facadeUsuario = new FacadeUsuarios();
-     $uDTO = new UsuarioDTO();
-        $mensaje = $facadeUsuario->ascenderUsuario($_GET['selectRol'], $_GET['identificacion']);
-    $uDTO->setRol($_GET['selectRol']);
-    if ($uDTO->getRol() == 'Gerente') {
-        $dtoGerente = new GerenteDTO;
-        $FacadeGerente = new FacadeGerente;
-        $dtoGerente->setPerfil($_GET['selectArea']);
-        $dtoGerente->setIdUsuario($_GET['id']);
-        $mensaje = $FacadeGerente->actualizarGerente($dtoGerente);
-    } else if ($uDTO->getRol() == 'Jefe') {
-        $dtoJefe = new JefeDTO;
-        $FacadeJefe = new FacadeJefe;
-        $dtoJefe->setAreaJefe($_GET['selectArea']);
-        $dtoJefe->setIdUsuario($_GET['id']);
-        $mensaje = $FacadeJefe->actualizarJefe($dtoJefe);
-    } else if ($uDTO->getRol() == 'Empleado') {
-        $dtoEmpleado = new EmpleadoDTO;
-        $FacadeEmpleado = new FacadeEmpleado;
-        $dtoEmpleado->setCargoEmpleado($_GET['selectArea']);
-        $dtoEmpleado->setIdUsuario($_GET['id']);
-        $mensaje = $FacadeEmpleado->actualizarEmpleado($dtoEmpleado);
-    }
-    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje); 
-    }
+else  if (isset($_POST['ascender'])) {
+     $facadeUsuario = new FacadeUsuarios();     
+        $mensaje = $facadeUsuario->ascenderUsuario($_POST['selectRol'], $_POST['identificacion']);
+        $mensaje2 = $facadeUsuario->actualizarArea($_POST['id'], $_POST['selectArea']);
+    
+    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje.$mensaje2); 
+  }
     

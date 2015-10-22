@@ -332,20 +332,20 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             <div id="verUsuario" class="modalDialog" title="Ver Usuario">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
                     <?php
-                    echo '<table id="muestraDatos"><tr><th colspan="2">Datos de Usuario</th></tr>';
-                    echo '<tr><td>Cargo:</td><td>' . $_GET['rol'] . '</td></tr>';
-                    echo '<tr><td>Área/Sector:</td><td>' . $_GET['areaSector'] . '</td></tr>';
-                    echo '<tr><td>Código:</td><td>' . $_GET['usuario'] . '</td></tr>';
-                    echo '<tr><td>Identificación:</td><td> ' . $_GET['identificacion'] . '</td></tr>';
-                    echo '<tr><td>Nombres:</td><td>' . $_GET['nombre'] . '</td></tr>';
-                    echo '<tr><td>Apellidos:</td><td>' . $_GET['apellido'] . '</td></tr>';
-                    echo '<tr><td>Dirección:</td><td>' . $_GET['direccion'] . '</td></tr>';
-                    echo '<tr><td>Teléfono:</td><td>' . $_GET['telefono'] . '</td></tr>';
-                    echo '<tr><td>Fecha de Nacimiento:</td><td>' . $_GET['fecha'] . '</td></tr>';
-                    echo '<tr><td>Correo Electronico:</td><td ><a id="mails" title="Enviar Correo a:" href="mailto:' . $_GET['email'] . '">'. $_GET['email'] .'</td></tr>';
-                    if($_GET['rol']=='Empleado' || $_GET['rol']=='Jefe'){
+                    echo '<table id="muestraDatos"><tr><th>Datos de Usuario</th><th><img class="fotoUsuario" src="../fotos/' . $_SESSION['datosUsuario']['foto']  . '"></th></tr>';                    
+                    echo '<tr><td>Cargo:</td><td>' . $_SESSION['datosUsuario']['rol']  . '</td></tr>';
+                    echo '<tr><td>Área/Sector:</td><td>' . $_SESSION['datosUsuario']['nombreArea']  . '</td></tr>';
+                    echo '<tr><td>Código:</td><td>' . $_SESSION['datosUsuario']['idUsuario'] . '</td></tr>';
+                    echo '<tr><td>Identificación:</td><td> ' . $_SESSION['datosUsuario']['identificacion']  . '</td></tr>';
+                    echo '<tr><td>Nombres:</td><td>' . $_SESSION['datosUsuario']['nombres']  . '</td></tr>';
+                    echo '<tr><td>Apellidos:</td><td>' . $_SESSION['datosUsuario']['apellidos']  . '</td></tr>';
+                    echo '<tr><td>Dirección:</td><td>' . $_SESSION['datosUsuario']['direccion']  . '</td></tr>';
+                    echo '<tr><td>Teléfono:</td><td>' . $_SESSION['datosUsuario']['telefono']  . '</td></tr>';
+                    echo '<tr><td>Fecha de Nacimiento:</td><td>' . $_SESSION['datosUsuario']['fechaNacimiento']  . '</td></tr>';
+                    echo '<tr><td>Correo Electronico:</td><td ><a id="mails" title="Enviar Correo a:" href="mailto:' . $_SESSION['datosUsuario']['email']  . '">'. $_SESSION['datosUsuario']['email']  .'</td></tr>';
+                    if($_SESSION['datosUsuario']['rol'] !='Gerente'){
                     echo '<tr><td colspan="2" style="text-align:center">Asignar Usuario a Proyecto</td></tr>';
-                    echo '<form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php?codUsuario=' . $_GET['usuario'] . '&rolUser=' . $_GET['rol'] . '">';
+                    echo '<form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php?codUsuario=' . $_SESSION['datosUsuario']['idUsuario']  . '&rolUser=' . $_SESSION['datosUsuario']['rol']  . '">';
                     echo '<tr><td><label class="tag" id="labelProyecto" for="listaProyecto"><span id="lab_valCountry" class="h331">Seleccione Proyecto:</span></label></td>'
                     . '<td><select class="input" id="listaProyecto" name="idProjects" id="listaProyecto" autofocus class="list_menu" >';
                     if (empty($_POST['idProjects'])) {

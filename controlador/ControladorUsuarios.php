@@ -100,10 +100,9 @@ else if (isset($_GET['idEliminar'])) {
 }//  Consultar
 else if (isset($_GET['idConsultar'])) {
     $facadeUsuario = new FacadeUsuarios();
-    $usuario = $facadeUsuario->consultarUsuario($_GET['idConsultar']);
-    header("Location: ../vista/listarUsuarios.php?usuario=" . $usuario['idUsuario'] . "&identificacion=" . $usuario['identificacion'] . "&nombre=" . $usuario['nombres'] .
-            "&apellido=" . $usuario['apellidos'] . "&direccion=" . $usuario['direccion'] . "&telefono=" . $usuario['telefono'] . "&fecha=" . $usuario['fechaNacimiento'] .
-            "&rol=" . $usuario['rol'] . "&email=" . $usuario['email'] . "&areaSector=" . $usuario['AreaSector'] . "&#verUsuario");
+    session_start();  
+    $_SESSION['datosUsuario'] = $facadeUsuario->consultarUsuario($_GET['idConsultar']);   
+ header("Location: ../vista/listarUsuarios.php?#verUsuario");
 } //Activar Usuarios Inactivos Bloqueados
 else if (isset($_GET['idActivar'])) {
     $facadeUsuario = new FacadeUsuarios();

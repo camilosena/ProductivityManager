@@ -48,7 +48,7 @@
                  
                  
                  $confirmación=$correo->EnviarCorreo($dto, $nombreRemitente);
-                 if ($confirmación='True') {
+                 if ($confirmación=='True') {
                      $facadeForgetpassword->updatePassword($passNew, $_POST['user']); 
                      $mensaje2='Información enviada a: '." ".$dto->getDestinatario();
                  }else{

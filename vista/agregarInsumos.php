@@ -12,7 +12,7 @@ if (empty($_SESSION['id'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Asignar Areas</title>
+        <title>Asignar Insumos</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="../css/reset.css">
@@ -127,7 +127,7 @@ if (empty($_SESSION['id'])) {
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
                         <a href="CrearRol.php" title="Ir a Usuarios" itemprop="url">
-                            <span itemprop="title">Asignar Areas</span>              
+                            <span itemprop="title">Agregar Insumos </span>              
                         </a>  > 
 
                     </span> 
@@ -136,7 +136,7 @@ if (empty($_SESSION['id'])) {
 
             <div id="panelUnico">
                 <br>
-                <br><h2 class="h330">Asignar Áreas:</h2><hr>
+                <br><h2 class="h330">Asignar Permisos:</h2><hr>
                 <?php
                 require_once '../facades/FacadeUsuarios.php';
                 require_once '../modelo/dao/UsuarioDAO.php';
@@ -146,52 +146,32 @@ if (empty($_SESSION['id'])) {
 
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <form class="formRegistro" method="Get" action="../controlador/ControladorRol.php"> 
-                    <label class="tag" id="IdRol" for="IdRol"><span id="NameRol" class="h331">Número del Rol: </span></label>
+                    
 
                     <?php
                     require_once '../modelo/dao/CrearRolDAO.php';
                     require_once '../facades/FacadeCreateRol.php';
                     $facadeCreateRol = new FacadeCreateRol();
-                    $idRol = $facadeCreateRol->obtenerID($_GET['id']);
+
                     $todosR = $facadeCreateRol->ListarRoles();
                     ?>
-                    <select name="selectId"> 
-
-                         <?php
-                            echo '<option value="'. $idRol['idRoles'].'">'.$idRol['idRoles'].'</option>';  
-                      ?>
-                    </select><br>
                     
-                    <?php $nombre = $facadeCreateRol->ObtenerNombreRol($_GET['id']); ?>
-
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombre del Rol: </span></label>
-                    <input name="NameRol" type="text" id="txtName"  placeholder="Pedro" readonly  value=" <?php echo $nombre ?> "> 
-
-
-                    <span id="valName" style="color:Red;visibility:hidden;"></span><br>
-                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" class="h331">Permisos: </span></label>
+                   
+                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Areas: </span></label>
                     <table>
                         <?php
                         require_once '../facades/FacadeUsuarios.php';
                         require_once '../modelo/dao/UsuarioDAO.php';
-                        require_once '../facades/FacadeAreas.php';
-                        require_once '../modelo/dao/AreasDAO.php';
                         $facadeUsuarios = new FacadeUsuarios();
                         $all = $facadeUsuarios->listarAreas();
-                        $facadeArea=new FacadeAreas();
-                        $APRol = $facadeArea->obtenerAreas($_GET['id']);
                         foreach ($all as $unit) {
                             ?>     
                             <tr>
                                 <td> <input name="idAreas" value ="<?php echo $unit['idAreas']; ?>" readonly ></td>
                                 <td> <input name="permiso" value ="<?php echo $unit['nombreArea']; ?>" disabled ></td>
-                                <td></td>
-                                <td><input type="checkbox" id="estado" name="<?php echo $unit['idAreas']; ?>" value="<?php echo $unit['idAreas']; ?>"<?php 
-                                foreach ( $APRol as $areas){
-                                        if (($unit['idAreas']==$areas["areas"])) {                           
-                                            echo 'checked="checked"';
-                                }  } ?> />   </td>         
-                               
+                                 <td><a name="eliminarArea" title="Eliminar Area" class="me"  href="../controlador/ControladorRol.php?idEliminar=<?php echo $unit['idAreas']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
+                                        
+
                             </tr>
 
                             <?php
@@ -201,8 +181,21 @@ if (empty($_SESSION['id'])) {
                         }
                         ?>    
                     </table>
-                    <button type="submit" value="Enviar" name="ModificarArea" id="crearRol" class="boton-verde" style="display: inline">Asignar</button>
                     
+                    <?php
+                         require_once '../facades/FacadeAreas.php';
+                        require_once '../modelo/dao/AreasDAO.php';
+                        $facadeArea = new FacadeAreas();
+                $consecutivo=$facadeArea->ConsecutivoAreas();
+                ?>
+                    
+                <br>  
+                    <label class="tag" id="IdRol" for="IdArea"><span id="NameRol" class="h331" style="display: inline-block">Número de Área: </span></label>
+                    <input name="IdArea" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nueva Área: </span></label>
+                    <input name="NombreArea" type="text" id="txtName"  placeholder="Pedro"   style="display: inline-block"><br>
+                    
+                    <button type="submit" value="Enviar" name="AgregarArea" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
                     <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
                     </form><br>
                 

@@ -43,9 +43,9 @@ class FacadeCreateRol {
         return $this->crearRolDAO->listarIdRoles($this->conexionBase);
     }
     
-    function  ObtenerNombreRol ($idUsuario){
+    function  ObtenerNombreRol ($idRol){
         
-        return $this->crearRolDAO->ObtenerNombreRol($idUsuario, $this->conexionBase);
+        return $this->crearRolDAO->ObtenerNombreRol($idRol, $this->conexionBase);
     }
     
     function ListarRoles (){
@@ -53,23 +53,23 @@ class FacadeCreateRol {
         return $this->crearRolDAO->listarRoles($this->conexionBase);
     }
     
-    function obtenerID($idUsuario){
+    function obtenerID($idRol){
         
-       return $this->crearRolDAO->ObtenerId($idUsuario, $this->conexionBase); 
+       return $this->crearRolDAO->ObtenerId($idRol, $this->conexionBase); 
     }
             
-    function ObtenerPermisosPorRol ($idUsuario){
+    function ObtenerPermisosPorRol ($idRol){
         
-        return $this->crearRolDAO->ObtenerPermisosPorRol($idUsuario, $this->conexionBase);
+        return $this->crearRolDAO->ObtenerPermisosPorRol($idRol, $this->conexionBase);
     }
             
-    function ModificarRol ($idUsuario){
+    function ModificarRol ($idRol){
         
-        return $this->crearRolDAO->UpdateRol($idUsuario, $this->conexionBase);
+        return $this->crearRolDAO->UpdateRol($idRol, $this->conexionBase);
     }
-    function EiliminarRol ($idUsuario){
+    function EiliminarRol ($idRol){
         
-        return $this->crearRolDAO->ElimiarRol($idUsuario, $this->conexionBase);
+        return $this->crearRolDAO->ElimiarRol($idRol, $this->conexionBase);
     }
     function consecutivoRoles(){
         

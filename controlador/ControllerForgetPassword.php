@@ -11,6 +11,8 @@
     require_once '../modelo/utilidades/Conexion.php';
     require_once '../facades/FacadeForgetPassword.php';
     require_once '../PHPMailer/PHPMailerAutoload.php';
+    require_once '../modelo/utilidades/EnvioCorreos.php';
+    require_once '../modelo/dto/CorreosDTO.php';
 
   
     
@@ -18,26 +20,42 @@
          $forgetpassword= new ForgetPasswordDAO();
          $facadeForgetpassword = new FacadeForgetPassword(); 
          $mail = new PHPmailer();
+         $dto = new CorreosDTO();
          $validaInfo=$facadeForgetpassword->validateUser($_POST['user'], $_POST['email']);
          
         if($validaInfo!=null){
-             if ($_POST['email']==$_POST['emailConfirm']) {
-                 $passNew='prueba';
-                 $facadeForgetpassword->updatePassword($passNew, $_POST['user']);                
-                 $body = "El codigo de ingreso es: ".$passNew;
-                  $mail->setFrom('jmizquierdo@misena.edu.co', 'Productiviti Manager');
-                  $mail->addReplyTo('jmizquierdo@misena.edu.co', 'Productiviti Manager');
-                  $address = $_POST['email'];
-                  $mail->addAddress($address, $_POST['user']);
-                  $mail->Subject = "¿Olvidó su contraseña?";
-                  $mail->Body = "El codigo de ingreso es: ".$passNew;
-                  $mail->AltBody = "El codigo de ingreso es: ".$passNew;                  
-                    if(!$mail->Send()) {
-                    $mensaje2= "Error al enviar el mensaje: " . $mail->ErrorInfo;
-                    } else {
-                        $mensaje="Se envio un codigo de ingreso al correo registrado"." ".$_POST['email'];
-                    }
-                             header("location: ../index.php?mensaje=".$mensaje." ".$mensaje2);
+          
+            $dto->setRemitente('productivitymanagersoftware@gmail.com');
+            $dto->setContrasena('adsi2015');
+            $nombreRemitente = 'Productivity Manager';
+            $dto->setDestinatario($_POST['email']);
+            $dto->setAsunto('¿Olvidó su Contraseña?');
+                        
+              if ($_POST['email']==$_POST['emailConfirm']) {
+                 $passNew = $facadeForgetpassword->RamdomCode();
+                                
+                 $body = "El codigo de ingreso es: ".'<font color = "green" style="papyrus" size="17" >'.$passNew. '</font>';
+                   $body.='<br>'.'<br>'.'<font color = "red" style="papyrus" size="17" >!Por favor recuerde cambiar la contraseña¡</font>';
+                    $body.='<br>'.'<br>'.'<font color = "blue" >Prductivity Manager Software'
+                    . '© Todos los derechos reservados 2015.'
+                    . '<br>'.'Bogotá, Colombia'
+                    . '<br>'.'Teléfono: +57 3015782659'
+                    . '<br>'.'https://www.facebook.com/productivitymanager'
+                    . '<br>'.'https://twitter.com/Productivity_Mg'
+                    . '</font>';
+                 $correo = new EnvioCorreos();
+                 $dto->setContenido($body);
+                 
+                 
+                 $confirmación=$correo->EnviarCorreo($dto, $nombreRemitente);
+                 if ($confirmación='True') {
+                     $facadeForgetpassword->updatePassword($passNew, $_POST['user']); 
+                     $mensaje2='Información enviada a: '." ".$dto->getDestinatario();
+                 }else{
+                     
+                     $mensaje2=$confirmación;
+                 }
+                  header("location: ../index.php?mensaje=".$mensaje." ".$mensaje2);
                 }
                     else {
                          $mensaje="Los correos no coinciden";    

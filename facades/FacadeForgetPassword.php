@@ -28,5 +28,10 @@ class FacadeForgetPassword {
         
         return $this->forgetPasswordDAO->ModificarContrasena($passNew, $user, $this->conexion);
     }
+    function  RamdomCode (){
+        
+        return $this->forgetPasswordDAO->RandomString();
+    }
+    
     
 }

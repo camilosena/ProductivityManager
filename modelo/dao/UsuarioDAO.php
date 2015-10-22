@@ -88,14 +88,9 @@ class UsuarioDAO {
 
     public function obtenerUsuario($idUsuario, PDO $cnn) {
         try {
-            $query = $cnn->prepare("Select idUsuario,identificacion,nombres,apellidos,direccion,telefono,fechaNacimiento,email,rol,
-                case
-                when rol='Gerente' then (select perfil from  gerentesdeproyecto where idGerente=idUsuario)
-                when rol='Jefe' then (select area from  jefes where idJefe=idUsuario)
-                when rol='Empleado' then (select cargo from  empleados where idEmpleado=idUsuario)  
-                end AreaSector
-                from usuarios, users, roles 
-                where estado='Activo' and idUsuario=? and identificacion=idLogin and rolesId=idRoles");
+            $query = $cnn->prepare("Select idUsuario,identificacion,nombres,apellidos,direccion,telefono,fechaNacimiento,
+email,foto,rol,nombreArea from personas, usuarios, roles,areas where estado='Activo' and idUsuario=? and identificacion=idLogin and rolesId=idRoles
+and areas_idAreas=idAreas");
             $query->bindParam(1, $idUsuario);
             $query->execute();
             return $query->fetch();

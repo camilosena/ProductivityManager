@@ -34,8 +34,8 @@
               if ($_POST['email']==$_POST['emailConfirm']) {
                  $passNew = $facadeForgetpassword->RamdomCode();
                                 
-                 $body = "El codigo de ingreso es: ".'<font color = "green" style="papyrus" size="17" >'.$passNew. '</font>';
-                   $body.='<br>'.'<br>'.'<font color = "red" style="papyrus" size="17" >!Por favor recuerde cambiar la contraseña¡</font>';
+                 $body = "El codigo de ingreso es: ".'<font color = "green" FACE="courier" size="12" >'.$passNew. '</font>';
+                   $body.='<br>'.'<br>'.'<font color = "red" FACE="impact" size="13" >!Por favor recuerde cambiar la contraseña¡</font>';
                     $body.='<br>'.'<br>'.'<font color = "blue" >Prductivity Manager Software'
                     . '© Todos los derechos reservados 2015.'
                     . '<br>'.'Bogotá, Colombia'

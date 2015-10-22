@@ -35,4 +35,8 @@ class FacadePermisos {
     public function permisoRoles($IdRol){
     return $this->permisosDAO->permisosRoles($IdRol,$this->conexion);
     }
+    public function permisoInsumos($IdRol){
+    return $this->permisosDAO->permisosInsumos($IdRol,$this->conexion);
+    }
+    
 }

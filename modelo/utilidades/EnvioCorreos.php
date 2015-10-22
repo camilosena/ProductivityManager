@@ -10,6 +10,7 @@ class EnvioCorreos {
         $mail->Password = $dto->getContrasena();
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;        
+        $mail->CharSet='UTF-8';
         $mail->setFrom($dto->getRemitente(), $dto->getNombreRemitente());//Correo del destinatario
         $mail->addAddress($dto->getDestinatario());
         $mail->addReplyTo($dto->getRemitente(), $dto->getNombreRemitente());

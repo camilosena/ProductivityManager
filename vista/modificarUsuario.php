@@ -36,7 +36,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         <script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="../js/table.js"></script>
     </head>
-    <body >
+    <body onload="TipoUsuario()">
        <header>
             <?php
             require_once '../modelo/dao/LoginDAO.php';
@@ -517,24 +517,84 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 
                 if ($_GET['id'] != NULL) {
                     $facadeUsuario = new FacadeUsuarios;
-                    $usuario = $facadeUsuario->consultarUsuario($_GET['id']);                                       
+                    $usuario = $facadeUsuario->consultarUsuario($_GET['id']);                    
+                    if ($usuario['rol']=='Gerente'){
+                    $gerente = $FacadeGerente->consultarGerente($_GET['id']);}
+                    else if ($usuario['rol']=='Jefe'){
+                    $jefe = $FacadeJefe->consultarJefe($_GET['id']);}
+                    else if ($usuario['rol']=='Empleado'){
+                    $empleado = $FacadeEmpleado->consultarEmpleado($_GET['id']);                        
+                    }
                 }
                 ?> 
                 <br><br><h2 class="h330">Modificar <?php echo $usuario['rol'];?>:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="post" action="../controlador/ControladorUsuarios.php">                
+                <form class="formRegistro" method="Get" action="../controlador/ControladorUsuarios.php">                
                     <label class="tag" for="id"><span id="documento" class="h331">Código: </span></label>
                     <input class="input" name="id" value ="<?php echo $usuario['idUsuario']; ?>" required type="number" pattern="[0-9]{1,15}"  title="Dato no modificable" maxlength="128" id="txtEmail" class="field1" style="text-align: center" readonly>
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                     <br>               
                     <label class="tag" for="tipoUser"><span id="lab_valName" class="h331">Tipo de Usuario: </span></label>
                     <input class="input" name="tipoUser" type="text" id="tipoUser" value ="<?php echo $usuario['rol']; ?>" class="field1" style="text-align: center" readonly>
-                    <span id="valName" style="color:Red;visibility:hidden;"></span>    
-                    <br>
-                    <label class="tag" for="area"><span id="lab_valName" class="h331">Área o Dependencia: </span></label>
-                    <input class="input" name="area" type="text" id="area" value ="<?php echo $usuario['nombreArea']; ?>" class="field1" style="text-align: center" readonly>
-                    <span id="valName" style="color:Red;visibility:hidden;"></span>    
-                    <br>
+                    <span id="valName" style="color:Red;visibility:hidden;"></span>
+
+                    <script>
+                        function TipoUsuario() {
+                            var opcion = document.getElementById('tipoUser').value;
+                            if (opcion == 'Gerente') {
+                                document.getElementById('sectorGerente').style.display = "inline-block";
+                                document.getElementById('labelGerente').style.display = "inline-block";
+                                document.getElementById('areaJefe').style.display = "none";
+                                document.getElementById('labelJefe').style.display = "none";
+                                document.getElementById('cargoEmpleado').style.display = "none";
+                                document.getElementById('labelEmpleado').style.display = "none";
+                                document.getElementById('modificar').innerHTML = "Modificar Gerente";
+                            }
+                            else if (opcion == 'Jefe') {
+                                document.getElementById('areaJefe').style.display = "inline-block";
+                                document.getElementById('labelJefe').style.display = "inline-block";
+                                document.getElementById('sectorGerente').style.display = "none";
+                                document.getElementById('labelGerente').style.display = "none";
+                                document.getElementById('cargoEmpleado').style.display = "none";
+                                document.getElementById('labelEmpleado').style.display = "none";
+                                document.getElementById('modificar').innerHTML = "Modificar Jefe de Área";
+                            }
+                            else if (opcion == 'Empleado') {
+                                document.getElementById('cargoEmpleado').style.display = "inline-block";
+                                document.getElementById('labelEmpleado').style.display = "inline-block";
+                                document.getElementById('sectorGerente').style.display = "none";
+                                document.getElementById('labelGerente').style.display = "none";
+                                document.getElementById('areaJefe').style.display = "none";
+                                document.getElementById('labelJefe').style.display = "none";
+                                document.getElementById('modificar').innerHTML = "Modificar Empleado";
+                            }
+                        }
+                    </script>                        
+                    <label class="tag1" id="labelGerente" for="sectorGerente"><span id="lab_valCountry" class="h331">Cargo o Dependencia:</span></label>
+                    <select class="input" name="perfil" id="sectorGerente" autofocus class="list_menu">                                                                 
+                        <option value ="<?php echo $gerente['perfil']; ?>">Sector <?php echo $gerente['perfil']; ?></option>
+                        <optgroup label="Mover a :"> 
+                        <option value="Publico" >Sector Público</option>
+                        <option value="Privado" >Sector Privado</option>
+                        <option value="ONG" >ONG´s</option>   </optgroup>
+                    </select> 
+                    <label class="tag1" id="labelJefe" for="areaJefe"><span id="lab_valCountry" class="h331">Área:</span></label>
+                    <select class="input" name="areaJefe" id="areaJefe" autofocus class="list_menu">                                                                 
+                        <option value="<?php echo $jefe['area']; ?>"><?php echo $jefe['area']; ?></option>
+                        <optgroup label="Mover a :"> 
+                        <option value="Ensamble" >Ensamble</option>
+                        <option value="Pintura" >Pintura</option>
+                        <option value="Acabados" >Acabados</option>
+                        <option value="Calidad" >Calidad</option>   </optgroup>
+                    </select>
+                    <label class="tag1" id="labelEmpleado" for="cargoEmpleado"><span id="lab_valCountry" class="h331">Cargo:</span></label>
+                    <select class="input" name="cargoEmpleado" id="cargoEmpleado" autofocus class="list_menu">                                                                 
+                        <option value="<?php echo $empleado['cargo']; ?>"><?php echo $empleado['cargo']; ?></option>
+                        <optgroup label="Mover a :"> 
+                        <option value="Ensamble" >Ensamble</option>
+                        <option value="Pintura" >Pintura</option>
+                        <option value="Acabados" >Acabados</option>  </optgroup>
+                    </select><br>   
                     <label class="tag" for="documento"><span id="documento" class="h331">Documento: </span></label>
                     <input class="input" name="identificacion" value ="<?php echo $usuario['identificacion']; ?>" required type="text" pattern="[0-9]{5,15}" title="Solo números" maxlength="128" id="txtEmail" class="field1">
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
@@ -546,7 +606,14 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <label class="tag" for="txtSurname"><span id="lab_valSurname" class="h331">Apellidos: </span></label>
                     <input class="input" name="apellido" type="text" id="txtSurname" value="<?php echo $usuario['apellidos']; ?>" class="field1" required>
                     <span id="valSurname" style="color:Red;visibility:hidden;"></span>
-                    <br>                    
+                    <br>
+                    <label class="tag1" for="image"><span id="lab_valCompany" class="h331">Foto:</span></label>
+                    <input class="input"  name="uploadedfile" id="image"  type="file" multiple=true class="file"  title="Solo Foto">
+                    <span id="valCompany" style="color:Red;visibility:hidden;"></span>
+                    <div id="cargueFoto">
+                        <output id="list"></output>
+                    </div>
+                    <br>
                     <label class="tag" for="txtCompany1"><span id="lab_valCompany" class="h331">Teléfono: </span></label>
                     <input class="input" name="telefono" required type="text" value="<?php echo $usuario['telefono']; ?>" pattern="[0-9]{7,10}"  title="Solo números" maxlength="128" id="txtEmail" class="field1">
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
@@ -567,6 +634,38 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <br> 
                     <button type="submit" value="modificar" name="modificar" id="modificar" class="boton-verde">Modificar Usuario</button><br>
                 </form>
+                 <script>
+                        function archivo(evt) {
+                            var files = evt.target.files; // FileList object
+
+                            // Obtenemos la imagen del campo "file".
+                            for (var i = 0, f; f = files[i]; i++) {
+                                //Solo admitimos imágenes.
+                                if (!f.type.match('image.*')) {
+                                    continue;
+                                }
+
+                                var reader = new FileReader();
+
+                                reader.onload = (function (theFile) {
+                                    return function (e) {
+                                        // Insertamos la imagen
+                                        document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '" style="height:50px;width: 50px;border-radius: 50%;"/>'].join('');
+                                    };
+                                })(f);
+
+                                reader.readAsDataURL(f);
+                            }
+                        }
+
+                        document.getElementById('image').addEventListener('change', archivo, false);
+                    </script>
+
+<?php
+if (isset($_GET['modifica'])) {
+    echo $_GET['modifica'] . '<br>';
+}
+?>
             </div>
         </div>    
        <footer class="footer-distributed">

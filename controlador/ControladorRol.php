@@ -87,11 +87,11 @@ $dtoAreas->setIdRol($idRol);
 $facadeArea= new FacadeAreas();
 $mensaje = $facadeArea->AgregarArea($dtoAreas);
 
-   header("location: ../vista/asignarAreas.php?".$_GET['selectId'].$mensaje);
+   header("location: ../vista/agregarAreas.php?".$_GET['selectId'].$mensaje);
 } else
     
 if (isset($_GET['Areas'])) {
-    header("location: ../vista/asignarAreas.php?" . $mensaje);
+    header("location: ../vista/agregarAreas.php?" . $mensaje);
 } else
 if (isset($_GET['Atras'])) {
     header("location: ../vista/CrearRol.php?" . $mensaje);
@@ -109,10 +109,10 @@ if (isset($_GET['asignarArea'])) {
             $mensaje = $facadeArea->AsignarAreas($dtoAreas);
         }
     }
-    header("location: ../vista/modificarAreas.php?" . $mensaje . " " . $idRol);
+    header("location: ../vista/asignarAreas.php?" . $mensaje . " " . $idRol);
 }else
 if (isset($_GET['ModificarAreas'])) {
-    header("location: ../vista/modificarAreas.php?id=" . $_GET['selectId'] . $mensaje);
+    header("location: ../vista/asignarAreas.php?id=" . $_GET['selectId'] . $mensaje);
    
 }else
 if (isset($_GET['ModificarArea'])) {
@@ -130,7 +130,7 @@ if (isset($_GET['ModificarArea'])) {
         }
     }
 
-    header("location: ../vista/modificarAreas.php?id=" . $_GET['selectId'] . $mensaje);
+    header("location: ../vista/asignarAreas.php?id=" . $_GET['selectId'] . $mensaje);
 }
 else
 if (isset($_GET['idEliminar'])) {
@@ -138,5 +138,5 @@ if (isset($_GET['idEliminar'])) {
     $idArea = $_GET['idEliminar'];
     $mensaje = $facadeArea->eliminarArea($idArea);
 
-    header("location: ../vista/asignarAreas.php?id=" . $_GET['selectId'] . $mensaje);
+    header("location: ../vista/agregarAreas.php?id=" . $_GET['selectId'] . $mensaje);
 }

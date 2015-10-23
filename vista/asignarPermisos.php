@@ -138,9 +138,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                 $facadeCreateRol = new FacadeCreateRol();
                                 $all = $facadeCreateRol->ListarPermisos();
                                 foreach ($all as $unit) {
+                                                                     
                                     ?>     
                                     <tr>
-                                        <td> <input name="idpermiso" size="1" value ="<?php echo $unit['idpermisos']; ?>" readonly ></td>
+                                     
+                                        
                                         <td> <input name="permiso" value ="<?php echo $unit['nombreRuta']; ?>" disabled ></td>
                                         <td></td>
                                         <td><input type="checkbox" id="estado" name="<?php echo $unit['idpermisos']; ?>" value="<?php echo $unit['idpermisos']; ?>"/>   </td>         

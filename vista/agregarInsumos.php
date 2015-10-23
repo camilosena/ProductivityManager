@@ -1,12 +1,20 @@
 <?php
 session_start();
-if (empty($_SESSION['rol'])) {
-    $_SESSION['rol'] = '';
-    header("location: ../index.php");
-}
-if (empty($_SESSION['id'])) {
-    $_SESSION['id'] = '';
-    header("location: ../index.php");
+if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
+    header("location: ../index.php?error=Debe Iniciar Sesión");
+} else {
+    require_once '../modelo/dao/LoginDAO.php';
+    require_once '../facades/FacadeLogin.php';
+    require_once '../modelo/utilidades/Conexion.php';
+    $facadeLogueado = new FacadeLogin;
+    $paginas = $facadeLogueado->seguridadPaginas($_SESSION['rol']);
+    $pagActual = 'modificarRol.php';
+    $total = count($paginas);
+    foreach ($paginas as $todas) {
+        if ($pagActual != $todas['url']) {
+            $total--;
+        }
+    }
 }
 ?>
 <!DOCTYPE html>

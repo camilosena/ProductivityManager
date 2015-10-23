@@ -38,14 +38,14 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
     </head>
     <body>
         <header>
-               
+
             <div class="wrapper">
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
                 <nav>
                     <div id="menu">
                         <ul>
-                           <?php
+                            <?php
                             require_once './Menu.php';
                             $menu = new Menu;
                             $menu->permisosMenu();
@@ -119,10 +119,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         ?>
                         <select class="input9" name="selectId"> 
 
-<?php
-echo '<option value="' . $idRol['idRoles'] . '">' . $idRol['idRoles'] . '</option>';
-;
-?>
+                            <?php
+                            echo '<option value="' . $idRol['idRoles'] . '">' . $idRol['idRoles'] . '</option>';
+                            ;
+                            ?>
                         </select><br>
 
                         <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombre del Rol: </span></label>
@@ -131,42 +131,42 @@ echo '<option value="' . $idRol['idRoles'] . '">' . $idRol['idRoles'] . '</optio
                         <label class="tag" id="Permisos" for="Permisos"><span id="permisos" class="h331">Seleccione Los Permisos: </span></label>
                         <div id="panelModificaPass">
                             <table>
-<?php
-foreach ($all as $unit) {
-    ?>     
+                                <?php
+                                foreach ($all as $unit) {
+                                    ?>     
                                     <tr>
-                                        <td> <input name="idpermiso" size="1" value ="<?php echo $unit['idpermisos']; ?>" readonly ></td>
+
                                         <td> <input name="permiso" value ="<?php echo $unit['nombreRuta']; ?>" disabled ></td>
                                         <td></td>
                                         <td><input type="checkbox" id="estado" name="<?php echo $unit['idpermisos']; ?>" value="<?php echo $unit['idpermisos']; ?>" <?php
-                                foreach ($PPRol as $permisos) {
-                                    if (($unit['idpermisos'] == $permisos["permisos"])) {
-                                        echo 'checked="checked"';
-                                    }
-                                }
-                                ?> />   </td>         
+                                            foreach ($PPRol as $permisos) {
+                                                if (($unit['idpermisos'] == $permisos["permisos"])) {
+                                                    echo 'checked="checked"';
+                                                }
+                                            }
+                                            ?> />   </td>         
 
                                     </tr>
 
-    <?php
-}
-if (isset($_GET['mensaje3'])) {
-    echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
-}
-?>    
+                                    <?php
+                                }
+                                if (isset($_GET['mensaje3'])) {
+                                    echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
+                                }
+                                ?>    
                             </table>                    
                             <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
-                    <button type="submit" value="Enviar" name="ModificarRol"  class="boton-verde" style="display: inline">Modificar</button>
-                    <button type="submit" value="Enviar" name="ModificarAreas" id="Areas" class="boton-verde" style="display: inline">Áreas</button><br>
+                            <button type="submit" value="Enviar" name="ModificarRol"  class="boton-verde" style="display: inline">Modificar</button>
+                            <button type="submit" value="Enviar" name="ModificarAreas" id="Areas" class="boton-verde" style="display: inline">Áreas</button><br>
                         </div>
                     </form>                
                 </div>
-<?php
-if (isset($_GET['mensaje'])) {
-    echo $_GET['mensaje'] . '<br>';
-    echo 'Su nuevo Código es: ' . $_GET['consecutivo'];
-}
-?>
+                <?php
+                if (isset($_GET['mensaje'])) {
+                    echo $_GET['mensaje'] . '<br>';
+                    echo 'Su nuevo Código es: ' . $_GET['consecutivo'];
+                }
+                ?>
             </div>
         </div>    
         <footer class="footer-distributed">

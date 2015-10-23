@@ -336,20 +336,20 @@ header .logoFoto div img{
 
 .migas {
     margin-left: 60px;
-    width: 80%;
+    width: 80%;    
 }
 .migas a{
     text-decoration: none;
     color: #507c11;
     font-family: sans-serif;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
     margin-left: 10px;
 }
 .migas strong{      
     color: #2f2f2f;
     font-family: sans-serif;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
     margin-left: 10px;
 }

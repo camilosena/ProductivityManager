@@ -486,7 +486,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         ?>
                     </select><br> 
                      <?php
-                    $areas = $facadeUsuario->listarAreas();//                  
+                    $areas = $facadeUsuario->listarAreas($rolCreado);//                  
                     ?>
                     <label class="tag" id="labelTipoUsuario" for="tipoUsuario"><span id="lab_valCountry" class="h331">Área o Dependencia:</span></label>
                     <select id="selectArea" name="selectArea" class="input"> 

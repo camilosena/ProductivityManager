@@ -12,7 +12,7 @@ if (empty($_SESSION['id'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Ascender Usuario</title>
+        <title>Actualizar Rol / Área Usuario</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="../css/reset.css">
@@ -95,7 +95,7 @@ if (empty($_SESSION['id'])) {
                         <a href="listarUsuarios.html" title="Ir a Usuarios" itemprop="url">
                             <span itemprop="title">Listar Usuarios</span>              
                         </a>  > 
-                        <strong>Ascender <?php
+                        <strong>Actualizar Rol / Área de <?php
                             require_once '../modelo/dto/UsuarioDTO.php';
                             require_once '../modelo/dao/UsuarioDAO.php';
                             require_once '../facades/FacadeUsuarios.php';
@@ -474,10 +474,10 @@ if (empty($_SESSION['id'])) {
 
                 if ($_GET['id'] != NULL) {
                     $facadeUsuario = new FacadeUsuarios;
-                    $usuario = $facadeUsuario->consultarUsuario($_GET['id']);                                       
+                    $usuario = $facadeUsuario->consultarUsuario($_GET['id']);                      
                 }
                 ?> 
-                <br><br><h2 class="h330">Ascender <?php echo $usuario['rol']; ?>:</h2><hr>
+                  <br><br><h2 class="h330">Actualizar Rol / Área de <?php echo $usuario['rol']; ?>:</h2><br><hr><br>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <form class="formRegistro" method="post" action="../controlador/ControladorUsuarios.php">                
                     <label class="tag" for="id"><span id="documento" class="h331">Código: </span></label>
@@ -488,48 +488,45 @@ if (empty($_SESSION['id'])) {
                     <input readonly class="input" name="identificacion" value ="<?php echo $usuario['identificacion']; ?>" required type="text" pattern="[0-9]{5,15}" title="Solo números" maxlength="128" id="txtEmail" class="field1">
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                     <br>               
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombres: </span></label>
-                    <input readonly class="input" name="nombre" type="text" id="txtName" value="<?php echo $usuario['nombres']; ?>" class="field1"  required pattern= "[A-Za-z]{3,}">
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombre Completo: </span></label>
+                    <input readonly class="input" name="nombre" type="text" id="txtName" value="<?php echo $facadeUsuario->nombreUsuario($usuario['identificacion']); ?>" class="field1"  required pattern= "[A-Za-z]{3,}">
                     <span id="valName" style="color:Red;visibility:hidden;"></span>
-                    <br>                        
-                    <label class="tag" for="tipoUser"><span id="lab_valName" class="h331">Tipo de Usuario: </span></label>
-                    
-                    <select id="selectRol" class="input" name="selectRol"> 
-                        <optgroup label="Cargo Actual :">
+                    <br>                                            
+                    <label class="tag" id="labelTipoUsuario" for="tipoUsuario"><span id="lab_valCountry" class="h331">Tipo de Usuario:</span></label>
+                    <select id="selectrol" name="selectRol" class="input" required> 
+                     <?php
+                        $roles = $facadeRol->ListarRoles();?>
+                       <optgroup label="Cargo Actual :">
                         <?php
-                        echo '<option value="' . $rol['rol'] . '">' . $usuario['rol'];
+                        echo '<option value="' . $usuario['rolesId'] . '">' . $usuario['rol'];
                         $roles = $facadeRol->ListarRoles();                        
                         ?></optgroup>
-                        <optgroup label="Ascender a :"> <?php
-                        foreach ($roles as $rol) {
-                            $rolCreado = $rol['rol'];
-                            echo '<option value="' . $rol['idRoles'] . '">' . $rolCreado . '</option>';                           
+                       <optgroup label="Ascender a :"> <?php
+                        foreach ($roles as $rol) {                            
+                            echo '<option value="' . $rol['idRoles'] . '">' . $rol['rol']. '</option>';                            
                         }
                         ?></optgroup>
-                    </select><br> 
-                     <?php
-                    $areas = $facadeUsuario->listarAreas();//                  
+                    </select><br>                    
+                     <?php                        
+                    $areas = $facadeUsuario->listarAreas($usuario['rolesId']);
                     ?>
-                    <label class="tag" id="labelTipoUsuario" for="tipoUsuario"><span id="lab_valCountry" class="h331">Area o Dependencia:</span></label>
-                    <select id="selectArea" class="input" name="selectArea"> 
+                    <label class="tag" id="labelTipoUsuario" for="tipoUsuario"><span id="lab_valCountry" class="h331">Área o Dependencia:</span></label>
+                    <select id="selectArea" name="selectArea" class="input" required> 
+                        <optgroup label="Área Actual :">
+                          <?php
+                         echo '<option value="'.$usuario['areas_idAreas'].'">' .$usuario['nombreArea']. '</option>';
+                         ?> </optgroup>
+                         <optgroup label="Cambiar a :">
                         <?php
-                         echo '<option >' . "Seleccione un área" . '</option>';
-                         
                         foreach ($areas as $area) {
 
                             echo '<option value="' . $area['idAreas'] . '">' . $area['nombreArea'] . '</option>';
                         }
-                        ?>
-                    </select>
+                        ?></optgroup>
+                    </select>                    
                     <br> 
                     <button type="submit" value="ascender" name="ascender" id="ascender" class="boton-verde">Ascender Usuario</button><br>
                 </form>
-
-                <?php
-                if (isset($_GET['modifica'])) {
-                    echo $_GET['modifica'] . '<br>';
-                }
-                ?>
             </div>
         </div>    
         <footer class="footer-distributed">

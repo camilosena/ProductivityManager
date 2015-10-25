@@ -13,7 +13,7 @@ if ($accion == "listarAreas") {
     if ($result) {
         
     }
-    $html = '<option value="">Seleccione un Área</option>';
+    $html = '<option value="" disabled selected>Seleccione un Área</option>';
     foreach ($result as $fila) {
         $html .= '<option value="' . $fila['idAreas'] . '">' . $fila['nombreArea'] . '</option>';
     }

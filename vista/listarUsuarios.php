@@ -136,6 +136,29 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             }
             </script>';
             };
+             if (isset($_GET['mensajeFiltro'])) {
+                echo '<script> 
+                Command: toastr["info"]("' . $_GET['mensajeFiltro'] . '")
+            toastr.options = {
+              "closeButton": false,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-top-right",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+            </script>';
+            };
+            ?>
             ?>
             <br>  
             <form name="filtro" class="formRegistro" action="../controlador/ControladorFiltros.php" method="POST">

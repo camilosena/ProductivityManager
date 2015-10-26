@@ -100,6 +100,19 @@ and areas_idAreas=idAreas");
         $cnn = null;
     }  
    
+        public function obtenerUsuarioInactivo($idUsuario, PDO $cnn) {
+        try {
+            $query = $cnn->prepare("Select idUsuario,identificacion,nombres,apellidos,direccion,telefono,fechaNacimiento,
+email,foto,rol,nombreArea,areas_idAreas,rolesId from personas, usuarios, roles,areas where estado='Inactivo' and idUsuario=? and identificacion=idLogin and rolesId=idRoles
+and areas_idAreas=idAreas");
+            $query->bindParam(1, $idUsuario);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }  
     public function obtenerRepresentante($idCliente, PDO $cnn) {
         try {
             $query = $cnn->prepare("select * from personas where idUsuario=?");

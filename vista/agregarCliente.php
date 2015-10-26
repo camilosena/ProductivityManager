@@ -459,43 +459,38 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                  <table id="chartData">
 
                     <tr>
-                        <th>Usuario</th><th>Cantidad</th>
+                       <th>Usuario</th><th>Cantidad</th>
                     </tr>
 
                     <tr style="color: #0DA068">
                         <td>Clientes</td><td>
-                           <?php require_once '../modelo/dto/GerenteDTO.php';
-                            require_once '../modelo/dao/GerenteDAO.php';
-                            require_once '../modelo/dto/JefeDTO.php';
-                            require_once '../modelo/dao/JefeDAO.php';
-                            require_once '../modelo/dto/EmpleadoDTO.php';
-                            require_once '../modelo/dao/EmpleadoDAO.php';
+                            <?php                           
                             require_once '../modelo/dto/ClienteDTO.php';
-                            require_once '../modelo/dao/ClienteDAO.php';
-                            require_once '../facades/FacadeGerente.php';
-                            require_once '../facades/FacadeJefe.php';
-                            require_once '../facades/FacadeEmpleado.php';
+                            require_once '../modelo/dao/ClienteDAO.php';                           
                             require_once '../facades/FacadeCliente.php';
+                            require_once '../facades/FacadeCreateRol.php';
+                            require_once '../modelo/dao/CrearRolDAO.php';
+                            require_once '../facades/FacadeUsuarios.php';
+                            require_once '../modelo/dao/UsuarioDAO.php';
                             require_once '../modelo/utilidades/Conexion.php';
-                            $FacadeGerente = new FacadeGerente;
-                            $FacadeJefe = new FacadeJefe;
-                            $FacadeEmpleado = new FacadeEmpleado;
+                            $facadeUsuario = new FacadeUsuarios;                                      
                             $FacadeCliente = new FacadeCliente;
+                            $facadeRol = new FacadeCreateRol;
                             echo $FacadeCliente->totalClientes();
                             ?></td>
                     </tr>
 
                     <tr style="color: #194E9C">
-                        <td>Gerentes</td>
-                        <td><?php echo $FacadeGerente->totalGerentes();?></td>
+                        <td>Administración</td>
+                        <td><?php echo $facadeUsuario->cantidadUsuariosPorRol("Administrador"); ?></td>
                     </tr>
 
                     <tr style="color: #ED9C13">
-                        <td>Jefes de Área</td><td><?php echo $FacadeJefe->totalJefes(); ?></td>
+                        <td>Gerentes</td><td><?php echo $facadeUsuario->cantidadUsuariosPorRol("Gerente"); ?></td>
                     </tr>
 
                     <tr style="color: #ED5713">
-                        <td>Empleados</td><td><?php echo $FacadeEmpleado->totalEmpleados(); ?></td>
+                        <td>Empleados</td><td><?php echo $facadeUsuario->cantidadUsuariosPorRol("Empleado"); ?></td>
                     </tr>                    
                 </table>
                 <canvas id="chart" width="600" height="500"></canvas>

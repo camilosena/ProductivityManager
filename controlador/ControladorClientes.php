@@ -7,57 +7,46 @@ require_once '../modelo/dao/ClienteDAO.php';
 require_once '../modelo/utilidades/Conexion.php';
 require_once '../facades/FacadeUsuarios.php';
 require_once '../facades/FacadeCliente.php';
+require_once '../modelo/dto/ImagenesDTO.php';
+require_once '../modelo/utilidades/GestionImagenes.php';
 
 //  Registrar Cliente
 if (isset($_POST['agregarCliente'])) {
+    $idUsuario = '';
     $identificacion = $_POST['identificacion'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $direccion = $_POST['direccion'];
     $telefono = $_POST['telefono'];
     $email = $_POST['email'];
-    $dto = new UsuarioDTO($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email);
-    //insertar logo
+    $estado = 'Activo';        
+    $facadeCliente = new FacadeCliente;
+    $area = $facadeCliente->obtenerAreaCliente();
+   //insertar Logo Corporativo
         if ($_FILES['uploadedfile']['name'] == '') {
-            $dto->setFoto('logo.png');
+            $foto ='perfil.png';
         } else {
-            $dto->setFoto($_FILES['uploadedfile']['name']);
+            $foto = $_FILES['uploadedfile']['name'];
         }
-    $uploadedfileload = "true";
-    $uploadedfile_size = $_FILES['uploadedfile']['size'];    
-        if ($_FILES['uploadedfile']['size'] > 300000) {
-            $msg = $msg . "El archivo es mayor a 300KB, debe reducirlo antes de subirlo<BR>";
-            $uploadedfileload = "false";
-            $dto->setFoto('logo.png');
-        }
-
-        if (!($_FILES['uploadedfile']['type'] == "image/jpeg" || $_FILES['uploadedfile']['type'] == "image/gif" || $_FILES['uploadedfile']['type'] == "image/png")) {
-            $msg = $msg . " Tu archivo tiene que ser JPG / GIF / PNG. Otros archivos no son permitidos<BR>";
-            $uploadedfileload = "false";
-            $dto->setFoto('logo.png');
-        }
-
-        $file_name = $_FILES['uploadedfile']['name'];
-        $add = "../fotos/$file_name";
-        if ($uploadedfileload == "true") {
-            if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $add)) {
-                $msg= " Ha sido subido satisfactoriamente";
-            } else {
-                $msg= "Error al subir el archivo";
-            }
-    }else{ 
-        $msg;        
-    }
+        $carpeta = "fotos";
+        $nombreImagen = $_FILES['uploadedfile']['name'];
+        $tamano = $_FILES['uploadedfile']['size'];
+        $tipo = $_FILES['uploadedfile']['type'];
+        $nombreTemporal = $_FILES['uploadedfile']['tmp_name'];
+        $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
+       $cargaFoto = new GestionImagenes();
+       $msg =$cargaFoto->subirImagen($dtoImagen); 
+       //Insertar Tabla Personas
     $facadeUsuario = new FacadeUsuarios();
-    $mensaje = $facadeUsuario->insertarUsuario($dto);
+    $dto = new UsuarioDTO($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email, $estado, $foto, $contrasena, $rol, $area);
+    $mensajeUsuario = $facadeUsuario->registrarUsuario($dto);
     //  Insertar a tabla de Clientes    
     $razonSocial = $_POST['nombreCompania'];
     $nit = $_POST['nit'];
     $sectorEmpresarial = $_POST['sectorEmp'];
     $sectorEconomico = $_POST['sectorEco'];
     $telefonoFijo = $_POST['telefonoFijo'];    
-    $dtoCliente = new ClienteDTO($razonSocial, $nit, $sectorEmpresarial, $sectorEconomico, $facadeUsuario->consecutivoUsuario(), $telefonoFijo);
-    $facadeCliente = new FacadeCliente;
+    $dtoCliente = new ClienteDTO($razonSocial, $nit, $sectorEmpresarial, $sectorEconomico, $facadeUsuario->consecutivoUsuario(), $telefonoFijo);    
     $mensaje = $facadeCliente->insertarCliente($dtoCliente);
     header("location: ../vista/clientesActivos.php?mensaje=" . $mensaje . "&consecutivo=" . $facadeUsuario->consecutivoUsuario(). "&logo=".$msg);
 }//  Modificar Cliente

@@ -16,6 +16,10 @@ class FacadeCliente {
     public function consultarCliente($idCliente) {
         return $this->clienteDAO->obtenerCliente($idCliente, $this->conexionBase);
     }
+    
+    public function obtenerAreaCliente() {
+    return $this->clienteDAO->obtenerAreaCliente($this->conexionBase);
+    }
 
     public function actualizarCliente(ClienteDTO $clienteDTO) {
         return $this->clienteDAO->ModificarCliente($clienteDTO, $this->conexionBase);

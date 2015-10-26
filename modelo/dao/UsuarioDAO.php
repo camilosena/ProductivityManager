@@ -102,7 +102,7 @@ and areas_idAreas=idAreas");
    
     public function obtenerRepresentante($idCliente, PDO $cnn) {
         try {
-            $query = $cnn->prepare("select * from usuarios where idUsuario=?");
+            $query = $cnn->prepare("select * from personas where idUsuario=?");
             $query->bindParam(1, $idCliente);
             $query->execute();
             return $query->fetch();

@@ -215,10 +215,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                 echo '<option value="" disabled selected>Seleccionar</option>';
                             }?>
                                  <optgroup label="___________________________">
-                           <?php
+                            <?php
                             foreach ($cliente as $listado) {
                                 echo '<option value="'.$listado['idUsuario'].'">'.$listado['idUsuario'].'-'.$listado['nombreCompania'];}?></option></optgroup>
-                                    </select>                                    
+                             </select>
                     
                     <label class="tag" for="idProyecto"><span id="lab_valPhone" class="h331">Código Proyecto:</span></label>
                     <input class="input" name="idProyecto" type="text" maxlength="64" value="<?php echo $idProject; ?>" id="idProyecto" style="text-align: center" class="field1" autofocus readonly required>                    	 

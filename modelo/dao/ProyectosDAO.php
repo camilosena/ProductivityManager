@@ -45,7 +45,7 @@ class ProyectosDAO {
     
     public function proyectoEnEjecucion(PDO $cnn) {
         try {
-            $query=$cnn->prepare('SELECT idProyecto, nombreProyecto from proyectos where estado="Ejecucion"');
+            $query=$cnn->prepare('SELECT idProyecto, nombreProyecto from proyectos where estadoProyecto="Ejecucion"');
             $query->execute();
             return $query->fetchAll();
         } catch (Exception $ex) {

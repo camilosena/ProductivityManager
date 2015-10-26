@@ -287,10 +287,8 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                             <a class="me" title="Actualizar Cliente" href="modificarCliente.php?idCliente=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>                            
                     </tr>                         
                     <?php
-                            }}
-                if (isset($_GET['mensaje3'])) {
-                    echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
-                }
+                            }                           
+                }               
                 ?>                      
                 </tbody>
             </table>   

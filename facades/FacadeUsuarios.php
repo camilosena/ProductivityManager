@@ -38,6 +38,10 @@ class FacadeUsuarios {
         return $this->objetoDAO->obtenerUsuario($idUsuario, $this->conexionBase);
     }
 
+    public function consultarUsuarioInactivo($idUsuario) {
+        return $this->objetoDAO->obtenerUsuarioInactivo($idUsuario, $this->conexionBase);
+    }
+    
     public function consultarRepresentante($idCliente) {
         return $this->objetoDAO->obtenerRepresentante($idCliente, $this->conexionBase);
     }

@@ -63,12 +63,12 @@ else if (isset($_GET['modificarCliente'])) {
 else if (isset($_GET['idDesactivarCliente'])) {
     $facadeUsuario = new FacadeUsuarios();
     $mensaje3 = $facadeUsuario->desactivarUsuario($_GET['idDesactivarCliente'], 'Inactivo');
-    header("Location: ../vista/clientesInactivos.php?mensaje3=" . $mensaje3);
+    header("Location: ../vista/clientesInactivos.php?modificaCliente=" . $mensaje3);
 }// Activar Cliente
 else if (isset($_GET['idActivarCliente'])) {
     $facadeUsuario = new FacadeUsuarios();
     $mensaje3 = $facadeUsuario->activarUsuario($_GET['idActivarCliente'], 'Activo');
-    header("Location: ../vista/clientesActivos.php?mensaje3=" . $mensaje3);
+    header("Location: ../vista/clientesActivos.php?modificaCliente=" . $mensaje3);
 }
 //  Consultar Cliente
 else if (isset($_GET['idConsultarCliente'])) {

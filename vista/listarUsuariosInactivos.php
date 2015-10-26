@@ -237,7 +237,8 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         <td><?php echo $user['apellidos']; ?></td>                      
                         <td><?php echo $user['email']; ?></td>  
                         <td><?php echo $user['rol']; ?></td>
-                        <td>             
+                        <td>      
+                            <a class="me" title="Consultar Usuario" href="../controlador/ControladorUsuarios.php?idConsultarInactivo=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/verBino.png"></a>                
                             <a name="activar" title="Activar Usuario" class="me"  href="../controlador/ControladorUsuarios.php?idActivar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/darAltaUsuario.png"></a>                           
                     </tr>                         
                     <?php
@@ -251,18 +252,17 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             <div id="verUsuario" class="modalDialog" title="Ver Usuario">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
                     <?php
-                    echo '<table id="muestraDatos"><tr><th colspan="2">Datos de Usuario</th></tr>';
-                    echo '<tr><td>Cargo:</td><td>' . $_GET['rol'] . '</td></tr>';
-                    echo '<tr><td>Área/Sector:</td><td>' . $_GET['areaSector'] . '</td></tr>';
-                    echo '<tr><td>Código:</td><td>' . $_GET['usuario'] . '</td></tr>';
-                    echo '<tr><td>Identificación:</td><td> ' . $_GET['identificacion'] . '</td></tr>';
-                    echo '<tr><td>Nombres:</td><td>' . $_GET['nombre'] . '</td></tr>';
-                    echo '<tr><td>Apellidos:</td><td>' . $_GET['apellido'] . '</td></tr>';
-                    echo '<tr><td>Dirección:</td><td>' . $_GET['direccion'] . '</td></tr>';
-                    echo '<tr><td>Teléfono:</td><td>' . $_GET['telefono'] . '</td></tr>';
-                    echo '<tr><td>Fecha de Nacimiento:</td><td>' . $_GET['fecha'] . '</td></tr>';
-                    echo '<tr><td>Correo Electronico:</td><td>' . $_GET['email'] . '</td></tr>';
-                    echo '<tr><td colspan="2" style="border:none"><button class="boton-verde"><a href="#">Asignar a Proyecto</a></button></td></tr>';
+                    echo '<table id="muestraDatos"><tr><th>Datos de Usuario</th><th><img class="fotoUsuario" src="../fotos/' . $_SESSION['datosUsuarioInactivo']['foto']  . '"></th></tr>';                    
+                    echo '<tr><td>Cargo:</td><td>' . $_SESSION['datosUsuarioInactivo']['rol']  . '</td></tr>';
+                    echo '<tr><td>Área/Sector:</td><td>' . $_SESSION['datosUsuarioInactivo']['nombreArea']  . '</td></tr>';
+                    echo '<tr><td>Código:</td><td>' . $_SESSION['datosUsuarioInactivo']['idUsuario'] . '</td></tr>';
+                    echo '<tr><td>Identificación:</td><td> ' . $_SESSION['datosUsuarioInactivo']['identificacion']  . '</td></tr>';
+                    echo '<tr><td>Nombres:</td><td>' . $_SESSION['datosUsuarioInactivo']['nombres']  . '</td></tr>';
+                    echo '<tr><td>Apellidos:</td><td>' . $_SESSION['datosUsuarioInactivo']['apellidos']  . '</td></tr>';
+                    echo '<tr><td>Dirección:</td><td>' . $_SESSION['datosUsuarioInactivo']['direccion']  . '</td></tr>';
+                    echo '<tr><td>Teléfono:</td><td>' . $_SESSION['datosUsuarioInactivo']['telefono']  . '</td></tr>';
+                    echo '<tr><td>Fecha de Nacimiento:</td><td>' . $_SESSION['datosUsuarioInactivo']['fechaNacimiento']  . '</td></tr>';
+                    echo '<tr><td>Correo Electronico:</td><td ><a id="mails" title="Enviar Correo a:" href="mailto:' . $_SESSION['datosUsuarioInactivo']['email']  . '">'. $_SESSION['datosUsuarioInactivo']['email']  .'</td></tr>';
                     echo '</table>';
                     ?>                                
                 </div>                    

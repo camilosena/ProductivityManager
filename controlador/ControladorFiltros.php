@@ -13,7 +13,7 @@ require_once '../modelo/utilidades/Conexion.php';
 
 if (isset($_POST['buscarUsuarios'])) {
     session_start();
-    $usuarioDTO = new UsuarioDTO;
+    $usuarioDTO = new UsuarioDTO($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email, $estado, $foto, $contrasena, $rol, $area);
     $usuarioDTO->setIdUsuario($_POST['idUser']);
     $usuarioDTO->setIdentificacion($_POST['identification']);
     $usuarioDTO->setNombre($_POST['names']);
@@ -27,7 +27,7 @@ if (isset($_POST['buscarUsuarios'])) {
     } else {
         $mensaje = "Registros Encontrados";
     }
-    header("location: ../vista/listarUsuarios.php?mensaje=" .
+    header("location: ../vista/listarUsuarios.php?mensajeFiltro=" .
             $mensaje . "&busqueda=true");
 } elseif (isset($_POST['buscarProyectos'])) {
     session_start();

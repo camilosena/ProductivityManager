@@ -312,10 +312,8 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                             <a title="Desactivar Cliente" class="me"  href="../controlador/ControladorClientes.php?idDesactivarCliente=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/desactivarUsuario.png"></a></td>                   
                     </tr>                         
                     <?php
-                  }}
-                if (isset($_GET['mensaje3'])) {
-                    echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
-                }
+                  }                  
+                }               
                 ?>                      
                 </tbody>
             </table>   

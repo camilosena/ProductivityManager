@@ -88,14 +88,20 @@ else if (isset($_GET['idEliminar'])) {
     $facadeUsuario = new FacadeUsuarios();
     $mensaje3 = $facadeUsuario->desactivarUsuario($_GET['idEliminar'], 'Inactivo');
     echo $mensaje3;
-    header("Location: ../vista/listarUsuarios.php?mensaje3=" . $mensaje3);
+    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje3);
 }//  Consultar
 else if (isset($_GET['idConsultar'])) {
     $facadeUsuario = new FacadeUsuarios();
     session_start();  
     $_SESSION['datosUsuario'] = $facadeUsuario->consultarUsuario($_GET['idConsultar']);   
  header("Location: ../vista/listarUsuarios.php?#verUsuario");
-} //Activar Usuarios Inactivos Bloqueados
+}else if (isset($_GET['idConsultarInactivo'])) {
+    $facadeUsuario = new FacadeUsuarios();
+    session_start();  
+    $_SESSION['datosUsuarioInactivo'] = $facadeUsuario->consultarUsuarioInactivo($_GET['idConsultarInactivo']);
+ header("Location: ../vista/listarUsuariosInactivos.php?#verUsuario");
+} 
+//Activar Usuarios Inactivos Bloqueados
 else if (isset($_GET['idActivar'])) {
     $facadeUsuario = new FacadeUsuarios();
     $mensaje3 = $facadeUsuario->activarUsuario($_GET['idActivar'], 'Activo');

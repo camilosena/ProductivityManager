@@ -31,7 +31,17 @@ class ClienteDAO {
         }
         $cnn = null;
     }
-
+    
+        public function obtenerAreaCliente(PDO $cnn) {
+        try {
+            $query = $cnn->prepare('SELECT idAreas FROM areas where nombreArea="Cliente"');           
+            $query->execute();
+            return $query->fetchColumn();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
     public function ModificarCliente(ClienteDTO $clienteDTO, PDO $cnn) {
         $mensaje = "";
         try {

@@ -158,8 +158,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             }
             </script>';
             };
-            ?>
-            ?>
+            ?>          
             <br>  
             <form name="filtro" class="formRegistro" action="../controlador/ControladorFiltros.php" method="POST">
                 <div id="exports" style="float:right;padding-bottom:10px;">

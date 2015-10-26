@@ -503,7 +503,7 @@ if (empty($_SESSION['id'])) {
                         echo '<option value="' . $usuario['rolesId'] . '">' . $usuario['rol'];
                         $roles = $facadeRol->ListarRoles();                        
                         ?></optgroup>
-                       <optgroup label="Ascender a :"> <?php
+                       <optgroup label="Mover a :"> <?php
                         foreach ($roles as $rol) {                            
                             echo '<option value="' . $rol['idRoles'] . '">' . $rol['rol']. '</option>';                            
                         }

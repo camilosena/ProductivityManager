@@ -6,6 +6,10 @@
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/main_responsive.css">
+        <link rel="stylesheet" type="text/css" href="css/stylesNavTop.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/script2.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/carouFredSel.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
@@ -13,6 +17,13 @@
         <script src="js/toastr.js"></script>       
     </head>
     <body>
+    <div id='cssmenu' style="text-align:center">        
+        <ul>
+           <li><a href='index.php'><span><i class="fa fa-home fa-lg"></i>  </span></a></li>
+           <li><a href='nuestrosClientes.html'><span><i class="fa fa-users fa-lg"></i>  </span></a></li>
+           <li><a href='contactecnos.php'><span><i class="fa fa-envelope-o fa-lg"></i>  </span></a></li>
+        </ul>       
+    </div>    
         <header>
             <div class="wrapper">
                 <a href="index.php"><img src="img/logo.png" class="logo" width="190px" height="110px"></a>
@@ -21,7 +32,7 @@
                     <ul>
                         <li><a href="index.php">Inicio</a></li>					
                         <li><a href="nuestrosClientes.html">Nuestros Clientes</a></li>
-                        <li><a href="contactecnos.html">Contáctenos</a></li>
+                        <li><a href="contactecnos.php">Contáctenos</a></li>
                     </ul>
                 </nav>			
                 <ul class="social">

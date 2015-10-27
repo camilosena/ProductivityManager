@@ -6,11 +6,22 @@
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/main_responsive.css">
+	<link rel="stylesheet" type="text/css" href="css/stylesNavTop.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/script2.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/carouFredSel.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
+<div id='cssmenu' style="text-align:center">        
+        <ul>
+           <li><a href='indexEnglish.php'><span><i class="fa fa-home fa-lg"></i>  </span></a></li>
+           <li><a href='ourClients.html'><span><i class="fa fa-users fa-lg"></i>  </span></a></li>
+           <li><a href='contactUs.php'><span><i class="fa fa-envelope-o fa-lg"></i>  </span></a></li>
+        </ul>       
+    </div> 
 	<header>
 		<div class="wrapper">
 			<a href="indexEnglish.php"><img src="img/logo.png" class="logo" width="190px" height="110px"></a>
@@ -19,7 +30,7 @@
 				<ul>
 					<li><a href="indexEnglish.php">Home</a></li>					
 					<li><a href="ourClients.html">Our Clients</a></li>
-					<li><a href="contactUS.html">Contact Us</a></li>
+					<li><a href="contactUS.php">Contact Us</a></li>
 				</ul>
 			</nav>
 				<ul class="social">

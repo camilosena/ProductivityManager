@@ -134,7 +134,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                <th><input tabindex="3" type="text" class="input11" name="names" value=""></th>
                <th><input tabindex="4" type="text" class="input11" name="lastNames" value=""><br></th>
                <th><input tabindex="5" type="text" class="input11" name="rol" value=""></th>
-               <th><button tabindex="6" type="submit" value="buscarUsuarios" name="buscarUsuarios" id="buscar" class="boton-verde">Buscar</button></th>
+               <th><button tabindex="6" type="submit" value="buscarNovedades" name="buscarNovedades" id="buscar" class="boton-verde">Buscar</button></th>
            </tr>
            </thead>
  
@@ -150,32 +150,66 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         </tfoot>
  
         <tbody>
-            <?php 
-                require_once '../facades/FacadeNovedades.php';
-                require_once '../modelo/dao/NovedadesDAO.php';
-                require_once '../modelo/utilidades/Conexion.php';
-                $facadeNovedad = new FacadeNovedades();
-                $todos = $facadeNovedad->listadoNovedades();
-                $_SESSION['consultaNovedad']=$todos;
-                foreach ($todos as $project) {
+
+        <?php
+        if (isset($_GET['busqueda'])) {
+            if (empty($_SESSION['filtroBusqueda'])) {
+                $_SESSION['filtroBusqueda'] = '';
+            } else {
+                $_SESSION['consultaUsuario']=$_SESSION['filtroBusqueda'];
+                foreach ($_SESSION['filtroBusqueda'] as $user) {
                     ?>
                     <tr>
-                        <td><?php echo $project['idNovedad'];?></td>
-                        <td><?php echo $project['nombreProyecto'];?> </td>
-                        <td><?php echo $project['categoria'];?> </td>
-                        <td><?php echo $project['descripcion'];?></td>
-                        <td><?php echo $project['fecha'];?></td>
-                        <td><a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad'];?>"><img class="iconos" src="../img/verBino.png"></a>
+                        <td><?php echo $project['idNovedad']; ?></td>
+                        <td><?php echo $project['nombreProyecto']; ?> </td>
+                        <td><?php echo $project['categoria']; ?> </td>
+                        <td><?php echo $project['descripcion']; ?></td>
+                        <td><?php echo $project['fecha']; ?></td>
+
+                        <td>
+                            <a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad']; ?>"><img class="iconos" src="../img/verBino.png"></a>
                             <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
-                                <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
+                                <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                                 <?php
                             };
                             ?>
+                            <a name="eliminar" title="Eliminar Usuario" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
                         </td>
-                    </tr>                         
+                    </tr>
                     <?php
-                    }
-                    ?>
+                }
+            }
+
+        } else {
+
+            require_once '../facades/FacadeNovedades.php';
+            require_once '../modelo/dao/NovedadesDAO.php';
+            require_once '../modelo/utilidades/Conexion.php';
+            $facadeNovedad = new FacadeNovedades();
+            $todos = $facadeNovedad->listadoNovedades();
+            $_SESSION['consultaNovedad'] = $todos;
+            foreach ($todos as $project) {
+                ?>
+                <tr>
+                    <td><?php echo $project['idNovedad']; ?></td>
+                    <td><?php echo $project['nombreProyecto']; ?> </td>
+                    <td><?php echo $project['categoria']; ?> </td>
+                    <td><?php echo $project['descripcion']; ?></td>
+                    <td><?php echo $project['fecha']; ?></td>
+                    <td>
+                        <a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad']; ?>"><img class="iconos" src="../img/verBino.png"></a>
+                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
+                        <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
+                        <?php
+                        };
+                        ?>
+                        <a name="eliminar" title="Eliminar Usuario" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
+                    </td>
+                </tr>
+                <?php
+            }
+        }
+                ?>
                       
         </tbody>
     </table>
@@ -193,7 +227,8 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     ?>                                
                 </div>                    
             </div>
-</div>
+            <button class="boton-verde"  onclick="location.href='listarNovedades.php'" >Actualizar Lista</button>
+            </div>
  <footer class="footer-distributed">
             <div class="footer-left">
                             <span><img src="../img/logoEscala.png" width="210" height="120"></span>

@@ -270,7 +270,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                         <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                                         <a name="eliminar" title="Eliminar Usuario" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>                                            
                                         <a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/ascenso.png"></a>
-                         </td>
+                                    </td>
                                 </tr>                         
                                 <?php
                             }
@@ -297,7 +297,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                     <a class="me" title="Consultar / Asignar a Proyecto" href="../controlador/ControladorUsuarios.php?idConsultar=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/verBino.png"></a>                
                                     <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                                     <a name="eliminar" title="Eliminar Usuario" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>                 
-                                        <a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/ascenso.png"></a>
+                                    <a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/ascenso.png"></a>
                          </td>
                                 </tr>                         
                                 <?php

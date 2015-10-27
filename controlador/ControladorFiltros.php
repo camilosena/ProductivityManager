@@ -83,4 +83,25 @@ if (isset($_POST['buscarUsuarios'])) {
     }
     header("location: ../vista/clientesInactivos.php?mensajeFiltro=" .
             $mensaje . "&busquedaInactivos=true");
+
+// Filtros Novedades Howard
+
+} elseif (isset($_POST['buscarNovedades'])) {
+    session_start();
+    $NovedadDTO = new NovedadesDTO;
+    $NovedadDTO->setIdUsuario($_POST['idClient']);
+    $NovedadDTO->setNit($_POST['nit']);
+    $NovedadDTO->setRazonSocial($_POST['names']);
+    $NovedadDTO->setTelefonoFijo($_POST['phone']);
+    $NovedadDTO->setSectorEconomico($_POST['secEco']);
+    $NovedadDTO->setSectorEmpresarial($_POST['secEmp']);
+    $filtro = new FacadeFiltros;
+    $_SESSION['filtroInactivos'] = $filtro->filtrarClientesInactivos($NovedadDTO);
+    if (empty($_SESSION['filtroInactivos'])) {
+        $mensaje = "No Se Encontraron Coincidencias";
+    } else {
+        $mensaje = "Registros Encontrados";
+    }
+    header("location: ../vista/listarNovedades.php.php?mensajeFiltro=" .
+        $mensaje . "&busquedaInactivos=true");
 }

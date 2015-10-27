@@ -24,4 +24,8 @@ class FacadeFiltros {
     public function filtrarClientesInactivos(ClienteDTO $clienteDTO) {
         return $this->filtroDao->busquedaClientesInactivos($clienteDTO, $this->conexionBase);
     }
+
+    public function filtrarNovedades(NovedadesDTO $novedadesDTO) {
+        return $this->filtroDao->busquedaNovedades($novedadesDTO, $this->conexionBase);
+    }
 }

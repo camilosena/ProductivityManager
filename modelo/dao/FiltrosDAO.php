@@ -58,4 +58,17 @@ class FiltrosDAO {
         }
         $cnn = NULL;      
     }
+
+    public function busquedaNovedades(NovedadesDTO $dto, PDO $cnn) {
+        try {
+            $sentencia = $cnn->prepare("Select * from novedades where idNovedad like '%".$dto->getIdNovedad()."%' and usuariosIdUsuario like '%".$dto->getIdUsuario()."%'
+                                and proyectos_idProyecto like '%".$dto->getIdProyecto()."%' and categoria like '%".$dto->getCategoria()."%' and descripcion like '%".$dto->getDescripcion()."%' and fecha like '%".$dto->getFecha()."%' ");
+            $sentencia->execute();
+            return $sentencia->fetchAll();
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+            return $mensaje;
+        }
+        $cnn = NULL;
+    }
 }

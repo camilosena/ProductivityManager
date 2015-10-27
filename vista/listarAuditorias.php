@@ -134,7 +134,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 
            <thead>
            <tr>
-               <th><input tabindex="1" type="text" class="input11" name="idUser" value=""></th>
+               <th><input tabindex="6" type="text" class="input11" name="idUser" value=""></th>
                <th><input tabindex="2" type="text" class="input11" name="identification" value=""></th>
                <th><input tabindex="3" type="text" class="input11" name="names" value=""></th>
                <th><input tabindex="4" type="text" class="input11" name="lastNames" value=""><br></th>
@@ -178,10 +178,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <td><?php echo $auditoria['producto']; ?></td>
                 <td><a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad'];?>"><img class="iconos" src="../img/verBino.png"></a>
                 <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
-                    <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
+                    <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                 <?php
                 };
                 ?>
+                    <a name="eliminar" title="Eliminar Usuario" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
                 </td>
 
                 <!--<td>
@@ -194,13 +195,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 
         </tbody>
     </table>
-
-
-
-
-
 </div>
-
+    </div>
+        <button class="boton-verde"  onclick="location.href='listarAuditorias.php'" >Actualizar Lista</button>
+    </div>
 	<footer class="footer-distributed">
             <div class="footer-left">
                             <span><img src="../img/logoEscala.png" width="210" height="120"></span>

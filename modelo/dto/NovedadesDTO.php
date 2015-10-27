@@ -1,11 +1,13 @@
 <?php
 
 class NovedadesDTO {
+    private $idNovedad;
     private $idUsuario;
     private $idProyecto;
     private $categoria;
     private $descripcion;    
     private $archivo;
+    private $fecha;
     
     function __construct($idUsuario, $idProyecto, $categoria, $descripcion, $archivo) {
         $this->idUsuario = $idUsuario;
@@ -53,6 +55,41 @@ class NovedadesDTO {
     function setArchivo($archivo) {
         $this->archivo = $archivo;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIdNovedad()
+    {
+        return $this->idNovedad;
+    }
+
+    /**
+     * @param mixed $idNovedad
+     */
+    public function setIdNovedad($idNovedad)
+    {
+        $this->idNovedad = $idNovedad;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * @param mixed $fecha
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+    }
+
+
+
 
 
 }

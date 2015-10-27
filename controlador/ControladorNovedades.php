@@ -16,6 +16,7 @@ if(isset($_POST['crearNovedad'])){
     $descripcion=$_POST['descripcion'];
     $archivo=$_POST['uploadedfile'];
     $objetoDTO = new NovedadesDTO($idUsuario, $idProyecto, $categoria, $descripcion, $archivo);
+
     //insertar Evidencia
         if ($_FILES['uploadedfile']['name'] == '') {
             $objetoDTO->setArchivo('logo.png');

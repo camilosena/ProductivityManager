@@ -96,16 +96,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             </div>
         </header>        
         <div class="wrapper">
-            <nav style="float: right">            
-                <ul id="navUser">                    
-                    <li><a id="priOpc" title="Opciones de Usuario"><img id="menuUsuario" src="../img/menuUsuario.png"> Opciones</a>
-                        <ul>
-                            <li id="secOpc"><a href="modificarContrasena.php">Modificar Contraseña</a>                            
-                            <li><a href="../controlador/ControladorLogin.php?idCerrar=HastaLuego">Cerrar Sesión</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+           
             <nav class="migas"><br>
                 <span itemscope >
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 

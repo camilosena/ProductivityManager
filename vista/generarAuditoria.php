@@ -28,6 +28,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/main_responsive.css">
+    <link rel="stylesheet" type="text/css" href="../css/stylesNavTop.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="../js/script.js"></script>
+        <script type="text/javascript" src="../js/script2.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/carouFredSel.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
@@ -41,6 +45,30 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
 </head>
 <body>
+<div id='cssmenu'>
+        <form id="frmPicture" name="frmChangePicture" action="../controlador/ControladorUsuarios.php" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="Change" value="1">  
+          <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
+      </form>
+        <ul>
+           <li><a href='listarProyectos.php'><span><i class="fa fa-briefcase fa-lg"></i> Proyectos</span></a></li>
+           <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
+              <ul>
+                 <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
+                 </li>
+                 <li><a id="loadImg" href="javascript:function()"><span><i class="fa fa-picture-o fa-lg"></i> Actualizar Foto</span></a>              
+                 </li>
+              </ul>
+           </li>  
+           <li><a href='../controlador/ControladorLogin.php?idCerrar=HastaLuego'><span><i class="fa fa-power-off fa-lg"></i> Cerrar Sesión</span></a></li>     
+        </ul>
+          <script type="text/javascript">
+            //bind click
+            $('#loadImg').click(function(event) {
+              $('#filein').click();
+            });
+        </script>
+    </div>    
    <header>       
             <div class="wrapper">
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
@@ -48,11 +76,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <nav>
                     <div id="menu">
                         <ul>
-                           <?php
-                            require_once './Menu.php';
+                            <?php
+                            require_once '../modelo/utilidades/Menu.php';
                             $menu = new Menu;
                             $menu->permisosMenu();
-                            ?>                
+                            ?>               
                         </ul>
                     </div>
                 </nav>
@@ -70,17 +98,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 </p>
             </div>
         </header>        
-        <div class="wrapper">
-           <nav style="float: right">            
-                <ul id="navUser">                    
-                    <li><a id="priOpc" title="Opciones de Usuario"><img id="menuUsuario" src="../img/menuUsuario.png"> Opciones</a>
-                        <ul>
-                            <li id="secOpc"><a href="modificarContrasena.php">Modificar Contraseña</a>                            
-                            <li><a href="../controlador/ControladorLogin.php?idCerrar=HastaLuego">Cerrar Sesión</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+        <div class="wrapper">           
     <nav class="migas"><br>
     <span itemscope >
         <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
@@ -218,7 +236,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             </script>';
         };
         ?>          
-         <hr>
+         <br>
          <br>
            <h2 class="h330">Auditar Proyecto:</h2> <br>
             <form class="formRegistro" method="post" action="../controlador/ControladorAuditorias.php">
@@ -258,8 +276,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <input type="radio" name="producto" value="No Conforme">No Conforme              
                 <button type="submit" name="crearAuditoria" class="boton-verde">Generar Auditoría</button><br>
 
-            </form>        
-           <hr>
+            </form>                   
         </div>    
     </div>
 	<footer class="footer-distributed">

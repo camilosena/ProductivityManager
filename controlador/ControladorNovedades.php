@@ -1,4 +1,6 @@
 <?php
+require_once '../modelo/dao/UsuarioDAO.php';
+require_once '../facades/FacadeUsuarios.php';
 require_once '../modelo/dao/NovedadesDAO.php';
 require_once '../modelo/dto/NovedadesDTO.php';
 require_once '../facades/FacadeNovedades.php';
@@ -6,13 +8,14 @@ require_once '../modelo/utilidades/Conexion.php';
 
 if(isset($_POST['crearNovedad'])){
     session_start();
-    $logueado = $_SESSION['id'];
-    $facadeNovedad = new FacadeNovedades;    
-    $idUsuario=$facadeNovedad->usuarioCreaNovedad($logueado);
+    $facadeUsuario = new FacadeUsuarios;
+    $facadeNovedad = new FacadeNovedades();
+    $idUsuario=$facadeUsuario->usuarioEnSesion($_SESSION['id']);
     $idProyecto=$_POST['idProyecto'];
     $categoria=$_POST['categoria'];
-    $descripcion=$_POST['descripcion'];   
-    $objetoDTO = new NovedadesDTO($idUsuario, $idProyecto, $categoria, $descripcion);
+    $descripcion=$_POST['descripcion'];
+    $archivo=$_POST['uploadedfile'];
+    $objetoDTO = new NovedadesDTO($idUsuario, $idProyecto, $categoria, $descripcion, $archivo);
     //insertar Evidencia
         if ($_FILES['uploadedfile']['name'] == '') {
             $objetoDTO->setArchivo('logo.png');

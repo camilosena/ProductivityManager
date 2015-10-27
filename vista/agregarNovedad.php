@@ -143,7 +143,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         <output id="list"></output>
                     </div>
                 <label class="tag" for="description"><span id="lab_valPhone" class="h331">Descripción:</span></label>
-                <textarea  class="input4" name="descripcion" type="text" maxlength="240" id="description" required class="field1"></textarea>                 	
+                <textarea class="input4" name="descripcion" type="text" maxlength="240" id="description" required class="field1"></textarea>
                 <button type="submit" name="crearNovedad" class="boton-verde">Generar Novedad</button><br>
                  <script>
                         function archivo(evt) {

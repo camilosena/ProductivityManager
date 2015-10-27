@@ -108,6 +108,17 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <th>Acciones</th>
             </tr>
         </thead>
+
+           <thead>
+           <tr>
+               <th><input tabindex="1" type="text" class="input11" name="idUser" value=""></th>
+               <th><input tabindex="2" type="text" class="input11" name="identification" value=""></th>
+               <th><input tabindex="3" type="text" class="input11" name="names" value=""></th>
+               <th><input tabindex="4" type="text" class="input11" name="lastNames" value=""><br></th>
+               <th><input tabindex="5" type="text" class="input11" name="rol" value=""></th>
+               <th><button tabindex="6" type="submit" value="buscarUsuarios" name="buscarUsuarios" id="buscar" class="boton-verde">Buscar</button></th>
+           </tr>
+           </thead>
  
         <tfoot>
             <tr>    
@@ -136,11 +147,17 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         <td><?php echo $project['categoria'];?> </td>
                         <td><?php echo $project['descripcion'];?></td>
                         <td><?php echo $project['fecha'];?></td>
-                        <td><a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad'];?>"><img class="iconos" src="../img/verBino.png"></a>                        
-                        </td>                   
+                        <td><a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad'];?>"><img class="iconos" src="../img/verBino.png"></a>
+                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
+                                <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
+                                <?php
+                            };
+                            ?>
+                        </td>
                     </tr>                         
                     <?php
-                }?>
+                    }
+                    ?>
                       
         </tbody>
     </table>

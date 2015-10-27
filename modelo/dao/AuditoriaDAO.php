@@ -32,7 +32,7 @@ class AuditoriaDAO {
     }
     public function listarAuditorias(PDO $cnn) {
         try {
-            $query = $cnn->prepare("SELECT a.idAuditoria, p.estadoProyecto, concat(u.nombres,' ',u.apellidos) nombre, a.producto, p.nombreProyecto, a.fecha, a.observacionesAuditoria
+            $query = $cnn->prepare("SELECT a.idAuditoria, p.estadoProyecto, concat(u.nombres,' ',u.apellidos) nombre, a.producto, p.nombreProyecto, a.fecha, a.observacionesAuditoria, a.producto
                                     FROM  proyectos as p
                                     inner join auditorias as a
                                     inner join personas as u

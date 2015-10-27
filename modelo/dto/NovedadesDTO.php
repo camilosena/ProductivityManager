@@ -7,11 +7,12 @@ class NovedadesDTO {
     private $descripcion;    
     private $archivo;
     
-    function __construct($idUsuario, $idProyecto, $categoria, $descripcion) {
+    function __construct($idUsuario, $idProyecto, $categoria, $descripcion, $archivo) {
         $this->idUsuario = $idUsuario;
         $this->idProyecto = $idProyecto;
         $this->categoria = $categoria;
-        $this->descripcion = $descripcion;                
+        $this->descripcion = $descripcion;
+        $this->archivo = $archivo;
     }
     
     function getIdUsuario() {

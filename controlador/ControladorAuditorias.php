@@ -7,20 +7,20 @@ require_once '../facades/FacadeUsuarios.php';
 require_once '../modelo/utilidades/Conexion.php';
 
 if(isset($_POST['crearAuditoria'])){
-    session_start();    
+    session_start();
     $facadeUsuario = new FacadeUsuarios;
     $facadeAdutoria = new FacadeAuditorias();
     $idUsuario=$facadeUsuario->usuarioEnSesion($_SESSION['id']);
     $idProyecto=$_POST['idProyecto'];
     $descripcion=$_POST['descripcion'];
-    $objetoDTO = new AuditoriaDTO($idUsuario, $idProyecto, $descripcion);
-    $objetoDTO->setProducto($_POST['producto']);
+    $producto=($_POST['producto']);
+    $objetoDTO = new AuditoriaDTO($idUsuario, $idProyecto, $descripcion,$producto);
     $message= $facadeAdutoria->insertarAuditoria($objetoDTO);
     header("location: ../vista/generarAuditoria.php?auditoria=".$message);
 }
-//}else if (isset($_GET['idAuditoria'])) {
-//    $facadeAdutoria = new FacadeAuditorias();
-//    $novedad= $facadeNovedad->consultarNovedad($_GET['idNovedad']);
-//    header("Location: ../vista/listarNovedades.php?idNovedad=" . $novedad['idNovedad'] . "&nombreProyecto=" . $novedad['nombreProyecto'] . "&categoria=" . $novedad['categoria'] .
-//            "&descripcion=" . $novedad['descripcion'] . "&fecha=" . $novedad['fecha'] . "&archivo=" . $novedad['archivo']."&#verUsuario");
-//}
+    //}else if (isset($_GET['idAuditoria'])) {
+    //$facadeAdutoria = new FacadeAuditorias();
+    //$novedad= $facadeNovedad->consultarNovedad($_GET['idNovedad']);
+    //header("Location: ../vista/listarNovedades.php?idNovedad=" . $novedad['idNovedad'] . "&nombreProyecto=" . $novedad['nombreProyecto'] . "&categoria=" . $novedad['categoria'] .
+    //"&descripcion=" . $novedad['descripcion'] . "&fecha=" . $novedad['fecha'] . "&archivo=" . $novedad['archivo']."&#verUsuario");
+    //}

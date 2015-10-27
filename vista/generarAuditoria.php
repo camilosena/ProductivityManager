@@ -242,12 +242,12 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 
                     <label class="tag" for="idProject"><span id="lab_valPhone" class="h331" >Seleccione Id Proyecto:</span></label>
                     <select class="input" name="idProyecto" id="idProject"required class="list_menu_small" autofocus >
-                        <?php foreach ($proEjecucion as $enEjecucion) {
-                                echo '<option value="'.$enEjecucion['idProyecto'].'">'.$enEjecucion['idProyecto'].'-'.$enEjecucion['nombreProyecto'];}?></option>
-
+                        <?php foreach ($proEjecucion as $enEjecucion)
+                        {
+                                echo '<option value="'.$enEjecucion['idProyecto'].'">'.$enEjecucion['idProyecto'].'-'.$enEjecucion['nombreProyecto']. '</option>';
+                        }
+                        ?>
                     </select>
-                    </select>
-
 
                 <label class="tag2" for="description"><span id="lab_valName" class="h331">Descripción:</span></label>
                 <textarea  class="input6" name="descripcion" required type="text" maxlength="64" id="description" class="field1"></textarea>

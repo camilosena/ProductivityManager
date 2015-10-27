@@ -6,8 +6,8 @@ class AuditoriaDAO {
         $mensaje = '';
         try {
             $query = $cnn->prepare("insert into auditorias values(DEFAULT,?,?,now(),?,?)");
-            $query->bindParam(1, $objetoAud->getIdUsuario());
-            $query->bindParam(2, $objetoAud->getIdProyecto());
+            $query->bindParam(1, $objetoAud->getIdProyecto());
+            $query->bindParam(2, $objetoAud->getIdUsuario());
             $query->bindParam(3, $objetoAud->getDescripcion());            
             $query->bindParam(4, $objetoAud->getProducto());
             $query->execute();

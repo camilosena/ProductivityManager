@@ -5,13 +5,23 @@ class AuditoriaDTO {
     private $idProyecto;
     private $descripcion;   
     private $producto;
-    public function __construct($idUsuario, $idProyecto, $descripcion)
+
+    /**
+     * AuditoriaDTO constructor.
+     * @param $idUsuario
+     * @param $idProyecto
+     * @param $descripcion
+     * @param $producto
+     */
+    public function __construct($idUsuario, $idProyecto, $descripcion, $producto)
     {
         $this->idUsuario = $idUsuario;
         $this->idProyecto = $idProyecto;
-        $this->descripcion = $descripcion;        
+        $this->descripcion = $descripcion;
+        $this->producto = $producto;
     }
-    
+
+
     function getProducto() {
         return $this->producto;
     }

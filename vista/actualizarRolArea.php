@@ -1,12 +1,23 @@
 <?php
 session_start();
-if (empty($_SESSION['rol'])) {
-    $_SESSION['rol'] = '';
-    header("location: ../index.php");
-}
-if (empty($_SESSION['id'])) {
-    $_SESSION['id'] = '';
-    header("location: ../index.php");
+if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
+    header("location: ../index.php?error=Debe Iniciar Sesión");
+} else {
+    require_once '../modelo/dao/LoginDAO.php';
+    require_once '../facades/FacadeLogin.php';
+    require_once '../modelo/utilidades/Conexion.php';
+    $facadeLogueado = new FacadeLogin;
+    $paginas = $facadeLogueado->seguridadPaginas($_SESSION['rol']);
+    $pagActual = 'actualizarRolArea.php';
+    $total = count($paginas);
+    foreach ($paginas as $todas) {
+        if ($pagActual != $todas['url']) {
+            $total--;
+        }
+    }
+    if ($total == 0) {
+        header("location: ../index.php?error=No posee permisos para acceder a este directorio.");
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -24,6 +35,10 @@ if (empty($_SESSION['id'])) {
         <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="../js/table.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/stylesNavTop.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="../js/script.js"></script>
+        <script type="text/javascript" src="../js/script2.js"></script>
          <script>
             $(document).ready(function () {
                 $("#selectrol").on("change", function () {
@@ -46,7 +61,31 @@ if (empty($_SESSION['id'])) {
             });
         </script>
     </head>
-    <body onload="TipoUsuario()">
+    <body>
+     <div id='cssmenu'>
+        <form id="frmPicture" name="frmChangePicture" action="../controlador/ControladorUsuarios.php" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="Change" value="1">  
+          <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
+      </form>
+        <ul>
+           <li><a href='listarProyectos.php'><span><i class="fa fa-briefcase fa-lg"></i> Proyectos</span></a></li>
+           <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
+              <ul>
+                 <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
+                 </li>
+                 <li><a id="loadImg" href="javascript:function()"><span><i class="fa fa-picture-o fa-lg"></i> Actualizar Foto</span></a>              
+                 </li>
+              </ul>
+           </li>  
+           <li><a href='../controlador/ControladorLogin.php?idCerrar=HastaLuego'><span><i class="fa fa-power-off fa-lg"></i> Cerrar Sesión</span></a></li>     
+        </ul>
+          <script type="text/javascript">
+            //bind click
+            $('#loadImg').click(function(event) {
+              $('#filein').click();
+            });
+        </script>
+    </div>    
         <header>               
             <div class="wrapper">
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>

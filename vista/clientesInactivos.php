@@ -28,6 +28,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/main_responsive.css">
+    <link rel="stylesheet" type="text/css" href="../css/stylesNavTop.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="../js/script.js"></script>
+        <script type="text/javascript" src="../js/script2.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/carouFredSel.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
@@ -38,9 +42,33 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
     <link href="../js/toastr.css" rel="stylesheet"/>
         <script src="../js/toastr.js"></script>
         <script src="../js/validaciones.js"></script>
-        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">            
 </head>
 <body>
+ <div id='cssmenu'>
+        <form id="frmPicture" name="frmChangePicture" action="../controlador/ControladorUsuarios.php" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="Change" value="1">  
+          <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
+      </form>
+        <ul>
+           <li><a href='listarProyectos.php'><span><i class="fa fa-briefcase fa-lg"></i> Proyectos</span></a></li>
+           <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
+              <ul>
+                 <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
+                 </li>
+                 <li><a id="loadImg" href="javascript:function()"><span><i class="fa fa-picture-o fa-lg"></i> Actualizar Foto</span></a>              
+                 </li>
+              </ul>
+           </li>  
+           <li><a href='../controlador/ControladorLogin.php?idCerrar=HastaLuego'><span><i class="fa fa-power-off fa-lg"></i> Cerrar Sesión</span></a></li>     
+        </ul>
+          <script type="text/javascript">
+            //bind click
+            $('#loadImg').click(function(event) {
+              $('#filein').click();
+            });
+        </script>
+    </div>    
     <header>
             <?php
             require_once '../modelo/dao/LoginDAO.php';

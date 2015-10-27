@@ -91,4 +91,9 @@ class FacadeUsuarios {
     public function cantidadUsuariosPorRol($rol) {
         return $this->objetoDAO->cantidadUsuariosPorRol($rol,  $this->conexionBase);
     }
+
+       function actualizarFoto($foto,$identificacion) {
+
+        return $this->objetoDAO->actualizarFoto($foto, $identificacion, $this->conexionBase);
+    }
 }

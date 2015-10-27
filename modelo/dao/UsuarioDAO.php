@@ -293,4 +293,20 @@ and areas_idAreas=idAreas");
         }
         $cnn = null;
     }
+
+       function actualizarFoto($foto,$identificacion, PDO $cnn) {
+        $mensaje = "";
+        try {
+            $query = $cnn->prepare("update personas set foto=? where identificacion=?");
+            $query->bindParam(1, $foto);
+            $query->bindParam(2, $identificacion);
+
+            $query->execute();
+            $mensaje = "Foto Actualizada";
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+        }
+        $cnn = null;
+        return $mensaje;
+    }
 }

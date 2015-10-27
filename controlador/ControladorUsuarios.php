@@ -115,4 +115,26 @@ else  if (isset($_POST['ascender'])) {
     
     header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje.$mensaje2); 
   }
-    
+else if($_FILES['cambiaImagen']['name']!=''){
+    if ($_FILES['cambiaImagen']['name'] == '') {
+            $foto ='perfil.png';
+        } else {
+            $foto = $_FILES['cambiaImagen']['name'];
+        }
+        $carpeta = "fotos";
+        $nombreImagen = $_FILES['cambiaImagen']['name'];
+        $tamano = $_FILES['cambiaImagen']['size'];
+        $tipo = $_FILES['cambiaImagen']['type'];
+        $nombreTemporal = $_FILES['cambiaImagen']['tmp_name'];
+        $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
+       $cargaFoto = new GestionImagenes();
+       $msg =$cargaFoto->subirImagen($dtoImagen);      
+       if($msg =='True'){        
+        session_start();                
+         $facadeUsser = new FacadeUsuarios();
+         $massage = $facadeUsser->actualizarFoto($foto,$_SESSION['id']);
+         header("location: ../vista/listarProyectos.php?mensaje=".$massage);
+       }else{
+         header("location: ../vista/listarProyectos.php?mensajeFoto=".$msg);
+       }
+}    

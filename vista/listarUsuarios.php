@@ -45,11 +45,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             <div class="wrapper">
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#navMenu" class="menu_icon" id="menu_icon"></a>
-                 <nav>
+                <nav>
                     <div id="menu">
                         <ul>
                             <?php
-                            require_once './Menu.php';
+                            require_once '../modelo/utilidades/Menu.php';
                             $menu = new Menu;
                             $menu->permisosMenu();
                             ?>               

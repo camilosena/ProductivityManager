@@ -60,45 +60,9 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <div id="menu">
                         <ul>
                             <?php
-                            foreach ($menuGeneral as $general) {
-                                echo '<li class="nivel1"><a href="" class="nivel1">' . $general['nombreRuta'] . '<img src="../img/derecha.png"></a>';
-                                if ($general['nombreRuta'] == 'Proyectos') {
-                                    echo '<ul class="uno">';
-                                    foreach ($proyecto as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                                if ($general['nombreRuta'] == 'Novedades') {
-                                    echo '<ul class="dos">';
-                                    foreach ($novedad as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                                if ($general['nombreRuta'] == 'Personal') {
-                                    echo '<ul class="tres">';
-                                    foreach ($persona as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                                if ($general['nombreRuta'] == 'Auditorias') {
-                                    echo '<ul class="cuatro">';
-                                    foreach ($audita as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                                if ($general['nombreRuta'] == 'Clientes') {
-                                    echo '<ul class="cinco">';
-                                    foreach ($clientes as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                                if ($general['nombreRuta'] == 'Roles') {
-                                    echo '<ul class="seis">';
-                                    foreach ($roles as $pagina) {
-                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
-                                    } echo '</ul></li>';
-                                }
-                            }
+                            require_once '../modelo/utilidades/Menu.php';
+                            $menu = new Menu;
+                            $menu->permisosMenu();
                             ?>               
                         </ul>
                     </div>

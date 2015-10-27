@@ -51,7 +51,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <div id="menu">
                         <ul>
                             <?php
-                            require_once './Menu.php';
+                            require_once '../modelo/utilidades/Menu.php';
                             $menu = new Menu;
                             $menu->permisosMenu();
                             ?>               

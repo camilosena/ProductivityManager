@@ -29,6 +29,7 @@ class Menu {
             $clientes = $facadePermmisos->permisoCliente($_SESSION['rol']);
             $roles = $facadePermmisos->permisoRoles($_SESSION['rol']);
             $insumos = $facadePermmisos->permisoInsumos($_SESSION['rol']);
+            $procesos = $facadePermmisos->permisoProcesos($_SESSION['rol']);
     
         
         foreach ($menuGeneral as $general) {
@@ -72,6 +73,12 @@ class Menu {
                                 if ($general['nombreRuta'] == 'Insumos') {
                                     echo '<ul class="siete">';
                                     foreach ($insumos as $pagina) {
+                                        echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
+                                    } echo '</ul></li>';
+                                }
+                                if ($general['nombreRuta'] == 'Procesos') {
+                                    echo '<ul class="ocho">';
+                                    foreach ($procesos as $pagina) {
                                         echo'<li><a href="' . $pagina['URL'] . '">' . $pagina['nombreRuta'] . '</a></li>';
                                     } echo '</ul></li>';
                                 }

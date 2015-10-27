@@ -8,7 +8,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
     require_once '../modelo/utilidades/Conexion.php';
     $facadeLogueado = new FacadeLogin;
     $paginas = $facadeLogueado->seguridadPaginas($_SESSION['rol']);
-    $pagActual = 'agregarCliente.php';
+    $pagActual = 'agregarProcesos.php';
     $total =count($paginas);
     foreach ($paginas as $todas) {
         if ($pagActual != $todas['url']) {

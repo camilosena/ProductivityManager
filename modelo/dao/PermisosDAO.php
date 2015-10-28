@@ -105,4 +105,15 @@ class PermisosDAO {
             echo 'Error' . $ex->getMessage();
         }
     }
+    public function permisosProductos($rol, PDO $cnn) {
+        try {
+            $query = $cnn->prepare( "SELECT URL,nombreRuta from permisosPorRol,permisos, roles 
+            where idRoles_Roles=idRoles and rol=? and idpermisos=permisos_idPermisos and nivel=10");
+            $query->bindParam(1, $rol);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+    }
 }

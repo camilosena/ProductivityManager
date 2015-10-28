@@ -8,7 +8,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
     require_once '../modelo/utilidades/Conexion.php';
     $facadeLogueado = new FacadeLogin;
     $paginas = $facadeLogueado->seguridadPaginas($_SESSION['rol']);
-    $pagActual = 'agregarAreas.php';
+    $pagActual = 'agregarProductos.php';
     $total = count($paginas);
     foreach ($paginas as $todas) {
         if ($pagActual != $todas['url']) {
@@ -23,7 +23,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Agregar Áreas</title>
+        <title>Agregar Productos</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="../css/reset.css">
@@ -102,7 +102,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
                         <a href="CrearRol.php" title="Ir a Usuarios" itemprop="url">
-                            <span itemprop="title">Asignar Areas</span>              
+                            <span itemprop="title">Agregar Productos</span>              
                         </a>  > 
 
                     </span> 
@@ -111,28 +111,27 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 
             <div id="panelUnico">
                 <br>
-                <br><h2 class="h330">Agregar Áreas:</h2><hr>
-                <?php
-                require_once '../facades/FacadeUsuarios.php';
-                require_once '../modelo/dao/UsuarioDAO.php';
-                $facadeUsuarios = new FacadeUsuarios();
-                $all = $facadeUsuarios->listarAreas();
-                ?> 
-
+                <br><h2 class="h330">Agregar Productos:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="Get" action="../controlador/ControladorRol.php"> 
+                <form class="formRegistro" method="Get" action="../controlador/ControladorProductos.php"> 
                  <div id="panelModificaPass">   
                    
-                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Areas: </span></label>
+                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Productos: </span></label>
                     <table>
                         <?php
-                        foreach ($all as $unit) {
+                    require_once '../facades/FacadeProductos.php';
+                    require_once '../modelo/dao/ProductosDAO.php';
+                    $facadeProductos = new FacadeProductos();
+                    $todos=$facadeProductos->listarProductos();
+                  foreach ($todos as $unit) {
                             ?> 
                         
                             <tr>
-                                <td> <input name="idAreas" size="1" value ="<?php echo $unit['idAreas']; ?>" readonly ></td>
-                                <td> <input name="permiso" size="10" value ="<?php echo $unit['nombreArea']; ?>" disabled ></td>
-                                 <td><a name="eliminarArea" title="Eliminar Area" class="me"  href="../controlador/ControladorRol.php?idEliminar=<?php echo $unit['idAreas']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
+                               
+                                <td> <input name="producto" size="10" value ="<?php echo $unit['nombreProducto']; ?>" disabled ></td>
+                                <td> <input name="imagen" size="10" value ="<?php echo $unit['fotoProducto']; ?>" disabled ></td>
+                                <td> <input name="descripcion" size="10" value ="<?php echo $unit['descripcionProducto']; ?>" disabled ></td>
+                                <td><a name="eliminarProducto" title="Eliminar Producto" class="me"  href="../controlador/ControladorProductos.php?idEliminar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
                                         
 
                             </tr>
@@ -146,19 +145,18 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     </table>
                     
                     <?php
-                         require_once '../facades/FacadeAreas.php';
-                        require_once '../modelo/dao/AreasDAO.php';
-                        $facadeArea = new FacadeAreas();
-                $consecutivo=$facadeArea->ConsecutivoAreas();
+                         
+                $consecutivo=$facadeProductos->consecutivoProducto();
+               
                 ?>
                     
                 <br>  
-                    <label class="tag" id="IdRol" for="IdArea"><span id="NameRol" class="h331" style="display: inline-block">Número de Área: </span></label>
-                    <input name="IdArea" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nueva Área: </span></label>
-                    <input name="NombreArea" type="text" id="txtName"  placeholder="Pedro"   style="display: inline-block"><br>
+                    <label class="tag" id="IdRol" for="IdProducto"><span id="NameRol" class="h331" style="display: inline-block">Producto Número: </span></label>
+                    <input name="IdProducto" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Producto: </span></label>
+                    <input name="Producto" type="text" id="txtName"  placeholder="Pedro"   style="display: inline-block"><br>
                     
-                    <button type="submit" value="Enviar" name="AgregarArea" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
+                    <button type="submit" value="Enviar" name="AgregarProducto" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
                     <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
                  </div>    
                 </form><br>

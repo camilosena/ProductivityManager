@@ -51,7 +51,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
           <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
       </form>
         <ul>
-           <li><a href='listarProyectos.php'><span><i class="fa fa-briefcase fa-lg"></i> Proyectos</span></a></li>
+           <li><a href='reportes.php'><span><i class="fa fa-briefcase fa-lg"></i> Reportes</span></a></li>
            <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
               <ul>
                  <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
@@ -180,7 +180,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             ?>          
             <br>  
             <form name="filtro" class="formRegistro" action="../controlador/ControladorFiltros.php" method="POST">
-                <div id="exports" style="float:right;padding-bottom:10px;">
+                <div id="exports" style="float:right;padding-bottom:10px;">                 
                     <img src="../img/imprimir.png">
                     <img src="../img/email.png">
                     <img src="../img/pdf.png">

@@ -94,8 +94,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     </p>
                 </div>
         </header>        
-        <div class="wrapper">
-           
+        <div class="wrapper">           
             <nav class="migas"><br>
                 <span itemscope >
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 

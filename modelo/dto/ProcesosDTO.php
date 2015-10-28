@@ -18,12 +18,12 @@ class ProcesosDTO {
     private $tiempo;
     private $empleados;
     
-    function __construct($idProceso, $tipo, $tiempo,$empleados) {
-        $this->idProceso = $idProceso;
-        $this->tipo = $tipo;
-        $this->tiempo = $tiempo;
-        $this->empleados= $empleados;
-    }
+//    function __construct($idProceso, $tipo, $tiempo,$empleados) {
+//        $this->idProceso = $idProceso;
+//        $this->tipo = $tipo;
+//        $this->tiempo = $tiempo;
+//        $this->empleados= $empleados;
+//    }
 
     
     function getIdProceso() {

@@ -120,7 +120,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 ?> 
 
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="Get" action="../controlador/ControladorRol.php"> 
+                <form class="formRegistro" method="Get" action="../controlador/ControladorProcesos.php"> 
                  <div id="panelModificaPass">   
                    
                     <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Procesos: </span></label>
@@ -132,12 +132,21 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         $all = $facadeProcesos->ListarProcesos();
                         foreach ($all as $unit) {
                             ?> 
-                        
+                        <thead>
+                           <tr>
+                               <td>Proceso</td> 
+                               <td>Tiempo/Horas    </td> 
+                                <td>Empleados</td> 
+                                <td>Borrar</td>
+                            
+                        </thead>
+
                             <tr>
-                                <td> <input name="idAreas" size="1" value ="<?php echo $unit['idProceso']; ?>" readonly ></td>
+                                
                                 <td> <input name="proceso" size="10" value ="<?php echo $unit['tipoProceso']; ?>" disabled ></td>
                                 <td> <input name="Tiempo" size="10" value ="<?php echo $unit['tiempoHoras']; ?>" disabled ></td>
-                                 <td><a name="eliminarArea" title="Eliminar Proceso" class="me"  href="../controlador/ControladorProcesos.php?idEliminar=<?php echo $unit['idAreas']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
+                                <td> <input name="Empleados" size="10" value ="<?php echo $unit['cantidadEmpleados']; ?>" disabled ></td>
+                                 <td><a name="EliminarProceso" title="Eliminar Proceso" class="me"  href="../controlador/ControladorProcesos.php?idProceso=<?php echo $unit['idProceso']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
                                         
 
                             </tr>

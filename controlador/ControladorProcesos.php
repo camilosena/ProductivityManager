@@ -19,10 +19,21 @@ require_once '../modelo/utilidades/Conexion.php';
 $facadeProcesos = new FacadeProcesos();
 $pDTO = new ProcesosDTO();
 
-if (isset($_POST['AgregarProceso'])) {
+if (isset($_GET['AgregarProceso'])) {
     
     $pDTO->setIdProceso($_GET['IdProceso']);
     $pDTO->setTipo($_GET['NombreProceso']);
     $pDTO->setTiempo($_GET['Tiempo']);
+    $pDTO->setEmpleados($_GET['Empleados']);
+    
+    $mensaje = $facadeProcesos->AgregarProceso($pDTO);
+    
+    header("location: ../vista/agregarProcesos.php? ".$mensaje);
+    
+}else 
+    if (isset($_GET['idProceso'])) {
+    $mensaje = $facadeProcesos->eliminarProceso($_GET['idProceso']);
+    
+    header("location: ../vista/agregarProcesos.php? ".$mensaje);
     
 }

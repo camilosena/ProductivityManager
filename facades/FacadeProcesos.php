@@ -11,7 +11,7 @@ class FacadeProcesos {
  
     function AgregarProceso (ProcesosDTO $pDTO){
         
-         return $this->ProcesosDAO->AgregarProceso($pDTODTO, $this->conexionBase);
+         return $this->ProcesosDAO->AgregarProceso($pDTO, $this->conexionBase);
     }
     
     function ConsecutivoProcesos (){
@@ -36,6 +36,6 @@ class FacadeProcesos {
     }
     function eliminarProceso ($idProceso){
         
-         return $this->ProcesosDAO->elimminarProceso($idProceso, $this->conexionBase);
+         return $this->ProcesosDAO->eliminarProceso($idProceso, $this->conexionBase);
     }
 }

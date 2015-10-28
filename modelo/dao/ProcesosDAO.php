@@ -7,17 +7,18 @@ class ProcesosDAO {
     function AgregarProceso (ProcesosDTO $pDTO, PDO $cnn){
         
          try {
-            $sentencia = $cnn->prepare("INSERT INTO procesos VALUES(?,?,?)");
+            $sentencia = $cnn->prepare("INSERT INTO procesos VALUES(?,?,?,?)");
             $sentencia->bindParam(1, $pDTO->getIdProceso());
             $sentencia->bindParam(2, $pDTO->getTipo());
             $sentencia->bindParam(3, $pDTO->getTiempo());
+            $sentencia->bindParam(4, $pDTO->getEmpleados());
           
             $sentencia->execute();
             $mensaje = "Proceso registrado ";
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }
-        $cnn = NULL;
+        
         return $mensaje;
     }
     
@@ -97,11 +98,11 @@ class ProcesosDAO {
         }
         $cnn = null;
     }
-    function elimminarProceso ($idArea,PDO $cnn){
+    function eliminarProceso ($idProceso,PDO $cnn){
          try {
             $sql = 'delete from procesos where idProceso=?';
             $query = $cnn->prepare($sql);
-            $query->bindParam(1, $idArea);
+            $query->bindParam(1, $idProceso);
             $query->execute();
             $mensaje = "Registro eliminado";
             return $query->fetchAll();

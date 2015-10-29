@@ -18,12 +18,12 @@ class ProductosDTO {
     private $imagen;
     private $descripción;
     
-    function __construct($idProducto, $nombre, $imagen, $descripción) {
-        $this->idProducto = $idProducto;
-        $this->nombre = $nombre;
-        $this->imagen = $imagen;
-        $this->descripción = $descripción;
-    }
+//    function __construct($idProducto, $nombre, $imagen, $descripción) {
+//        $this->idProducto = $idProducto;
+//        $this->nombre = $nombre;
+//        $this->imagen = $imagen;
+//        $this->descripción = $descripción;
+//    }
     function getIdProducto() {
         return $this->idProducto;
     }

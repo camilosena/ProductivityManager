@@ -113,7 +113,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <br>
                 <br><h2 class="h330">Agregar Productos:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="Get" action="../controlador/ControladorProductos.php"> 
+                <form class="formRegistro" method="Get" action="../controlador/ControladorProductos.php" enctype="multipart/form-data"> 
                  <div id="panelModificaPass">   
                    
                     <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Productos: </span></label>
@@ -129,9 +129,9 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                             <tr>
                                
                                 <td> <input name="producto" size="10" value ="<?php echo $unit['nombreProducto']; ?>" disabled ></td>
-                                <td> <input name="imagen" size="10" value ="<?php echo $unit['fotoProducto']; ?>" disabled ></td>
+                                <td> <img src="<?php echo $unit['fotoProducto']; ?>" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></td>
                                 <td> <input name="descripcion" size="10" value ="<?php echo $unit['descripcionProducto']; ?>" disabled ></td>
-                                <td><a name="eliminarProducto" title="Eliminar Producto" class="me"  href="../controlador/ControladorProductos.php?idEliminar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
+                                <td><a name="eliminarProducto" title="Eliminar Producto" class="me"  href="../controlador/ControladorProductos.php?idEliminar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/eliminar.png"></a></td>
                                         
 
                             </tr>
@@ -154,7 +154,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <label class="tag" id="IdRol" for="IdProducto"><span id="NameRol" class="h331" style="display: inline-block">Producto Número: </span></label>
                     <input name="IdProducto" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Producto: </span></label>
-                    <input name="Producto" type="text" id="txtName"  placeholder="Pedro"   style="display: inline-block"><br>
+                    <input name="Producto" type="text" id="txtName"  placeholder="Silla"   style="display: inline-block"><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Imagen: </span>
+                    <input name="Imagen" type="file" href id="imagen"  style="display:inline-block"></label><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Descripción: </span></label>
+                    <input name="descripcion" type="textArea" id="txtName"  style="display: inline-block"><br>
                     
                     <button type="submit" value="Enviar" name="AgregarProducto" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
                     <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>

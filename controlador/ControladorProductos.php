@@ -15,20 +15,20 @@ require_once '../modelo/utilidades/GestionImagenes.php';
 $facadeProductos = new FacadeProductos();
 $productosDTO = new ProductosDTO();
 
-if (isset($_GET['AgregarProducto'])) {
+if (isset($_POST['AgregarProducto'])) {
     
-    $productosDTO->setIdProducto($_GET['IdProducto']);
-    $productosDTO->setNombre($_GET['Producto']);
+    $productosDTO->setIdProducto($_POST['IdProducto']);
+    $productosDTO->setNombre($_POST['Producto']);
     $carpeta = "productos";
-        $nombreImagen = $_FILES['uploadedfile']['name'];
-        $tamano = $_FILES['uploadedfile']['size'];
-        $tipo = $_FILES['uploadedfile']['type'];
-        $nombreTemporal = $_FILES['uploadedfile']['tmp_name'];
+        $nombreImagen = $_FILES['Imagen']['name'];
+        $tamano = $_FILES['Imagen']['size'];
+        $tipo = $_FILES['Imagen']['type'];
+        $nombreTemporal = $_FILES['Imagen']['tmp_name'];
         $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
        $cargaFoto = new GestionImagenes();
        $msg =$cargaFoto->subirImagen($dtoImagen);
-    $productosDTO->setImagen($msg);
-    $productosDTO->setDescripción($_GET['descripcion']);
+    $productosDTO->setImagen($nombreImagen);
+    $productosDTO->setDescripción($_POST['descripcion']);
     
     $facadeProductos->agregarProducto($productosDTO);
     

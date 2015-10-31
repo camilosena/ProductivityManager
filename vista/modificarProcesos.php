@@ -8,7 +8,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
     require_once '../modelo/utilidades/Conexion.php';
     $facadeLogueado = new FacadeLogin;
     $paginas = $facadeLogueado->seguridadPaginas($_SESSION['rol']);
-    $pagActual = 'agregarProcesos.php';
+    $pagActual = 'mmodificarProcesos.php';
     $total =count($paginas);
     foreach ($paginas as $todas) {
         if ($pagActual != $todas['url']) {
@@ -23,7 +23,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Agregar Procesos</title>
+        <title>Actualizar Procesos</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="../css/reset.css">
@@ -102,7 +102,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
                         <a href="CrearRol.php" title="Ir a Usuarios" itemprop="url">
-                            <span itemprop="title">Agregar Procesos</span>              
+                            <span itemprop="title">Actualizar Procesos</span>              
                         </a>  > 
 
                     </span> 
@@ -111,7 +111,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 
             <div id="panelUnico">
                 <br>
-                <br><h2 class="h330">Agregar Procesos:</h2><hr>
+                <br><h2 class="h330">Actualizar Procesos:</h2><hr>
                 <?php
                 require_once '../facades/FacadeUsuarios.php';
                 require_once '../modelo/dao/UsuarioDAO.php';
@@ -158,7 +158,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                 <td> <input name="valor" size="10" value ="<?php echo $unit['precioProceso']; ?>" disabled ></td>
                                 
                                  <td><a name="EliminarProceso" title="Eliminar Proceso" class="me"  href="../controlador/ControladorProcesos.php?idProceso=<?php echo $unit['idProceso']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
-                                 <td><a name="ModificarProceso"  title="Modificar Proceso" class="me" href="../controlador/ControladorProcesos.php?idConsultaProceso=<?php echo $unit['idProceso']; ?>" ><img class="iconos" src="../img/modify.png"></a>    </td>  
+                                 <td><a name="ModificarProceso"  title="Modificar Proceso" class="me"  href="#ModalProcesos" ><img class="iconos" src="../img/modify.png"></a>    </td>  
 
                             </tr>
                         
@@ -177,29 +177,26 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 $consecutivo=$facadeProcesos->ConsecutivoProcesos();
                 ?>
                     
-                <br>  
-                    <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Número de Proceso: </span></label>
-                    <input name="IdProceso" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>
-                    <input name="NombreProceso" type="text" id="txtName"  placeholder="Pedro"   style="display: inline-block"><br>
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Tiempo/horas: </span></label>
-                    <input name="Tiempo" type="text" id="txtName"  placeholder="12 "   style="display: inline-block"><br>
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Cantidad de empleados: </span></label>
-                    <input name="Empleados" type="text" id="txtName"  placeholder="12 "   style="display: inline-block"><br>
-                   <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Productos: </span></label>
-                    <select id="selectProducto" name="selectProducto" class="input"> 
-                     <?php
-                        $productos = $fProductos->listarProductos();
-                        echo '<option disabled selected>' . "Seleccione un producto" . '</option>';
-                        foreach ($productos as $producto) {
-                            echo '<option value="' . $producto['idProductos'] . '">' . $producto['nombreProducto'] . '</option>';                            
-                        }
-                        ?>
-                    </select><br> 
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Valor sujerido: </span></label>
-                     <input name="valor" type="text" id="txtName"  placeholder="12 "   style="display: inline-block"><br>
-                     
-                    <button type="submit" value="Enviar" name="AgregarProceso" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
+                 <table id="muestraDatos" style="margin-left: 15%;">
+                                
+                                <tbody>
+                                     <label class="tag" id="IdRol" for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Proceso Número: </span></label>
+                                    <input name="proceso" size="10" value ="<?php echo $unit['idProceso']; ?>" disabled style="display: inline-block"><br>
+                                    <label class="tag" id="IdRol" for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Proceso: </span></label>
+                                    <input name="proceso" size="10" value ="<?php echo $unit['tipoProceso']; ?>" disabled style="display: inline-block"><br>
+                                        <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Producto: </span></label>
+                                     <input name="producto" size="10" value ="<?php echo $unit['producto']; ?>" disabled style="display: inline-block"><br>
+                                      <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Cantidad de Empleados: </span></label>
+                                 <input name="Empleados" size="10" value ="<?php echo $unit['empleados']; ?>" style="display: inline-block"><br>
+                                 <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Tiempo/Horas: </span></label>
+                                 <input name="tiempo" size="10" value ="<?php echo $unit['tiempo']; ?>"  style="display: inline-block"><br>
+                                 <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Valor: </span></label>
+                                 <input name="valor" size="10" value ="<?php echo $unit['precioProceso']; ?>"  style="display: inline-block"><br>
+                                    
+
+                                </tbody>
+                            </table>
+                             <button type="submit" value="Enviar" name="ModificarProceso" class="boton-verde" style="display: inline-block">Modificar</button>
                     <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
                  </div>    
                 </form><br>
@@ -217,25 +214,28 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         <a href="#close" title="Close" class="close">X</a><br>					
                         <h2 class="h330">Modificar Procesos:</h2><br>
                         <div id="panelModificaPass">
-                            
-                                    <form class="formRegistro" method="post" action="../controlador/ControladorProcesos.php"> 
+                            <form class="formRegistro" method="Get" action="../controlador/ControladorProcesos.php"> 
+                            <table id="muestraDatos" style="margin-left: 15%;">
+                                
+                                <tbody>
                                      <label class="tag" id="IdRol" for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Proceso Número: </span></label>
-                                     <input name="IdProceso" size="10" value ="<?php echo $_SESSION['consultarProcesos']['idProceso']; ?>" readonly style="display: inline-block"><br>
+                                    <input name="proceso" size="10" value ="<?php echo $unit['idProceso']; ?>" disabled style="display: inline-block"><br>
                                     <label class="tag" id="IdRol" for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Proceso: </span></label>
-                                    <input name="NombreProceso" size="10" value ="<?php echo $_SESSION['consultarProcesos']['tipoProceso']; ?>" readonly style="display: inline-block"><br>
+                                    <input name="proceso" size="10" value ="<?php echo $unit['tipoProceso']; ?>" disabled style="display: inline-block"><br>
                                         <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Producto: </span></label>
-                                     <input name="producto" size="10" value ="<?php echo $_SESSION['consultarProcesos']['producto']; ?>" readonly style="display: inline-block"><br>
+                                     <input name="producto" size="10" value ="<?php echo $unit['producto']; ?>" disabled style="display: inline-block"><br>
                                       <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Cantidad de Empleados: </span></label>
-                                 <input name="Empleados" size="10" value ="<?php echo $_SESSION['consultarProcesos']['empleados']; ?>" style="display: inline-block"><br>
+                                 <input name="Empleados" size="10" value ="<?php echo $unit['empleados']; ?>" style="display: inline-block"><br>
                                  <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Tiempo/Horas: </span></label>
-                                 <input name="Tiempo" size="10" value ="<?php echo $_SESSION['consultarProcesos']['tiempo']; ?>"  style="display: inline-block"><br>
+                                 <input name="tiempo" size="10" value ="<?php echo $unit['tiempo']; ?>"  style="display: inline-block"><br>
                                  <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Valor: </span></label>
-                                 <input name="valor" size="10" value ="<?php echo $_SESSION['consultarProcesos']['precioProceso']; ?>"  style="display: inline-block"><br>
-                                 <input type="submit" value="Modificar" name="ModificarProceso">
-                            </form>  
+                                 <input name="valor" size="10" value ="<?php echo $unit['precioProceso']; ?>"  style="display: inline-block"><br>
+                                    
 
-                            
-                             
+                                </tbody>
+                            </table>
+                             <button type="submit" value="Enviar" name="ModificarProceso" class="boton-verde" style="display: inline-block">Modificar</button>
+                            </form>
                         </div>
 
                         <?php

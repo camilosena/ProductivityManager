@@ -15,8 +15,10 @@ class ProcesosDTO {
     //put your code here
     private $idProceso;
     private $tipo;
+    private $valor;
     private $tiempo;
     private $empleados;
+    
     
 //    function __construct($idProceso, $tipo, $tiempo,$empleados) {
 //        $this->idProceso = $idProceso;
@@ -40,8 +42,15 @@ class ProcesosDTO {
     function getEmpleados() {
         return $this->empleados;
     }
+    function getValor() {
+        return $this->valor;
+    }
 
-    function setEmpleados($empleados) {
+    function setValor($valor) {
+        $this->valor = $valor;
+    }
+
+        function setEmpleados($empleados) {
         $this->empleados = $empleados;
     }
 

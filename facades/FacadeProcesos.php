@@ -9,9 +9,9 @@ class FacadeProcesos {
         $this->conexionBase = Conexion::getConexion();
     }
  
-    function AgregarProceso (ProcesosDTO $pDTO){
+    function AgregarProceso (ProcesosDTO $pDTO, $producto){
         
-         return $this->ProcesosDAO->AgregarProceso($pDTO, $this->conexionBase);
+         return $this->ProcesosDAO->AgregarProceso($pDTO, $producto,  $this->conexionBase);
     }
     
     function ConsecutivoProcesos (){
@@ -26,16 +26,16 @@ class FacadeProcesos {
         
         return $this->ProcesosDAO->listarProcesos($this->conexionBase);
     }
-    function ModificarProcesos ($idProceso){
+    function ModificarProcesos ($procesoDTO){
         
-         return $this->ProcesosDAO->ModificarProcesos($idProceso, $this->conexionBase);
-    }
-    function obtenerProcesos ($idProceso){
-        
-         return $this->ProcesosDAO->obtenarProcesos($idProceso, $this->conexionBase);
+         return $this->ProcesosDAO->ModificarProcesos($procesoDTO, $this->conexionBase);
     }
     function eliminarProceso ($idProceso){
         
          return $this->ProcesosDAO->eliminarProceso($idProceso, $this->conexionBase);
+    }
+    function consultarProcesos($idProceso){
+        
+        return $this->ProcesosDAO->consultarProcesos($idProceso, $this->conexionBase);
     }
 }

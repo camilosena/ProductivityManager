@@ -59,4 +59,8 @@ class FacadeProyectos {
       public function asignarUsuarioProyecto($idUsuario, $idProyecto) {
         return $this->proyectosDAO->asignarUsuarioProyecto($idUsuario, $idProyecto, $this->conexionBase);
     }
+    
+    public function insertarProductoProyecto($idProducto, $idProyecto, $cantidad) {
+        return $this->proyectosDAO->insertarProductoProyecto($idProducto, $idProyecto, $cantidad, $this->conexionBase);
+    }
 }

@@ -66,11 +66,12 @@ else if (isset($_GET['codUsuario'])) {
     $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);
     header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
 }
-else if (isset($post['elementosProyecto'])){
+else if (isset($_POST['productoPorProyecto_y'])){
     echo $_POST['cantidad1'];
     echo $_POST['cantidad2'];
     echo $_POST['cantidad3'];
     echo $_POST['producto1'];
     echo $_POST['producto2'];
-    echo $_POST['producto3'];
+    echo $_POST['producto3'];    
 }
+echo var_dump($_POST);

@@ -42,7 +42,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         <link href="../js/toastr.css" rel="stylesheet"/>
         <script src="../js/toastr.js"></script>
         <script src="../js/validaciones.js"></script>
-        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">        
     </head>
     <body>   
     <div id='cssmenu'>
@@ -395,7 +395,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         }
         if ($_GET['winOpen'] == true) {
             echo' <script language=javascript>                
-                        window.open("estudioDeCostos.php?projectNum=' . $_GET['projectNum'] . '&nameProject=' . $_GET['nameProject'] . '",' . '"estudioDeCostos.php","width=1000,height=640,top=30,left=150,scrollbars=NO");
+                        window.open("produccionProyecto.php?projectNum=' . $_GET['projectNum'] . '&nameProject=' . $_GET['nameProject'] . '",' . '"produccionProyecto.php","width=1100,height=640,top=30,left=100,scrollbars=NO");
                     </script>';
         }
         ?>

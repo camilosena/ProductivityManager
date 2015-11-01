@@ -171,4 +171,20 @@ class ProyectosDAO {
         }
         $cnn = null;
     }
+    
+    public function insertarProductoProyecto($idProducto, $idProyecto, $cantidad, PDO $cnn) {
+        $mensaje="";
+        try{
+            $sentencia= $cnn->prepare("INSERT INTO productoPorProyecto VALUES(?,?,?)");
+            $sentencia->bindParam(1, $idProducto);
+            $sentencia->bindParam(2, $idProyecto);
+            $sentencia->bindParam(3, $cantidad);           
+            $sentencia->execute();
+            $mensaje="Productos Asociados con Éxito";
+            return $mensaje;
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn=NULL;        
+    }
 }

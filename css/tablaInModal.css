@@ -14,7 +14,7 @@ table.tableSection {
     table.tableSection tr {
         width: 100%;
         display: table;
-        text-align: left;        
+        text-align: left;      
     }    
     
       table.tableSection th,table.tableSection td {
@@ -23,6 +23,9 @@ table.tableSection {
       font-size: 12px;
       height: 22px;
       padding-top: 2px;
+      border-left:1px solid gray;
+        border-right:1px solid gray;
+        border-bottom:1px solid gray;
     } 
     table.tableSection tr:hover{
         background: #f0f0f0;

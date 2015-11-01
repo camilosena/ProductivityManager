@@ -27,8 +27,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="../css/reset.css">
-        <link rel="stylesheet" type="text/css" href="../css/main_responsive.css">
-        <link rel="stylesheet" type="text/css" href="../css/tablaInModal.css">
+        <link rel="stylesheet" type="text/css" href="../css/main_responsive.css">        
         <script type="text/javascript" src="../js/jquery.js"></script>
         <script type="text/javascript" src="../js/carouFredSel.js"></script>
         <script type="text/javascript" src="../js/main.js"></script>
@@ -45,11 +44,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         <link rel="stylesheet" type="text/css" href="../css/stylesNavTop.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <script type="text/javascript" src="../js/script.js"></script>
-        <script type="text/javascript" src="../js/script2.js"></script>
-        <link rel="stylesheet" href="../css/colorbox.css">
-        <script src="../js/modalJS.min.js"></script>
-        <script src="../js/jquery.colorbox.js"></script>
-        <script  src="../js/scriptModales.js"></script>
+        <script type="text/javascript" src="../js/script2.js"></script>        
     </head>
     <body>
         <div id='cssmenu'>
@@ -137,12 +132,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <span itemprop="child" itemscope>  
                         <a href="listarProyectos.php" title="Ir a Proyectos" itemprop="url">
                             <span itemprop="title">Proyectos</span>              
-                        </a>  > 
-                        <span itemscope >
-                            <a href="" onclick="estudioCostos('estudioDeCostos.php')">
-                                <span itemprop="title">Estudio de Costos</span> 
-                            </a>
-                        </span>>
+                        </a>  >                        
                         <strong>Crear Nuevo Proyecto</strong> 
                     </span> 
                 </span>                   
@@ -166,32 +156,32 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         </div>  ';
                     }
                     if ($cont > 0) {
-;
+                        ;
                         ?>     
                         <div class="clear"> <br><input type="button" id="boton" value="Recargar" /></div>                                       
-<?php } ?>
+                    <?php } ?>
                 </div>
 
                 <script type="text/javascript">
-                    window.onload = function () {
-<?php
-$cont2 = 0;
-foreach ($progress as $progreso) {
-    $cont2++;
-    echo 'animateprogress("#html' . $cont2 . '", ' . $progreso['ejecutado'] . ');';
-}
-;
-?>
-                    }
-                    document.querySelector('#boton').addEventListener('click', function () {
-<?php
-$cont2 = 0;
-foreach ($progress as $progreso) {
-    $cont2++;
-    echo 'animateprogress("#html' . $cont2 . '", ' . $progreso['ejecutado'] . ');';
-}
-;
-?>
+                      window.onload = function () {
+                        <?php
+                        $cont2 = 0;
+                        foreach ($progress as $progreso) {
+                            $cont2++;
+                            echo 'animateprogress("#html' . $cont2 . '", ' . $progreso['ejecutado'] . ');';
+                        }
+                        ;
+                        ?>
+                                            }
+                                            document.querySelector('#boton').addEventListener('click', function () {
+                        <?php
+                        $cont2 = 0;
+                        foreach ($progress as $progreso) {
+                            $cont2++;
+                            echo 'animateprogress("#html' . $cont2 . '", ' . $progreso['ejecutado'] . ');';
+                        }
+                        ;
+                        ?>
 
                     });
                 </script>              
@@ -263,269 +253,13 @@ foreach ($progress as $progreso) {
                         function estudioCostos(URL) {
                             window.open(URL, "estudioDeCostos.php", "width=1000,height=640,top=30,left=150,scrollbars=NO");
                         }
-                    </script>
-                    <p><a class='inline' href="#inline_content" style="color:blue">Creación de Proyectos</a></p>
+                        function produccionProyecto(URL) {
+                            window.open(URL, "produccionProyecto.php", "width=1000,height=640,top=30,left=150,scrollbars=NO");
+                        }
+                    </script>                    
                 </form>
-            </div>
-        </div>    
-        <form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php"> 
-        <div style='display:none'>
-            <div id='inline_content' style='padding:10px; background:#fff;'>
-                <strong><h2 class="h330">Productos:</h2></strong><br>                             
-                <p class="obligatoriosD">Selecione los productos segun requerimientos y su respectiva cantidad</p><br>
-                <p class="obligatoriosD">Los campos "Cantidad" son obligatorios al seleccionar Productos.<br></p>                                                               
-                
-                    <br><table class="tableSection">
-                        <thead>
-                            <tr>
-                                <th class="th1"><span class="text">Código</span>
-                                </th>
-                                <th class="th2"><span class="text">Nombre</span>
-                                </th>
-                                <th class="th3"><span class="text">Ganancia</span>
-                                </th>
-                                 <th class="th4"><span class="text">Seleccionar</span>
-                                </th>                                
-                               <th class="th5"><span class="text">Cantidad</span>
-                                </th>
-                            </tr>
-                            </thead>                            
-                        <tbody>                            
-                                <?php 
-                                require_once '../facades/FacadeProductos.php';
-                                require_once '../modelo/dao/ProductosDAO.php';
-                                require_once '../modelo/utilidades/Conexion.php';
-                                $facadeProductos = new FacadeProductos;
-                                $products = $facadeProductos->listarProductos();
-                                foreach ($products as $productos) {                                    
-                                
-                                ?>
-                            <tr>
-                                <td class="td1">0<?php echo $productos['idProductos']; ?></td>
-                                <td class="td2"><?php echo $productos['nombreProducto']; ?></td>
-                                <td class="td3"><?php echo $productos['ganancia']; ?>%</td>
-                                <td class="td4"><input type="checkbox" name="producto<?php echo $productos['idProductos']; ?>"></td>
-                                <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                            </tr> 
-                                <?php                             
-                                }?>                               
-                        </tbody>
-                    </table>                               
-                <p><strong><br>Haga Click en la flecha para continuar</strong></p>          
-                <p><br><a class='inline' href="#inline_content2"><img src="../img/flechaDerecha.png" class="flechaDerecha"></a></p>
-            </div>
-        </div>        
-        <div style='display:none'>
-            <div id='inline_content2' style='padding:10px; background:#fff;'>
-                <p><strong><h2 class="h330">Materia Prima</h2></strong></p>
-                <p class="obligatoriosD">Selecione la materia prima segun los requerimientos.<br></p>
-                <br><table class="tableSection">
-                        <thead>
-                            <tr>
-                                <th class="th1"><span class="text">Código</span>
-                                </th>
-                                <th class="th2"><span class="text">Nombre</span>
-                                </th>
-                                <th class="th3"><span class="text">Consultar</span>
-                                </th>
-                                 <th class="th4"><span class="text">Seleccionar</span>
-                                </th>                                
-                               <th class="th5"><span class="text">Cantidad</span>
-                                </th>
-                            </tr>
-                            </thead>
-                        <tbody>
-                            <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro1"></td>
-                                <td class="td5"><input name="cantidad1" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                            </tr>                            
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro2"></td>
-                                <td class="td5"><input name="cantidad2" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                            </tr>    
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                        </tbody>
-                    </table>
-                                     
-                <p><br><br><a class='inline' href="#inline_content"><img src="../img/flechaIzquierda.png" class="flechaIzquierda"></a>
-                    <br><br><a class='inline' href="#inline_content3"><img src="../img/flechaDerecha.png" class="flechaDerecha"></a></p>
-            </div>
-        </div>
-        <div style='display:none'>
-            <div id='inline_content3' style='padding:10px; background:#fff;'>
-                <p><strong><h2 class="h330">Procesos</h2></strong></p>                
-                <p class="obligatoriosD">Procesos implicados en la creación de productos seleccionados<br></p>
-                <br><table class="tableSection">
-                        <thead>
-                            <tr>
-                                <th class="th1"><span class="text">Código</span>
-                                </th>
-                                <th class="th2"><span class="text">Nombre</span>
-                                </th>
-                                <th class="th3"><span class="text">Consultar</span>
-                                </th>
-                                 <th class="th4"><span class="text">Seleccionar</span>
-                                </th>                                
-                               <th class="th5"><span class="text">Cantidad</span>
-                                </th>
-                            </tr>
-                            </thead>
-                        <tbody>
-                            <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro1"></td>
-                                <td class="td5"><input name="cantidad1" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                            </tr>                            
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro2"></td>
-                                <td class="td5"><input name="cantidad2" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                            </tr>    
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                             <tr>
-                                <td class="td1">dfdfd</td>
-                                <td class="td2">dfdfd4544</td>
-                                <td class="td3">dfdfd</td>
-                                <td class="td4"><input type="checkbox" name="pro3"></td>
-                                <td class="td5"><input name="cantidad3" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                        
-                            </tr>  
-                        </tbody>
-                    </table>
-                                     
-                <p><br><br><a class='inline' href="#inline_content2"><img src="../img/flechaIzquierda.png" class="flechaIzquierda"></a>
-                    <br><br><button type="submit" class="guardarDerecho" name="elementosProyecto">Guardar</button></p>                
-            </div>
-        </div>
-            </form>
+            </div>                  
+        </div> 
         <footer class="footer-distributed">
             <div class="footer-left">
                 <span><img src="../img/logoEscala.png" width="210" height="120"></span>

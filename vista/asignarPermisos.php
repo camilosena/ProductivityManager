@@ -19,6 +19,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         header("location: ../index.php?error=No posee permisos para acceder a este directorio.");
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,12 +112,6 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             <div id="panelUnico">
                 <br>
                 <br><h2 class="h330">Asignar Permisos:</h2><hr>
-                <?php
-                require_once '../modelo/dao/CrearRolDAO.php';
-                require_once '../facades/FacadeCreateRol.php';
-                $facadeCreateRol = new FacadeCreateRol();
-                $all = $facadeCreateRol->ListarPermisos();
-                ?> 
 
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <div id="panelModificaPass">
@@ -127,7 +122,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         require_once '../modelo/dao/CrearRolDAO.php';
                         require_once '../facades/FacadeCreateRol.php';
                         $facadeCreateRol = new FacadeCreateRol();
-
+                        $all = $facadeCreateRol->ListarPermisos();
                         $todosR = $facadeCreateRol->ListarIdRoles();
                         ?>
                         <select class="input9" name="selectId"> 
@@ -151,10 +146,6 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         <div id="panelModificaPass">
                             <table>
                                 <?php
-                                require_once '../modelo/dao/CrearRolDAO.php';
-                                require_once '../facades/FacadeCreateRol.php';
-                                $facadeCreateRol = new FacadeCreateRol();
-                                $all = $facadeCreateRol->ListarPermisos();
                                 foreach ($all as $unit) {
                                                                      
                                     ?>     
@@ -188,7 +179,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             }
             ?>
         </div>
-    </div>    
+   
     <footer class="footer-distributed">
         <div class="footer-left">
             <span><img src="../img/logoEscala.png" width="210" height="120"></span>

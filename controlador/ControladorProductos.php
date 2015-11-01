@@ -14,8 +14,12 @@ require_once '../modelo/utilidades/GestionImagenes.php';
 require_once '../modelo/dao/InsumosDAO.php';
 require_once '../modelo/dto/InsumosDTO.php';
 require_once '../facades/FacadeInsumos.php';
-
+require_once '../modelo/dto/InsumosPorProductoDTO.php';
+ session_start();
 $facadeProductos = new FacadeProductos();
+$facadeInsumos = new FacadeInsumos();
+
+$dto = new InsumosPorProductoDTO();
 $productosDTO = new ProductosDTO();
 $insumosDTO = new InsumosDTO;
 
@@ -56,23 +60,34 @@ if (isset ($_GET['$idInactivar'])) {
 }else
 if (isset ($_GET['idVisualizar'])) {
     
-     session_start();
+    
     $_SESSION['VisualizarProducto']= $facadeProductos->consultarProducto($_GET['idVisualizar']);
    header("location: ../vista/agregarProductos.php?&#ModalImagen");
     
 }else
 if (isset ($_GET['$idIParaInsumos'])) {
-         session_start();
+         
     $_SESSION['Producto']= $facadeProductos->consultarProducto($_GET['$idIParaInsumos']);
-    header("location: ../vista/agregarProductos.php?&#ModalInsumos");
+    header("location: ../vista/insumosPorProducto.php");
        
 }else
-if (isset ($_GET['AsociarInsumos'])) {
-    $iDTO = $_GET['insumo'];
-    $pDTO = $_SESSION['Producto']['idProducto'];
-    $cantidad = $_GET['cantidad'];
+if (isset ($_POST['AsociarInsumos'])) {
+    $facadeInsumos->eliminarInsumos($_POST['idProducto']);
+   $dto->setIdProdcuto($_POST['idProducto']);
+
+    $cantidad = $_SESSION['cantidad'];
+    for ($i = 1; $i <= $cantidad; $i++) {
+        if (isset($_POST[$i])) {
+            $dto->setIdInsumo($_POST[$i]);
+            echo $mensaje = $facadeProductos->asociarInsumos($dto);
+        }
+    }
     
-    $facadeProductos->asociarInsumos($iDTO, $pDTO, $cantidad);
+
+    
+ header("location: ../vista/agregarProductos.php?mensaje=".$mensaje);
+}else 
+if (isset ($_POST['Atras'])) {
      header("location: ../vista/agregarProductos.php");
 }
 

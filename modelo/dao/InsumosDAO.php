@@ -65,8 +65,7 @@ class InsumosDAO {
     
     function eliminarInsumo($idEliminar, PDO $cnn){
         try {
-            $sql = 'delete from materiaprima where idMateriaPrima=?';
-            $query = $cnn->prepare($sql);
+            $query=$cnn->prepare('delete from materiaprimaporproducto where ProductosIdProductos=?');
             $query->bindParam(1, $idEliminar);
             $query->execute();
             $mensaje = "Registro eliminado";
@@ -78,5 +77,20 @@ class InsumosDAO {
        
         
     }
+    function obtenerInsumos($idProducto,PDO $cnn){
+        
+        try {
+            
+            $sql = 'SELECT idMateriaPrima_materiaPrima insumos from materiaprimaporproducto where ProductosIdProductos=?';
+            $query = $cnn->prepare($sql);
+            $query->bindParam(1, $idProducto);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
+    
  
 }

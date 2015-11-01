@@ -176,9 +176,15 @@ class CrearRolDAO {
          
         $mensaje = "";
         try {
-            $query = $cnn->prepare("Call eliminarRol (?)");
+            $query = $cnn->prepare('delete from permisosporrol where idRoles_Roles=?'); 
             $query->bindParam(1, $idRol);
+            $query2= $cnn->prepare('update areas set roles_idRoles=1 where roles_idRoles=?');
+            $query2->bindParam(1, $idRol);
+            $query3 = $cnn->prepare("Call eliminarRol (?)");
+            $query3->bindParam(1, $idRol);
             $query->execute();
+            $query2->execute();
+            $query3->execute();
             $mensaje = "Rol Eliminado";
         } catch (Exception $ex) {
            $mensaje = $ex->getMessage();  

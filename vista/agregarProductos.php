@@ -177,7 +177,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <input name="ganancia"  id="txtName"  style="display: inline-block"><br>
                     
                     <button type="submit" value="Enviar" name="AgregarProducto" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
-                    <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
+                    
                  </div>    
                 </form><br>
                 <div id="ModalImagen" class="modalDialog" title="ModalImagen">
@@ -190,80 +190,20 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         </div>
                     </div>
                 </div>
-                <?php
-                if (isset($_GET['mensaje'])) {
-                    echo $_GET['mensaje'] . '<br>';
-                    echo 'Su nuevo Código es: ' . $_GET['consecutivo'];
-                }
-                ?>
+               
             </div>
         </div> 
-        <div id="ModalInsumos" class="modalDialog" title="Asignar Insumos">
-                    <div>
-                        <a href="#close" title="Close" class="close">X</a><br>					
-                        <h2 class="h330">Insumos Utilizados para <?php echo $_SESSION['Producto']['nombreProducto']?>:</h2><br>
-                        <div id="panelModificaPass">
-                            <table>
-                                <thead>
-                                <td>Insumo</td>
-                                <td>Cantidad</td>
-                                <td>Medida</td>
-                                </thead>
-                           <?PHP
-                                           require_once '../facades/FacadeInsumos.php';
-                                           require_once '../modelo/dao/InsumosDAO.php';
-                                           $facedeInsumos = new FacadeInsumos();
-                                           $insumos = $facedeInsumos->listarInsumos();
-                                           foreach ($insumos as $insumo){
-                                            ?>  
-                                
-                                    <tr>
-                                     
-                                        
-                                        <td> <input name="insumo" size="7" value ="<?php echo $insumo['nombre']; ?>" readonly></td>
-                                        <td>  <input name="cantidad" size="1" type="text" id="txtName"  placeholder="12"   style="display: inline-block"><br></td>
-                                        <td> <input name="insumo" size="1" value ="<?php echo $insumo['unidad']; ?>" readonly></td>
-                                        <td><input type="checkbox" id="estado" name="<?php echo $insumo['numero']; ?>" value="<?php echo $insumo['numero']; ?>"/>   </td>         
-
-                                    </tr>
-                                            
-                                            <?PHP   
-                                           }
-                           ?>
-                                   <input type="submit" value="Asociar Insumos" name="AsociarInsumos"> 
-                            </table>      
-                            
-
-                            
-                             
-                        </div>
-
-                        <?php
-                        if (isset($_GET['mensaje'])) {
-                            ?>
-                            <div class="row"><br><br>
-                                <div class="col-md-6"></div>
-                                <div class="col-md-1 text-center"><h4><?php echo $mensaje = $_GET['mensaje'] ?></h4></div>
-                                <div class="col-md-5"></div>
-                            </div>
-                            <?php
-                        }
-                        ?>
-
-
-                    </div>
-        </div>   
-        <footer class="footer-distributed">
+       <footer class="footer-distributed">
             <div class="footer-left">
-                <span><img src="../img/logoEscala.png" width="210" height="120"></span>
+                            <span><img src="../img/logoEscala.png" width="210" height="120"></span>
                 <p class="footer-links">
-                    <a href="../index.php">Inicio</a>
+                                    <a href="../index.php">Inicio</a>
                     ·
-                    <a href="../nuestrosClientes.html">Clientes</a>
+                                        <a href="../nuestrosClientes.html">Clientes</a>
+                                        ·
+                                        <a href="../index.php">¿Quienes Somos?</a>                   
                     ·
-                    <a href="../index.php">¿Quienes Somos?</a>                   
-                    ·
-                    <a href="../contactecnos.html">Contacto</a>
+                                        <a href="../contactecnos.html">Contacto</a>
                 </p>
                 <p class="footer-company-name">Productivity Manager &copy; 2015</p>
             </div>
@@ -287,12 +227,12 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     Para aumentar la Productividad es absolutamente necesario incorporar a los mejores trabajadores
                 </p>
                 <div class="footer-icons">
-                    <a href="https://www.facebook.com/productivitymanager"><img src="../img/facebookFoot.png"></a>
-                    <a href="https://twitter.com/Productivity_Mg"><img src="../img/twitterFoot.png"></a>                 
-                    <a href="mailto:productivitymanagersoftware@gmail.com"></i><img src="../img/gmailFoot.png"></a>
+                                    <a href="https://www.facebook.com/productivitymanager"><img src="../img/facebookFoot.png"></a>
+                                    <a href="https://twitter.com/Productivity_Mg"><img src="../img/twitterFoot.png"></a>                 
+                                    <a href="mailto:productivitymanagersoftware@gmail.com"></i><img src="../img/gmailFoot.png"></a>
                 </div>
             </div>
-        </footer> 	
+        </footer>   
     </body>
 </html>
 

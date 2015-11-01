@@ -121,20 +121,23 @@ class ProductosDAO {
         }
         $cnn = null;
     }
-    function asociarInsumos(InsumosDTO $iDTO, ProductosDTO $pDTO, $cantidad, PDO $cnn){
+    
+    function asociarInsumos(InsumosPorProductoDTO $dto,  PDO $cnn){
         
-        try {
+        try {           
             $sentencia = $cnn->prepare("INSERT INTO materiaprimaporproducto VALUES(?,?,?)");
-            $sentencia->bindParam(1, $pDTO->getIdProducto());
-            $sentencia->bindParam(2, $iDTO->getId());
-            $sentencia->bindParam(3, $cantidad);
-         
+            $sentencia->bindParam(1, $dto->getIdProdcuto());
+            $sentencia->bindParam(2, $dto->getIdInsumo());
+            $sentencia->bindParam(3, $dto->getCantidad());
+            $sentencia->execute();
             $mensaje = "Prodcuto Registrado";
         } catch (Exception $ex) {
-            $mensaje = $ex->getMessage();
+            $mensaje = $ex;
         }
         $cnn = NULL;
         return $mensaje;    
     }
+    
+    
     
 }

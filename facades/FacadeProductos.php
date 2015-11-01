@@ -31,6 +31,10 @@ class FacadeProductos {
         
         return $this->productosDAO->listarProductos($this->conexion);
     }
+    function listarProductosActivos(){
+        
+        return $this->productosDAO->listarProductosActivos($this->conexion);
+    }
     
     function consecutivoProducto(){
         
@@ -48,9 +52,10 @@ class FacadeProductos {
         
         return $this->productosDAO->consultarProductos($idProducto, $this->conexion);
     }
-    function asociarInsumos($iDTO, $pDTO, $cantidad){
+    function asociarInsumos($dto){
         
-        return $this->productosDAO->asociarInsumos($iDTO, $pDTO, $cantidad, $this->conexion);
+        return $this->productosDAO->asociarInsumos($dto, $this->conexion);
     }
+    
 
 }

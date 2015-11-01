@@ -39,4 +39,13 @@ class FacadeInsumos {
         
         return $this->insumoDAO->eliminarInsumo($idEliminar, $this->conexionBase);
     }
+    function consultarAsignacion(){
+        
+        return $this->insumoDAO->consultarAsignación($this->conexionBase);
+    }
+    function obtenerInsumos($idProducto){
+    
+         return $this->insumoDAO->obtenerInsumos($idProducto, $this->conexionBase);   
+    }
+
 }

@@ -88,8 +88,8 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <div id='inline_content' style='padding:10px; background:#fff;'>
                     <br><hr>
                     <strong><h2 class="h330">Productos:</h2></strong><br>                             
-                    <p class="obligatoriosD">Selecione los productos segun requerimientos y su respectiva cantidad</p><br>
-                    <p class="obligatoriosD">Los campos "Cantidad" son obligatorios al seleccionar Productos.<br></p>                                                               
+                    <p class="obligatoriosD">Selecione los productos segun requerimientos y su respectiva cantidad.</p><br>
+                    <p class="obligatoriosD">Los campos "Cantidad" son obligatorios por cada Producto Seleccionado.<br></p>                                                               
 
                     <br><table class="tableSection">
                         <thead>
@@ -119,21 +119,21 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                     <td class="td1">0<?php echo $productos['idProductos']; ?></td>
                                     <td class="td2"><?php echo $productos['nombreProducto']; ?></td>
                                     <td class="td3"><?php echo $productos['ganancia']; ?>%</td>
-                                    <td class="td4"><input type="checkbox" name="producto<?php echo $productos['idProductos']; ?>"></td>
-                                    <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                                </tr> 
+                                    <td class="td4"><input type="checkbox"  name="producto<?php echo $productos['idProductos']; ?>"></td>
+                                    <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" type="number" maxlength="64" id="cantidadProducto"></td>
+                                </tr>                       
                                 <?php }
                             ?>                               
                         </tbody>
                     </table>                               
-                    <p><strong><br>Haga Click en la flecha para continuar</strong></p>          
-                    <p><br><a class='inline' href="#inline_content2"><img src="../img/flechaDerecha.png" class="flechaDerecha"></a></p>
+                    <p><strong><br><br>Continue con Materia Prima</strong></p>                              
                 </div>
-            </div>        
-            <div style='display:none'>
+            </div> 
+                <hr>
+            <div>
                 <div id='inline_content2' style='padding:10px; background:#fff;'>
                     <p><strong><h2 class="h330">Materia Prima</h2></strong></p>
-                    <p class="obligatoriosD">Selecione la materia prima segun los requerimientos.<br></p>
+                    <p class="obligatoriosD"><br>Selecione la materia prima segun los requerimientos de Cliente.<br></p>
                     <br><table class="tableSection">
                         <thead>
                             <tr>
@@ -169,9 +169,8 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                             ?>                               
                         </tbody>
                     </table>
-
-                    <p><br><br><a class='inline' href="#inline_content"><img src="../img/flechaIzquierda.png" class="flechaIzquierda"></a>
-                        <br><br><a class='inline' href="#inline_content3"><img src="../img/flechaDerecha.png" class="flechaDerecha"></a></p>
+                    <p><br><br><button type="button" class="guardarIzqiuerdo" name="procesos" onclick="location.href='#inline_content3'">Visualizar Procesos</button>
+                    <br><br><button type="submit" class="guardarDerecho" name="elementosProyecto">Guardar</button></p>
                 </div>
             </div>
             <div style='display:none'>
@@ -214,7 +213,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         </tbody>
                     </table>
                     <p><br><br><a class='inline' href="#inline_content2"><img src="../img/flechaIzquierda.png" class="flechaIzquierda"></a>
-                        <br><br><button type="submit" class="guardarDerecho" name="elementosProyecto">Guardar</button></p>                
+                        </p>                
                 </div>
             </div>
         </form>

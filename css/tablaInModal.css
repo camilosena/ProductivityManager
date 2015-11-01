@@ -22,9 +22,7 @@ table.tableSection {
       font-family:  sans-serif;
       font-size: 12px;
       height: 22px;
-      padding-top: 2px;
-      border-left:1px solid gray;
-        border-right:1px solid gray;
+      padding-top: 2px;     
         border-bottom:1px solid gray;
     } 
     table.tableSection tr:hover{
@@ -93,5 +91,11 @@ table.tableSection {
     .guardarDerecho{
         position:absolute;
         right:5%;
+        bottom:5%;     
+    }  
+    
+    .guardarIzquierdo{
+        position:absolute;
+        left:5%;
         bottom:5%;     
     }  

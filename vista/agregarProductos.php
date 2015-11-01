@@ -121,18 +121,31 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         <?php
                     require_once '../facades/FacadeProductos.php';
                     require_once '../modelo/dao/ProductosDAO.php';
+                    require_once '../modelo/dto/ProductosDTO.php';
+                    $pDTO = new ProductosDTO();
                     $facadeProductos = new FacadeProductos();
                     $todos=$facadeProductos->listarProductos();
+                   
                   foreach ($todos as $unit) {
                             ?> 
                         
                             <tr>
                                
                                 <td> <?php echo $unit['nombreProducto']; ?></td>
-                                <td> <img src="../productos/<?php echo $unit['fotoProducto']; ?>" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></td>
-                                <td> <input name="descripcion" size="10" value ="<?php echo $unit['descripcionProducto']; ?>" disabled ></td>
-                                <td><a name="eliminarProducto" title="Eliminar Producto" class="me"  href="../controlador/ControladorProductos.php?idEliminar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/eliminar.png"></a></td>
-                                        
+                                <td><a name="InsumosProducto" title="Insumos del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/editar.png"></a></td>
+                                <?php
+                                    
+                                    if ($unit['estadoProducto'] == 'Activo' ) {
+                                ?>
+                                <td><a name="InactivarProducto" title="Inactivar Producto" class="me"  href="../controlador/ControladorProductos.php?$idInactivar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/eliminar.png"></a></td>
+                                <?php
+                                    }else{
+                                 ?>   
+                                <td><a name="ActivarProducto" title=" Habilitar Producto " class="me"  href="../controlador/ControladorProductos.php?$idActivar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ascenso.png"></a></td>
+                               <?php
+                                    }
+                                 ?> 
+                                <td><a name="visualizarProducto" title="Ver Producto" class="me"  href="../controlador/ControladorProductos.php?idVisualizar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ojo.png"></a></td>       
 
                             </tr>
                         
@@ -147,6 +160,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <?php
                          
                 $consecutivo=$facadeProductos->consecutivoProducto();
+                $estado = $pDTO->getEstado();
                
                 ?>
                     
@@ -159,13 +173,23 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <input name="Imagen" type="file"  id="imagen"  style="display:inline-block"></label><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Descripción: </span></label>
                     <input name="descripcion"  id="txtName"  style="display: inline-block"><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">% Ganancia: </span></label>
+                    <input name="ganancia"  id="txtName"  style="display: inline-block"><br>
                     
                     <button type="submit" value="Enviar" name="AgregarProducto" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
                     <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
                  </div>    
                 </form><br>
-                
-                
+                <div id="ModalImagen" class="modalDialog" title="ModalImagen">
+                    <div>
+                        <a href="#close" title="Close" class="close">X</a><br>					
+                        <h2 class="h330"><?php echo $_SESSION['VisualizarProducto']['nombreProducto']; ?> :</h2><br>
+                        <div id="panelModificaPass">
+                            <img src="../productos/<?php echo $_SESSION['VisualizarProducto']['fotoProducto']; ?>" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px">
+                       <input name="descripcion" size="10" value ="<?php echo $_SESSION['VisualizarProducto']['descripcionProducto']; ?>" disabled >
+                        </div>
+                    </div>
+                </div>
                 <?php
                 if (isset($_GET['mensaje'])) {
                     echo $_GET['mensaje'] . '<br>';
@@ -173,7 +197,62 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 }
                 ?>
             </div>
-        </div>    
+        </div> 
+        <div id="ModalInsumos" class="modalDialog" title="Asignar Insumos">
+                    <div>
+                        <a href="#close" title="Close" class="close">X</a><br>					
+                        <h2 class="h330">Insumos Utilizados para <?php echo $_SESSION['Producto']['nombreProducto']?>:</h2><br>
+                        <div id="panelModificaPass">
+                            <table>
+                                <thead>
+                                <td>Insumo</td>
+                                <td>Cantidad</td>
+                                <td>Medida</td>
+                                </thead>
+                           <?PHP
+                                           require_once '../facades/FacadeInsumos.php';
+                                           require_once '../modelo/dao/InsumosDAO.php';
+                                           $facedeInsumos = new FacadeInsumos();
+                                           $insumos = $facedeInsumos->listarInsumos();
+                                           foreach ($insumos as $insumo){
+                                            ?>  
+                                
+                                    <tr>
+                                     
+                                        
+                                        <td> <input name="insumo" size="7" value ="<?php echo $insumo['nombre']; ?>" readonly></td>
+                                        <td>  <input name="cantidad" size="1" type="text" id="txtName"  placeholder="12"   style="display: inline-block"><br></td>
+                                        <td> <input name="insumo" size="1" value ="<?php echo $insumo['unidad']; ?>" readonly></td>
+                                        <td><input type="checkbox" id="estado" name="<?php echo $insumo['numero']; ?>" value="<?php echo $insumo['numero']; ?>"/>   </td>         
+
+                                    </tr>
+                                            
+                                            <?PHP   
+                                           }
+                           ?>
+                                   <input type="submit" value="Asociar Insumos" name="AsociarInsumos"> 
+                            </table>      
+                            
+
+                            
+                             
+                        </div>
+
+                        <?php
+                        if (isset($_GET['mensaje'])) {
+                            ?>
+                            <div class="row"><br><br>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-1 text-center"><h4><?php echo $mensaje = $_GET['mensaje'] ?></h4></div>
+                                <div class="col-md-5"></div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+
+
+                    </div>
+        </div>   
         <footer class="footer-distributed">
             <div class="footer-left">
                 <span><img src="../img/logoEscala.png" width="210" height="120"></span>

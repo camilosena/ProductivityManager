@@ -17,14 +17,15 @@ class ProductosDAO {
     function agregarProducto(ProductosDTO $productoDTO, PDO $cnn){
         
          try {
-            $sentencia = $cnn->prepare("INSERT INTO productos VALUES(?,?,?,?)");
+            $sentencia = $cnn->prepare("INSERT INTO productos VALUES(?,?,?,?,?,?)");
             $sentencia->bindParam(1, $productoDTO->getIdProducto());
             $sentencia->bindParam(2, $productoDTO->getNombre());
             $sentencia->bindParam(3, $productoDTO->getImagen());
             $sentencia->bindParam(4, $productoDTO->getDescripción());
-          
+            $sentencia->bindParam(5, $productoDTO->getPorcentaje());
+            $sentencia->bindParam(6, $productoDTO->getEstado());
             $sentencia->execute();
-            $mensaje = "Prodcuto Registrada";
+            $mensaje = "Prodcuto Registrado";
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }
@@ -35,7 +36,7 @@ class ProductosDAO {
     function listarProductos(PDO $cnn){
         
          try {
-            $sql = "select * from productos";
+            $sql = "select * from productos" ;
             $query = $cnn->prepare($sql);
            
             $query->execute();
@@ -45,8 +46,20 @@ class ProductosDAO {
         }
         $cnn = null;
     }
-    
-    function consecutivoProductos(PDO $cnn){
+    function listarProductosActivos(){
+        try {
+            $sql = "select * from productos where estadoProducto = 'Activo'" ;
+            $query = $cnn->prepare($sql);
+           
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+        
+    }
+            function consecutivoProductos(PDO $cnn){
         
         try {
            
@@ -60,19 +73,68 @@ class ProductosDAO {
         }
         $cnn = null;
     }
-    function eliminarProducto($idEliminar, PDO $cnn){
+    function inactivarProducto($idEstado, PDO $cnn){
         
          try {
-            $sql = 'delete from productos where idProductos=?';
+             
+            
+            $sql = "update productos set estadoProducto = 'Inactivo' where idProductos=?";
             $query = $cnn->prepare($sql);
-            $query->bindParam(1, $idEliminar);
+            $query->bindParam(1, $idEstado);
             $query->execute();
-            $mensaje = "Registro eliminado";
-            return $query->fetchAll();
+            $mensaje = "Producto Inactivo";
+            return $mensaje;
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }
         $cnn = null;
        
     }
+    function activarProducto($idEstado, PDO $cnn){
+        
+         try {
+             
+            
+            $sql = "update productos set estadoProducto = 'Activo' where idProductos=?";
+            $query = $cnn->prepare($sql);
+            $query->bindParam(1, $idEstado);
+            $query->execute();
+            $mensaje = "Producto Habilitado";
+            return $mensaje;
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+       
+    }
+    function consultarProductos($idProducto, PDO $cnn){
+        
+          try {
+            $sql = "select * from productos where idProductos = ?";
+            
+                $query = $cnn->prepare($sql);
+             $query->bindParam(1, $idProducto);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
+    function asociarInsumos(InsumosDTO $iDTO, ProductosDTO $pDTO, $cantidad, PDO $cnn){
+        
+        try {
+            $sentencia = $cnn->prepare("INSERT INTO materiaprimaporproducto VALUES(?,?,?)");
+            $sentencia->bindParam(1, $pDTO->getIdProducto());
+            $sentencia->bindParam(2, $iDTO->getId());
+            $sentencia->bindParam(3, $cantidad);
+         
+            $mensaje = "Prodcuto Registrado";
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+        }
+        $cnn = NULL;
+        return $mensaje;    
+    }
+    
 }

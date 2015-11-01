@@ -36,9 +36,21 @@ class FacadeProductos {
         
         return $this->productosDAO->consecutivoProductos($this->conexion);
     }
-    function eliminarProducto($idEliminar){
+    function inactivarProducto($idInactivar){
         
-        return $this->productosDAO->eliminarProducto($idEliminar, $this->conexion);
+        return $this->productosDAO->inactivarProducto($idInactivar,  $this->conexion);
+    }
+    function activarProducto($idActivar){
+        
+        return $this->productosDAO->activarProducto($idActivar,  $this->conexion);
+    }
+    function consultarProducto($idProducto){
+        
+        return $this->productosDAO->consultarProductos($idProducto, $this->conexion);
+    }
+    function asociarInsumos($iDTO, $pDTO, $cantidad){
+        
+        return $this->productosDAO->asociarInsumos($iDTO, $pDTO, $cantidad, $this->conexion);
     }
 
 }

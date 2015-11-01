@@ -61,8 +61,16 @@ else if (isset($_GET['idProject'])) {
             "&fechaFin=" . $proyectos['fechaFin'] . "&estado=" . $proyectos['estado'] . "&ejecutado=" . $proyectos['ejecutado'] . "&obs=" . $proyectos['observaciones'] . "&#verUsuario");
 }
 //Implementar Facade Para asignar usuario a tabla usuarioPorProyecto
-if (isset($_GET['codUsuario'])) {
+else if (isset($_GET['codUsuario'])) {
     $facadeProyecto = new FacadeProyectos;
     $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);
     header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
+}
+else if (isset($post['elementosProyecto'])){
+    echo $_POST['cantidad1'];
+    echo $_POST['cantidad2'];
+    echo $_POST['cantidad3'];
+    echo $_POST['producto1'];
+    echo $_POST['producto2'];
+    echo $_POST['producto3'];
 }

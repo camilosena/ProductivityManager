@@ -110,13 +110,23 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             </nav>
 
             <div id="panelUnico">
+                <label for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Cargar Archivo: </span></label>
+                     <input type="file" id="fileLoad" class="file" name="cargarDatos" onchange="submit();" style="display:none">  
+                     <a name="CargaDeDatos" title="Cargar Archivo" class="me"  id="loadFile" href="javascript:function()" ><img class="iconos" src="../img/subirDatos.png"></a>
+                     <script type="text/javascript">
+
+                        $('#loadFile').click(function(event) {
+                          $('#fileLoad').click();
+                        });
+                     </script>
+                    
                 <br>
                 <br><h2 class="h330">Agregar Productos:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <form class="formRegistro" method="post" action="../controlador/ControladorProductos.php" enctype="multipart/form-data"> 
                  <div id="panelModificaPass">   
-                   
-                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Productos: </span></label>
+                    
+                     <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Productos: </span></label>
                     <table>
                         <?php
                     require_once '../facades/FacadeProductos.php';
@@ -178,8 +188,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     
                     <button type="submit" value="Enviar" name="AgregarProducto" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
                     
-                 </div>    
+                 </div> 
+                    
                 </form><br>
+                
                 <div id="ModalImagen" class="modalDialog" title="ModalImagen">
                     <div>
                         <a href="#close" title="Close" class="close">X</a><br>					

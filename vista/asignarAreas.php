@@ -16,7 +16,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         }
     }
     if ($total == 0) {
-        header("location: ../index.php?error=No posee permisos para acceder a este directorio.");
+        header("location: ../vista/listarProyectos.php?error=No posee permisos para acceder a este directorio.");
     }
 }
 ?>

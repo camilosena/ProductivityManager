@@ -15,9 +15,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             $total--;
         }
     }
-    if ($total == 0) {
-        header("location: ../index.php?error=No posee permisos para acceder a este directorio.");
-    }
+    if($total==0){
+       header("location: ../../".$_SESSION['paginaOrigen']. "?errorPermiso=No posee permisos para acceder a este directorio.");       
+   }
+   $_SESSION['paginaOrigen']=$_SERVER['REQUEST_URI'];
 }
 ?>
 <!DOCTYPE html>
@@ -39,6 +40,8 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <script type="text/javascript" src="../js/script.js"></script>
         <script type="text/javascript" src="../js/script2.js"></script>
+        <link href="../js/toastr.css" rel="stylesheet"/>
+        <script src="../js/toastr.js"></script>
     </head>
     <body>
      <div id='cssmenu'>
@@ -67,6 +70,31 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
     </div>    
         <header>              
             <div class="wrapper">
+            <?php if (isset($_GET['errorPermiso'])) { ?>
+            <script language="JavaScript" type="text/javascript">
+                window.onload = function () {
+                    Command: toastr["error"]("<?php echo $_GET['errorPermiso']; ?>")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-full-width",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+        <?php } ?>
+        </script>
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
                <nav>

@@ -16,8 +16,9 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         }
     }
    if($total==0){
-       header("location: ../index.php?error=No posee permisos para acceder a este directorio.");       
+       header("location: ../../".$_SESSION['paginaOrigen']. "?errorPermiso=No posee permisos para acceder a este directorio.");       
    }
+   $_SESSION['paginaOrigen']=$_SERVER['REQUEST_URI'];
 }
 ?>
 <!DOCTYPE html>
@@ -99,7 +100,32 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 </p>
             </div>
         </header>        
-        <div class="wrapper">         
+        <div class="wrapper">
+        <?php if (isset($_GET['errorPermiso'])) { ?>
+            <script language="JavaScript" type="text/javascript">
+                window.onload = function () {
+                    Command: toastr["error"]("<?php echo $_GET['errorPermiso']; ?>")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-full-width",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+        <?php } ?>
+        </script>         
     <nav class="migas"><br>
     <span itemscope >
         <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 

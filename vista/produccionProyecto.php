@@ -15,9 +15,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             $total--;
         }
     }
-    if ($total == 0) {
-        header("location: ../index.php?error=No posee permisos para acceder a este directorio.");
-    }
+    if($total==0){
+       header("location: ../../".$_SESSION['paginaOrigen']. "?errorPermiso=No posee permisos para acceder a este directorio.");       
+   }
+   $_SESSION['paginaOrigen']=$_SERVER['REQUEST_URI'];
 }
 ?>
 <!DOCTYPE html>
@@ -72,6 +73,31 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             </script>';
         }
         ?>     
+        <?php if (isset($_GET['errorPermiso'])) { ?>
+            <script language="JavaScript" type="text/javascript">
+                window.onload = function () {
+                    Command: toastr["error"]("<?php echo $_GET['errorPermiso']; ?>")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-full-width",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+        <?php } ?>
+        </script>
         <div class="wrapper">                                              
             <h2 class="h330"><br>Producción de Proyecto <?php echo $_GET['projectNum'] . "-" . $_GET['nameProject']; ?>:</h2><br>                
             <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>

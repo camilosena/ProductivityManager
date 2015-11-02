@@ -16,9 +16,9 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         }
     }
     if($total==0){
-       header("location: ../../".$_SESSION['paginaOrigen']. "?errorPermiso=No posee permisos para acceder a este directorio.");       
+       header("location: ".$_SESSION['paginaOrigen']. "?errorPermiso=No posee permisos para acceder a este directorio.");       
    }
-   $_SESSION['paginaOrigen']=$_SERVER['REQUEST_URI'];
+   $_SESSION['paginaOrigen']=$_SERVER['PHP_SELF'];
 }
 ?>
 <!DOCTYPE html>
@@ -158,7 +158,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             </nav>    
             <br><br>
             <h2 class="h330">Lista de Proyectos:</h2>
-            <?php
+            <?php                        
             if (isset($_GET['mensaje'])) {
                 echo '<script> 
                 Command: toastr["success"]("' . $_GET['mensaje'] . '", "Enhorabuena")

@@ -12,40 +12,49 @@
  * @author Jorge M. Izquierdo N
  */
 class FacadeInsumos {
+
     //put your code here
-     private $conexionBase = null;
+    private $conexionBase = null;
     private $insumoDAO = null;
-    
+
     function __construct() {
         $this->conexionBase = Conexion::getConexion();
         $this->insumoDAO = new InsumosDAO();
     }
 
-    function agregarInsumo(InsumosDTO $Idto){
-         
+    function agregarInsumo(InsumosDTO $Idto) {
+
         return $this->insumoDAO->agregarInsumo($Idto, $this->conexionBase);
-        
     }
-    
-    function listarInsumos(){
-        
+
+    function listarInsumos() {
+
         return $this->insumoDAO->listarInsumos($this->conexionBase);
     }
-    function consecutivoInsumos(){
-        
-         return $this->insumoDAO->consecutivoInsumos($this->conexionBase);
+
+    function consecutivoInsumos() {
+
+        return $this->insumoDAO->consecutivoInsumos($this->conexionBase);
     }
-    function eliminarInsumos($idEliminar){
-        
+
+    function eliminarInsumos($idEliminar) {
+
         return $this->insumoDAO->eliminarInsumo($idEliminar, $this->conexionBase);
     }
-    function consultarAsignacion(){
-        
+
+    function consultarAsignacion() {
+
         return $this->insumoDAO->consultarAsignación($this->conexionBase);
     }
-    function obtenerInsumos($idProducto){
-    
-         return $this->insumoDAO->obtenerInsumos($idProducto, $this->conexionBase);   
+
+    function obtenerInsumos($idProducto) {
+
+        return $this->insumoDAO->obtenerInsumos($idProducto, $this->conexionBase);
+    }
+
+    function obtenerInsumosPorID($idMateriaPrima) {
+
+        return $this->insumoDAO->obtenerInsumoPorID($idMateriaPrima, $this->conexionBase);
     }
 
 }

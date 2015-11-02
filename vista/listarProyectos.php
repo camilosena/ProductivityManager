@@ -158,7 +158,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             </nav>    
             <br><br>
             <h2 class="h330">Lista de Proyectos:</h2>
-            <?php                        
+            <?php                  
             if (isset($_GET['mensaje'])) {
                 echo '<script> 
                 Command: toastr["success"]("' . $_GET['mensaje'] . '", "Enhorabuena")
@@ -295,7 +295,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
 
                     <tbody>
                         <?php
-                        if (isset($_GET['busquedaProject'])) {
+                        if (isset($_GET['mensajeFiltro'])) {
                             if (empty($_SESSION['filtroProyectos'])) {
                                 $_SESSION['filtroProyectos'] = '';
                             } else {

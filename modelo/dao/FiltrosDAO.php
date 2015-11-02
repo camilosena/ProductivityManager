@@ -21,7 +21,7 @@ class FiltrosDAO {
     public function busquedaProyectos(ProyectosDTO $dto, PDO $cnn) {                
         try {             
             $sentencia = $cnn->prepare("Select * from proyectos where idProyecto like '%".$dto->getIdProyecto()."%' and nombreProyecto like '%".$dto->getNombreProyecto()."%'
-                                and fechaInicio like '%".$dto->getFechaInicio()."%' and fechaFin like '%".$dto->getFechaFin()."%' and estado like '%".$dto->getEstado()."%' and ejecutado like '%".$dto->getEjecucion()."%' ");
+                                and fechaInicio like '%".$dto->getFechaInicio()."%' and fechaFin like '%".$dto->getFechaFin()."%' and estadoProyecto like '%".$dto->getEstado()."%' and ejecutado like '%".$dto->getEjecucion()."%' ");
             $sentencia->execute();  
             return $sentencia->fetchAll();
         } catch (Exception $ex) {

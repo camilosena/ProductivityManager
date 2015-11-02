@@ -19,6 +19,10 @@ if (isset($_POST['crearProyecto'])) {
     $fechaFin = '';
     $estado = 'Sin Produccion';
     $observaciones = $_POST['descripcion'];    
+    $fecha_inicio = new DateTime($_POST['fechaInicio']);
+    $hoy = date('Y-m-d');    
+     $fecha_actual = new DateTime($hoy);
+    if ($fecha_actual <= $fecha_inicio) {
         $proyectoDTO = new ProyectosDTO($idProyecto, $nombreProyecto, $fechaInicio, $fechaFin, $estado, $observaciones);
         $facadeProyectos = new FacadeProyectos;
         $facadeUsuario = new FacadeUsuarios;
@@ -28,7 +32,10 @@ if (isset($_POST['crearProyecto'])) {
         $mensaje3 = $facadeUsuario->asignarUsuarioProyecto($gerenteEncargado, $_POST['idProyecto']);
         $abrirVentana = true;
         header("location: ../vista/listarProyectos.php?mensaje=" . $mensaje . "&winOpen=" . $abrirVentana . "&mensaje2=" . $mensaje2 . "&projectNum=" . $_POST['idProyecto'] . "&nameProject=" . $_POST['nombreProyecto']);
-    
+    } else {
+        $fechas = 'La Fecha Inicio debe ser Futura';
+        header("location: ../vista/crearProyecto.php?mensajeFecha=" . $fechas);
+    }
 } else if (isset($_POST['modificarProyecto'])) {
     $idProyecto = $_POST['idProyecto'];
     $nombreProyecto = $_POST['nombreProyecto'];

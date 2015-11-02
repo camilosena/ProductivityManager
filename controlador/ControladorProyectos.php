@@ -61,7 +61,8 @@ else if (isset($_GET['codUsuario'])) {
     $facadeProyecto = new FacadeProyectos;
     $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);
     header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
-} else if (isset($_POST['elementosProyecto'])) {
+} 
+else if (isset($_POST['elementosProyecto'])) {
 //echo var_dump($_POST);    
     $cantidadTipo = $_POST['cantidadTipo'];
     $idProyecto = $_POST['idProyecto'];
@@ -85,5 +86,6 @@ else if (isset($_GET['codUsuario'])) {
             $fProyecto->insertarMateriaProyecto($insumo['insumos'], $idProyecto, $total, 0);
         }        
     }
+    $fProyecto->cambiarEstadoProyecto('Sin Estudio Costos', $_POST['idProyecto']);
     header("location: ../vista/produccionProyecto.php?mensaje=".$mensaje);
 }

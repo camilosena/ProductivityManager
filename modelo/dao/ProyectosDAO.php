@@ -91,7 +91,7 @@ class ProyectosDAO {
      public function ModificarProyecto(ProyectosDTO $proyectoDTO, PDO $cnn) {
         $mensaje = "";
         try {
-            $query = $cnn->prepare("UPDATE  proyectos SET nombreProyecto=?, fechaInicio=?, fechaFin=?, estado=?, observaciones=? where idProyecto=?");            
+            $query = $cnn->prepare("UPDATE  proyectos SET nombreProyecto=?, fechaInicio=?, fechaFin=?, estadoProyecto=?, observaciones=? where idProyecto=?");            
             $query->bindParam(1, $proyectoDTO->getNombreProyecto());
             $query->bindParam(2, $proyectoDTO->getFechaInicio());
             $query->bindParam(3, $proyectoDTO->getFechaFin());
@@ -134,7 +134,7 @@ class ProyectosDAO {
     public function cambiarEstadoProyecto($estado, $idProyecto, PDO $cnn) {
         $mensaje='';
      try {
-            $query = $cnn->prepare("UPDATE  proyectos SET estado=? where idProyecto=?");
+            $query = $cnn->prepare("UPDATE  proyectos SET estadoProyecto=? where idProyecto=?");
             $query->bindParam(1, $estado);
             $query->bindParam(2, $idProyecto);
             $query->execute();

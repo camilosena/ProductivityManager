@@ -228,7 +228,7 @@ if($total==0){
                     <img src="../img/imprimir.png">
                     <img src="../img/email.png">
                     <img src="../img/pdf.png">
-                    <a href='../ExportarClienteActivo.php'"><img src="../img/excel.png" title="Exportar a Exccel"></a></div>
+                    <a href='../modelo/utilidades/Reportes/ExportarClienteActivo.php'><img src="../img/excel.png" title="Exportar a Exccel"></a></div>
 	   <table id="tabla" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>

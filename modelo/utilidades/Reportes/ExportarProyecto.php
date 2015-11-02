@@ -33,7 +33,7 @@ header("Expires: 0");
         <td><?php echo $respuesta['nombreProyecto'];?></td>
         <td><?php echo $respuesta['fechaInicio'];?></td>
         <td><?php echo $respuesta['fechaFin'];?></td>
-        <td><?php echo $respuesta['estado'];?></td>
+        <td><?php echo $respuesta['estadoProyecto'];?></td>
         <td><?php echo $respuesta['ejecutado'];?>%</td>
     </tr>
 <?php

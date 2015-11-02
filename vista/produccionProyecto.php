@@ -163,10 +163,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     </div>                
                 </div>                
                       <?php  foreach ($products as $imagenes) {?>
-                <a style="color: red" class="group1" href="../productos/<?php echo $imagenes['fotoProducto'];?>" title="Código 0<?php echo $imagenes['idProductos']; ?>"></a>
+                <a style="display: none" class="group1" href="../productos/<?php echo $imagenes['fotoProducto'];?>" title="Código 0<?php echo $imagenes['idProductos']; ?>"></a>
                       <?php  } ?>
                 <hr><br><br><br><br><br>
-                <div id="process"><p><a class='group1' href="../img/logo.png"><img src="../img/products.png" ></a></p>
+                <div id="process"><p><a class='group1' href="../img/logo.png" title="Click En Siguiente"><img src="../img/products.png"></a></p>
                     <p class="obligatoriosD">Click Para Visualizar Los Productos</p>
                 </div>
                 <button type="submit" class="guardarDerecho" name="elementosProyecto">Guardar</button>

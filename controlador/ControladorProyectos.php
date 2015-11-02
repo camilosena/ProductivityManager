@@ -17,7 +17,7 @@ if (isset($_POST['crearProyecto'])) {
     $nombreProyecto = $_POST['nombreProyecto'];
     $fechaInicio = $_POST['fechaInicio'];
     $fechaFin = '';
-    $estado = 'Sin Estudio Costos';
+    $estado = 'Sin Produccion';
     $observaciones = $_POST['descripcion'];    
         $proyectoDTO = new ProyectosDTO($idProyecto, $nombreProyecto, $fechaInicio, $fechaFin, $estado, $observaciones);
         $facadeProyectos = new FacadeProyectos;

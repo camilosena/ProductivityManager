@@ -311,10 +311,12 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                         <td><a class="me" title="Consultar Proyecto" href="../controlador/ControladorProyectos.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/ojo.png"></a>                
                                             <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
                                                 <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
-                                                <?php if ($project['estado'] == 'Sin Estudio Costos') {
+                                                <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
                                                     ?>
                                                     <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
-                                                <?php }
+                                                <?php }if ($project['estadoProyecto'] == 'Sin Produccion') { ?>
+                                                    <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
+                                                <?php } 
                                             }; ?>                            
                                         </td>                   
                                     </tr>                         
@@ -344,7 +346,9 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                             <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
                                                 ?>
                                                 <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
-                                    <?php }
+                                    <?php }if ($project['estadoProyecto'] == 'Sin Produccion') { ?>
+                                                    <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
+                                                <?php } 
                                 }; ?>                            
                                     </td>                   
                                 </tr>                         
@@ -412,16 +416,21 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         </div>        
         <script language=javascript>
             function estudioCostos(URL) {
-                window.open(URL, "estudioDeCostos.php", "width=1000,height=640,top=30,left=150,scrollbars=NO");
+                window.open(URL, "estudioDeCostos.php", "width=1000,height=645,top=30,left=150,scrollbars=NO");
             }
         </script>    
+        <script language=javascript>
+            function produccionProyecto(URL) {
+                window.open(URL, "produccionProyecto.php", "width=1000,height=645,top=30,left=150,scrollbars=NO");
+            }
+        </script> 
         <?php
         if (empty($_GET['winOpen'])) {
             $_GET['winOpen'] = FALSE;
         }
         if ($_GET['winOpen'] == true) {
             echo' <script language=javascript>                
-                        window.open("produccionProyecto.php?projectNum=' . $_GET['projectNum'] . '&nameProject=' . $_GET['nameProject'] . '",' . '"produccionProyecto.php","width=1100,height=640,top=30,left=100,scrollbars=NO");
+                        window.open("produccionProyecto.php?projectNum=' . $_GET['projectNum'] . '&nameProject=' . $_GET['nameProject'] . '",' . '"produccionProyecto.php","width=1100,height=645,top=30,left=100,scrollbars=NO");
                     </script>';
         }
         ?>

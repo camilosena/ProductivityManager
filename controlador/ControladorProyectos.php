@@ -66,12 +66,17 @@ else if (isset($_GET['codUsuario'])) {
     $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);
     header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
 }
-else if (isset($_POST['productoPorProyecto_y'])){
-    echo $_POST['cantidad1'];
-    echo $_POST['cantidad2'];
-    echo $_POST['cantidad3'];
-    echo $_POST['producto1'];
-    echo $_POST['producto2'];
-    echo $_POST['producto3'];    
+else if (isset($_POST['elementosProyecto'])){
+//echo var_dump($_POST);    
+  $cantidadTipo = $_POST['cantidadTipo'];
+  $idProyecto = $_POST['idProyecto'];
+  $totalProductos = 5;
+  $fProyecto = new FacadeProyectos;
+  for($j = 1; $j <= $totalProductos; $j++) {           
+        if(isset($_POST['producto'.$j]) && isset($_POST['cantidad'.$j])){
+        $idProducto = $_POST['producto'.$j];
+        $cantidad = $_POST['cantidad'.$j];        
+        echo $fProyecto->insertarProductoProyecto($idProducto, $idProyecto, $cantidad);       
+        }              
+    }        
 }
-echo var_dump($_POST);

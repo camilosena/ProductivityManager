@@ -9,7 +9,7 @@ table.tableSection {
     }
     table.tableSection tbody {
         overflow: auto;
-        height: 200px;
+        height: 150px;
     }
     table.tableSection tr {
         width: 100%;
@@ -94,8 +94,23 @@ table.tableSection {
         bottom:5%;     
     }  
     
-    .guardarIzquierdo{
+    .guardarIzqiuerdo{
         position:absolute;
         left:5%;
         bottom:5%;     
     }  
+    #process{
+        position:absolute;
+        left:5%;
+        bottom:5%; 
+        text-align: center;
+        color: #83AF44;
+    }
+    
+    #checkcount1{
+        width: 50px;
+        border-radius: 50%;
+        height: 50px;
+        background: #f0f0f0;
+        font-weight: bold;
+    }

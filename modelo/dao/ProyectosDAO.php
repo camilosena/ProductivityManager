@@ -180,7 +180,7 @@ class ProyectosDAO {
             $sentencia->bindParam(2, $idProyecto);
             $sentencia->bindParam(3, $cantidad);           
             $sentencia->execute();
-            $mensaje="Productos Asociados con Éxito";
+            $mensaje="Productos Asociados con Exito";
             return $mensaje;
         } catch (Exception $ex) {
             return $ex->getMessage();

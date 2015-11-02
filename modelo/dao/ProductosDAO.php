@@ -46,12 +46,13 @@ class ProductosDAO {
         }
         $cnn = null;
     }
-    function listarProductosActivos(){
+    function listarProductosActivos(PDO $cnn){
         try {
             $sql = "select * from productos where estadoProducto = 'Activo'" ;
-            $query = $cnn->prepare($sql);
-           
+            $query = $cnn->prepare($sql);           
             $query->execute();
+            session_start();
+            $_SESSION['totalActivos']=$query->rowCount();
             return $query->fetchAll();
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();

@@ -74,7 +74,8 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         ?>     
         <div class="wrapper">                                              
             <h2 class="h330"><br>Producción de Proyecto <?php echo $_GET['projectNum']."-".$_GET['nameProject']; ?>:</h2><br>                
-            <form class="formRegistro" method="post" action="../controlador/ControladorEstudioCostos.php">
+            <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
+            <form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php">             
                 <hr>
                     <div class="modelo">
                         <label class="tag" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Código Proyecto:</span></label>
@@ -82,15 +83,13 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                          <label class="tag" id="labelProyecto" for="name"><span id="lab_valCountry" class="h331">Nombre Proyecto:</span></label>
                          <input class="input" name="nombreProyecto" type="text" maxlength="64" value="<?php echo $_GET['nameProject']; ?>" id="name" style="text-align: center" class="field1" autofocus readonly required>
                    </div>                   
-            <br>
-            <form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php" style="visibility:visible;display: block;">             
+            <br>            
             <div >
                 <div id='inline_content' style='padding:10px; background:#fff;'>
                     <br><hr>
                     <strong><h2 class="h330">Productos:</h2></strong><br>                             
                     <p class="obligatoriosD">Selecione los productos segun requerimientos y su respectiva cantidad.</p><br>
                     <p class="obligatoriosD">Los campos "Cantidad" son obligatorios por cada Producto Seleccionado.<br></p>                                                               
-
                     <br><table class="tableSection">
                         <thead>
                             <tr>
@@ -105,28 +104,39 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                 <th class="th5"><span class="text">Cantidad</span>
                                 </th>
                             </tr>
-                        </thead>                            
+                        </thead>                 
                         <tbody>                            
                             <?php
                             require_once '../facades/FacadeProductos.php';
                             require_once '../modelo/dao/ProductosDAO.php';
                             require_once '../modelo/utilidades/Conexion.php';
                             $facadeProductos = new FacadeProductos;
-                            $products = $facadeProductos->listarProductos();
+                            $products = $facadeProductos->listarProductosActivos();
                             foreach ($products as $productos) {
                                 ?>
                                 <tr>
                                     <td class="td1">0<?php echo $productos['idProductos']; ?></td>
                                     <td class="td2"><?php echo $productos['nombreProducto']; ?></td>
                                     <td class="td3"><?php echo $productos['ganancia']; ?>%</td>
-                                    <td class="td4"><input type="checkbox"  name="producto<?php echo $productos['idProductos']; ?>"></td>
+                                    <td class="td4"><input type="checkbox" name="producto<?php echo $productos['idProductos']; ?>" value="<?php echo $productos['idProductos']; ?>" ></td>
                                     <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" type="number" maxlength="64" id="cantidadProducto"></td>
                                 </tr>                       
                                 <?php }
                             ?>                               
                         </tbody>
                     </table>                               
-                    <p><strong><br><br>Continue con Materia Prima</strong></p>                              
+                    <p style="text-align: right;margin-right: 5%;">
+                        <label class="tag2" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Productos Seleccionados:</span></label>
+                        <input id="checkcount1" name="cantidadTipo" type="text" maxlength="64" style="text-align: center" required readonly>
+                    </p>                              
+                   <script>                   
+                   var contador = function() {
+                        var n = $( "input:checked" ).length;                        
+                        total = ( n + (n === 1 ? " " : "") );
+                        document.getElementById('checkcount1').value=total;
+                      };
+                      contador(); 
+                      $( "input[type=checkbox]" ).on( "click", contador )</script>
                 </div>
             </div> 
                 <hr>
@@ -155,65 +165,32 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                             require_once '../modelo/dao/ProductosDAO.php';
                             require_once '../modelo/utilidades/Conexion.php';
                             $facadeProductos = new FacadeProductos;
-                            $products = $facadeProductos->listarProductos();
+                            $products = $facadeProductos->listarProductosActivos();
                             foreach ($products as $productos) {
                                 ?>
                                 <tr>
                                     <td class="td1">0<?php echo $productos['idProductos']; ?></td>
                                     <td class="td2"><?php echo $productos['nombreProducto']; ?></td>
                                     <td class="td3"><?php echo $productos['ganancia']; ?>%</td>
-                                    <td class="td4"><input type="checkbox" name="producto<?php echo $productos['idProductos']; ?>"></td>
-                                    <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
+                                    <td class="td4"><?php echo $productos['ganancia']; ?>%</td>
+                                    <td class="td5"><?php echo $productos['ganancia']; ?>%</td>
                                 </tr> 
                                 <?php }
                             ?>                               
                         </tbody>
                     </table>
-                    <p><br><br><button type="button" class="guardarIzqiuerdo" name="procesos" onclick="location.href='#inline_content3'">Visualizar Procesos</button>
-                    <br><br><button type="submit" class="guardarDerecho" name="elementosProyecto">Guardar</button></p>
+                    <br><br><br><br><br><br>
+                    <div id="process"><p><a class='inline' href="#inline_content3"><img src="../img/procesos.png" ></a></p>
+                        <p class="obligatoriosD">Click para consultar procesos</p>
+                    </div>
+                    <button type="submit" class="guardarDerecho" name="elementosProyecto">Guardar</button>
                 </div>
             </div>
             <div style='display:none'>
                 <div id='inline_content3' style='padding:10px; background:#fff;'>
                     <p><strong><h2 class="h330">Procesos</h2></strong></p>                
                     <p class="obligatoriosD">Procesos implicados en la creación de productos seleccionados<br></p>
-                    <br><table class="tableSection">
-                        <thead>
-                            <tr>
-                                <th class="th1"><span class="text">Código</span>
-                                </th>
-                                <th class="th2"><span class="text">Nombre</span>
-                                </th>
-                                <th class="th3"><span class="text">Consultar</span>
-                                </th>
-                                <th class="th4"><span class="text">Seleccionar</span>
-                                </th>                                
-                                <th class="th5"><span class="text">Cantidad</span>
-                                </th>
-                            </tr>
-                        </thead>
-                         <tbody>                            
-                            <?php
-                            require_once '../facades/FacadeProductos.php';
-                            require_once '../modelo/dao/ProductosDAO.php';
-                            require_once '../modelo/utilidades/Conexion.php';
-                            $facadeProductos = new FacadeProductos;
-                            $products = $facadeProductos->listarProductos();
-                            foreach ($products as $productos) {
-                                ?>
-                                <tr>
-                                    <td class="td1">0<?php echo $productos['idProductos']; ?></td>
-                                    <td class="td2"><?php echo $productos['nombreProducto']; ?></td>
-                                    <td class="td3"><?php echo $productos['ganancia']; ?>%</td>
-                                    <td class="td4"><input type="checkbox" name="producto<?php echo $productos['idProductos']; ?>"></td>
-                                    <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" required type="number" maxlength="64" id="cantidadProducto" onchange="valida()"></td>
-                                </tr> 
-                                <?php }
-                            ?>                               
-                        </tbody>
-                    </table>
-                    <p><br><br><a class='inline' href="#inline_content2"><img src="../img/flechaIzquierda.png" class="flechaIzquierda"></a>
-                        </p>                
+                    <br>                        
                 </div>
             </div>
         </form>

@@ -44,7 +44,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         <?php
         if (isset($_GET['mensaje'])) {
             echo '<script> 
-                Command: toastr["success"]("' . $_GET['mensaje'] . '", "Enhorabuena")
+                Command: toastr["success"]("'.$_GET['mensaje'].'", "Enhorabuena")
             toastr.options = {
               "closeButton": false,
               "debug": false,
@@ -61,18 +61,14 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
               "hideEasing": "linear",
               "showMethod": "fadeIn",
               "hideMethod": "fadeOut"
-            }            
-            </script>';
-        };
-        if (isset($_GET['cerrar'])) {
-            echo '<script>
-                function cierra(){
+            }
+            function cierra(){
             window.close();
             }
             setTimeout("cierra()",3000)
             </script>';
-        }
-        ?>     
+        };
+        ?> 
         <?php if (isset($_GET['errorPermiso'])) { ?>
             <script language="JavaScript" type="text/javascript">
                 window.onload = function () {

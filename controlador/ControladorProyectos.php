@@ -67,31 +67,29 @@ else if (isset($_GET['codUsuario'])) {
     $facadeProyecto = new FacadeProyectos;
     $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);
     header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
-}
-else if (isset($_POST['elementosProyecto'])){
+} else if (isset($_POST['elementosProyecto'])) {
 //echo var_dump($_POST);    
-  $cantidadTipo = $_POST['cantidadTipo'];
-  $idProyecto = $_POST['idProyecto'];
-  $totalProductos = 5;
-  $fProyecto = new FacadeProyectos;
-  for($j = 1; $j <= $totalProductos; $j++) {           
-        if(isset($_POST['producto'.$j]) && isset($_POST['cantidad'.$j])){
-        $idProducto = $_POST['producto'.$j];
-        $cantidad = $_POST['cantidad'.$j];        
-        echo $fProyecto->insertarProductoProyecto($idProducto, $idProyecto, $cantidad);       
-        }              
-    }    
-    $produccion = $fProyecto->obtenerProductoProyecto($idProyecto);
-    $fMateria = new FacadeInsumos();    
-    foreach ($produccion as $todo) {
-       $materias= $fMateria->obtenerInsumos($todo['Productos_idProductos']);
-       foreach ($materias as $insumo) {             
-           echo $insumo['insumos'].'----'.$insumo['cantidadMateriaPorProducto'];
-           $total = $insumo['cantidadMateriaPorProducto']*Sigue por precio base lo retornado por cantidad de producto;
-//         $fProyecto->insertarMateriaProyecto($insumo['insumos'], $idProyecto, $total, $provision);
-       }
-        echo 'producto:'.$todo['Productos_idProductos'];        
-        echo 'proyecto:'.$todo['proyectosIdProyecto'];
-        echo 'cantidad:'.$todo['cantidadProductos'];
+    $cantidadTipo = $_POST['cantidadTipo'];
+    $idProyecto = $_POST['idProyecto'];
+    $totalProductos = 5;
+    $fProyecto = new FacadeProyectos;
+    for ($j = 1; $j <= $totalProductos; $j++) {
+        if (isset($_POST['producto' . $j]) && isset($_POST['cantidad' . $j])) {
+            $idProducto = $_POST['producto' . $j];
+            $cantidad = $_POST['cantidad' . $j];
+            $mensaje =$fProyecto->insertarProductoProyecto($idProducto, $idProyecto, $cantidad);
+        }
     }
+    $produccion = $fProyecto->obtenerProductoProyecto($idProyecto);
+    $fMateria = new FacadeInsumos();
+    foreach ($produccion as $todo) {
+        $materias = $fMateria->obtenerInsumos($todo['Productos_idProductos']);
+        foreach ($materias as $insumo) {
+            $precioBase = $fMateria->obtenerInsumosPorID($insumo['insumos']);
+            $subTotal = ($insumo['cantidadMateriaPorProducto'] * $precioBase);
+            $total = $subTotal * $todo['cantidadProductos'];
+            $fProyecto->insertarMateriaProyecto($insumo['insumos'], $idProyecto, $total, 0);
+        }        
+    }
+    header("location: ../vista/produccionProyecto.php?mensaje=".$mensaje);
 }

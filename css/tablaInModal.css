@@ -104,7 +104,8 @@ table.tableSection {
         left:5%;
         bottom:5%; 
         text-align: center;
-        color: #83AF44;
+        font-family: sans-serif;
+        font-weight: bold;
     }
     
     #checkcount1{

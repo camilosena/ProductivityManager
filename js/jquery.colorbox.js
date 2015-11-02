@@ -58,12 +58,12 @@
 		retinaSuffix: '@2x.$1',
 
 		// internationalization
-		current: "image {current} of {total}",
+		current: "Imagen {current} de {total}",
 		previous: "previous",
 		next: "next",
 		close: "close",
-		xhrError: "This content failed to load.",
-		imgError: "This image failed to load.",
+		xhrError: "Error en Carga de Contenido.",
+		imgError: "Error al Cargar Imagen.",
 
 		// accessbility
 		returnFocus: true,

@@ -305,7 +305,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                     <tr><td><?php echo $project['idProyecto']; ?> </td>
                                         <td><?php echo $project['nombreProyecto']; ?> </td>
                                         <td> <?php echo $project['fechaInicio']; ?> </td>
-                                        <td><?php echo $project['fechaFin']; ?></td>                      
+                                        <td><?php  if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
                                         <td><?php echo $project['estadoProyecto']; ?></td>  
                                         <td><?php echo $project['ejecutado']; ?> %</td>
                                         <td><a class="me" title="Consultar Proyecto" href="../controlador/ControladorProyectos.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/ojo.png"></a>                
@@ -335,7 +335,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                                 <tr><td><?php echo $project['idProyecto']; ?> </td>
                                     <td><?php echo $project['nombreProyecto']; ?> </td>
                                     <td> <?php echo $project['fechaInicio']; ?> </td>
-                                    <td><?php echo $project['fechaFin']; ?></td>                      
+                                    <td><?php if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
                                     <td><?php echo $project['estadoProyecto']; ?></td>  
                                     <td><?php echo $project['ejecutado']; ?> %</td>
                                     <td><a class="me" title="Consultar Proyecto" href="../controlador/ControladorProyectos.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/ojo.png"></a>                

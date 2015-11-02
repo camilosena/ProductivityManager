@@ -25,7 +25,7 @@ class ProyectosDAO {
         $query=$cnn->prepare("SELECT max(idProyecto) FROM proyectos");
         $query->execute();   
         $id = $query->fetchColumn();
-        return ('000'.($id+1));
+        return ('0'.($id+1));
    } catch (Exception $ex) {
             return $ex->getMessage();
         }

@@ -94,7 +94,8 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 }
         <?php } ?>
         </script>
-        <div class="wrapper">                                              
+        <div class="wrapper">   
+            <?php if (isset($_GET['projectNum'])){?>
             <h2 class="h330"><br>Producción de Proyecto <?php echo $_GET['projectNum'] . "-" . $_GET['nameProject']; ?>:</h2><br>                
             <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
             <form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php">             
@@ -109,7 +110,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <div >
                     <div id='inline_content' style='padding:10px; background:#fff;'>
                         <br><hr>
-                        <strong><h2 class="h330">Productos:</h2></strong><br>                             
+                        <strong><h2 class="h330">Productos:</h2></strong><br>                                
                         <p class="obligatoriosD">Selecione los productos segun requerimientos y su respectiva cantidad.</p><br>
                         <p class="obligatoriosD">Los campos "Cantidad" son obligatorios por cada Producto Seleccionado.<br></p>                                                               
                         <br><table class="tableSection">
@@ -160,10 +161,13 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                             contador();
                             $("input[type=checkbox]").on("click", contador)</script>
                     </div>                
-                </div> 
+                </div>                
+                      <?php  foreach ($products as $imagenes) {?>
+                <a style="color: red" class="group1" href="../productos/<?php echo $imagenes['fotoProducto'];?>" title="Código 0<?php echo $imagenes['idProductos']; ?>"></a>
+                      <?php  } ?>
                 <hr><br><br><br><br><br>
-                <div id="process"><p><a class='inline' href="#inline_content3"><img src="../img/procesos.png" ></a></p>
-                    <p class="obligatoriosD">Click para consultar procesos</p>
+                <div id="process"><p><a class='group1' href="../img/logo.png"><img src="../img/products.png" ></a></p>
+                    <p class="obligatoriosD">Click Para Visualizar Los Productos</p>
                 </div>
                 <button type="submit" class="guardarDerecho" name="elementosProyecto">Guardar</button>
             </form>
@@ -191,8 +195,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                             require_once '../facades/FacadeInsumos.php';
                             require_once '../modelo/dao/InsumosDAO.php';
                             $facadeMateria = new FacadeInsumos();
-                            $materias = $facadeMateria->listarInsumos();
-                            $products = $facadeProductos->listarProductosActivos();
+                            $materias = $facadeMateria->listarInsumos();                           
                             ?>
                         <label class="tag" id="labelProyecto" for="listaProyecto"><span id="lab_valCountry" class="h331">Seleccione Materia Prima:</span></label>
                         <select class="input" id="listaProyecto" name="idProyecto" id="listaProyecto" autofocus class="list_menu" >                                                                                                                                                               
@@ -213,21 +216,10 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         <?php }
                         ?>                               
                         </tbody>
-                    </table>
-                    <br><br><br><br><br><br>
-                    <div id="process"><p><a class='inline' href="#inline_content3"><img src="../img/procesos.png" ></a></p>
-                        <p class="obligatoriosD">Click para consultar procesos</p>
-                    </div>
-                    <button type="submit" class="guardarDerecho" name="elementosProyecto">Guardar</button>
+                    </table>                    
                 </div>
-            </div>
-            <div style='display:none'>
-                <div id='inline_content3' style='padding:10px; background:#fff;'>
-                    <p><strong><h2 class="h330">Procesos</h2></strong></p>                
-                    <p class="obligatoriosD">Procesos implicados en la creación de productos seleccionados<br></p>
-                    <br>                        
-                </div>
-            </div>        
+            </div>              
+            <?php }?>
         </div>        
     </body>
 </html>

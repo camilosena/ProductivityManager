@@ -16,12 +16,9 @@ if (isset($_POST['crearProyecto'])) {
     $idProyecto = $_POST['idProyecto'];
     $nombreProyecto = $_POST['nombreProyecto'];
     $fechaInicio = $_POST['fechaInicio'];
-    $fechaFin = $_POST['fechaFin'];
+    $fechaFin = '';
     $estado = 'Sin Estudio Costos';
-    $observaciones = $_POST['descripcion'];
-    $fecha_inicio = new DateTime($_POST['fechaInicio']);
-    $fecha_fin = new DateTime($_POST['fechaFin']);
-    if ($fecha_fin > $fecha_inicio) {
+    $observaciones = $_POST['descripcion'];    
         $proyectoDTO = new ProyectosDTO($idProyecto, $nombreProyecto, $fechaInicio, $fechaFin, $estado, $observaciones);
         $facadeProyectos = new FacadeProyectos;
         $facadeUsuario = new FacadeUsuarios;
@@ -31,10 +28,7 @@ if (isset($_POST['crearProyecto'])) {
         $mensaje3 = $facadeUsuario->asignarUsuarioProyecto($gerenteEncargado, $_POST['idProyecto']);
         $abrirVentana = true;
         header("location: ../vista/listarProyectos.php?mensaje=" . $mensaje . "&winOpen=" . $abrirVentana . "&mensaje2=" . $mensaje2 . "&projectNum=" . $_POST['idProyecto'] . "&nameProject=" . $_POST['nombreProyecto']);
-    } else {
-        $fechas = 'La fecha Fin debe ser posterior a la de Inicio';
-        header("location: ../vista/crearProyecto.php?mensajeFecha=" . $fechas);
-    }
+    
 } else if (isset($_POST['modificarProyecto'])) {
     $idProyecto = $_POST['idProyecto'];
     $nombreProyecto = $_POST['nombreProyecto'];

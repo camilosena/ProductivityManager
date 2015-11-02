@@ -262,11 +262,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <br>                                       
                     <label class="tag" for="fechaInicio"><span id="lab_valSurname" class="h331">Fecha Inicio:</span></label>
                     <input class="input" name="fechaInicio" required type="date" maxlength="64" id="fechaInicio" class="field1">
-                    <span id="valSurname" style="color:Red;visibility:hidden;"></span>
-                    <br>
-                    <label class="tag" for="fechaFin"><span id="lab_valCompany" class="h331">Fecha Fin:</span></label>
-                    <input class="input" name="fechaFin" required type="date" maxlength="64" id="fechaFin" class="field1">
-                    <span id="valCompany" style="color:Red;visibility:hidden;"></span>
+                    <span id="valSurname" style="color:Red;visibility:hidden;"></span>                    
                     <br>    
                     <label class="tag2" for="descripcion"><span id="lab_valName" class="h331">Descripción:</span></label>
                     <textarea  class="input4" name="descripcion" type="text" maxlength="240" id="descripcion" class="field1" ></textarea> 

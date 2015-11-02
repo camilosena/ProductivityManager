@@ -187,4 +187,48 @@ class ProyectosDAO {
         }
         $cnn=NULL;        
     }
+    
+    public function obtenerProductoProyecto($idProyecto,PDO $cnn) {
+        $mensaje="";
+        try{
+            $sentencia= $cnn->prepare("SELECT * FROM productoporproyecto where proyectosIdProyecto=?");
+            $sentencia->bindParam(1, $idProyecto);                      
+            $sentencia->execute();
+            return $sentencia->fetchAll();            
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn=NULL;        
+    }
+    
+       public function insertarMateriaProyecto($idMateria, $idProyecto, $total,$provision, PDO $cnn) {
+        $mensaje="";
+        try{
+            $sentencia= $cnn->prepare("INSERT INTO materiaPrimaPorProyecto VALUES(?,?,?,?)");
+            $sentencia->bindParam(1, $idMateria);
+            $sentencia->bindParam(2, $idProyecto);
+            $sentencia->bindParam(3, $total);           
+            $sentencia->bindParam(4, $provision);
+            $sentencia->execute();
+            $mensaje="Materia Prima Asociada con Exito";
+            return $mensaje;
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn=NULL;        
+    }
+    
+        public function obtenerCantidadMateriaProducto($idProducto, $idMateria, PDO $cnn) {
+        $mensaje="";
+        try{
+            $sentencia= $cnn->prepare("SELECT cantidadMateriaPorProducto FROM materiaPrimaPorProducto where ProductosIdProductos=? and idMateriaPrima_materiaPrima=?");
+            $sentencia->bindParam(1, $idProducto);                      
+            $sentencia->bindParam(2, $idMateria); 
+            $sentencia->execute();
+            return $sentencia->fetchColumn();            
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn=NULL;        
+    }
 }

@@ -63,4 +63,15 @@ class FacadeProyectos {
     public function insertarProductoProyecto($idProducto, $idProyecto, $cantidad) {
         return $this->proyectosDAO->insertarProductoProyecto($idProducto, $idProyecto, $cantidad, $this->conexionBase);
     }
+    
+      public function obtenerProductoProyecto($idProyecto) {
+        return $this->proyectosDAO->obtenerProductoProyecto($idProyecto, $this->conexionBase);
+    }
+        public function insertarMateriaProyecto($idMateria, $idProyecto, $total, $provision) {
+        return $this->proyectosDAO->insertarMateriaProyecto($idMateria, $idProyecto, $total, $provision, $this->conexionBase);
+    }
+      public function obtenerCantidadMateriaProducto($idProducto, $idMateria) {
+        return $this->proyectosDAO->obtenerCantidadMateriaProducto($idProducto, $idMateria, $this->conexionBase);
+    }
 }
+

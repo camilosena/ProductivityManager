@@ -7,6 +7,8 @@ require_once '../modelo/dto/UsuarioDTO.php';
 require_once '../modelo/utilidades/Conexion.php';
 require_once '../facades/FacadeProyectos.php';
 require_once '../facades/FacadeUsuarios.php';
+require_once '../modelo/dao/InsumosDAO.php';
+require_once '../facades/FacadeInsumos.php';
 
 //Crea Proyecto
 if (isset($_POST['crearProyecto'])) {
@@ -78,5 +80,18 @@ else if (isset($_POST['elementosProyecto'])){
         $cantidad = $_POST['cantidad'.$j];        
         echo $fProyecto->insertarProductoProyecto($idProducto, $idProyecto, $cantidad);       
         }              
-    }        
+    }    
+    $produccion = $fProyecto->obtenerProductoProyecto($idProyecto);
+    $fMateria = new FacadeInsumos();    
+    foreach ($produccion as $todo) {
+       $materias= $fMateria->obtenerInsumos($todo['Productos_idProductos']);
+       foreach ($materias as $insumo) {             
+            $cantidadPorMedida = $fProyecto->obtenerCantidadMateriaProducto($todo['Productos_idProductos'], $insumo['insumos']);
+            $total = $cantidadPorMedida*Sigue por precio base lo retornado por cantidad de producto;
+//         $fProyecto->insertarMateriaProyecto($insumo['insumos'], $idProyecto, $total, $provision);
+       }
+        echo 'producto:'.$todo['Productos_idProductos'];        
+        echo 'proyecto:'.$todo['proyectosIdProyecto'];
+        echo 'cantidad:'.$todo['cantidadProductos'];
+    }
 }

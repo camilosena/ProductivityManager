@@ -50,8 +50,7 @@ class ProductosDAO {
         try {
             $sql = "select * from productos where estadoProducto = 'Activo'" ;
             $query = $cnn->prepare($sql);           
-            $query->execute();
-            session_start();
+            $query->execute();           
             $_SESSION['totalActivos']=$query->rowCount();
             return $query->fetchAll();
         } catch (Exception $ex) {

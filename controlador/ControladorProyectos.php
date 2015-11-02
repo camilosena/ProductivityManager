@@ -87,8 +87,7 @@ else if (isset($_POST['elementosProyecto'])){
        $materias= $fMateria->obtenerInsumos($todo['Productos_idProductos']);
        foreach ($materias as $insumo) {             
            echo $insumo['insumos'].'----'.$insumo['cantidadMateriaPorProducto'];
-//            $cantidadPorMedida = $insumo['insumos'].'----'.$insumo['cantidadMateriaPorProducto'];
-//            $total = $cantidadPorMedida*Sigue por precio base lo retornado por cantidad de producto;
+           $total = $insumo['cantidadMateriaPorProducto']*Sigue por precio base lo retornado por cantidad de producto;
 //         $fProyecto->insertarMateriaProyecto($insumo['insumos'], $idProyecto, $total, $provision);
        }
         echo 'producto:'.$todo['Productos_idProductos'];        

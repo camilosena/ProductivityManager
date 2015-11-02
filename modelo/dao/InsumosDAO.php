@@ -94,11 +94,11 @@ class InsumosDAO {
 
         try {
 
-            $sql = 'SELECT * from materiaPrima where idMateriaPrima=?';
+            $sql = 'SELECT precioBase from materiaPrima where idMateriaPrima=?';
             $query = $cnn->prepare($sql);
             $query->bindParam(1, $idMateriaPrima);
             $query->execute();
-            return $query->fetchAll();
+            return $query->fetchColumn();
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }

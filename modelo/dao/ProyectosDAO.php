@@ -217,18 +217,4 @@ class ProyectosDAO {
         }
         $cnn=NULL;        
     }
-    
-        public function obtenerCantidadMateriaProducto($idProducto, $idMateria, PDO $cnn) {
-        $mensaje="";
-        try{
-            $sentencia= $cnn->prepare("SELECT cantidadMateriaPorProducto FROM materiaPrimaPorProducto where ProductosIdProductos=? and idMateriaPrima_materiaPrima=?");
-            $sentencia->bindParam(1, $idProducto);                      
-            $sentencia->bindParam(2, $idMateria); 
-            $sentencia->execute();
-            return $sentencia->fetchColumn();            
-        } catch (Exception $ex) {
-            return $ex->getMessage();
-        }
-        $cnn=NULL;        
-    }
 }

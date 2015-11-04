@@ -5,11 +5,12 @@ class AuditoriaDAO {
     public function crearAuditoria (AuditoriaDTO $objetoAud, PDO $cnn) {
         $mensaje = '';
         try {
-            $query = $cnn->prepare("insert into auditorias values(DEFAULT,?,?,now(),?,?)");
+            $query = $cnn->prepare("insert into auditorias values(DEFAULT,?,?,now(),?,?,?)");
             $query->bindParam(1, $objetoAud->getIdProyecto());
             $query->bindParam(2, $objetoAud->getIdUsuario());
             $query->bindParam(3, $objetoAud->getDescripcion());            
             $query->bindParam(4, $objetoAud->getProducto());
+            $query->bindParam(5, $objetoAud->getArchivoAuditoria());
             $query->execute();
             $mensaje = "Auditoria Generada";
         } catch (Exception $ex) {
@@ -47,7 +48,7 @@ class AuditoriaDAO {
 
     public function consultarAuditoria($idAuditoria,PDO $cnn) {
         try {
-            $query = $cnn->prepare("SELECT a.idAuditoria, p.estadoProyecto, concat(u.nombres,' ',u.apellidos) nombre, a.producto, p.nombreProyecto, a.fecha, a.observacionesAuditoria, a.producto
+            $query = $cnn->prepare("SELECT a.idAuditoria, p.estadoProyecto, concat(u.nombres,' ',u.apellidos) nombre, a.producto, p.nombreProyecto, a.fecha, a.observacionesAuditoria, a.producto, a.archivoAuditoria
                                     FROM  proyectos as p
                                     inner join auditorias as a
                                     inner join personas as u

@@ -7,6 +7,7 @@ class AuditoriaDTO {
     private $idProyecto;
     private $descripcion;   
     private $producto;
+    private $archivoAuditoria;
 
     /**
      * AuditoriaDTO constructor.
@@ -15,12 +16,13 @@ class AuditoriaDTO {
      * @param $descripcion
      * @param $producto
      */
-    public function __construct($idUsuario, $idProyecto, $descripcion, $producto)
+    public function __construct($idUsuario, $idProyecto, $descripcion, $producto, $archivoAuditoria)
     {
         $this->idUsuario = $idUsuario;
         $this->idProyecto = $idProyecto;
         $this->descripcion = $descripcion;
         $this->producto = $producto;
+        $this->archivoAuditoria = $archivoAuditoria;
     }
 
 
@@ -77,6 +79,23 @@ class AuditoriaDTO {
     {
         $this->idAuditoria = $idAuditoria;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getArchivoAuditoria()
+    {
+        return $this->archivoAuditoria;
+    }
+
+    /**
+     * @param mixed $archivoAuditoria
+     */
+    public function setArchivoAuditoria($archivoAuditoria)
+    {
+        $this->archivoAuditoria = $archivoAuditoria;
+    }
+
 
 
 }

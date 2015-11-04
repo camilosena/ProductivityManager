@@ -5,6 +5,8 @@ require_once '../modelo/dao/NovedadesDAO.php';
 require_once '../modelo/dto/NovedadesDTO.php';
 require_once '../facades/FacadeNovedades.php';
 require_once '../modelo/utilidades/Conexion.php';
+require_once '../modelo/dto/ImagenesDTO.php';
+require_once '../modelo/utilidades/GestionImagenes.php';
 
 if(isset($_POST['crearNovedad'])){
     session_start();
@@ -14,40 +16,24 @@ if(isset($_POST['crearNovedad'])){
     $idProyecto=$_POST['idProyecto'];
     $categoria=$_POST['categoria'];
     $descripcion=$_POST['descripcion'];
-    $archivo=$_POST['uploadedfile'];
+    $archivo=$_FILES['uploadedfile']['name'];
     $objetoDTO = new NovedadesDTO($idUsuario, $idProyecto, $categoria, $descripcion, $archivo);
 
-    //insertar Evidencia
-        if ($_FILES['uploadedfile']['name'] == '') {
-            $objetoDTO->setArchivo('logo.png');
-        } else {
-            $objetoDTO->setArchivo($_FILES['uploadedfile']['name']);
-        }
-    $uploadedfileload = "true";
-    $uploadedfile_size = $_FILES['uploadedfile']['size'];    
-        if ($_FILES['uploadedfile']['size'] > 300000) {
-            $msg = $msg . "El archivo es mayor a 300KB, debe reducirlo antes de subirlo<BR>";
-            $uploadedfileload = "false";
-            $objetoDTO->setArchivo('logo.png');
-        }
+    //Insertar Evidencia Novedades
+    if ($_FILES['uploadedfile']['name'] == '') {
+        $foto ='novedad.png';
+    } else {
+        $foto = $_FILES['uploadedfile']['name'];
+    }
+    $carpeta = "evidencias";
+    $nombreImagen = $_FILES['uploadedfile']['name'];
+    $tamano = $_FILES['uploadedfile']['size'];
+    $tipo = $_FILES['uploadedfile']['type'];
+    $nombreTemporal = $_FILES['uploadedfile']['tmp_name'];
+    $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
+    $cargaFoto = new GestionImagenes();
+    $msg =$cargaFoto->subirImagen($dtoImagen);
 
-        if (!($_FILES['uploadedfile']['type'] == "image/jpeg" || $_FILES['uploadedfile']['type'] == "image/gif" || $_FILES['uploadedfile']['type'] == "image/png")) {
-            $msg = $msg . " Tu archivo tiene que ser JPG / GIF / PNG. Otros archivos no son permitidos<BR>";
-            $uploadedfileload = "false";
-            $objetoDTO->setArchivo('logo.png');
-        }
-
-        $file_name = $_FILES['uploadedfile']['name'];
-        $add = "../evidencias/$file_name";
-        if ($uploadedfileload == "true") {
-            if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $add)) {
-                $msg= " Ha sido subido satisfactoriamente";
-            } else {
-                $msg= "Error al subir el archivo";
-            }
-    }else{ 
-        $msg;        
-    }        
     $message= $facadeNovedad->insertarNovedad($objetoDTO);
     header("location: ../vista/agregarNovedad.php?novedad=".$message."&evidencia=".$msg);
 }else if (isset($_GET['idNovedad'])) {

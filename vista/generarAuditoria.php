@@ -265,7 +265,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
          <br>
          <br>
            <h2 class="h330">Auditar Proyecto:</h2> <br>
-            <form class="formRegistro" method="post" action="../controlador/ControladorAuditorias.php">
+            <form class="formRegistro" method="post" action="../controlador/ControladorAuditorias.php" enctype="multipart/form-data">
                 <?php
                 require_once '../modelo/utilidades/Conexion.php';
                 require_once '../modelo/dao/ProyectosDAO.php';

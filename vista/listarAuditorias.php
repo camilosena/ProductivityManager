@@ -228,7 +228,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 echo '<tr><td>Fecha:</td><td> ' . $_SESSION['datosAuditoria']['fecha'] . '</td></tr>';
                 echo '<tr><td>Descripción:</td><td>' . $_SESSION['datosAuditoria']['observacionesAuditoria'] . '</td></tr>';
                 echo '<tr><td>Producto:</td><td>' . $_SESSION['datosAuditoria']['producto'] . '</td></tr>';
-                echo '<tr><td>Evidencia:</td><td><img style="width:280px;height:140px;" src="../evidencias/' . $_SESSION['datosAuditoria']['archivo'] . '"></td></tr>';
+                echo '<tr><td>Evidencia:</td><td><img style="width:280px;height:140px;" src="../evidencias/' . $_SESSION['datosAuditoria']['archivoAuditoria'] . '"></td></tr>';
                 echo '</table>';
                 ?>
             </div>

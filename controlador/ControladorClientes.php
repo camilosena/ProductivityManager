@@ -72,20 +72,15 @@ else if (isset($_GET['idActivarCliente'])) {
 }
 //  Consultar Cliente
 else if (isset($_GET['idConsultarCliente'])) {
+    session_start();
     $facadeUsuario = new FacadeUsuarios;
-    $usuario = $facadeUsuario->consultarRepresentante($_GET['idConsultarCliente']);
+    $_SESSION['dtoUsuario'] = $facadeUsuario->consultarRepresentante($_GET['idConsultarCliente']);
     $FacadeCliente = new FacadeCliente;
-    $cliente = $FacadeCliente->consultarCliente($_GET['idConsultarCliente']);
-    if ($usuario['estado'] == 'Activo') {
-        header("Location: ../vista/clientesActivos.php?usuario=" . $usuario['idUsuario'] . "&identificacion=" . $usuario['identificacion'] . "&nombre=" . $usuario['nombres'] .
-                "&apellido=" . $usuario['apellidos'] . "&direccion=" . $usuario['direccion'] . "&telefono=" . $usuario['telefono'] .
-                "&email=" . $usuario['email'] ."&foto=" . $usuario['foto']. "&empresa=" . $cliente['nombreCompania'] . "&nit=" . $cliente['nit'] . "&secEmp=" . $cliente['sectorEmpresarial'] . "&secEco=" . $cliente['sectorEconomico'] .
-                "&pbx=" . $cliente['telefonoFijo'] . "&estado=" . $usuario['estado'] . "&#verUsuario");
-    } else if ($usuario['estado'] == 'Inactivo') {
-        header("Location: ../vista/clientesInactivos.php?usuario=" . $usuario['idUsuario'] . "&identificacion=" . $usuario['identificacion'] . "&nombre=" . $usuario['nombres'] .
-                "&apellido=" . $usuario['apellidos'] . "&direccion=" . $usuario['direccion'] . "&telefono=" . $usuario['telefono'] .
-                "&email=" . $usuario['email'] . "&foto=" . $usuario['foto']. "&empresa=" . $cliente['nombreCompania'] . "&nit=" . $cliente['nit'] . "&secEmp=" . $cliente['sectorEmpresarial'] . "&secEco=" . $cliente['sectorEconomico'] .
-                "&pbx=" . $cliente['telefonoFijo'] . "&estado=" . $usuario['estado'] . "&#verUsuario");
+    $_SESSION['dtoCliente'] = $FacadeCliente->consultarCliente($_GET['idConsultarCliente']);
+    if ($_SESSION['dtoUsuario']['estado'] == 'Activo') {
+        header("Location: ../vista/clientesActivos.php?&#verUsuario");
+    } else if ($_SESSION['dtoUsuario']['estado'] == 'Inactivo') {
+        header("Location: ../vista/clientesInactivos.php?&#verUsuario");
     }
 }
     

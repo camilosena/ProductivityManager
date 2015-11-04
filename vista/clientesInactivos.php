@@ -305,21 +305,21 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
                     <?php
                     echo '<table id="muestraDatos"><tr><th colspan="2">Datos de Cliente</th></tr>';
-                    echo '<tr><td>Código:</td><td>' . $_GET['usuario'] . '</td></tr>';
-                    echo '<tr><td>Empresa:</td><td>' . $_GET['empresa'] . '</td></tr>';
-                    echo '<tr><td>NIT:</td><td>' . $_GET['nit'] . '</td></tr>';
-                    echo '<tr><td>Sector Empresarial:</td><td>' . $_GET['secEmp'] . '</td></tr>';
-                    echo '<tr><td>Sector Económico:</td><td>' . $_GET['secEco'] . '</td></tr>';
-                    echo '<tr><td>PBX:</td><td>' . $_GET['pbx'] . '</td></tr>';                   
+                    echo '<tr><td>Código:</td><td>' . $_SESSION['dtoUsuario']['idUsuario'] . '</td></tr>';
+                    echo '<tr><td>Empresa:</td><td>' . $_SESSION['dtoCliente']['nombreCompania'] . '</td></tr>';
+                    echo '<tr><td>NIT:</td><td>' . $_SESSION['dtoCliente']['nit'] . '</td></tr>';
+                    echo '<tr><td>Sector Empresarial:</td><td>' . $_SESSION['dtoCliente']['sectorEmpresarial'] . '</td></tr>';
+                    echo '<tr><td>Sector Económico:</td><td>' . $_SESSION['dtoCliente']['sectorEconomico'] . '</td></tr>';
+                    echo '<tr><td>PBX:</td><td>' . $_SESSION['dtoCliente']['telefonoFijo'] . '</td></tr>';                   
                     echo '<tr><td colspan="2" style="text-align:center">Representante Legal</td></tr>'; 
-                    echo '<tr><td>Identificación:</td><td> ' . $_GET['identificacion'] . '</td></tr>';
-                    echo '<tr><td>Nombres:</td><td>' . $_GET['nombre'] . '</td></tr>';
-                    echo '<tr><td>Apellidos:</td><td>' . $_GET['apellido'] . '</td></tr>';
-                    echo '<tr><td>Dirección:</td><td>' . $_GET['direccion'] . '</td></tr>';
-                    echo '<tr><td>Teléfono:</td><td>' . $_GET['telefono'] . '</td></tr>';
-                    echo '<tr><td>Correo Electronico:</td><td>' . $_GET['email'] . '</td></tr>';
-                     echo '<tr><td>Estado:</td><td>' . $_GET['estado'] . '</td></tr>';
-                     echo '<tr><td>Logo Compañia:</td><td><img src="../fotos/'.$_GET['foto'].'" class="logoEmpresarial"></td></tr>';
+                    echo '<tr><td>Identificación:</td><td> ' . $_SESSION['dtoUsuario']['identificacion'] . '</td></tr>';
+                    echo '<tr><td>Nombres:</td><td>' . $_SESSION['dtoUsuario']['nombres'] . '</td></tr>';
+                    echo '<tr><td>Apellidos:</td><td>' . $_SESSION['dtoUsuario']['apellidos'] . '</td></tr>';
+                    echo '<tr><td>Dirección:</td><td>' . $_SESSION['dtoUsuario']['direccion'] . '</td></tr>';
+                    echo '<tr><td>Teléfono:</td><td>' . $_SESSION['dtoUsuario']['telefono'] . '</td></tr>';
+                    echo '<tr><td>Correo Electronico:</td><td>' . $_SESSION['dtoUsuario']['email'] . '</td></tr>';
+                     echo '<tr><td>Estado:</td><td>' . $_SESSION['dtoUsuario']['estado'] . '</td></tr>';
+                     echo '<tr><td>Logo Compañia:</td><td><img src="../fotos/'.$_SESSION['dtoUsuario']['foto'].'" class="logoEmpresarial"></td></tr>';
                     echo '</table>';
                     ?>                                
                 </div>                    

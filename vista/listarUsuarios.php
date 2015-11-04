@@ -357,7 +357,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     echo '<tr><td>Teléfono:</td><td>' . $_SESSION['datosUsuario']['telefono']  . '</td></tr>';
                     echo '<tr><td>Fecha de Nacimiento:</td><td>' . $_SESSION['datosUsuario']['fechaNacimiento']  . '</td></tr>';
                     echo '<tr><td>Correo Electronico:</td><td ><a id="mails" title="Enviar Correo a:" href="mailto:' . $_SESSION['datosUsuario']['email']  . '">'. $_SESSION['datosUsuario']['email']  .'</td></tr>';
-                    if($_SESSION['datosUsuario']['rol'] !='Gerente'){
+                    if($_SESSION['datosUsuario']['rol'] =='Empleado'){
                     echo '<tr><td colspan="2" style="text-align:center">Asignar Usuario a Proyecto</td></tr>';
                     echo '<form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php?codUsuario=' . $_SESSION['datosUsuario']['idUsuario']  . '&rolUser=' . $_SESSION['datosUsuario']['rol']  . '">';
                     echo '<tr><td><label class="tag" id="labelProyecto" for="listaProyecto"><span id="lab_valCountry" class="h331">Seleccione Proyecto:</span></label></td>'

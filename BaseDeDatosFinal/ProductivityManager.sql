@@ -58,6 +58,7 @@ CREATE TABLE `auditorias` (
   `fecha` datetime DEFAULT NULL,
   `observacionesAuditoria` varchar(200) DEFAULT NULL,
   `producto` varchar(45) DEFAULT NULL,
+  `archivoAuditoria` varchar(95) DEFAULT NULL,
   PRIMARY KEY (`idAuditoria`,`proyectoAuditado`,`gerenteAuditoria`),
   KEY `fk_gerentesDeProyecto_has_proyectos_proyectos1_idx` (`proyectoAuditado`),
   KEY `fk_auditorias_usuarios1_idx` (`gerenteAuditoria`),
@@ -72,7 +73,7 @@ CREATE TABLE `auditorias` (
 
 LOCK TABLES `auditorias` WRITE;
 /*!40000 ALTER TABLE `auditorias` DISABLE KEYS */;
-INSERT INTO `auditorias` VALUES (1,1,1,'2015-10-27 11:41:45','Prueba Revision 1','Aprobado');
+INSERT INTO `auditorias` VALUES (1,1,1,'2015-10-27 11:41:45','Prueba Revision 1','Aprobado',NULL);
 /*!40000 ALTER TABLE `auditorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,35 +105,6 @@ LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
 INSERT INTO `clientes` VALUES (9,'Muebles La Oficina',923482438,'Privado','Industrial',6324354);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `empleadosporproyecto`
---
-
-DROP TABLE IF EXISTS `empleadosporproyecto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `empleadosporproyecto` (
-  `proyectos_idProyecto` int(11) NOT NULL,
-  `idProceso_procesos` int(11) NOT NULL,
-  `totalEmpleados` int(11) DEFAULT NULL,
-  `empleadosAdicionales` int(11) DEFAULT NULL,
-  PRIMARY KEY (`proyectos_idProyecto`,`idProceso_procesos`),
-  KEY `fk_proyectos_has_empleados_proyectos1_idx` (`proyectos_idProyecto`),
-  KEY `fk_empleadosPorProyecto_procesos1_idx` (`idProceso_procesos`),
-  CONSTRAINT `fk_empleadosPorProyecto_procesos1` FOREIGN KEY (`idProceso_procesos`) REFERENCES `procesos` (`idProceso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_proyectos_has_empleados_proyectos1` FOREIGN KEY (`proyectos_idProyecto`) REFERENCES `proyectos` (`idProyecto`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `empleadosporproyecto`
---
-
-LOCK TABLES `empleadosporproyecto` WRITE;
-/*!40000 ALTER TABLE `empleadosporproyecto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `empleadosporproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -249,6 +221,7 @@ CREATE TABLE `materiaprimaporproyecto` (
 
 LOCK TABLES `materiaprimaporproyecto` WRITE;
 /*!40000 ALTER TABLE `materiaprimaporproyecto` DISABLE KEYS */;
+INSERT INTO `materiaprimaporproyecto` VALUES (8,6,70000,0),(9,6,75000,0);
 /*!40000 ALTER TABLE `materiaprimaporproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,7 +308,7 @@ CREATE TABLE `permisosporrol` (
 
 LOCK TABLES `permisosporrol` WRITE;
 /*!40000 ALTER TABLE `permisosporrol` DISABLE KEYS */;
-INSERT INTO `permisosporrol` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(16,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(1,2),(2,2),(3,2),(4,2),(6,2),(7,2),(8,2),(9,2),(11,2),(12,2),(13,2),(14,2),(15,2),(16,2),(17,2),(23,2),(24,2),(25,2),(26,2),(27,2),(1,3),(3,3),(4,3),(5,3),(6,3),(25,3);
+INSERT INTO `permisosporrol` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(16,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(1,2),(2,2),(3,2),(4,2),(6,2),(7,2),(8,2),(9,2),(11,2),(12,2),(13,2),(14,2),(15,2),(16,2),(17,2),(23,2),(24,2),(25,2),(26,2),(27,2),(1,3),(3,3),(4,3),(5,3),(6,3),(25,3);
 /*!40000 ALTER TABLE `permisosporrol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -364,7 +337,7 @@ CREATE TABLE `personas` (
   KEY `identificacion` (`identificacion`),
   KEY `fk_personas_areas1_idx1` (`areas_idAreas`),
   CONSTRAINT `fk_personas_areas1` FOREIGN KEY (`areas_idAreas`) REFERENCES `areas` (`idAreas`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -403,6 +376,7 @@ CREATE TABLE `procesoporproducto` (
 
 LOCK TABLES `procesoporproducto` WRITE;
 /*!40000 ALTER TABLE `procesoporproducto` DISABLE KEYS */;
+INSERT INTO `procesoporproducto` VALUES (1,1,2,3),(1,2,3,4),(1,3,1,2),(1,4,4,6);
 /*!40000 ALTER TABLE `procesoporproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -427,7 +401,7 @@ CREATE TABLE `procesos` (
 
 LOCK TABLES `procesos` WRITE;
 /*!40000 ALTER TABLE `procesos` DISABLE KEYS */;
-INSERT INTO `procesos` VALUES (1,'corte',NULL),(2,'ensamble',NULL),(3,'pintura',NULL),(4,'acabados',NULL);
+INSERT INTO `procesos` VALUES (1,'corte',20000),(2,'ensamble',10000),(3,'pintura',30000),(4,'acabados',8000);
 /*!40000 ALTER TABLE `procesos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -442,8 +416,9 @@ CREATE TABLE `procesosporproyecto` (
   `idProyecto_proyectos` int(11) NOT NULL,
   `procesos_idProceso` int(11) NOT NULL,
   `totalTiempoProceso` int(11) DEFAULT NULL,
-  `porcentajeProvision` int(11) DEFAULT NULL,
   `totalPrecioProceso` int(11) DEFAULT NULL,
+  `totalEmpleadosProceso` varchar(45) DEFAULT NULL,
+  `porcentajeProvision` int(11) DEFAULT NULL,
   PRIMARY KEY (`idProyecto_proyectos`,`procesos_idProceso`),
   KEY `fk_proyectos_has_procesos_procesos1_idx` (`procesos_idProceso`),
   KEY `fk_proyectos_has_procesos_proyectos1_idx` (`idProyecto_proyectos`),
@@ -458,7 +433,7 @@ CREATE TABLE `procesosporproyecto` (
 
 LOCK TABLES `procesosporproyecto` WRITE;
 /*!40000 ALTER TABLE `procesosporproyecto` DISABLE KEYS */;
-INSERT INTO `procesosporproyecto` VALUES (1,1,10,1,NULL),(1,2,30,1,NULL),(1,3,10,0,NULL),(1,4,40,1,NULL);
+INSERT INTO `procesosporproyecto` VALUES (1,1,10,NULL,NULL,1),(1,2,30,NULL,NULL,1),(1,3,10,NULL,NULL,0),(1,4,40,NULL,NULL,1);
 /*!40000 ALTER TABLE `procesosporproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -487,6 +462,7 @@ CREATE TABLE `productoporproyecto` (
 
 LOCK TABLES `productoporproyecto` WRITE;
 /*!40000 ALTER TABLE `productoporproyecto` DISABLE KEYS */;
+INSERT INTO `productoporproyecto` VALUES (2,6,10);
 /*!40000 ALTER TABLE `productoporproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -545,7 +521,7 @@ CREATE TABLE `proyectos` (
 
 LOCK TABLES `proyectos` WRITE;
 /*!40000 ALTER TABLE `proyectos` DISABLE KEYS */;
-INSERT INTO `proyectos` VALUES (1,'Muebles La oficina','2015-01-01','2015-05-30','Ejecucion',17,'Sin restriccion'),(2,'Escritorios 93','2015-12-31','2017-12-31','Sin Estudio Costos',0,'no'),(3,'PruebaProject','2015-12-31','2017-12-31','Sin Estudio Costos',0,'aca'),(4,'Prueba3','2015-12-31','2018-12-31','Sin Estudio Costos',0,'sds'),(5,'PruebasPro','2013-12-31','2016-12-31','Sin Estudio Costos',0,'dsdsa'),(6,'Proyectos Corp','2015-11-02','0000-00-00','Sin Produccion',0,'dsds'),(7,'Prueba','2015-11-04','0000-00-00','Sin Produccion',0,'Nada'),(8,'Producto','2015-11-18','0000-00-00','Sin Produccion',0,'dsds'),(9,'dsds','2014-12-31','0000-00-00','Sin Produccion',0,''),(10,'Banco Pichincha','2015-11-02','0000-00-00','Sin Produccion',0,'Bancarios');
+INSERT INTO `proyectos` VALUES (1,'Muebles La oficina','2015-01-01','2015-05-30','Ejecucion',17,'Sin restriccion'),(2,'Escritorios 93','2015-12-31','2017-12-31','Sin Estudio Costos',0,'no'),(3,'PruebaProject','2015-12-31','2017-12-31','Sin Estudio Costos',0,'aca'),(4,'Prueba3','2015-12-31','2018-12-31','Sin Estudio Costos',0,'sds'),(5,'PruebasPro','2013-12-31','2016-12-31','Sin Estudio Costos',0,'dsdsa'),(6,'Proyectos Corp','2015-11-02','0000-00-00','Sin Estudio Costos',0,'dsds'),(7,'Prueba','2015-11-04','0000-00-00','Sin Produccion',0,'Nada'),(8,'Producto','2015-11-18','0000-00-00','Sin Produccion',0,'dsds'),(9,'dsds','2014-12-31','0000-00-00','Sin Produccion',0,''),(10,'Banco Pichincha','2015-11-02','0000-00-00','Sin Produccion',0,'Bancarios');
 /*!40000 ALTER TABLE `proyectos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -964,6 +940,32 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `registrarUsuario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`Gerente`@`localhost` PROCEDURE `registrarUsuario`(doc bigint(10), nombre varchar(45),apellido varchar(45),direccion varchar(45),telefono bigint(12),fecha date,email varchar(45),estado varchar(45),foto varchar(95),area int)
+BEGIN 
+ DECLARE EXIT HANDLER FOR 1062 SELECT 'Este Usuario Ya Esta Registrado';
+ DECLARE EXIT HANDLER FOR SQLEXCEPTION SELECT 'Error';
+ DECLARE EXIT HANDLER FOR SQLSTATE '23000' SELECT 'Error';
+
+INSERT INTO `productivitymanager`.`personas` (`idUsuario`, `identificacion`, `nombres`, `apellidos`, `direccion`, `telefono`, `fechaNacimiento`, `email`, `estado`, `foto`, `areas_idAreas`)
+ VALUES (default, doc, nombre, apellido, direccion, telefono, fecha, email, estado, foto, area);
+
+select('Usuario Registrado Con Éxito');
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `seguridadPaginas` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1033,4 +1035,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-02 18:58:05
+-- Dump completed on 2015-11-03 21:20:26

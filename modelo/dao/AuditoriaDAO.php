@@ -44,4 +44,21 @@ class AuditoriaDAO {
             echo 'Error' . $ex->getMessage();
         }
       }
+
+    public function consultarAuditoria($idAuditoria,PDO $cnn) {
+        try {
+            $query = $cnn->prepare("SELECT a.idAuditoria, p.estadoProyecto, concat(u.nombres,' ',u.apellidos) nombre, a.producto, p.nombreProyecto, a.fecha, a.observacionesAuditoria, a.producto
+                                    FROM  proyectos as p
+                                    inner join auditorias as a
+                                    inner join personas as u
+                                    on p.idProyecto=a.proyectoAuditado
+                                    and a.gerenteAuditoria=idUsuario
+                                    where idAuditoria=?");
+            $query->bindParam(1, $idAuditoria);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+    }
 }

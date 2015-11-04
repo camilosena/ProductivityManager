@@ -182,7 +182,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <label class="tag" for="image"><span id="lab_valCompany" class="h331">Evidencia:</span></label>
                     <input class="input"  name="uploadedfile" id="image"  type="file" multiple=true class="file"  title="Solo Foto">
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
-                    <br>             
+                    <br>
                     <div id="cargueEvidencia">
                         <output id="list"></output>
                     </div>

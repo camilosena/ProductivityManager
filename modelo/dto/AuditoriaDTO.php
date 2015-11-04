@@ -1,6 +1,8 @@
 <?php
 
 class AuditoriaDTO {
+
+    private $idAuditoria;
     private $idUsuario;
     private $idProyecto;
     private $descripcion;   
@@ -58,6 +60,23 @@ class AuditoriaDTO {
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
-    } 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdAuditoria()
+    {
+        return $this->idAuditoria;
+    }
+
+    /**
+     * @param mixed $idAuditoria
+     */
+    public function setIdAuditoria($idAuditoria)
+    {
+        $this->idAuditoria = $idAuditoria;
+    }
+
 
 }

@@ -19,8 +19,12 @@ class FacadeAuditorias
         return $this->auditoriaDAO->numeroAudoria($this->conexionBase);
     }
 
-    public function consultarAuditorias() {
+    public function listarAuditorias() {
         return $this->auditoriaDAO->listarAuditorias($this->conexionBase);
 
+    }
+
+    public function consultarAuditoria($idAuditoria) {
+        return $this->auditoriaDAO->consultarAuditoria($idAuditoria,$this->conexionBase);
     }
 }

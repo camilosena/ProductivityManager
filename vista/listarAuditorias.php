@@ -152,7 +152,6 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <th>Gerente Auditoria</th>
                 <th>Nombre de Proyecto</th>
                 <th>Fecha / Hora</th>
-                <th>Producto</th>
                 <th>Descripción</th>
                 <th>Estado Del Producto</th>
                 <th>Acciones</th>
@@ -168,7 +167,6 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                <th><input tabindex="4" type="text" class="input11" name="lastNames" value=""><br></th>
                <th><input tabindex="5" type="text" class="input11" name="rol" value=""></th>
                <th><input tabindex="6" type="text" class="input11" name="phone" value=""></th>
-               <th><input tabindex="6" type="text" class="input11" name="phone" value=""></th>
                <th><button tabindex="6" type="submit" value="buscarUsuarios" name="buscarUsuarios" id="buscar" class="boton-verde">Buscar</button></th>
            </tr>
            </thead>
@@ -179,7 +177,6 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <th>Gerente Auditoria</th>
                 <th>Nombre de Proyecto</th>
                 <th>Fecha / Hora</th>
-                <th>Producto</th>
                 <th>Descripción</th>
                 <th>Estado del Producto</th>
                 <th>Acciones</th>
@@ -193,7 +190,7 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
             require_once '../modelo/dao/AuditoriaDAO.php';
             require_once '../modelo/utilidades/Conexion.php';
             $facadeAuditoria = new FacadeAuditorias();
-            $todos = $facadeAuditoria->consultarAuditorias();
+            $todos = $facadeAuditoria->listarAuditorias();
             foreach ($todos as $auditoria) {
         ?>
             <tr>
@@ -201,21 +198,17 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                 <td><?php echo $auditoria['nombre']; ?></td>
                 <td><?php echo $auditoria['nombreProyecto']; ?></td>
                 <td><?php echo $auditoria['fecha']; ?></td>
-                <td><?php echo $auditoria['producto']; ?></td>
                 <td><?php echo $auditoria['observacionesAuditoria']; ?></td>
                 <td><?php echo $auditoria['producto']; ?></td>
-                <td><a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad'];?>"><img class="iconos" src="../img/verBino.png"></a>
+                <td><a class="me" title="Consultar Auditoría" href="../controlador/ControladorAuditorias.php?idAuditoria=<?php echo $auditoria['idAuditoria'];?>"><img class="iconos" src="../img/verBino.png"></a>
                 <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
-                    <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
+                    <a class="me" title="Modificar Auditoría" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                 <?php
                 };
                 ?>
-                    <a name="eliminar" title="Eliminar Usuario" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
+                    <a name="eliminar" title="Eliminar Auditoría" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
                 </td>
 
-                <!--<td>
-                    <a class="me" title="Consultar Auditoria" href="../controlador/ControladorAuditorias.php?idAuditoria=<?php echo $auditoria['idAuditoria']; ?>"><img class="iconos" src="../img/ojo.png"></a>
-                </td>-->
             </tr>
                 <?php
             }
@@ -224,6 +217,24 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
         </tbody>
     </table>
 </div>
+
+        <div id="verAuditoria" class="modalDialog" title="Ver Auditoria">
+            <div><a href="#close" title="Cerrar" class="close">X</a><br>
+                <?php
+                echo '<table id="muestraDatos"><tr><th colspan="2">Aditoría</th></tr>';
+                echo '<tr><td>Código Auditoría:</td><td>' . $_SESSION['datosAuditoria']['idAuditoria'] . '</td></tr>';
+                echo '<tr><td>Gerente Auditoría:</td><td>' . $_SESSION['datosAuditoria']['nombre'] . '</td></tr>';
+                echo '<tr><td>Nombre Proyecto:</td><td>' . $_SESSION['datosAuditoria']['nombreProyecto'] . '</td></tr>';
+                echo '<tr><td>Fecha:</td><td> ' . $_SESSION['datosAuditoria']['fecha'] . '</td></tr>';
+                echo '<tr><td>Descripción:</td><td>' . $_SESSION['datosAuditoria']['observacionesAuditoria'] . '</td></tr>';
+                echo '<tr><td>Producto:</td><td>' . $_SESSION['datosAuditoria']['producto'] . '</td></tr>';
+                echo '<tr><td>Evidencia:</td><td><img style="width:280px;height:140px;" src="../evidencias/' . $_SESSION['datosAuditoria']['archivo'] . '"></td></tr>';
+                echo '</table>';
+                ?>
+            </div>
+        </div>
+
+
     </div>
         <button class="boton-verde"  onclick="location.href='listarAuditorias.php'" >Actualizar Lista</button>
     </div>

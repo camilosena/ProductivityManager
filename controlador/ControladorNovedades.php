@@ -52,7 +52,8 @@ if(isset($_POST['crearNovedad'])){
     header("location: ../vista/agregarNovedad.php?novedad=".$message."&evidencia=".$msg);
 }else if (isset($_GET['idNovedad'])) {
     $facadeNovedad = new FacadeNovedades();
-    $novedad= $facadeNovedad->consultarNovedad($_GET['idNovedad']);
-    header("Location: ../vista/listarNovedades.php?idNovedad=" . $novedad['idNovedad'] . "&nombreProyecto=" . $novedad['nombreProyecto'] . "&categoria=" . $novedad['categoria'] .
-            "&descripcion=" . $novedad['descripcion'] . "&fecha=" . $novedad['fecha'] . "&archivo=" . $novedad['archivo']."&#verUsuario");
+    session_start();
+    $_SESSION['datoNovedad'] = $facadeNovedad->consultarNovedad($_GET['idNovedad']);
+
+    header("Location: ../vista/listarNovedades.php?&#verUsuario");
 }

@@ -197,11 +197,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         <td>
                             <a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad']; ?>"><img class="iconos" src="../img/verBino.png"></a>
                             <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
-                                <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
+                                <a class="me" title="Modificar Novedad" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                                 <?php
                             };
                             ?>
-                            <a name="eliminar" title="Eliminar Usuario" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
+                            <a name="eliminar" title="Eliminar Novedad" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
                         </td>
                     </tr>
                     <?php
@@ -227,11 +227,11 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                     <td>
                         <a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad']; ?>"><img class="iconos" src="../img/verBino.png"></a>
                             <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
-                        <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
+                        <a class="me" title="Modificar Novedad" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                         <?php
                         };
                         ?>
-                        <a name="eliminar" title="Eliminar Usuario" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
+                        <a name="eliminar" title="Eliminar Novedad" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
                     </td>
                 </tr>
                 <?php
@@ -241,16 +241,16 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                       
         </tbody>
     </table>
-    <div id="verUsuario" class="modalDialog" title="Ver Usuario">
+    <div id="verUsuario" class="modalDialog" title="Ver Novedad">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
                     <?php
                     echo '<table id="muestraDatos"><tr><th colspan="2">Novedad</th></tr>';
-                    echo '<tr><td>Código Novedad:</td><td>' . $_GET['idNovedad'] . '</td></tr>';
-                    echo '<tr><td>Nombre Proyecto:</td><td>' . $_GET['nombreProyecto'] . '</td></tr>';
-                    echo '<tr><td>Categoria:</td><td>' . $_GET['categoria'] . '</td></tr>';
-                    echo '<tr><td>Descripción:</td><td> ' . $_GET['descripcion'] . '</td></tr>';
-                    echo '<tr><td>Fecha:</td><td>' . $_GET['fecha'] . '</td></tr>';
-                    echo '<tr><td>Evidencia:</td><td><img style="width:280px;height:140px;" src="../evidencias/' . $_GET['archivo'] . '"></td></tr>';                                      
+                    echo '<tr><td>Código Novedad:</td><td>' . $_SESSION['datoNovedad']['idNovedad'] . '</td></tr>';
+                    echo '<tr><td>Nombre Proyecto:</td><td>' . $_SESSION['datoNovedad']['nombreProyecto'] . '</td></tr>';
+                    echo '<tr><td>Categoria:</td><td>' . $_SESSION['datoNovedad']['categoria'] . '</td></tr>';
+                    echo '<tr><td>Descripción:</td><td> ' . $_SESSION['datoNovedad']['descripcion'] . '</td></tr>';
+                    echo '<tr><td>Fecha:</td><td>' . $_SESSION['datoNovedad']['fecha'] . '</td></tr>';
+                    echo '<tr><td>Evidencia:</td><td><img style="width:280px;height:140px;" src="../evidencias/' . $_SESSION['datoNovedad']['archivo'] . '"></td></tr>';
                     echo '</table>';
                     ?>                                
                 </div>                    

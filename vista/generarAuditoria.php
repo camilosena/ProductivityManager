@@ -293,14 +293,52 @@ if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
                         ?>
                     </select>
 
+                <br>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Evidencia:</span></label>
+                <input class="input"  name="uploadedfile" id="image"  type="file" multiple=true class="file"  title="Solo Foto">
+                <span id="valCompany" style="color:Red;visibility:hidden;"></span>
+                <br>
+                <div id="cargueEvidencia">
+                    <output id="list"></output>
+                </div>
+
                 <label class="tag2" for="description"><span id="lab_valName" class="h331">Descripción:</span></label>
+
+
                 <textarea  class="input6" name="descripcion" required type="text" maxlength="64" id="description" class="field1"></textarea>
                 <span id="valName" style="color:Red;visibility:hidden;"></span>
                 <br>
                 <label class="tag" for="txtName"><span id="lab_valName" class="h331">Estado de Producto:</span></label>
-                <input type="radio" name="producto" value="Aprobado">Aprobado                
+                <input type="radio" name="producto" value="Conforme">Conforme
                 <input type="radio" name="producto" value="No Conforme">No Conforme              
                 <button type="submit" name="crearAuditoria" class="boton-verde">Generar Auditoría</button><br>
+
+                <script>
+                    function archivo(evt) {
+                        var files = evt.target.files; // FileList object
+
+                        // Obtenemos la imagen del campo "file".
+                        for (var i = 0, f; f = files[i]; i++) {
+                            //Solo admitimos imágenes.
+                            if (!f.type.match('image.*')) {
+                                continue;
+                            }
+
+                            var reader = new FileReader();
+
+                            reader.onload = (function (theFile) {
+                                return function (e) {
+                                    // Insertamos la imagen
+                                    document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '" style="height:100px;width: 200px;"/>'].join('');
+                                };
+                            })(f);
+
+                            reader.readAsDataURL(f);
+                        }
+                    }
+
+                    document.getElementById('image').addEventListener('change', archivo, false);
+                </script>
 
             </form>                   
         </div>    

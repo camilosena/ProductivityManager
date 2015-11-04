@@ -17,10 +17,11 @@ if(isset($_POST['crearAuditoria'])){
     $objetoDTO = new AuditoriaDTO($idUsuario, $idProyecto, $descripcion,$producto);
     $message= $facadeAdutoria->insertarAuditoria($objetoDTO);
     header("location: ../vista/generarAuditoria.php?auditoria=".$message);
-}
-    //}else if (isset($_GET['idAuditoria'])) {
-    //$facadeAdutoria = new FacadeAuditorias();
-    //$novedad= $facadeNovedad->consultarNovedad($_GET['idNovedad']);
-    //header("Location: ../vista/listarNovedades.php?idNovedad=" . $novedad['idNovedad'] . "&nombreProyecto=" . $novedad['nombreProyecto'] . "&categoria=" . $novedad['categoria'] .
-    //"&descripcion=" . $novedad['descripcion'] . "&fecha=" . $novedad['fecha'] . "&archivo=" . $novedad['archivo']."&#verUsuario");
-    //}
+    }else if (isset($_GET['idAuditoria'])) {
+    $facadeAdutoria = new FacadeAuditorias();
+    session_start();
+    $_SESSION['datosAuditoria'];
+    $_SESSION['datosAuditoria'] = $facadeAdutoria->consultarAuditoria($_GET['idAuditoria']);
+
+    header("Location: ../vista/listarAuditorias.php?&#verAuditoria");
+    }

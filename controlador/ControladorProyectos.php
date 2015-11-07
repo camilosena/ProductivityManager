@@ -9,6 +9,8 @@ require_once '../facades/FacadeProyectos.php';
 require_once '../facades/FacadeUsuarios.php';
 require_once '../modelo/dao/InsumosDAO.php';
 require_once '../facades/FacadeInsumos.php';
+require_once '../modelo/dao/ProductosDAO.php';
+require_once '../facades/FacadeProductos.php';
 
 //Crea Proyecto
 if (isset($_POST['crearProyecto'])) {
@@ -71,9 +73,11 @@ else if (isset($_GET['codUsuario'])) {
 } 
 else if (isset($_POST['elementosProyecto'])) {
 //echo var_dump($_POST);    
+    $fProducto = new FacadeProductos();
+    session_start();
     $cantidadTipo = $_POST['cantidadTipo'];
     $idProyecto = $_POST['idProyecto'];
-    $totalProductos = 5;
+    $totalProductos =   $fProducto->maxProductoActivo();
     $fProyecto = new FacadeProyectos;
     for ($j = 1; $j <= $totalProductos; $j++) {
         if (isset($_POST['producto' . $j]) && isset($_POST['cantidad' . $j])) {

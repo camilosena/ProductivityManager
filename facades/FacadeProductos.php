@@ -35,7 +35,10 @@ class FacadeProductos {
         
         return $this->productosDAO->listarProductosActivos($this->conexion);
     }
-    
+    function maxProductoActivo(){
+        
+        return $this->productosDAO->productoMaximo($this->conexion);
+    }    
     function consecutivoProducto(){
         
         return $this->productosDAO->consecutivoProductos($this->conexion);

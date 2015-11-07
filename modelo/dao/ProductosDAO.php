@@ -50,9 +50,20 @@ class ProductosDAO {
         try {
             $sql = "select * from productos where estadoProducto = 'Activo'" ;
             $query = $cnn->prepare($sql);           
-            $query->execute();           
-            $_SESSION['totalActivos']=$query->rowCount();
+            $query->execute();                       
             return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+        
+    }
+        function productoMaximo(PDO $cnn){
+        try {
+            $sql = "select max(idProductos) from productos where estadoProducto='Activo'" ;
+            $query = $cnn->prepare($sql);           
+            $query->execute();                       
+            return $query->fetchColumn();
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }

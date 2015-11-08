@@ -44,21 +44,26 @@ if (isset($_POST['crearProyecto'])) {
     $idProyecto = $_POST['idProyecto'];
     $nombreProyecto = $_POST['nombreProyecto'];
     $fechaInicio = $_POST['fechaInicio'];
-    $fechaFin = $_POST['fechaFin'];
-    $estado = 'Ejecucion';
     $observaciones = $_POST['descripcion'];
     $fecha_inicio = new DateTime($_POST['fechaInicio']);
-    $fecha_fin = new DateTime($_POST['fechaFin']);
-    if ($fecha_fin > $fecha_inicio) {
-        $proyectoDTO = new ProyectosDTO($idProyecto, $nombreProyecto, $fechaInicio, $fechaFin, $estado, $observaciones);
+    $hoy = date('Y-m-d');
+    $fecha_actual = new DateTime($hoy);
+    if ($fecha_actual <= $fecha_inicio) {        
         $facadeProyecto = new FacadeProyectos();
-        $mensaje = $facadeProyecto->actualizarProyecto($proyectoDTO);
-        $facadeUsuario = new FacadeUsuarios;
-        $mensaje2 = $facadeUsuario->modificarUsuarioProyecto($_POST['cliente'], $_POST['idProyecto']);
-        header("location: ../vista/listarProyectos.php?mensaje=" . $mensaje);
+        $state = $facadeProyecto->consultarProyecto($idProyecto);
+        if ($state['estadoProyecto'] == 'Ejecucion') {
+            $mensaje = 'No puede modificar proyectos con estado de Ejecución';
+            header("location: ../vista/modificarProyecto.php?idProject=" . $_POST['idProyecto'] . "&errorEstado=" . $mensaje);
+        } else {
+            $proyectoDTO = new ProyectosDTO($idProyecto, $nombreProyecto, $fechaInicio, $fechaFin, $estado, $observaciones);
+            $mensaje = $facadeProyecto->actualizarProyecto($proyectoDTO);
+            $facadeUsuario = new FacadeUsuarios;
+            $mensaje2 = $facadeUsuario->modificarUsuarioProyecto($_POST['cliente'], $_POST['idProyecto']);
+            header("location: ../vista/listarProyectos.php?mensaje=" . $mensaje);
+        }
     } else {
-        $fechas = 'La fecha fin debe ser posterior a la de Inicio';
-        header("location: ../vista/crearProyecto.php?mensajeFecha=" . $fechas);
+        $fechas = 'La Fecha de Inicio debe ser Futura';
+        header("location: ../vista/modificarProyecto.php?idProject=" . $_POST['idProyecto'] . "&mensajeFecha=" . $fechas);
     }
 }//  Consultar
 else if (isset($_GET['idProject'])) {

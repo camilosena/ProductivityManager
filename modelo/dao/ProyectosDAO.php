@@ -78,7 +78,7 @@ class ProyectosDAO {
     
      public function obtenerClienteProyecto($idProyecto, PDO $cnn) {
         try {
-            $query = $cnn->prepare("SELECT idCliente,nombreCompania from clientes,usuarios,usuarioporproyecto where  idCliente=idUsuario and idUsuario=usuarioAsignado and proyectoAsignado=?");
+            $query = $cnn->prepare("SELECT idCliente,nombreCompania from clientes,personas,usuarioporproyecto where  idCliente=idUsuario and idUsuario=usuarioAsignado and proyectoAsignado=?");
             $query->bindParam(1, $idProyecto);
             $query->execute();
             return $query->fetch();
@@ -91,13 +91,11 @@ class ProyectosDAO {
      public function ModificarProyecto(ProyectosDTO $proyectoDTO, PDO $cnn) {
         $mensaje = "";
         try {
-            $query = $cnn->prepare("UPDATE  proyectos SET nombreProyecto=?, fechaInicio=?, fechaFin=?, estadoProyecto=?, observaciones=? where idProyecto=?");            
+            $query = $cnn->prepare("UPDATE  proyectos SET nombreProyecto=?, fechaInicio=?, observaciones=? where idProyecto=?");            
             $query->bindParam(1, $proyectoDTO->getNombreProyecto());
-            $query->bindParam(2, $proyectoDTO->getFechaInicio());
-            $query->bindParam(3, $proyectoDTO->getFechaFin());
-            $query->bindParam(4, $proyectoDTO->getEstado());            
-            $query->bindParam(5, $proyectoDTO->getObservaciones());
-            $query->bindParam(6, $proyectoDTO->getIdProyecto());
+            $query->bindParam(2, $proyectoDTO->getFechaInicio());                                   
+            $query->bindParam(3, $proyectoDTO->getObservaciones());
+            $query->bindParam(4, $proyectoDTO->getIdProyecto());
             $query->execute();
             $mensaje = "Proyecto Actualizado";
         } catch (Exception $ex) {

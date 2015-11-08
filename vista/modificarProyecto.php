@@ -191,7 +191,7 @@ $session->Session($pagActual);
                         document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
                     </script>                                      
                 </span><br><br>
-                <h2 class="h330">Modificar Proyecto:</h2><br>
+                <h2 class="h330">Modificar Proyecto:</h2><hr>
                 <form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php"> 
                  <?php
                 require_once '../modelo/dto/ProyectosDTO.php';
@@ -220,7 +220,7 @@ $session->Session($pagActual);
                              <label class="tag" id="clienteAct" for="clienteAct"><span id="lab_valCountry" class="h331">Seleccione un Cliente:</span></label>
                              <select class="input"  name="cliente" id="clienteAct" autofocus class="list_menu" >                                                                                                        
                                  <optgroup label="Cliente Actual">
-                                     <option value="<?php $cliente['idCliente']; ?>" selected><?php echo $asignado['idCliente'].'-'.$asignado['nombreCompania'];?></option>
+                                     <option value="<?php $asignado['idCliente']; ?>" selected><?php echo $asignado['idCliente'].'-'.$asignado['nombreCompania'];?></option>
                                  </optgroup>
                                  <optgroup label="Mover a:">
                             <?php foreach ($cliente as $listado) {
@@ -237,26 +237,45 @@ $session->Session($pagActual);
                     <label class="tag" for="fechaInicio"><span id="lab_valSurname" class="h331">Fecha Inicio:</span></label>
                     <input class="input" name="fechaInicio" value="<?php echo $project['fechaInicio']; ?>" required type="date" maxlength="64" id="fechaInicio" class="field1">
                     <span id="valSurname" style="color:Red;visibility:hidden;"></span>
-                    <br>
-                    <label class="tag" for="fechaFin"><span id="lab_valCompany" class="h331">Fecha Fin:</span></label>
-                    <input class="input" name="fechaFin" required value="<?php echo $project['fechaFin']; ?>"  type="date" maxlength="64" id="fechaFin" class="field1">
-                    <span id="valCompany" style="color:Red;visibility:hidden;"></span>
-                    <br>      
+                    <br>                         
                     <label class="tag1" for="state"><span id="lab_valCompany" class="h331">Estado Actual:</span></label>
-                    <input class="input" name="estado" required value="<?php echo $project['estado']; ?>"  type="text" maxlength="64" id="state" class="field1" readonly style="text-align: center">
+                    <input class="input" name="estado" required value="<?php echo $project['estadoProyecto']; ?>"  type="text" maxlength="64" id="state" class="field1" readonly style="text-align: center">
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                     <br>    
-                    <label class="tag2" for="descripcion"><span id="lab_valName" class="h331">Descripción:</span></label>
+                    <label class="tag2" style="position:relative;bottom:50px" for="descripcion"><span id="lab_valName" class="h331">Descripción:</span></label>
                     <textarea  class="input4" name="descripcion" required type="text" maxlength="240" id="descripcion" class="field1" autofocus><?php echo $project['observaciones']; ?></textarea> 
                     <span id="valName" style="color:Red;visibility:hidden;"></span>
                     <button type="submit" name="modificarProyecto" class="boton-verde">Modificar Proyecto</button><br>                    
                 </form>
+                <hr>
             </div>
         </div>    
          <?php
             if (isset($_GET['mensajeFecha'])) {
                 echo '<script> 
                 Command: toastr["warning"]("'. $_GET['mensajeFecha'].'")
+            toastr.options = {
+              "closeButton": false,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-top-right",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+            </script>';
+            };
+             if (isset($_GET['errorEstado'])) {
+                echo '<script> 
+                Command: toastr["error"]("'. $_GET['errorEstado'].'")
             toastr.options = {
               "closeButton": false,
               "debug": false,

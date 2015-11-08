@@ -35,7 +35,7 @@ if (isset($_POST['crearProyecto'])) {
         $abrirVentana = true;
         header("location: ../vista/listarProyectos.php?mensaje=" . $mensaje . "&winOpen=" . $abrirVentana . "&mensaje2=" . $mensaje2 . "&projectNum=" . $_POST['idProyecto'] . "&nameProject=" . $_POST['nombreProyecto']);
     } else {
-        $fechas = 'La Fecha Inicio debe ser Futura';
+        $fechas = 'La Fecha de Inicio debe ser Futura';
         header("location: ../vista/crearProyecto.php?mensajeFecha=" . $fechas);
     }
 } else if (isset($_POST['modificarProyecto'])) {

@@ -25,16 +25,27 @@ $session->Session($pagActual);
         <link rel="stylesheet" type="text/css" href="../css/tablaInModal.css">
     </head>    
     <body>         
-        <div class="wrapper">   
-            <div>
+        <div class="wrapper">              
+            <?php if (isset($_GET['projectNum'])) { ?>
+                <h2 class="h330"><br>Proyecto <?php echo $_GET['projectNum'] . "-" . $_GET['nameProject']; ?>:</h2><br>                
+                <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
+                <form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php">             
+                    <hr>
+                    <div class="modelo">
+                        <label class="tag" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Código Proyecto:</span></label>
+                        <input class="input" name="idProyecto" type="text" maxlength="64" value="0<?php echo $_GET['projectNum']; ?>" id="id" style="text-align: center" class="field1" autofocus readonly required>
+                        <label class="tag" id="labelProyecto" for="name"><span id="lab_valCountry" class="h331">Nombre Proyecto:</span></label>
+                        <input class="input" name="nombreProyecto" type="text" maxlength="64" value="<?php echo $_GET['nameProject']; ?>" id="name" style="text-align: center" class="field1" autofocus readonly required>
+                    </div>                   
+                    <br>        
+                    <div>
                 <?php
                 require_once '../modelo/dao/ProyectosDAO.php';
                 require_once '../facades/FacadeProyectos.php';
                 //  Consultar Proyecto
                 if (isset($_GET['projectNum'])) {
                     $facadeProyecto = new FacadeProyectos;
-                    $proyectos = $facadeProyecto->consultarProyecto($_GET['projectNum']);
-                }                
+                    $proyectos = $facadeProyecto->consultarProyecto($_GET['projectNum']);                                
                     echo '<div>';
                     echo '<table id="muestraDatos"><tr><th colspan="2">Información de Proyecto</th></tr>';
                     echo '<tr><td>Código:</td><td>' . $proyectos['idProyecto'] . '</td></tr>';
@@ -84,23 +95,11 @@ $session->Session($pagActual);
                     echo '<tr><td>Estado:</td><td>' . $pro['email'] . '</td></tr>';
                     echo '<tr><td>Ejecutado:</td><td>' . $pro['nombreArea'] . '</td></tr>';
                     echo '</table>';
-                    echo '</div>';
+                    echo '</div>';                
+                    }
                     ?>                                
-                </div>                    
-            </div>
-            <?php if (isset($_GET['projectNum'])) { ?>
-                <h2 class="h330"><br>Proyecto <?php echo $_GET['projectNum'] . "-" . $_GET['nameProject']; ?>:</h2><br>                
-                <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php">             
-                    <hr>
-                    <div class="modelo">
-                        <label class="tag" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Código Proyecto:</span></label>
-                        <input class="input" name="idProyecto" type="text" maxlength="64" value="0<?php echo $_GET['projectNum']; ?>" id="id" style="text-align: center" class="field1" autofocus readonly required>
-                        <label class="tag" id="labelProyecto" for="name"><span id="lab_valCountry" class="h331">Nombre Proyecto:</span></label>
-                        <input class="input" name="nombreProyecto" type="text" maxlength="64" value="<?php echo $_GET['nameProject']; ?>" id="name" style="text-align: center" class="field1" autofocus readonly required>
-                    </div>                   
-                    <br>            
-                    <div >
+                </div> 
+                    <div>
                         <div id='inline_content' style='padding:10px; background:#fff;'>
                             <br><hr>
                             <strong><h2 class="h330">Productos:</h2></strong><br>                                

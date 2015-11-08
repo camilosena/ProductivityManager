@@ -11,6 +11,8 @@ require_once '../modelo/dao/InsumosDAO.php';
 require_once '../facades/FacadeInsumos.php';
 require_once '../modelo/dao/ProductosDAO.php';
 require_once '../facades/FacadeProductos.php';
+require_once '../modelo/dao/ProcesosDAO.php';
+require_once '../facades/FacadeProcesos.php';
 
 //Crea Proyecto
 if (isset($_POST['crearProyecto'])) {
@@ -77,7 +79,7 @@ else if (isset($_POST['elementosProyecto'])) {
     session_start();
     $cantidadTipo = $_POST['cantidadTipo'];
     $idProyecto = $_POST['idProyecto'];
-    $totalProductos =   $fProducto->maxProductoActivo();
+    $totalProductos =   $fProducto->maxProductoActivo(); //Productos Activos
     $fProyecto = new FacadeProyectos;
     for ($j = 1; $j <= $totalProductos; $j++) {
         if (isset($_POST['producto' . $j]) && isset($_POST['cantidad' . $j])) {
@@ -88,14 +90,21 @@ else if (isset($_POST['elementosProyecto'])) {
     }
     $produccion = $fProyecto->obtenerProductoProyecto($idProyecto);
     $fMateria = new FacadeInsumos();
-    foreach ($produccion as $todo) {
+    $fProceso= new FacadeProcesos();
+    foreach ($produccion as $todo) { 
         $materias = $fMateria->obtenerInsumos($todo['Productos_idProductos']);
+        //Materia Prima Por Proyecto        
         foreach ($materias as $insumo) {
             $precioBase = $fMateria->obtenerInsumosPorID($insumo['insumos']);
             $subTotal = ($insumo['cantidadMateriaPorProducto'] * $precioBase);
             $total = $subTotal * $todo['cantidadProductos'];
             $fProyecto->insertarMateriaProyecto($insumo['insumos'], $idProyecto, $total, 0);
-        }        
+        }   
+        $procesos = $fProceso->obtenerProcesoPorProducto($todo['Productos_idProductos']);
+        //Procesos por producto segun solicitud de proyecto
+        foreach ($procesos as $proceso) {
+            
+        }
     }
     $fProyecto->cambiarEstadoProyecto('Sin Estudio Costos', $_POST['idProyecto']);
     header("location: ../vista/produccionProyecto.php?mensaje=".$mensaje);

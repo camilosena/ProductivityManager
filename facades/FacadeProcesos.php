@@ -38,4 +38,8 @@ class FacadeProcesos {
         
         return $this->ProcesosDAO->consultarProcesos($idProceso, $this->conexionBase);
     }
+        function obtenerProcesoPorProducto($idProducto){
+        
+        return $this->ProcesosDAO->obtenerProcesoPorProducto($idProducto, $this->conexionBase);
+    }
 }

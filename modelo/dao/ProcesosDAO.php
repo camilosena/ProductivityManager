@@ -1,12 +1,10 @@
 <?php
 
-
-
 class ProcesosDAO {
-    
-    function AgregarProceso (ProcesosDTO $pDTO, $producto, PDO $cnn){
-        
-         try {
+
+    function AgregarProceso(ProcesosDTO $pDTO, $producto, PDO $cnn) {
+
+        try {
             $sentencia = $cnn->prepare("INSERT INTO procesos VALUES(?,?,?)");
             $sentencia->bindParam(1, $pDTO->getIdProceso());
             $sentencia->bindParam(2, $pDTO->getTipo());
@@ -16,26 +14,27 @@ class ProcesosDAO {
             $sentencia2->bindParam(2, $pDTO->getIdProceso());
             $sentencia2->bindParam(3, $pDTO->getEmpleados());
             $sentencia2->bindParam(4, $pDTO->getTiempo());
-          
+
             $sentencia->execute();
             $sentencia2->execute();
             $mensaje = "Proceso registrado ";
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }
-        
+
         return $mensaje;
     }
-    function consultarProcesos($idProceso, PDO $cnn){
-        
-         try {
+
+    function consultarProcesos($idProceso, PDO $cnn) {
+
+        try {
             $sql = "select idProceso, tipoProceso, precioProceso, nombreProducto as producto, cantidadDeEmpleados as empleados, 
 tiempoPorProceso as tiempo from procesos
  join procesoporproducto on  idProceso = procesos_idProceso and idProceso=?
  join productos on idProductos_Productos = idProductos ";
-            
-                $query = $cnn->prepare($sql);
-             $query->bindParam(1, $idProceso);
+
+            $query = $cnn->prepare($sql);
+            $query->bindParam(1, $idProceso);
             $query->execute();
             return $query->fetch();
         } catch (Exception $ex) {
@@ -43,45 +42,43 @@ tiempoPorProceso as tiempo from procesos
         }
         $cnn = null;
     }
-            
-    
-    
-    function listarProcesos(PDO $cnn){
-        
+
+    function listarProcesos(PDO $cnn) {
+
         try {
             $sql = "select idProceso, tipoProceso, precioProceso, nombreProducto as producto, cantidadDeEmpleados as empleados, 
 tiempoPorProceso as tiempo from procesos
  join procesoporproducto on  idProceso = procesos_idProceso
  join productos on idProductos_Productos = idProductos";
-            
-                $query = $cnn->prepare($sql);
-            
+
+            $query = $cnn->prepare($sql);
+
             $query->execute();
             return $query->fetchAll();
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }
         $cnn = null;
-        
     }
-            
-    function consecutivoProceso (PDO $cnn){
-        
-       try {
-           
+
+    function consecutivoProceso(PDO $cnn) {
+
+        try {
+
             $query = $cnn->prepare('select max(idProceso) from procesos');
-          
+
             $query->execute();
-            $ultimo= $query->fetchColumn();
-            return ($ultimo+1);
+            $ultimo = $query->fetchColumn();
+            return ($ultimo + 1);
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }
         $cnn = null;
     }
-    function ModificarProcesos(ProcesosDTO $procesosDTO, PDO $cnn){
-        
-          $mensaje = "";
+
+    function ModificarProcesos(ProcesosDTO $procesosDTO, PDO $cnn) {
+
+        $mensaje = "";
         try {
             $query = $cnn->prepare("update procesos set precioProceso=? where idProceso=?");
             $query->bindParam(1, $procesosDTO->getValor());
@@ -90,7 +87,7 @@ tiempoPorProceso as tiempo from procesos
             $query2->bindParam(1, $procesosDTO->getEmpleados());
             $query2->bindParam(2, $procesosDTO->getTiempo());
             $query2->bindParam(3, $procesosDTO->getIdProceso());
-            
+
             $query->execute();
             $query2->execute();
             $mensaje = "Registro Actualizado";
@@ -99,16 +96,16 @@ tiempoPorProceso as tiempo from procesos
         }
         $cnn = null;
         return $mensaje;
-        
     }
-    function eliminarProceso ($idProceso,PDO $cnn){
-         try {
+
+    function eliminarProceso($idProceso, PDO $cnn) {
+        try {
             $sql = 'delete from  procesoporproducto  where procesos_idProceso =?';
-           
+
             $query = $cnn->prepare($sql);
             $query->bindParam(1, $idProceso);
-             $sql2 = 'delete from procesos where idProceso=?';
-             $query2 = $cnn->prepare($sql2);
+            $sql2 = 'delete from procesos where idProceso=?';
+            $query2 = $cnn->prepare($sql2);
             $query2->bindParam(1, $idProceso);
             $query->execute();
             $query2->execute();
@@ -118,8 +115,17 @@ tiempoPorProceso as tiempo from procesos
             echo 'Error' . $ex->getMessage();
         }
         $cnn = null;
-        
     }
-
-    
-}    
+     
+    function obtenerProcesoPorProducto($idProducto,PDO $cnn) {
+        try {
+            $query = $cnn->prepare('select * from procesoporproducto where idProductos_Productos=?');
+            $query->bindParam(1, $idProducto);
+            $query->execute();            
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
+}

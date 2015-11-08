@@ -1,25 +1,9 @@
 <?php
 session_start();
-if (empty($_SESSION['rol']) && empty($_SESSION['id'])) {
-    header("location: ../index.php?error=Debe Iniciar Sesión");
-} else {
-    require_once '../modelo/dao/LoginDAO.php';
-    require_once '../facades/FacadeLogin.php';
-    require_once '../modelo/utilidades/Conexion.php';
-    $facadeLogueado = new FacadeLogin;
-    $paginas = $facadeLogueado->seguridadPaginas($_SESSION['rol']);
-    $pagActual = 'insumosPorProducto.php';
-    $total = count($paginas);
-    foreach ($paginas as $todas) {
-        if ($pagActual != $todas['url']) {
-            $total--;
-        }
-    }
-    if($total==0){
-       header("location: ".$_SESSION['paginaOrigen']. "?errorPermiso=No posee permisos para acceder a este directorio.");       
-   }
-   $_SESSION['paginaOrigen']=$_SERVER['PHP_SELF'];
-}
+require_once '../modelo/utilidades/Session.php';
+$pagActual = 'insumosPorProducto.php';
+$session = new Session($pagActual);
+$session->Session($pagActual);
 ?>
 <!DOCTYPE html>
 <html lang="en">

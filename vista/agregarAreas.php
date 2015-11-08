@@ -1,7 +1,9 @@
 <?php
+session_start();
 require_once '../modelo/utilidades/Session.php';
-$session = new Session();
-$session->Session();
+$pagActual='agregarAreas.php';
+$session = new Session($pagActual);
+$session->Session($pagActual);
 ?>
 <!DOCTYPE html>
 <html lang="en">

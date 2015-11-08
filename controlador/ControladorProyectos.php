@@ -95,7 +95,7 @@ else if (isset($_POST['elementosProyecto'])) {
         $materias = $fMateria->obtenerInsumos($todo['Productos_idProductos']);
         //Materia Prima Por Proyecto        
         foreach ($materias as $insumo) {
-            $precioBase = $fMateria->obtenerInsumosPorID($insumo['insumos']); //Retonar solo precio base
+            $precioBase = $fMateria->obtenerInsumosPorID($insumo['insumos']); //Retona solo precio base
             $subTotal = ($insumo['cantidadMateriaPorProducto'] * $precioBase);
             $total = $subTotal * $todo['cantidadProductos'];
             $fProyecto->insertarMateriaProyecto($insumo['insumos'], $idProyecto, $total, 0);
@@ -103,7 +103,9 @@ else if (isset($_POST['elementosProyecto'])) {
         $procesos = $fProceso->obtenerProcesoPorProducto($todo['Productos_idProductos']);
         //Procesos por producto segun solicitud de proyecto
         foreach ($procesos as $proceso) {
-            
+            $subTotalProceso = $fProceso->obtenerProcesoPorID($proceso['procesos_idProcesos']); //Retorna solo costo base
+            $totalPrecio = ($subTotalProceso * $todo['cantidadProductos']);
+            $fProyecto->insertarProcesoProyecto($idProyecto, $proceso['procesos_idProcesos'], $totalTiempo, $totalPrecio, $totalEmp, $prov);
         }
     }
     $fProyecto->cambiarEstadoProyecto('Sin Estudio Costos', $_POST['idProyecto']);

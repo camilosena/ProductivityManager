@@ -217,4 +217,23 @@ class ProyectosDAO {
         }
         $cnn=NULL;        
     }
+    
+       public function insertarProcesosProyecto($idProyecto,$idProceso, $totalTiempo,$totalPrecio,$totalEmp, $prov, PDO $cnn) {
+        $mensaje="";
+        try{
+            $sentencia= $cnn->prepare("INSERT INTO materiaPrimaPorProyecto VALUES(?,?,?,?)");
+            $sentencia->bindParam(1, $idProyecto);
+            $sentencia->bindParam(2, $idProceso);
+            $sentencia->bindParam(3, $totalTiempo);           
+            $sentencia->bindParam(4, $totalPrecio);
+            $sentencia->bindParam(5, $totalEmp);
+            $sentencia->bindParam(6, $prov);
+            $sentencia->execute();
+            $mensaje="Procesos Asociados con Exito";
+            return $mensaje;
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn=NULL;        
+    }
 }

@@ -228,7 +228,7 @@ $session->Session($pagActual);
                                 </optgroup>                              
                                     </select>                                
                     <label class="tag" for="idProyecto"><span id="lab_valPhone" class="h331">Código Proyecto:</span></label>
-                    <input class="input" name="idProyecto" type="text" maxlength="64" value="000<?php echo $project['idProyecto']; ?>" id="idProyecto" style="text-align: center" class="field1" autofocus readonly required>                    	 
+                    <input class="input" name="idProyecto" type="text" maxlength="64" value="0<?php echo $project['idProyecto']; ?>" id="idProyecto" style="text-align: center" class="field1" autofocus readonly required>                    	 
                     
                     <label class="tag" for="nombreProyecto"><span id="lab_valName" class="h331">Nombre Proyecto:</span></label>
                     <input class="input" name="nombreProyecto" type="text" maxlength="64" value="<?php echo $project['nombreProyecto']; ?>" id="nombreProyecto" class="field1" autofocus required>

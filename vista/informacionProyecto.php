@@ -1,14 +1,14 @@
 <?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
-$pagActual = 'produccionProyecto.php';
+$pagActual = 'informacionProyecto.php';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Estudio de Costos</title>
+     <title>Información de Proyecto</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="../css/reset.css">
@@ -24,69 +24,69 @@ $session->Session($pagActual);
         <script  src="../js/scriptModales.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/tablaInModal.css">
     </head>    
-    <body>  
-        <?php
-        if (isset($_GET['mensaje'])) {
-            echo '<script> 
-                Command: toastr["success"]("'.$_GET['mensaje'].'", "Enhorabuena")
-            toastr.options = {
-              "closeButton": false,
-              "debug": false,
-              "newestOnTop": false,
-              "progressBar": false,
-              "positionClass": "toast-top-right",
-              "preventDuplicates": false,
-              "onclick": null,
-              "showDuration": "300",
-              "hideDuration": "1000",
-              "timeOut": "5000",
-              "extendedTimeOut": "1000",
-              "showEasing": "swing",
-              "hideEasing": "linear",
-              "showMethod": "fadeIn",
-              "hideMethod": "fadeOut"
-            }
-            function cierra(){
-            window.close();
-            }
-            setTimeout("cierra()",3000)
-            </script>';
-        };
-        ?> 
-        <?php if (isset($_GET['errorPermiso'])) { ?>
-            <script language="JavaScript" type="text/javascript">
-                window.onload = function () {
-                    Command: toastr["error"]("<?php echo $_GET['errorPermiso']; ?>")
-
-                    toastr.options = {
-                        "closeButton": false,
-                        "debug": false,
-                        "newestOnTop": false,
-                        "progressBar": false,
-                        "positionClass": "toast-top-full-width",
-                        "preventDuplicates": false,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "5000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
-                }
-        <?php } ?>
-        </script>
+    <body>         
         <div class="wrapper">   
+            <div id="verUsuario" class="modalDialog2" title="Ver Usuario">
+                <div><a href="#close" title="Cerrar" class="close">X</a><br>                    
+                    <?php
+                    echo '<div id="datoUno">';
+                    echo '<table id="muestraDatos"><tr><th colspan="2">Información de Proyecto</th></tr>';
+                    echo '<tr><td>Código Proyecto:</td><td>' . $_GET['codigoPro'] . '</td></tr>';
+                    echo '<tr><td>Nombres Proyecto:</td><td>' . $_GET['nombrePro'] . '</td></tr>';
+                    echo '<tr><td>Fecha Inicio:</td><td>' . $_GET['fechaInicio'] . '</td></tr>';
+                    echo '<tr><td>Fecha Fin:</td><td> ' . $_GET['fechaFin'] . '</td></tr>';
+                    echo '<tr><td>Estado:</td><td>' . $_GET['estado'] . '</td></tr>';
+                    echo '<tr><td>Ejecutado:</td><td>' . $_GET['ejecutado'] . '</td></tr>';
+                    echo '<tr><td>Observaciones:</td><td>' . $_GET['obs'] . '</td></tr>';
+                    echo '<tr><td>Opciones:</td><td><a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=' . $_GET['codigoPro'] . '"><img class="iconos" src="../img/modify.png"></a>';
+                    $comi = "'";
+                    if ($_GET['estado'] == 'Sin Estudio Costos') {
+                        echo '<a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos(' . $comi . 'estudioDeCostos.php?projectNum=' . $_GET['codigoPro'] . '&nameProject=' . $_GET['nombrePro'] . $comi . ');"><img class="iconos" src="../img/costos.png"></a>';
+                    }
+                    require_once '../facades/FacadeProyectos.php';
+                    require_once '../modelo/dao/ProyectosDAO.php';
+                    require_once '../modelo/utilidades/Conexion.php';
+                    $facadeProyecto = new FacadeProyectos;
+                    $clie = $facadeProyecto->clienteAsignado($_GET['codigoPro']);
+                    echo '<tr><td>Logo Compañia:</td><td><img src="../fotos/'.$clie['foto'].'" class="logoEmpresarial"></td></tr>';
+                    echo '</table>';
+                    echo '</div><div id="datoDos">';                    
+                    echo '<table id="muestraDatos"><tr><th colspan="2">Datos de Cliente</th></tr>';
+                    echo '<tr><td>Código:</td><td>' . $clie['idCliente'] . '</td></tr>';
+                    echo '<tr><td>Empresa:</td><td>' . $clie['nombreCompania'] . '</td></tr>';
+                    echo '<tr><td>NIT:</td><td>' . $clie['nit'] . '</td></tr>';
+                    echo '<tr><td>Sector Empresarial:</td><td>' . $clie['sectorEmpresarial'] . '</td></tr>';
+                    echo '<tr><td>Sector Económico:</td><td>' . $clie['sectorEconomico'] . '</td></tr>';
+                    echo '<tr><td>PBX:</td><td>' . $clie['telefonoFijo'] . '</td></tr>';
+                    echo '<tr><td colspan="2" style="text-align:center">Representante Legal</td></tr>';
+                    echo '<tr><td>Identificación:</td><td> ' . $clie['identificacion'] . '</td></tr>';
+                    echo '<tr><td>Nombre:</td><td>' . $clie['nombre'] . '</td></tr>';
+                    echo '<tr><td>Dirección:</td><td>' . $clie['direccion'] . '</td></tr>';
+                    echo '<tr><td>Teléfono:</td><td>' . $clie['telefono'] . '</td></tr>';
+                    echo '<tr><td>Correo Electronico:</td><td>' . $clie['email'] . '</td></tr>';
+                    echo '</table>';
+                    echo '</div><div id="datoTres">';
+                    $pro = $facadeProyecto->gerenteDeProyecto($_GET['codigoPro']);
+                    echo '<table id="muestraDatos"><tr><th colspan="2">Gerente Encargado</th></tr>';
+                    echo '<tr><td>Código Gerente:</td><td>' . $pro['idUsuario'] . '</td></tr>';
+                    echo '<tr><td>Nombre:</td><td>' . $pro['nombre'] . '</td></tr>';
+                    echo '<tr><td>Fecha Inicio:</td><td>' . $pro['direccion'] . '</td></tr>';
+                    echo '<tr><td>Fecha Fin:</td><td> ' . $pro['telefono'] . '</td></tr>';
+                    echo '<tr><td>Estado:</td><td>' . $pro['email'] . '</td></tr>';
+                    echo '<tr><td>Ejecutado:</td><td>' . $pro['perfil'] . '</td></tr>';
+                    echo '</table>';
+                    echo '</div>';
+                    ?>                                
+                </div>                    
+            </div>
             <?php if (isset($_GET['projectNum'])){?>
-            <h2 class="h330"><br>Producción de Proyecto <?php echo $_GET['projectNum'] . "-" . $_GET['nameProject']; ?>:</h2><br>                
+            <h2 class="h330"><br>Proyecto <?php echo $_GET['projectNum'] . "-" . $_GET['nameProject']; ?>:</h2><br>                
             <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
             <form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php">             
                 <hr>
                 <div class="modelo">
                     <label class="tag" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Código Proyecto:</span></label>
-                    <input class="input" name="idProyecto" type="text" maxlength="64" value="<?php echo $_GET['projectNum']; ?>" id="id" style="text-align: center" class="field1" autofocus readonly required>
+                    <input class="input" name="idProyecto" type="text" maxlength="64" value="0<?php echo $_GET['projectNum']; ?>" id="id" style="text-align: center" class="field1" autofocus readonly required>
                     <label class="tag" id="labelProyecto" for="name"><span id="lab_valCountry" class="h331">Nombre Proyecto:</span></label>
                     <input class="input" name="nombreProyecto" type="text" maxlength="64" value="<?php echo $_GET['nameProject']; ?>" id="name" style="text-align: center" class="field1" autofocus readonly required>
                 </div>                   
@@ -204,6 +204,6 @@ $session->Session($pagActual);
                 </div>
             </div>              
             <?php }?>
-        </div>        
+        </div>
     </body>
 </html>

@@ -29,7 +29,7 @@ $session->Session($pagActual);
         <script src="../js/validaciones.js"></script>
         <link rel="stylesheet" type="text/css" href="fonts/fonts.css">        
     </head>
-    <body>   
+    <body>           
     <div id='cssmenu'>
         <form id="frmPicture" name="frmChangePicture" action="../controlador/ControladorUsuarios.php" method="post" enctype="multipart/form-data">
           <input type="hidden" name="Change" value="1">  
@@ -292,7 +292,7 @@ $session->Session($pagActual);
                                         <td><?php  if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
                                         <td><?php echo $project['estadoProyecto']; ?></td>  
                                         <td><?php echo $project['ejecutado']; ?> %</td>
-                                        <td><a class="me" title="Consultar Proyecto" href="../controlador/ControladorProyectos.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/ojo.png"></a>                
+                                       <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
                                             <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
                                                 <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                                 <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
@@ -324,7 +324,7 @@ $session->Session($pagActual);
                                     <td><?php if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
                                     <td><?php echo $project['estadoProyecto']; ?></td>  
                                     <td><?php echo $project['ejecutado']; ?> %</td>
-                                    <td><a class="me" title="Consultar Proyecto" href="../controlador/ControladorProyectos.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/ojo.png"></a>                
+                                    <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
                                         <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
                                             <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                             <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
@@ -342,62 +342,14 @@ $session->Session($pagActual);
 
                     </tbody>
                 </table>
-            </form>
-            <div id="verUsuario" class="modalDialog2" title="Ver Usuario">
-                <div><a href="#close" title="Cerrar" class="close">X</a><br>                    
-                    <?php
-                    echo '<div id="datoUno">';
-                    echo '<table id="muestraDatos"><tr><th colspan="2">Información de Proyecto</th></tr>';
-                    echo '<tr><td>Código Proyecto:</td><td>' . $_GET['codigoPro'] . '</td></tr>';
-                    echo '<tr><td>Nombres Proyecto:</td><td>' . $_GET['nombrePro'] . '</td></tr>';
-                    echo '<tr><td>Fecha Inicio:</td><td>' . $_GET['fechaInicio'] . '</td></tr>';
-                    echo '<tr><td>Fecha Fin:</td><td> ' . $_GET['fechaFin'] . '</td></tr>';
-                    echo '<tr><td>Estado:</td><td>' . $_GET['estado'] . '</td></tr>';
-                    echo '<tr><td>Ejecutado:</td><td>' . $_GET['ejecutado'] . '</td></tr>';
-                    echo '<tr><td>Observaciones:</td><td>' . $_GET['obs'] . '</td></tr>';
-                    echo '<tr><td>Opciones:</td><td><a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=' . $_GET['codigoPro'] . '"><img class="iconos" src="../img/modify.png"></a>';
-                    $comi = "'";
-                    if ($_GET['estado'] == 'Sin Estudio Costos') {
-                        echo '<a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos(' . $comi . 'estudioDeCostos.php?projectNum=' . $_GET['codigoPro'] . '&nameProject=' . $_GET['nombrePro'] . $comi . ');"><img class="iconos" src="../img/costos.png"></a>';
-                    }
-                    require_once '../facades/FacadeProyectos.php';
-                    require_once '../modelo/dao/ProyectosDAO.php';
-                    require_once '../modelo/utilidades/Conexion.php';
-                    $facadeProyecto = new FacadeProyectos;
-                    $clie = $facadeProyecto->clienteAsignado($_GET['codigoPro']);
-                    echo '<tr><td>Logo Compañia:</td><td><img src="../fotos/'.$clie['foto'].'" class="logoEmpresarial"></td></tr>';
-                    echo '</table>';
-                    echo '</div><div id="datoDos">';                    
-                    echo '<table id="muestraDatos"><tr><th colspan="2">Datos de Cliente</th></tr>';
-                    echo '<tr><td>Código:</td><td>' . $clie['idCliente'] . '</td></tr>';
-                    echo '<tr><td>Empresa:</td><td>' . $clie['nombreCompania'] . '</td></tr>';
-                    echo '<tr><td>NIT:</td><td>' . $clie['nit'] . '</td></tr>';
-                    echo '<tr><td>Sector Empresarial:</td><td>' . $clie['sectorEmpresarial'] . '</td></tr>';
-                    echo '<tr><td>Sector Económico:</td><td>' . $clie['sectorEconomico'] . '</td></tr>';
-                    echo '<tr><td>PBX:</td><td>' . $clie['telefonoFijo'] . '</td></tr>';
-                    echo '<tr><td colspan="2" style="text-align:center">Representante Legal</td></tr>';
-                    echo '<tr><td>Identificación:</td><td> ' . $clie['identificacion'] . '</td></tr>';
-                    echo '<tr><td>Nombre:</td><td>' . $clie['nombre'] . '</td></tr>';
-                    echo '<tr><td>Dirección:</td><td>' . $clie['direccion'] . '</td></tr>';
-                    echo '<tr><td>Teléfono:</td><td>' . $clie['telefono'] . '</td></tr>';
-                    echo '<tr><td>Correo Electronico:</td><td>' . $clie['email'] . '</td></tr>';
-                    echo '</table>';
-                    echo '</div><div id="datoTres">';
-                    $pro = $facadeProyecto->gerenteDeProyecto($_GET['codigoPro']);
-                    echo '<table id="muestraDatos"><tr><th colspan="2">Gerente Encargado</th></tr>';
-                    echo '<tr><td>Código Gerente:</td><td>' . $pro['idUsuario'] . '</td></tr>';
-                    echo '<tr><td>Nombre:</td><td>' . $pro['nombre'] . '</td></tr>';
-                    echo '<tr><td>Fecha Inicio:</td><td>' . $pro['direccion'] . '</td></tr>';
-                    echo '<tr><td>Fecha Fin:</td><td> ' . $pro['telefono'] . '</td></tr>';
-                    echo '<tr><td>Estado:</td><td>' . $pro['email'] . '</td></tr>';
-                    echo '<tr><td>Ejecutado:</td><td>' . $pro['perfil'] . '</td></tr>';
-                    echo '</table>';
-                    echo '</div>';
-                    ?>                                
-                </div>                    
-            </div>
+            </form>            
             <button class="boton-verde"  onclick="location.href = 'listarProyectos.php'" >Actualizar Lista</button>            
-        </div>        
+        </div>   
+        <script language=javascript>
+            function informacionProyecto(URL) {
+                window.open(URL, "informacionProyecto.php", "width=1000,height=645,top=30,left=150,scrollbars=NO");
+            }
+        </script> 
         <script language=javascript>
             function estudioCostos(URL) {
                 window.open(URL, "estudioDeCostos.php", "width=1000,height=645,top=30,left=150,scrollbars=NO");

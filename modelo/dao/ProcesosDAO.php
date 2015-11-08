@@ -128,4 +128,16 @@ tiempoPorProceso as tiempo from procesos
         }
         $cnn = null;
     }
+    
+        function obtenerProcesoPorID($idProceso,PDO $cnn) {
+        try {
+            $query = $cnn->prepare('select * from procesos where idProceso=?');
+            $query->bindParam(1, $idProceso);
+            $query->execute();            
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
 }

@@ -22,10 +22,10 @@ if (isset($_POST['crearProyecto'])) {
     $fechaInicio = $_POST['fechaInicio'];
     $fechaFin = '';
     $estado = 'Sin Produccion';
-    $observaciones = $_POST['descripcion'];    
+    $observaciones = $_POST['descripcion'];
     $fecha_inicio = new DateTime($_POST['fechaInicio']);
-    $hoy = date('Y-m-d');    
-     $fecha_actual = new DateTime($hoy);
+    $hoy = date('Y-m-d');
+    $fecha_actual = new DateTime($hoy);
     if ($fecha_actual <= $fecha_inicio) {
         $proyectoDTO = new ProyectosDTO($idProyecto, $nombreProyecto, $fechaInicio, $fechaFin, $estado, $observaciones);
         $facadeProyectos = new FacadeProyectos;
@@ -72,26 +72,25 @@ else if (isset($_GET['codUsuario'])) {
     $facadeProyecto = new FacadeProyectos;
     $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);
     header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
-} 
-else if (isset($_POST['elementosProyecto'])) {
+} else if (isset($_POST['elementosProyecto'])) {
 //echo var_dump($_POST);    
     $fProducto = new FacadeProductos();
     session_start();
     $cantidadTipo = $_POST['cantidadTipo'];
     $idProyecto = $_POST['idProyecto'];
-    $totalProductos =   $fProducto->maxProductoActivo(); //Productos Activos
+    $totalProductos = $fProducto->maxProductoActivo(); //Productos Activos
     $fProyecto = new FacadeProyectos;
     for ($j = 1; $j <= $totalProductos; $j++) {
         if (isset($_POST['producto' . $j]) && isset($_POST['cantidad' . $j])) {
             $idProducto = $_POST['producto' . $j];
             $cantidad = $_POST['cantidad' . $j];
-            $mensaje =$fProyecto->insertarProductoProyecto($idProducto, $idProyecto, $cantidad);
+            $mensaje = $fProyecto->insertarProductoProyecto($idProducto, $idProyecto, $cantidad);
         }
     }
     $produccion = $fProyecto->obtenerProductoProyecto($idProyecto);
     $fMateria = new FacadeInsumos();
-    $fProceso= new FacadeProcesos();
-    foreach ($produccion as $todo) { 
+    $fProceso = new FacadeProcesos();
+    foreach ($produccion as $todo) {
         $materias = $fMateria->obtenerInsumos($todo['Productos_idProductos']);
         //Materia Prima Por Proyecto        
         foreach ($materias as $insumo) {
@@ -99,15 +98,17 @@ else if (isset($_POST['elementosProyecto'])) {
             $subTotal = ($insumo['cantidadMateriaPorProducto'] * $precioBase);
             $total = $subTotal * $todo['cantidadProductos'];
             $fProyecto->insertarMateriaProyecto($insumo['insumos'], $idProyecto, $total, 0);
-        }   
+        }
         $procesos = $fProceso->obtenerProcesoPorProducto($todo['Productos_idProductos']);
         //Procesos por producto segun solicitud de proyecto
         foreach ($procesos as $proceso) {
-            $subTotalProceso = $fProceso->obtenerProcesoPorID($proceso['procesos_idProcesos']); //Retorna solo costo base
-            $totalPrecio = ($subTotalProceso * $todo['cantidadProductos']);
-            $fProyecto->insertarProcesoProyecto($idProyecto, $proceso['procesos_idProcesos'], $totalTiempo, $totalPrecio, $totalEmp, $prov);
+            $subTotalProceso = $fProceso->obtenerProcesoPorID($proceso['procesos_idProceso']); //Retorna solo costo base
+            $totalPrecio = $subTotalProceso * $todo['cantidadProductos'];
+            $totalEmp = $proceso['cantidadDeEmpleados'];
+            $totalTiempo = $proceso['tiempoPorProceso'] * $todo['cantidadProductos'];
+            $fProyecto->insertarProcesoProyecto($idProyecto, $proceso['procesos_idProceso'], $totalTiempo, $totalPrecio, $totalEmp, 0);
         }
     }
     $fProyecto->cambiarEstadoProyecto('Sin Estudio Costos', $_POST['idProyecto']);
-    header("location: ../vista/produccionProyecto.php?mensaje=".$mensaje);
+    header("location: ../vista/produccionProyecto.php?mensaje=" . $mensaje);
 }

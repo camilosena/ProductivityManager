@@ -221,7 +221,7 @@ class ProyectosDAO {
        public function insertarProcesosProyecto($idProyecto,$idProceso, $totalTiempo,$totalPrecio,$totalEmp, $prov, PDO $cnn) {
         $mensaje="";
         try{
-            $sentencia= $cnn->prepare("INSERT INTO materiaPrimaPorProyecto VALUES(?,?,?,?)");
+            $sentencia= $cnn->prepare("INSERT INTO procesosPorProyecto VALUES(?,?,?,?,?,?)");
             $sentencia->bindParam(1, $idProyecto);
             $sentencia->bindParam(2, $idProceso);
             $sentencia->bindParam(3, $totalTiempo);           

@@ -131,10 +131,10 @@ tiempoPorProceso as tiempo from procesos
 
     function obtenerProcesoPorID($idProceso, PDO $cnn) {
         try {
-            $query = $cnn->prepare('select * from procesos where idProceso=?');
+            $query = $cnn->prepare('select precioProceso from procesos where idProceso=?');
             $query->bindParam(1, $idProceso);
             $query->execute();
-            return $query->fetch();
+            return $query->fetchColumn();
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }

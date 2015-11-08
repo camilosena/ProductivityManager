@@ -95,7 +95,7 @@ else if (isset($_POST['elementosProyecto'])) {
         $materias = $fMateria->obtenerInsumos($todo['Productos_idProductos']);
         //Materia Prima Por Proyecto        
         foreach ($materias as $insumo) {
-            $precioBase = $fMateria->obtenerInsumosPorID($insumo['insumos']);
+            $precioBase = $fMateria->obtenerInsumosPorID($insumo['insumos']); //Retonar solo precio base
             $subTotal = ($insumo['cantidadMateriaPorProducto'] * $precioBase);
             $total = $subTotal * $todo['cantidadProductos'];
             $fProyecto->insertarMateriaProyecto($insumo['insumos'], $idProyecto, $total, 0);

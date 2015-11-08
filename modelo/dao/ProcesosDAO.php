@@ -116,28 +116,29 @@ tiempoPorProceso as tiempo from procesos
         }
         $cnn = null;
     }
-     
-    function obtenerProcesoPorProducto($idProducto,PDO $cnn) {
+
+    function obtenerProcesoPorProducto($idProducto, PDO $cnn) {
         try {
             $query = $cnn->prepare('select * from procesoporproducto where idProductos_Productos=?');
             $query->bindParam(1, $idProducto);
-            $query->execute();            
-            return $query->fetch();
+            $query->execute();
+            return $query->fetchAll();
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }
         $cnn = null;
     }
-    
-        function obtenerProcesoPorID($idProceso,PDO $cnn) {
+
+    function obtenerProcesoPorID($idProceso, PDO $cnn) {
         try {
             $query = $cnn->prepare('select * from procesos where idProceso=?');
             $query->bindParam(1, $idProceso);
-            $query->execute();            
+            $query->execute();
             return $query->fetch();
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }
         $cnn = null;
     }
+
 }

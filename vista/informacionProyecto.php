@@ -48,6 +48,9 @@ $session->Session($pagActual);
                     $comi = "'";
                     if ($proyectos['estadoProyecto'] == 'Sin Estudio Costos') {
                         echo '<a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos(' . $comi . 'estudioDeCostos.php?projectNum=' . $proyectos['idProyecto'] . '&nameProject=' . $proyectos['nombreProyecto'] . $comi . ');"><img class="iconos" src="../img/costos.png"></a>';
+                    }elseif ($proyectos['estadoProyecto'] == 'Sin Produccion') {
+                        echo '<a class="me" title="Incluir Producción" href="javascript:produccionProyecto('. $comi .'produccionProyecto.php?projectNum='. $proyectos['idProyecto'].'&nameProject='.$proyectos['nombreProyecto'] . $comi . ');"><img class="iconos" src="../img/products.png"></a>';
+                        
                     }
                     require_once '../facades/FacadeProyectos.php';
                     require_once '../modelo/dao/ProyectosDAO.php';

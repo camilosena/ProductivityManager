@@ -123,7 +123,10 @@ from usuarios, personas, roles, usuarioporproyecto,areas
 
     public function obtenerClienteAsignado($idProyecto, PDO $cnn) {
         try {
-            $query = $cnn->prepare("call ClienteProyecto(?)");
+            $query = $cnn->prepare("Select idCliente,nit, nombreCompania,sectorEmpresarial, sectorEconomico, telefonoFijo,
+idUsuario,identificacion, concat(nombres,' ',apellidos) nombre,direccion,telefono,email,foto
+from clientes, personas, usuarioporproyecto
+where idUsuario=idCliente and idUsuario=usuarioAsignado and proyectoAsignado=?");
             $query->bindParam(1, $idProyecto);
             $query->execute();
             return $query->fetch();

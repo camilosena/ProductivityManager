@@ -50,7 +50,7 @@ class FacadeProcesos {
         return $this->ProcesosDAO->obtenerProcesoPorProducto($idProducto, $this->conexionBase);
     }
 
-    function obtenerProcesoPorID($idPrcesoo) {
+    function obtenerProcesoPorID($idProceso) {
 
         return $this->ProcesosDAO->obtenerProcesoPorID($idProceso, $this->conexionBase);
     }

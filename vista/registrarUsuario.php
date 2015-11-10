@@ -610,7 +610,7 @@ $session->Session($pagActual);
                 </script>
 
                 <?php
-                if (isset($_GET['mensaje'])) {
+                if (isset($_GET['mensaje']) && isset($_GET['consecutivo'])) {
                     if($_GET['consecutivo']!=0){
                     echo '<script>
             Command: toastr["success"]("Su Nuevo Consecutivo es: ' . $_GET['consecutivo'] . '", "' . $_GET['mensaje'] . '")
@@ -635,7 +635,7 @@ $session->Session($pagActual);
             </script>';
                 }                
                 }
-                 if (isset($_GET['mensaje'])) {
+                 if (isset($_GET['mensaje']) && isset($_GET['consecutivo'])) {
                     if($_GET['consecutivo']==0){
                     echo '<script>
             Command: toastr["error"]("'. $_GET['mensaje'] .'")
@@ -659,6 +659,29 @@ $session->Session($pagActual);
                 }
             </script>';
                 }                
+                }
+                if (isset($_GET['mensajeError'])) {
+                        echo '<script>
+            Command: toastr["error"]("'. $_GET['mensajeError'] .'")
+
+                toastr.options = {
+                  "closeButton": false,
+                  "debug": false,
+                  "newestOnTop": false,
+                  "progressBar": false,
+                  "positionClass": "toast-top-right",
+                  "preventDuplicates": false,
+                  "onclick": null,
+                  "showDuration": "300",
+                  "hideDuration": "1000",
+                  "timeOut": "5000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                }
+            </script>';
                 }
                 ?>
             </div>            

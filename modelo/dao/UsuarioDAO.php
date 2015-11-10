@@ -5,7 +5,7 @@ class UsuarioDAO {
     public function registrarUsuario(UsuarioDTO $dto, PDO $cnn) {
         $mensaje = "";
         try {
-            $sentencia = $cnn->prepare("INSERT INTO personas VALUES(DEFAULT,?,?,?,?,?,?,?,?,?,?)");            
+            $sentencia = $cnn->prepare("call registrarUsuario(?,?,?,?,?,?,?,?,?,?)");
             $sentencia->bindParam(1, $dto->getIdentificacion());
             $sentencia->bindParam(2, $dto->getNombre());
             $sentencia->bindParam(3, $dto->getApellido());
@@ -17,7 +17,7 @@ class UsuarioDAO {
             $sentencia->bindParam(9, $dto->getFoto());
             $sentencia->bindParam(10, $dto->getArea());
             $sentencia->execute();
-            $mensaje = "Usuario Registrado Con Éxito";
+            $mensaje = $sentencia->fetchColumn();
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }

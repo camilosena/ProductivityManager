@@ -60,13 +60,18 @@ if (isset($_POST['crearUsuario'])) {
     $facadeUsuario = new FacadeUsuarios();
     //Insertar Tabla de personas
     $mensaje2 = $facadeUsuario->registrarUsuario($dto);
+        if($mensaje2!='true'){
+            header("location: ../vista/registrarUsuario.php?mensajeError=" . $mensaje2);
+        }else{
+            $mensaje2='Usuario Registrado Con Éxito';
     //  Insertar tabla de usuarios login    
     $logeo = $facadeUsuario->insertarLogeo($dto);  
     $mensajeCorreo=$confirmacion;    
     //Consecutivo de Usuario
     $consecutivos = $facadeUsuario->consecutivoUsuario();
+   header("location: ../vista/registrarUsuario.php?mensaje=" . $mensaje2 . "&consecutivo=" .$consecutivos."&foto=".$msg."&correo=".$mensajeCorreo);
     }
-    header("location: ../vista/registrarUsuario.php?mensaje=" . $mensaje2 . "&consecutivo=" .$consecutivos."&foto=".$msg."&correo=".$mensajeCorreo);
+    }
 }//  Modificar
 else if (isset($_POST['modificar'])) {
      $idUsuario=$_POST['id'];

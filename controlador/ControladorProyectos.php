@@ -66,7 +66,7 @@ if (isset($_POST['crearProyecto'])) {
         header("location: ../vista/modificarProyecto.php?idProject=" . $_POST['idProyecto'] . "&mensajeFecha=" . $fechas);
     }
 }
-//Implementar Facade Para asignar usuario a tabla usuarioPorProyecto
+//Facade Para asignar usuario a tabla usuarioPorProyecto
 else if (isset($_GET['codUsuario'])) {
     $facadeProyecto = new FacadeProyectos;
     $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);

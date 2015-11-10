@@ -1,8 +1,7 @@
 #infoPro{
-    border: 2px solid red;
     width: 80%;
     margin-left: 10%;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 #infoPro table{
@@ -10,36 +9,43 @@
     margin-left: 5%;
 }
 
-#infoClient{
-    border: 2px solid red;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 5%;
+#infoPro table td,th{
+    border-bottom:1px solid gray;
 }
 
+#infoClient{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 4%;
+}
+#infoClient table td,th{
+    border-bottom:1px solid gray;
+}
 #infoClient table{
     width: 90%;
     margin-left: 5%;
 }
 
 #infoGere{
-    border: 2px solid red;
     width: 80%;
     margin-left: 10%;
-    margin-top: 5%;
+    margin-top: 4%;
 }
 
 #infoGere table{
     width: 90%;
     margin-left: 5%;
 }
+#infoGere table td,th{
+    border-bottom:1px solid gray;
+}
 .enunciado{
     width: 250px;
 }
 table.tableSection {
     display: table;
-    width: 90%;
-    margin-left: 5%;
+    width: 72%;
+    margin-left: 14%;
 }
 table.tableSection thead, table.tableSection tbody {
     float: left;
@@ -47,7 +53,7 @@ table.tableSection thead, table.tableSection tbody {
 }
 table.tableSection tbody {
     overflow: auto;
-    height: 150px;
+    height: 100px;
 }
 table.tableSection tr {
     width: 100%;
@@ -59,7 +65,7 @@ table.tableSection th,table.tableSection td {
     text-align: center;
     font-family:  sans-serif;
     font-size: 12px;
-    height: 22px;
+    height: 18px;
     padding-top: 2px;
     border-bottom:1px solid gray;
 }
@@ -67,6 +73,15 @@ table.tableSection tr:hover{
     background: #f0f0f0;
 }
 
+#infoPro table tr:hover{
+    background: #f0f0f0;
+}
+#infoClient table tr:hover{
+    background: #f0f0f0;
+}
+#infoGere table tr:hover{
+    background: #f0f0f0;
+}
 table.tableSection .th1{
     background-color: #83AF44;
     width: 15%;

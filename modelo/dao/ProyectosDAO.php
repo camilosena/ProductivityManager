@@ -241,5 +241,18 @@ where idUsuario=idCliente and idUsuario=usuarioAsignado and proyectoAsignado=?")
         }
         $cnn = NULL;
     }
+    public function obtenerDatoProductoProyecto($idProyecto, PDO $cnn) {
+        $mensaje = "";
+        try {
+            $sentencia = $cnn->prepare("SELECT dt.*, cantidadProductos FROM productos dt, productoporproyecto where proyectosIdProyecto=? and
+idProductos = Productos_idProductos");
+            $sentencia->bindParam(1, $idProyecto);
+            $sentencia->execute();
+            return $sentencia->fetchAll();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn = NULL;
+    }
 
 }

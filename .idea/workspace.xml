@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2abc2621-83e7-4a19-abdf-8e639bc1a02c" name="Default" comment="" />
+    <list default="true" id="2abc2621-83e7-4a19-abdf-8e639bc1a02c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/infoProject.css" afterPath="$PROJECT_DIR$/css/infoProject.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/facades/FacadeProyectos.php" afterPath="$PROJECT_DIR$/facades/FacadeProyectos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelo/dao/ProyectosDAO.php" afterPath="$PROJECT_DIR$/modelo/dao/ProyectosDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/informacionProyecto.php" afterPath="$PROJECT_DIR$/vista/informacionProyecto.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/listarProyectos.php" afterPath="$PROJECT_DIR$/vista/listarProyectos.php" />
+    </list>
     <ignored path="ProductivityManager.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -25,11 +31,86 @@
       <file leaf-file-name="informacionProyecto.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vista/informacionProyecto.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5620438">
-              <caret line="101" column="26" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.57481754">
+              <caret line="139" column="64" selection-start-line="139" selection-start-column="64" selection-end-line="139" selection-end-column="64" />
               <folding>
-                <marker date="1447181696000" expanded="true" signature="6447:6464" placeholder="..." />
+                <element signature="n#style#0;n#h2#0;n#strong#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1447187250000" expanded="true" signature="4632:4673" placeholder="..." />
+                <marker date="1447187250000" expanded="true" signature="4632:4700" placeholder="..." />
+                <marker date="1447187250000" expanded="true" signature="4672:4673" placeholder="..." />
+                <marker date="1447187250000" expanded="true" signature="6879:6896" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listarProyectos.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vista/listarProyectos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.708333">
+              <caret line="352" column="6" selection-start-line="352" selection-start-column="6" selection-end-line="361" selection-end-column="18" />
+              <folding>
+                <marker date="1447186641000" expanded="true" signature="7650:8365" placeholder="..." />
+                <marker date="1447186641000" expanded="true" signature="7768:8344" placeholder="{&quot;closeButton&quot;: false...}" />
+                <marker date="1447186641000" expanded="true" signature="8524:9224" placeholder="..." />
+                <marker date="1447186641000" expanded="true" signature="8627:9203" placeholder="{&quot;closeButton&quot;: false...}" />
+                <marker date="1447186641000" expanded="true" signature="9321:10024" placeholder="..." />
+                <marker date="1447186641000" expanded="true" signature="9427:10003" placeholder="{&quot;closeButton&quot;: false...}" />
+                <marker date="1447186641000" expanded="true" signature="10120:10824" placeholder="..." />
+                <marker date="1447186641000" expanded="true" signature="10227:10803" placeholder="{&quot;closeButton&quot;: false...}" />
+                <marker date="1447186641000" expanded="true" signature="20687:20960" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="produccionProyecto.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vista/produccionProyecto.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.958334">
+              <caret line="147" column="26" selection-start-line="93" selection-start-column="16" selection-end-line="147" selection-end-column="26" />
+              <folding>
+                <marker date="1447173620000" expanded="true" signature="1263:2087" placeholder="..." />
+                <marker date="1447173620000" expanded="true" signature="1377:1953" placeholder="{&quot;closeButton&quot;: false...}" />
+                <marker date="1447173620000" expanded="true" signature="1983:2026" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProyectosDAO.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modelo/dao/ProyectosDAO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.708333">
+              <caret line="246" column="137" selection-start-line="246" selection-start-column="137" selection-end-line="246" selection-end-column="137" />
+              <folding>
+                <marker date="1447183100000" expanded="true" signature="179:222" placeholder="INSERT INTO proyectos..." />
+                <marker date="1447183100000" expanded="true" signature="965:1002" placeholder="SELECT max(i..proyectos..." />
+                <marker date="1447183100000" expanded="true" signature="1327:1409" placeholder="SELECT idPro..proyectos..." />
+                <marker date="1447183100000" expanded="true" signature="1695:1776" placeholder="SELECT idPro..proyectos..." />
+                <marker date="1447183100000" expanded="true" signature="2058:2081" placeholder="Select * fro..proyectos..." />
+                <marker date="1447183100000" expanded="true" signature="2363:2405" placeholder="Select * fro..proyectos..." />
+                <marker date="1447183100000" expanded="true" signature="2759:2912" placeholder="SELECT idCli..clientes..." />
+                <marker date="1447183100000" expanded="true" signature="3298:3387" placeholder="UPDATE proye..." />
+                <marker date="1447183100000" expanded="true" signature="3995:4329" placeholder="Select idUsu..usuarios..." />
+                <marker date="1447183100000" expanded="true" signature="4683:4985" placeholder="Select idCli..clientes..." />
+                <marker date="1447183100000" expanded="true" signature="5370:5427" placeholder="UPDATE proye..." />
+                <marker date="1447183100000" expanded="true" signature="6761:6806" placeholder="INSERT INTO productoPorProyecto..." />
+                <marker date="1447183100000" expanded="true" signature="7337:7398" placeholder="SELECT * FRO..productoporproyecto..." />
+                <marker date="1447183100000" expanded="true" signature="7819:7870" placeholder="INSERT INTO materiaPrimaPorProyecto..." />
+                <marker date="1447183100000" expanded="true" signature="8509:8560" placeholder="INSERT INTO procesosPorProyecto..." />
+                <marker date="1447183100000" expanded="true" signature="9241:9378" placeholder="SELECT dt.*,..productos..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FacadeProyectos.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/facades/FacadeProyectos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.083334">
+              <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -37,8 +118,8 @@
       <file leaf-file-name="infoProject.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/infoProject.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.583334">
-              <caret line="154" column="1" selection-start-line="154" selection-start-column="1" selection-end-line="154" selection-end-column="1" />
+            <state vertical-scroll-proportion="-17.5">
+              <caret line="81" column="10" selection-start-line="81" selection-start-column="10" selection-end-line="81" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -62,8 +143,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/css/infoProject.css" />
+        <option value="$PROJECT_DIR$/modelo/dao/ProyectosDAO.php" />
+        <option value="$PROJECT_DIR$/facades/FacadeProyectos.php" />
+        <option value="$PROJECT_DIR$/vista/listarProyectos.php" />
         <option value="$PROJECT_DIR$/vista/informacionProyecto.php" />
+        <option value="$PROJECT_DIR$/css/infoProject.css" />
       </list>
     </option>
   </component>
@@ -133,6 +217,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="vista" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProductivityManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProductivityManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -188,7 +286,7 @@
     <frame x="10" y="43" width="1260" height="669" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -206,6 +304,25 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -215,20 +332,87 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/modelo/dao/ProyectosDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.708333">
+          <caret line="246" column="137" selection-start-line="246" selection-start-column="137" selection-end-line="246" selection-end-column="137" />
+          <folding>
+            <marker date="1447183100000" expanded="true" signature="179:222" placeholder="INSERT INTO proyectos..." />
+            <marker date="1447183100000" expanded="true" signature="965:1002" placeholder="SELECT max(i..proyectos..." />
+            <marker date="1447183100000" expanded="true" signature="1327:1409" placeholder="SELECT idPro..proyectos..." />
+            <marker date="1447183100000" expanded="true" signature="1695:1776" placeholder="SELECT idPro..proyectos..." />
+            <marker date="1447183100000" expanded="true" signature="2058:2081" placeholder="Select * fro..proyectos..." />
+            <marker date="1447183100000" expanded="true" signature="2363:2405" placeholder="Select * fro..proyectos..." />
+            <marker date="1447183100000" expanded="true" signature="2759:2912" placeholder="SELECT idCli..clientes..." />
+            <marker date="1447183100000" expanded="true" signature="3298:3387" placeholder="UPDATE proye..." />
+            <marker date="1447183100000" expanded="true" signature="3995:4329" placeholder="Select idUsu..usuarios..." />
+            <marker date="1447183100000" expanded="true" signature="4683:4985" placeholder="Select idCli..clientes..." />
+            <marker date="1447183100000" expanded="true" signature="5370:5427" placeholder="UPDATE proye..." />
+            <marker date="1447183100000" expanded="true" signature="6761:6806" placeholder="INSERT INTO productoPorProyecto..." />
+            <marker date="1447183100000" expanded="true" signature="7337:7398" placeholder="SELECT * FRO..productoporproyecto..." />
+            <marker date="1447183100000" expanded="true" signature="7819:7870" placeholder="INSERT INTO materiaPrimaPorProyecto..." />
+            <marker date="1447183100000" expanded="true" signature="8509:8560" placeholder="INSERT INTO procesosPorProyecto..." />
+            <marker date="1447183100000" expanded="true" signature="9241:9378" placeholder="SELECT dt.*,..productos..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vista/produccionProyecto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.958334">
+          <caret line="147" column="26" selection-start-line="93" selection-start-column="16" selection-end-line="147" selection-end-column="26" />
+          <folding>
+            <marker date="1447173620000" expanded="true" signature="1263:2087" placeholder="..." />
+            <marker date="1447173620000" expanded="true" signature="1377:1953" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447173620000" expanded="true" signature="1983:2026" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vista/listarProyectos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.708333">
+          <caret line="352" column="6" selection-start-line="352" selection-start-column="6" selection-end-line="361" selection-end-column="18" />
+          <folding>
+            <marker date="1447186641000" expanded="true" signature="7650:8365" placeholder="..." />
+            <marker date="1447186641000" expanded="true" signature="7768:8344" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447186641000" expanded="true" signature="8524:9224" placeholder="..." />
+            <marker date="1447186641000" expanded="true" signature="8627:9203" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447186641000" expanded="true" signature="9321:10024" placeholder="..." />
+            <marker date="1447186641000" expanded="true" signature="9427:10003" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447186641000" expanded="true" signature="10120:10824" placeholder="..." />
+            <marker date="1447186641000" expanded="true" signature="10227:10803" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447186641000" expanded="true" signature="20687:20960" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/facades/FacadeProyectos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.083334">
+          <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/infoProject.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.583334">
-          <caret line="154" column="1" selection-start-line="154" selection-start-column="1" selection-end-line="154" selection-end-column="1" />
+        <state vertical-scroll-proportion="-17.5">
+          <caret line="81" column="10" selection-start-line="81" selection-start-column="10" selection-end-line="81" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vista/informacionProyecto.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5620438">
-          <caret line="101" column="26" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.57481754">
+          <caret line="139" column="64" selection-start-line="139" selection-start-column="64" selection-end-line="139" selection-end-column="64" />
           <folding>
-            <marker date="1447181696000" expanded="true" signature="6447:6464" placeholder="..." />
+            <element signature="n#style#0;n#h2#0;n#strong#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1447187250000" expanded="true" signature="4632:4673" placeholder="..." />
+            <marker date="1447187250000" expanded="true" signature="4632:4700" placeholder="..." />
+            <marker date="1447187250000" expanded="true" signature="4672:4673" placeholder="..." />
+            <marker date="1447187250000" expanded="true" signature="6879:6896" placeholder="..." />
           </folding>
         </state>
       </provider>

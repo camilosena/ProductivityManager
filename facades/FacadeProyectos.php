@@ -77,5 +77,7 @@ class FacadeProyectos {
     public function insertarProcesoProyecto($idProyecto, $idProceso, $totalTiempo, $totalPrecio, $totalEmp, $prov) {
         return $this->proyectosDAO->insertarProcesosProyecto($idProyecto, $idProceso, $totalTiempo, $totalPrecio, $totalEmp, $prov, $this->conexionBase);
     }
-
+    public function obtenerDatoProductoProyecto($idProyecto) {
+        return $this->proyectosDAO->obtenerDatoProductoProyecto($idProyecto,$this->conexionBase);
+    }
 }

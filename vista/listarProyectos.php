@@ -293,7 +293,7 @@ $session->Session($pagActual);
                                         <td><?php echo $project['estadoProyecto']; ?></td>  
                                         <td><?php echo $project['ejecutado']; ?> %</td>
                                        <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
-                                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
+                                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecucion') { ?>
                                                 <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                                 <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
                                                     ?>
@@ -325,7 +325,7 @@ $session->Session($pagActual);
                                     <td><?php echo $project['estadoProyecto']; ?></td>  
                                     <td><?php echo $project['ejecutado']; ?> %</td>
                                     <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
-                                        <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
+                                        <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecucion') { ?>
                                             <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                             <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
                                                 ?>

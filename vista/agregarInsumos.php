@@ -174,14 +174,6 @@ $session->Session($pagActual);
                     <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
                     <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
                     </form><br>
-                
-                
-                <?php
-                if (isset($_GET['mensaje'])) {
-                    echo $_GET['mensaje'] . '<br>';
-                    echo 'Su nuevo Código es: ' . $_GET['consecutivo'];
-                }
-                ?>
             </div>
         </div>    
         <footer class="footer-distributed">

@@ -59,6 +59,10 @@ class FacadeProductos {
         
         return $this->productosDAO->asociarInsumos($dto, $this->conexion);
     }
+    function productosPorProyecto($idProyecto){
+        
+        return $this->productosDAO->producoPorProyecto($idProyecto, $this->conexion);
+    }
     
 
 }

@@ -148,6 +148,20 @@ class ProductosDAO {
         $cnn = NULL;
         return $mensaje;    
     }
+    function producoPorProyecto($idProyecto,  PDO $cnn){
+        
+         try {
+            $sql = "select Productos_idProductos as idProducto, nombreProducto from productoporproyecto 
+join productos on Productos_idProductos = idProductos and proyectosIdProyecto=?" ;
+            $query = $cnn->prepare($sql);   
+            $query->bindParam(1, $idProyecto);
+            $query->execute();                       
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
     
     
     

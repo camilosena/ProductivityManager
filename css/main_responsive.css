@@ -366,11 +366,23 @@ padding-top: 10px;
 width: 50%;
 float: left;
 }
+#panelIzqReportes{
+padding-top: 5px;
+margin-left: 1%;
+margin-right: 1%;
+float: left;
+}
 
 #panelDer{
 width: 50%;
 float: left;
 padding-top: 10px;
+}
+#panelDerReportes{
+padding-top: 5px;
+margin-left: 1%;
+margin-right: 1%;
+float: right;
 }
 
 #panelIzq2{
@@ -382,6 +394,12 @@ float: left;
 #panelModificaPass{
     width: 70%;   
     margin-left: 15%;
+    margin-top: 5%;
+}
+#panelReportes{
+    width: 90%;   
+    margin-left: 5%;
+    margin-right: 5%;
     margin-top: 5%;
 }
 

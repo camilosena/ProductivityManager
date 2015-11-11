@@ -40,15 +40,20 @@ if (isset($_POST['agregarCliente'])) {
     $facadeUsuario = new FacadeUsuarios();
     $dto = new UsuarioDTO($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email, $estado, $foto, $contrasena, $rol, $area);
     $mensajeUsuario = $facadeUsuario->registrarUsuario($dto);
-    //  Insertar a tabla de Clientes    
-    $razonSocial = $_POST['nombreCompania'];
-    $nit = $_POST['nit'];
-    $sectorEmpresarial = $_POST['sectorEmp'];
-    $sectorEconomico = $_POST['sectorEco'];
-    $telefonoFijo = $_POST['telefonoFijo'];    
-    $dtoCliente = new ClienteDTO($razonSocial, $nit, $sectorEmpresarial, $sectorEconomico, $facadeUsuario->consecutivoUsuario(), $telefonoFijo);    
-    $mensaje = $facadeCliente->insertarCliente($dtoCliente);
-    header("location: ../vista/clientesActivos.php?mensaje=" . $mensaje . "&consecutivo=" . $facadeUsuario->consecutivoUsuario(). "&logo=".$msg);
+    if($mensajeUsuario!='true'){
+        header("location: ../vista/agregarCliente.php?mensajeError=".$mensajeUsuario);
+    }else if($mensajeUsuario=='true') {
+        $mensajeUsuario = 'Cliente Registrado Con Éxito';
+        //  Insertar a tabla de Clientes
+        $razonSocial = $_POST['nombreCompania'];
+        $nit = $_POST['nit'];
+        $sectorEmpresarial = $_POST['sectorEmp'];
+        $sectorEconomico = $_POST['sectorEco'];
+        $telefonoFijo = $_POST['telefonoFijo'];
+        $dtoCliente = new ClienteDTO($razonSocial, $nit, $sectorEmpresarial, $sectorEconomico, $facadeUsuario->consecutivoUsuario(), $telefonoFijo);
+        $mensaje = $facadeCliente->insertarCliente($dtoCliente);
+        header("location: ../vista/clientesActivos.php?mensaje=" . $mensaje . "&consecutivo=" . $facadeUsuario->consecutivoUsuario() . "&logo=" . $msg);
+    }
 }//  Modificar Cliente
 else if (isset($_GET['modificarCliente'])) {
     $uDTO = new UsuarioDTO($_GET['idCliente'], $_GET['identificacion'], $_GET['nombre'], ($_GET['apellido']), $_GET['direccion'], $_GET['telefono'], $_GET['fechaNacimiento'], $_GET['email']);

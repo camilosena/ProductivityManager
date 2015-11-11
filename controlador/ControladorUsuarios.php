@@ -62,7 +62,7 @@ if (isset($_POST['crearUsuario'])) {
     $mensaje2 = $facadeUsuario->registrarUsuario($dto);
         if($mensaje2!='true'){
             header("location: ../vista/registrarUsuario.php?mensajeError=" . $mensaje2);
-        }else{
+        }else if($mensaje2=='true'){
             $mensaje2='Usuario Registrado Con Éxito';
     //  Insertar tabla de usuarios login    
     $logeo = $facadeUsuario->insertarLogeo($dto);  

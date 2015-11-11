@@ -29,7 +29,7 @@ $session->Session($pagActual);
         <link rel="stylesheet" type="text/css" href="../css/stylesNavTop.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <script type="text/javascript" src="../js/script.js"></script>
-        <script type="text/javascript" src="../js/script2.js"></script>        
+        <script type="text/javascript" src="../js/script2.js"></script>
     </head>
     <body>
         <div id='cssmenu'>

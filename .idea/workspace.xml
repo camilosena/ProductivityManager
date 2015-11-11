@@ -5,7 +5,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controlador/ControladorClientes.php" afterPath="$PROJECT_DIR$/controlador/ControladorClientes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/facades/FacadeUsuarios.php" afterPath="$PROJECT_DIR$/facades/FacadeUsuarios.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/jquery.dataTables.min.js" afterPath="$PROJECT_DIR$/js/jquery.dataTables.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelo/dao/UsuarioDAO.php" afterPath="$PROJECT_DIR$/modelo/dao/UsuarioDAO.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/agregarCliente.php" afterPath="$PROJECT_DIR$/vista/agregarCliente.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/crearProyecto.php" afterPath="$PROJECT_DIR$/vista/crearProyecto.php" />
     </list>
     <ignored path="ProductivityManager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,12 +54,14 @@
         <option value="$PROJECT_DIR$/vista/informacionProyecto.php" />
         <option value="$PROJECT_DIR$/css/infoProject.css" />
         <option value="$PROJECT_DIR$/controlador/ControladorProyectos.php" />
-        <option value="$PROJECT_DIR$/modelo/dao/UsuarioDAO.php" />
         <option value="$PROJECT_DIR$/vista/registrarUsuario.php" />
         <option value="$PROJECT_DIR$/controlador/ControladorUsuarios.php" />
-        <option value="$PROJECT_DIR$/js/jquery.dataTables.min.js" />
         <option value="$PROJECT_DIR$/vista/agregarCliente.php" />
         <option value="$PROJECT_DIR$/controlador/ControladorClientes.php" />
+        <option value="$PROJECT_DIR$/js/jquery.dataTables.min.js" />
+        <option value="$PROJECT_DIR$/modelo/dao/UsuarioDAO.php" />
+        <option value="$PROJECT_DIR$/facades/FacadeUsuarios.php" />
+        <option value="$PROJECT_DIR$/vista/crearProyecto.php" />
       </list>
     </option>
   </component>
@@ -119,20 +125,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProductivityManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProductivityManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controlador" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -143,6 +135,11 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/modelo/utilidades" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -308,28 +305,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modelo/dao/UsuarioDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.629562">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/jquery.dataTables.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33205375">
           <caret line="328" column="53" selection-start-line="328" selection-start-column="51" selection-end-line="328" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/jquery.dataTables.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48951048">
-          <caret line="138" column="36" selection-start-line="138" selection-start-column="36" selection-end-line="138" selection-end-column="36" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1447217648000" expanded="true" signature="66491:66541" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -370,11 +349,152 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/docs/Note_for_SMTP_debugging.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/test/bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/test/fakesendmail.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/test/fakepopserver.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/docs/Callback_function_notes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/docs/DomainKeys_notes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/docs/pop3_article.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/docs/generatedocs.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/docs/extending.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/docs/faq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controlador/ControladorUsuarios.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64416057">
-          <caret line="63" column="70" selection-start-line="63" selection-start-column="70" selection-end-line="63" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.24635036">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery.dataTables.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33211008">
+          <caret line="132" column="390" selection-start-line="132" selection-start-column="390" selection-end-line="132" selection-end-column="390" />
+          <folding>
+            <marker date="1447270054000" expanded="true" signature="66491:66535" placeholder="..." />
+            <marker date="1447270054000" expanded="true" signature="66491:66540" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/facades/FacadeUsuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39781022">
+          <caret line="113" column="5" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelo/dao/UsuarioDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83576643">
+          <caret line="317" column="41" selection-start-line="317" selection-start-column="41" selection-end-line="317" selection-end-column="41" />
+          <folding>
+            <marker date="1447270470000" expanded="true" signature="1160:1199" placeholder="INSERT INTO usuarios..." />
+            <marker date="1447270470000" expanded="true" signature="1715:1750" placeholder="select max(i..personas..." />
+            <marker date="1447270470000" expanded="true" signature="2121:2249" placeholder="UPDATE perso..." />
+            <marker date="1447270470000" expanded="true" signature="3058:3367" placeholder="Select idUsu..usuarios..." />
+            <marker date="1447270470000" expanded="true" signature="3699:3980" placeholder="Select idUsu..personas..." />
+            <marker date="1447270470000" expanded="true" signature="4341:4624" placeholder="Select idUsu..personas..." />
+            <marker date="1447270470000" expanded="true" signature="4975:5015" placeholder="select * fro..personas..." />
+            <marker date="1447270470000" expanded="true" signature="5398:5446" placeholder="Update perso..." />
+            <marker date="1447270470000" expanded="true" signature="5928:5976" placeholder="Update perso..." />
+            <marker date="1447270470000" expanded="true" signature="6422:6506" placeholder="select conca..personas..." />
+            <marker date="1447270470000" expanded="true" signature="6907:6949" placeholder="INSERT INTO usuarioPorProyecto..." />
+            <marker date="1447270470000" expanded="true" signature="7468:7562" placeholder="UPDATE usuar..." />
+            <marker date="1447270470000" expanded="true" signature="8768:9055" placeholder="Select idUsu..usuarios..." />
+            <marker date="1447270470000" expanded="true" signature="9377:9396" placeholder="select * fro..areas..." />
+            <marker date="1447270470000" expanded="true" signature="10001:10046" placeholder="update usuar..." />
+            <marker date="1447270470000" expanded="true" signature="10489:10542" placeholder="update perso..." />
+            <marker date="1447270470000" expanded="true" signature="10960:11043" placeholder="SELECT count..usuarios..." />
+            <marker date="1447270470000" expanded="true" signature="11377:11426" placeholder="update perso..." />
+            <marker date="1447270470000" expanded="true" signature="11862:11920" placeholder="SELECT ident..personas..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vista/crearProyecto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8759124">
+          <caret line="32" column="59" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
+          <folding>
+            <marker date="1447271500000" expanded="true" signature="4907:5612" placeholder="..." />
+            <marker date="1447271500000" expanded="true" signature="5015:5591" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447271500000" expanded="true" signature="5717:6420" placeholder="..." />
+            <marker date="1447271500000" expanded="true" signature="5823:6399" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447271500000" expanded="true" signature="7862:8145" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

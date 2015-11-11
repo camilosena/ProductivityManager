@@ -309,4 +309,16 @@ and areas_idAreas=idAreas");
         $cnn = null;
         return $mensaje;
     }
+
+    public function verificarUsuarioRegistrado($identificacion, PDO $cnn) {
+        try {
+            $query = $cnn->prepare("SELECT identificacion from personas where identificacion=?");
+            $query->bindParam(1,$identificacion);
+            $query->execute();
+            return $query->fetchColumn();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
 }

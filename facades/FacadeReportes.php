@@ -13,4 +13,9 @@
  */
 class FacadeReportes {
     //put your code here
+    
+    function listarEstadosProyecto(){
+        
+        
+    }
 }

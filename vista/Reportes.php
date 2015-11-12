@@ -25,14 +25,14 @@ session_start();
             $(document).ready(function () {
                 $("#selectProyecto").on("change", function () {
                     $.ajax({
-                        url: "../peticiones_ajax/ajax_listar_productos.php",
+                        url: "../peticiones_ajax/ajax_listar_estados.php",
                         method: "POST",
                         data: {
                             selectProyecto: $(this).val(),
-                            accion: "productosPorProyecto"
+                            accion: "estado"
                         },
                         success: function (data) {
-                            $("#selectProducto").html(data);
+                            $("#estado").html(data);
                         },
                         error: function (error) {
                             alert(error);
@@ -53,7 +53,14 @@ session_start();
           <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
       </form>
         <ul>
-           <li><a href='reportes.php'><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a></li>
+            <li><a><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
+           <ul>
+               <li><a href='Reportes.php?tipoReporte=Costos'><span><i class="fa fa-key fa-lg"></i> Estudio de Costos</span></a>       
+                 </li>
+                 <li><a href='Reportes.php?tipoReporte=Proyectos'><span><i class="fa fa-picture-o fa-lg"></i> Proyectos </span></a>              
+                 </li>
+              </ul>
+           </li>
            <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
               <ul>
                  <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
@@ -111,7 +118,7 @@ session_start();
 
             <div id="panelUnico">
                 <br>
-                <br><h2 class="h330">REPORTES:</h2><hr>
+                <br><h2 class="h330">Reporte de <?php echo $_GET['tipoReporte']?>:</h2><hr>
                 <div id="exports" style="float:right;padding-bottom:10px;">
                     <img src="../img/imprimir.png">
                     <img src="../img/email.png">
@@ -119,28 +126,27 @@ session_start();
                     <a href='../modelo/utilidades/Reportes/ExportarProyecto.php'><img src="../img/excel.png" title="Exportar a Exccel"></a>
                 </div>
                 <p ></p><br><br>
-                <form name="Reportes" class="formRegistro" method="post" action="../controlador/ControladorReportes.php"> 
-                    
-                    <?php
+                <?php
+                if (isset($_GET['tipoReporte'])) {
                     require_once '../modelo/utilidades/Conexion.php';
                     require_once '../facades/FacadeProyectos.php';
                     require_once '../modelo/dao/ProyectosDAO.php';
                     require_once '../facades/FacadeProductos.php';
                     require_once '../modelo/dao/ProductosDAO.php';
-                    
-                    
                     $facadeProyectos = new FacadeProyectos();
                     $facadeProductos = new FacadeProductos();
-                    
-                       
-                    ?>
+                    if ($_GET['tipoReporte']=='Proyectos') {
+                        
+                        // Reporte de Proyectos
+                ?>
+                <form name="Reportes" class="formRegistro" method="post" action="../controlador/ControladorReportes.php"> 
                 <div id="panelReportes">    
                  <div id="panelIzqReportes">                                   
                      <label style="display: inline">Proyectos</label> 
                       <select style="width: 60%" id="selectProyecto" name="selectProyecto" class="input"> 
                      <?php
                      $proyectos = $facadeProyectos->listadoProyectos();
-                        echo '<option readonly selected>' . "Seleccione un proyecto" . '</option>';
+                        echo '<option value="0" style="color:gray">' . "Seleccione un proyecto" . '</option>';
                         foreach ($proyectos as $proyecto) {
                             echo '<option value="' . $proyecto['idProyecto'] . '">' . $proyecto['nombreProyecto'] . '</option>';                            
                         }
@@ -148,15 +154,15 @@ session_start();
                     </select><br>
                  </div>  
                  <div id="panelDerReportes">                                   
-                        <label style="display: inline">Producto</label> 
-                        <select style="width: 60%" id="selectProducto" name="selectProducto" class="input"> 
-                     <?php
-                     $prodcuctos = $facadeProductos->listarProductos();//
-                        echo '<option readonly selected>' . "Seleccione un producto" . '</option>';
-                        foreach ($prodcuctos as $prodcucto) {
-                            echo '<option value="' . $prodcucto['idProducto'] . '">' . $prodcucto['nombreProducto'] . '</option>';                            
-                      }
-                        ?>
+                        <label style="display: inline">Estado</label> 
+                        <select style="width: 60%" id="estado" name="estado" class="input" > 
+                       <option value="0" style="color:gray">Seleccione un estado</option>
+                       <option value="Ejecucion" >Ejecución</option>
+                       <option value="Cancelado" >Cancelado</option>
+                       <option value="Finalizado" >Finalizado</option>
+                       <option value="Aplazado" >Aplazado</option>
+                       <option value="costos" >Sin estudio de costos</option>
+
                     </select><br>
 
 
@@ -168,8 +174,10 @@ session_start();
                      
                  </div> 
                 </form><br>
-                
-                
+                <?php
+                    }
+                }
+                ?>
                 
             </div>
         </div>    
@@ -177,11 +185,18 @@ session_start();
     </body>
 </html>
 
-<?php
+<!--Para Reporte de productos
+<div id="panelDerReportes">                                   
+                        <label style="display: inline">Producto</label> 
+                        <select style="width: 60%" id="selectProducto" name="selectProducto" class="input" > 
+                     <?php
+//                     $prodcuctos = $facadeProductos->listarProductos();//
+//                        echo '<option value="0" style="color:gray">' . "Seleccione un producto" . '</option>';
+//                        foreach ($prodcuctos as $prodcucto) {
+//                            echo '<option value="' . $prodcucto['idProducto'] . '">' . $prodcucto['nombreProducto'] . '</option>';                            
+//                      }
+                        ?>
+                    </select><br>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
+                 </div> -->

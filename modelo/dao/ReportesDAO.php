@@ -13,4 +13,8 @@
  */
 class ReportesDAO {
     //put your code here
+    function listarEstadoProyectos(){
+        
+        
+    }
 }

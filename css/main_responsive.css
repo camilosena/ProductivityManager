@@ -1105,6 +1105,11 @@ form .tag:after{
     color: red;
     margin: 1px;
 }
+form .tagPeso:after{
+    content: "$";
+    font-weight: bold;
+    margin: 1px;
+}
 form .tag2{
    margin: 1px;
 }

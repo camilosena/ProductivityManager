@@ -2,117 +2,165 @@
 
 class EstudioCostosDTO {
     private $idProyectoSolicitado;
-    private $idGerenteCargo;
-    private $materiaPrima;
-    private $manoObraDirecta;
-    private $manoObraIndirecta;
-    private $gastos;
-    private $costo;
+    private $costoManoDeObra;
+    private $costoProduccion;
+    private $costoProyecto;
     private $utilidad;
-    private $cantidadEmpleados;
-    private $observaciones;
+    private $tiempoEstimado;
     private $viabilidad;
-    
-    function __construct($idProyectoSolicitado, $idGerenteCargo, $materiaPrima, $manoObraDirecta, $manoObraIndirecta, $gastos, $costo, $utilidad, $cantidadEmpleados, $observaciones, $viabilidad) {      
+    private $observaciones;
+
+    /**
+     * EstudioCostosDTO constructor.
+     * @param $idProyectoSolicitado
+     * @param $observaciones
+     * @param $viabilidad
+     * @param $tiempoEstimado
+     * @param $utilidad
+     * @param $costoProyecto
+     * @param $costoProduccion
+     * @param $costoManoDeObra
+     */
+    public function __construct($idProyectoSolicitado, $observaciones, $viabilidad, $tiempoEstimado, $utilidad, $costoProyecto, $costoProduccion, $costoManoDeObra)
+    {
         $this->idProyectoSolicitado = $idProyectoSolicitado;
-        $this->idGerenteCargo = $idGerenteCargo;
-        $this->materiaPrima = $materiaPrima;
-        $this->manoObraDirecta = $manoObraDirecta;
-        $this->manoObraIndirecta = $manoObraIndirecta;
-        $this->gastos = $gastos;
-        $this->costo = $costo;
-        $this->utilidad = $utilidad;
-        $this->cantidadEmpleados = $cantidadEmpleados;
         $this->observaciones = $observaciones;
         $this->viabilidad = $viabilidad;
+        $this->tiempoEstimado = $tiempoEstimado;
+        $this->utilidad = $utilidad;
+        $this->costoProyecto = $costoProyecto;
+        $this->costoProduccion = $costoProduccion;
+        $this->costoManoDeObra = $costoManoDeObra;
     }
-   
-    function getIdProyectoSolicitado() {
+
+    /**
+     * @return mixed
+     */
+    public function getIdProyectoSolicitado()
+    {
         return $this->idProyectoSolicitado;
     }
 
-    function getIdGerenteCargo() {
-        return $this->idGerenteCargo;
-    }
-
-    function getMateriaPrima() {
-        return $this->materiaPrima;
-    }
-
-    function getManoObraDirecta() {
-        return $this->manoObraDirecta;
-    }
-
-    function getManoObraIndirecta() {
-        return $this->manoObraIndirecta;
-    }
-
-    function getGastos() {
-        return $this->gastos;
-    }
-
-    function getCosto() {
-        return $this->costo;
-    }
-
-    function getUtilidad() {
-        return $this->utilidad;
-    }
-
-    function getCantidadEmpleados() {
-        return $this->cantidadEmpleados;
-    }
-
-    function getObservaciones() {
-        return $this->observaciones;
-    }
-
-    function getViabilidad() {
-        return $this->viabilidad;
-    }
-
-    function setIdProyectoSolicitado($idProyectoSolicitado) {
+    /**
+     * @param mixed $idProyectoSolicitado
+     */
+    public function setIdProyectoSolicitado($idProyectoSolicitado)
+    {
         $this->idProyectoSolicitado = $idProyectoSolicitado;
     }
 
-    function setIdGerenteCargo($idGerenteCargo) {
-        $this->idGerenteCargo = $idGerenteCargo;
+    /**
+     * @return mixed
+     */
+    public function getCostoManoDeObra()
+    {
+        return $this->costoManoDeObra;
     }
 
-    function setMateriaPrima($materiaPrima) {
-        $this->materiaPrima = $materiaPrima;
+    /**
+     * @param mixed $costoManoDeObra
+     */
+    public function setCostoManoDeObra($costoManoDeObra)
+    {
+        $this->costoManoDeObra = $costoManoDeObra;
     }
 
-    function setManoObraDirecta($manoObraDirecta) {
-        $this->manoObraDirecta = $manoObraDirecta;
+    /**
+     * @return mixed
+     */
+    public function getCostoProduccion()
+    {
+        return $this->costoProduccion;
     }
 
-    function setManoObraIndirecta($manoObraIndirecta) {
-        $this->manoObraIndirecta = $manoObraIndirecta;
+    /**
+     * @param mixed $costoProduccion
+     */
+    public function setCostoProduccion($costoProduccion)
+    {
+        $this->costoProduccion = $costoProduccion;
     }
 
-    function setGastos($gastos) {
-        $this->gastos = $gastos;
+    /**
+     * @return mixed
+     */
+    public function getCostoProyecto()
+    {
+        return $this->costoProyecto;
     }
 
-    function setCosto($costo) {
-        $this->costo = $costo;
+    /**
+     * @param mixed $costoProyecto
+     */
+    public function setCostoProyecto($costoProyecto)
+    {
+        $this->costoProyecto = $costoProyecto;
     }
 
-    function setUtilidad($utilidad) {
+    /**
+     * @return mixed
+     */
+    public function getUtilidad()
+    {
+        return $this->utilidad;
+    }
+
+    /**
+     * @param mixed $utilidad
+     */
+    public function setUtilidad($utilidad)
+    {
         $this->utilidad = $utilidad;
     }
 
-    function setCantidadEmpleados($cantidadEmpleados) {
-        $this->cantidadEmpleados = $cantidadEmpleados;
+    /**
+     * @return mixed
+     */
+    public function getTiempoEstimado()
+    {
+        return $this->tiempoEstimado;
     }
 
-    function setObservaciones($observaciones) {
+    /**
+     * @param mixed $tiempoEstimado
+     */
+    public function setTiempoEstimado($tiempoEstimado)
+    {
+        $this->tiempoEstimado = $tiempoEstimado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getViabilidad()
+    {
+        return $this->viabilidad;
+    }
+
+    /**
+     * @param mixed $viabilidad
+     */
+    public function setViabilidad($viabilidad)
+    {
+        $this->viabilidad = $viabilidad;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * @param mixed $observaciones
+     */
+    public function setObservaciones($observaciones)
+    {
         $this->observaciones = $observaciones;
     }
 
-    function setViabilidad($viabilidad) {
-        $this->viabilidad = $viabilidad;
-    }
+
 }
 

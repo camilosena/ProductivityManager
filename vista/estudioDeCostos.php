@@ -81,10 +81,11 @@ $session->Session($pagActual);
                 <hr>
                 <?php
                 require_once '../modelo/utilidades/Conexion.php';
-                require_once '../modelo/dao/ProyectosDAO.php';
-                require_once '../facades/FacadeProyectos.php';
-                $proyecto = new FacadeProyectos;
-                $proyectosSinCostos = $proyecto->proyectoSinEstudio();
+                require_once '../modelo/dao/EstudioCostosDAO.php';
+                require_once '../facades/FacadeEstudioCostos.php';
+                $fEstudio = new FacadeEstudioCostos();
+                $costoManoObra = $fEstudio->costoManoDeObra($_GET['projectNum']);
+                $costoProducto = $fEstudio->costoProduccion($_GET['projectNum']);
                 ?>
                 <form class="formRegistro" method="post" action="../controlador/ControladorEstudioCostos.php">
                     <div class="modelo">
@@ -92,6 +93,10 @@ $session->Session($pagActual);
                             <input class="input" name="idProyecto" type="text" maxlength="64" value="0<?php echo $_GET['projectNum']; ?>" id="id" style="text-align: center" class="field1" autofocus readonly required>
                             <label class="tag" id="labelProyecto" for="name"><span id="lab_valCountry" class="h331">Nombre Proyecto:</span></label>
                             <input class="input" name="nombreProyecto" type="text" maxlength="64" value="<?php echo $_GET['nameProject']; ?>" id="name" style="text-align: center" class="field1" autofocus readonly required>
+                        <label class="tagPeso" id="labelManoObra" for="manoObra"><span id="lab_valCountry" class="h331">Costo Mano de Obra: </span></label>
+                        <input class="input" name="manoDeObra" type="text" maxlength="64" value="<?php echo $costoManoObra; ?>" id="manoObra" style="text-align: center" class="field1" autofocus readonly required>
+                        <label class="tagPeso" id="labelManoObra" for="produccion"><span id="lab_valCountry" class="h331">Costo Productos: </span></label>
+                        <input class="input" name="costoProduccion" type="text" maxlength="64" value="<?php echo $costoProducto; ?>" id="produccion" style="text-align: center" class="field1" autofocus readonly required>
                         <hr>
                         <div><label class="tag1" for="subtotal1">Horas Directas utilizadas:</label><input type="range" id="subtotal1" min="1" max="200" value="1" ><span id="n_range1"></span>
                             <button type="button" id="btn_range1" style="display: inline">Calcular - M.O.D.</button><br>                                        

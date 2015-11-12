@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2abc2621-83e7-4a19-abdf-8e639bc1a02c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/validaciones.js" afterPath="$PROJECT_DIR$/js/validaciones.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/crearProyecto.php" afterPath="$PROJECT_DIR$/vista/crearProyecto.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/estudioDeCostos.php" afterPath="$PROJECT_DIR$/vista/estudioDeCostos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/listarUsuarios.php" afterPath="$PROJECT_DIR$/vista/listarUsuarios.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/listarUsuariosInactivos.php" afterPath="$PROJECT_DIR$/vista/listarUsuariosInactivos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/produccionProyecto.php" afterPath="$PROJECT_DIR$/vista/produccionProyecto.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/registrarUsuario.php" afterPath="$PROJECT_DIR$/vista/registrarUsuario.php" />
     </list>
     <ignored path="ProductivityManager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,54 +23,7 @@
     <favorites_list name="ProductivityManager" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="estudioDeCostos.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vista/estudioDeCostos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.8333335">
-              <caret line="91" column="102" selection-start-line="91" selection-start-column="102" selection-end-line="91" selection-end-column="102" />
-              <folding>
-                <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1447286325000" expanded="true" signature="954:1778" placeholder="..." />
-                <marker date="1447286325000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
-                <marker date="1447286325000" expanded="true" signature="1674:1717" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="produccionProyecto.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vista/produccionProyecto.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5">
-              <caret line="88" column="94" selection-start-line="88" selection-start-column="94" selection-end-line="88" selection-end-column="94" />
-              <folding>
-                <marker date="1447286361000" expanded="true" signature="1263:2087" placeholder="..." />
-                <marker date="1447286361000" expanded="true" signature="1377:1953" placeholder="{&quot;closeButton&quot;: false...}" />
-                <marker date="1447286361000" expanded="true" signature="1983:2026" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registrarUsuario.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vista/registrarUsuario.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.062043797">
-              <caret line="531" column="79" selection-start-line="531" selection-start-column="79" selection-end-line="531" selection-end-column="79" />
-              <folding>
-                <marker date="1447284016000" expanded="true" signature="35194:36015" placeholder="..." />
-                <marker date="1447284016000" expanded="true" signature="35354:35994" placeholder="{&quot;closeButton&quot;: false...}" />
-                <marker date="1447284016000" expanded="true" signature="36232:36992" placeholder="..." />
-                <marker date="1447284016000" expanded="true" signature="36331:36971" placeholder="{&quot;closeButton&quot;: false...}" />
-                <marker date="1447284016000" expanded="true" signature="37137:37902" placeholder="..." />
-                <marker date="1447284016000" expanded="true" signature="37241:37881" placeholder="{&quot;closeButton&quot;: false...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -251,9 +197,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="43" width="1260" height="669" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -517,31 +463,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vista/estudioDeCostos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8333335">
-          <caret line="91" column="102" selection-start-line="91" selection-start-column="102" selection-end-line="91" selection-end-column="102" />
-          <folding>
-            <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1447286325000" expanded="true" signature="954:1778" placeholder="..." />
-            <marker date="1447286325000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
-            <marker date="1447286325000" expanded="true" signature="1674:1717" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vista/produccionProyecto.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="88" column="94" selection-start-line="88" selection-start-column="94" selection-end-line="88" selection-end-column="94" />
-          <folding>
-            <marker date="1447286361000" expanded="true" signature="1263:2087" placeholder="..." />
-            <marker date="1447286361000" expanded="true" signature="1377:1953" placeholder="{&quot;closeButton&quot;: false...}" />
-            <marker date="1447286361000" expanded="true" signature="1983:2026" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vista/registrarUsuario.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.062043797">
@@ -553,6 +474,31 @@
             <marker date="1447284016000" expanded="true" signature="36331:36971" placeholder="{&quot;closeButton&quot;: false...}" />
             <marker date="1447284016000" expanded="true" signature="37137:37902" placeholder="..." />
             <marker date="1447284016000" expanded="true" signature="37241:37881" placeholder="{&quot;closeButton&quot;: false...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vista/produccionProyecto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32846716">
+          <caret line="88" column="94" selection-start-line="88" selection-start-column="94" selection-end-line="88" selection-end-column="94" />
+          <folding>
+            <marker date="1447286361000" expanded="true" signature="1263:2087" placeholder="..." />
+            <marker date="1447286361000" expanded="true" signature="1377:1953" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447286361000" expanded="true" signature="1983:2026" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vista/estudioDeCostos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34306568">
+          <caret line="91" column="102" selection-start-line="91" selection-start-column="102" selection-end-line="91" selection-end-column="102" />
+          <folding>
+            <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1447286325000" expanded="true" signature="954:1778" placeholder="..." />
+            <marker date="1447286325000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447286325000" expanded="true" signature="1674:1717" placeholder="{...}" />
           </folding>
         </state>
       </provider>

@@ -204,7 +204,7 @@ $session->Session($pagActual);
                 </span><br><br>
                 <h2 class="h330">Crear Nuevo Proyecto:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br>
-                <form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php"> 
+                <form class="formRegistro" id="formProject" method="post" action="../controlador/ControladorProyectos.php"> 
                     <?php
                     require_once '../modelo/utilidades/Conexion.php';
                     require_once '../modelo/dao/ProyectosDAO.php';
@@ -226,14 +226,14 @@ $session->Session($pagActual);
                         if (isset($_GET['empresa'])) {
                             echo '<optgroup label="Se creara proyecto a:"><option value="' . $_GET['codCliente'] . '" selected>' . $_GET['codCliente'] . '-' . $_GET['empresa'] . '</option></optgroup>';
                         } else {
-                            echo '<option value="" disabled selected>Seleccionar</option>';
-                        }
+                        echo '<option value="" disabled selected>Seleccionar</option>';
                         ?>
-                        <optgroup label="__________________________">
-                            <?php
+                        <optgroup label="Clientes Activos">
+                          <?php
                             foreach ($cliente as $listado) {
                                 echo '<option value="' . $listado['idUsuario'] . '">' . $listado['idUsuario'] . '-' . $listado['nombreCompania'];
                             }
+                          }
                             ?></option></optgroup>
                     </select>
 

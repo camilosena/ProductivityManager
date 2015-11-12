@@ -49,10 +49,10 @@ $session->Session($pagActual);
         };
         ?>     
         <div class="wrapper">   
-        <?php if (isset($_GET['errorPermiso'])) { ?>
+        <?php if (isset($_GET['mensajeError'])) { ?>
             <script language="JavaScript" type="text/javascript">
                 window.onload = function () {
-                    Command: toastr["error"]("<?php echo $_GET['errorPermiso']; ?>")
+                    Command: toastr["error"]("<?php echo $_GET['mensajeError']; ?>")
 
                     toastr.options = {
                         "closeButton": false,
@@ -74,7 +74,8 @@ $session->Session($pagActual);
                 }
         <?php } ?>
         </script>          
-            <div>                       
+            <div>
+                <?php if (isset($_GET['projectNum'])) { ?>
                 <h2 class="h330"><br>Estudio de Costos:</h2><br>
                 <h5 style="text-decoration:underline">Deslice la barra de cada campo para seleccionar un valor:</h5>                                                        
                 <hr>
@@ -87,21 +88,10 @@ $session->Session($pagActual);
                 ?>
                 <form class="formRegistro" method="post" action="../controlador/ControladorEstudioCostos.php">
                     <div class="modelo">
-                        <label class="tag" id="labelProyecto" for="listaProyecto"><span id="lab_valCountry" class="h331">Seleccione Proyecto:</span></label>
-                        <select class="input" id="listaProyecto" name="idProyecto" id="listaProyecto" autofocus class="list_menu" >                                                                                                        
-                            <?php
-                            if (isset($_GET['projectNum'])) {
-                                echo '<optgroup label="Estudio de Costos para:"><option value="' . $_GET['projectNum'] . '" selected>' . $_GET['projectNum'] . '-' . $_GET['nameProject'] . '</option></optgroup>';
-                            } else {
-                                echo '<option value="" disabled selected>Seleccionar</option>';
-                            }
-                            ?>
-                            <optgroup label="___________________________">
-                                <?php foreach ($proyectosSinCostos as $sinCosto) {
-                                    echo '<option value="' . $sinCosto['idProyecto'] . '">' . $sinCosto['idProyecto'] . '-' . $sinCosto['nombreProyecto'];
-                                }
-                                ?></option></optgroup>
-                        </select>
+                            <label class="tag" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Código Proyecto:</span></label>
+                            <input class="input" name="idProyecto" type="text" maxlength="64" value="0<?php echo $_GET['projectNum']; ?>" id="id" style="text-align: center" class="field1" autofocus readonly required>
+                            <label class="tag" id="labelProyecto" for="name"><span id="lab_valCountry" class="h331">Nombre Proyecto:</span></label>
+                            <input class="input" name="nombreProyecto" type="text" maxlength="64" value="<?php echo $_GET['nameProject']; ?>" id="name" style="text-align: center" class="field1" autofocus readonly required>
                         <hr>
                         <div><label class="tag1" for="subtotal1">Horas Directas utilizadas:</label><input type="range" id="subtotal1" min="1" max="200" value="1" ><span id="n_range1"></span>
                             <button type="button" id="btn_range1" style="display: inline">Calcular - M.O.D.</button><br>                                        
@@ -371,6 +361,9 @@ $session->Session($pagActual);
                     </div>                    
                 </div>
             </div>                  
-        </div>               
+        </div>
+    <?php }else{
+        echo '<h2 class="h330"><br>Debe Seleccionar Un Proyecto.</h2>';
+    }  ?>
     </body>
 </html>

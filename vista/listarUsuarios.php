@@ -27,7 +27,7 @@ $session->Session($pagActual);
         <link rel="stylesheet" type="text/css" href="../fonts/fonts.css">
         <link href="../js/toastr.css" rel="stylesheet"/>
         <script src="../js/toastr.js"></script>
-        <script src="../js/validaciones.js"></script>                
+        <script src="../js/validaciones.js"></script>
     </head>
     <body>
      <div id='cssmenu'>

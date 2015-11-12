@@ -528,8 +528,8 @@ $session->Session($pagActual);
                         ?>
                     </select>
                     <br> 
-                    <label class="tag" id="labelDocumento" for="documento"><span id="documento" class="h331">Documento: </span></label>
-                    <input class="input" name="identificacion" required type="text" pattern="[0-9]{6,15}" placeholder="1033405321" title="Solo números" maxlength="128" id="documento" class="field1">
+                    <label class="tag" id="labelDocumento" for="documento"><span class="h331">Documento: </span></label>
+                    <input class="input" name="identificacion" id ="documento" required type="text" pattern="[0-9]{6,15}" placeholder="1033405321" title="Solo números" maxlength="128" id="documento" class="field1">
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                     <br>               
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombres: </span></label>

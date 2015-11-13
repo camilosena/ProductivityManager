@@ -13,3 +13,8 @@
     box-shadow: 0 0 10px 1px #45B31D;
     
 }
+
+#tableReporteProyecto thead th td{
+    border: 1px #f0f0f0;
+    
+}

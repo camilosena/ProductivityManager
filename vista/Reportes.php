@@ -10,6 +10,7 @@ session_start();
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="../css/reset.css">
         <link rel="stylesheet" type="text/css" href="../css/main_responsive.css">
+        <link rel="stylesheet" type="text/css" href="../css/JorgeCss.css">
         <script type="text/javascript" src="../js/jquery.js"></script>
         <script type="text/javascript" src="../js/carouFredSel.js"></script>
         <script type="text/javascript" src="../js/main.js"></script>
@@ -23,7 +24,7 @@ session_start();
         <script type="text/javascript" src="../js/script2.js"></script>
         <script>
             $(document).ready(function () {
-                $("#selectProyecto").on("change", function () {
+                $("#selectProyectoEstado").on("change", function () {
                     $.ajax({
                         url: "../peticiones_ajax/ajax_listar_estados.php",
                         method: "POST",
@@ -140,10 +141,10 @@ session_start();
                         // Reporte de Proyectos
                 ?>
                 <form name="Reportes" class="formRegistro" method="post" action="../controlador/ControladorReportes.php"> 
-                <div id="panelReportes">    
+                    <div id="panelReportes" style="background-color: background" >    
                  <div id="panelIzqReportes">                                   
                      <label style="display: inline">Proyectos</label> 
-                      <select style="width: 60%" id="selectProyecto" name="selectProyecto" class="input"> 
+                      <select style="width: 60%" id="selectProyectoEstado" name="selectProyectoEstado" class="input"> 
                      <?php
                      $proyectos = $facadeProyectos->listadoProyectos();
                         echo '<option value="0" style="color:gray">' . "Seleccione un proyecto" . '</option>';
@@ -151,11 +152,13 @@ session_start();
                             echo '<option value="' . $proyecto['idProyecto'] . '">' . $proyecto['nombreProyecto'] . '</option>';                            
                         }
                         ?>
-                    </select><br>
+                    </select><br><br><br>
+                    <label style="display: inline">Fecha de Inicio</label>
+                    <input type="date" name="fechaInicial" style="display: inline">
                  </div>  
                  <div id="panelDerReportes">                                   
                         <label style="display: inline">Estado</label> 
-                        <select style="width: 60%" id="estado" name="estado" class="input" > 
+                        <select style="width: 60%" id="estado" style="display: inline" name="estado" class="input" > 
                        <option value="0" style="color:gray">Seleccione un estado</option>
                        <option value="Ejecucion" >Ejecución</option>
                        <option value="Cancelado" >Cancelado</option>
@@ -163,16 +166,27 @@ session_start();
                        <option value="Aplazado" >Aplazado</option>
                        <option value="costos" >Sin estudio de costos</option>
 
-                    </select><br>
-
+                    </select><br><br><br>
+                    <label style="display: inline">Fecha de Fin</label>
+                    <input type="date" name="fechaFinal" style="display: inline">
 
                  </div> 
-                </div> <br>
-              
-                    <div id="panelUnico">  <hr>                                 
-                        <label style="display: inline">"Mostrar Seleccion" -----></label> 
+                </div> <br><br><br>
+                <div id="panelReportes" > 
+                  <button type="submit" value="reporteProyecto" name="reporteProyecto" id="reporteProyecto" class="boton-verde">Ver Reporte</button><br>
+                 </div>
+                <div id="panelUnico" >     <hr>                               
+                        <label style="display: inline">"Mostrar Seleccion" -----></label>
+                        <table id="tableReporteProyecto" style="border: #336442">
+                            <thead style="border: #336442">
+                            <th style="border: #336442">Proyecto</th>
+                            <th>estado</th>    
+                            </thead>
+                            
+                        </table>
                      
                  </div> 
+                
                 </form><br>
                 <?php
                     }

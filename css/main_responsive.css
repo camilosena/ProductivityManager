@@ -1077,6 +1077,7 @@ float: left;
     display: inline-block;
     width: 200px;
     height: 80px;
+    border: 1px solid #f0f0f0;
 }
 
 .formRegistro .input:focus{

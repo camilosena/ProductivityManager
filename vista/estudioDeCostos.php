@@ -90,22 +90,28 @@ $session->Session($pagActual);
                 <form class="formRegistro" method="post" action="../controlador/ControladorEstudioCostos.php">
                     <div class="modelo">
                             <label class="tag" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Código Proyecto:</span></label>
-                            <input class="input" name="idProyecto" type="text" maxlength="64" value="0<?php echo $_GET['projectNum']; ?>" id="id" style="text-align: center" class="field1" autofocus readonly required>
+                            <input class="input" name="idProyecto" type="text" maxlength="64" value="0<?php echo $_GET['projectNum']; ?>" id="id" style="text-align: center" class="field1"  readonly required>
                             <label class="tag" id="labelProyecto" for="name"><span id="lab_valCountry" class="h331">Nombre Proyecto:</span></label>
-                            <input class="input" name="nombreProyecto" type="text" maxlength="64" value="<?php echo $_GET['nameProject']; ?>" id="name" style="text-align: center" class="field1" autofocus readonly required>
+                            <input class="input" name="nombreProyecto" type="text" maxlength="64" value="<?php echo $_GET['nameProject']; ?>" id="name" style="text-align: center" class="field1"  readonly required>
                         <label class="tagPeso" id="labelManoObra" for="manoObra"><span id="lab_valCountry" class="h331">Costo Mano de Obra: </span></label>
-                        <input class="input" name="manoDeObra" type="text" maxlength="64" value="<?php echo $costoManoObra; ?>" id="manoObra" style="text-align: center" class="field1" autofocus readonly required>
+                        <input class="input" name="manoDeObra" type="text" maxlength="64" value="<?php echo $costoManoObra; ?>" id="manoObra" style="text-align: center" class="field1"  readonly required>
                         <label class="tagPeso" id="labelManoObra" for="produccion"><span id="lab_valCountry" class="h331">Costo Productos: </span></label>
-                        <input class="input" name="costoProduccion" type="text" maxlength="64" value="<?php echo $costoProducto; ?>" id="produccion" style="text-align: center" class="field1" autofocus readonly required>
+                        <input class="input" name="costoProduccion" type="text" maxlength="64" value="<?php echo $costoProducto; ?>" id="produccion" style="text-align: center" class="field1"  readonly required>
                         <label class="tagPeso" id="labelUtilidad" for="util"><span id="lab_valCountry" class="h331">Utilidad: </span></label>
-                        <input class="input" name="utilidad" type="text" maxlength="64" value="" id="util" style="text-align: center" class="field1" autofocus readonly required>
+                        <input class="input" name="utilidad" type="text" maxlength="64" value="" id="util" style="text-align: center" class="field1"  readonly required>
                         <label class="tag2" id="labelTiempo" for="time"><span id="lab_valCountry" class="h331">Tiempo Estimado (?): </span></label>
-                        <input class="input" name="tiempoEstimado" type="text" maxlength="64" value="" id="time" style="text-align: center" class="field1" autofocus readonly required>
+                        <input class="input" name="tiempoEstimado" type="text" maxlength="64" value="" id="time" style="text-align: center" class="field1"  readonly required>
+                        <label class="tagPeso" id="labelTotal" for="total"><span id="lab_valCountry" class="h331">Costo Total Proyecto: </span></label>
+                        <input class="input" name="costoProyecto" type="text" maxlength="64" value="" id="total" style="text-align: center" class="field1"  readonly required>
+                        <label class="tag2" id="labelViab" for="viab"><span id="lab_valCountry" class="h331">Viabilidad: </span></label>
+                        <input class="input" name="viabilidad" type="text" maxlength="64" value="" id="viab" style="text-align: center" class="field1"  readonly required>
+                        <label class="tag2" style="position:relative;bottom:60px" id="labelObser" for="observa"><span id="lab_valCountry" class="h331">Observaciones: </span></label>
+                        <textarea class="input" name="observaciones" style="width: 618px; height: 114px; maxlength='180';border:1px solid #f0f0f0"  id="observa"></textarea>
                         <hr>
                         <div><label class="tag1" for="subtotal1">Horas Directas utilizadas:</label><input type="range" id="subtotal1" min="1" max="200" value="100" ><span id="n_range1"></span>
                             <button type="button" id="btn_range1" style="display: inline">Calcular - M.O.D.</button><br>                                        
                             <label class="tag1">$</label> <input type="text" class="input9" id="horaDirecta" name="horaDirecta" value="">
-                            <hr />
+                            <hr>
                         </div>
                         <script>
                             $(function () {
@@ -207,167 +213,11 @@ $session->Session($pagActual);
                             <label class="tag" for="canEmpleados"><span id="lab_valSurname" class="h331">Empleados Necesarios:</span></label>
                             <input class="input9" name="canEmpleados" required type="text" maxlength="64" id="canEmpleados" class="field1" value="">                                                    
                             <label class="tag1" for="observacion"><span id="lab_valName" class="h331">Observaciones :</span></label>
-                            <textarea  class="input10" name="observacion" type="text" maxlength="64" id="observacion" class="field1"></textarea>                                    
+                            <textarea  class="input10" name="observacion"  type="text" maxlength="64" id="observacion" class="field1"></textarea>
                             <hr>
-                        </div>                                    
-                        <div>   
-                            <br>
-                            <!--  Materia Prima--> 
-                            <button type="button" id="materiaPrima" onclick="document.location.href = '#verMateria';" style="display: inline">Calcular Materia Prima</button><br> 
-                            <br>
-                            <label class="tag" for="materias"><span id="lab_valSurname" class="h331">Costo Materia Prima:</span></label>
-                            <input class="input9" name="materiaPrima" required type="text" maxlength="64" id="materias" value="" class="field1" onfocus="alert('Haga Click en el boton (Calcular Materia Prima) para calcular este campo')" readonly>
-                            <br><br><br><hr>
-                        </div> 
-                        <div>
-                            <button type="button" id="btn_total" name="total" class="boton-verde" style="display: inline">Valor Total Proyecto </button><br>
-                            <br>
-                            <label class="tag1" for="totalCosto">Costo Total: $</label><input type="text" class="input9" name="totalCosto" id="totalCosto" value="" readonly><br>
-                            <br><hr>
-                        </div>                                    
-                        <div>
-                            <label class="tag1" for="utilidad"><span id="lab_valSurname" class="h331">Utilidad Generada:</span></label>
-                            <input class="input9" name="utilidad" required type="text" maxlength="64" id="utilidad" class="field1" readonly>  
-                            <br><label class="tag1" for="viabilidad"><span id="lab_valSurname" class="h331">Viabilidad de Proyecto:</span></label>
-                            <input class="input9" name="viabilidad" required type="text" maxlength="64" id="viabilidad" class="field1" readonly>  
-                            <button type="submit" id="crearCosto" name="crearCosto"  class="boton-verde">Aceptar</button><hr>
-                        </div> 
+                        </div>
                     </div>   
                 </form>
-                <!--        ventana modal-->
-                <div id="verMateria" class="modalDialog2" title="Materia Prima"> 
-                        <script>
-                            $(function () {
-                                $(":input").change(function () {
-                                    $("#range1").html($("#madera1").val());
-                                });
-                                $("#btn_1").click(function () {
-                                    madera = $("#madera1").val() * 64900;                                    
-                                    document.getElementById('maderas1').value = madera;
-                                });
-                            });
-                            $(function () {
-                                $(":input").change(function () {
-                                    $("#range2").html($("#tela1").val());
-                                });
-                                $("#btn_2").click(function () {
-                                    tela= $("#tela1").val() * 25000;                                    
-                                    document.getElementById('telas1').value = tela;
-                                });
-                            });
-                            $(function () {
-                                $(":input").change(function () {
-                                    $("#range3").html($("#espuma1").val());
-                                });
-                                $("#btn_3").click(function () {
-                                    espuma = $("#espuma1").val() * 15000;                                    
-                                    document.getElementById('espumas1').value = espuma;
-                                });
-                            });
-                            $(function () {
-                                $(":input").change(function () {
-                                    $("#range4").html($("#pintura1").val());
-                                });
-                                $("#btn_4").click(function () {
-                                    pintura = $("#pintura1").val() * 185000;                                    
-                                    document.getElementById('pinturas1').value = pintura;
-                                });
-                            });
-                             $(function () {
-                                $(":input").change(function () {
-                                    $("#range5").html($("#pegante1").val());
-                                });
-                                $("#btn_5").click(function () {
-                                    pegante = $("#pegante1").val() * 23900;                                    
-                                    document.getElementById('pegantes1').value = pegante;
-                                });
-                            });
-                            $(function () {
-                                $(":input").change(function () {
-                                    $("#range6").html($("#clavo1").val());
-                                });
-                                $("#btn_6").click(function () {
-                                    clavo = $("#clavo1").val() * 11900;                                    
-                                    document.getElementById('clavos1').value = clavo;
-                                });
-                            });
-                             $(function () {                                
-                                $("#totalMaterias").click(function () {
-                                   if (document.getElementById('maderas1').value == '' ||
-                                            document.getElementById('telas1').value == '' ||
-                                            document.getElementById('espumas1').value == '' ||
-                                            document.getElementById('pinturas1').value == '' ||
-                                            document.getElementById('pegantes1').value == '' ||
-                                            document.getElementById('clavos1').value == ''){
-                                        if (document.getElementById('maderas1').value == '' ){
-                                            alert('Falta Asignar Madera');
-                                        } else if (document.getElementById('telas1').value == '') {
-                                            alert('Falta Asignar Telas');
-                                        } else if (document.getElementById('espumas1').value == '') {
-                                            alert('Falta Asignar Espuma');
-                                        } else if (document.getElementById('pinturas1').value == '') {
-                                            alert('Falta Asignar Pintura');
-                                        } else if (document.getElementById('pegantes1').value == '') {
-                                            alert('Falta Asignar Pegantes');
-                                        } else if (document.getElementById('clavos1').value == '') {
-                                            alert('Falta Asignar Clavos / Grapas');
-                                        }
-                                    } else {
-                                    totalMateriales = madera+tela+espuma+pintura+pegante+clavo;                                   
-                                    document.getElementById('materias').value = totalMateriales;  
-                                    document.getElementById('verMateria').style.display="none";
-                                }
-                                });
-                            });
-                        </script>
-                        <div><a href="#close" title="Cerrar" class="close">X</a><br>
-                            <h2 class="h330"><br>Materia Prima:</h2>
-                         <div class="divMaterias"><label class="tag1" for="madera1">Metros de Madera:</label>
-                            <input type="range" id="madera1" min="1" max="200" value="1" ><span id="range1"></span>
-                            <div >
-                                <button type="button" id="btn_1" style="display: inline">Calcular Madera</button>                                       
-                            <label class="tag1"> $ </label><input type="text" class="input9" id="maderas1" name="maderas1" value="">
-                            </div>
-                        </div>
-                        <div class="divMaterias"><label class="tag1" for="tela1">Metros de Tela:</label>
-                            <input type="range" id="tela1" min="1" max="200" value="1" ><span id="range2"></span>
-                            <div >
-                                <button type="button" id="btn_2" style="display: inline">Calcular Madera</button>                                       
-                            <label class="tag1"> $ </label><input type="text" class="input9" id="telas1" name="maderas1" value="">
-                            </div>
-                        </div>                   
-                      <div class="divMaterias"><label class="tag1" for="espuma1">Laminas de Espuma:</label>
-                            <input type="range" id="espuma1" min="1" max="200" value="1" ><span id="range3"></span>
-                            <div >
-                                <button type="button" id="btn_3" style="display: inline">Calcular Madera</button>                                       
-                            <label class="tag1"> $ </label><input type="text" class="input9" id="espumas1" name="espumas1" value="">
-                            </div >
-                        </div> 
-                         <div class="divMaterias"><label class="tag1" for="pintura1">Galones de Pintura:</label>
-                            <input type="range" id="pintura1" min="1" max="200" value="1" ><span id="range4"></span>
-                            <div >
-                                <button type="button" id="btn_4" style="display: inline">Calcular Madera</button>                                       
-                            <label class="tag1"> $ </label><input type="text" class="input9" id="pinturas1" name="pinturas1" value="">
-                            </div>
-                        </div> 
-                        <div class="divMaterias"><label class="tag1" for="pegante1">Litros de Pegante:</label>
-                            <input type="range" id="pegante1" min="1" max="200" value="1" ><span id="range5"></span>
-                            <div >
-                                <button type="button" id="btn_5" style="display: inline">Calcular Madera</button>                                       
-                            <label class="tag1"> $ </label><input type="text" class="input9" id="pegantes1" name="pegantes1" value="">
-                            </div >
-                        </div>
-                        <div class="divMaterias"><label class="tag1" for="clavo1">Cajas Clavos / Grapas:</label>
-                            <input type="range" id="clavo1" min="1" max="200" value="1" ><span id="range6"></span>
-                            <div >
-                            <button type="button" id="btn_6" style="display: inline">Calcular Madera</button>                                       
-                            <label class="tag1"> $ </label><input type="text" class="input9" id="clavos1" name="clavos1" value="">                            
-                            </div>
-                        </div>
-                         
-                                <button type="button" id="totalMaterias" name="totalMaterias" class="boton-verde">Aceptar</button>
-                           
-                    </div>                    
                 </div>
             </div>                  
         </div>

@@ -106,6 +106,8 @@ $session->Session($pagActual);
                                     </th>
                                     <th class="th3"><span class="text">Ganancia</span>
                                     </th>
+                                    <th class="th3-1"><span class="text">Visualizar</span>
+                                    </th>
                                     <th class="th4"><span class="text">Seleccionar</span>
                                     </th>                                
                                     <th class="th5"><span class="text">Cantidad</span>
@@ -125,6 +127,9 @@ $session->Session($pagActual);
                                         <td class="td1">0<?php echo $productos['idProductos']; ?></td>
                                         <td class="td2"><?php echo $productos['nombreProducto']; ?></td>
                                         <td class="td3"><?php echo $productos['ganancia']; ?>%</td>
+                                        <td class="td3-1"><a class='group1' href="../productos/<?php echo $productos['fotoProducto']; ?>"
+                                                             title="Código 0<?php echo $productos['idProductos']; ?>"><img src="../img/products.png" width="20"
+                                                                                             height="20"><</td>
                                         <td class="td4"><input id="producto<?php echo $productos['idProductos'];?>" type="checkbox" name="producto<?php echo $productos['idProductos']; ?>" value="<?php echo $productos['idProductos']; ?>" ></td>
                                         <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" type="number" maxlength="64" id="cantidadProducto<?php echo $productos['idProductos']; ?>"></td>
                                     </tr>
@@ -158,64 +163,13 @@ $session->Session($pagActual);
                             contador();
                             $("input[type=checkbox]").on("click", contador)</script>
                     </div>                
-                </div>                
-                      <?php  foreach ($products as $imagenes) {?>
-                <a style="display: none" class="group1" href="../productos/<?php echo $imagenes['fotoProducto'];?>" title="Código 0<?php echo $imagenes['idProductos']; ?>"></a>
-                      <?php  } ?>
+                </div>
                 <hr><br><br><br><br><br>
                 <div id="process"><p><a class='group1' href="../img/logo.png" title="Click En Siguiente"><img src="../img/products.png"></a></p>
-                    <p class="obligatoriosD">Click Para Visualizar Los Productos</p>
+                    <p class="obligatoriosD">Click Para Visualizar Los Productos Disponibles</p>
                 </div>
                 <button type="submit" class="guardarDerecho" name="elementosProyecto">Guardar</button>
             </form>
-            <div style="display: none">
-                <div id='inline_content2' style='padding:10px; background:#fff;'>
-                    <p><strong><h2 class="h330">Materia Prima</h2></strong></p>
-                    <p class="obligatoriosD"><br>Selecione la materia prima segun los requerimientos de Cliente.<br></p>
-                    <br><table class="tableSection">
-                        <thead>
-                            <tr>
-                                <th class="th1"><span class="text">Código</span>
-                                </th>
-                                <th class="th2"><span class="text">Nombre</span>
-                                </th>
-                                <th class="th3"><span class="text">Consultar</span>
-                                </th>
-                                <th class="th4"><span class="text">Seleccionar</span>
-                                </th>                                
-                                <th class="th5"><span class="text">Cantidad</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>                            
-                            <?php
-                            require_once '../facades/FacadeInsumos.php';
-                            require_once '../modelo/dao/InsumosDAO.php';
-                            $facadeMateria = new FacadeInsumos();
-                            $materias = $facadeMateria->listarInsumos();                           
-                            ?>
-                        <label class="tag" id="labelProyecto" for="listaProyecto"><span id="lab_valCountry" class="h331">Seleccione Materia Prima:</span></label>
-                        <select class="input" id="listaProyecto" name="idProyecto" id="listaProyecto" autofocus class="list_menu" >                                                                                                                                                               
-                            <?php
-                            foreach ($materias as $materiaP) {
-                                echo '<option value="' . $materiaP['numero'] . '">' . $materiaP['numero'] . '-' . $materiaP['nombre'];
-                            }
-                            ?></option>
-                        </select>
-        <?php foreach ($products as $productos) { ?>
-                            <tr>
-                                <td class="td1">0<?php echo $productos['idProductos']; ?></td>
-                                <td class="td2"><?php echo $productos['nombreProducto']; ?></td>
-                                <td class="td3"><?php echo $productos['ganancia']; ?>%</td>
-                                <td class="td4"><?php echo $productos['ganancia']; ?>%</td>
-                                <td class="td5"><?php echo $productos['ganancia']; ?>%</td>
-                            </tr> 
-                        <?php }
-                        ?>                               
-                        </tbody>
-                    </table>                    
-                </div>
-            </div>              
             <?php }?>
         </div>        
     </body>

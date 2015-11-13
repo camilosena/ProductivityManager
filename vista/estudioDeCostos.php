@@ -97,8 +97,12 @@ $session->Session($pagActual);
                         <input class="input" name="manoDeObra" type="text" maxlength="64" value="<?php echo $costoManoObra; ?>" id="manoObra" style="text-align: center" class="field1" autofocus readonly required>
                         <label class="tagPeso" id="labelManoObra" for="produccion"><span id="lab_valCountry" class="h331">Costo Productos: </span></label>
                         <input class="input" name="costoProduccion" type="text" maxlength="64" value="<?php echo $costoProducto; ?>" id="produccion" style="text-align: center" class="field1" autofocus readonly required>
+                        <label class="tagPeso" id="labelUtilidad" for="util"><span id="lab_valCountry" class="h331">Utilidad: </span></label>
+                        <input class="input" name="utilidad" type="text" maxlength="64" value="" id="util" style="text-align: center" class="field1" autofocus readonly required>
+                        <label class="tag2" id="labelTiempo" for="time"><span id="lab_valCountry" class="h331">Tiempo Estimado (?): </span></label>
+                        <input class="input" name="tiempoEstimado" type="text" maxlength="64" value="" id="time" style="text-align: center" class="field1" autofocus readonly required>
                         <hr>
-                        <div><label class="tag1" for="subtotal1">Horas Directas utilizadas:</label><input type="range" id="subtotal1" min="1" max="200" value="1" ><span id="n_range1"></span>
+                        <div><label class="tag1" for="subtotal1">Horas Directas utilizadas:</label><input type="range" id="subtotal1" min="1" max="200" value="100" ><span id="n_range1"></span>
                             <button type="button" id="btn_range1" style="display: inline">Calcular - M.O.D.</button><br>                                        
                             <label class="tag1">$</label> <input type="text" class="input9" id="horaDirecta" name="horaDirecta" value="">
                             <hr />

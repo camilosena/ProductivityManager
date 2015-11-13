@@ -125,9 +125,22 @@ $session->Session($pagActual);
                                         <td class="td1">0<?php echo $productos['idProductos']; ?></td>
                                         <td class="td2"><?php echo $productos['nombreProducto']; ?></td>
                                         <td class="td3"><?php echo $productos['ganancia']; ?>%</td>
-                                        <td class="td4"><input type="checkbox" name="producto<?php echo $productos['idProductos']; ?>" value="<?php echo $productos['idProductos']; ?>" ></td>
-                                        <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" type="number" maxlength="64" id="cantidadProducto"></td>
-                                    </tr>                       
+                                        <td class="td4"><input id="producto<?php echo $productos['idProductos'];?>" type="checkbox" name="producto<?php echo $productos['idProductos']; ?>" value="<?php echo $productos['idProductos']; ?>" ></td>
+                                        <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" type="number" maxlength="64" id="cantidadProducto<?php echo $productos['idProductos']; ?>"></td>
+                                    </tr>
+                                    <script>
+                                        $(document).ready(function(){
+
+                                            $("#producto<?php echo $productos['idProductos']; ?>").click(function() {
+                                                if($("#producto<?php echo $productos['idProductos']; ?>").is(':checked')) {
+                                                    $("#cantidadProducto<?php echo $productos['idProductos']; ?>").attr("required", true);
+                                                } else {
+                                                    $("#cantidadProducto<?php echo $productos['idProductos']; ?>").attr("required", false);
+                                                }
+                                            });
+
+                                        });
+                                    </script>
                                 <?php }
                                 ?>                               
                             </tbody>
@@ -135,7 +148,7 @@ $session->Session($pagActual);
                         <p style="text-align: right;margin-right: 5%;"><br>
                             <label class="tag2" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Productos Seleccionados:</span></label>
                             <input id="checkcount1" name="cantidadTipo" type="text" maxlength="64" style="text-align: center" required readonly>
-                        </p>                              
+                        </p>
                         <script>
                             var contador = function () {
                                 var n = $("input:checked").length;

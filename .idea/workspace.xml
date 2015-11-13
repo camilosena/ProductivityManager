@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2abc2621-83e7-4a19-abdf-8e639bc1a02c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main_responsive.css" afterPath="$PROJECT_DIR$/css/main_responsive.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/facades/FacadeEstudioCostos.php" afterPath="$PROJECT_DIR$/facades/FacadeEstudioCostos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php" afterPath="$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelo/dto/EstudioCostosDTO.php" afterPath="$PROJECT_DIR$/modelo/dto/EstudioCostosDTO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/estudioDeCostos.php" afterPath="$PROJECT_DIR$/vista/estudioDeCostos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/produccionProyecto.php" afterPath="$PROJECT_DIR$/vista/produccionProyecto.php" />
     </list>
     <ignored path="ProductivityManager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,49 +29,13 @@
       <file leaf-file-name="estudioDeCostos.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vista/estudioDeCostos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52208835">
-              <caret line="98" column="127" selection-start-line="98" selection-start-column="127" selection-end-line="98" selection-end-column="127" />
+            <state vertical-scroll-proportion="0.20571429">
+              <caret line="101" column="129" selection-start-line="101" selection-start-column="129" selection-end-line="101" selection-end-column="129" />
               <folding>
-                <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#2;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#3;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1447353148000" expanded="true" signature="954:1778" placeholder="..." />
-                <marker date="1447353148000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
-                <marker date="1447353148000" expanded="true" signature="1674:1717" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main_responsive.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/main_responsive.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.3137255">
-              <caret line="1109" column="22" selection-start-line="1109" selection-start-column="22" selection-end-line="1109" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FacadeEstudioCostos.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/facades/FacadeEstudioCostos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.625">
-              <caret line="17" column="83" selection-start-line="17" selection-start-column="83" selection-end-line="17" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EstudioCostosDAO.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.625">
-              <caret line="39" column="118" selection-start-line="39" selection-start-column="118" selection-end-line="39" selection-end-column="118" />
-              <folding>
-                <marker date="1447353069000" expanded="true" signature="189:250" placeholder="INSERT INTO estudiodecostos..." />
-                <marker date="1447353069000" expanded="true" signature="1243:1326" placeholder="SELECT sum(t..procesosporproyecto..." />
-                <marker date="1447353069000" expanded="true" signature="1681:1760" placeholder="SELECT sum(v..materiaprimaporproyecto..." />
+                <element signature="n#style#0;n#input#4;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1447443345000" expanded="true" signature="954:1778" placeholder="..." />
+                <marker date="1447443345000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
+                <marker date="1447443345000" expanded="true" signature="1674:1717" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -113,12 +75,12 @@
         <option value="$PROJECT_DIR$/js/validaciones.js" />
         <option value="$PROJECT_DIR$/vista/registrarUsuario.php" />
         <option value="$PROJECT_DIR$/vista/crearProyecto.php" />
-        <option value="$PROJECT_DIR$/vista/produccionProyecto.php" />
         <option value="$PROJECT_DIR$/modelo/dto/EstudioCostosDTO.php" />
         <option value="$PROJECT_DIR$/css/main_responsive.css" />
         <option value="$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php" />
         <option value="$PROJECT_DIR$/facades/FacadeEstudioCostos.php" />
         <option value="$PROJECT_DIR$/vista/estudioDeCostos.php" />
+        <option value="$PROJECT_DIR$/vista/produccionProyecto.php" />
       </list>
     </option>
   </component>
@@ -162,7 +124,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,36 +156,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProductivityManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProductivityManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modelo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProductivityManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProductivityManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -287,7 +221,7 @@
     <frame x="10" y="43" width="1260" height="669" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24958949" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2536946" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -543,60 +477,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vista/produccionProyecto.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32846716">
-          <caret line="88" column="94" selection-start-line="88" selection-start-column="94" selection-end-line="88" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modelo/dto/EstudioCostosDTO.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.1058393">
           <caret line="150" column="38" selection-start-line="150" selection-start-column="38" selection-end-line="150" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/main_responsive.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3137255">
+        <state vertical-scroll-proportion="0.5441767">
           <caret line="1109" column="22" selection-start-line="1109" selection-start-column="22" selection-end-line="1109" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/facades/FacadeEstudioCostos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4857143">
+          <caret line="17" column="83" selection-start-line="17" selection-start-column="83" selection-end-line="17" selection-end-column="83" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.625">
+        <state vertical-scroll-proportion="0.71428573">
           <caret line="39" column="118" selection-start-line="39" selection-start-column="118" selection-end-line="39" selection-end-column="118" />
-          <folding>
-            <marker date="1447353069000" expanded="true" signature="189:250" placeholder="INSERT INTO estudiodecostos..." />
-            <marker date="1447353069000" expanded="true" signature="1243:1326" placeholder="SELECT sum(t..procesosporproyecto..." />
-            <marker date="1447353069000" expanded="true" signature="1681:1760" placeholder="SELECT sum(v..materiaprimaporproyecto..." />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/facades/FacadeEstudioCostos.php">
+    <entry file="file://$PROJECT_DIR$/vista/generarAuditoria.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.625">
-          <caret line="17" column="83" selection-start-line="17" selection-start-column="83" selection-end-line="17" selection-end-column="83" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vista/produccionProyecto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45904762">
+          <caret line="134" column="123" selection-start-line="134" selection-start-column="123" selection-end-line="134" selection-end-column="123" />
+          <folding>
+            <marker date="1447446319000" expanded="true" signature="1263:2087" placeholder="..." />
+            <marker date="1447446319000" expanded="true" signature="1377:1953" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447446319000" expanded="true" signature="1983:2026" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vista/estudioDeCostos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52208835">
-          <caret line="98" column="127" selection-start-line="98" selection-start-column="127" selection-end-line="98" selection-end-column="127" />
+        <state vertical-scroll-proportion="0.20571429">
+          <caret line="101" column="129" selection-start-line="101" selection-start-column="129" selection-end-line="101" selection-end-column="129" />
           <folding>
-            <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#3;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1447353148000" expanded="true" signature="954:1778" placeholder="..." />
-            <marker date="1447353148000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
-            <marker date="1447353148000" expanded="true" signature="1674:1717" placeholder="{...}" />
+            <element signature="n#style#0;n#input#4;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1447443345000" expanded="true" signature="954:1778" placeholder="..." />
+            <marker date="1447443345000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447443345000" expanded="true" signature="1674:1717" placeholder="{...}" />
           </folding>
         </state>
       </provider>

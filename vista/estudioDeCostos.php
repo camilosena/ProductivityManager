@@ -205,16 +205,6 @@ $session->Session($pagActual);
                             <button type="button" id="btn_range4" style="display: inline;">Calcular Costo C.I.F.</button><br>
                             <label class="tag1">$</label><input type="text" class="input9" id="costoFabrica" name="costoFabrica" value="">
                             <hr />
-                        </div>                                                                                                     
-                        <div> 
-                            <label class="tag" for="gastos"><span id="lab_valSurname" class="h331">Gastos:</span></label>
-                            <input class="input9" name="gastos" required type="text" maxlength="64" id="gastos" class="field1" value="">                    
-                            <br>                                    
-                            <label class="tag" for="canEmpleados"><span id="lab_valSurname" class="h331">Empleados Necesarios:</span></label>
-                            <input class="input9" name="canEmpleados" required type="text" maxlength="64" id="canEmpleados" class="field1" value="">                                                    
-                            <label class="tag1" for="observacion"><span id="lab_valName" class="h331">Observaciones :</span></label>
-                            <textarea  class="input10" name="observacion"  type="text" maxlength="64" id="observacion" class="field1"></textarea>
-                            <hr>
                         </div>
                     </div>   
                 </form>

@@ -5,8 +5,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main_responsive.css" afterPath="$PROJECT_DIR$/css/main_responsive.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/tablaInModal.css" afterPath="$PROJECT_DIR$/css/tablaInModal.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/agregarCliente.php" afterPath="$PROJECT_DIR$/vista/agregarCliente.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/estudioDeCostos.php" afterPath="$PROJECT_DIR$/vista/estudioDeCostos.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/produccionProyecto.php" afterPath="$PROJECT_DIR$/vista/produccionProyecto.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/registrarUsuario.php" afterPath="$PROJECT_DIR$/vista/registrarUsuario.php" />
     </list>
     <ignored path="ProductivityManager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,19 +30,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="estudioDeCostos.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vista/estudioDeCostos.php">
+      <file leaf-file-name="registrarUsuario.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vista/registrarUsuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6">
-              <caret line="108" column="145" selection-start-line="108" selection-start-column="145" selection-end-line="108" selection-end-column="145" />
+            <state vertical-scroll-proportion="-5.8333335">
+              <caret line="531" column="103" selection-start-line="531" selection-start-column="103" selection-end-line="531" selection-end-column="122" />
               <folding>
-                <element signature="n#style#0;n#input#4;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#8;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1447458684000" expanded="true" signature="954:1778" placeholder="..." />
-                <marker date="1447458684000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
-                <marker date="1447458684000" expanded="true" signature="1674:1717" placeholder="{...}" />
+                <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#3;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1447631088000" expanded="true" signature="36002:36823" placeholder="..." />
+                <marker date="1447631088000" expanded="true" signature="36162:36802" placeholder="{&quot;closeButton&quot;: false...}" />
+                <marker date="1447631088000" expanded="true" signature="37040:37800" placeholder="..." />
+                <marker date="1447631088000" expanded="true" signature="37139:37779" placeholder="{&quot;closeButton&quot;: false...}" />
+                <marker date="1447631088000" expanded="true" signature="37945:38710" placeholder="..." />
+                <marker date="1447631088000" expanded="true" signature="38049:38689" placeholder="{&quot;closeButton&quot;: false...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajax_consultar_usuario.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/peticiones_ajax/ajax_consultar_usuario.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.75">
+              <caret line="14" column="78" selection-start-line="14" selection-start-column="78" selection-end-line="14" selection-end-column="78" />
+              <folding>
+                <marker date="1447631273000" expanded="true" signature="340:412" placeholder="..." />
+                <marker date="1447631273000" expanded="true" signature="479:531" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="agregarCliente.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vista/agregarCliente.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.45714286">
+              <caret line="561" column="70" selection-start-line="561" selection-start-column="70" selection-end-line="561" selection-end-column="70" />
+              <folding>
+                <element signature="n#style#0;n#input#7;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#10;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,22 +101,23 @@
         <option value="$PROJECT_DIR$/css/infoProject.css" />
         <option value="$PROJECT_DIR$/controlador/ControladorProyectos.php" />
         <option value="$PROJECT_DIR$/controlador/ControladorUsuarios.php" />
-        <option value="$PROJECT_DIR$/vista/agregarCliente.php" />
         <option value="$PROJECT_DIR$/controlador/ControladorClientes.php" />
         <option value="$PROJECT_DIR$/js/jquery.dataTables.min.js" />
         <option value="$PROJECT_DIR$/modelo/dao/UsuarioDAO.php" />
         <option value="$PROJECT_DIR$/facades/FacadeUsuarios.php" />
         <option value="$PROJECT_DIR$/js/validaciones.php" />
         <option value="$PROJECT_DIR$/js/validaciones.js" />
-        <option value="$PROJECT_DIR$/vista/registrarUsuario.php" />
         <option value="$PROJECT_DIR$/vista/crearProyecto.php" />
         <option value="$PROJECT_DIR$/modelo/dto/EstudioCostosDTO.php" />
         <option value="$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php" />
         <option value="$PROJECT_DIR$/facades/FacadeEstudioCostos.php" />
         <option value="$PROJECT_DIR$/css/tablaInModal.css" />
-        <option value="$PROJECT_DIR$/vista/produccionProyecto.php" />
-        <option value="$PROJECT_DIR$/vista/estudioDeCostos.php" />
         <option value="$PROJECT_DIR$/css/main_responsive.css" />
+        <option value="$PROJECT_DIR$/vista/estudioDeCostos.php" />
+        <option value="$PROJECT_DIR$/vista/produccionProyecto.php" />
+        <option value="$PROJECT_DIR$/vista/registrarUsuario.php" />
+        <option value="$PROJECT_DIR$/peticiones_ajax/ajax_consultar_usuario.php" />
+        <option value="$PROJECT_DIR$/vista/agregarCliente.php" />
       </list>
     </option>
   </component>
@@ -159,20 +190,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="vista" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProductivityManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProductivityManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -363,13 +380,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vista/agregarCliente.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76642334">
-          <caret line="102" column="76" selection-start-line="102" selection-start-column="76" selection-end-line="102" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PHPMailer/docs/Note_for_SMTP_debugging.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -476,13 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vista/registrarUsuario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.062043797">
-          <caret line="531" column="79" selection-start-line="531" selection-start-column="79" selection-end-line="531" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modelo/dto/EstudioCostosDTO.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.1058393">
@@ -531,18 +534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vista/produccionProyecto.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51428574">
-          <caret line="165" column="22" selection-start-line="165" selection-start-column="22" selection-end-line="165" selection-end-column="22" />
-          <folding>
-            <marker date="1447457030000" expanded="true" signature="1263:2087" placeholder="..." />
-            <marker date="1447457030000" expanded="true" signature="1377:1953" placeholder="{&quot;closeButton&quot;: false...}" />
-            <marker date="1447457030000" expanded="true" signature="1983:2026" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vista/crearProyecto.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31619048">
@@ -565,18 +556,111 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vista/produccionProyecto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33734939">
+          <caret line="131" column="105" selection-start-line="131" selection-start-column="105" selection-end-line="131" selection-end-column="105" />
+          <folding>
+            <marker date="1447459384000" expanded="true" signature="1263:2087" placeholder="..." />
+            <marker date="1447459384000" expanded="true" signature="1377:1953" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447459384000" expanded="true" signature="1983:2026" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vista/clientesActivos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="13.75">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1447283963000" expanded="true" signature="7108:7849" placeholder="..." />
+            <marker date="1447283963000" expanded="true" signature="7252:7828" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447283963000" expanded="true" signature="7936:8637" placeholder="..." />
+            <marker date="1447283963000" expanded="true" signature="8040:8616" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447283963000" expanded="true" signature="8726:9429" placeholder="..." />
+            <marker date="1447283963000" expanded="true" signature="8832:9408" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447283963000" expanded="true" signature="16927:16944" placeholder="..." />
+            <marker date="1447283963000" expanded="true" signature="17956:17967" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vista/agregarProductos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="14.375">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controlador/ControladorLogin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.057142857">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vista/estudioDeCostos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6">
-          <caret line="108" column="145" selection-start-line="108" selection-start-column="145" selection-end-line="108" selection-end-column="145" />
+        <state vertical-scroll-proportion="0.82857144">
+          <caret line="207" column="30" selection-start-line="207" selection-start-column="30" selection-end-line="207" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#input#4;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#8;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#textarea#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1447458684000" expanded="true" signature="954:1778" placeholder="..." />
-            <marker date="1447458684000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
-            <marker date="1447458684000" expanded="true" signature="1674:1717" placeholder="{...}" />
+            <marker date="1447458989000" expanded="true" signature="954:1778" placeholder="..." />
+            <marker date="1447458989000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447458989000" expanded="true" signature="1674:1717" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/peticiones_ajax/ajax_listar_areas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/peticiones_ajax/ajax_consultar_usuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.75">
+          <caret line="14" column="78" selection-start-line="14" selection-start-column="78" selection-end-line="14" selection-end-column="78" />
+          <folding>
+            <marker date="1447631273000" expanded="true" signature="340:412" placeholder="..." />
+            <marker date="1447631273000" expanded="true" signature="479:531" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vista/registrarUsuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8333335">
+          <caret line="531" column="103" selection-start-line="531" selection-start-column="103" selection-end-line="531" selection-end-column="122" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#3;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1447631088000" expanded="true" signature="36002:36823" placeholder="..." />
+            <marker date="1447631088000" expanded="true" signature="36162:36802" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447631088000" expanded="true" signature="37040:37800" placeholder="..." />
+            <marker date="1447631088000" expanded="true" signature="37139:37779" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447631088000" expanded="true" signature="37945:38710" placeholder="..." />
+            <marker date="1447631088000" expanded="true" signature="38049:38689" placeholder="{&quot;closeButton&quot;: false...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vista/agregarCliente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45714286">
+          <caret line="561" column="70" selection-start-line="561" selection-start-column="70" selection-end-line="561" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#input#7;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#10;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

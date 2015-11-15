@@ -549,9 +549,25 @@ $session->Session($pagActual);
                     <input class="input" name="apellido" type="text" id="txtSurname" class="field1" placeholder="Perez" required >
                     <span id="valSurname" style="color:Red;visibility:hidden;"></span>
                     <br>
-                    <label class="tag" id="labelDocumento" for="documento"><span id="documento" class="h331">Documento: </span></label>
-                    <input class="input" name="identificacion" required type="text" pattern="[0-9]{6,15}" placeholder="1033405321" title="Solo números" maxlength="128" id="documento" class="field1">
+                    <label class="tag" id="labelDocumento" for="documento"><span class="h331">Documento: </span></label>
+                    <input class="input" style="display: inline" name="identificacion" onkeyup="buscar()"  required type="text" pattern="[0-9]{6,15}" placeholder="1033405321" title="Solo números" maxlength="128" id="documento" class="field1">
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
+                    <label class="tag2" style="display: inline" id="resultadoBusqueda"></label>
+                    <script>
+                        $(document).ready(function() {
+                            $("#resultadoBusqueda").html('');
+                        });
+
+                        function buscar() {
+                            var textoBusqueda = $("#documento").val();
+
+                            if (textoBusqueda != "") {
+                                $.post("../peticiones_ajax/ajax_consultar_usuario.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
+                                    $("#resultadoBusqueda").html(mensaje);
+                                });
+                            }
+                        };
+                    </script>
                     <br>   
                     <label class="tag" for="txtNit"><span id="lab_valCompany1" class="h331">Teléfono: </span></label>
                     <input class="input" name="telefono" required type="text" size= "5" id="txtNit" class="field1" placeholder="3104450321" autofocus pattern="[0-9]{7,10}">                       

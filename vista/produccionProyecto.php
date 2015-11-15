@@ -129,7 +129,7 @@ $session->Session($pagActual);
                                         <td class="td3"><?php echo $productos['ganancia']; ?>%</td>
                                         <td class="td3-1"><a class='group1' href="../productos/<?php echo $productos['fotoProducto']; ?>"
                                                              title="Código 0<?php echo $productos['idProductos']; ?>"><img src="../img/products.png" width="20"
-                                                                                             height="20"><</td>
+                                                                                             height="20"></td>
                                         <td class="td4"><input id="producto<?php echo $productos['idProductos'];?>" type="checkbox" name="producto<?php echo $productos['idProductos']; ?>" value="<?php echo $productos['idProductos']; ?>" ></td>
                                         <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" type="number" maxlength="64" id="cantidadProducto<?php echo $productos['idProductos']; ?>"></td>
                                     </tr>

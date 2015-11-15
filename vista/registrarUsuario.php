@@ -529,8 +529,24 @@ $session->Session($pagActual);
                     </select>
                     <br> 
                     <label class="tag" id="labelDocumento" for="documento"><span class="h331">Documento: </span></label>
-                    <input class="input" name="identificacion" id ="documento" required type="text" pattern="[0-9]{6,15}" placeholder="1033405321" title="Solo números" maxlength="128" id="documento" class="field1">
+                    <input class="input" style="display: inline" name="identificacion" id ="documento" onkeyup="buscar()" required type="text" pattern="[0-9]{6,15}" placeholder="1033405321" title="Solo números" maxlength="128" class="field1">
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
+                    <label class="tag2" style="display: inline" id="resultadoBusqueda"></label>
+                    <script>
+                        $(document).ready(function() {
+                            $("#resultadoBusqueda").html('');
+                        });
+
+                        function buscar() {
+                            var textoBusqueda = $("#documento").val();
+
+                            if (textoBusqueda != "") {
+                                $.post("../peticiones_ajax/ajax_consultar_usuario.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
+                                    $("#resultadoBusqueda").html(mensaje);
+                                });
+                            }
+                        };
+                    </script>
                     <br>               
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombres: </span></label>
                     <input class="input" name="nombre" type="text" id="txtName" class="field1" placeholder="Pedro"  required>

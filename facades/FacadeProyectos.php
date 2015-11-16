@@ -80,4 +80,7 @@ class FacadeProyectos {
     public function obtenerDatoProductoProyecto($idProyecto) {
         return $this->proyectosDAO->obtenerDatoProductoProyecto($idProyecto,$this->conexionBase);
     }
+    public function obtenerUtilidadProducto($idProducto) {
+        return $this->proyectosDAO->obtenerUtilidadProducto($idProducto,$this->conexionBase);
+    }
 }

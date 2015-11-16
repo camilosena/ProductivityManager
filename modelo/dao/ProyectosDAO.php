@@ -254,5 +254,16 @@ idProductos = Productos_idProductos");
         }
         $cnn = NULL;
     }
+    public function obtenerUtilidadProducto($idProducto, PDO $cnn) {
+        try {
+            $sentencia = $cnn->prepare("select ganancia from productos where idProductos = ?");
+            $sentencia->bindParam(1, $idProducto);
+            $sentencia->execute();
+            return $sentencia->fetchColumn();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn = NULL;
+    }
 
 }

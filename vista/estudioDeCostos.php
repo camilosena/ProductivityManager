@@ -83,9 +83,20 @@ $session->Session($pagActual);
                 require_once '../modelo/utilidades/Conexion.php';
                 require_once '../modelo/dao/EstudioCostosDAO.php';
                 require_once '../facades/FacadeEstudioCostos.php';
+                require_once'../facades/FacadeProyectos.php';
+                require_once '../modelo/dao/ProyectosDAO.php';
+                require_once '../modelo/dao/UtilidadDAO.php';
                 $fEstudio = new FacadeEstudioCostos();
                 $costoManoObra = $fEstudio->costoManoDeObra($_GET['projectNum']);
                 $costoProducto = $fEstudio->costoProduccion($_GET['projectNum']);
+                $utilidadDAO = new UtilidadDAO();
+                $util= $utilidadDAO->calculoUtilidad($_GET['projectNum']);
+                $sub = $costoManoObra + $costoProducto;
+                $utilidadT=0;
+                foreach($util as $al){
+                    $utilidadT =  ($al*$sub/100)+$utilidadT;
+                }
+                $costoProyecto = $costoProducto+$costoManoObra+$utilidadT;
                 ?>
                 <form class="formRegistro" method="post" action="../controlador/ControladorEstudioCostos.php">
                     <div class="modelo">
@@ -98,17 +109,17 @@ $session->Session($pagActual);
                         <label class="tagPeso" id="labelManoObra" for="produccion"><span id="lab_valCountry" class="h331">Costo Productos: </span></label>
                         <input class="input" name="costoProduccion" type="text" maxlength="64" value="<?php echo $costoProducto; ?>" id="produccion" style="text-align: center" class="field1"  readonly required>
                         <label class="tagPeso" id="labelUtilidad" for="util"><span id="lab_valCountry" class="h331">Utilidad: </span></label>
-                        <input class="input" name="utilidad" type="text" maxlength="64" value="" id="util" style="text-align: center" class="field1"  readonly required>
+                        <input class="input" name="utilidad" type="text" maxlength="64" value="<?php echo $utilidadT; ?>" id="util" style="text-align: center" class="field1"  readonly required>
                         <label class="tag2" id="labelTiempo" for="time"><span id="lab_valCountry" class="h331">Tiempo Estimado (?): </span></label>
                         <input class="input" name="tiempoEstimado" type="text" maxlength="64" value="" id="time" style="text-align: center" class="field1"  readonly required>
                         <label class="tagPeso" id="labelTotal" for="total"><span id="lab_valCountry" class="h331">Costo Total Proyecto: </span></label>
-                        <input class="input" name="costoProyecto" type="text" maxlength="64" value="" id="total" style="text-align: center" class="field1"  readonly required>
+                        <input class="input" name="costoProyecto" type="text" maxlength="64" value="<?php echo $costoProyecto; ?>" id="total" style="text-align: center" class="field1"  readonly required>
                         <label class="tag2" id="labelViab" for="viab"><span id="lab_valCountry" class="h331">Viabilidad: </span></label>
                         <input class="input" name="viabilidad" type="text" maxlength="64" value="" id="viab" style="text-align: center" class="field1"  readonly required>
                         <label class="tag2" style="position:relative;bottom:60px" id="labelObser" for="observa"><span id="lab_valCountry" class="h331">Observaciones: </span></label>
                         <textarea class="input" name="observaciones" style="width: 618px; height: 114px; maxlength='180';border:1px solid #f0f0f0"  id="observa"></textarea>
                         <hr>
-                        <div><label class="tag1" for="subtotal1">Horas Directas utilizadas:</label><input type="range" id="subtotal1" min="1" max="200" value="100" ><span id="n_range1"></span>
+                        <div><label class="tag1" for="subtotal1">Provisión:</label><input type="range" id="subtotal1" min="1" max="200" value="100" ><span id="n_range1"></span>
                             <button type="button" id="btn_range1" style="display: inline">Calcular - M.O.D.</button><br>                                        
                             <label class="tag1">$</label> <input type="text" class="input9" id="horaDirecta" name="horaDirecta" value="">
                             <hr>
@@ -191,19 +202,9 @@ $session->Session($pagActual);
                                 });
                             });
                         </script>
-                        <div><label class="tag1" for="subtotal2">Horas Indirectas utilizadas:</label><input type="range" id="subtotal2" min="1" max="200" value="1" ><span id="n_range2"></span>
+                        <div><label class="tag1" for="subtotal2">Provisión:</label><input type="range" id="subtotal2" min="1" max="200" value="1" ><span id="n_range2"></span>
                             <button type="button" id="btn_range2" style="display: inline">Calcular - M.O.I.</button><br>
                             <label class="tag1">$</label> <input type="text" class="input9" id="horaIndirecta" name ="horaIndirecta" value="">
-                            <hr />
-                        </div>                                   
-                        <div><label class="tag1" for="subtotal3">Horas Maquinaria utilizada:</label><input type="range" id="subtotal3" min="1" max="200" value="1" ><span id="n_range3"></span>
-                            <button type="button" id="btn_range3" style="display: inline">Calcular Maquinaria</button><br>
-                            <label class="tag1">$</label> <input type="text" class="input9" id="horaMaquinas" name="maquinaria" value="">
-                            <hr />
-                        </div>                                   
-                        <div><label class="tag1" for="subtotal4">Costo Indirecto Fabricación</label><input type="range" id="subtotal4" min="1" max="200" value="1" ><span id="n_range4"></span>
-                            <button type="button" id="btn_range4" style="display: inline;">Calcular Costo C.I.F.</button><br>
-                            <label class="tag1">$</label><input type="text" class="input9" id="costoFabrica" name="costoFabrica" value="">
                             <hr />
                         </div>
                     </div>   

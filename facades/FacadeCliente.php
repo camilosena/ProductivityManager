@@ -36,4 +36,9 @@ class FacadeCliente {
     public function listadoClientesInactivos(){
         return $this->clienteDAO->listarClientesInactivos($this->conexionBase);
     }
+    function verificarClienteRegistrado($nit)
+    {
+
+        return $this->clienteDAO->verificarClienteRegistrado($nit, $this->conexionBase);
+    }
 }

@@ -500,9 +500,25 @@ $session->Session($pagActual);
                     <input class="input" name="nombreCompania" required type="text" maxlength="64" id="txtCompany1" class="field1" autofocus placeholder="Muebles la Oficina" >
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                     <br>   
-                    <label class="tag" for="txtCompany1"><span id="lab_valCompany" class="h331">NIT: </span></label>
-                    <input class="input" name="nit" required type="text" maxlength="64" id="txtCompany1" class="field1" pattern="[0-9]{6,15}" placeholder="9033405321" title="Solo números">
+                    <label class="tag" for="nitC"><span id="lab_valCompany" class="h331">NIT: </span></label>
+                    <input class="input" style="display:inline" name="nit" onkeyup="buscarClient()" required type="text" maxlength="64" id="nitC" class="field1" pattern="[0-9]{6,15}" placeholder="9033405321" title="Solo números">
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
+                    <label class="tag2" style="display: inline" id="resultadoBusquedaClient"></label>
+                    <script>
+                        $(document).ready(function() {
+                            $("#resultadoBusquedaClient").html('');
+                        });
+
+                        function buscarClient() {
+                            var textoBusquedaC = $("#nitC").val();
+
+                            if (textoBusquedaC != "") {
+                                $.post("../peticiones_ajax/ajax_consultar_cliente.php", {valorCliente: textoBusquedaC}, function(mensaje) {
+                                    $("#resultadoBusquedaClient").html(mensaje);
+                                });
+                            }
+                        };
+                    </script>
                     <br>
                     <label class="tag" for="selCountry"><span id="lab_valCountry" class="h331">Sector Empresarial:</span></label>
                     <select class="input" name="sectorEmp" id="selCountry" class="list_menu">                                              

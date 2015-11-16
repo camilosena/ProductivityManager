@@ -94,4 +94,15 @@ class ClienteDAO {
             echo 'Error' . $ex->getMessage();
         }  
      }
+    public function verificarClienteRegistrado($nit, PDO $cnn) {
+        try {
+            $query = $cnn->prepare("SELECT nit from clientes where nit=?");
+            $query->bindParam(1,$nit);
+            $query->execute();
+            return $query->fetchColumn();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
 }

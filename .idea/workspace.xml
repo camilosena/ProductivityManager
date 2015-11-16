@@ -5,6 +5,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main_responsive.css" afterPath="$PROJECT_DIR$/css/main_responsive.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/tablaInModal.css" afterPath="$PROJECT_DIR$/css/tablaInModal.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/facades/FacadeCliente.php" afterPath="$PROJECT_DIR$/facades/FacadeCliente.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelo/dao/ClienteDAO.php" afterPath="$PROJECT_DIR$/modelo/dao/ClienteDAO.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/agregarCliente.php" afterPath="$PROJECT_DIR$/vista/agregarCliente.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/estudioDeCostos.php" afterPath="$PROJECT_DIR$/vista/estudioDeCostos.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/produccionProyecto.php" afterPath="$PROJECT_DIR$/vista/produccionProyecto.php" />
@@ -30,47 +32,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="registrarUsuario.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vista/registrarUsuario.php">
+      <file leaf-file-name="ajax_consultar_cliente.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/peticiones_ajax/ajax_consultar_cliente.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8333335">
-              <caret line="531" column="103" selection-start-line="531" selection-start-column="103" selection-end-line="531" selection-end-column="122" />
+            <state vertical-scroll-proportion="-1.25">
+              <caret line="2" column="27" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="27" />
               <folding>
-                <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#3;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1447631088000" expanded="true" signature="36002:36823" placeholder="..." />
-                <marker date="1447631088000" expanded="true" signature="36162:36802" placeholder="{&quot;closeButton&quot;: false...}" />
-                <marker date="1447631088000" expanded="true" signature="37040:37800" placeholder="..." />
-                <marker date="1447631088000" expanded="true" signature="37139:37779" placeholder="{&quot;closeButton&quot;: false...}" />
-                <marker date="1447631088000" expanded="true" signature="37945:38710" placeholder="..." />
-                <marker date="1447631088000" expanded="true" signature="38049:38689" placeholder="{&quot;closeButton&quot;: false...}" />
+                <marker date="1447632128000" expanded="true" signature="314:386" placeholder="..." />
+                <marker date="1447632128000" expanded="true" signature="453:505" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ajax_consultar_usuario.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ajax_consultar_usuario.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/peticiones_ajax/ajax_consultar_usuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.75">
-              <caret line="14" column="78" selection-start-line="14" selection-start-column="78" selection-end-line="14" selection-end-column="78" />
+            <state vertical-scroll-proportion="0.4857143">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <marker date="1447631273000" expanded="true" signature="340:412" placeholder="..." />
                 <marker date="1447631273000" expanded="true" signature="479:531" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="agregarCliente.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vista/agregarCliente.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45714286">
-              <caret line="561" column="70" selection-start-line="561" selection-start-column="70" selection-end-line="561" selection-end-column="70" />
-              <folding>
-                <element signature="n#style#0;n#input#7;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#10;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,7 +86,6 @@
         <option value="$PROJECT_DIR$/controlador/ControladorClientes.php" />
         <option value="$PROJECT_DIR$/js/jquery.dataTables.min.js" />
         <option value="$PROJECT_DIR$/modelo/dao/UsuarioDAO.php" />
-        <option value="$PROJECT_DIR$/facades/FacadeUsuarios.php" />
         <option value="$PROJECT_DIR$/js/validaciones.php" />
         <option value="$PROJECT_DIR$/js/validaciones.js" />
         <option value="$PROJECT_DIR$/vista/crearProyecto.php" />
@@ -117,6 +98,10 @@
         <option value="$PROJECT_DIR$/vista/produccionProyecto.php" />
         <option value="$PROJECT_DIR$/vista/registrarUsuario.php" />
         <option value="$PROJECT_DIR$/peticiones_ajax/ajax_consultar_usuario.php" />
+        <option value="$PROJECT_DIR$/facades/FacadeUsuarios.php" />
+        <option value="$PROJECT_DIR$/facades/FacadeCliente.php" />
+        <option value="$PROJECT_DIR$/modelo/dao/ClienteDAO.php" />
+        <option value="$PROJECT_DIR$/peticiones_ajax/ajax_consultar_cliente.php" />
         <option value="$PROJECT_DIR$/vista/agregarCliente.php" />
       </list>
     </option>
@@ -189,7 +174,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vista" />
+              <option name="myItemId" value="peticiones_ajax" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -464,20 +449,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/facades/FacadeUsuarios.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39781022">
-          <caret line="113" column="5" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelo/dao/UsuarioDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83576643">
-          <caret line="317" column="41" selection-start-line="317" selection-start-column="41" selection-end-line="317" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/validaciones.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -625,13 +596,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/peticiones_ajax/ajax_consultar_usuario.php">
+    <entry file="file://$PROJECT_DIR$/facades/FacadeUsuarios.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.75">
-          <caret line="14" column="78" selection-start-line="14" selection-start-column="78" selection-end-line="14" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.8">
+          <caret line="125" column="5" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/facades/FacadeCliente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8857143">
+          <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelo/dao/ClienteDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.75">
+          <caret line="103" column="45" selection-start-line="103" selection-start-column="45" selection-end-line="103" selection-end-column="45" />
           <folding>
-            <marker date="1447631273000" expanded="true" signature="340:412" placeholder="..." />
-            <marker date="1447631273000" expanded="true" signature="479:531" placeholder="..." />
+            <marker date="1447631891000" expanded="true" signature="174:214" placeholder="INSERT INTO clientes..." />
+            <marker date="1447631891000" expanded="true" signature="961:1069" placeholder="SELECT nombr..clientes..." />
+            <marker date="1447631891000" expanded="true" signature="1413:1465" placeholder="SELECT idAre..areas..." />
+            <marker date="1447631891000" expanded="true" signature="1816:1934" placeholder="UPDATE clien..." />
+            <marker date="1447631891000" expanded="true" signature="2656:2693" placeholder="SELECT count..clientes..." />
+            <marker date="1447631891000" expanded="true" signature="2994:3221" placeholder="Select idUsu..personas..." />
+            <marker date="1447631891000" expanded="true" signature="3569:3798" placeholder="Select idUsu..personas..." />
+            <marker date="1447631891000" expanded="true" signature="4145:4181" placeholder="SELECT nit f..clientes..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelo/dao/UsuarioDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33142856">
+          <caret line="305" column="33" selection-start-line="305" selection-start-column="33" selection-end-line="305" selection-end-column="33" />
+          <folding>
+            <marker date="1447270470000" expanded="true" signature="1160:1199" placeholder="INSERT INTO usuarios..." />
+            <marker date="1447270470000" expanded="true" signature="1715:1750" placeholder="select max(i..personas..." />
+            <marker date="1447270470000" expanded="true" signature="2121:2249" placeholder="UPDATE perso..." />
+            <marker date="1447270470000" expanded="true" signature="3058:3367" placeholder="Select idUsu..usuarios..." />
+            <marker date="1447270470000" expanded="true" signature="3699:3980" placeholder="Select idUsu..personas..." />
+            <marker date="1447270470000" expanded="true" signature="4341:4624" placeholder="Select idUsu..personas..." />
+            <marker date="1447270470000" expanded="true" signature="4975:5015" placeholder="select * fro..personas..." />
+            <marker date="1447270470000" expanded="true" signature="5398:5446" placeholder="Update perso..." />
+            <marker date="1447270470000" expanded="true" signature="5928:5976" placeholder="Update perso..." />
+            <marker date="1447270470000" expanded="true" signature="6422:6506" placeholder="select conca..personas..." />
+            <marker date="1447270470000" expanded="true" signature="6907:6949" placeholder="INSERT INTO usuarioPorProyecto..." />
+            <marker date="1447270470000" expanded="true" signature="7468:7562" placeholder="UPDATE usuar..." />
+            <marker date="1447270470000" expanded="true" signature="8768:9055" placeholder="Select idUsu..usuarios..." />
+            <marker date="1447270470000" expanded="true" signature="9377:9396" placeholder="select * fro..areas..." />
+            <marker date="1447270470000" expanded="true" signature="10001:10046" placeholder="update usuar..." />
+            <marker date="1447270470000" expanded="true" signature="10489:10542" placeholder="update perso..." />
+            <marker date="1447270470000" expanded="true" signature="10960:11043" placeholder="SELECT count..usuarios..." />
+            <marker date="1447270470000" expanded="true" signature="11377:11426" placeholder="update perso..." />
+            <marker date="1447270470000" expanded="true" signature="11862:11920" placeholder="SELECT ident..personas..." />
           </folding>
         </state>
       </provider>
@@ -654,13 +675,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/peticiones_ajax/ajax_consultar_cliente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="27" />
+          <folding>
+            <marker date="1447632128000" expanded="true" signature="314:386" placeholder="..." />
+            <marker date="1447632128000" expanded="true" signature="453:505" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vista/agregarCliente.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45714286">
-          <caret line="561" column="70" selection-start-line="561" selection-start-column="70" selection-end-line="561" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.5714286">
+          <caret line="512" column="57" selection-start-line="512" selection-start-column="57" selection-end-line="512" selection-end-column="57" />
           <folding>
+            <element signature="n#style#0;n#input#1;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#2;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#7;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#10;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#11;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/peticiones_ajax/ajax_consultar_usuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4857143">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1447631273000" expanded="true" signature="340:412" placeholder="..." />
+            <marker date="1447631273000" expanded="true" signature="479:531" placeholder="..." />
           </folding>
         </state>
       </provider>

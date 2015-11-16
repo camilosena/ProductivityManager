@@ -34,7 +34,14 @@ if (isset($_POST['crearUsuario'])) {
     $correoDTO->setAsunto("Registro Productivity Manager");
     $correoDTO->setContrasena("adsi2015");
     $correoDTO->setDestinatario($email);
-    $correoDTO->setContenido("Bienvenido Su usuario de ingreso es: ".$identificacion."<br>Su contraseña de ingreso es: ".$contrasena);
+    $correoDTO->setContenido("Bienvenido Su usuario de ingreso es: ".$identificacion."<br>Su contraseña de ingreso es: ".$contrasena.'<br>'.'<br>'
+        .'<font style="color: #83AF44; font-size: 11px; font-weight:bold; font-family: Sans-Serif;font-style:italic; " >Prductivity Manager Software'
+                    . '© Todos los derechos reservados 2015.'
+                    . '<br>'.'Bogotá, Colombia'
+                    . '<br>'.'Teléfono: +57 3015782659'
+                    . '<br>'.'https://www.facebook.com/productivitymanager'
+                    . '<br>'.'https://twitter.com/Productivity_Mg'
+    . '</font>');
     $facadeCorreo = new FacadeCorreos();
     $confirmacion=$facadeCorreo->EnvioCorreo($correoDTO);
     if ($confirmacion!='True') {

@@ -90,14 +90,14 @@
                         <a href="#openModal" class="rLink" tabindex="3">Olvido su Contraseña?</a>
                     </fieldset>	
                     <div id="footIndex">
-                        <label><input type="checkbox" tabindex="5">No cerrar sesión</label>
-                        <button type="submit" class="btnLogin" name="ingreso" tabindex="6" >Ingresar</button>
+                        <label><input type="checkbox" tabindex="4">No cerrar sesión</label>
+                        <button type="submit" class="btnLogin" name="ingreso" tabindex="5" >Ingresar</button>
                     </div>                    
                 </form>              
                 <?php
                 if (isset($_GET['mensaje'])) {
                     echo '<script>
-                        Command: toastr["warning"]("' . $_GET['mensaje'] . '")
+                        Command: toastr["info"]("' . $_GET['mensaje'] . '")
                         toastr.options = {
                           "closeButton": false,
                           "debug": false,
@@ -128,16 +128,16 @@
 
                     <p style="font-weight: bold">  </p><hr>     
                     <label for="identificacion" class="tag"><span id="valCompany" style="color:Red;visibility:hidden;"></span> Identificación:</label>
-                    <input id="identificacion" name="user" type="text" tabindex="7"  required title="No se aceptan carácteres especiales (\ / : * ? «< > |)" pattern= [0-9]{3,10} autofocus>
+                    <input id="identificacion" name="user" type="text" tabindex="6"  required title="No se aceptan carácteres especiales (\ / : * ? «< > |)" pattern= [0-9]{3,10} autofocus>
                     <br>
                     <label for="email" class="tag"><span id="valCompany" style="color:Red;visibility:hidden;"></span> Correo Electronico:</label>
-                    <input id="email" name="email" type="text" tabindex="2"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+                    <input id="email" name="email" type="text" tabindex="7"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
                     <br>   
                     <label for="email2" class="tag"><span id="valCompany" style="color:Red;visibility:hidden;"></span> Confirmar Correo:</label>
-                    <input id="email2" name="emailConfirm" type="text" tabindex="2"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+                    <input id="email2" name="emailConfirm" type="text" tabindex="8"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
                     <br>
 
-                    <button type="submit" name="solicitarContrasena" class="boton-verde">Solicitar contraseña</button><br>
+                    <button type="submit" name="solicitarContrasena" tabindex="9" class="boton-verde">Solicitar contraseña</button><br>
                 </form>   
 
 

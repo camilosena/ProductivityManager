@@ -221,7 +221,7 @@ $session->Session($pagActual);
                     $cliente = $facadeCliente->listadoClientesActivos();
                     ?>                           
                     <label class="tag" id="clienteAct" for="clienteAct"><span id="lab_valCountry" class="h331">Seleccione un Cliente:</span></label>
-                    <select class="input"  name="cliente" id="clienteAct" autofocus class="list_menu" >                                                                                                                                         
+                    <select class="input"  name="cliente" id="clienteAct" autofocus class="list_menu" required>                                                                                                                                         
                         <?php
                         if (isset($_GET['empresa'])) {
                             echo '<optgroup label="Se creara proyecto a:"><option value="' . $_GET['codCliente'] . '" selected>' . $_GET['codCliente'] . '-' . $_GET['empresa'] . '</option></optgroup>';

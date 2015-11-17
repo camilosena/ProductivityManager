@@ -17,4 +17,10 @@ class FacadeEstudioCostos {
     public function costoProduccion($idProyecto) {
         return $this->estudioDAO->costoProduccion($idProyecto,$this->conexionBase);
     }
+    public function tiempoEstimado($idProyecto) {
+        return $this->estudioDAO->tiempoEstimado($idProyecto,$this->conexionBase);
+    }
+    public function empleadosSolicitados($idProyecto) {
+        return $this->estudioDAO->empleadosSolicitados($idProyecto,$this->conexionBase);
+    }
 }

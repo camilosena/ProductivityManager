@@ -46,4 +46,28 @@ class EstudioCostosDAO {
         }
         $cnn=NULL;
     }
+
+    public function tiempoEstimado($idProyecto,PDO $cnn) {
+        try{
+            $sentencia= $cnn->prepare("SELECT sum(totalTiempoProceso) from procesosporproyecto where idProyecto_proyectos=?");
+            $sentencia->bindParam(1,$idProyecto);
+            $sentencia->execute();
+            return $sentencia->fetchColumn();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn=NULL;
+    }
+
+    public function empleadosSolicitados($idProyecto,PDO $cnn) {
+        try{
+            $sentencia= $cnn->prepare("SELECT sum(totalEmpleadosProceso) from procesosporproyecto where idProyecto_proyectos=?");
+            $sentencia->bindParam(1,$idProyecto);
+            $sentencia->execute();
+            return $sentencia->fetchColumn();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn=NULL;
+    }
 }

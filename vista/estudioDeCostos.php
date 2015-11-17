@@ -97,6 +97,8 @@ $session->Session($pagActual);
                     $utilidadT =  ($al*$sub/100)+$utilidadT;
                 }
                 $costoProyecto = $costoProducto+$costoManoObra+$utilidadT;
+                $tiempoEstimado = $fEstudio->tiempoEstimado($_GET['projectNum']);
+                $empleadosSolicitados = $fEstudio->empleadosSolicitados($_GET['projectNum']);
                 ?>
                 <form class="formRegistro" method="post" action="../controlador/ControladorEstudioCostos.php">
                     <div class="modelo">
@@ -110,12 +112,12 @@ $session->Session($pagActual);
                         <input class="input" name="costoProduccion" type="text" maxlength="64" value="<?php echo $costoProducto; ?>" id="produccion" style="text-align: center" class="field1"  readonly required>
                         <label class="tagPeso" id="labelUtilidad" for="util"><span id="lab_valCountry" class="h331">Utilidad: </span></label>
                         <input class="input" name="utilidad" type="text" maxlength="64" value="<?php echo $utilidadT; ?>" id="util" style="text-align: center" class="field1"  readonly required>
-                        <label class="tag2" id="labelTiempo" for="time"><span id="lab_valCountry" class="h331">Tiempo Estimado (?): </span></label>
-                        <input class="input" name="tiempoEstimado" type="text" maxlength="64" value="" id="time" style="text-align: center" class="field1"  readonly required>
+                        <label class="tag2" id="labelTiempo" for="time"><span id="lab_valCountry" class="h331">Tiempo Estimado (Horas): </span></label>
+                        <input class="input" name="tiempoEstimado" type="text" maxlength="64" value="<?php echo $tiempoEstimado; ?>" id="time" style="text-align: center" class="field1"  readonly required>
+                        <label class="tag2" id="labelViab" for="viab"><span id="lab_valCountry" class="h331">Empleados Solicitados: </span></label>
+                        <input class="input" name="viabilidad" type="text" maxlength="64" value="<?php echo $empleadosSolicitados; ?>" id="viab" style="text-align: center" class="field1"  readonly required>
                         <label class="tagPeso" id="labelTotal" for="total"><span id="lab_valCountry" class="h331">Costo Total Proyecto: </span></label>
                         <input class="input" name="costoProyecto" type="text" maxlength="64" value="<?php echo $costoProyecto; ?>" id="total" style="text-align: center" class="field1"  readonly required>
-                        <label class="tag2" id="labelViab" for="viab"><span id="lab_valCountry" class="h331">Viabilidad: </span></label>
-                        <input class="input" name="viabilidad" type="text" maxlength="64" value="" id="viab" style="text-align: center" class="field1"  readonly required>
                         <label class="tag2" style="position:relative;bottom:60px" id="labelObser" for="observa"><span id="lab_valCountry" class="h331">Observaciones: </span></label>
                         <textarea class="input" name="observaciones" style="width: 618px; height: 114px; maxlength='180';border:1px solid #f0f0f0"  id="observa"></textarea>
                         <hr>

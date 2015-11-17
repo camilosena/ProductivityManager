@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2abc2621-83e7-4a19-abdf-8e639bc1a02c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controlador/ControladorUsuarios.php" afterPath="$PROJECT_DIR$/controlador/ControladorUsuarios.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controlador/ControllerForgetPassword.php" afterPath="$PROJECT_DIR$/controlador/ControllerForgetPassword.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/facades/FacadeProyectos.php" afterPath="$PROJECT_DIR$/facades/FacadeProyectos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelo/dao/ProyectosDAO.php" afterPath="$PROJECT_DIR$/modelo/dao/ProyectosDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/facades/FacadeEstudioCostos.php" afterPath="$PROJECT_DIR$/facades/FacadeEstudioCostos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php" afterPath="$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vista/estudioDeCostos.php" afterPath="$PROJECT_DIR$/vista/estudioDeCostos.php" />
     </list>
     <ignored path="ProductivityManager.iws" />
@@ -29,46 +25,72 @@
     <favorites_list name="ProductivityManager" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="ControladorEstudioCostos.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controlador/ControladorEstudioCostos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="7.5">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="estudioDeCostos.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="estudioDeCostos.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vista/estudioDeCostos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62857145">
-              <caret line="115" column="121" selection-start-line="115" selection-start-column="121" selection-end-line="116" selection-end-column="123" />
+            <state vertical-scroll-proportion="-5.0">
+              <caret line="117" column="129" selection-start-line="117" selection-start-column="129" selection-end-line="117" selection-end-column="129" />
               <folding>
-                <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1447642573000" expanded="true" signature="954:1778" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
-                <marker date="1447642573000" expanded="true" signature="1674:1717" placeholder="{...}" />
-                <marker date="1447642573000" expanded="true" signature="4431:4738" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="4472:4738" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="5495:5513" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="5861:5879" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="6197:6215" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="6520:6538" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="6876:6894" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="7184:7202" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="7290:7319" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="7497:7536" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="7651:8161" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="7873:7888" placeholder="..." />
-                <marker date="1447642573000" expanded="true" signature="8238:8628" placeholder="{...}" />
-                <marker date="1447642573000" expanded="true" signature="8303:8418" placeholder="{...}" />
-                <marker date="1447642573000" expanded="true" signature="8488:8628" placeholder="{...}" />
+                <marker date="1447775202000" expanded="true" signature="954:1778" placeholder="..." />
+                <marker date="1447775202000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
+                <marker date="1447775202000" expanded="true" signature="1674:1717" placeholder="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClienteDAO.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modelo/dao/ClienteDAO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.29904762">
+              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+              <folding>
+                <marker date="1447631891000" expanded="true" signature="174:214" placeholder="INSERT INTO clientes..." />
+                <marker date="1447631891000" expanded="true" signature="961:1069" placeholder="SELECT nombr..clientes..." />
+                <marker date="1447631891000" expanded="true" signature="1413:1465" placeholder="SELECT idAre..areas..." />
+                <marker date="1447631891000" expanded="true" signature="1816:1934" placeholder="UPDATE clien..." />
+                <marker date="1447631891000" expanded="true" signature="2656:2693" placeholder="SELECT count..clientes..." />
+                <marker date="1447631891000" expanded="true" signature="2994:3221" placeholder="Select idUsu..personas..." />
+                <marker date="1447631891000" expanded="true" signature="3569:3798" placeholder="Select idUsu..personas..." />
+                <marker date="1447631891000" expanded="true" signature="4145:4181" placeholder="SELECT nit f..clientes..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EstudioCostosDAO.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.0">
+              <caret line="63" column="126" selection-start-line="63" selection-start-column="126" selection-end-line="63" selection-end-column="126" />
+              <folding>
+                <marker date="1447775099000" expanded="true" signature="189:250" placeholder="INSERT INTO estudiodecostos..." />
+                <marker date="1447775099000" expanded="true" signature="1243:1326" placeholder="SELECT sum(t..procesosporproyecto..." />
+                <marker date="1447775099000" expanded="true" signature="1681:1760" placeholder="SELECT sum(v..materiaprimaporproyecto..." />
+                <marker date="1447775099000" expanded="true" signature="2114:2198" placeholder="SELECT sum(t..procesosporproyecto..." />
+                <marker date="1447775099000" expanded="true" signature="2558:2645" placeholder="SELECT sum(t..procesosporproyecto..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FacadeEstudioCostos.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/facades/FacadeEstudioCostos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.375">
+              <caret line="23" column="88" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,8 +98,8 @@
       <file leaf-file-name="UtilidadDAO.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modelo/dao/UtilidadDAO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.75">
-              <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
+            <state vertical-scroll-proportion="-11.25">
+              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -112,8 +134,6 @@
         <option value="$PROJECT_DIR$/js/validaciones.js" />
         <option value="$PROJECT_DIR$/vista/crearProyecto.php" />
         <option value="$PROJECT_DIR$/modelo/dto/EstudioCostosDTO.php" />
-        <option value="$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php" />
-        <option value="$PROJECT_DIR$/facades/FacadeEstudioCostos.php" />
         <option value="$PROJECT_DIR$/css/tablaInModal.css" />
         <option value="$PROJECT_DIR$/css/main_responsive.css" />
         <option value="$PROJECT_DIR$/vista/produccionProyecto.php" />
@@ -130,6 +150,8 @@
         <option value="$PROJECT_DIR$/modelo/dao/ProyectosDAO.php" />
         <option value="$PROJECT_DIR$/facades/FacadeProyectos.php" />
         <option value="$PROJECT_DIR$/modelo/dao/UtilidadDAO.php" />
+        <option value="$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php" />
+        <option value="$PROJECT_DIR$/facades/FacadeEstudioCostos.php" />
         <option value="$PROJECT_DIR$/vista/estudioDeCostos.php" />
       </list>
     </option>
@@ -174,6 +196,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -206,10 +230,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProductivityManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProductivityManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modelo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProductivityManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProductivityManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modelo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,23 +336,23 @@
     <frame x="10" y="43" width="1260" height="669" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25779969" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26190478" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -336,13 +390,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/controlador/ControladorProyectos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.34124088">
-          <caret line="70" column="42" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/jquery.dataTables.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33205375">
@@ -468,21 +515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/facades/FacadeEstudioCostos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4857143">
-          <caret line="17" column="83" selection-start-line="17" selection-start-column="83" selection-end-line="17" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71428573">
-          <caret line="39" column="118" selection-start-line="39" selection-start-column="118" selection-end-line="39" selection-end-column="118" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vista/generarAuditoria.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -536,7 +568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.057142857">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -551,7 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8">
           <caret line="125" column="5" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -559,13 +589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8857143">
           <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelo/dao/ClienteDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.75">
-          <caret line="103" column="45" selection-start-line="103" selection-start-column="45" selection-end-line="103" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -601,7 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="1131" column="15" selection-start-line="1131" selection-start-column="15" selection-end-line="1131" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -609,10 +631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34285715">
           <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="99" />
-          <folding>
-            <marker date="1447631273000" expanded="true" signature="340:412" placeholder="..." />
-            <marker date="1447631273000" expanded="true" signature="479:531" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -620,7 +638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54285717">
           <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="119" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -628,10 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5481928">
           <caret line="94" column="46" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="46" />
-          <folding>
-            <marker date="1447635382000" expanded="true" signature="5455:6347" placeholder="..." />
-            <marker date="1447635382000" expanded="true" signature="5574:6318" placeholder="{&quot;closeButton&quot;: false...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -639,7 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -647,10 +659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37142858">
           <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="113" />
-          <folding>
-            <marker date="1447173620000" expanded="true" signature="402:479" placeholder="SELECT ident..personas..." />
-            <marker date="1447173620000" expanded="true" signature="898:953" placeholder="UPDATE usuar..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -658,10 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.5428572">
           <caret line="66" column="48" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
-          <folding>
-            <marker date="1447635130000" expanded="true" signature="1382:1453" placeholder="..." />
-            <marker date="1447635130000" expanded="true" signature="1563:1656" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -669,18 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.6857142">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1447207107000" expanded="true" signature="449:490" placeholder="INSERT INTO productos..." />
-            <marker date="1447207107000" expanded="true" signature="1213:1236" placeholder="select * fro..productos..." />
-            <marker date="1447207107000" expanded="true" signature="1562:1617" placeholder="select * fro..productos..." />
-            <marker date="1447207107000" expanded="true" signature="1970:2038" placeholder="select max(i..productos..." />
-            <marker date="1447207107000" expanded="true" signature="2441:2479" placeholder="select max(i..productos..." />
-            <marker date="1447207107000" expanded="true" signature="2842:2910" placeholder="update produ..." />
-            <marker date="1447207107000" expanded="true" signature="3351:3417" placeholder="update produ..." />
-            <marker date="1447207107000" expanded="true" signature="3839:3884" placeholder="select * fro..productos..." />
-            <marker date="1447207107000" expanded="true" signature="4325:4374" placeholder="INSERT INTO materiaprimaporproducto..." />
-            <marker date="1447207107000" expanded="true" signature="4867:5031" placeholder="select Produ..productoporproyecto..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -696,25 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.74285716">
           <caret line="261" column="44" selection-start-line="261" selection-start-column="44" selection-end-line="261" selection-end-column="44" />
-          <folding>
-            <marker date="1447637701000" expanded="true" signature="179:222" placeholder="INSERT INTO proyectos..." />
-            <marker date="1447637701000" expanded="true" signature="965:1002" placeholder="SELECT max(i..proyectos..." />
-            <marker date="1447637701000" expanded="true" signature="1327:1409" placeholder="SELECT idPro..proyectos..." />
-            <marker date="1447637701000" expanded="true" signature="1695:1776" placeholder="SELECT idPro..proyectos..." />
-            <marker date="1447637701000" expanded="true" signature="2058:2081" placeholder="Select * fro..proyectos..." />
-            <marker date="1447637701000" expanded="true" signature="2363:2405" placeholder="Select * fro..proyectos..." />
-            <marker date="1447637701000" expanded="true" signature="2759:2912" placeholder="SELECT idCli..clientes..." />
-            <marker date="1447637701000" expanded="true" signature="3298:3387" placeholder="UPDATE proye..." />
-            <marker date="1447637701000" expanded="true" signature="3995:4329" placeholder="Select idUsu..usuarios..." />
-            <marker date="1447637701000" expanded="true" signature="4683:4985" placeholder="Select idCli..clientes..." />
-            <marker date="1447637701000" expanded="true" signature="5370:5427" placeholder="UPDATE proye..." />
-            <marker date="1447637701000" expanded="true" signature="6761:6806" placeholder="INSERT INTO productoPorProyecto..." />
-            <marker date="1447637701000" expanded="true" signature="7337:7398" placeholder="SELECT * FRO..productoporproyecto..." />
-            <marker date="1447637701000" expanded="true" signature="7819:7870" placeholder="INSERT INTO materiaPrimaPorProyecto..." />
-            <marker date="1447637701000" expanded="true" signature="8509:8560" placeholder="INSERT INTO procesosPorProyecto..." />
-            <marker date="1447637701000" expanded="true" signature="9241:9378" placeholder="SELECT dt.*,..productos..." />
-            <marker date="1447637701000" expanded="true" signature="9743:9795" placeholder="select ganan..productos..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -722,55 +695,86 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2">
           <caret line="177" column="11" selection-start-line="177" selection-start-column="11" selection-end-line="177" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelo/dao/UtilidadDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.25">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelo/dao/FiltrosDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1447173620000" expanded="true" signature="10780:10805" placeholder="..." />
+            <marker date="1447173620000" expanded="true" signature="174:777" placeholder="Select idUsu..personas..." />
+            <marker date="1447173620000" expanded="true" signature="1167:1528" placeholder="Select * fro..proyectos..." />
+            <marker date="1447173620000" expanded="true" signature="1922:2478" placeholder="Select idUsu..personas..." />
+            <marker date="1447173620000" expanded="true" signature="2875:3433" placeholder="Select idUsu..personas..." />
+            <marker date="1447173620000" expanded="true" signature="3790:4151" placeholder="Select * fro..novedades..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelo/dao/EstudioCostosDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.0">
+          <caret line="63" column="126" selection-start-line="63" selection-start-column="126" selection-end-line="63" selection-end-column="126" />
+          <folding>
+            <marker date="1447775099000" expanded="true" signature="189:250" placeholder="INSERT INTO estudiodecostos..." />
+            <marker date="1447775099000" expanded="true" signature="1243:1326" placeholder="SELECT sum(t..procesosporproyecto..." />
+            <marker date="1447775099000" expanded="true" signature="1681:1760" placeholder="SELECT sum(v..materiaprimaporproyecto..." />
+            <marker date="1447775099000" expanded="true" signature="2114:2198" placeholder="SELECT sum(t..procesosporproyecto..." />
+            <marker date="1447775099000" expanded="true" signature="2558:2645" placeholder="SELECT sum(t..procesosporproyecto..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controlador/ControladorEstudioCostos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.5">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modelo/dao/UtilidadDAO.php">
+    <entry file="file://$PROJECT_DIR$/facades/FacadeEstudioCostos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.75">
-          <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
+        <state vertical-scroll-proportion="-14.375">
+          <caret line="23" column="88" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vista/estudioDeCostos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62857145">
-          <caret line="115" column="121" selection-start-line="115" selection-start-column="121" selection-end-line="116" selection-end-column="123" />
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="117" column="129" selection-start-line="117" selection-start-column="129" selection-end-line="117" selection-end-column="129" />
           <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1447642573000" expanded="true" signature="954:1778" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
-            <marker date="1447642573000" expanded="true" signature="1674:1717" placeholder="{...}" />
-            <marker date="1447642573000" expanded="true" signature="4431:4738" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="4472:4738" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="5495:5513" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="5861:5879" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="6197:6215" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="6520:6538" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="6876:6894" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="7184:7202" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="7290:7319" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="7497:7536" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="7651:8161" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="7873:7888" placeholder="..." />
-            <marker date="1447642573000" expanded="true" signature="8238:8628" placeholder="{...}" />
-            <marker date="1447642573000" expanded="true" signature="8303:8418" placeholder="{...}" />
-            <marker date="1447642573000" expanded="true" signature="8488:8628" placeholder="{...}" />
+            <marker date="1447775202000" expanded="true" signature="954:1778" placeholder="..." />
+            <marker date="1447775202000" expanded="true" signature="1068:1644" placeholder="{&quot;closeButton&quot;: false...}" />
+            <marker date="1447775202000" expanded="true" signature="1674:1717" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelo/dao/ClienteDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29904762">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding>
+            <marker date="1447631891000" expanded="true" signature="174:214" placeholder="INSERT INTO clientes..." />
+            <marker date="1447631891000" expanded="true" signature="961:1069" placeholder="SELECT nombr..clientes..." />
+            <marker date="1447631891000" expanded="true" signature="1413:1465" placeholder="SELECT idAre..areas..." />
+            <marker date="1447631891000" expanded="true" signature="1816:1934" placeholder="UPDATE clien..." />
+            <marker date="1447631891000" expanded="true" signature="2656:2693" placeholder="SELECT count..clientes..." />
+            <marker date="1447631891000" expanded="true" signature="2994:3221" placeholder="Select idUsu..personas..." />
+            <marker date="1447631891000" expanded="true" signature="3569:3798" placeholder="Select idUsu..personas..." />
+            <marker date="1447631891000" expanded="true" signature="4145:4181" placeholder="SELECT nit f..clientes..." />
           </folding>
         </state>
       </provider>

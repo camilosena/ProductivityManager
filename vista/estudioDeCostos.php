@@ -114,7 +114,7 @@ $session->Session($pagActual);
                         <input class="input" name="utilidad" type="text" maxlength="64" value="<?php echo $utilidadT; ?>" id="util" style="text-align: center" class="field1"  readonly required>
                         <label class="tag2" id="labelTiempo" for="time"><span id="lab_valCountry" class="h331">Tiempo Estimado (Horas): </span></label>
                         <input class="input" name="tiempoEstimado" type="text" maxlength="64" value="<?php echo $tiempoEstimado; ?>" id="time" style="text-align: center" class="field1"  readonly required>
-                        <label class="tag2" id="labelViab" for="viab"><span id="lab_valCountry" class="h331">Empleados Solicitados: </span></label>
+                        <label class="tag2" id="labelViab" for="viab"><span id="lab_valCountry" class="h331">Empleados Requeridos: </span></label>
                         <input class="input" name="viabilidad" type="text" maxlength="64" value="<?php echo $empleadosSolicitados; ?>" id="viab" style="text-align: center" class="field1"  readonly required>
                         <label class="tagPeso" id="labelTotal" for="total"><span id="lab_valCountry" class="h331">Costo Total Proyecto: </span></label>
                         <input class="input" name="costoProyecto" type="text" maxlength="64" value="<?php echo $costoProyecto; ?>" id="total" style="text-align: center" class="field1"  readonly required>

@@ -12,7 +12,7 @@ class EstudioCostosDAO {
             $sentencia->bindParam(5, $estudioDTO->getCostoProyecto());
             $sentencia->bindParam(6, $estudioDTO->getUtilidad());
             $sentencia->bindParam(7, $estudioDTO->getTiempoEstimado());
-            $sentencia->bindParam(8, $estudioDTO->getViabilidad());
+            $sentencia->bindParam(8, $estudioDTO->getTotalTrabajadores());
             $sentencia->bindParam(9, $estudioDTO->getObservaciones());
             $sentencia->execute();
             $mensaje="Estudio de Costos Generado con Éxito";

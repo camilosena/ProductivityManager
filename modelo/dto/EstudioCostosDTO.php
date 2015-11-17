@@ -2,35 +2,38 @@
 
 class EstudioCostosDTO {
     private $idProyectoSolicitado;
+    private $idGerenteCargo;
     private $costoManoDeObra;
     private $costoProduccion;
     private $costoProyecto;
     private $utilidad;
     private $tiempoEstimado;
-    private $viabilidad;
+    private $totalTrabajadores;
     private $observaciones;
 
     /**
      * EstudioCostosDTO constructor.
      * @param $idProyectoSolicitado
-     * @param $observaciones
-     * @param $viabilidad
-     * @param $tiempoEstimado
-     * @param $utilidad
-     * @param $costoProyecto
-     * @param $costoProduccion
+     * @param $idGerenteCargo
      * @param $costoManoDeObra
+     * @param $costoProduccion
+     * @param $costoProyecto
+     * @param $utilidad
+     * @param $tiempoEstimado
+     * @param $totalTrabajadores
+     * @param $observaciones
      */
-    public function __construct($idProyectoSolicitado, $observaciones, $viabilidad, $tiempoEstimado, $utilidad, $costoProyecto, $costoProduccion, $costoManoDeObra)
+    public function __construct($idProyectoSolicitado, $idGerenteCargo, $costoManoDeObra, $costoProduccion, $costoProyecto, $utilidad, $tiempoEstimado, $totalTrabajadores, $observaciones)
     {
         $this->idProyectoSolicitado = $idProyectoSolicitado;
-        $this->observaciones = $observaciones;
-        $this->viabilidad = $viabilidad;
-        $this->tiempoEstimado = $tiempoEstimado;
-        $this->utilidad = $utilidad;
-        $this->costoProyecto = $costoProyecto;
-        $this->costoProduccion = $costoProduccion;
+        $this->idGerenteCargo = $idGerenteCargo;
         $this->costoManoDeObra = $costoManoDeObra;
+        $this->costoProduccion = $costoProduccion;
+        $this->costoProyecto = $costoProyecto;
+        $this->utilidad = $utilidad;
+        $this->tiempoEstimado = $tiempoEstimado;
+        $this->totalTrabajadores = $totalTrabajadores;
+        $this->observaciones = $observaciones;
     }
 
     /**
@@ -47,6 +50,22 @@ class EstudioCostosDTO {
     public function setIdProyectoSolicitado($idProyectoSolicitado)
     {
         $this->idProyectoSolicitado = $idProyectoSolicitado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdGerenteCargo()
+    {
+        return $this->idGerenteCargo;
+    }
+
+    /**
+     * @param mixed $idGerenteCargo
+     */
+    public function setIdGerenteCargo($idGerenteCargo)
+    {
+        $this->idGerenteCargo = $idGerenteCargo;
     }
 
     /**
@@ -132,17 +151,17 @@ class EstudioCostosDTO {
     /**
      * @return mixed
      */
-    public function getViabilidad()
+    public function getTotalTrabajadores()
     {
-        return $this->viabilidad;
+        return $this->totalTrabajadores;
     }
 
     /**
-     * @param mixed $viabilidad
+     * @param mixed $totalTrabajadores
      */
-    public function setViabilidad($viabilidad)
+    public function setTotalTrabajadores($totalTrabajadores)
     {
-        $this->viabilidad = $viabilidad;
+        $this->totalTrabajadores = $totalTrabajadores;
     }
 
     /**

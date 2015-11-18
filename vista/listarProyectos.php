@@ -27,7 +27,9 @@ $session->Session($pagActual);
         <link href="../js/toastr.css" rel="stylesheet"/>
         <script src="../js/toastr.js"></script>
         <script src="../js/validaciones.js"></script>
-        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">        
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+        <link rel="stylesheet" type="text/css" href="../css/component.css" />
+    <script src="../js/modernizr.custom.js"></script>
     </head>
     <body>           
     <div id='cssmenu'>
@@ -69,20 +71,93 @@ $session->Session($pagActual);
             $audita = $facadePermmisos->permisoAuditoria($_SESSION['rol']);
             $clientes = $facadePermmisos->permisoCliente($_SESSION['rol']);
             $roles = $facadePermmisos->permisoRoles($_SESSION['rol']);
+            $insumos = $facadePermmisos->permisoInsumos($_SESSION['rol']);
+            $procesos = $facadePermmisos->permisoProcesos($_SESSION['rol']);
+            $productos = $facadePermmisos->permisoProductos($_SESSION['rol']);
             ?>       
             <div class="wrapper">
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
                 <nav>
-                    <div id="menu">
-                        <ul>
-                            <?php
-                            require_once '../modelo/utilidades/Menu.php';
-                            $menu = new Menu;
-                            $menu->permisosMenu();
-                            ?>               
-                        </ul>
+                    <div>
+                      <ul id="cbp-tm-menu" class="cbp-tm-menu">
+                      <?php 
+                        foreach ($menuGeneral as $general) {
+                      ?>
+                        <li>
+                          <a href="#"><?php echo $general['nombreRuta'] ?> </a>
+                            <?php  if ($general['nombreRuta'] == 'Proyectos') { ?>
+                            <ul class="cbp-tm-submenu">
+                            <?php  foreach ($proyecto as $pagina) { ?>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                          <?php }?>
+                          </ul>
+                          <?php }?>
+                          <?php  if ($general['nombreRuta'] == 'Novedades') { ?>
+                            <ul class="cbp-tm-submenu">
+                            <?php  foreach ($novedad as $pagina) { ?>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                          <?php }?>
+                          </ul>
+                          <?php }?>
+                          <?php  if ($general['nombreRuta'] == 'Personal') { ?>
+                            <ul class="cbp-tm-submenu">
+                            <?php  foreach ($persona as $pagina) { ?>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                          <?php }?>
+                          </ul>
+                          <?php }?>
+                          <?php  if ($general['nombreRuta'] == 'Auditorias') { ?>
+                            <ul class="cbp-tm-submenu">
+                            <?php  foreach ($audita as $pagina) { ?>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                          <?php }?>
+                          </ul>
+                          <?php }?>
+                          <?php  if ($general['nombreRuta'] == 'Clientes') { ?>
+                            <ul class="cbp-tm-submenu">
+                            <?php  foreach ($clientes as $pagina) { ?>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                          <?php }?>
+                          </ul>
+                          <?php }?>
+                          <?php  if ($general['nombreRuta'] == 'Roles') { ?>
+                            <ul class="cbp-tm-submenu">
+                            <?php  foreach ($roles as $pagina) { ?>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                          <?php }?>
+                          </ul>
+                          <?php }?>
+                          <?php  if ($general['nombreRuta'] == 'Insumos') { ?>
+                            <ul class="cbp-tm-submenu">
+                            <?php  foreach ($insumos as $pagina) { ?>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                          <?php }?>
+                          </ul>
+                          <?php }?>
+                          <?php  if ($general['nombreRuta'] == 'Procesos') { ?>
+                            <ul class="cbp-tm-submenu">
+                            <?php  foreach ($procesos as $pagina) { ?>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                          <?php }?>
+                          </ul>
+                          <?php }?>
+                          <?php  if ($general['nombreRuta'] == 'Productos') { ?>
+                            <ul class="cbp-tm-submenu">
+                            <?php  foreach ($productos as $pagina) { ?>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                          <?php }?>
+                          </ul>
+                          <?php }?>
+
+                        </li>
+                        <?php }?>
+                      </ul>
                     </div>
+                    <script src="../js/cbpTooltipMenu.min.js"></script>
+                    <script>
+                      var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
+                    </script>
                 </nav>
                 <ul class="social">
                     <li><a class="fb" href="https://www.facebook.com/productivitymanager"></a></li>

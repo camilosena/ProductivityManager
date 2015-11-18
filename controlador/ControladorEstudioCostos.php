@@ -22,7 +22,7 @@
         $tiempoEstimado=$_POST['tiempoEstimado'];
         $totalTrabajadores=$_POST['totalTrabajadores'];
         $observaciones=$_POST['observaciones'];
-
+        $nombreProyecto = $_POST['nombreProyecto'];
         $costoDTO = new EstudioCostosDTO($idProyectoSolicitado,$idGerenteCargo,$costoManoDeObra,$costoProduccion,$costoProyecto,$utilidad,$tiempoEstimado,$totalTrabajadores,$observaciones);
         $facadeCostos = new FacadeEstudioCostos;
         $mensaje=$facadeCostos->generarEstudioCostos($costoDTO);
@@ -32,5 +32,5 @@
              $facadeProyecto = new FacadeProyectos;
                 $facadeProyecto->cambiarEstadoProyecto('Ejecucion', $idProyectoSolicitado);
             }      
-            header("location: ../vista/estudiodeCostos.php?mensaje=".$mensaje);       
+            header("location: ../vista/estudiodeCostos.php?mensaje=".$mensaje."&projectNum=".$idProyectoSolicitado."&nameProject=".$nombreProyecto);       
     } 

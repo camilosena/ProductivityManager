@@ -30,6 +30,7 @@ $session->Session($pagActual);
         <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
+    <meta http-equiv="refresh" content="60">
     </head>
     <body>           
     <div id='cssmenu'>

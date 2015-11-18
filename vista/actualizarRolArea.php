@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../modelo/utilidades/Session.php';
 $pagActual = 'actualizarRolArea.php';
 $session = new Session($pagActual);
@@ -25,6 +26,8 @@ $session->Session($pagActual);
         <script type="text/javascript" src="../js/script2.js"></script>
         <link href="../js/toastr.css" rel="stylesheet"/>
         <script src="../js/toastr.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/component.css" />
+    <script src="../js/modernizr.custom.js"></script>
          <script>
             $(document).ready(function () {
                 $("#selectrol").on("change", function () {
@@ -77,15 +80,11 @@ $session->Session($pagActual);
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
                 <nav>
-                    <div id="menu">
-                        <ul>
                             <?php
                             require_once '../modelo/utilidades/Menu.php';
                             $menu = new Menu;
                             $menu->permisosMenu();
                             ?>               
-                        </ul>
-                    </div>
                 </nav>
                 <ul class="social">
                     <li><a class="fb" href="https://www.facebook.com/productivitymanager"></a></li>

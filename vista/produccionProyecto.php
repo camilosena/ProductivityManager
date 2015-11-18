@@ -8,7 +8,7 @@ $session->Session($pagActual);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Estudio de Costos</title>
+        <title>Producción Proyecto</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="../css/reset.css">

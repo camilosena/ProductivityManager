@@ -28,6 +28,8 @@ $session->Session($pagActual);
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <script type="text/javascript" src="../js/script.js"></script>
         <script type="text/javascript" src="../js/script2.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/component.css" />
+    <script src="../js/modernizr.custom.js"></script>
            <script>
             $(document).ready(function () {
                 $("#selectrol").on("change", function () {
@@ -105,15 +107,11 @@ $session->Session($pagActual);
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
                  <nav>
-                    <div id="menu">
-                        <ul>
                             <?php
                             require_once '../modelo/utilidades/Menu.php';
                             $menu = new Menu;
                             $menu->permisosMenu();
                             ?>               
-                        </ul>
-                    </div>
                 </nav>
                 <ul class="social">
                     <li><a class="fb" href="https://www.facebook.com/productivitymanager"></a></li>

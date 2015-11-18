@@ -19,8 +19,7 @@ if ($accion == "estado") {
     $html .= '<option value="Aplazado" >Aplazado</option>';
     $html .= '<option value="costos" >Sin estudio de costos</option>';
     }  else {
-        $html = '<option value="0" style="color:gray" readonly selected>Seleccione un Estado</option>';
-        $html .= '<option value="' . $result['idProyecto'] . '">' .  $result['estadoProyecto'] . '</option>';
+        $html = '<option readonly selected value="' . $result['idProyecto'] . '">' .  $result['estadoProyecto'] . '</option>';
     }
 }
 print $html;

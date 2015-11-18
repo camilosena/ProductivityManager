@@ -14,8 +14,21 @@
 class FacadeReportes {
     //put your code here
     
-    function listarEstadosProyecto(){
+
+    private $conexionBase;
+    private $reportesDAO;
+
+    function __construct() {
+        $this->conexionBase = Conexion::getConexion();
+        $this->reportesDAO = new ReportesDAO();
+    }
+    
+    function ProyectoPorCliente($idCliente){
+        return $this->reportesDAO->ProyectosPorCliente($idCliente, $this->conexionBase);
         
-        
+    }
+    
+    function ProductosPorCliente($idCliente){
+        return $this->reportesDAO->ProductosPorCliente($idCliente, $this->conexionBase);
     }
 }

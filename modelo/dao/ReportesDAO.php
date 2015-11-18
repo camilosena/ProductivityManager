@@ -13,8 +13,32 @@
  */
 class ReportesDAO {
     //put your code here
-    function ReporteProyectos($idProyectos){
-        
-        
+    function ProyectosPorCliente($idCliente, PDO $cnn){
+        try {
+            $query = $cnn->prepare("SELECT idProyecto, nombreProyecto FROM proyectos 
+join usuarioporproyecto on proyectoAsignado = idProyecto and usuarioAsignado=?");
+             $query->bindParam(1, $idCliente);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
     }
+        
+        function ProductosPorCliente ($idCliente, PDO $cnn){
+           try {
+            $query = $cnn->prepare("select idProductos, nombreProducto from productos
+join productoporproyecto on Productos_idProductos = idProductos 
+join proyectos on proyectosIdProyecto  = idProyecto
+join usuarioporproyecto on proyectoAsignado = idProyecto and usuarioAsignado=?");
+             $query->bindParam(1, $idCliente);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        } 
+            
+        }
+    
+
 }

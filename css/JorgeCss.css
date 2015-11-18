@@ -13,8 +13,13 @@
     box-shadow: 0 0 10px 1px #45B31D;
     
 }
-
-#tableReporteProyecto thead th td{
-    border: 1px #f0f0f0;
+#tableReporteProyecto{
+    width: 100%;
+    margin-left: 10%;
+    border: 5px solid red;
+}
+#tableReporteProyecto th{
+    border: 5px solid red;
+    padding: 5px;
     
 }

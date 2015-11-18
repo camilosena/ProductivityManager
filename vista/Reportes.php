@@ -22,18 +22,19 @@ session_start();
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <script type="text/javascript" src="../js/script.js"></script>
         <script type="text/javascript" src="../js/script2.js"></script>
+        <!-- Proyecto por Cliente-->
         <script>
             $(document).ready(function () {
-                $("#selectProyectoEstado").on("change", function () {
+                $("#selectCliente").on("change", function () {
                     $.ajax({
-                        url: "../peticiones_ajax/ajax_listar_estados.php",
+                        url: "../peticiones_ajax/ajax_reporte_proyectosPorCliente.php",
                         method: "POST",
                         data: {
-                            selectProyecto: $(this).val(),
-                            accion: "estado"
+                            ClienteSelected: $(this).val(),
+                            accion: "proyecto"
                         },
                         success: function (data) {
-                            $("#estado").html(data);
+                            $("#selectProyecto").html(data);
                         },
                         error: function (error) {
                             alert(error);
@@ -43,7 +44,72 @@ session_start();
                 });
             });
         </script>
-        
+        <!-- Estado de Proyecto seleccionado-->
+        <script>
+            $(document).ready(function () {
+                $("#selectProyecto").on("change", function () {
+                    $.ajax({
+                        url: "../peticiones_ajax/ajax_reporte_proyectos.php",
+                        method: "POST",
+                        data: {
+                            reporteProyecto: $(this).val(),
+                            accion: "estado"
+                        },
+                        success: function (data) {
+                            $("#selectEstado").html(data);
+                        },
+                        error: function (error) {
+                            alert(error);
+                        }
+                    });
+                    //alert($(this).val());
+                });
+            });
+        </script>
+        <!-- Productos por clientes-->
+        <script>
+            $(document).ready(function () {
+                $("#selectCliente").on("change", function () {
+                    $.ajax({
+                        url: "../peticiones_ajax/ajax_listar_productosPorCliente.php",
+                        method: "POST",
+                        data: {
+                            clienteSelected: $(this).val(),
+                            accion: "producto"
+                        },
+                        success: function (data) {
+                            $("#selectProducto").html(data);
+                        },
+                        error: function (error) {
+                            alert(error);
+                        }
+                    });
+                    //alert($(this).val());
+                });
+            });
+        </script>
+        <!-- Productos por proyectos-->
+        <script>
+            $(document).ready(function () {
+                $("#selectProyecto").on("change", function () {
+                    $.ajax({
+                        url: "../peticiones_ajax/ajax_listar_productosPorProyecto.php",
+                        method: "POST",
+                        data: {
+                            proyectoSelected: $(this).val(),
+                            accion: "producto"
+                        },
+                        success: function (data) {
+                            $("#selectProducto").html(data);
+                        },
+                        error: function (error) {
+                            alert(error);
+                        }
+                    });
+                    //alert($(this).val());
+                });
+            });
+        </script>
         <link href="../js/toastr.css" rel="stylesheet"/>
         <script src="../js/toastr.js"></script>
     </head>
@@ -134,8 +200,17 @@ session_start();
                     require_once '../modelo/dao/ProyectosDAO.php';
                     require_once '../facades/FacadeProductos.php';
                     require_once '../modelo/dao/ProductosDAO.php';
+                    require_once '../facades/FacadeCliente.php';
+                    require_once '../modelo/dao/ClienteDAO.php';
+                    require_once '../modelo/dao/ReportesDAO.php';
+                    require_once '../facades/FacadeReportes.php';
+                    $facadeReportes = new FacadeReportes();
                     $facadeProyectos = new FacadeProyectos();
                     $facadeProductos = new FacadeProductos();
+                    $facadecliente = new FacadeCliente();
+                    $proyectos = $facadeProyectos->listadoProyectos();
+                    $clientes = $facadecliente->listadoClientesActivos();
+                    $productos = $facadeProductos->listarProductosActivos();
                     if ($_GET['tipoReporte']=='Proyectos') {
                         
                         // Reporte de Proyectos
@@ -143,22 +218,31 @@ session_start();
                 <form name="Reportes" class="formRegistro" method="post" action="../controlador/ControladorReportes.php"> 
                     <div id="panelReportes" style="background-color: background" >    
                  <div id="panelIzqReportes">                                   
-                     <label style="display: inline">Proyectos</label> 
-                      <select style="width: 60%" id="selectProyectoEstado" name="selectProyectoEstado" class="input"> 
+                     <label style="display: inline">Clientes</label> 
+                      <select style="width: 60%" id="selectCliente" name="selectCliente" class="input"> 
                      <?php
-                     $proyectos = $facadeProyectos->listadoProyectos();
+                    
+                        echo '<option value="0" style="color:gray">' . "Seleccione un cliente" . '</option>';
+                        foreach ($clientes as $cliente) {
+                            echo '<option value="' . $cliente['idUsuario'] . '">' . $cliente['nombreCompania'] . '</option>';                            
+                        }
+                        ?>
+                    </select><br><br><br>
+                    <label style="display: inline">Proyectos</label> 
+                      <select style="width: 60%" id="selectProyecto" name="selectProyecto" class="input"> 
+                     <?php
+                    
                         echo '<option value="0" style="color:gray">' . "Seleccione un proyecto" . '</option>';
                         foreach ($proyectos as $proyecto) {
                             echo '<option value="' . $proyecto['idProyecto'] . '">' . $proyecto['nombreProyecto'] . '</option>';                            
                         }
                         ?>
                     </select><br><br><br>
-                    <label style="display: inline">Fecha de Inicio</label>
-                    <input type="date" name="fechaInicial" style="display: inline">
+                   
                  </div>  
                  <div id="panelDerReportes">                                   
                         <label style="display: inline">Estado</label> 
-                        <select style="width: 60%" id="estado" style="display: inline" name="estado" class="input" > 
+                        <select style="width: 60%" id="selectEstado" style="display: inline" name="selectEstado" class="input" > 
                        <option value="0" style="color:gray">Seleccione un estado</option>
                        <option value="Ejecucion" >Ejecución</option>
                        <option value="Cancelado" >Cancelado</option>
@@ -167,20 +251,27 @@ session_start();
                        <option value="costos" >Sin estudio de costos</option>
 
                     </select><br><br><br>
-                    <label style="display: inline">Fecha de Fin</label>
-                    <input type="date" name="fechaFinal" style="display: inline">
-
-                 </div> 
+                    <label style="display: inline">Productos</label>
+                    <select style="width: 60%" id="selectProducto" name="selectProducto" class="input"> 
+                     <?php
+                    
+                        echo '<option value="0" style="color:gray">' . "Seleccione un producto" . '</option>';
+                        foreach ($productos as $producto) {
+                            echo '<option value="' . $producto['idProducto'] . '">' . $producto['nombreProducto'] . '</option>';                            
+                        }
+                        ?>
+                    </select><br><br><br>
+                </div> 
                 </div> <br><br><br>
-                <div id="panelReportes" > 
+                <div id="panelReportes"> 
                   <button type="submit" value="reporteProyecto" name="reporteProyecto" id="reporteProyecto" class="boton-verde">Ver Reporte</button><br>
                  </div>
                 <div id="panelUnico" >     <hr>                               
                         <label style="display: inline">"Mostrar Seleccion" -----></label>
-                        <table id="tableReporteProyecto" style="border: #336442">
-                            <thead style="border: #336442">
-                            <th style="border: #336442">Proyecto</th>
-                            <th>estado</th>    
+                        <table id="tableReporteProyecto">
+                            <thead>
+                            <th >Proyecto</th>
+                            <th >estado</th>    
                             </thead>
                             
                         </table>

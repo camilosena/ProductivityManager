@@ -86,6 +86,7 @@ $session->Session($pagActual);
                 require_once'../facades/FacadeProyectos.php';
                 require_once '../modelo/dao/ProyectosDAO.php';
                 require_once '../modelo/dao/UtilidadDAO.php';
+                require_once '../modelo/utilidades/festivos.php';
                 $fEstudio = new FacadeEstudioCostos();
                 $costoManoObra = $fEstudio->costoManoDeObra($_GET['projectNum']);
                 $costoProducto = $fEstudio->costoProduccion($_GET['projectNum']);
@@ -99,6 +100,45 @@ $session->Session($pagActual);
                 $costoProyecto = $costoProducto+$costoManoObra+$utilidadT;
                 $tiempoEstimado = $fEstudio->tiempoEstimado($_GET['projectNum']);
                 $empleadosSolicitados = $fEstudio->empleadosSolicitados($_GET['projectNum']);
+
+                $FacadeProyectos = new FacadeProyectos();
+                $fechaInicial = $FacadeProyectos->consultarProyecto($_GET['projectNum']); 
+                $fechaInicio = date($fechaInicial['fechaInicio']);
+                $nuevafecha = new DateTime($fechaInicio);
+                $dia = $nuevafecha->format('d');
+                $mes = $nuevafecha->format('m');
+                $anio = $nuevafecha->format('Y');
+
+                $festivo = new festivos();
+                $diasSumar = intval($tiempoEstimado/8)+1;
+                for ($i=1; $i <=$diasSumar ; $i++) { 
+                    $festivo->festivos($anio);
+                    $validaFestivo = $festivo->esFestivo($dia,$mes);
+                    if($validaFestivo=='true'){
+                       $nuevafecha->modify('+2  day');
+                    }else{
+                        $nuevafecha->modify('+1  day'); 
+                        $dia = $nuevafecha->format('d');
+                        $mes = $nuevafecha->format('m');
+                        $anio = $nuevafecha->format('Y');
+                        $validaFestivo = $festivo->esFestivo($dia,$mes);
+                        if($validaFestivo=='true'){
+                       $nuevafecha->modify('+1 day');
+                        $dia = $nuevafecha->format('d');
+                        $mes = $nuevafecha->format('m');
+                        $anio = $nuevafecha->format('Y');
+                        $validaFestivo = $festivo->esFestivo($dia,$mes);
+                        if($validaFestivo=='true'){
+                       $nuevafecha->modify('+1 day');
+                        }
+                        }
+                    }
+                        $dia = $nuevafecha->format('d');
+                        $mes = $nuevafecha->format('m');
+                        $anio = $nuevafecha->format('Y');
+                        $final = $nuevafecha->format('Y-m-d').'<br>'; 
+                }
+                echo $final;
                 ?>
                 <form class="formRegistro" method="post" action="../controlador/ControladorEstudioCostos.php">
                     <div class="modelo">

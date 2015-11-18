@@ -109,11 +109,11 @@ class festivos
 		
 		if (isset($this->festivos[$this->ano][(int)$mes][(int)$dia]))
 		{
-			return true;
+			return 'true';
 		}
 		else 
 		{
-			return FALSE;
+			return 'false';
 		}
 	
 	}	

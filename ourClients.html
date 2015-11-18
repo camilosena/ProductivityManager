@@ -22,6 +22,46 @@
            <li><a href='contactUs.php'><span><i class="fa fa-envelope-o fa-lg"></i>  </span></a></li>
         </ul>       
     </div> 
+    <style type="text/css">
+     header nav{
+        overflow: hidden;
+         display: inline-block;
+         margin: 20px 0 0 40px;
+        padding: 30px 40px;
+         border-left: 1px #000 solid;
+        z-index: 9999;
+         height: 80px;
+         }
+            header nav ul{
+         list-style: none;
+        }
+
+        header nav ul li{
+            float: left;
+            margin-left: 20px;
+            font-size: 12px;
+            font-family: 'lato_regular', arial;
+            letter-spacing: 1px;
+        }
+
+        header nav ul li:first-child{
+            margin-left: 0;
+        }
+
+        header nav ul li a {
+            text-decoration: none; 
+            font-weight: bold;   
+            color: #000;    
+        }
+
+        header nav ul li a:hover{
+            color: #83AF44;
+        }
+
+        header nav ul li a:active{
+            text-decoration: underline;
+        }
+    </style>
 	<header>
 		<div class="wrapper">
 			<a href="indexEnglish.php"><img src="img/logo.png" class="logo" width="190px" height="110px"></a>

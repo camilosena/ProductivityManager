@@ -10,7 +10,7 @@ $fCliente= new FacadeCliente();
 $result = $fCliente->verificarClienteRegistrado($nit);
 if ($result !='') {
 
-    $html = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">Este Usuario Ya Existe</font>';
+    $html = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">Este Cliente Ya Existe</font>';
 }else{
     $html = '<font style="color: #0e8e1e;font-size: 14px; font-weight: bolder;">√</font>';
 }

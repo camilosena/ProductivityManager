@@ -8,7 +8,7 @@ class FacadeEstudioCostos {
         $this->conexionBase = Conexion::getConexion();
         $this->estudioDAO = new EstudioCostosDAO;
     }
-    public function crearEstudio(EstudioCostosDTO $estudioDTO) {
+    public function generarEstudioCostos(EstudioCostosDTO $estudioDTO) {
         return $this->estudioDAO->generarEstudioCostos($estudioDTO, $this->conexionBase);
     }
     public function costoManoDeObra($idProyecto) {
@@ -22,5 +22,8 @@ class FacadeEstudioCostos {
     }
     public function empleadosSolicitados($idProyecto) {
         return $this->estudioDAO->empleadosSolicitados($idProyecto,$this->conexionBase);
+    }
+    public function verificaExistenciaEstudio($idProyecto) {
+        return $this->estudioDAO->verificaExistenciaEstudio($idProyecto,$this->conexionBase);
     }
 }

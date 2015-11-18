@@ -14,29 +14,23 @@
         session_start();
         $facadeUsuario = new FacadeUsuarios();        
         $idProyectoSolicitado=$_POST['idProyecto'];
-        $idGerenteCargo=$facadeUsuario->usuarioEnSesion($_SESSION['id']);        
-        $materiaPrima = $_POST['materiaPrima'];
-        $manoObraDirecta = $_POST['horaDirecta'];
-        $manoObraIndirecta = $_POST['horaIndirecta'];
-        $gastos=$_POST['gastos'];
-        $costo=$_POST['totalCosto'];
+        $idGerenteCargo=$facadeUsuario->usuarioEnSesion($_SESSION['id']);
+        $costoManoDeObra = $_POST['manoDeObra'];
+        $costoProduccion = $_POST['costoProduccion'];
+        $costoProyecto = $_POST['costoProyecto'];
         $utilidad=$_POST['utilidad'];
-        $cantidadEmpleados=$_POST['canEmpleados'];
-        $observaciones=$_POST['observacion'];
-        $viabilidad=$_POST['viabilidad'];
-        $costoDTO = new EstudioCostosDTO($idProyectoSolicitado, $idGerenteCargo, $materiaPrima, $manoObraDirecta, $manoObraIndirecta, $gastos, $costo, $utilidad, $cantidadEmpleados, $observaciones, $viabilidad);
+        $tiempoEstimado=$_POST['tiempoEstimado'];
+        $totalTrabajadores=$_POST['totalTrabajadores'];
+        $observaciones=$_POST['observaciones'];
+
+        $costoDTO = new EstudioCostosDTO($idProyectoSolicitado,$idGerenteCargo,$costoManoDeObra,$costoProduccion,$costoProyecto,$utilidad,$tiempoEstimado,$totalTrabajadores,$observaciones);
         $facadeCostos = new FacadeEstudioCostos;
-        $mensaje=$facadeCostos->crearEstudio($costoDTO);
+        $mensaje=$facadeCostos->generarEstudioCostos($costoDTO);
+        $valida = $facadeCostos->verificaExistenciaEstudio($idProyectoSolicitado);
         // actualizar estado de proyecto
-            if($mensaje=='Genero Estudio de Costos'){          
+            if($valida !=''){
              $facadeProyecto = new FacadeProyectos;
-                if ($viabilidad == 'Viable') {
-                    $facadeProyecto->cambiarEstadoProyecto('Ejecucion', $_POST['idProyecto']);
-                } else if ($viabilidad == 'No Viable') {
-                    $facadeProyecto->cambiarEstadoProyecto('Cancelado', $_POST['idProyecto']);
-                } else if ($viabilidad == 'Con Restriccion') {
-                    $facadeProyecto->cambiarEstadoProyecto('Con Restriccion', $_POST['idProyecto']);
-                }
+                $facadeProyecto->cambiarEstadoProyecto('Ejecucion', $idProyectoSolicitado);
             }      
             header("location: ../vista/estudiodeCostos.php?mensaje=".$mensaje);       
     } 

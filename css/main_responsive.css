@@ -1112,7 +1112,7 @@ form .tagPeso:after{
     font-weight: bold;
     margin: 1px;
 }
-form .tag2{
+form .tag2:after{
    margin: 1px;
 }
 

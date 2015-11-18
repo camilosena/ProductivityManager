@@ -70,4 +70,16 @@ class EstudioCostosDAO {
         }
         $cnn=NULL;
     }
+
+    public function verificaExistenciaEstudio($idProyecto,PDO $cnn) {
+        try{
+            $sentencia= $cnn->prepare("SELECT * FROM estudioDeCostos where idProyectoSolicitado=?");
+            $sentencia->bindParam(1,$idProyecto);
+            $sentencia->execute();
+            return $sentencia->fetch();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn=NULL;
+    }
 }

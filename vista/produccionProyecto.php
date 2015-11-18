@@ -49,7 +49,7 @@ $session->Session($pagActual);
             function cierra(){
             window.close();
             }
-            setTimeout("cierra()",3000)
+            setTimeout("cierra()",2000)
             </script>';
         };
         ?> 

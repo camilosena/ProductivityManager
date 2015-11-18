@@ -114,6 +114,9 @@ $session->Session($pagActual);
                 for ($i=1; $i <=$diasSumar ; $i++) { 
                     $festivo->festivos($anio);
                     $validaFestivo = $festivo->esFestivo($dia,$mes);
+                    if( in_array(strtolower($nuevafecha->format('l')), array('sunday')) ){
+                             $nuevafecha->modify('+2  day');
+                        }
                     if($validaFestivo=='true'){
                        $nuevafecha->modify('+2  day');
                     }else{
@@ -122,6 +125,9 @@ $session->Session($pagActual);
                         $mes = $nuevafecha->format('m');
                         $anio = $nuevafecha->format('Y');
                         $validaFestivo = $festivo->esFestivo($dia,$mes);
+                        if( in_array(strtolower($nuevafecha->format('l')), array('sunday')) ){
+                             $nuevafecha->modify('+1  day');
+                        }
                         if($validaFestivo=='true'){
                        $nuevafecha->modify('+1 day');
                         $dia = $nuevafecha->format('d');
@@ -136,7 +142,7 @@ $session->Session($pagActual);
                         $dia = $nuevafecha->format('d');
                         $mes = $nuevafecha->format('m');
                         $anio = $nuevafecha->format('Y');
-                        $final = $nuevafecha->format('Y-m-d').'<br>'; 
+                        $final = $nuevafecha->format('Y-m-d'); 
                 }
                 echo $final;
                 ?>

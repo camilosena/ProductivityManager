@@ -19,7 +19,7 @@
          }
          else{
              $mensaje="Usuario o contraseña incorrecta";
-             header("location: ../index.php?mensaje=".$mensaje);
+             header("location: ../index.php?error=".$mensaje);
          }                 
      }
      

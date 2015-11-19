@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -243,12 +242,12 @@ session_start();
                  <div id="panelDerReportes">                                   
                         <label style="display: inline">Estado</label> 
                         <select style="width: 60%" id="selectEstado" style="display: inline" name="selectEstado" class="input" > 
-                       <option value="0" style="color:gray">Seleccione un estado</option>
-                       <option value="Ejecucion" >Ejecución</option>
+                       <option value=" " style="color:gray">Seleccione un estado</option>
+                       <option value="Ejecución" >Ejecución</option>
                        <option value="Cancelado" >Cancelado</option>
                        <option value="Finalizado" >Finalizado</option>
                        <option value="Aplazado" >Aplazado</option>
-                       <option value="costos" >Sin estudio de costos</option>
+                       <option value="Sin Estudio Costos" >Sin Estudio Costos</option>
 
                     </select><br><br><br>
                     <label style="display: inline">Productos</label>
@@ -266,19 +265,39 @@ session_start();
                 <div id="panelReportes"> 
                   <button type="submit" value="reporteProyecto" name="reporteProyecto" id="reporteProyecto" class="boton-verde">Ver Reporte</button><br>
                  </div>
+                 </form><br>
                 <div id="panelUnico" >     <hr>                               
                         <label style="display: inline">"Mostrar Seleccion" -----></label>
+
                         <table id="tableReporteProyecto">
                             <thead>
                             <th >Proyecto</th>
-                            <th >estado</th>    
+                            <th >Fecha de inicio</th>   
+                            <th >Estado</th> 
+                            <th >Ejecución</th>  
+                            <th >Fecha de fin </th> 
+                            <th >Productos</th> 
                             </thead>
                             
+                            <?php
+                            
+                            foreach ($_SESSION['reportes'] as $reporte){
+                            ?>
+                            <tbody>
+                            <td ><?php echo $reporte['nombreProyecto']?></td>
+                            <td ><?php echo $reporte['fechaInicio']?></td>
+                            <td ><?php echo $reporte['estadoProyecto']?></td>
+                            <td ><?php echo $reporte['ejecutado'].'%'?></td>
+                            <td ><?php echo $reporte['fechaFin']?></td>
+                            <td ><?php echo $reporte['Productos']?></td>
+                            </tbody>
+                                                    <?php }
+                            ?>
                         </table>
-                     
+                   
                  </div> 
                 
-                </form><br>
+               
                 <?php
                     }
                 }

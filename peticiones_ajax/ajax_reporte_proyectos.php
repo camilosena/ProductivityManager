@@ -12,14 +12,15 @@ $result = $fProyectos->consultarProyecto($idProyecto);
 if ($accion == "estado") {
     if ($idProyecto==0) {
       
-    $html = '<option value="0" style="color:gray" readonly selected>Seleccione un Estado</option>';
-    $html .= '<option value="Ejecucion" >Ejecución</option>';
+    $html = '<option value=" " style="color:gray" readonly selected>Seleccione un Estado</option>';
+    $html .= '<option value="Ejecucion" >Ejecucion</option>';
     $html .= '<option value="Cancelado" >Cancelado</option>';
     $html .= '<option value="Finalizado" >Finalizado</option>';
     $html .= '<option value="Aplazado" >Aplazado</option>';
-    $html .= '<option value="costos" >Sin estudio de costos</option>';
+    $html .= '<option value="Sin Estudio Costos" >Sin Estudio Costos</option>';
     }  else {
-        $html = '<option readonly selected value="' . $result['idProyecto'] . '">' .  $result['estadoProyecto'] . '</option>';
+        $html = '<option value="0" style="color:gray" readonly selected>Seleccione un Estado</option>';
+        $html .= '<option value="0">' .  $result['estadoProyecto'] . '</option>';
     }
 }
 print $html;

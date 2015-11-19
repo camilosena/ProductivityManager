@@ -1,6 +1,6 @@
 <?php
 
-$idProyecto = $_POST['selectProyecto'];
+$idProyecto = $_POST['reporteProyecto'];
 $accion = $_POST['accion'];
 
 require_once '../facades/FacadeProyectos.php';

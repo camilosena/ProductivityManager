@@ -8,19 +8,32 @@
 require_once '../facades/FacadeProyectos.php';
 require_once '../modelo/dao/ProyectosDAO.php';
 require_once '../modelo/utilidades/Conexion.php';
+require_once '../facades/FacadeReportes.php';
+require_once '../modelo/dao/ReportesDAO.php';
 
+$fReportes = new FacadeReportes();
 $fProyecto = new FacadeProyectos();
 
 if (isset($_POST['reporteProyecto']) ) {
-    
-    if ($_POST['selectProyectoEstado']!='Seleccione un proyecto') {
-        $idProyecto = $_POST['selectProyectoEstado'];
-         $proyecto = $fProyecto->consultarProyecto($idProyecto);
-        $nombreProyecto = $proyecto['nombreProyecto'];
-        $estado = $proyecto['estadoProyecto'];
-        $inicio = $proyecto['fechaInicio'];
-        $fin = $proyecto['fechaFin'];
-        $ejecucion  = $proyecto['ejecutado'];
-        header("location: ../vista/Reportes.php?tipoReporte=Proyectos");
+    session_start();
+    $idCliente = $_POST['selectCliente'];
+    $idProyecto = $_POST['selectProyecto'];
+    $estado = $_POST['selectEstado'];
+    $idProductos = $_POST['selectProducto'];
+    if ($idCliente==0 & $idProyecto ==0 & $estado ==" " & $idProductos ==0 ) {
+        $mensaje = 'Debe seleccionar una opción';
+        header("location: ../vista/Reportes.php?tipoReporte=Proyectos&mensaje=".$mensaje);
+    }
+    if ($idCliente!=0 & $idProyecto ==0 & $estado ==" " & $idProductos ==0 ) {
+        $_SESSION['reportes'] = $fReportes->reporteProyectoPorCliente($idCliente);
+        header("location: ../vista/Reportes.php?tipoReporte=Proyectos&reporte=".$_SESSION['reportes']);
+    }
+        if ($idCliente!=0 & $idProyecto !=0 & $estado ==" " & $idProductos ==0 ) {
+        $_SESSION['reportes'] = $fReportes->reporteProyectoPorClienteProyecto($idCliente, $idProyecto);
+        header("location: ../vista/Reportes.php?tipoReporte=Proyectos&reporte=".$_SESSION['reportes']);
+    }
+    if ($idCliente==0 & $idProyecto ==0 & $estado !=" " & $idProductos ==0 ) {
+        $_SESSION['reportes'] = $fReportes->reporteProyectoPorEstado($estado);
+        header("location: ../vista/Reportes.php?tipoReporte=Proyectos&reporte=".$_SESSION['reportes']);
     }
 }

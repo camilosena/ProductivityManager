@@ -31,4 +31,13 @@ class FacadeReportes {
     function ProductosPorCliente($idCliente){
         return $this->reportesDAO->ProductosPorCliente($idCliente, $this->conexionBase);
     }
+    function reporteProyectoPorCliente($idCliente){
+        return $this->reportesDAO->reporteProyectoPorCliente($idCliente, $this->conexionBase);
+    }
+    function reporteProyectoPorClienteProyecto($idCliente, $idProyecto){
+     return $this->reportesDAO->reporteProyectoPorClienteProyecto($idCliente, $idProyecto, $this->conexionBase);
+    }
+    function reporteProyectoPorEstado($estado){
+        return$this->reportesDAO->reporteProyectoPorEstado($estado, $this->conexionBase);
+    }
 }

@@ -16,10 +16,19 @@
 #tableReporteProyecto{
     width: 100%;
     margin-left: 10%;
-    border: 5px solid red;
+    border: 2.5px solid black;
+    alignment-adjust: auto;
+ 
 }
 #tableReporteProyecto th{
-    border: 5px solid red;
+    border: 2.5px solid black;
     padding: 5px;
-    
+    text-align: center;
+
+}
+
+#tableReporteProyecto td{
+    border: 1px solid black;
+    padding: 2px;
+    text-align: center;
 }

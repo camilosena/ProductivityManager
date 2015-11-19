@@ -44,12 +44,12 @@ join usuarioporproyecto on proyectoAsignado = idProyecto and usuarioAsignado=?")
             
             
             try {
-            $query = $cnn->prepare("Select nombreCompania, nombreProyecto, fechaInicio, estadoProyecto, ejecutado, fechaFin, group_concat( ' ',nombreProducto) as Productos, cantidadProductos from clientes
-join  personas on idCliente = ?
+            $query = $cnn->prepare("Select nombreCompania, nombreProyecto, fechaInicio, estadoProyecto, ejecutado, fechaFin, group_concat( ' ',nombreProducto) as Productos , sum(cantidadProductos) as cantidad from clientes
+join  personas on idCliente = idUsuario and idCliente = ?
 join usuarioporproyecto on idUsuario = usuarioAsignado
 join proyectos on proyectoAsignado = idProyecto 
-left join productoporproyecto on idProyecto = proyectosIdProyecto
-left join productos on Productos_idProductos = idProductos");
+LEFT join productoporproyecto on idProyecto = proyectosIdProyecto
+LEFT join productos on Productos_idProductos = idProductos");
              $query->bindParam(1, $idCliente);
             $query->execute();
             return $query->fetchAll();
@@ -60,12 +60,12 @@ left join productos on Productos_idProductos = idProductos");
         }
         function reporteProyectoPorClienteProyecto($idCliente, $idProyecto, PDO $cnn){
             try {
-            $query = $cnn->prepare("Select nombreCompania, nombreProyecto, fechaInicio, estadoProyecto, ejecutado, fechaFin, group_concat( ' ',nombreProducto) as Productos, cantidadProductos from clientes
-join  personas on idCliente = ?
+            $query = $cnn->prepare("Select nombreCompania, nombreProyecto, fechaInicio, estadoProyecto, ejecutado, fechaFin, group_concat( ' ',nombreProducto) as Productos , sum(cantidadProductos) as cantidad from clientes
+join  personas on idCliente = idUsuario and idCliente = ?
 join usuarioporproyecto on idUsuario = usuarioAsignado
 join proyectos on proyectoAsignado = idProyecto and idProyecto = ?
-left join productoporproyecto on idProyecto = proyectosIdProyecto
-left join productos on Productos_idProductos = idProductos");
+LEFT join productoporproyecto on idProyecto = proyectosIdProyecto
+LEFT join productos on Productos_idProductos = idProductos");
              $query->bindParam(1, $idCliente);
              $query->bindParam(2, $idProyecto);
             $query->execute();
@@ -90,6 +90,22 @@ join productos on Productos_idProductos = idProductos");
             echo 'Error' . $ex->getMessage();
         } 
           
+        }
+        function reporteProyectoPorProyecto($idProyecto, PDO $cnn){
+            try {
+            $query = $cnn->prepare("Select nombreCompania, nombreProyecto, fechaInicio, estadoProyecto, ejecutado, fechaFin, group_concat( ' ',nombreProducto) as Productos , sum(cantidadProductos) as cantidad from clientes
+join  personas on idCliente = idUsuario 
+join usuarioporproyecto on idUsuario = usuarioAsignado
+join proyectos on proyectoAsignado = idProyecto AND idProyecto = ?
+LEFT join productoporproyecto on idProyecto = proyectosIdProyecto
+LEFT join productos on Productos_idProductos = idProductos");
+             $query->bindParam(1, $idProyecto);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        } 
+            
         }
     
 

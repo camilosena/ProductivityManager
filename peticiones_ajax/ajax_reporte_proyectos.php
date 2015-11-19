@@ -12,7 +12,7 @@ $result = $fProyectos->consultarProyecto($idProyecto);
 if ($accion == "estado") {
     if ($idProyecto==0) {
       
-    $html = '<option value=" " style="color:gray" readonly selected>Seleccione un Estado</option>';
+    $html = '<option value=0 style="color:gray" readonly selected>Seleccione un Estado</option>';
     $html .= '<option value="Ejecucion" >Ejecucion</option>';
     $html .= '<option value="Cancelado" >Cancelado</option>';
     $html .= '<option value="Finalizado" >Finalizado</option>';

@@ -242,7 +242,7 @@ session_start();
                  <div id="panelDerReportes">                                   
                         <label style="display: inline">Estado</label> 
                         <select style="width: 60%" id="selectEstado" style="display: inline" name="selectEstado" class="input" > 
-                       <option value=" " style="color:gray">Seleccione un estado</option>
+                       <option value=0 style="color:gray">Seleccione un estado</option>
                        <option value="Ejecución" >Ejecución</option>
                        <option value="Cancelado" >Cancelado</option>
                        <option value="Finalizado" >Finalizado</option>

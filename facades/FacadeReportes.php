@@ -38,6 +38,9 @@ class FacadeReportes {
      return $this->reportesDAO->reporteProyectoPorClienteProyecto($idCliente, $idProyecto, $this->conexionBase);
     }
     function reporteProyectoPorEstado($estado){
-        return$this->reportesDAO->reporteProyectoPorEstado($estado, $this->conexionBase);
+        return $this->reportesDAO->reporteProyectoPorEstado($estado, $this->conexionBase);
+    }
+    function reporteProyectoPorProyecto($idProyecto){
+        return $this->reportesDAO->reporteProyectoPorProyecto($idProyecto, $this->conexionBase);
     }
 }

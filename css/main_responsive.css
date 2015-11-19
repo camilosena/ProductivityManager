@@ -1221,12 +1221,13 @@ button:active {
     width: 500px;
     position: relative;
     margin: 10% auto;
-    padding: 5px 20px 13px 20px;
+    padding: 5px 10px 15px 20px;
     border-radius: 10px;
     background: #fff;
-    background: -moz-linear-gradient(#fff, #999);
-    background: -webkit-linear-gradient(#fff, #999);
-    background: -o-linear-gradient(#fff, #999);
+    background: -moz-linear-gradient(#fff, #fff);
+    background: -webkit-linear-gradient(#fff, #fff);
+    background: -o-linear-gradient(#fff, #fff);
+    border: 15px solid #0f0f0f;
 }
 
 .modalDialog1 {
@@ -1357,7 +1358,8 @@ button:active {
     text-align: center;
     font-weight: bold;
     background-color: #83AF44;
-    color: #fff;   
+    color: #fff; 
+    border: 1px solid #83AF44;  
 }
 #mails{
     text-decoration: none;
@@ -1366,13 +1368,18 @@ button:active {
 #mails:hover{    
     color: #0900FF;
 }
+
 #muestraDatos td{    
     font-weight: bold;    
     padding-left: 5px;
     font-size: 14px;
     font-family:  sans-serif;
-    border: 1px solid #fff;
+    border: 1px solid #83AF44;
 }
+
+#muestraDatos tr:hover{
+        background: #f0f0f0;
+    }
 
 #sectorGerente{
     display: none;    

@@ -144,8 +144,12 @@ $session->Session($pagActual);
                         $anio = $nuevafecha->format('Y');
                         $final = $nuevafecha->format('Y-m-d'); 
                 }
-                echo $final;
                 ?>
+                <script type="text/javascript">
+                $(function(){   
+                  $('#manoObra').mask('999.999.99')​;  
+                });  
+                </script>
                 <form class="formRegistro" method="post" action="../controlador/ControladorEstudioCostos.php">
                     <div class="modelo">
                             <label class="tag2" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Código Proyecto:</span></label>
@@ -162,12 +166,18 @@ $session->Session($pagActual);
                         <input class="input" name="tiempoEstimado" type="text" maxlength="64" value="<?php echo $tiempoEstimado; ?>" id="time" style="text-align: center" class="field1"  readonly required>
                         <label class="tag2" id="labelViab" for="viab"><span id="lab_valCountry" class="h331">Empleados Requeridos: </span></label>
                         <input class="input" name="totalTrabajadores" type="text" maxlength="64" value="<?php echo $empleadosSolicitados; ?>" id="viab" style="text-align: center" class="field1"  readonly required>
+    
+                        <label class="tag2" id="labelFinal" for="final"><span id="lab_valCountry" class="h331">Fecha Final Estimada: </span></label>
+                        <input class="input" name="fechaFinal" type="date" maxlength="64" value="<?php echo $final; ?>" id="final" style="padding-left:60px" class="field1"  readonly required>
+                        
+
                         <label class="tagPeso" id="labelTotal" for="total"><span id="lab_valCountry" class="h331">Costo Total Proyecto: </span></label>
                         <input class="input" name="costoProyecto" type="text" maxlength="64" value="<?php echo $costoProyecto; ?>" id="total" style="text-align: center" class="field1"  readonly required>
-                        <label class="tag2" style="position:relative;bottom:60px" id="labelObser" for="observa"><span id="lab_valCountry" class="h331">Observaciones: </span></label>
+                        <br><label class="tag2" style="position:relative;bottom:60px" id="labelObser" for="observa"><span id="lab_valCountry" class="h331">Observaciones: </span></label>
                         <textarea class="input" name="observaciones" style="width: 618px; height: 114px; maxlength='180';border:1px solid #f0f0f0"  id="observa"></textarea>
                         <button type="submit" name="crearCosto" id="crearCosto">Guardar Costos</button>
                         <hr>
+                        <div class="modelo"><p class="obligatoriosD">Nota: La fecha final esta determinada en días hábiles laborales de 8 horas diarias.</p></div>
                     </div>   
                 </form>
                 </div>

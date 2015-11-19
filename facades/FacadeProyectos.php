@@ -83,4 +83,8 @@ class FacadeProyectos {
     public function obtenerUtilidadProducto($idProducto) {
         return $this->proyectosDAO->obtenerUtilidadProducto($idProducto,$this->conexionBase);
     }
+
+     public function cambiarFechaFinProyecto($fechaFin, $idProyecto) {
+        return $this->proyectosDAO->cambiarFechaFinProyecto($fechaFin, $idProyecto, $this->conexionBase);
+    }
 }

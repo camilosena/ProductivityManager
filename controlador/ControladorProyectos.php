@@ -13,6 +13,7 @@ require_once '../modelo/dao/ProductosDAO.php';
 require_once '../facades/FacadeProductos.php';
 require_once '../modelo/dao/ProcesosDAO.php';
 require_once '../facades/FacadeProcesos.php';
+require_once '../modelo/utilidades/festivos.php';
 
 //Crea Proyecto
 if (isset($_POST['crearProyecto'])) {
@@ -27,6 +28,20 @@ if (isset($_POST['crearProyecto'])) {
     $hoy = date('Y-m-d');
     $fecha_actual = new DateTime($hoy);
     if ($fecha_actual <= $fecha_inicio) {
+
+        $dia = $fecha_inicio->format('d');
+        $mes = $fecha_inicio->format('m');
+        $anio = $fecha_inicio->format('Y');
+        $festivo = new festivos();
+        $festivo->festivos($anio);
+        $validaFestivo = $festivo->esFestivo($dia,$mes);
+                    if( in_array(strtolower($fecha_inicio->format('l')), array('sunday')) || $validaFestivo=='true' ){
+                        $fechas = 'Solo se puede iniciar proyecto un dia hábil';
+                        $errorFecha = 'Dia Festivo';
+                             header("location: ../vista/crearProyecto.php?mensajeFecha=" . $fechas."&error=".$errorFecha);
+                        }
+                    else{
+
         $proyectoDTO = new ProyectosDTO($idProyecto, $nombreProyecto, $fechaInicio, $fechaFin, $estado, $observaciones);
         $facadeProyectos = new FacadeProyectos;
         $facadeUsuario = new FacadeUsuarios;
@@ -36,6 +51,7 @@ if (isset($_POST['crearProyecto'])) {
         $mensaje3 = $facadeUsuario->asignarUsuarioProyecto($gerenteEncargado, $_POST['idProyecto']);
         $abrirVentana = true;
         header("location: ../vista/listarProyectos.php?mensaje=" . $mensaje . "&winOpen=" . $abrirVentana . "&mensaje2=" . $mensaje2 . "&projectNum=" . $_POST['idProyecto'] . "&nameProject=" . $_POST['nombreProyecto']);
+        }
     } else {
         $fechas = 'La Fecha de Inicio debe ser Futura';
         header("location: ../vista/crearProyecto.php?mensajeFecha=" . $fechas);

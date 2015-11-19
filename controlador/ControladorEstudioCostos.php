@@ -31,6 +31,7 @@
             if($valida !=''){
              $facadeProyecto = new FacadeProyectos;
                 $facadeProyecto->cambiarEstadoProyecto('Ejecucion', $idProyectoSolicitado);
+                $facadeProyecto->cambiarFechaFinProyecto($_POST['fechaFinal'],$idProyectoSolicitado);
             }      
             header("location: ../vista/estudiodeCostos.php?mensaje=".$mensaje."&projectNum=".$idProyectoSolicitado."&nameProject=".$nombreProyecto);       
     } 

@@ -83,6 +83,28 @@ $session->Session($pagActual);
                     </p>
                 </div>
         </header> 
+         <?php if (isset($_GET['error'])) {
+            echo '<script> 
+                Command: toastr["error"]("' . $_GET['error'] . '")
+            toastr.options = {
+              "closeButton": false,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-top-right",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+            </script>';
+         } ?>
         <?php
         if (isset($_GET['mensajeFecha'])) {
             echo '<script> 
@@ -107,28 +129,6 @@ $session->Session($pagActual);
             </script>';
         };
         ?>    
-        <?php if (isset($_GET['errorPermiso'])) {
-            echo '<script> 
-                Command: toastr["error"]("' . $_GET['errorPermiso'] . '")
-            toastr.options = {
-              "closeButton": false,
-              "debug": false,
-              "newestOnTop": false,
-              "progressBar": false,
-              "positionClass": "toast-top-right",
-              "preventDuplicates": false,
-              "onclick": null,
-              "showDuration": "300",
-              "hideDuration": "1000",
-              "timeOut": "5000",
-              "extendedTimeOut": "1000",
-              "showEasing": "swing",
-              "hideEasing": "linear",
-              "showMethod": "fadeIn",
-              "hideMethod": "fadeOut"
-            }
-            </script>';
-         } ?>
         </script>
         <div class="wrapper">            
             <nav class="migas"><br>

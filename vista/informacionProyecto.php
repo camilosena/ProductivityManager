@@ -81,12 +81,13 @@ $session->Session($pagActual);
             //  Consultar Proyecto
             if (isset($_GET['projectNum'])) {
                 $proyectos = $facadeProyecto->consultarProyecto($_GET['projectNum']);
+                if($proyectos['fechaFin']!='0000-00-00'){ $finalDefinida = $proyectos['fechaFin'];}else{$finalDefinida='';}
                 echo '<div id="infoPro">';
                 echo '<table id="muestraDatos"><tr><th colspan="2">Información de Proyecto</th></tr>';
                 echo '<tr><td class="enunciado">Código:</td><td>0' . $proyectos['idProyecto'] . '</td></tr>';
                 echo '<tr><td class="enunciado">Nombre:</td><td>' . $proyectos['nombreProyecto'] . '</td></tr>';
                 echo '<tr><td class="enunciado">Fecha Inicio:</td><td>' . $proyectos['fechaInicio'] . '</td></tr>';
-                echo '<tr><td class="enunciado">Fecha Fin:</td><td> ' . $proyectos['fechaFin'] . '</td></tr>';
+                echo '<tr><td class="enunciado">Fecha Fin:</td><td> ' . $finalDefinida . '</td></tr>';
                 echo '<tr><td class="enunciado">Estado:</td><td>' . $proyectos['estadoProyecto'] . '</td></tr>';
                 echo '<tr><td class="enunciado">Ejecutado:</td><td>' . $proyectos['ejecutado'] . '%</td></tr>';
                 echo '<tr><td class="enunciado">Observaciones:</td><td>' . $proyectos['observaciones'] . '</td></tr>';

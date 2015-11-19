@@ -266,4 +266,19 @@ idProductos = Productos_idProductos");
         $cnn = NULL;
     }
 
+        public function cambiarFechaFinProyecto($fechaFin, $idProyecto, PDO $cnn) {
+        $mensaje = '';
+        try {
+            $query = $cnn->prepare("UPDATE  proyectos SET fechaFin=? where idProyecto=?");
+            $query->bindParam(1, $fechaFin);
+            $query->bindParam(2, $idProyecto);
+            $query->execute();
+            $mensaje = 'Cambio Estado de Proyecto';
+            return $mensaje;
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
+
 }

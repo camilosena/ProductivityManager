@@ -24,7 +24,6 @@ $session->Session($pagActual);
         <script src="../js/animateprogress.js"></script>
         <link href="../js/toastr.css" rel="stylesheet"/>
         <script src="../js/toastr.js"></script>
-        <script src="../js/validaciones.js"></script>
         <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
         <link rel="stylesheet" type="text/css" href="../css/stylesNavTop.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -261,7 +260,9 @@ $session->Session($pagActual);
                 </form>
             </div>                  
         </div> 
-        <footer class="footer-distributed">
+        <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="../js/validaciones.js"></script>
+    <footer class="footer-distributed">
             <div class="footer-left">
                 <span><img src="../img/logoEscala.png" width="210" height="120"></span>
                 <p class="footer-links">

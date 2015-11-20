@@ -343,7 +343,7 @@ $session->Session($pagActual);
                     echo '<tr><td colspan="2" style="text-align:center">Asignar Usuario a Proyecto</td></tr>';
                     echo '<form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php?codUsuario=' . $_SESSION['datosUsuario']['idUsuario']  . '&rolUser=' . $_SESSION['datosUsuario']['rol']  . '">';
                     echo '<tr><td><label class="tag" id="labelProyecto" for="listaProyecto"><span id="lab_valCountry" class="h331">Seleccione Proyecto:</span></label></td>'
-                    . '<td><select class="input" id="listaProyecto" name="idProjects" id="listaProyecto" autofocus class="list_menu" >';
+                    . '<td><select class="input" id="listaProyecto" name="idProjects" id="listaProyecto" autofocus class="list_menu" required>';
                     if (empty($_POST['idProjects'])) {
                         $_POST['idProjects'] = '';
                     }

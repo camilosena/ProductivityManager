@@ -284,18 +284,18 @@ the right position for the arrow
 	.cbp-tm-menu > li {
 		display: block;
 		margin: 0;
-		border-bottom: 4px solid #3793ca;
+		border-bottom: 4px solid #fff;
 	}
 
 	.cbp-tm-menu > li:first-child {
-		border-top: 4px solid #3793ca;
+		border-top: 4px solid #fff;
 	}
 
 	li.cbp-tm-show > a,
 	.no-touch .cbp-tm-menu > li > a:hover,
 	.no-touch .cbp-tm-menu > li > a:active {
 		color: #fff;
-		background: #02639d;
+		background: #83AF44;
 	}
 
 	.cbp-tm-submenu {
@@ -311,7 +311,7 @@ the right position for the arrow
 	.cbp-tm-submenu > li > a {
 		padding: 0.6em 2.3em 0.6em 0.6em;
 		border: none;
-		border-bottom: 2px solid #6fbbe9;
+		border-bottom: 2px solid #83AF44;
 	}
 
 	.cbp-tm-submenu:after {

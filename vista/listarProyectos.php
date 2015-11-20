@@ -39,16 +39,10 @@ $session->Session($pagActual);
           <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
       </form>
         <ul>
-           <li><a href=""><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
-           <ul>
-               <li><a href="javascript:reporte('reportes.php?tipoReporte=Costos');"><span><i class="fa fa-file-text fa-lg"></i> Estudio de Costos</span></a>       
-                 </li>
-                 <li><a href="javascript:reporte('reportes.php?tipoReporte=Proyectos');"><span><i class="fa fa-file-text fa-lg"></i> Proyectos </span></a>              
-                 </li>
-              </ul>
+           <li><a href="javascript:reporte('reportes.php?tipoReporte=Proyectos')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
             <script language=javascript>
             function reporte(URL) {
-                window.open(URL, "reportes.php", "width=1000,height=645,top=30,left=150,scrollbars=NO");
+                window.open(URL, "reportes.php", "width=1150,height=645,top=30,left=75,scrollbars=NO");
             }
         </script> 
            </li>

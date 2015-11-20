@@ -312,7 +312,7 @@ $session->Session($pagActual);
             <div id="verUsuario" class="modalDialog" title="Ver Usuario">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
                     <?php
-                    echo '<table id="muestraDatos"><tr><th colspan="2">Datos de Cliente</th></tr>';
+                    echo '<table id="muestraDatos"><tr><th colspan="2"><img src="../fotos/'.$_SESSION['dtoUsuario']['foto'].'" class="fotoUsuario"><br>Datos de Cliente</th></tr>';
                     echo '<tr><td>Código:</td><td>' . $_SESSION['dtoUsuario']['idUsuario'] . '</td></tr>';
                     echo '<tr><td>Empresa:</td><td>' . $_SESSION['dtoCliente']['nombreCompania'] . '</td></tr>';
                     echo '<tr><td>NIT:</td><td>' . $_SESSION['dtoCliente']['nit'] . '</td></tr>';
@@ -327,7 +327,6 @@ $session->Session($pagActual);
                     echo '<tr><td>Teléfono:</td><td>' . $_SESSION['dtoUsuario']['telefono'] . '</td></tr>';
                     echo '<tr><td>Correo Electronico:</td><td>' . $_SESSION['dtoUsuario']['email'] . '</td></tr>';
                     echo '<tr><td>Estado:</td><td>' . $_SESSION['dtoUsuario']['estado'] . '</td></tr>';
-                    echo '<tr><td>Logo Compañia:</td><td><img src="../fotos/'.$_SESSION['dtoUsuario']['foto'].'" class="logoEmpresarial"></td></tr>';
                     echo '<tr><td colspan="2" style="border:none"><button class="boton-verde">';
                     echo '<a style="text-decoration:none;padding:10px 20px 10px 20px;" href="crearProyecto.php?codCliente='.$_SESSION['dtoUsuario']['idUsuario'].'&empresa='.$_SESSION['dtoCliente']['nombreCompania'].'">Crear Nuevo Proyecto</a></button></td></tr>';
                     echo '</table>';

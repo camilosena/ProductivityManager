@@ -328,7 +328,7 @@ $session->Session($pagActual);
             <div id="verUsuario" class="modalDialog" title="Ver Usuario">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
                     <?php
-                    echo '<table id="muestraDatos"><tr><th>Datos de Usuario</th><th><img class="fotoUsuario" src="../fotos/' . $_SESSION['datosUsuario']['foto']  . '"></th></tr>';                    
+                    echo '<table id="muestraDatos"><tr><th colspan="2"><img class="fotoUsuario" src="../fotos/' . $_SESSION['datosUsuario']['foto']  . '"><br>Datos de Usuario </th></tr>';                    
                     echo '<tr><td>Cargo:</td><td>' . $_SESSION['datosUsuario']['rol']  . '</td></tr>';
                     echo '<tr><td>Área/Sector:</td><td>' . $_SESSION['datosUsuario']['nombreArea']  . '</td></tr>';
                     echo '<tr><td>Código:</td><td>' . $_SESSION['datosUsuario']['idUsuario'] . '</td></tr>';

@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/main_responsive.css">
 	<link rel="stylesheet" type="text/css" href="css/stylesNavTop.css">
-	<link rel="stylesheet" href="../css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<script type="text/javascript" src="js/script.js"></script>
 	<script type="text/javascript" src="js/script2.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>

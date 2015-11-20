@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/main_responsive.css">
         <link rel="stylesheet" type="text/css" href="css/stylesNavTop.css">
-        <link rel="stylesheet" href="../css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
         <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript" src="js/script2.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
@@ -205,7 +205,7 @@
                                 <p class="author">Productivity Manager &copy; 2015</p>
                             </div>
                             <div class="t">
-                                <h2>¿Quiénes somos?</h2>
+                                <h2><br><br>¿Quiénes somos?</h2>
                                 <p>
                                     Orientado a beneficios de corto plazo generando un aumento
                                     productivo que favorecerá al Empleado y  al Empleador.
@@ -232,12 +232,14 @@
                             </div>
                             <div class="t">
                                 <p>
-                                    Productivity Manager &copy; 2015
+                                    <br>Productivity Manager &copy; 2015
+                                    <br><br>Todos Los Derechos Reservados.
                                 </p>
                                 <p class="author">
-                                    Camilo Arias González - Analyst / Developer<br>
-                                    Jorge Izquierdo - Analyst / Developer<br>
-                                    Howard Mosquera - Analyst / Developer<br>
+                                    Desarrollado por:<br>
+                                    Camilo Arias González - Analista / Desarrollador<br>
+                                    Jorge Izquierdo - Analista / Desarrollador<br>
+                                    Howard Mosquera - Analista / Desarrollador<br>
                                 </p>
                             </div>
                         </div>

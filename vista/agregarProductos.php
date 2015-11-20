@@ -21,7 +21,7 @@ $session->Session($pagActual);
         <script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="../js/table.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/stylesNavTop.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/font-awesome.min.css">
         <script type="text/javascript" src="../js/script.js"></script>
         <script type="text/javascript" src="../js/script2.js"></script>
         <link href="../js/toastr.css" rel="stylesheet"/>

@@ -616,24 +616,31 @@
 				<script>
 					function initialize()
 					{
-						var mapProp = {
-							center: new google.maps.LatLng(4.651876, -74.062751),
-							zoom:17,
-							mapTypeId: google.maps.MapTypeId.ROADMAP
-						};
-						var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+					  var mapProp = {
+					    center: new google.maps.LatLng(4.651876, -74.062751),
+					    zoom:17,
+					    mapTypeId: google.maps.MapTypeId.ROADMAP
+					  };
+					  var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+					  var marcador = new google.maps.Marker({
+/*Creamos un marcador*/
+                position: new google.maps.LatLng(4.651876, -74.062751), /*Lo situamos en nuestro punto */
+                map: map, /* Lo vinculamos a nuestro mapa */
+                title: "We Are Here" 
+            })
+					  
 					}
 
 					function loadScript()
 					{
-						var script = document.createElement("script");
-						script.type = "text/javascript";
-						script.src = "http://maps.googleapis.com/maps/api/js?key=&sensor=false&callback=initialize";
-						document.body.appendChild(script);
+					  var script = document.createElement("script");
+					  script.type = "text/javascript";
+					  script.src = "http://maps.googleapis.com/maps/api/js?key=&sensor=false&callback=initialize";
+					  document.body.appendChild(script);
 					}
 
 					window.onload = loadScript;
-				</script>
+					</script>
 				<div id="googleMap"></div>
 			</section>
 		</div>

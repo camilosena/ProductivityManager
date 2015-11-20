@@ -622,6 +622,13 @@
 					    mapTypeId: google.maps.MapTypeId.ROADMAP
 					  };
 					  var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+					  var marcador = new google.maps.Marker({
+/*Creamos un marcador*/
+                position: new google.maps.LatLng(4.651876, -74.062751), /*Lo situamos en nuestro punto */
+                map: map, /* Lo vinculamos a nuestro mapa */
+                title: "Estamos Aqui" 
+            })
+					  
 					}
 
 					function loadScript()

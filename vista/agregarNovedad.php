@@ -128,11 +128,11 @@ $session->Session($pagActual);
                         document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
                     </script>                                      
                 </span><br><br>
-           <div id="panelModificaPass">
+           <div id="panelNovedades">
         
            <h2 class="h330">Agregar Novedad de Proyecto:</h2><br><hr>
            <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-           <form class="formRegistro" method="post" action="../controlador/ControladorNovedades.php" enctype="multipart/form-data">
+           <form class="formRegistro" id="formNovedades" method="post" action="../controlador/ControladorNovedades.php" enctype="multipart/form-data">
                <?php 
                require_once '../modelo/utilidades/Conexion.php';
                require_once '../modelo/dao/ProyectosDAO.php';
@@ -149,6 +149,7 @@ $session->Session($pagActual);
                         <br>
                     <label class="tag" for="idProject"><span id="lab_valPhone" class="h331" >Seleccione Id Proyecto:</span></label>
                     <select class="input" name="idProyecto" id="idProject"required class="list_menu_small" autofocus >
+                        <option value="" selected> - Seleccionar Proyecto - </option>
                     <?php foreach ($proEjecucion as $enEjecucion) {
                                 echo '<option value="'.$enEjecucion['idProyecto'].'">'.$enEjecucion['idProyecto'].'-'.$enEjecucion['nombreProyecto'];}?></option>
                     </select>                                        
@@ -169,7 +170,7 @@ $session->Session($pagActual);
                         <output id="list"></output>
                     </div>
                 <label class="tag" for="description"><span id="lab_valPhone" class="h331">Descripción:</span></label>
-                <textarea class="input4" name="descripcion" type="text" maxlength="240" id="description" required class="field1"></textarea>
+                <textarea class="input4" name="descripcion" type="text"  id="description" required class="field1"></textarea>
                 <button type="submit" name="crearNovedad" class="boton-verde">Generar Novedad</button><br>
                  <script>
                         function archivo(evt) {
@@ -225,6 +226,8 @@ $session->Session($pagActual);
         </div>
     </div> 
         </div>
+        <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="../js/validacionesNovedades.js"></script>
 	 <footer class="footer-distributed">
             <div class="footer-left">
                             <span><img src="../img/logoEscala.png" width="210" height="120"></span>

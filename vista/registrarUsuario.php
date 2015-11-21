@@ -500,7 +500,7 @@ $session->Session($pagActual);
                 <br>
                 <br><h2 class="h330">Registrar Nuevo Usuario:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="post" action="../controlador/ControladorUsuarios.php" enctype="multipart/form-data"> 
+                <form class="formRegistro" id="formUsuarios" method="post" action="../controlador/ControladorUsuarios.php" enctype="multipart/form-data"> 
                     <label class="tag" id="labelTipoUsuario" for="tipoUsuario"><span id="lab_valCountry" class="h331">Tipo de Usuario:</span></label>
                     <select id="selectrol" name="selectRol" class="input"> 
                      <?php
@@ -613,6 +613,8 @@ $session->Session($pagActual);
                     </script>
                     <button type="submit" value="Enviar" name="crearUsuario" id="crearUsuario" class="boton-verde">Crear Usuario</button><br>                                 
                 </form>
+                <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+                <script src="../js/validaciones.js"></script>
                 <script>
                     function validarPass() {
                         pass1 = document.getElementById('pass1');

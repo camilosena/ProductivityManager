@@ -1,17 +1,22 @@
 $( document ).ready(function() {
-        $('#register').submit(function(e) {
+    fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
+    fuenteCierreError= '</font>';
+        $('#formUsuarios').submit(function(e) {
             e.preventDefault();
         }).validate({
             debug: false,
             rules: {
-                "name": {
+                "selectRol": {
                     required: true
                 },
-                "surname": {
+                "selectArea": {
                     required: true
                 },
-                "surname2": {
-                    required: true
+                "identificacion": {
+                    required: true,
+                    number:true,
+                    minlength: 3,
+                    maxlength: 10
                 },
                 "email": {
                     required: true,
@@ -26,21 +31,24 @@ $( document ).ready(function() {
             },
 
             messages: {
-                "name": {
-                    required: ""
+                "selectRol": {
+                    required: fuenteError+' Seleccione un Rol'+fuenteCierreError
                 },
-                "surname": {
-                    required: '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic;"> Introduzca un Apellido</font>'
+                "selectArea": {
+                    required: fuenteError+' Seleccione un Área'+fuenteCierreError
                 },
-                "surname2": {
-                    required: '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic;"> Introduzca un Apellido</font>'
+                "identificacion": {
+                    required: '',
+                    number: "Introduce un código postal válido.",
+                    maxlength: "Debe contener 5 dígitos.",
+                    minlength: "Debe contener 5 dígitos."
                 },
                 "email": {
-                    required: '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic;"> Introduzca un E-mail</font>',
+                    required: fuenteError+' Seleccione un Cliente'+fuenteCierreError,
                     email: 'Ingrese correo electrónico con formato correcto. Ejemplo: user@productivity.com'
                 },
                 "cpostal": {
-                    required: '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic;"> Introduzca Postal.</font>',
+                    required: '',
                     number: "Introduce un código postal válido.",
                     maxlength: "Debe contener 5 dígitos.",
                     minlength: "Debe contener 5 dígitos."

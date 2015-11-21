@@ -53,10 +53,18 @@ $( document ).ready(function() {
 $( document ).ready(function() {
     fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
     fuenteCierreError= '</font>';
-        $('#formProject').submit(function(e) {
-            e.preventDefault();
-        }).validate({
-            debug: false,
+    $('#formProject').submit(function(e) {
+        e.preventDefault();
+    }).validate({
+        submitHandler: function(form) {  
+         if ($(form).valid())
+         {
+             form.submit(); 
+         }
+   return false;
+},
+
+            debug: true,
             rules: {
                  "cliente": { 
                     required: true
@@ -84,6 +92,5 @@ $( document ).ready(function() {
                     date: fuenteError+' Ingrese una Fecha Valida'+fuenteCierreError
                 }
             }
- 
         });
 });

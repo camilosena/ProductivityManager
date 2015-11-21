@@ -4,6 +4,13 @@ $( document ).ready(function() {
         $('#formUsuarios').submit(function(e) {
             e.preventDefault();
         }).validate({
+            submitHandler: function(form) {  
+         if ($(form).valid())
+         {
+             form.submit(); 
+         }
+        return false;
+    },
             debug: false,
             rules: {
                 "selectRol": {
@@ -18,15 +25,34 @@ $( document ).ready(function() {
                     minlength: 3,
                     maxlength: 10
                 },
+                "nombre": {
+                    required: true
+                },
+                "apellido": {
+                    required: true
+                },
+                "telefono": {
+                    required: true,
+                    number:true,
+                    minlength: 7,
+                    maxlength: 10
+                },
                 "email": {
                     required: true,
                     email: true
                 },
-                "cpostal": {
+                "fechaNacimiento": {
                     required: true,
-                    number:true,
+                    date: true
+                },
+                "password": {
+                    required: true,
                     minlength: 5,
-                    maxlength: 5
+                    maxlength: 20
+                },
+                "password2": {
+                    required: true,
+                    equalTo : "#pass1"
                 }
             },
 
@@ -38,20 +64,39 @@ $( document ).ready(function() {
                     required: fuenteError+' Seleccione un Área'+fuenteCierreError
                 },
                 "identificacion": {
-                    required: '',
-                    number: "Introduce un código postal válido.",
-                    maxlength: "Debe contener 5 dígitos.",
-                    minlength: "Debe contener 5 dígitos."
+                    required: fuenteError+' Ingrese Documento'+fuenteCierreError,
+                    number: fuenteError+' Documento No Valido'+fuenteCierreError,
+                    minlength: fuenteError+' Minimo 3 Digitos'+fuenteCierreError,
+                    maxlength: fuenteError+' Maximo 10 Digitos'+fuenteCierreError
+                },
+                "nombre": {
+                    required: fuenteError+' Ingrese Nombre'+fuenteCierreError
+                },
+                "apellido": {
+                    required: fuenteError+' Ingrese Apellidos'+fuenteCierreError
+                },
+                "telefono": {
+                    required: fuenteError+' Ingrese Teléfono'+fuenteCierreError,
+                    number: fuenteError+' Formato Erroneo'+fuenteCierreError,
+                    minlength: fuenteError+' Minimo 7 Digitos'+fuenteCierreError,
+                    maxlength: fuenteError+' Maximo 10 Digitos'+fuenteCierreError
                 },
                 "email": {
-                    required: fuenteError+' Seleccione un Cliente'+fuenteCierreError,
-                    email: 'Ingrese correo electrónico con formato correcto. Ejemplo: user@productivity.com'
+                    required: fuenteError+' Ingrese E-Mail'+fuenteCierreError,
+                    email: fuenteError+'No Valido Ej: user@productivity.co'+fuenteCierreError
                 },
-                "cpostal": {
-                    required: '',
-                    number: "Introduce un código postal válido.",
-                    maxlength: "Debe contener 5 dígitos.",
-                    minlength: "Debe contener 5 dígitos."
+                 "fechaNacimiento": {
+                    required: fuenteError+' Seleccione Fecha Nacimiento'+fuenteCierreError,
+                    date: fuenteError+' Ingrese una Fecha Válida'+fuenteCierreError
+                },
+                "password": {
+                    required: fuenteError+' Ingrese Contraseña'+fuenteCierreError,
+                    minlength: fuenteError+' Minimo 5 Caracteres'+fuenteCierreError,
+                    maxlength: fuenteError+' Maximo 20 Caracteres'+fuenteCierreError
+                },
+                "password2": {
+                    required: fuenteError+' Confirme Contraseña'+fuenteCierreError,
+                    equalTo: fuenteError+' Contraseñas No Coinciden'+fuenteCierreError
                 }
             }
  

@@ -547,15 +547,15 @@ $session->Session($pagActual);
                     </script>
                     <br>               
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombres: </span></label>
-                    <input class="input" name="nombre" type="text" id="txtName" class="field1" placeholder="Pedro"  required>
+                    <input class="input" name="nombre" type="text" id="txtName" class="field1" placeholder="Andrew" pattern="[A-Za-z]{4-16}" required>
                     <span id="valName" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label class="tag" for="txtSurname"><span id="lab_valSurname" class="h331">Apellidos: </span></label>
-                    <input class="input" name="apellido" type="text" id="txtSurname" class="field1" placeholder="Perez" required >
+                    <input class="input" name="apellido" type="text" id="txtSurname" class="field1" placeholder="Sinisterra" pattern="[A-Za-z]{4-16}"  required >
                     <span id="valSurname" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label class="tag" for="txtCompany1"><span id="lab_valCompany" class="h331">Teléfono: </span></label>
-                    <input class="input" name="telefono" required type="text" pattern="[0-9]{7,10}" placeholder="310300310" title="Solo números" maxlength="128" id="txtEmail" class="field1">
+                    <input class="input" name="telefono" required type="text" pattern="[0-9]{7,10}" placeholder="310300310" title="Solo números" maxlength="128" id="tlfn" class="field1">
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label for="txtSurname1"><span id="lab_valSurname" class="h331">Dirección: </span></label>
@@ -579,7 +579,7 @@ $session->Session($pagActual);
                     </div>
                     <br>
                     <label class="tag" for="passw"><span id="lab_valCompany" class="h331">Contraseña:</span></label>
-                    <input class="input" name="password" required type="password" maxlength="45" id="pass1" class="field1" placeholder="Formato de 5 a 10 números" pattern= "[A-Za-z0-9]{5,10}" >
+                    <input class="input" name="password" required type="password" maxlength="45" id="pass1" class="field1" placeholder="Formato de 5 a 10 Caracteres" pattern= "[A-Za-z0-9]{5,10}" >
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label class="tag" for="pass"><span id="lab_valCompany" class="h331">Confirmar Contraseña:</span></label>
@@ -615,16 +615,6 @@ $session->Session($pagActual);
                 </form>
                 <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
                 <script src="../js/validaciones.js"></script>
-                <script>
-                    function validarPass() {
-                        pass1 = document.getElementById('pass1');
-                        pass2 = document.getElementById('pass2');
-                        if (pass1 != pass2) {
-                            alert('Las contraseñas no coinciden');
-                        }
-                    }
-                </script>
-
                 <?php
                 if (isset($_GET['mensaje']) && isset($_GET['consecutivo'])) {
                     if($_GET['consecutivo']!=0){

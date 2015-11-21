@@ -294,7 +294,6 @@ header .logoFoto{
 
 }
 header .logoFoto div img{
-    border: 2px solid #83AF44;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -1032,6 +1031,7 @@ float: left;
     border:2px solid #f0f0f0;
     float: right;
     margin-right: 20%;
+    margin-top: -10px;
 }
 #cargueEvidencia{
     width: 200px;

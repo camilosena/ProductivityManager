@@ -40,5 +40,9 @@ if (isset($_POST['reporteProyecto']) ) {
         $_SESSION['reportes'] = $fReportes->reporteProyectoPorProyecto($idProyecto);
         header("location: ../vista/Reportes.php?tipoReporte=Proyectos&reporte=".$_SESSION['reportes']);
     }
+    if ($idCliente==0 & $idProyecto ==0 & $estado ==0 & $idProductos !=0 ) {
+        $_SESSION['reportes'] = $fReportes->reporteProyectoPorProducto($idProducto);
+        header("location: ../vista/Reportes.php?tipoReporte=Proyectos&reporte=".$_SESSION['reportes']);
+    }
 
 }

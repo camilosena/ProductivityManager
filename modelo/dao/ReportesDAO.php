@@ -107,6 +107,22 @@ LEFT join productos on Productos_idProductos = idProductos");
         } 
             
         }
-    
+        function reporteProyectoPorProducto($idProducto, PDO $cnn){
+             try {
+            $query = $cnn->prepare("Select nombreCompania, nombreProyecto, fechaInicio, estadoProyecto, ejecutado, fechaFin, nombreProducto , cantidadProductos as cantidad from clientes
+join  personas on idCliente = idUsuario 
+join usuarioporproyecto on idUsuario = usuarioAsignado
+join proyectos on proyectoAsignado = idProyecto 
+ join productoporproyecto on idProyecto = proyectosIdProyecto
+ join productos on Productos_idProductos = idProductos and idProductos = ?");
+             $query->bindParam(1, $idProducto);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        } 
+            
+            
+        }
 
 }

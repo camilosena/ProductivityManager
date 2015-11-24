@@ -43,4 +43,7 @@ class FacadeReportes {
     function reporteProyectoPorProyecto($idProyecto){
         return $this->reportesDAO->reporteProyectoPorProyecto($idProyecto, $this->conexionBase);
     }
+    function reporteProyectoPorProducto($idProducto){
+        return $this->reportesDAO->reporteProyectoPorProducto($idProducto, $this->conexionBase);
+    }
 }

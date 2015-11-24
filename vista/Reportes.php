@@ -256,7 +256,7 @@ session_start();
                     
                         echo '<option value="0" style="color:gray">' . "Seleccione un producto" . '</option>';
                         foreach ($productos as $producto) {
-                            echo '<option value="' . $producto['idProducto'] . '">' . $producto['nombreProducto'] . '</option>';                            
+                            echo '<option value="' . $producto['idProductos'] . '">' . $producto['nombreProducto'] . '</option>';                            
                         }
                         ?>
                     </select><br><br><br>

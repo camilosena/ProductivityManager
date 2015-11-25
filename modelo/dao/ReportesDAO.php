@@ -109,7 +109,7 @@ LEFT join productos on Productos_idProductos = idProductos");
         }
         function reporteProyectoPorProducto($idProducto, PDO $cnn){
              try {
-            $query = $cnn->prepare("Select nombreCompania, nombreProyecto, fechaInicio, estadoProyecto, ejecutado, fechaFin, nombreProducto , cantidadProductos as cantidad from clientes
+            $query = $cnn->prepare("Select nombreCompania, nombreProyecto, fechaInicio, estadoProyecto, ejecutado, fechaFin, nombreProducto as Productos, cantidadProductos as cantidad from clientes
 join  personas on idCliente = idUsuario 
 join usuarioporproyecto on idUsuario = usuarioAsignado
 join proyectos on proyectoAsignado = idProyecto 
@@ -123,6 +123,21 @@ join proyectos on proyectoAsignado = idProyecto
         } 
             
             
+        }
+        function reporteTodosProyectos(PDO $cnn){
+            try {
+            $query = $cnn->prepare("Select nombreCompania, nombreProyecto, fechaInicio, estadoProyecto, ejecutado, fechaFin, group_concat( ' ',nombreProducto) as Productos , sum(cantidadProductos) as cantidad from clientes
+join  personas on idCliente = idUsuario 
+join usuarioporproyecto on idUsuario = usuarioAsignado
+join proyectos on proyectoAsignado = idProyecto
+LEFT join productoporproyecto on idProyecto = proyectosIdProyecto
+LEFT join productos on Productos_idProductos = idProductos group by  idCliente");
+
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        } 
         }
 
 }

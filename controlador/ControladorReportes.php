@@ -24,15 +24,19 @@ if (isset($_POST['reporteProyecto']) ) {
         $mensaje = 'Debe seleccionar una opción';
         header("location: ../vista/Reportes.php?tipoReporte=Proyectos&mensaje=".$mensaje);
     }
+    if ($idCliente==0 & $idProyecto =='T' & $estado ==0 & $idProductos ==0 ) {
+         $_SESSION['reportes'] = $fReportes->reporteTodosProyectos();        
+        header("location: ../vista/Reportes.php?tipoReporte=Proyectos&mensaje=".$_SESSION['reportes']);
+    }
     if ($idCliente!=0 & $idProyecto ==0 & $estado ==0 & $idProductos ==0 ) {
-        $_SESSION['reportes'] = $fReportes->reporteProyectoPorCliente($idCliente);
+       $_SESSION['reportes'] = $fReportes->reporteProyectoPorCliente($idCliente);
         header("location: ../vista/Reportes.php?tipoReporte=Proyectos&reporte=".$_SESSION['reportes']);
     }
     if ($idCliente!=0 & $idProyecto !=0 & $estado ==0 & $idProductos ==0 ) {
     $_SESSION['reportes'] = $fReportes->reporteProyectoPorClienteProyecto($idCliente, $idProyecto);
     header("location: ../vista/Reportes.php?tipoReporte=Proyectos&reporte=".$_SESSION['reportes']);
     }
-    if ($idCliente==0 & $idProyecto ==0 & $estado !=0 & $idProductos ==0 ) {
+    if ($idCliente==0 & $idProyecto ==0 & $estado =='E' & $idProductos ==0 ) {
         $_SESSION['reportes'] = $fReportes->reporteProyectoPorEstado($estado);
         header("location: ../vista/Reportes.php?tipoReporte=Proyectos&reporte=".$_SESSION['reportes']);
     }
@@ -41,7 +45,7 @@ if (isset($_POST['reporteProyecto']) ) {
         header("location: ../vista/Reportes.php?tipoReporte=Proyectos&reporte=".$_SESSION['reportes']);
     }
     if ($idCliente==0 & $idProyecto ==0 & $estado ==0 & $idProductos !=0 ) {
-        $_SESSION['reportes'] = $fReportes->reporteProyectoPorProducto($idProducto);
+        $_SESSION['reportes'] = $fReportes->reporteProyectoPorProducto($idProductos);
         header("location: ../vista/Reportes.php?tipoReporte=Proyectos&reporte=".$_SESSION['reportes']);
     }
 

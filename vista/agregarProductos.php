@@ -187,13 +187,13 @@ $session->Session($pagActual);
                     <label class="tag" id="IdRol" for="IdProducto"><span id="NameRol" class="h331" style="display: inline-block">Producto Número: </span></label>
                     <input name="IdProducto" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Producto: </span></label>
-                    <input name="Producto" type="text" id="txtName"  placeholder="Silla"   style="display: inline-block"><br>
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Imagen: </span>
-                    <input name="Imagen" type="file"  id="imagen"  style="display:inline-block"></label><br>
+                    <input name="Producto" type="text" id="txtName"  placeholder="Silla"   style="display: inline-block" required><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline">Imagen: </span>
+                    <input name="Imagen" type="file"  id="imagen"  style="display:inline" required></label><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Descripción: </span></label>
-                    <input name="descripcion"  id="txtName"  style="display: inline-block"><br>
+                    <textarea name="descripcion"  id="txtName"  style="display: inline-block" required></textarea><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">% Ganancia: </span></label>
-                    <input name="ganancia"  id="txtName"  style="display: inline-block"><br>
+                    <input name="ganancia"  id="txtName"  type="number" style="display: inline-block" min="1" required=""><br>
                     
                     <button type="submit" value="Enviar" name="AgregarProducto" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
                     
@@ -205,9 +205,9 @@ $session->Session($pagActual);
                     <div>
                         <a href="#close" title="Close" class="close">X</a><br>					
                         <h2 class="h330"><?php echo $_SESSION['VisualizarProducto']['nombreProducto']; ?> :</h2><br>
-                        <div id="panelModificaPass">
-                            <img src="../productos/<?php echo $_SESSION['VisualizarProducto']['fotoProducto']; ?>" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px">
-                       <input name="descripcion" size="10" value ="<?php echo $_SESSION['VisualizarProducto']['descripcionProducto']; ?>" disabled >
+                        <div >
+                            <img src="../productos/<?php echo $_SESSION['VisualizarProducto']['fotoProducto']; ?>" onLoad="nomeImagem()" style="display: inline; width: 190 px; height: 110px" >
+                            <textarea name="descripcion" disabled style="display: inline; width: 190px; height: 110px"  ><?php echo $_SESSION['VisualizarProducto']['descripcionProducto']; ?></textarea>
                         </div>
                     </div>
                 </div>

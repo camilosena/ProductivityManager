@@ -203,13 +203,6 @@ $session->Session($pagActual);
 
                     </div>
 
-
-                    <?php
-                    if (isset($_GET['mensaje'])) {
-                        echo $_GET['mensaje'] . '<br>';
-                        echo 'Su nuevo Código es: ' . $_GET['consecutivo'];
-                    }
-                    ?>
                 </div>
             </div> 
         </div>

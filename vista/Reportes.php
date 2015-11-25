@@ -109,15 +109,38 @@ session_start();
                 });
             });
         </script>
+        <!-- Ver Reporte-->
+        <script>
+            $(document).ready(function () {
+                $("#reporteProyecto").click(function () {
+                    $.ajax({
+                        url: "../peticiones_ajax/ajax_listar_productosPorProyecto.php",
+                        method: "POST",
+                        data: {
+                            proyectoSelected: $(this).val(),
+                            accion: "producto"
+                        },
+                        success: function (data) {
+                            $("#selectProducto").html(data);
+                        },
+                        error: function (error) {
+                            alert(error);
+                        }
+                    });
+                    //alert($(this).val());
+                });
+            });
+        </script>
         <link href="../js/toastr.css" rel="stylesheet"/>
         <script src="../js/toastr.js"></script>
     </head>
     <body>
-     <div id='cssmenu'>
+     <div id='cssmenu' style="text-align:center"> 
         <form id="frmPicture" name="frmChangePicture" action="../controlador/ControladorUsuarios.php" method="post" enctype="multipart/form-data">
           <input type="hidden" name="Change" value="1">  
           <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
       </form>
+         
         <ul>
             <li><a><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
            <ul>
@@ -127,15 +150,8 @@ session_start();
                  </li>
               </ul>
            </li>
-           <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
-              <ul>
-                 <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
-                 </li>
-                 <li><a id="loadImg" href="javascript:function()"><span><i class="fa fa-picture-o fa-lg"></i> Actualizar Foto</span></a>              
-                 </li>
-              </ul>
-           </li>  
-           <li><a href='../controlador/ControladorLogin.php?idCerrar=HastaLuego'><span><i class="fa fa-power-off fa-lg"></i> Cerrar Sesión</span></a></li>     
+           
+                
         </ul>
           <script type="text/javascript">
             //bind click
@@ -232,6 +248,7 @@ session_start();
                      <?php
                     
                         echo '<option value="0" style="color:gray">' . "Seleccione un proyecto" . '</option>';
+                        echo '<option value="T">' . "Todos" . '</option>';
                         foreach ($proyectos as $proyecto) {
                             echo '<option value="' . $proyecto['idProyecto'] . '">' . $proyecto['nombreProyecto'] . '</option>';                            
                         }
@@ -243,8 +260,8 @@ session_start();
                         <label style="display: inline">Estado</label> 
                         <select style="width: 60%" id="selectEstado" style="display: inline" name="selectEstado" class="input" > 
                        <option value=0 style="color:gray">Seleccione un estado</option>
-                       <option value="Ejecución" >Ejecución</option>
-                       <option value="Cancelado" >Cancelado</option>
+                       <option value="E" >Ejecución</option>
+                       <option value="C" >Cancelado</option>
                        <option value="Finalizado" >Finalizado</option>
                        <option value="Aplazado" >Aplazado</option>
                        <option value="Sin Estudio Costos" >Sin Estudio Costos</option>
@@ -262,15 +279,16 @@ session_start();
                     </select><br><br><br>
                 </div> 
                 </div> <br><br><br>
-                <div id="panelReportes"> 
+               
                   <button type="submit" value="reporteProyecto" name="reporteProyecto" id="reporteProyecto" class="boton-verde">Ver Reporte</button><br>
-                 </div>
+          
                  </form><br>
-                <div id="panelUnico" >     <hr>                               
+                 <div id="panelVistaReporte">     <hr>                               
                         <label style="display: inline">"Mostrar Seleccion" -----></label>
 
                         <table id="tableReporteProyecto">
                             <thead>
+                            <th >Compañia</th>  
                             <th >Proyecto</th>
                             <th >Fecha de inicio</th>   
                             <th >Estado</th> 
@@ -284,6 +302,7 @@ session_start();
                             foreach ($_SESSION['reportes'] as $reporte){
                             ?>
                             <tbody>
+                            <td ><?php echo $reporte['nombreCompania']?></td>
                             <td ><?php echo $reporte['nombreProyecto']?></td>
                             <td ><?php echo $reporte['fechaInicio']?></td>
                             <td ><?php echo $reporte['estadoProyecto']?></td>

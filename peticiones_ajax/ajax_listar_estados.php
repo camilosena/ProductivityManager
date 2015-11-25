@@ -14,10 +14,10 @@ if ($accion == "estado") {
       
     $html = '<option value="0" style="color:gray" readonly selected>Seleccione un Estado</option>';
     $html .= '<option value="Ejecucion" >Ejecución</option>';
-    $html .= '<option value="Cancelado" >Cancelado</option>';
+    $html .= '<option value="C" >Cancelado</option>';
     $html .= '<option value="Finalizado" >Finalizado</option>';
     $html .= '<option value="Aplazado" >Aplazado</option>';
-    $html .= '<option value="costos" >Sin estudio de costos</option>';
+    $html .= '<option value="Sin Estudio Costos" >Sin estudio de costos</option>';
     }  else {
         $html = '<option value="0" style="color:gray" readonly selected>Seleccione un Estado</option>';
         $html .= '<option value="' . $result['idProyecto'] . '">' .  $result['estadoProyecto'] . '</option>';

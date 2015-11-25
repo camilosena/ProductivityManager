@@ -191,11 +191,11 @@ $session->Session($pagActual);
                     <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Número de Proceso: </span></label>
                     <input name="IdProceso" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>
-                    <input name="NombreProceso" type="text" id="txtName"  placeholder="Pedro"   style="display: inline-block"><br>
+                    <input name="NombreProceso" type="text" id="txtName"  placeholder="Pedro"   style="display: inline-block" required><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Tiempo/horas: </span></label>
-                    <input name="Tiempo" type="text" id="txtName"  placeholder="12 "   style="display: inline-block"><br>
+                    <input name="Tiempo" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" required min="1"><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Cantidad de empleados: </span></label>
-                    <input name="Empleados" type="text" id="txtName"  placeholder="12 "   style="display: inline-block"><br>
+                    <input name="Empleados" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" min="1"><br>
                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Productos: </span></label>
                     <select id="selectProducto" name="selectProducto" class="input"> 
                      <?php
@@ -207,7 +207,7 @@ $session->Session($pagActual);
                         ?>
                     </select><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Valor sujerido: </span></label>
-                     <input name="valor" type="text" id="txtName"  placeholder="12 "   style="display: inline-block"><br>
+                    <input name="valor" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" min="1"><br>
                      
                     <button type="submit" value="Enviar" name="AgregarProceso" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
                     <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>

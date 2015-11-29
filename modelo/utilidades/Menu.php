@@ -50,56 +50,56 @@ class Menu {
                           <?php  if ($general['nombreRuta'] == 'Novedades') { ?>
                             <ul class="cbp-tm-submenu">
                             <?php  foreach ($novedad as $pagina) { ?>
-                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-pencil"><?php echo $pagina['nombreRuta']?></a></li>
                           <?php }?>
                           </ul>
                           <?php }?>
                           <?php  if ($general['nombreRuta'] == 'Personal') { ?>
                             <ul class="cbp-tm-submenu">
                             <?php  foreach ($persona as $pagina) { ?>
-                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-users"><?php echo $pagina['nombreRuta']?></a></li>
                           <?php }?>
                           </ul>
                           <?php }?>
                           <?php  if ($general['nombreRuta'] == 'Auditorias') { ?>
                             <ul class="cbp-tm-submenu">
                             <?php  foreach ($audita as $pagina) { ?>
-                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-article"><?php echo $pagina['nombreRuta']?></a></li>
                           <?php }?>
                           </ul>
                           <?php }?>
                           <?php  if ($general['nombreRuta'] == 'Clientes') { ?>
                             <ul class="cbp-tm-submenu">
                             <?php  foreach ($clientes as $pagina) { ?>
-                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-users"><?php echo $pagina['nombreRuta']?></a></li>
                           <?php }?>
                           </ul>
                           <?php }?>
                           <?php  if ($general['nombreRuta'] == 'Roles') { ?>
                             <ul class="cbp-tm-submenu">
                             <?php  foreach ($roles as $pagina) { ?>
-                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-users"><?php echo $pagina['nombreRuta']?></a></li>
                           <?php }?>
                           </ul>
                           <?php }?>
                           <?php  if ($general['nombreRuta'] == 'Insumos') { ?>
                             <ul class="cbp-tm-submenu">
                             <?php  foreach ($insumos as $pagina) { ?>
-                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-link"><?php echo $pagina['nombreRuta']?></a></li>
                           <?php }?>
                           </ul>
                           <?php }?>
                           <?php  if ($general['nombreRuta'] == 'Procesos') { ?>
                             <ul class="cbp-tm-submenu">
                             <?php  foreach ($procesos as $pagina) { ?>
-                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-clock"><?php echo $pagina['nombreRuta']?></a></li>
                           <?php }?>
                           </ul>
                           <?php }?>
                           <?php  if ($general['nombreRuta'] == 'Productos') { ?>
                             <ul class="cbp-tm-submenu">
                             <?php  foreach ($productos as $pagina) { ?>
-                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-archive"><?php echo $pagina['nombreRuta']?></a></li>
+                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-cog"><?php echo $pagina['nombreRuta']?></a></li>
                           <?php }?>
                           </ul>
                           <?php }?>

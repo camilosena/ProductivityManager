@@ -147,3 +147,106 @@ $( document ).ready(function() {
             }
         });
 });
+
+/* Validacion olvido contraseña*/
+$( document ).ready(function() {
+    fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
+    fuenteCierreError= '</font>';
+    $('#formContrasena').submit(function(e) {
+        e.preventDefault();
+    }).validate({
+        submitHandler: function(form) {  
+         if ($(form).valid())
+         {
+             form.submit(); 
+         }
+   return false;
+},
+
+            debug: true,
+            rules: {
+                 "user": { 
+                    required: true,
+                    number:true,
+                    minlength: 3,
+                    maxlength: 10
+                },
+                "email": {
+                   required: true,
+                    email: true
+                },
+                "emailConfirm": {
+                    required: true,
+                    equalTo : "#email"
+                }
+            },
+
+            messages: {
+                "user": { 
+                    required: fuenteError+'Documento'+fuenteCierreError,
+                    number: fuenteError+'No Valido'+fuenteCierreError,
+                    minlength: fuenteError+'Minimo 3'+fuenteCierreError,
+                    maxlength: fuenteError+'Maximo 10'+fuenteCierreError
+                },
+                "email": {
+                    required: fuenteError+'E-Mail'+fuenteCierreError,
+                    email: fuenteError+'No Valido'+fuenteCierreError
+                },
+                "emailConfirm": {
+                    required: fuenteError+'Confirme Email'+fuenteCierreError,
+                    equalTo: fuenteError+'No Coincide'+fuenteCierreError
+                }
+            }
+        });
+});
+/* Validacion olvido contraseña English Index*/
+$( document ).ready(function() {
+    fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
+    fuenteCierreError= '</font>';
+    $('#formContrasenaEg').submit(function(e) {
+        e.preventDefault();
+    }).validate({
+        submitHandler: function(form) {  
+         if ($(form).valid())
+         {
+             form.submit(); 
+         }
+   return false;
+},
+
+            debug: true,
+            rules: {
+                 "user": { 
+                    required: true,
+                    number:true,
+                    minlength: 3,
+                    maxlength: 10
+                },
+                "email": {
+                   required: true,
+                    email: true
+                },
+                "emailConfirm": {
+                    required: true,
+                    equalTo : "#email"
+                }
+            },
+
+            messages: {
+                "user": { 
+                    required: fuenteError+'Document'+fuenteCierreError,
+                    number: fuenteError+'Not Valid'+fuenteCierreError,
+                    minlength: fuenteError+'Minimum 3'+fuenteCierreError,
+                    maxlength: fuenteError+'Maximum 10'+fuenteCierreError
+                },
+                "email": {
+                    required: fuenteError+'E-Mail'+fuenteCierreError,
+                    email: fuenteError+'Not Valid'+fuenteCierreError
+                },
+                "emailConfirm": {
+                    required: fuenteError+'Confirm Mail'+fuenteCierreError,
+                    equalTo: fuenteError+'Do Not Match'+fuenteCierreError
+                }
+            }
+        });
+});

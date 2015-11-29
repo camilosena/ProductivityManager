@@ -15,6 +15,8 @@
     <script type="text/javascript" src="js/main.js"></script>
     <link href="js/toastr.css" rel="stylesheet"/>
     <script src="js/toastr.js"></script>    
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>    
+    <script src="js/validaciones.js"></script>  
 </head>
 <body>
     <div id='cssmenu' style="text-align:center">        
@@ -138,7 +140,7 @@ header nav ul li a:active{
     <a href="#close" title="Close" class="close">X</a><br>                  
     <h2 class="h330">Password Recovery:</h2><br>
     <p class="obligatorios">All fields below are mandatory.</p><br><br>                
-    <form class="formRegistro" method="Post" action="controlador/ControllerForgetPassword.php"> 
+    <form class="formRegistro" id="formContrasenaEg" method="Post" action="controlador/ControllerForgetPassword.php"> 
 
         <p style="font-weight: bold">  </p><hr>     
         <label for="identificacion" class="tag"><span id="valCompany" style="color:Red;visibility:hidden;"></span> User (Identification):</label>

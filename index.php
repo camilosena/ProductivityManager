@@ -14,7 +14,9 @@
         <script type="text/javascript" src="js/carouFredSel.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <link href="js/toastr.css" rel="stylesheet"/>
-        <script src="js/toastr.js"></script>       
+        <script src="js/toastr.js"></script>   
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>    
+        <script src="js/validaciones.js"></script>  
     </head>
     <body>
     <div id='cssmenu' style="text-align:center">        
@@ -164,7 +166,7 @@
                 <a href="#close" title="Close" class="close">X</a><br>					
                 <h2 class="h330">¿Olvidó su Contraseña?:</h2><br>
                 <p class="obligatorios">Todos los campos a continuación son obligatorios.</p><br><br>                
-                <form class="formRegistro" method="Post" action="controlador/ControllerForgetPassword.php"> 
+                <form class="formRegistro" id="formContrasena" method="Post" action="controlador/ControllerForgetPassword.php"> 
 
                     <p style="font-weight: bold">  </p><hr>     
                     <label for="identificacion" class="tag"><span id="valCompany" style="color:Red;visibility:hidden;"></span> Identificación:</label>

@@ -28,7 +28,7 @@ $( document ).ready(function() {
                 "descripcion": {
                     required: true,
                     minlength: 5,
-                    maxlength: 10
+                    maxlength: 180
                 }
             },
 

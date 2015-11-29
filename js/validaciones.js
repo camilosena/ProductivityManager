@@ -250,3 +250,117 @@ $( document ).ready(function() {
             }
         });
 });
+$( document ).ready(function() {
+    fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
+    fuenteCierreError= '</font>';
+        $('#formClientes').submit(function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: function(form) {  
+         if ($(form).valid())
+         {
+             form.submit(); 
+         }
+        return false;
+    },
+            debug: false,
+            rules: {
+                "nombreCompania": {
+                    required: true
+                },
+                "nit": {
+                    required: true,
+                    number:true,
+                    minlength: 5,
+                    maxlength: 12
+                },
+                "sectorEmp": {
+                    required: true
+                },
+                "sectorEco": {
+                    required: true
+                },
+                "direccion": {
+                    required: true
+                },
+                "telefonoFijo": {
+                    required: true,
+                    number:true,
+                    minlength: 7,
+                    maxlength: 10
+                },
+                "nombre": {
+                    required: true
+                },
+                "apellido": {
+                    required: true
+                },
+                "identificacion": {
+                    required: true,
+                    number:true,
+                    minlength: 3,
+                    maxlength: 10
+                },
+                "telefono": {
+                    required: true,
+                    number:true,
+                    minlength: 7,
+                    maxlength: 10
+                },
+                "email": {
+                    required: true,
+                    email: true
+                }
+            },
+
+            messages: {
+                "nombreCompania": {
+                    required: fuenteError+' Ingrese Nombre Empresa'+fuenteCierreError
+                },
+                "nit": {
+                    required: fuenteError+' Ingrese N.I.T.'+fuenteCierreError,
+                    number: fuenteError+' Documento No Valido'+fuenteCierreError,
+                    minlength: fuenteError+' Minimo 5 Digitos'+fuenteCierreError,
+                    maxlength: fuenteError+' Maximo 12 Digitos'+fuenteCierreError
+                },
+                "sectorEmp": {
+                    required: fuenteError+'Sector Empresarial'+fuenteCierreError
+                },
+                "sectorEco": {
+                    required: fuenteError+'Sector Económico'+fuenteCierreError
+                },
+                "direccion": {
+                    required: fuenteError+' Ingrese una Dirección'+fuenteCierreError
+                },
+                "telefonoFijo": {
+                    required: fuenteError+' Ingrese Teléfono Fijo'+fuenteCierreError,
+                    number: fuenteError+' Formato Erroneo'+fuenteCierreError,
+                    minlength: fuenteError+' Minimo 7 Digitos'+fuenteCierreError,
+                    maxlength: fuenteError+' Maximo 10 Digitos'+fuenteCierreError
+                },
+                "nombre": {
+                    required: fuenteError+' Ingrese Nombre'+fuenteCierreError
+                },
+                "apellido": {
+                    required: fuenteError+' Ingrese Apellidos'+fuenteCierreError
+                },
+                "identificacion": {
+                    required: fuenteError+' Ingrese Documento'+fuenteCierreError,
+                    number: fuenteError+' Documento No Valido'+fuenteCierreError,
+                    minlength: fuenteError+' Minimo 3 Digitos'+fuenteCierreError,
+                    maxlength: fuenteError+' Maximo 10 Digitos'+fuenteCierreError
+                },
+                "telefono": {
+                    required: fuenteError+' Ingrese Teléfono'+fuenteCierreError,
+                    number: fuenteError+' Formato Erroneo'+fuenteCierreError,
+                    minlength: fuenteError+' Minimo 7 Digitos'+fuenteCierreError,
+                    maxlength: fuenteError+' Maximo 10 Digitos'+fuenteCierreError
+                },
+                "email": {
+                    required: fuenteError+' Ingrese E-Mail'+fuenteCierreError,
+                    email: fuenteError+'No Valido Ej: user@productivity.co'+fuenteCierreError
+                }
+            }
+ 
+        });
+});

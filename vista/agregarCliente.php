@@ -491,7 +491,7 @@ $session->Session($pagActual);
                 <br>
                 <h2 class="h330">Agregar Nuevo Cliente:</h2><br>
                 <p class="obligatoriosD">Todos los campos a continuación son obligatorios.</p><br><br>                
-                <form class="formRegistro" method="post" action="../controlador/ControladorClientes.php" enctype="multipart/form-data"> 
+                <form class="formRegistro"  id="formClientes" method="post" action="../controlador/ControladorClientes.php" enctype="multipart/form-data"> 
                     <hr>                       
                     <p style="font-weight: bold">Compañia : </p><hr>       
                     <label class="tag" for="txtCompany1"><span id="lab_valCompany" class="h331">Razón Social: </span></label>
@@ -518,15 +518,16 @@ $session->Session($pagActual);
                         };
                     </script>
                     <br>
-                    <label class="tag" for="selCountry"><span id="lab_valCountry" class="h331">Sector Empresarial:</span></label>
-                    <select class="input" name="sectorEmp" id="selCountry" class="list_menu">                                              
+                    <label class="tag" for="sectorEmp"><span id="lab_valCountry" class="h331">Sector Empresarial:</span></label>
+                    <select class="input" name="sectorEmp" id="sectorEmp" class="list_menu" required>                                              
                         <option value="" selected disabled>Seleccione una opción</option>
                         <option value="Publico" >Público</option>
                         <option value="Privado" >Privado</option>
                         <option value="ONG" >ONG´s</option>   
                     </select>
-                    <label class="tag" for="selCountry"><span id="lab_valCountry" class="h331">Sector Económico:</span></label>
-                    <select class="input" name="sectorEco" id="selCountry" class="list_menu">                                              
+                    <br>
+                    <label class="tag" for="sectorEco"><span id="lab_valCountry" class="h331">Sector Económico:</span></label>
+                    <select class="input" name="sectorEco" id="sectorEco" class="list_menu" required>                                              
                         <option value="" selected disabled>Seleccione una opción</option>
                         <option value="Agropecuario" >Agropecuario</option>
                         <option value="Industrial" >Industrial</option>
@@ -539,8 +540,9 @@ $session->Session($pagActual);
                         <option value="Comunicaciones" >Comunicaciones</option> 
                         <option value="Otro" >Otro</option> 
                     </select>
-                    <label class="tag" for="txtSurname1"><span id="lab_valSurname" class="h331">Dirección: </span></label>
-                    <input class="input" name="direccion" type="text" id="txtSurname" placeholder="Cll 93 No 15 - 99" class="field1" required>
+                    <br>
+                    <label class="tag" for="direction"><span id="lab_valSurnamedd" class="h331">Dirección: </span></label>
+                    <input class="input" name="direccion" type="text" id="direction" placeholder="Cll 93 No 15 - 99" class="field1" required>
                     <span id="valSurname" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label class="tag" for="teFijo"><span id="lab_valCompany1" class="h331">Teléfono (PBX): </span></label>
@@ -619,12 +621,8 @@ $session->Session($pagActual);
       </script>
                     <button type="submit" name="agregarCliente" class="boton-verde">Agregar Cliente</button><br>
                 </form>  
-                <?php
-                if (isset($_GET['mensaje'])) {
-                    echo $_GET['mensaje'] . '<br>';
-                    echo 'Con Código : ' . $_GET['consecutivo'];
-                }
-                ?>
+                <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="../js/validaciones.js"></script>
             </div>
         </div>    
          <footer class="footer-distributed">

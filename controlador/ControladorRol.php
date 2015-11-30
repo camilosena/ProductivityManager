@@ -33,8 +33,8 @@ if (isset($_GET['creaRol'])) {
     $rol = $_GET['NameRol'];
     $dto->setIdRol($idRol);
     $dto->setRol($rol);
-    $facadeRol->agregarRol($dto);
-    header("location: ../vista/AsignarPermisos.php?");
+    $mensaje=$facadeRol->agregarRol($dto);
+    header("location: ../vista/AsignarPermisos.php?mensaje=".$mensaje);
 } else
 if (isset($_GET['crearRol'])) {
     $idRol = $_GET['selectId'];

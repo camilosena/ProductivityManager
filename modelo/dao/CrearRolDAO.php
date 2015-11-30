@@ -16,7 +16,7 @@ class CrearRolDAO {
     function ListarPermisos(PDO $cnn){
         
         try {
-            $listarPermisos = "Call ListarPermisos";
+            $listarPermisos = "select * from permisos";
             $query = $cnn->prepare($listarPermisos);
             $query->execute();
             $_SESSION['cantidad']=$query->rowCount();

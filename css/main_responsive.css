@@ -1694,3 +1694,6 @@ label.error {
    font-weight: bold;
    font-size: 11px;
 }
+#tablaPermisos th{
+    border: 1px solid red;
+}

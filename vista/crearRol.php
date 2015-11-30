@@ -133,7 +133,7 @@ $session->Session($pagActual);
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <div id="panelModificaPass">
                     <form class="formRegistro" id="formRoles" method="Get" action="../controlador/ControladorRol.php"> 
-                        <label class="tag" id="IdRol" for="IdRol"><span id="NameRol" class="h331">Número del Rol: </span></label>
+                        <label class="tag" id="IdRollabel" for="IdRol"><span id="NameRol" class="h331">Número del Rol: </span></label>
                         <input name="IdRol" class="input" type="text" id="IdRol" required style="text-align: center" readonly value="<?php echo $consecutivo ?>"> 
                         <span id="valCompany"  style="color:Red;visibility:hidden;"></span><br>
                         <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombre del Rol: </span></label>

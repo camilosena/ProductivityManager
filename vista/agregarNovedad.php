@@ -132,6 +132,7 @@ $session->Session($pagActual);
         
            <h2 class="h330">Agregar Novedad de Proyecto:</h2><br><hr>
            <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
+          <div id="panelNovedades2">
            <form class="formRegistro" id="formNovedades" method="post" action="../controlador/ControladorNovedades.php" enctype="multipart/form-data">
                <?php 
                require_once '../modelo/utilidades/Conexion.php';
@@ -222,6 +223,7 @@ $session->Session($pagActual);
             </script>';
                  }?>
             </form>
+            </div>
            <hr>
         </div>
     </div> 

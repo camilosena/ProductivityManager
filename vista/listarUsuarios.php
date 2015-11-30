@@ -311,9 +311,6 @@ $session->Session($pagActual);
                                 <?php
                         }
                     }
-                    if (isset($_GET['mensaje3'])) {
-                        echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
-                    }
                     ?>                      
                     </tbody>
                 </table>   

@@ -558,11 +558,11 @@ $session->Session($pagActual);
                     <hr>
                     <p style="font-weight: bold">Representante Legal : </p><hr>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombres: </span></label>
-                    <input class="input" name="nombre" type="text" id="txtName" class="field1" placeholder="Pedro"  required>
+                    <input class="input" name="nombre" type="text" id="txtName" class="field1" placeholder="Peter"  required>
                     <span id="valName" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label class="tag" for="txtSurname"><span id="lab_valSurname" class="h331">Apellidos: </span></label>
-                    <input class="input" name="apellido" type="text" id="txtSurname" class="field1" placeholder="Perez" required >
+                    <input class="input" name="apellido" type="text" id="txtSurname" class="field1" placeholder="González" required >
                     <span id="valSurname" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label class="tag" id="labelDocumento" for="documento"><span class="h331">Documento: </span></label>

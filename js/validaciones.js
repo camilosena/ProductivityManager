@@ -250,6 +250,7 @@ $( document ).ready(function() {
             }
         });
 });
+/*Validacion Formulario Clientes*/
 $( document ).ready(function() {
     fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
     fuenteCierreError= '</font>';
@@ -362,5 +363,46 @@ $( document ).ready(function() {
                 }
             }
  
+        });
+});
+/* Validacion crear Rol*/
+$( document ).ready(function() {
+    fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
+    fuenteCierreError= '</font>';
+    $('#formRoles').submit(function(e) {
+        e.preventDefault();
+    }).validate({
+        submitHandler: function(form) {  
+         if ($(form).valid())
+         {
+             form.submit(); 
+         }
+   return false;
+},
+
+            debug: true,
+            rules: {
+                 "IdRol": { 
+                    required: true,
+                    number:true,
+                    minlength: 1,
+                    maxlength: 10
+                },
+                "NameRol": {
+                   required: true
+                }
+            },
+
+            messages: {
+                "IdRol": { 
+                    required: fuenteError+'Ingrese Id Rol'+fuenteCierreError,
+                    number: fuenteError+'Id No Valido'+fuenteCierreError,
+                    minlength: fuenteError+'Minimo 1 Caracter'+fuenteCierreError,
+                    maxlength: fuenteError+'Máximo 10 Caracteres'+fuenteCierreError
+                },
+                "NameRol": {
+                    required: fuenteError+'Ingrese Rol'+fuenteCierreError
+                }
+            }
         });
 });

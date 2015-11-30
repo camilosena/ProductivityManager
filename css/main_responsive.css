@@ -359,8 +359,8 @@ float: left;
 }
 
 #panelModificaPass{
-    width: 70%;   
-    margin-left: 15%;
+    width: 80%;   
+    margin-left: 10%;
     margin-top: 5%;
 }
 #panelReportes{
@@ -1660,4 +1660,37 @@ label.error {
     margin-left: 10px;
     width: auto;
     display: inline;
+}
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
+}
+#panelNovedades2{
+    padding-left: 5%;
+}
+#accesosRapidos{
+    float: left;
+    width: 100%;
+}
+#accesosRapidos div{
+    text-align: center;
+    width: 50%;
+    height: 50px;
+    float: left;
+}
+#accesosRapidos p{
+   font-family: sans-serif;
+   font-weight: bold;
+   font-size: 11px;
 }

@@ -132,17 +132,26 @@ $session->Session($pagActual);
 
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <div id="panelModificaPass">
-                    <form class="formRegistro" method="Get" action="../controlador/ControladorRol.php"> 
+                    <form class="formRegistro" id="formRoles" method="Get" action="../controlador/ControladorRol.php"> 
                         <label class="tag" id="IdRol" for="IdRol"><span id="NameRol" class="h331">Número del Rol: </span></label>
                         <input name="IdRol" class="input" type="text" id="IdRol" required style="text-align: center" readonly value="<?php echo $consecutivo ?>"> 
                         <span id="valCompany"  style="color:Red;visibility:hidden;"></span><br>
                         <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombre del Rol: </span></label>
-                        <input  name="NameRol" class="input" type="text" id="txtName"  placeholder="Empleado"  required  >
+                        <input  name="NameRol" class="input" type="text" id="txtName"  placeholder="Empleado" pattern="[A-Za-z]{2,10}" title="Solo Letras" required  >
                         <span id="valName" style="color:Red;visibility:hidden;"></span><br>
                         <button type="submit" value="Enviar" name="creaRol" id="crearRol" class="boton-verde" >Crear Rol</button>
-                    </form>                    
-                    <button class="boton-verde" onclick="location.href = 'agregarAreas.php'" style="display:inline">Áreas</button>
-                    <button type="submit" value="Enviar" name="listarRol" id="listarRol" class="boton-verde" style="display:inline"><a style="text-decoration: none" href="#ModalRoles">Ver Roles</a></button><br>
+                    </form>     
+                    <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+                <script src="../js/validaciones.js"></script>               
+                </div>
+                <hr>
+                 <div id="accesosRapidos">
+                    <div>
+                        <a href="agregarAreas.php" title="Áreas"><img src="../img/procesos.png"></a>
+                    <p>Agregar Área</p>
+                    </div>
+                 <div><a href="crearRol.php#ModalRoles" title="Roles"><img src="../img/roles.png"></a>
+                    <p>Ver Roles</p></div>
                 </div>
                 <hr>
                 <div id="ModalRoles" class="modalDialog" title="Roles">
@@ -171,7 +180,7 @@ $session->Session($pagActual);
                                     $allRoles = $rolDao->ListarRoles();
                                     foreach ($allRoles as $roles) {
                                         ?>
-                                        <tr><td><?php echo $roles['idRoles']; ?> </td>
+                                        <tr><td>0<?php echo $roles['idRoles']; ?> </td>
                                             <td>   <?php echo $roles['rol']; ?> </td>
 
                                             <td colspan="2"><a href="ModificarRol.php?id=<?php echo $roles['idRoles']; ?>"><img src="../img/editar.png" class="iconos" width="48" height="48" alt="Modificar Registro"/>
@@ -185,22 +194,17 @@ $session->Session($pagActual);
 
                                 </tbody>
                             </table>
-                            <button class="boton-verde" onclick="location.href = 'crearRol.php'">Regresar</button>
+                            <br>
+                            <div id="accesosRapidos">
+                                <div>
+                                </div>
+                                    <div>
+                                   <a href="crearRol.php" title="Atras"><img src="../img/flechaIzquierda.png"></a>
+                                    <p>Regresar</p>
+                                    </div>
+                                </div>
+                                <br><br><br>
                         </div>
-
-                        <?php
-                        if (isset($_GET['mensaje'])) {
-                            ?>
-                            <div class="row"><br><br>
-                                <div class="col-md-6"></div>
-                                <div class="col-md-1 text-center"><h4><?php echo $mensaje = $_GET['mensaje'] ?></h4></div>
-                                <div class="col-md-5"></div>
-                            </div>
-                            <?php
-                        }
-                        ?>
-
-
                     </div>
 
                 </div>

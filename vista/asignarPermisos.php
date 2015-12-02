@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
 $pagActual = 'asignarPermisos.php';
@@ -169,16 +169,14 @@ $session->Session($pagActual);
                                         
                                         <td> <input name="permiso" value ="<?php echo $unit['nombreRuta']; ?>" disabled ></td>
                                        
-                                        <td><input type="checkbox" id="estado" name="<?php echo $unit['idpermisos']; ?>" value="<?php echo $unit['idpermisos']; ?>">   </td>         
+                                        <td><input type="checkbox" id="estado" name="<?php echo $unit['idPermisos']; ?>" value="<?php echo $unit['idPermisos']; ?>">   </td>         
 
                                     </tr>
                                     
                                     <?php
                                 }
                             }
-                                if (isset($_GET['mensaje3'])) {
-                                    echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
-                                }
+                               
                                 ?>    
                             </table>
                             <button type="submit" value="Enviar" name="crearRol" id="crearRol" class="boton-verde">Asignar Permisos</button><br>

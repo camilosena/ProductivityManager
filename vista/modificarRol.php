@@ -165,9 +165,9 @@ $session->Session($pagActual);
 
                                         <td> <input name="permiso" value ="<?php echo $unit['nombreRuta']; ?>" disabled ></td>
                                         <td></td>
-                                        <td><input type="checkbox" id="estado" name="<?php echo $unit['idpermisos']; ?>" value="<?php echo $unit['idpermisos']; ?>" <?php
+                                        <td><input type="checkbox" id="estado" name="<?php echo $unit['idPermisos']; ?>" value="<?php echo $unit['idPermisos']; ?>" <?php
                                             foreach ($PPRol as $permisos) {
-                                                if (($unit['idpermisos'] == $permisos["permisos"])) {
+                                                if (($unit['idPermisos'] == $permisos["permisos"])) {
                                                     echo 'checked="checked"';
                                                 }
                                             }

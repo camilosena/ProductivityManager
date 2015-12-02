@@ -15,6 +15,8 @@ require_once '../modelo/dao/InsumosDAO.php';
 require_once '../modelo/dto/InsumosDTO.php';
 require_once '../facades/FacadeInsumos.php';
 require_once '../modelo/dto/InsumosPorProductoDTO.php';
+require_once '../facades/FacadeArchivo.php';
+require_once '../modelo/dao/ArchivoDAO.php';
  session_start();
 $facadeProductos = new FacadeProductos();
 $facadeInsumos = new FacadeInsumos();
@@ -89,5 +91,14 @@ if (isset ($_POST['AsociarInsumos'])) {
 }else 
 if (isset ($_POST['Atras'])) {
      header("location: ../vista/agregarProductos.php");
+}else
+if (isset ($_POST['subir'])) {
+     $table = 'productos';
+        $file = realpath($_FILES['archivo']['tmp_name']);
+        $file = str_replace('\\', '/', $file);
+        $facadeArchivo = new FacadeArchivo();
+        $mensaje = $facadeArchivo->cargarArchivo($table, $file);
+         header("location: ../vista/agregarProductos.php?mensaje=".$mensaje);
 }
+
 

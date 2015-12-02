@@ -131,16 +131,21 @@ $session->Session($pagActual);
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <form class="formRegistro" method="Get" action="../controlador/ControladorRol.php"> 
                  <div id="panelModificaPass">   
-                   
-                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Areas: </span></label>
-                    <table>
+               
+                    <table id="muestraDatos" style="margin-left:30%">
+                        <thead>
+                            <th>Código</th>
+                            <th>Área</th>
+                            <th>Acción</th>
+                        </thead>   
                         <?php
                         foreach ($all as $unit) {
+                            if($unit['nombreArea']!='Cliente'){
                             ?> 
                         
                             <tr>
-                                <td> <input name="idAreas" size="1" value ="<?php echo $unit['idAreas']; ?>" readonly ></td>
-                                <td> <input name="permiso" size="10" value ="<?php echo $unit['nombreArea']; ?>" disabled ></td>
+                                <td>0<?php echo $unit['idAreas']; ?></td>
+                                <td> <?php echo $unit['nombreArea']; ?></td>
                                  <td><a name="eliminarArea" title="Eliminar Area" class="me"  href="../controlador/ControladorRol.php?idEliminar=<?php echo $unit['idAreas']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
                                         
 
@@ -148,12 +153,10 @@ $session->Session($pagActual);
                         
                             <?php
                         }
-                        if (isset($_GET['mensaje3'])) {
-                            echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
-                        }
+                    }
                         ?>    
                     </table>
-                    
+                    <br>
                     <?php
                          require_once '../facades/FacadeAreas.php';
                         require_once '../modelo/dao/AreasDAO.php';
@@ -163,22 +166,13 @@ $session->Session($pagActual);
                     
                 <br>  
                     <label class="tag" id="IdRol" for="IdArea"><span id="NameRol" class="h331" style="display: inline-block">Número de Área: </span></label>
-                    <input name="IdArea" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
+                    <input name="IdArea" style="text-align:center" class="input" type="text" id="IdArea" required readonly value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nueva Área: </span></label>
-                    <input name="NombreArea" type="text" id="txtName"  placeholder="Pedro"   style="display: inline-block"><br>
+                    <input name="NombreArea" class="input" type="text" id="txtName"  placeholder="Ensamble"  required style="display: inline-block"><br>
                     
-                    <button type="submit" value="Enviar" name="AgregarArea" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
-                    <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
+                    <button type="submit" value="Enviar" name="AgregarArea" id="Areas" class="boton-verde" >Agregar</button>
                  </div>    
-                </form><br>
-                
-                
-                <?php
-                if (isset($_GET['mensaje'])) {
-                    echo $_GET['mensaje'] . '<br>';
-                    echo 'Su nuevo Código es: ' . $_GET['consecutivo'];
-                }
-                ?>
+                </form><hr>
             </div>
         </div>    
         <footer class="footer-distributed">

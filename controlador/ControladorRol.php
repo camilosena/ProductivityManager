@@ -48,7 +48,7 @@ if (isset($_GET['crearRol'])) {
             $mensaje = $facadeRol->agregarPermisos($dto);
         }
     }
-    header("location: ../vista/ModificarRol.php?id=".$idRol);
+    header("location: ../vista/ModificarRol.php?id=".$idRol."&mensaje=".$mensaje);
 } else
 if (isset($_GET['listarRol'])) {
     header("location: ../vista/CrearRol.php#ModalRoles");
@@ -68,7 +68,7 @@ if (isset($_GET['ModificarRol'])) {
             $mensaje = $facadeRol->agregarPermisos($dto);
         }
     }
-    header("location: ../vista/ModificarRol.php?id=" . $_GET['selectId'] . $mensaje);
+    header("location: ../vista/ModificarRol.php?id=" . $_GET['selectId'] ."&mensaje=". $mensaje);
 } else
 if (isset($_GET['idElimirarRol'])) {
     $facadeRol->ModificarRol($_GET['idElimirarRol']);

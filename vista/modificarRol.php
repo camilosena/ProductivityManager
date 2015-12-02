@@ -81,6 +81,52 @@ $session->Session($pagActual);
                 }
         <?php } ?>
         </script>
+         <?php 
+                 if (isset($_GET['mensaje'])) {
+            echo '<script> 
+             Command: toastr["success"]("'.$_GET['mensaje'].'")
+            toastr.options = {
+              "closeButton": false,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-top-right",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+            </script>';
+                 }?>
+                  <?php 
+                 if (isset($_GET['mensajePermisos'])) {
+            echo '<script> 
+             Command: toastr["success"]("'.$_GET['mensajePermisos'].'")
+            toastr.options = {
+              "closeButton": false,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-top-right",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+            </script>';
+                 }?>
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
                 <nav>
@@ -144,27 +190,35 @@ $session->Session($pagActual);
                         $all = $facadeCreateRol->ListarPermisos();
                         $PPRol = $facadeCreateRol->ObtenerPermisosPorRol($_GET['id']);
                         ?>
-                        <select class="input9" name="selectId"> 
-
-                            <?php
-                            echo '<option value="' . $idRol['idRoles'] . '">' . $idRol['idRoles'] . '</option>';
-                            ;
-                            ?>
-                        </select><br>
+                        <input name="selectId" class="input" type="text" id="selectId" required style="text-align: center" readonly value="<?php echo $_GET['id']?>"> 
+                        <span id="valCompany"  style="color:Red;visibility:hidden;"></span><br>
+                        <?php $nombre = $facadeCreateRol->ObtenerNombreRol($_GET['id']); ?>
 
                         <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombre del Rol: </span></label>
-                        <input  name="NameRol" class="input9" type="text" id="txtName"  placeholder="Pedro" readonly value="<?php echo $nombre ?> " >
+                        <input name="NameRol" class="input" type="text" id="txtName"  placeholder="Administrador" readonly  value=" <?php echo $nombre ?> " style="text-align:center"> 
+
+
                         <span id="valName" style="color:Red;visibility:hidden;"></span><br>
                         <label class="tag" id="Permisos" for="Permisos"><span id="permisos" class="h331">Seleccione Los Permisos: </span></label>
                         <div id="panelModificaPass">
-                            <table>
+                            <table id="muestraDatos" style="margin-left:25%">
                                 <?php
                                 foreach ($all as $unit) {
-                                    ?>     
+                                    if($unit['nivel']==1){?>  
+                                    <th><?php echo $unit['nombreRuta'].' '; ?><input type="checkbox" id="estado" name="<?php echo $unit['idPermisos']; ?>" value="<?php echo $unit['idPermisos']; ?>" <?php
+                                            foreach ($PPRol as $permisos) {
+                                                if (($unit['idPermisos'] == $permisos["permisos"])) {
+                                                    echo 'checked="checked"';
+                                                }
+                                            }
+                                            ?> /> </th>
+                                    <?php
+
+                                    }else{                                 
+                                    ?>   
                                     <tr>
 
                                         <td> <input name="permiso" value ="<?php echo $unit['nombreRuta']; ?>" disabled ></td>
-                                        <td></td>
                                         <td><input type="checkbox" id="estado" name="<?php echo $unit['idPermisos']; ?>" value="<?php echo $unit['idPermisos']; ?>" <?php
                                             foreach ($PPRol as $permisos) {
                                                 if (($unit['idPermisos'] == $permisos["permisos"])) {
@@ -177,23 +231,16 @@ $session->Session($pagActual);
 
                                     <?php
                                 }
-                                if (isset($_GET['mensaje3'])) {
-                                    echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
-                                }
+                            }
+                                
                                 ?>    
                             </table>                    
                             <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
-                            <button type="submit" value="Enviar" name="ModificarRol"  class="boton-verde" style="display: inline">Modificar</button>
-                            <button type="submit" value="Enviar" name="ModificarAreas" id="Areas" class="boton-verde" style="display: inline">Áreas</button><br>
+                            <button type="submit" value="Enviar" name="ModificarRol"  class="boton-verde" style="display: inline">Actualizar Prmisos</button>
+                            <button type="submit" value="Enviar" name="ModificarAreas" id="Areas" class="boton-verde" style="display: inline">Asignar Áreas</button><br>
                         </div>
                     </form>                
                 </div>
-                <?php
-                if (isset($_GET['mensaje'])) {
-                    echo $_GET['mensaje'] . '<br>';
-                    echo 'Su nuevo Código es: ' . $_GET['consecutivo'];
-                }
-                ?>
             </div>
         </div>    
         <footer class="footer-distributed">

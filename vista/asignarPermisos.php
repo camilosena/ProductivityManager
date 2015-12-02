@@ -155,11 +155,11 @@ $session->Session($pagActual);
                         <span id="valName" style="color:Red;visibility:hidden;"></span><br>
                         <label class="tag" id="Permisos" for="Permisos"><span id="permisos" class="h331">Seleccione Los Permisos: </span></label>
                         <div id="panelModificaPass">
-                            <table id="muestraDatos">
+                            <table id="muestraDatos" style="margin-left:30%">
                                 <?php
                                 foreach ($all as $unit) {
                                     if($unit['nivel']==1){?>  
-                                    <th><?php echo $unit['nombreRuta'].' '; ?><input type="checkbox" id="estado" name="<?php echo $unit['idpermisos']; ?>" value=" <?php echo $unit['idpermisos']; ?>"/></th>
+                                    <th><?php echo $unit['nombreRuta'].' '; ?><input type="checkbox" id="estado" name="<?php echo $unit['idPermisos']; ?>" value=" <?php echo $unit['idPermisos']; ?>"/></th>
                                     <?php
                                     }else{                                 
                                     ?>  
@@ -167,7 +167,7 @@ $session->Session($pagActual);
                                     <tr>
                                      
                                         
-                                        <td> <input name="permiso" value ="<?php echo $unit['nombreRuta']; ?>" disabled ></td>
+                                        <td style="font-size:11px"><?php echo $unit['nombreRuta']; ?></td>
                                        
                                         <td><input type="checkbox" id="estado" name="<?php echo $unit['idPermisos']; ?>" value="<?php echo $unit['idPermisos']; ?>">   </td>         
 

@@ -77,17 +77,18 @@ if (isset ($_POST['AsociarInsumos'])) {
     $facadeInsumos->eliminarInsumos($_POST['idProducto']);
    $dto->setIdProdcuto($_POST['idProducto']);
 
-    $cantidad = $_SESSION['cantidad'];
+    $cantidad = $_SESSION['cantInsumos'];
     for ($i = 1; $i <= $cantidad; $i++) {
         if (isset($_POST[$i])) {
             $dto->setIdInsumo($_POST[$i]);
+              $dto->setCantidad($_POST['cant'.$i]);
             echo $mensaje = $facadeProductos->asociarInsumos($dto);
         }
     }
     
 
     
- header("location: ../vista/agregarProductos.php?mensaje=".$mensaje);
+ header("location: ../vista/insumosPorProducto.php");
 }else 
 if (isset ($_POST['Atras'])) {
      header("location: ../vista/agregarProductos.php");

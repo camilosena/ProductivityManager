@@ -36,9 +36,8 @@ class InsumosDAO {
     function listarInsumos(PDO $cnn) {
 
         try {
-            $sql = "select idMateriaPrima as numero, descripcionMateria as nombre, unidadDeMedida as unidad, concat('$',' ', precioBase) as precio from materiaprima";
+            $sql = "select idMateriaPrima as numero, descripcionMateria as nombre, unidadDeMedida as unidad, precioBase as precio from materiaprima";
             $query = $cnn->prepare($sql);
-
             $query->execute();
             return $query->fetchAll();
         } catch (Exception $ex) {

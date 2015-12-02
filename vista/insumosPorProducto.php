@@ -130,36 +130,54 @@ $session->Session($pagActual);
                     <?php
                     require_once '../modelo/dao/InsumosDAO.php';
                     require_once '../facades/FacadeInsumos.php';
+                    require_once '../modelo/dao/ProductosDAO.php';
+                    require_once '../facades/FacadeProductos.php';
                     // listar insumos
                     $facadeInsumos = new FacadeInsumos();
+                    $fProductos = new FacadeProductos();
                     $insumos = $facadeInsumos->listarInsumos();
                     $idProducto= $_SESSION['Producto']['idProductos'];
                     //Obtener insumos por producto
                     $IxP= $facadeInsumos->obtenerInsumos($idProducto);
+                    
                     
                     ?>
                     <input type="hidden" name="idProducto" value="<?php echo $idProducto;?>">
                     
                   
                     <label class="tag" id="Permisos" for="Permisos"><span id="permisos" class="h331">Insumos: </span></label>
-                    <table>
+                    <table style="margin-left:30%">
                         <?php
-                        
+                        $_SESSION['cantInsumos']=0;
                         foreach ($insumos as $insumo) {
+                            $_SESSION['cantInsumos']++;
+                            $cantidadInsumos = $fProductos->cantidadPorInsumo($insumo['numero'], $idProducto);
                             ?>     
                             <tr>
                                
                                 <td><input name="insumo" size="7" value ="<?php echo $insumo['nombre']; ?>" readonly></td>
-<!--                                <td><input name="unidades" type="text"  size="3"  ></td>
-                                <td><input name="medida" size="1" value ="//<?php echo $insumo['unidad']; ?>" readonly ></td>-->
-                                <td><input type="checkbox" id="estado" name="<?php echo $insumo['numero']; ?>" value="<?php echo $insumo['numero']; ?>"<?php 
+                                <td><input style="width: 50px; text-align: center" name="cant<?php echo $insumo['numero']; ?>" id="cant<?php echo $insumo['numero']; ?>" type="text" value ="<?php echo $cantidadInsumos; ?>"></td>
+                                <td><input style="width: 100px; text-align: center" name="medida" size="1" value ="<?php echo $insumo['unidad']; ?>" readonly ></td>
+                                <td><input type="checkbox" id="insumo<?php echo $insumo['numero']; ?>" name="<?php echo $insumo['numero']; ?>" value="<?php echo $insumo['numero']; ?>"<?php 
                                 foreach ( $IxP as $IxProducto){
                                         if (($insumo['numero']==$IxProducto["insumos"])) {                           
                                             echo 'checked="checked"';
                                 }  } ?> />   </td>         
                                
                             </tr>
+                                 <script>
+                                        $(document).ready(function(){
 
+                                            $("#insumo<?php echo $insumo['numero']; ?>").click(function() {
+                                                if($("#insumo<?php echo $insumo['numero'];  ?>").is(':checked')) {
+                                                    $("#cant<?php echo $insumo['numero']; ?>").attr("required", true);
+                                                } else {
+                                                    $("#cant<?php echo $insumo['numero']; ?>").attr("required", false);
+                                                }
+                                            });
+
+                                        });
+                                    </script>
                             <?php
                         }
                         if (isset($_GET['mensaje3'])) {
@@ -167,9 +185,8 @@ $session->Session($pagActual);
                         }
                         ?>    
                     </table>
-                    <button type="submit" value="Enviar" name="AsociarInsumos" id="crearRol" class="boton-verde" style="display: inline">Asignar</button>
+                    <button type="submit" value="Enviar" name="AsociarInsumos" id="crearRol" class="boton-verde" >Asignar Insumos</button>
                     
-                    <button type="submit" value="Enviar"  name="Atras"  class="boton-verde " style="display: inline">Atras</button>
                     </form><br>
                 
                 

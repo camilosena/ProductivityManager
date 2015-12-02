@@ -162,6 +162,21 @@ join productos on Productos_idProductos = idProductos and proyectosIdProyecto=?"
         }
         $cnn = null;
     }
+    function cantidadPorInsumo($idInsumo, $idProducto, PDO $cnn){
+        
+        
+   try {
+            $sql = "select cantidadMateriaPorProducto from materiaprimaporproducto where idMateriaPrima_materiaPrima=? and ProductosIdProductos=?" ;
+            $query = $cnn->prepare($sql);   
+            $query->bindParam(1, $idInsumo);
+            $query->bindParam(2, $idProducto);
+            $query->execute();                       
+            return $query->fetchColumn();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+                        }
     
     
     

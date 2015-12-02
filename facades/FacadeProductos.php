@@ -63,6 +63,10 @@ class FacadeProductos {
         
         return $this->productosDAO->producoPorProyecto($idProyecto, $this->conexion);
     }
+    function cantidadPorInsumo($idInsumo, $idProducto){
+        
+        return $this->productosDAO->cantidadPorInsumo($idInsumo, $idProducto, $this->conexion);
+    }
     
 
 }

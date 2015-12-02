@@ -14,8 +14,12 @@
              session_start();
              $_SESSION['id']=$validaInfo['idLogin'];
              $_SESSION['rol']=$validaInfo['rol'];
-             $facadePermmisos= new FacadePermisos;                       
+             $facadePermmisos= new FacadePermisos; 
+             if ($_POST['pass'] == "inicial") {
+                 header("location: ../vista/modificarContrasena.php?mensaje= Modifique su contraseña".$_SESSION['rol']);
+             }else{
              header("location: ../vista/listarProyectos.php?bienvenida=Bienvenido ".$_SESSION['rol']);
+             }
          }
          else{
              $mensaje="Usuario o contraseña incorrecta";

@@ -120,6 +120,11 @@ $session->Session($pagActual);
             </nav>
 
             <div id="panelUnico">
+                <form method="post" action="../controlador/ControladorInsumos.php" enctype="multipart/form-data">
+                    <label>Cargar archivo:</label>
+                    <input type="file" name="archivo">
+                    <input name="subir" type="submit" value="Subir Archivo">
+            </form><br>
                 <br>
                 <br><h2 class="h330">Agregar Insumos:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>

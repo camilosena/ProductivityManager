@@ -18,6 +18,8 @@
     require_once '../modelo/dao/InsumosDAO.php';
     require_once '../modelo/dto/InsumosDTO.php';
     require_once '../modelo/utilidades/Conexion.php';
+    require_once '../modelo/dao/ArchivoDAO.php';
+    require_once '../facades/FacadeArchivo.php';
     
     if (isset($_GET['AgregarInsumo'])) {
     $facadeInsumos = new FacadeInsumos();
@@ -35,4 +37,12 @@ if ($_GET['idEliminar']) {
     $facadeInsumos = new FacadeInsumos();    
    $mensaje= $facadeInsumos->eliminarInsumos($_GET['idEliminar']);
      header("location: ../vista/agregarInsumos.php?".$mensaje);
+}else
+if (isset ($_POST['subir'])) {
+     $table = 'materiaprima';
+        $file = realpath($_FILES['archivo']['tmp_name']);
+        $file = str_replace('\\', '/', $file);
+        $facadeArchivo = new FacadeArchivo();
+        $mensaje = $facadeArchivo->cargarArchivo($table, $file);
+         header("location: ../vista/agregarInsumos.php?mensaje=".$mensaje);
 }

@@ -128,6 +128,14 @@ $session->Session($pagActual);
                 </div>
         </header>        
         <div class="wrapper">
+            <form method="post" action="../controlador/ControladorUsuarios.php" enctype="multipart/form-data">
+                    <label>Cargar archivo:</label>
+                    <input type="file" name="archivo">
+                    <input name="subir" type="submit" value="Subir Archivo">
+            </form><br>
+            <form method="post" action="../controlador/ControladorUsuarios.php" enctype="multipart/form-data">                    
+                    <input name="actualizar" type="submit" value="Actualizar">
+            </form><br>
            
             <nav class="migas"><br>
                 <span itemscope >

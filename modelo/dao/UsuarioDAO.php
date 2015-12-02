@@ -321,4 +321,30 @@ and areas_idAreas=idAreas");
         }
         $cnn = null;
     }
+    function consultarUsuariosPorArchivo(PDO $cnn){
+        try {
+            $listarUsuarios = "SELECT * FROM productivitymanager.personas where areas_idAreas = 0";
+            $query = $cnn->prepare($listarUsuarios);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        
+    }
+    function actualizarLogin(LoginDTO $dto, PDO $cnn) {
+        $mensaje = '';
+        try {
+            $sentencia = $cnn->prepare("INSERT INTO usuarios VALUES(?,md5(?),?)");
+            $sentencia->bindParam(1, $dto->getIdLogin());
+            $sentencia->bindParam(2, $dto->getContrasena());
+            $sentencia->bindParam(3, $dto->getRol());
+            $sentencia->execute();
+            $mensaje = "Actualización de contraseñas";
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+        }
+        $cnn = NULL;
+        return $mensaje;
+    }
 }

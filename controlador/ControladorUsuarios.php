@@ -12,6 +12,9 @@ require_once '../modelo/utilidades/Conexion.php';
 require_once '../facades/FacadeUsuarios.php';
 require_once '../facades/FacadeCorreos.php';
 require_once '../facades/FacadeLogin.php';
+require_once '../facades/FacadeArchivo.php';
+require_once '../modelo/dao/ArchivoDAO.php';
+require_once '../modelo/dto/LoginDTO.php';
 
 //  Registrar Usuarios
 if (isset($_POST['crearUsuario'])) {
@@ -149,4 +152,29 @@ else if($_FILES['cambiaImagen']['name']!=''){
        }else{
          header("location: ../vista/listarProyectos.php?mensajeFoto=".$msg);
        }
-}    
+}else
+if (isset ($_POST['subir'])) {
+     $table = 'personas';
+        $file = realpath($_FILES['archivo']['tmp_name']);
+        $file = str_replace('\\', '/', $file);
+        $facadeArchivo = new FacadeArchivo();
+        $mensaje = $facadeArchivo->cargarArchivo($table, $file);
+         header("location: ../vista/registrarUsuario.php?mensaje=" . $mensaje);
+} else
+if (isset ($_POST['actualizar'])) {
+    $fUsuario = new FacadeUsuarios();
+    $datos = $fUsuario->consultarUsuariosPorArchivo();
+    $contrasena = "inicial";
+    $rol = 0;
+    
+    $lDTO = new LoginDTO();
+    foreach ($datos as $dato){
+        $idLogin = $dato['identificacion'];
+        $lDTO->setIdLogin($idLogin);
+        $lDTO->setContrasena($contrasena);
+        $lDTO->setRol($rol);
+        $mensaje = $fUsuario->actualizarLogin($lDTO);  
+    }
+     header("Location: ../vista/listarUsuariosInactivos.php?mensale =".$mensaje);
+    
+}

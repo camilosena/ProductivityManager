@@ -124,4 +124,12 @@ class FacadeUsuarios{
 
         return $this->objetoDAO->verificarUsuarioRegistrado($identificacion, $this->conexionBase);
     }
+    function consultarUsuariosPorArchivo(){
+        
+        return $this->objetoDAO->consultarUsuariosPorArchivo($this->conexionBase);
+    }
+    function actualizarLogin($dto){
+        
+        return $this->objetoDAO->actualizarLogin($dto, $this->conexionBase);
+    }
 }

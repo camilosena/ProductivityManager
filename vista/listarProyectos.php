@@ -42,7 +42,7 @@ $session->Session($pagActual);
            <li><a href="javascript:reporte('reportes.php?tipoReporte=Proyectos')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
             <script language=javascript>
             function reporte(URL) {
-                window.open(URL, "reportes.php", "width=1150,height=645,top=30,left=75,scrollbars=NO");
+                window.open(URL, "reportes.php", "width=1250,height=645,top=30,left=30,scrollbars=NO");
             }
         </script> 
            </li>

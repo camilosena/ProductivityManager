@@ -144,9 +144,9 @@ session_start();
         <ul>
             <li><a><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
            <ul>
-               <li><a href='Reportes.php?tipoReporte=Costos'><span><i class="fa fa-key fa-lg"></i> Estudio de Costos</span></a>       
+               <li><a href='Reportes.php?tipoReporte=Costos'><span><i class="fa fa-file-text fa-lg"></i> Estudio de Costos</span></a>       
                  </li>
-                 <li><a href='Reportes.php?tipoReporte=Proyectos'><span><i class="fa fa-picture-o fa-lg"></i> Proyectos </span></a>              
+                 <li><a href='Reportes.php?tipoReporte=Proyectos'><span><i class="fa fa-file-text fa-lg"></i> Proyectos </span></a>              
                  </li>
               </ul>
            </li>
@@ -284,7 +284,7 @@ session_start();
           
                  </form><br>
                  <div id="panelVistaReporte">     <hr>                               
-                        <label style="display: inline">"Mostrar Seleccion" -----></label>
+                        <label style="display: inline"></label>
 
                         <table id="tableReporteProyecto">
                             <thead>

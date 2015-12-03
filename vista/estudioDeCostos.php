@@ -180,8 +180,7 @@ $session->Session($pagActual);
                         <div class="modelo"><p class="obligatoriosD"><font style="font-weight:bold">Nota:</font> La fecha final esta determinada en días hábiles laborales de 8 horas diarias.</p></div>
                     </div>   
                 </form>
-                </div>
-            </div>                  
+                </div>                
     <?php }else{
         echo '<h2 class="h330"><br>Debe Seleccionar Un Proyecto.</h2>';
     }  ?>

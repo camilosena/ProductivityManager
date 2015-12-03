@@ -138,6 +138,12 @@ $session->Session($pagActual);
             </table>
         </div>
         <div>
+            <div id="exports" style="float:right;padding-bottom:10px;margin-right: 15%">
+                    <img src="../img/imprimir.png">
+                    <img src="../img/email.png">
+                    <img src="../img/excel.png">
+                    <a href='../controlador/ControladorPDF.php?estudioPDF=<?php echo $_GET['projectNum']?>'><img src="../img/pdf.png" title="Exportar a PDF"></a></div>
+            </div>  
             <?php
                 echo '<div id="infoGere">';
                 $costosProyecto = $facadeEstudioCostos->verificaExistenciaEstudio($proyectos['idProyecto']);
@@ -152,8 +158,9 @@ $session->Session($pagActual);
                 echo '</table>';
                 echo '</div>';
             ?>
+            
         </div>
-
+ 
     <?php }?>
         
         <hr>

@@ -170,7 +170,7 @@ $session->Session($pagActual);
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nueva Área: </span></label>
                     <input name="NombreArea" class="input" type="text" id="txtName"  placeholder="Ensamble"  required style="display: inline-block"><br>
                     
-                    <button type="submit" value="Enviar" name="AgregarArea" id="Areas" class="boton-verde" >Agregar</button>
+                    <button type="submit" value="Enviar" name="AgregarArea" id="Areas" class="boton-verde" >Agregar Áreas</button>
                  </div>    
                 </form><hr>
             </div>

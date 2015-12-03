@@ -131,7 +131,7 @@ $session->Session($pagActual);
                 <form class="formRegistro" method="Get" action="../controlador/ControladorInsumos.php"> 
                                       
                     <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Insumos: </span></label>
-                    <table>
+                    <table style="margin-left:20%;">
                         <?php
                         require_once '../facades/FacadeInsumos.php';
                         require_once '../modelo/dao/InsumosDAO.php';
@@ -166,16 +166,16 @@ $session->Session($pagActual);
                     
                 <br>  
                     <label class="tag" id="IdRol" for="IdInsumo"><span id="NameRol" class="h331" style="display: inline-block">Número de Insumo: </span></label>
-                    <input name="numero" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
+                    <input name="numero" class="input" style="text-align:center" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block" >Nuevo Insumo: </span></label>
-                    <input name="NombreInsumo" type="text" id="txtName"  placeholder="Madera"   style="display: inline-block" required><br>
+                    <input name="NombreInsumo" class="input" type="text" id="txtName"  placeholder="Madera"   style="display: inline-block" required><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Unidad de medida: </span></label>
-                    <input name="unidad" type="text" id="txtName"  placeholder="m3"   style="display: inline-block" required ><br>
+                    <input name="unidad" class="input" type="text" id="txtName"  placeholder="m3"   style="display: inline-block" required ><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Precio base: $ </span></label>
-                    <input name="precio" type="number" id="txtName"  placeholder="10000"   style="display: inline-block" required min="1"><br>
+                    <input name="precio" class="input" type="number" id="txtName"  placeholder="10000"   style="display: inline-block" required min="1"><br>
                     
-                    <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
-                    <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
+                    <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde">Agregar Insumos</button>
+                    
                     </form><br>
             </div>
         </div>    

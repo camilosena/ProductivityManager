@@ -159,9 +159,7 @@ if (isset ($_POST['subir'])) {
         $file = str_replace('\\', '/', $file);
         $facadeArchivo = new FacadeArchivo();
         $mensaje = $facadeArchivo->cargarArchivo($table, $file);
-         header("location: ../vista/registrarUsuario.php?mensaje=" . $mensaje);
-} else
-if (isset ($_POST['actualizar'])) {
+        
     $fUsuario = new FacadeUsuarios();
     $datos = $fUsuario->consultarUsuariosPorArchivo();
     $contrasena = "inicial";
@@ -175,6 +173,6 @@ if (isset ($_POST['actualizar'])) {
         $lDTO->setRol($rol);
         $mensaje = $fUsuario->actualizarLogin($lDTO);  
     }
-     header("Location: ../vista/listarUsuariosInactivos.php?mensale =".$mensaje);
+     header("Location: ../vista/listarUsuariosInactivos.php?mensale = ".$mensaje);
     
 }

@@ -16,7 +16,7 @@
              $_SESSION['rol']=$validaInfo['rol'];
              $facadePermmisos= new FacadePermisos; 
              if ($_POST['pass'] == "inicial") {
-                 header("location: ../vista/modificarContrasena.php?mensaje= Modifique su contraseña".$_SESSION['rol']);
+                 header("location: ../vista/modificarContrasena.php?mensaje= Modifique su contraseña");
              }else{
              header("location: ../vista/listarProyectos.php?bienvenida=Bienvenido ".$_SESSION['rol']);
              }

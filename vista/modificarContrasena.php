@@ -97,7 +97,15 @@ $session->Session($pagActual);
                     <li><a class="twitter" href="https://twitter.com/Productivity_Mg"></a></li>
                     <li><a class="gplus" href="mailto:productivitymanagersoftware@gmail.com"></a></li>
                 </ul>
-                <div class="logoFoto">
+               <div class="logoFoto">
+                    <?php
+                    require_once '../modelo/dao/UsuarioDAO.php';
+                    require_once '../modelo/utilidades/Conexion.php';
+                    require_once '../facades/FacadeUsuarios.php';
+                    $facadeUsuario = new FacadeUsuarios;
+                    $_SESSION['nombre'] = $facadeUsuario->nombreUsuario($_SESSION['id']);
+                    $_SESSION['foto'] = $facadeUsuario->verFoto($_SESSION['id']);
+                    ?>
                     <div><img src="../fotos/<?php echo $_SESSION['foto']; ?>"></div>
                     <p style="text-align:right; font-size:12px; font-family: sans-serif; font-weight:bold; color: white"><br><br><br><br><br>
                         <?php

@@ -130,7 +130,11 @@ $session->Session($pagActual);
                  <div id="panelModificaPass">   
                     
                      <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Productos: </span></label>
-                    <table>
+                     <table id="muestraDatos" style="margin-left: 25%">
+                         <thead>
+                         <th>Producto</th>
+                         <th colspan="3">Acciones</th>
+                         </thead>
                         <?php
                     require_once '../facades/FacadeProductos.php';
                     require_once '../modelo/dao/ProductosDAO.php';
@@ -138,7 +142,7 @@ $session->Session($pagActual);
                     $pDTO = new ProductosDTO();
                     $facadeProductos = new FacadeProductos();
                     $todos=$facadeProductos->listarProductos();
-                   
+                  
                   foreach ($todos as $unit) {
                             ?> 
                         
@@ -179,20 +183,21 @@ $session->Session($pagActual);
                     
                 <br>  
                     <label class="tag" id="IdRol" for="IdProducto"><span id="NameRol" class="h331" style="display: inline-block">Producto Número: </span></label>
-                    <input name="IdProducto" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
+                    <input class="input" style="text-align: center" name="IdProducto" type="text" id="IdArea" required readonly value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Producto: </span></label>
-                    <input name="Producto" type="text" id="txtName"  placeholder="Silla"   style="display: inline-block" required><br>
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline">Imagen: </span>
-                    <input name="Imagen" type="file"  id="imagen"  style="display:inline" required></label><br>
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Descripción: </span></label>
-                    <textarea name="descripcion"  id="txtName"  style="display: inline-block" required></textarea><br>
+                    <input class="input" name="Producto" type="text" id="txtName"  placeholder="Silla"   style="display: inline-block" required><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Imagen: </span></label>
+                    <input class="input" name="Imagen" type="file"  id="imagen"  style="display:inline-block" required><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">% Ganancia: </span></label>
-                    <input name="ganancia"  id="txtName"  type="number" style="display: inline-block" min="1" required=""><br>
+                    <input class="input" name="ganancia"  id="txtName"  type="number" style="display: inline-block" min="1" required=""><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Descripción: </span></label>
+                    <textarea class="input4" name="descripcion"  id="txtName"  style="display: inline-block" required></textarea><br>
                     
-                    <button type="submit" value="Enviar" name="AgregarProducto" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
+                    
+                    <button type="submit" value="Enviar" name="AgregarProducto" id="Areas" class="boton-verde">Agregar Producto</button>
                     
                  </div> 
-                    
+                    <hr>
                 </form><br>
                 
                 <div id="ModalImagen" class="modalDialog" title="ModalImagen">

@@ -176,7 +176,7 @@ $session->Session($pagActual);
                     
                     <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde">Agregar Insumos</button>
                     
-                    </form><br>
+                    </form><hr>
             </div>
         </div>    
         <footer class="footer-distributed">

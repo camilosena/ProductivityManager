@@ -214,7 +214,7 @@ $session->Session($pagActual);
                    
                  </div>    
                 </form><br>
-                
+                <hr>
                 
                 <?php
                 if (isset($_GET['mensaje'])) {
@@ -223,6 +223,7 @@ $session->Session($pagActual);
                 }
                 ?>
             </div>
+            
             <div id="ModalProcesos" class="modalDialog" title="ModalProcesos">
                     <div>
                         <a href="#close" title="Close" class="close">X</a><br>					

@@ -174,7 +174,7 @@ $session->Session($pagActual);
                         <label class="tagPeso" id="labelTotal" for="total"><span id="lab_valCountry" class="h331">Costo Total Proyecto: </span></label>
                         <input class="input" name="costoProyecto" type="text" maxlength="64" value="<?php echo $costoProyecto; ?>" id="total" style="text-align: center" class="field1"  readonly required>
                         <br><label class="tag2" style="position:relative;bottom:60px" id="labelObser" for="observa"><span id="lab_valCountry" class="h331">Observaciones: </span></label>
-                        <textarea class="input" name="observaciones" style="width: 618px; height: 114px; maxlength='180';border:1px solid #f0f0f0"  id="observa"></textarea>
+                        <textarea class="input" name="observaciones" style="width: 618px; height: 114px; maxlength:'180';border:1px solid #f0f0f0"  id="observa"></textarea>
                         <button type="submit" name="crearCosto" id="crearCosto">Guardar Costos</button>
                         <hr>
                         <div class="modelo"><p class="obligatoriosD"><font style="font-weight:bold">Nota:</font> La fecha final esta determinada en días hábiles laborales de 8 horas diarias.</p></div>

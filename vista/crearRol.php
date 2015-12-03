@@ -179,17 +179,18 @@ $session->Session($pagActual);
 
                                     $allRoles = $rolDao->ListarRoles();
                                     foreach ($allRoles as $roles) {
+                                        if($roles['idRoles']!=0){
                                         ?>
                                         <tr><td>0<?php echo $roles['idRoles']; ?> </td>
                                             <td>   <?php echo $roles['rol']; ?> </td>
 
                                             <td colspan="2"><a href="ModificarRol.php?id=<?php echo $roles['idRoles']; ?>"><img src="../img/editar.png" class="iconos" width="48" height="48" alt="Modificar Registro"/>
                                                 </a>  
-                                                <a name="EliminarRol" title="Eliminar Rol" class="me" href="../controlador/controladorRol.php?idElimirarRol=<?php echo $roles['idRoles']; ?>" onclick="return confirmar();">
-                                                    <img src="../img/desactivarUsuario.png" class="iconos" width="48" height="48" /></a>
+                                                
                                             </td>
                                         </tr>
                                         <?php }
+                                    }
                                     ?>
 
                                 </tbody>

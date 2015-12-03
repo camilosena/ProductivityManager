@@ -152,7 +152,7 @@ $session->Session($pagActual);
                                 <td>Empleados</td>
                                 <td>Tiempo/Horas</td> 
                                  <td>Valor</td> 
-                                <td>Borrar</td><ln>
+<!--                                <td>Borrar</td><ln>-->
                                 <td>Modificar</td>
                             
                         </thead>
@@ -167,7 +167,7 @@ $session->Session($pagActual);
                                 <td> <input name="tiempo" size="10" value ="<?php echo $unit['tiempo']; ?>" disabled ></td>
                                 <td> <input name="valor" size="10" value ="<?php echo $unit['precioProceso']; ?>" disabled ></td>
                                 
-                                 <td><a name="EliminarProceso" title="Eliminar Proceso" class="me"  href="../controlador/ControladorProcesos.php?idProceso=<?php echo $unit['idProceso']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
+<!--                                 <td><a name="EliminarProceso" title="Eliminar Proceso" class="me"  href="../controlador/ControladorProcesos.php?idProceso=<?php echo $unit['idProceso']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>-->
                                  <td><a name="ModificarProceso"  title="Modificar Proceso" class="me" href="../controlador/ControladorProcesos.php?idConsultaProceso=<?php echo $unit['idProceso']; ?>" ><img class="iconos" src="../img/modify.png"></a>    </td>  
 
                             </tr>
@@ -187,17 +187,9 @@ $session->Session($pagActual);
                 $consecutivo=$facadeProcesos->ConsecutivoProcesos();
                 ?>
                     
-                <br>  
-                    <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Número de Proceso: </span></label>
-                    <input name="IdProceso" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>
-                    <input name="NombreProceso" type="text" id="txtName"  placeholder="Pedro"   style="display: inline-block" required><br>
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Tiempo/horas: </span></label>
-                    <input name="Tiempo" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" required min="1"><br>
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Cantidad de empleados: </span></label>
-                    <input name="Empleados" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" min="1"><br>
-                   <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Productos: </span></label>
-                    <select id="selectProducto" name="selectProducto" class="input"> 
+                <br> 
+                   <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Producto: </span></label>
+                    <select id="selectProducto" class="input" name="selectProducto" class="input"> 
                      <?php
                         $productos = $fProductos->listarProductos();
                         echo '<option disabled selected>' . "Seleccione un producto" . '</option>';
@@ -205,12 +197,21 @@ $session->Session($pagActual);
                             echo '<option value="' . $producto['idProductos'] . '">' . $producto['nombreProducto'] . '</option>';                            
                         }
                         ?>
-                    </select><br> 
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Valor sujerido: </span></label>
-                    <input name="valor" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" min="1"><br>
+                    </select><br>
+                    <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Número de Proceso: </span></label>
+                    <input class="input" name="IdProceso" type="text" id="IdArea" required readonly style="text-align: center" value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>
+                    <input  class="input" name="NombreProceso" type="text" id="txtName"  placeholder="Ensamble"   style="display: inline-block" required><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Tiempo/horas: </span></label>
+                    <input class="input" name="Tiempo" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" required min="1"><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Cantidad de empleados: </span></label>
+                    <input class="input" name="Empleados" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" min="1"><br>
+                 
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Valor sugerido: </span></label>
+                    <input class="input" name="valor" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" min="1"><br>
                      
-                    <button type="submit" value="Enviar" name="AgregarProceso" id="Areas" class="boton-verde" style="display: inline-block">Agregar</button>
-                    <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
+                    <button type="submit" value="Enviar" name="AgregarProceso" id="Areas" class="boton-verde">Agregar Proceso</button>
+                   
                  </div>    
                 </form><br>
                 
@@ -262,7 +263,8 @@ $session->Session($pagActual);
 
 
                     </div>
-        </div>    
+        </div> 
+        </div>
         <footer class="footer-distributed">
             <div class="footer-left">
                 <span><img src="../img/logoEscala.png" width="210" height="120"></span>

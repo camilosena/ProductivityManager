@@ -39,7 +39,7 @@ if (isset($_POST['AgregarProducto'])) {
        $msg =$cargaFoto->subirImagen($dtoImagen);
     $productosDTO->setImagen($nombreImagen);
     $productosDTO->setDescripción($_POST['descripcion']);
-    $productosDTO->setEstado('Activo');
+    $productosDTO->setEstado('Inactivo');
     $productosDTO->setPorcentaje($_POST['ganancia']);
     
     $facadeProductos->agregarProducto($productosDTO);

@@ -22,8 +22,8 @@ class ProductosDAO {
             $sentencia->bindParam(2, $productoDTO->getNombre());
             $sentencia->bindParam(3, $productoDTO->getImagen());
             $sentencia->bindParam(4, $productoDTO->getDescripción());
-            $sentencia->bindParam(5, $productoDTO->getPorcentaje());
-            $sentencia->bindParam(6, $productoDTO->getEstado());
+            $sentencia->bindParam(5, $productoDTO->getEstado());
+            $sentencia->bindParam(6, $productoDTO->getPorcentaje());
             $sentencia->execute();
             $mensaje = "Prodcuto Registrado";
         } catch (Exception $ex) {

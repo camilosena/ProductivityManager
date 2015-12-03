@@ -89,10 +89,10 @@ $session->Session($pagActual);
                 echo '<table id="muestraDatos"><tr><th colspan="2">Gerente Encargado</th></tr>';
                 echo '<tr><td class="enunciado">Código Gerente:</td><td>0' . $pro['idUsuario'] . '</td></tr>';
                 echo '<tr><td class="enunciado">Nombre:</td><td>' . $pro['nombre'] . '</td></tr>';
-                echo '<tr><td class="enunciado">Fecha Inicio:</td><td>' . $pro['direccion'] . '</td></tr>';
-                echo '<tr><td class="enunciado">Fecha Fin:</td><td> ' . $pro['telefono'] . '</td></tr>';
-                echo '<tr><td class="enunciado">Estado:</td><td>' . $pro['email'] . '</td></tr>';
-                echo '<tr><td class="enunciado">Ejecutado:</td><td>' . $pro['nombreArea'] . '</td></tr>';
+                echo '<tr><td class="enunciado">Dirección:</td><td>' . $pro['direccion'] . '</td></tr>';
+                echo '<tr><td class="enunciado">Teléfono:</td><td> ' . $pro['telefono'] . '</td></tr>';
+                echo '<tr><td class="enunciado">Email:</td><td>' . $pro['email'] . '</td></tr>';
+                echo '<tr><td class="enunciado">Área:</td><td>' . $pro['nombreArea'] . '</td></tr>';
                 echo '</table>';
                 echo '</div>';
             }

@@ -189,15 +189,18 @@ $session->Session($pagActual);
                     
                 <br> 
                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Producto: </span></label>
+                   <?php if(isset($_GET['idProducto'])){?>
+                    <input class="input" name="selectProducto"  required readonly style="text-align: center" value="<?php echo $_GET['idProducto']?>"><br> 
+                   <?php }else{ ?>
                     <select id="selectProducto" class="input" name="selectProducto" class="input"> 
                      <?php
-                        $productos = $fProductos->listarProductos();
+                        $productos = $fProductos->listarProductosSinProcesos();
                         echo '<option disabled selected>' . "Seleccione un producto" . '</option>';
                         foreach ($productos as $producto) {
                             echo '<option value="' . $producto['idProductos'] . '">' . $producto['nombreProducto'] . '</option>';                            
                         }
                         ?>
-                    </select><br>
+                   </select><?php }?>
                     <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Número de Proceso: </span></label>
                     <input class="input" name="IdProceso" type="text" id="IdArea" required readonly style="text-align: center" value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>

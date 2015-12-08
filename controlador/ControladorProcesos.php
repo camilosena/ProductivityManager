@@ -15,8 +15,10 @@ require_once '../facades/FacadeProcesos.php';
 require_once '../modelo/dao/ProcesosDAO.php';
 require_once '../modelo/dto/ProcesosDTO.php';
 require_once '../modelo/utilidades/Conexion.php';
-
+require_once '../facades/FacadeProductos.php';
+require_once '../modelo/dao/ProductosDAO.php';
 $facadeProcesos = new FacadeProcesos();
+$facadeProducto = new FacadeProductos();
 $pDTO = new ProcesosDTO();
 
 if (isset($_GET['AgregarProceso'])) {
@@ -27,9 +29,9 @@ if (isset($_GET['AgregarProceso'])) {
     $pDTO->setEmpleados($_GET['Empleados']);
     $pDTO->setValor($_GET['valor']);
     $producto=$_GET['selectProducto'];
-    
+    $estado= "Activo";
     $mensaje = $facadeProcesos->AgregarProceso($pDTO, $producto);
-    
+    $facadeProducto->modificarEstadoProducto($estado, $producto);
     header("location: ../vista/agregarProcesos.php? ".$mensaje);
     
 }else 

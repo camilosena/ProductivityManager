@@ -67,6 +67,13 @@ class FacadeProductos {
         
         return $this->productosDAO->cantidadPorInsumo($idInsumo, $idProducto, $this->conexion);
     }
-    
+    function modificarEstadoProducto($estado,$idProducto){
+        
+        return $this->productosDAO->modificarEstadoProducto($estado, $idProducto, $this->conexion);
+    }
+    function listarProductosSinProcesos(){
+        
+        return $this->productosDAO->listarProductosSinProcesos($this->conexion);
+    }
 
 }

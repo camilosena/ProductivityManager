@@ -101,14 +101,14 @@ class ProductosDAO {
         $cnn = null;
        
     }
-    function activarProducto($idEstado, PDO $cnn){
+    function activarProducto($idProducto, PDO $cnn){
         
          try {
              
             
             $sql = "update productos set estadoProducto = 'Activo' where idProductos=?";
             $query = $cnn->prepare($sql);
-            $query->bindParam(1, $idEstado);
+            $query->bindParam(1, $idProducto);
             $query->execute();
             $mensaje = "Producto Habilitado";
             return $mensaje;
@@ -177,6 +177,34 @@ join productos on Productos_idProductos = idProductos and proyectosIdProyecto=?"
         }
         $cnn = null;
                         }
+    function modificarEstadoProducto($estado,$idProducto, PDO $cnn){
+             
+   try {
+            $sql = "update productos set estadoProducto = ? where idProductos=?";
+            $query = $cnn->prepare($sql);   
+            $query->bindParam(1, $estado);
+            $query->bindParam(2, $idProducto);
+            $query->execute();                       
+            return $query->fetchColumn();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+        
+    }
+    function listarProductosSinProcesos(PDO $cnn){
+        try {
+            $sql = "select * from productos where estadoProducto = 'Sin Procesos'" ;
+            $query = $cnn->prepare($sql);           
+            $query->execute();                       
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+        
+    }
+                        
     
     
     

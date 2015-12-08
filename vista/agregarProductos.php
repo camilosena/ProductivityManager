@@ -156,11 +156,14 @@ $session->Session($pagActual);
                                 ?>
                                 <td><a name="InactivarProducto" title="Inactivar Producto" class="me"  href="../controlador/ControladorProductos.php?$idInactivar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/eliminar.png"></a></td>
                                 <?php
-                                    }else{
+                                    }else
+                                    if ($unit['estadoProducto'] == 'Sin Procesos' ){
                                  ?>   
-                                <td><a name="ActivarProducto" title=" Habilitar Producto " class="me"  href="../controlador/ControladorProductos.php?$idActivar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ascenso.png"></a></td>
+                                <td><a name="AsociarProceso" title=" Asociar Proceso " class="me"  href="../vista/agregarProcesos.php?idProducto=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ascenso.png"></a></td>
                                <?php
-                                    }
+                                    }else{?> 
+                                        <td><a></a></td>
+                                   <?php }
                                  ?> 
                                 <td><a name="visualizarProducto" title="Ver Producto" class="me"  href="../controlador/ControladorProductos.php?idVisualizar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ojo.png"></a></td>       
 

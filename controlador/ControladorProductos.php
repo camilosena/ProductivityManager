@@ -76,7 +76,7 @@ if (isset ($_GET['$idIParaInsumos'])) {
 if (isset ($_POST['AsociarInsumos'])) {
     $facadeInsumos->eliminarInsumos($_POST['idProducto']);
    $dto->setIdProdcuto($_POST['idProducto']);
-
+$estado = "Sin Procesos";
     $cantidad = $_SESSION['cantInsumos'];
     for ($i = 1; $i <= $cantidad; $i++) {
         if (isset($_POST[$i])) {
@@ -84,6 +84,7 @@ if (isset ($_POST['AsociarInsumos'])) {
               $dto->setCantidad($_POST['cant'.$i]);
             echo $mensaje = $facadeProductos->asociarInsumos($dto);
         }
+        $facadeProductos->modificarEstadoProducto($estado, $_POST['idProducto']);
     }
     
 

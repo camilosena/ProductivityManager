@@ -33,9 +33,12 @@ if(isset($_POST['crearNovedad'])){
     $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
     $cargaFoto = new GestionImagenes();
     $msg =$cargaFoto->subirImagen($dtoImagen);
-
+    if($msg!='True'){
+         header("location: ../vista/agregarNovedad.php?errorPermiso=Archivo No Valido");
+    }else{
     $message= $facadeNovedad->insertarNovedad($objetoDTO);
     header("location: ../vista/agregarNovedad.php?novedad=".$message."&evidencia=".$msg);
+    }
 }else if (isset($_GET['idNovedad'])) {
     $facadeNovedad = new FacadeNovedades();
     session_start();

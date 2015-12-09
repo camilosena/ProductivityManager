@@ -313,11 +313,8 @@ $session->Session($pagActual);
                                      if ($_SESSION['rol']=="Administrador") {
                                     echo '<a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/ascenso.png"></a>';
                                     }
-                                    if ($_SESSION['rol']=="Administrador" & $user['rol'] != "Administrador" ) {
-                                    echo '<a class="me" title="Asociar a proyecto" href="asociarProyecto.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/Work.png"></a>';
-                                    }else 
-                                       if ($_SESSION['rol']=="Gerente" & $user['rol'] == "Empleado") {
-                                    echo '<a class="me" title="Asociar a proyecto" href="asociarProyecto.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/Work.png"></a>';
+                                    if ($_SESSION['rol']=="Administrador" & $user['rol'] != "Administrador" || $_SESSION['rol']=="Gerente" & $user['rol'] != "Administrador" ) {
+                                    echo '<a class="me" title="Proyectos Asociados" href="../controlador/ControladorUsuarios.php?idAsociados='.$user['idUsuario'].'"><img class="iconos" src="../img/Work.png"></a>';
                                     } ?>
                                 </td>
                                 </tr>                         
@@ -349,7 +346,8 @@ $session->Session($pagActual);
                     echo '<tr><td>Teléfono:</td><td>' . $_SESSION['datosUsuario']['telefono']  . '</td></tr>';
                     echo '<tr><td>Fecha de Nacimiento:</td><td>' . $_SESSION['datosUsuario']['fechaNacimiento']  . '</td></tr>';
                     echo '<tr><td>Correo Electronico:</td><td ><a id="mails" title="Enviar Correo a:" href="mailto:' . $_SESSION['datosUsuario']['email']  . '">'. $_SESSION['datosUsuario']['email']  .'</td></tr>';
-                    if($_SESSION['datosUsuario']['rol'] =='Empleado'){
+                    if ($_SESSION['rol']== "Administrador") {
+                    if($_SESSION['datosUsuario']['rol'] =='Empleado' || $_SESSION['datosUsuario']['rol'] =='Gerente'){
                     echo '<tr><td colspan="2" style="text-align:center">Asignar Usuario a Proyecto</td></tr>';
                     echo '<form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php?codUsuario=' . $_SESSION['datosUsuario']['idUsuario']  . '&rolUser=' . $_SESSION['datosUsuario']['rol']  . '">';
                     echo '<tr><td><label class="tag" id="labelProyecto" for="listaProyecto"><span id="lab_valCountry" class="h331">Seleccione Proyecto:</span></label></td>'
@@ -362,8 +360,24 @@ $session->Session($pagActual);
                         echo '<option value="' . $ejecutando['idProyecto'] . '">' . $ejecutando['idProyecto'] . '-' . $ejecutando['nombreProyecto'] . '</option>';
                     }
                     echo '</select></td></tr>';
+                    }}  else 
+                    if ($_SESSION['rol']== "Gerente" ) {
+                    if($_SESSION['datosUsuario']['rol'] =='Empleado' || $_SESSION['datosUsuario']['rol'] =='Gerente' & $_SESSION['datosUsuario']['nombre'] == $_SESSION['nombre']){
+                    echo '<tr><td colspan="2" style="text-align:center">Asignar Usuario a Proyecto</td></tr>';
+                    echo '<form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php?codUsuario=' . $_SESSION['datosUsuario']['idUsuario']  . '&rolUser=' . $_SESSION['datosUsuario']['rol']  . '">';
+                    echo '<tr><td><label class="tag" id="labelProyecto" for="listaProyecto"><span id="lab_valCountry" class="h331">Seleccione Proyecto:</span></label></td>'
+                    . '<td><select class="input" id="listaProyecto" name="idProjects" id="listaProyecto" autofocus class="list_menu" required>';
+                    if (empty($_POST['idProjects'])) {
+                        $_POST['idProjects'] = '';
+                    }
+                    echo '<option value="" selected disabled>Seleccionar</option>';
+                    foreach ($proyectosEjecucion as $ejecutando) {
+                        echo '<option value="' . $ejecutando['idProyecto'] . '">' . $ejecutando['idProyecto'] . '-' . $ejecutando['nombreProyecto'] . '</option>';
+                    }
+                    echo '</select></td></tr>';
+                    }}
                     echo '<tr><td colspan="2" style="border:none"><button class="boton-verde" type="submit">';
-                    echo 'Asignar a Proyecto</button></td></tr>';}
+                    echo 'Asignar a Proyecto</button></td></tr>';
                     echo '</form>';
                     echo '</table>';
                     ?>                                
@@ -371,6 +385,36 @@ $session->Session($pagActual);
             </div>
             <button class="boton-verde"  onclick="location.href='listarUsuarios.php'" >Actualizar Lista</button>            
         </div>
+        <?php
+            $proyectos = $_SESSION['datosProyectos'];
+            ?>
+            <div id="verProyectos" class="modalDialog" title="Ver Proyectos">
+                <div><a href="#close" title="Cerrar" class="close">X</a><br>
+                    <table id="muestraDatos"><br><br>
+                        <img style="float: right"  class="fotoUsuario" src="../fotos/<?php echo $_SESSION['datosUsuario']['foto']?>">
+                        <h1 style="display: inline">Proyectos Asociados </h1><br><br>
+                        <thead>
+                   <tr> <th hidden="">#</th>
+                    <th >Proyecto</th>
+                    <th >Fecha de inicio</th>
+                    <th >Estado</th><br>
+                    </thead>
+                    
+                    <?php
+                foreach ($proyectos as $unit){
+                                
+                                echo '<tbody>';
+                                echo '<td hidden>' . $unit['idProyecto']  . '</td>'; 
+                                echo '<td>' . $unit['nombreProyecto']  . '</td>'; 
+                                echo '<td>' . $unit['fechaInicio']  . '</td>'; 
+                                echo '<td>' . $unit['estadoProyecto']  . '</td><br>'; 
+                                echo '</tbody>';
+                            }
+                ?>
+                    </table>
+                </div>
+            </div>
+                
         <footer class="footer-distributed">
             <div class="footer-left">
                 <span><img src="../img/logoEscala.png" width="210" height="120"></span>

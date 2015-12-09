@@ -15,6 +15,8 @@ require_once '../facades/FacadeLogin.php';
 require_once '../facades/FacadeArchivo.php';
 require_once '../modelo/dao/ArchivoDAO.php';
 require_once '../modelo/dto/LoginDTO.php';
+require_once '../facades/FacadeProyectos.php';
+require_once '../modelo/dao/ProyectosDAO.php';
 
 //  Registrar Usuarios
 if (isset($_POST['crearUsuario'])) {
@@ -160,29 +162,29 @@ else  if (isset($_POST['ascender'])) {
     
     header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje.$mensaje2); 
   }
-else if($_FILES['cambiaImagen']['name']!=''){
-    if ($_FILES['cambiaImagen']['name'] == '') {
-            $foto ='perfil.png';
-        } else {
-            $foto = $_FILES['cambiaImagen']['name'];
-        }
-        $carpeta = "fotos";
-        $nombreImagen = $_FILES['cambiaImagen']['name'];
-        $tamano = $_FILES['cambiaImagen']['size'];
-        $tipo = $_FILES['cambiaImagen']['type'];
-        $nombreTemporal = $_FILES['cambiaImagen']['tmp_name'];
-        $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
-       $cargaFoto = new GestionImagenes();
-       $msg =$cargaFoto->subirImagen($dtoImagen);      
-       if($msg =='True'){        
-        session_start();                
-         $facadeUsser = new FacadeUsuarios();
-         $massage = $facadeUsser->actualizarFoto($foto,$_SESSION['id']);
-         header("location: ../vista/listarProyectos.php?mensaje=".$massage);
-       }else{
-         header("location: ../vista/listarProyectos.php?mensajeFoto=".$msg);
-       }
-}else
+//else if($_FILES['cambiaImagen']['name']!=''){
+//    if ($_FILES['cambiaImagen']['name'] == '') {
+//            $foto ='perfil.png';
+//        } else {
+//            $foto = $_FILES['cambiaImagen']['name'];
+//        }
+//        $carpeta = "fotos";
+//        $nombreImagen = $_FILES['cambiaImagen']['name'];
+//        $tamano = $_FILES['cambiaImagen']['size'];
+//        $tipo = $_FILES['cambiaImagen']['type'];
+//        $nombreTemporal = $_FILES['cambiaImagen']['tmp_name'];
+//        $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
+//       $cargaFoto = new GestionImagenes();
+//       $msg =$cargaFoto->subirImagen($dtoImagen);      
+//       if($msg =='True'){        
+//        session_start();                
+//         $facadeUsser = new FacadeUsuarios();
+//         $massage = $facadeUsser->actualizarFoto($foto,$_SESSION['id']);
+//         header("location: ../vista/listarProyectos.php?mensaje=".$massage);
+//       }else{
+//         header("location: ../vista/listarProyectos.php?mensajeFoto=".$msg);
+//       }
+//}else
 if (isset ($_POST['subir'])) {
      $table = 'personas';
         $file = realpath($_FILES['archivo']['tmp_name']);
@@ -205,4 +207,14 @@ if (isset ($_POST['subir'])) {
     }
      header("Location: ../vista/listarUsuariosInactivos.php?mensale = ".$mensaje);
     
+}else
+if (isset ($_GET['idAsociados'])) {
+    
+    $FacadeProyectos = new FacadeProyectos();
+    $facadeUsuario = new FacadeUsuarios();
+    session_start();  
+    $_SESSION['datosUsuario'] = $facadeUsuario->consultarUsuario($_GET['idAsociados']);  
+    $_SESSION['datosProyectos'] = $FacadeProyectos->listarProyectoPorPersonal($_GET['idAsociados']);   
+    print_r($_SESSION['datosProyectos']);
+ header("Location: ../vista/listarUsuarios.php?#verProyectos");
 }

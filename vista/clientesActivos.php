@@ -300,7 +300,12 @@ $session->Session($pagActual);
                         <td>
                             <a class="me" title="Consultar / Asignar a Proyecto" href="../controlador/ControladorClientes.php?idConsultarCliente=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/verBino.png"></a>                
                             <a class="me" title="Actualizar Cliente" href="modificarCliente.php?idCliente=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
-                            <a title="Desactivar Cliente" class="me"  href="../controlador/ControladorClientes.php?idDesactivarCliente=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/desactivarUsuario.png"></a></td>                   
+                            <?php
+                            if ($_SESSION['rol']== "Administrador") {
+                               echo '<a title="Desactivar Cliente" class="me"  href="../controlador/ControladorClientes.php?idDesactivarCliente='.$user['idUsuario'].'" onclick=" return confirmacion()"><img class="iconos" src="../img/desactivarUsuario.png"></a></td>                   '; 
+                            } 
+                                ?>
+                            <a class="me" title="Asociar a proyecto" href="asociarProyecto.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/Work.png"></a>
                     </tr>                         
                     <?php
                   }                  

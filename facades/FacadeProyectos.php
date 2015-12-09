@@ -87,4 +87,8 @@ class FacadeProyectos {
      public function cambiarFechaFinProyecto($fechaFin, $idProyecto) {
         return $this->proyectosDAO->cambiarFechaFinProyecto($fechaFin, $idProyecto, $this->conexionBase);
     }
+    function listarProyectoPorPersonal($idUsuario){
+        
+        return $this->proyectosDAO->listarProyectoPorPersonal($idUsuario, $this->conexionBase);
+    }
 }

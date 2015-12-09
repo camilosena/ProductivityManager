@@ -280,5 +280,19 @@ idProductos = Productos_idProductos");
         }
         $cnn = null;
     }
+    function listarProyectoPorPersonal($idUsuario, PDO $cnn){
+       $mensaje = '';
+        try {
+            $query = $cnn->prepare("select idProyecto, nombreProyecto, fechaInicio, estadoProyecto from proyectos
+join usuarioporproyecto on idProyecto = proyectoAsignado and usuarioAsignado = ?");
+            $query->bindParam(1, $idUsuario);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null; 
+        
+    }
 
 }

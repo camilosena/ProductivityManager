@@ -89,7 +89,7 @@ class UsuarioDAO {
     public function obtenerUsuario($idUsuario, PDO $cnn) {
         try {
             $query = $cnn->prepare("Select idUsuario,identificacion,nombres,apellidos,direccion,telefono,fechaNacimiento,
-email,foto,rol,nombreArea,areas_idAreas,rolesId from personas, usuarios, roles,areas where estado='Activo' and idUsuario=? and identificacion=idLogin and rolesId=idRoles
+email,foto,rol,nombreArea,areas_idAreas,rolesId, concat(nombres, ' ',apellidos) as nombre from personas, usuarios, roles,areas where estado='Activo' and idUsuario=? and identificacion=idLogin and rolesId=idRoles
 and areas_idAreas=idAreas");
             $query->bindParam(1, $idUsuario);
             $query->execute();

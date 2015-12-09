@@ -159,7 +159,7 @@ $session->Session($pagActual);
                                     }else
                                     if ($unit['estadoProducto'] == 'Sin Procesos' ){
                                  ?>   
-                                <td><a name="AsociarProceso" title=" Asociar Proceso " class="me"  href="../vista/agregarProcesos.php?idProducto=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ascenso.png"></a></td>
+                                <td><a name="AsociarProceso" title=" Asociar Proceso " class="me"  href="../vista/agregarProcesos.php?idProducto=<?php echo $unit['idProductos']; ?>&nombreProducto=<?php echo $unit['nombreProducto']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ascenso.png"></a></td>
                                <?php
                                     }else{?> 
                                         <td><a></a></td>

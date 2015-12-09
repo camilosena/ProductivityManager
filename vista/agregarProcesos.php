@@ -190,9 +190,10 @@ $session->Session($pagActual);
                 <br> 
                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Producto: </span></label>
                    <?php if(isset($_GET['idProducto'])){?>
-                    <input class="input" name="selectProducto"  required readonly style="text-align: center" value="<?php echo $_GET['idProducto']?>"><br> 
+                   <input class="input" name="nombreProducto"  required readonly style="text-align: center" value="<?php echo $_GET['nombreProducto']?>"><br>  
+                   <input class="input" name="selectProducto"  required readonly style="text-align: center; display: none" value="<?php echo $_GET['idProducto']?>"><br> 
                    <?php }else{ ?>
-                    <select id="selectProducto" class="input" name="selectProducto" class="input"> 
+                    <select id="selectProducto" class="input" name="selectProducto" > 
                      <?php
                         $productos = $fProductos->listarProductosSinProcesos();
                         echo '<option disabled selected>' . "Seleccione un producto" . '</option>';

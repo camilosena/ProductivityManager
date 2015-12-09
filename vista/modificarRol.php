@@ -236,7 +236,7 @@ $session->Session($pagActual);
                                 ?>    
                             </table>                    
                             <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
-                            <button type="submit" value="Enviar" name="ModificarRol"  class="boton-verde" style="display: inline">Actualizar Prmisos</button>
+                            <button type="submit" value="Enviar" name="ModificarRol"  class="boton-verde" style="display: inline">Actualizar Permisos</button>
                             <button type="submit" value="Enviar" name="ModificarAreas" id="Areas" class="boton-verde" style="display: inline">Asignar Áreas</button><br>
                         </div>
                     </form>                

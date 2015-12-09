@@ -124,7 +124,6 @@ else if (isset($_GET['idActivar'])) {
     $email = $datos['email'];
     $identificacion = $datos['identificacion'];
     $contrasena = "inicial";
-    echo $email;
     $correoDTO = new CorreosDTO();    
     $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
     $correoDTO->setNombreRemitente("Productivity Manager");

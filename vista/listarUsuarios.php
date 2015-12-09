@@ -277,7 +277,9 @@ $session->Session($pagActual);
                                         <a class="me" title="Consultar / Asignar a Proyecto" href="../controlador/ControladorUsuarios.php?idConsultar=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/verBino.png"></a>                
                                         <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                                         <a name="eliminar" title="Eliminar Usuario" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>                                            
-                                        <a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/ascenso.png"></a>
+                                        <?php if ($_SESSION['rol']=="Administrador") {
+                                    echo '<a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/ascenso.png"></a>';
+                                    } ?>
                                     </td>
                                 </tr>                         
                                 <?php
@@ -302,11 +304,22 @@ $session->Session($pagActual);
                                 <td><?php echo $user['telefono']; ?></td> 
 
                                 <td>
+                                    
                                     <a class="me" title="Consultar / Asignar a Proyecto" href="../controlador/ControladorUsuarios.php?idConsultar=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/verBino.png"></a>                
                                     <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
-                                    <a name="eliminar" title="Eliminar Usuario" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>                 
-                                    <a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/ascenso.png"></a>
-                         </td>
+                                    <?php if ($_SESSION['rol']=="Administrador") {
+                                    echo '<a name="eliminar" title="Eliminar Usuario" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar='.$user['idUsuario'].'" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>';
+                                    }
+                                     if ($_SESSION['rol']=="Administrador") {
+                                    echo '<a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/ascenso.png"></a>';
+                                    }
+                                    if ($_SESSION['rol']=="Administrador" & $user['rol'] != "Administrador" ) {
+                                    echo '<a class="me" title="Asociar a proyecto" href="asociarProyecto.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/Work.png"></a>';
+                                    }else 
+                                       if ($_SESSION['rol']=="Gerente" & $user['rol'] == "Empleado") {
+                                    echo '<a class="me" title="Asociar a proyecto" href="asociarProyecto.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/Work.png"></a>';
+                                    } ?>
+                                </td>
                                 </tr>                         
                                 <?php
                         }

@@ -298,10 +298,12 @@ $( document ).ready(function() {
                     maxlength: 10
                 },
                 "nombre": {
-                    required: true
+                    required: true,
+                    lettersonly: true
                 },
                 "apellido": {
-                    required: true
+                    required: true,
+                    lettersonly: true
                 },
                 "identificacion": {
                     required: true,
@@ -347,10 +349,12 @@ $( document ).ready(function() {
                     maxlength: fuenteError+' Maximo 10 Digitos'+fuenteCierreError
                 },
                 "nombre": {
-                    required: fuenteError+' Ingrese Nombre'+fuenteCierreError
+                    required: fuenteError+' Ingrese Nombre'+fuenteCierreError,
+                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError
                 },
                 "apellido": {
-                    required: fuenteError+' Ingrese Apellidos'+fuenteCierreError
+                    required: fuenteError+' Ingrese Apellidos'+fuenteCierreError,
+                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError
                 },
                 "identificacion": {
                     required: fuenteError+' Ingrese Documento'+fuenteCierreError,

@@ -2,7 +2,7 @@ $( document ).ready(function() {
     fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
     fuenteCierreError= '</font>';
     jQuery.validator.addMethod("lettersonly", function(value, element) {
-  return this.optional(element) || /^[a-z]+$/i.test(value);
+  return this.optional(element) || /^[a-z," "]+$/i.test(value);
         }, "Solo letras");
         $('#formUsuarios').submit(function(e) {
             e.preventDefault();

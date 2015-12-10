@@ -618,6 +618,7 @@ $session->Session($pagActual);
                     <button type="submit" value="Enviar" name="crearUsuario" id="crearUsuario" class="boton-verde">Crear Usuario</button><br>                                 
                 </form>
                 <hr>
+                <script src="../js/additional-methods.min.js" type="text/javascript"></script>
                 <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
                 <script src="../js/validaciones.js"></script>
                 <?php

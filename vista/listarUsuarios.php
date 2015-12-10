@@ -386,7 +386,10 @@ $session->Session($pagActual);
             <button class="boton-verde"  onclick="location.href='listarUsuarios.php'" >Actualizar Lista</button>            
         </div>
         <?php
-            $proyectos = $_SESSION['datosProyectos'];
+                    if (isset($_SESSION['datosProyectos'])) {
+                        $proyectos = $_SESSION['datosProyectos'];
+                    }
+            
             ?>
             <div id="verProyectos" class="modalDialog" title="Ver Proyectos">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>

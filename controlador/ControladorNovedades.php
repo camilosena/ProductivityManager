@@ -62,6 +62,7 @@ if(isset($_POST['crearNovedad'])){
                     . '<br>'.'https://www.facebook.com/productivitymanager'
                     . '<br>'.'https://twitter.com/Productivity_Mg'
     . '</font>');
+    $archivo = '../'.$carpeta.'/'.$nombreImagen;
     $correoDTO->setArchivos($archivo);
     $facadeCorreo = new FacadeCorreos();
     $confirmacion=$facadeCorreo->EnvioCorreo($correoDTO);
@@ -69,7 +70,7 @@ if(isset($_POST['crearNovedad'])){
        $mensajeCorreo=$confirmacion;  
        $mensaje2="Error no se pudo generar la novedad";
        $consecutivos = 0;
-       header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje2);
+       header("Location: ../vista/listarNovedades.php?errorPermiso=" . $mensajeCorreo);
     } else {        
     //insertar imagen
          $message= $facadeNovedad->insertarNovedad($objetoDTO);

@@ -28,7 +28,7 @@ class ProcesosDAO {
     function consultarProcesos($idProceso, PDO $cnn) {
 
         try {
-            $sql = "select idProceso, tipoProceso, precioProceso, nombreProducto as producto, cantidadDeEmpleados as empleados, 
+            $sql = "select idProceso, tipoProceso, precioProceso, idProductos, nombreProducto as producto, cantidadDeEmpleados as empleados, 
 tiempoPorProceso as tiempo from procesos
  join procesoporproducto on  idProceso = procesos_idProceso and idProceso=?
  join productos on idProductos_Productos = idProductos ";

@@ -65,4 +65,31 @@ public function consultarNovedad($idNovedad,PDO $cnn) {
             echo 'Error' . $ex->getMessage();
         }
 }
+function consultarGerenteParaEnvarNovedadPorCorreo($idProyecto, PDO $cnn){
+          try {            
+            $query = $cnn->prepare("select idUsuario, email, concat(nombres,' ', apellidos) as nombre, rol from personas
+join usuarioporproyecto on idUsuario = usuarioAsignado
+join proyectos on proyectoAsignado = idProyecto and idproyecto = ?
+join usuarios on idLogin = identificacion
+join roles on idRoles = rolesId and rol = 'Gerente'");
+            $query->bindParam(1, $idProyecto);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }  
+    
+}
+function consultarAreaUsuarioEnSesion($idUsuario, PDO $cnn){
+                      try {            
+            $query = $cnn->prepare("    
+    select areas_idAreas, nombreArea from personas 
+join areas on idAreas = areas_idAreas and idUsuario =?");
+            $query->bindParam(1, $idUsuario);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        } 
+}
 }

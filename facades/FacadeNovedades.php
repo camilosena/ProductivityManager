@@ -26,4 +26,12 @@ class FacadeNovedades {
      public function consultarNovedad($idNovedad) {
         return $this->novedadDAO->consultarNovedad($idNovedad,$this->conexionBase);
     }
+    function consultarGerenteParaEnvarNovedadPorCorreo($idProyecto){
+        
+        return $this->novedadDAO->consultarGerenteParaEnvarNovedadPorCorreo($idProyecto, $this->conexionBase);
+    }
+    function consultarAreaUsuarioEnSesion($idUsuario){
+        
+        return $this->novedadDAO->consultarAreaUsuarioEnSesion($idUsuario, $this->conexionBase);
+    }
 }

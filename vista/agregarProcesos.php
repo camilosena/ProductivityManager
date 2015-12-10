@@ -235,17 +235,18 @@ $session->Session($pagActual);
                         <div id="panelModificaPass">
                             
                                     <form class="formRegistro" method="post" action="../controlador/ControladorProcesos.php"> 
-                                     <label class="tag" id="IdRol" for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Proceso Número: </span></label>
+                                     <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Proceso Número: </span></label>
                                      <input name="IdProceso" size="10" value ="<?php echo $_SESSION['consultarProcesos']['idProceso']; ?>" readonly style="display: inline-block"><br>
-                                    <label class="tag" id="IdRol" for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Proceso: </span></label>
+                                    <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Proceso: </span></label>
                                     <input name="NombreProceso" size="10" value ="<?php echo $_SESSION['consultarProcesos']['tipoProceso']; ?>" readonly style="display: inline-block"><br>
-                                        <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Producto: </span></label>
+                                    <input name="idProducto" size="10" value ="<?php echo $_SESSION['consultarProcesos']['idProductos']; ?>" readonly style="display: none">                                   
+                                    <label class="tag" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Producto: </span></label>
                                      <input name="producto" size="10" value ="<?php echo $_SESSION['consultarProcesos']['producto']; ?>" readonly style="display: inline-block"><br>
-                                      <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Cantidad de Empleados: </span></label>
+                                      <label class="tag"  for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Cantidad de Empleados: </span></label>
                                  <input name="Empleados" size="10" value ="<?php echo $_SESSION['consultarProcesos']['empleados']; ?>" style="display: inline-block"><br>
-                                 <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Tiempo/Horas: </span></label>
+                                 <label class="tag"  for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Tiempo/Horas: </span></label>
                                  <input name="Tiempo" size="10" value ="<?php echo $_SESSION['consultarProcesos']['tiempo']; ?>"  style="display: inline-block"><br>
-                                 <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Valor: </span></label>
+                                 <label class="tag"  for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Valor: </span></label>
                                  <input name="valor" size="10" value ="<?php echo $_SESSION['consultarProcesos']['precioProceso']; ?>"  style="display: inline-block"><br>
                                  <input type="submit" value="Modificar" name="ModificarProceso">
                             </form>  

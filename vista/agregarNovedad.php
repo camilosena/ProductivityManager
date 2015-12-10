@@ -158,9 +158,9 @@ $session->Session($pagActual);
                     <label class="tag" for="categorias"><span id="lab_valCountry" class="h331">Categoria:</span></label>
                         <select class="input" name="categoria" id="categorias" class="list_menu" >
                                     <option value="0" disabled selected> - Seleccionar - </option>
-                                    <option value="1" >Retraso</option>
-                                    <option value="2">Solicitud</option>
-                                    <option value="3" >Actividad</option>
+                                    <option value="Retraso" >Retraso</option>
+                                    <option value="Solicitud">Solicitud</option>
+                                    <option value="Actividad" >Actividad</option>
                 </select>
              <br>
                     <label class="tag" for="image"><span id="lab_valCompany" class="h331">Evidencia:</span></label>

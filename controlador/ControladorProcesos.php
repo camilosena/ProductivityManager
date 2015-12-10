@@ -49,13 +49,14 @@ if (isset ($_GET['idConsultaProceso'])) {
 }else
 if (isset ($_POST['ModificarProceso'])) {
     
-     $pDTO->setIdProceso($_POST['IdProceso']);
+    $pDTO->setIdProceso($_POST['IdProceso']);
     $pDTO->setTipo($_POST['NombreProceso']);
     $pDTO->setTiempo($_POST['Tiempo']);
     $pDTO->setEmpleados($_POST['Empleados']);
     $pDTO->setValor($_POST['valor']); 
-    
+    $estado= "Activo";
+    $producto = $_POST['idProducto'];
     $mensaje = $facadeProcesos->ModificarProcesos($pDTO);
-    
+    $facadeProducto->modificarEstadoProducto($estado, $producto);
     header("location: ../vista/agregarProcesos.php? ".$mensaje);
 }

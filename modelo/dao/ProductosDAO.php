@@ -194,7 +194,7 @@ join productos on Productos_idProductos = idProductos and proyectosIdProyecto=?"
     }
     function listarProductosSinProcesos(PDO $cnn){
         try {
-            $sql = "select * from productos where estadoProducto = 'Sin Procesos'" ;
+            $sql = "select * from productos where estadoProducto = 'Sin Procesos' or estadoProducto = 'Activo' " ;
             $query = $cnn->prepare($sql);           
             $query->execute();                       
             return $query->fetchAll();

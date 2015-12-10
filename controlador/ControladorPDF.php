@@ -19,7 +19,7 @@ if(isset($_GET['estudioPDF'])){
 $pdf=new PDF_HTML();
 $pdf->AddPage();
 $pdf->SetFont('Arial');
-$string =  '<table border="1">
+$string =  '<table style="border: 2px"">
   <thead>
   <th>c1</th>
   <th>c3 </th>

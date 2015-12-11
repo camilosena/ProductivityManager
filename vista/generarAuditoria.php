@@ -275,19 +275,37 @@ $session->Session($pagActual);
                         ?>
                     </select>
 
-                <br>
+                    <br><br><br>
+                <h3>Cumplimiento del Proyecto:</h3><br>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Ejecución del proyecto:</span></label>
+                Si <input  type="radio" name="ejecucion" value="100"  style="display: inline">
+                No <input  type="radio" name="ejecucion" value="20"  style="display: inline"><br>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Ejecución presupuestal:</span></label>
+                Si <input  type="radio" name="presupuesto" value="100"  style="display: inline">
+                No <input  type="radio" name="presupuesto" value="20" style="display: inline"><br>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Utilización de insumos:</span></label>
+                Si <input  type="radio" name="insumos" value="100"  style="display: inline">
+                No <input  type="radio" name="insumos" value="20" style="display: inline"><br>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Calidad de insumos según Proyecto:</span></label>
+                Alta <input  type="radio" name="calidad" value="100"  style="display: inline">
+                Normal <input  type="radio" name="calidad" value="65"  style="display: inline">
+                Baja <input  type="radio" name="calidad" value="20" style="display: inline"><br><br>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Tiempo por procesos:</span></label>
+                Si <input  type="radio" name="procesos" value="100"  style="display: inline">
+                No <input  type="radio" name="procesos" value="20" style="display: inline"><br>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Cantidad de empleados:</span></label>
+                Concuerda <input  type="radio" name="empleados" value="100"  style="display: inline">
+                Menos <input  type="radio" name="empleados" value="20"  style="display: inline">
+                Más <input  type="radio" name="empleados" value="65" style="display: inline"><br>
                 <label class="tag" for="image"><span id="lab_valCompany" class="h331">Evidencia:</span></label>
-                <input class="input"  name="uploadedfile" id="image"  type="file" multiple=true class="file"  title="Solo Foto">
+                <input name="uploadedfile" id="image"  type="file" multiple class="file"  title="Solo Foto">
                 <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                 <br>
                 <div id="cargueEvidencia">
                     <output id="list"></output>
                 </div>
-
-                <label class="tag2" for="description"><span id="lab_valName" class="h331">Descripción:</span></label>
-
-
-                <textarea  class="input6" name="descripcion" required type="text" maxlength="64" id="description" class="field1"></textarea>
+                <label class="tag2" for="description"><span id="lab_valName" class="h331">Observaciones:</span></label>
+                <textarea  name="descripcion" required  maxlength="64" id="description" class="field1"></textarea>
                 <span id="valName" style="color:Red;visibility:hidden;"></span>
                 <br>
                 <label class="tag" for="txtName"><span id="lab_valName" class="h331">Estado de Producto:</span></label>

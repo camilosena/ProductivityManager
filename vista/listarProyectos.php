@@ -333,7 +333,9 @@ $session->Session($pagActual);
                                     <td><?php echo $project['estadoProyecto']; ?></td>  
                                     <td><?php echo $project['ejecutado']; ?> %</td>
                                     <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
-                                        <?php 
+                                        <?php            if ($_SESSION['rol'] != 'Auditor') {
+                
+            
                                     if ($project['estadoProyecto'] == 'Sin Estudio Costos' || $project['estadoProyecto'] == 'Ejecucion' ) {
                                                 ?>
                                                 <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
@@ -343,7 +345,11 @@ $session->Session($pagActual);
                                         <?php }
                                     if ($project['estadoProyecto'] == 'Sin Produccion'|| $project['estadoProyecto'] == 'Ejecucion') { ?>
                                                     <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
-                                                <?php } ?>                            
+                                                <?php } }else{
+                                                    
+                                                    echo '<a class="me" title="Ver Novedades" href="projectNum='.$project['idProyecto'].'&nameProject='. $project['nombreProyecto'].'";"><img class="iconos" src="../img/Novedades.png"></a>';
+                                                    echo '<a class="me" title="Realizar Auditoria" href="projectNum='.$project['idProyecto'].'&nameProject='. $project['nombreProyecto'] .'";"><img class="iconos" src="../img/Auditorias.png"></a>';
+                                                    }?>                            
                                     </td>                   
                                 </tr>                         
         <?php }

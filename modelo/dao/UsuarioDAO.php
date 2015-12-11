@@ -239,7 +239,7 @@ and areas_idAreas=idAreas");
         try {
             $sql = "select * from areas";
             if (!is_null($idRol) && !is_null($cnn)) {
-                $sql .= " where roles_idRoles=? and idAreas!=0";
+                $sql .= " where roles_idRoles=? and idAreas != 0";
                 $query = $cnn->prepare($sql);
                 $query->bindParam(1, $idRol);
             } else {

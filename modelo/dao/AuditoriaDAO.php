@@ -2,17 +2,23 @@
 
 class AuditoriaDAO {
 
-    public function crearAuditoria (AuditoriaDTO $objetoAud, PDO $cnn) {
+    function crearAuditoria (AuditoriaDTO $objetoAud, PDO $cnn) {
         $mensaje = '';
         try {
-            $query = $cnn->prepare("insert into auditorias values(DEFAULT,?,?,now(),?,?,?)");
+            $query = $cnn->prepare("insert into auditorias values(DEFAULT,?,?,now(),?,?,?,?,?,?,?,?,?)");
             $query->bindParam(1, $objetoAud->getIdProyecto());
             $query->bindParam(2, $objetoAud->getIdUsuario());
             $query->bindParam(3, $objetoAud->getDescripcion());            
             $query->bindParam(4, $objetoAud->getProducto());
             $query->bindParam(5, $objetoAud->getArchivoAuditoria());
+            $query->bindParam(6, $objetoAud->getEjecucion());
+            $query->bindParam(7, $objetoAud->getPresupuesto());
+            $query->bindParam(8, $objetoAud->getInsumos());
+            $query->bindParam(9, $objetoAud->getCalidad());
+            $query->bindParam(10, $objetoAud->getProcesos());
+            $query->bindParam(11, $objetoAud->getEmpleados());
             $query->execute();
-            $mensaje = "Auditoria Generada";
+            $mensaje = "Resultado de la auditoria: ".$objetoAud->getProducto();
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }

@@ -307,11 +307,8 @@ $session->Session($pagActual);
                 <label class="tag2" for="description"><span id="lab_valName" class="h331">Observaciones:</span></label>
                 <textarea  name="descripcion" required  maxlength="64" id="description" class="field1"></textarea>
                 <span id="valName" style="color:Red;visibility:hidden;"></span>
-                <br>
-                <label class="tag" for="txtName"><span id="lab_valName" class="h331">Estado de Producto:</span></label>
-                <input type="radio" name="producto" value="Conforme">Conforme
-                <input type="radio" name="producto" value="No Conforme">No Conforme              
-                <button type="submit" name="crearAuditoria" class="boton-verde">Generar Auditoría</button><br>
+                <br>       
+                <button type="submit" name="crearAuditoria" class="boton-verde">Evaluar</button><br>
 
                 <script>
                     function archivo(evt) {
@@ -339,7 +336,8 @@ $session->Session($pagActual);
 
                     document.getElementById('image').addEventListener('change', archivo, false);
                 </script>
-
+<!--                <label class="tag" for="txtName"><span id="lab_valName" class="h331">Resultado de la Auditoria:</span></label>
+                <input type="text" name="producto"  readonly="" value=""> -->
             </form>                   
         </div>    
     </div>

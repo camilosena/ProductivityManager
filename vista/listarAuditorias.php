@@ -131,36 +131,20 @@ $session->Session($pagActual);
         <thead>
             <tr>
                 <th>Código</th>                
-                <th>Gerente Auditoria</th>
+                <th>Auditor</th>
                 <th>Nombre de Proyecto</th>
                 <th>Fecha / Hora</th>
-                <th>Descripción</th>
-                <th>Estado Del Producto</th>
+                <th>Resultado de la auditoria</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-
-
-           <thead>
-           <tr>
-               <th><input tabindex="6" type="text" class="input11" name="idUser" value=""></th>
-               <th><input tabindex="2" type="text" class="input11" name="identification" value=""></th>
-               <th><input tabindex="3" type="text" class="input11" name="names" value=""></th>
-               <th><input tabindex="4" type="text" class="input11" name="lastNames" value=""><br></th>
-               <th><input tabindex="5" type="text" class="input11" name="rol" value=""></th>
-               <th><input tabindex="6" type="text" class="input11" name="phone" value=""></th>
-               <th><button tabindex="6" type="submit" value="buscarUsuarios" name="buscarUsuarios" id="buscar" class="boton-verde">Buscar</button></th>
-           </tr>
-           </thead>
- 
         <tfoot>
             <tr>
                 <th>Código</th>
-                <th>Gerente Auditoria</th>
+                <th>Auditor</th>
                 <th>Nombre de Proyecto</th>
                 <th>Fecha / Hora</th>
-                <th>Descripción</th>
-                <th>Estado del Producto</th>
+                <th>Resultado de la auditoria</th>
                 <th>Acciones</th>
             </tr>
         </tfoot> 
@@ -180,15 +164,16 @@ $session->Session($pagActual);
                 <td><?php echo $auditoria['nombre']; ?></td>
                 <td><?php echo $auditoria['nombreProyecto']; ?></td>
                 <td><?php echo $auditoria['fecha']; ?></td>
-                <td><?php echo $auditoria['observacionesAuditoria']; ?></td>
                 <td><?php echo $auditoria['producto']; ?></td>
-                <td><a class="me" title="Consultar Auditoría" href="../controlador/ControladorAuditorias.php?idAuditoria=<?php echo $auditoria['idAuditoria'];?>"><img class="iconos" src="../img/verBino.png"></a>
-                <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
-                    <a class="me" title="Modificar Auditoría" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
-                <?php
-                };
+                <td>
+                <?php 
+                if ($_SESSION['rol'] == 'Administrador') { ?>
+                    <a name="eliminar" title="Eliminar Auditoría" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $auditoria['idAuditoria']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
+                    <?php
+                }
                 ?>
-                    <a name="eliminar" title="Eliminar Auditoría" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
+                    <a class="me" title="Ver resultado de la auditoría" href="../controlador/ControladorAuditorias.php?idAuditoria=<?php echo $auditoria['idAuditoria'];?>"><img class="iconos" src="../img/verBino.png"></a>
+                    
                 </td>
 
             </tr>

@@ -15,11 +15,28 @@ if(isset($_POST['crearAuditoria'])){
     $idUsuario=$facadeUsuario->usuarioEnSesion($_SESSION['id']);
     $idProyecto=$_POST['idProyecto'];
     $descripcion=$_POST['descripcion'];
-    $producto=($_POST['producto']);
-    $archivoAuditoria=$_FILES['uploadedfile']['name'];
-    $objetoDTO = new AuditoriaDTO($idUsuario, $idProyecto, $descripcion,$producto, $archivoAuditoria);
     
-    //Insertar Evidencia Auditoría
+    $archivoAuditoria=$_FILES['uploadedfile']['name'];
+     $ejecucion = $_POST['ejecucion'];
+     $presupuesto = $_POST['presupuesto'];
+     $insumos = $_POST['insumos'];
+     $calidad = $_POST['calidad'];
+     $procesos = $_POST['procesos'];
+     $empleados = $_POST['empleados'];
+     
+     $auditoria= ($ejecucion + $presupuesto +  $insumos +  $calidad + $procesos + $empleados)/6;
+     if ($auditoria >= 90) {
+         $producto = $auditoria."%  Excelente";
+     }else
+     if ($auditoria < 90 & $auditoria >=47) {
+         $producto = $auditoria."% Plan de Mejoramiento";
+     }else
+     if ($auditoria < 47) {
+         $producto = $auditoria."% Comite Evaluador";
+     }
+    $objetoDTO = new AuditoriaDTO($idAuditoria, $idUsuario, $idProyecto, $descripcion, $producto, $archivoAuditoria, $ejecucion, $presupuesto, $insumos, $calidad, $procesos, $empleados);
+    
+    //Insertar Evidencia Auditorï¿½a
     if ($_FILES['uploadedfile']['name'] == '') {
         $foto ='auditoria.png';
     } else {

@@ -1361,6 +1361,24 @@ button:active {
     color: #fff; 
     border: 1px solid #83AF44;  
 }
+
+table.tableProductos {
+        display: table;   
+    }
+    table.tableProductos thead, table.tableProductos tbody {
+        float: left;
+        width: 100%;        
+    }
+    table.tableProductos tbody {
+        overflow: auto;
+        height: 350px;
+    }
+    table.tableProductos tr {
+        width: 100%;
+        display: table;
+        text-align: center;      
+    }    
+
 #mails{
     text-decoration: none;
     color: #0e408e;

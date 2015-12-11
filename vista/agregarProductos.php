@@ -117,23 +117,13 @@ $session->Session($pagActual);
                     </span> 
                 </span>         
             </nav>
-            <div id="panelUnico">
-                <form method="post" action="../controlador/ControladorProductos.php" enctype="multipart/form-data">
-                    <label>Cargar archivo:</label>
-                    <input type="file" name="archivo">
-                    <input name="subir" type="submit" value="Subir Archivo">
-            </form><br>
-                <br>
-                <br><h2 class="h330">Agregar Productos:</h2><hr>
-                <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="post" action="../controlador/ControladorProductos.php" enctype="multipart/form-data"> 
-                 <div id="panelModificaPass">   
-                    
-                     <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Productos: </span></label>
-                     <table id="muestraDatos" style="margin-left: 25%">
+            <div id="panelDer">
+                  <div id="panelModificaPass">   
+                    <br><br><br> 
+                     <table id="muestraDatos" class="tableProductos" style="margin-top:50px">
                          <thead>
-                         <th>Producto</th>
-                         <th colspan="3">Acciones</th>
+                         <th style="width:200px">Producto</th>
+                         <th style="width:100px" colspan="3">Acciones</th>
                          </thead>
                         <?php
                     require_once '../facades/FacadeProductos.php';
@@ -147,32 +137,29 @@ $session->Session($pagActual);
                             ?> 
                         
                             <tr>
-                               
-                                <td> <?php echo $unit['nombreProducto']; ?></td>
-                                <td><a name="InsumosProducto" title="Insumos del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/editar.png"></a></td>
+                                
+                                <td style="width:200px"> <?php echo $unit['nombreProducto']; ?></td>
+                                <td style="text-align:center"><a name="InsumosProducto" title="Insumos del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/editar.png"></a>
                                 <?php
                                     
                                     if ($unit['estadoProducto'] == 'Activo' ) {
                                 ?>
-                                <td><a name="InactivarProducto" title="Inactivar Producto" class="me"  href="../controlador/ControladorProductos.php?$idInactivar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/eliminar.png"></a></td>
+                                <a name="InactivarProducto" title="Inactivar Producto" class="me"  href="../controlador/ControladorProductos.php?$idInactivar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/eliminar.png"></a>
                                 <?php
                                     }else
                                     if ($unit['estadoProducto'] == 'Sin Procesos' ){
                                  ?>   
-                                <td><a name="AsociarProceso" title=" Asociar Proceso " class="me"  href="../vista/agregarProcesos.php?idProducto=<?php echo $unit['idProductos']; ?>&nombreProducto=<?php echo $unit['nombreProducto']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ascenso.png"></a></td>
+                                <a name="AsociarProceso" title=" Asociar Proceso " class="me"  href="../vista/agregarProcesos.php?idProducto=<?php echo $unit['idProductos']; ?>&nombreProducto=<?php echo $unit['nombreProducto']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ascenso.png"></a>
                                <?php
                                     }else{?> 
-                                        <td><a></a></td>
+                                       <a></a>
                                    <?php }
                                  ?> 
-                                <td><a name="visualizarProducto" title="Ver Producto" class="me"  href="../controlador/ControladorProductos.php?idVisualizar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ojo.png"></a></td>       
+                               <a name="visualizarProducto" title="Ver Producto" class="me"  href="../controlador/ControladorProductos.php?idVisualizar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ojo.png"></a></td>       
 
                             </tr>
                         
                             <?php
-                        }
-                        if (isset($_GET['mensaje3'])) {
-                            echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
                         }
                         ?>    
                     </table>
@@ -183,6 +170,19 @@ $session->Session($pagActual);
                 $estado = $pDTO->getEstado();
                
                 ?>
+            </div>
+            </div>
+            <div id="panelIzq">
+                <form method="post" action="../controlador/ControladorProductos.php" enctype="multipart/form-data">
+                    <label  class="obligatoriosD">Cargar archivo:</label>
+                    <input type="file" name="archivo">
+                    <input name="subir" type="submit" value="Subir Archivo">
+            </form><br>
+                <br>
+                <br><h2 class="h330">Agregar Productos:</h2><hr>
+                <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
+                <form class="formRegistro" method="post" action="../controlador/ControladorProductos.php" enctype="multipart/form-data"> 
+               
                     
                 <br>  
                     <label class="tag" id="IdRol" for="IdProducto"><span id="NameRol" class="h331" style="display: inline-block">Producto Número: </span></label>
@@ -199,7 +199,7 @@ $session->Session($pagActual);
                     
                     <button type="submit" value="Enviar" name="AgregarProducto" id="Areas" class="boton-verde">Agregar Producto</button>
                     
-                 </div> 
+                 
                     <hr>
                 </form><br>
                 

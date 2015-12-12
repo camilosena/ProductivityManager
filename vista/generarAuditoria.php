@@ -131,25 +131,13 @@ $session->Session($pagActual);
                                     value: 16,
                                     color: "#e3e860",
                                     highlight: "#a9ad47",
-                                    label: "Rechazos"
+                                    label: "Plan de Mejoramiento"
                                 },
                                 {
                                     value: 11,
                                     color: "#eb5d82",
                                     highlight: "#b74865",
-                                    label: "Prorrogas"
-                                },
-                                {
-                                    value: 10,
-                                    color: "#5ae85a",
-                                    highlight: "#42a642",
-                                    label: "Solicitudes"
-                                },
-                                {
-                                    value: 8.6,
-                                    color: "#e965db",
-                                    highlight: "#a6429b",
-                                    label: "Cancelados"
+                                    label: "Comité Evaluador"
                                 }
                             ];
 

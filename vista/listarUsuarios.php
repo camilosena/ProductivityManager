@@ -347,7 +347,7 @@ $session->Session($pagActual);
                     echo '<tr><td>Fecha de Nacimiento:</td><td>' . $_SESSION['datosUsuario']['fechaNacimiento']  . '</td></tr>';
                     echo '<tr><td>Correo Electronico:</td><td ><a id="mails" title="Enviar Correo a:" href="mailto:' . $_SESSION['datosUsuario']['email']  . '">'. $_SESSION['datosUsuario']['email']  .'</td></tr>';
                     if ($_SESSION['rol']== "Administrador") {
-                    if($_SESSION['datosUsuario']['rol'] =='Empleado' || $_SESSION['datosUsuario']['rol'] =='Gerente'){
+                    if($_SESSION['datosUsuario']['rol'] =='Empleado'){
                     echo '<tr><td colspan="2" style="text-align:center">Asignar Usuario a Proyecto</td></tr>';
                     echo '<form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php?codUsuario=' . $_SESSION['datosUsuario']['idUsuario']  . '&rolUser=' . $_SESSION['datosUsuario']['rol']  . '">';
                     echo '<tr><td><label class="tag" id="labelProyecto" for="listaProyecto"><span id="lab_valCountry" class="h331">Seleccione Proyecto:</span></label></td>'
@@ -393,6 +393,9 @@ $session->Session($pagActual);
             ?>
             <div id="verProyectos" class="modalDialog" title="Ver Proyectos">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
+                  <?php if($proyectos==false){
+                      echo "<h1>No Tiene Proyectos Asociados</h1>";
+                   }else{ ?>
                     <table id="muestraDatos"><br><br>
                         <img style="float: right"  class="fotoUsuario" src="../fotos/<?php echo $_SESSION['datosUsuario']['foto']?>">
                         <h1 style="display: inline">Proyectos Asociados </h1><br><br>
@@ -415,6 +418,8 @@ $session->Session($pagActual);
                             }
                 ?>
                     </table>
+                    <?php } ?>
+                    <br>
                 </div>
             </div>
                 

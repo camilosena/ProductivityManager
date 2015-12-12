@@ -4,7 +4,7 @@ USE `productivitymanager`;
 --
 -- Host: 127.0.0.1    Database: productivitymanager
 -- ------------------------------------------------------
--- Server version	5.6.26
+-- Server version	5.6.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,7 +40,7 @@ CREATE TABLE `areas` (
 
 LOCK TABLES `areas` WRITE;
 /*!40000 ALTER TABLE `areas` DISABLE KEYS */;
-INSERT INTO `areas` VALUES (1,'Administracion',1),(2,'Privado',2),(3,'Corte',3),(4,'Ensamble',3),(5,'Publico',2),(6,'Cliente',4);
+INSERT INTO `areas` VALUES (0,'default',0),(1,'Administracion',1),(2,'Privado',2),(3,'Corte',3),(4,'Ensamble',3),(5,'Publico',2),(6,'Cliente',4),(7,'Auditor',5);
 /*!40000 ALTER TABLE `areas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,16 +55,22 @@ CREATE TABLE `auditorias` (
   `idAuditoria` int(11) NOT NULL AUTO_INCREMENT,
   `proyectoAuditado` int(11) NOT NULL,
   `gerenteAuditoria` int(11) NOT NULL,
-  `fecha` datetime DEFAULT NULL,
+  `fechaAuditoria` datetime DEFAULT NULL,
   `observacionesAuditoria` varchar(200) DEFAULT NULL,
-  `producto` varchar(45) DEFAULT NULL,
+  `productoAuditoria` varchar(45) DEFAULT NULL,
   `archivoAuditoria` varchar(95) DEFAULT NULL,
+  `ejecucionAuditoria` int(11) DEFAULT NULL,
+  `presupuestoAuditoria` int(11) DEFAULT NULL,
+  `insumosAuditoria` int(11) DEFAULT NULL,
+  `calidadAuditoria` int(11) DEFAULT NULL,
+  `procesosAuditoria` int(11) DEFAULT NULL,
+  `empleadosAuditoria` int(11) DEFAULT NULL,
   PRIMARY KEY (`idAuditoria`,`proyectoAuditado`,`gerenteAuditoria`),
   KEY `fk_gerentesDeProyecto_has_proyectos_proyectos1_idx` (`proyectoAuditado`),
   KEY `fk_auditorias_usuarios1_idx` (`gerenteAuditoria`),
   CONSTRAINT `fk_auditorias_usuarios1` FOREIGN KEY (`gerenteAuditoria`) REFERENCES `personas` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_gerentesDeProyecto_has_proyectos_proyectos1` FOREIGN KEY (`proyectoAuditado`) REFERENCES `proyectos` (`idProyecto`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +79,6 @@ CREATE TABLE `auditorias` (
 
 LOCK TABLES `auditorias` WRITE;
 /*!40000 ALTER TABLE `auditorias` DISABLE KEYS */;
-INSERT INTO `auditorias` VALUES (1,1,1,'2015-10-27 11:41:45','Prueba Revision 1','Aprobado',NULL);
 /*!40000 ALTER TABLE `auditorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,18 +123,19 @@ CREATE TABLE `estudiodecostos` (
   `idestudioDeCostos` int(11) NOT NULL AUTO_INCREMENT,
   `idProyectoSolicitado` int(11) NOT NULL,
   `idGerenteACargo` int(11) NOT NULL,
-  `costo` bigint(20) DEFAULT NULL,
+  `costoManoDeObra` int(11) DEFAULT NULL,
+  `costoProduccion` int(11) DEFAULT NULL,
+  `costoProyecto` bigint(20) DEFAULT NULL,
   `utilidad` int(11) DEFAULT NULL,
-  `cantidadEmpleados` int(11) DEFAULT NULL,
-  `observaciones` varchar(200) DEFAULT NULL,
   `tiempoEstimado` int(11) DEFAULT NULL,
-  `viabilidadProyecto` enum('Viable','No Viable') NOT NULL,
+  `totalTrabajadores` int(11) DEFAULT NULL,
+  `observaciones` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`idestudioDeCostos`,`idProyectoSolicitado`,`idGerenteACargo`),
   KEY `fk_estudioDeCostos_Proyectos1_idx` (`idProyectoSolicitado`),
   KEY `fk_estudiodecostos_usuarios1_idx` (`idGerenteACargo`),
   CONSTRAINT `fk_estudioDeCostos_Proyectos1` FOREIGN KEY (`idProyectoSolicitado`) REFERENCES `proyectos` (`idProyecto`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_estudiodecostos_usuarios1` FOREIGN KEY (`idGerenteACargo`) REFERENCES `personas` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,7 +198,7 @@ CREATE TABLE `materiaprimaporproducto` (
 
 LOCK TABLES `materiaprimaporproducto` WRITE;
 /*!40000 ALTER TABLE `materiaprimaporproducto` DISABLE KEYS */;
-INSERT INTO `materiaprimaporproducto` VALUES (1,1,2),(1,2,3),(1,3,2),(1,4,3),(1,5,2),(1,6,3),(1,7,2),(2,8,2),(2,9,3);
+INSERT INTO `materiaprimaporproducto` VALUES (1,1,2),(1,2,3),(1,3,2),(1,4,3),(1,5,2),(1,6,3),(1,7,2);
 /*!40000 ALTER TABLE `materiaprimaporproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +227,6 @@ CREATE TABLE `materiaprimaporproyecto` (
 
 LOCK TABLES `materiaprimaporproyecto` WRITE;
 /*!40000 ALTER TABLE `materiaprimaporproyecto` DISABLE KEYS */;
-INSERT INTO `materiaprimaporproyecto` VALUES (8,6,70000,0),(9,6,75000,0);
 /*!40000 ALTER TABLE `materiaprimaporproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,16 +242,19 @@ CREATE TABLE `novedades` (
   `usuarios_idUsuario` int(11) NOT NULL,
   `proyectos_idProyecto` int(11) NOT NULL,
   `categoria` enum('Retraso','Actividad','Solicitud') NOT NULL,
-  `descripcion` varchar(200) DEFAULT NULL,
-  `fecha` date NOT NULL,
-  `archivo` varchar(45) DEFAULT NULL,
+  `descripcionNovedad` varchar(200) DEFAULT NULL,
+  `fechaNovedad` datetime NOT NULL,
+  `archivoNovedad` varchar(45) DEFAULT NULL,
+  `solucionNovedad` varchar(45) DEFAULT NULL,
+  `fechaSolucionNovedad` date DEFAULT NULL,
+  `estadoSolucion` enum('Pendiente','Solucionado') DEFAULT NULL,
   PRIMARY KEY (`idNovedad`,`usuarios_idUsuario`,`proyectos_idProyecto`),
   KEY `fk_Usuarios_has_Proyectos_Proyectos1_idx` (`proyectos_idProyecto`),
   KEY `fk_Usuarios_has_Proyectos_Usuarios1_idx` (`usuarios_idUsuario`),
   KEY `categoria` (`categoria`),
   CONSTRAINT `fk_Usuarios_has_Proyectos_Proyectos1` FOREIGN KEY (`proyectos_idProyecto`) REFERENCES `proyectos` (`idProyecto`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_Usuarios_has_Proyectos_Usuarios1` FOREIGN KEY (`usuarios_idUsuario`) REFERENCES `personas` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,7 +288,7 @@ CREATE TABLE `permisos` (
 
 LOCK TABLES `permisos` WRITE;
 /*!40000 ALTER TABLE `permisos` DISABLE KEYS */;
-INSERT INTO `permisos` VALUES (1,'','Proyectos',1),(2,'crearProyecto.php','Crear Nuevo',2),(3,'listarProyectos.php','Listar Proyectos',2),(4,'','Novedades',1),(5,'agregarNovedad.php','Agregar Nueva',3),(6,'listarNovedades.php','Listar Informes de Novedad',3),(7,'','Personal',1),(8,'registrarUsuario.php','Registrar',4),(9,'listarUsuarios.php','Ver Todos',4),(10,'listarUsuariosInactivos.php','Inactivos',4),(11,'','Auditorias',1),(12,'generarAuditoria.php','Generar Nueva',5),(13,'listarAuditorias.php','Listar Auditorias',5),(14,'','Clientes',1),(15,'agregarCliente.php','Agregar',6),(16,'clientesActivos.php','Activos',6),(17,'clientesInactivos.php','Inactivos',6),(18,NULL,'Roles',1),(19,'crearRol.php','Crear Nuevo',7),(20,'agregarAreas.php','Agregar Área',7),(21,'modificarRol.php','Modificar Rol',0),(22,'asignarPermisos.php','Asignar Permisos',0),(23,'modificarUsuario.php','Modificar Usuario',0),(24,'modificarCliente.php','Modificar Cliente',0),(25,'modificarContrasena.php','Modificar Contraseña',0),(26,'estudioDeCostos.php','Estudio De Costos',0),(27,'modificarProyecto.php','Modificar Proyecto',0),(28,NULL,'Insumos',1),(29,'agregarInsumos.php','Agregar Insumo',8),(30,'actualizarRolArea.php','Actualizar Rol Area',0),(31,'agregarProcesos.php','Agregar Proceso',9),(32,NULL,'Procesos',1),(33,'asignarAreas.php','Asignar Area',0),(34,NULL,'Productos',1),(35,'agregarProductos.php','Agregar Producto',10),(36,'produccionProyecto.php','Producción Proyecto',0);
+INSERT INTO `permisos` VALUES (1,'','Proyectos',1),(2,'crearProyecto.php','Crear Nuevo',2),(3,'listarProyectos.php','Listar Proyectos',2),(4,'','Novedades',1),(5,'agregarNovedad.php','Agregar Nueva',3),(6,'listarNovedades.php','Listar Informes de Novedad',3),(7,'','Personal',1),(8,'registrarUsuario.php','Registrar',4),(9,'listarUsuarios.php','Ver Todos',4),(10,'listarUsuariosInactivos.php','Inactivos',4),(11,'','Auditorias',1),(12,'generarAuditoria.php','Generar Nueva',5),(13,'listarAuditorias.php','Listar Auditorias',5),(14,'','Clientes',1),(15,'agregarCliente.php','Agregar',6),(16,'clientesActivos.php','Activos',6),(17,'clientesInactivos.php','Inactivos',6),(18,NULL,'Roles',1),(19,'crearRol.php','Crear Nuevo',7),(20,'agregarAreas.php','Agregar Área',7),(21,'modificarRol.php','Modificar Rol',0),(22,'asignarPermisos.php','Asignar Permisos',0),(23,'modificarUsuario.php','Modificar Usuario',0),(24,'modificarCliente.php','Modificar Cliente',0),(25,'modificarContrasena.php','Modificar Contraseña',0),(26,'estudioDeCostos.php','Estudio De Costos',0),(27,'modificarProyecto.php','Modificar Proyecto',0),(28,NULL,'Insumos',1),(29,'agregarInsumos.php','Agregar Insumo',8),(30,'actualizarRolArea.php','Actualizar Rol Area',0),(31,'agregarProcesos.php','Agregar Proceso',9),(32,NULL,'Procesos',1),(33,'asignarAreas.php','Asignar Area',0),(34,NULL,'Productos',1),(35,'agregarProductos.php','Agregar Producto',10),(36,'produccionProyecto.php','Producción Proyecto',0),(37,'crearRol.php?#ModalRoles','Ver Roles',7),(38,'informacionProyecto.php','Información Proyecto',0);
 /*!40000 ALTER TABLE `permisos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,7 +316,7 @@ CREATE TABLE `permisosporrol` (
 
 LOCK TABLES `permisosporrol` WRITE;
 /*!40000 ALTER TABLE `permisosporrol` DISABLE KEYS */;
-INSERT INTO `permisosporrol` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(16,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(1,2),(2,2),(3,2),(4,2),(6,2),(7,2),(8,2),(9,2),(11,2),(12,2),(13,2),(14,2),(15,2),(16,2),(17,2),(23,2),(24,2),(25,2),(26,2),(27,2),(1,3),(3,3),(4,3),(5,3),(6,3),(25,3);
+INSERT INTO `permisosporrol` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(16,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(37,1),(38,1),(1,2),(2,2),(3,2),(4,2),(6,2),(7,2),(8,2),(9,2),(11,2),(12,2),(13,2),(14,2),(15,2),(16,2),(17,2),(23,2),(24,2),(25,2),(26,2),(27,2),(1,3),(3,3),(4,3),(5,3),(6,3),(25,3);
 /*!40000 ALTER TABLE `permisosporrol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +345,7 @@ CREATE TABLE `personas` (
   KEY `identificacion` (`identificacion`),
   KEY `fk_personas_areas1_idx1` (`areas_idAreas`),
   CONSTRAINT `fk_personas_areas1` FOREIGN KEY (`areas_idAreas`) REFERENCES `areas` (`idAreas`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,7 +354,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (1,1012377025,'Camilo','Arias González','Cll 93 No 11-08',3015782659,'1991-05-20','carias520@misena.edu.co','Activo','camilo.jpg',1),(2,101112,'Christopher','Arias Rojas','Calle 45 no 18 22',3102845166,'1994-01-17','ariasgonzalezcamilo@gmail.com','Activo','Koala.jpg',2),(3,111213,'Juan','Melas','cra 68 no 45 10',3015782659,'1998-01-20','ariasgonzalezcamilo@gmail.com','Activo','Chrysanthemum.jpg',3),(4,202020,'Juan Fernando','Mendoza','Calle 45 no 18 22',3213991985,'1988-05-11','ariasgonzalezcamilo@gmail.com','Inactivo','Hydrangeas.jpg',4),(9,2143454,'Andrews','Sinisterra','Calle 45 no 18 22',3214333516,NULL,'asinisterra@muebleslaoficina.com','Activo','descarga.jpg',6);
+INSERT INTO `personas` VALUES (1,1012377025,'Camilo','Arias González','Cll 93 No 11-08',3015782659,'1991-05-20','carias520@misena.edu.co','Inactivo','camilo.jpg',1),(2,101112,'Christopher','Arias Rojas','Calle 45 no 18 22',3102845166,'1994-01-17','ariasgonzalezcamilo@gmail.com','Activo','Koala.jpg',2),(3,111213,'Juan','Melas','cra 68 no 45 10',3015782659,'1998-01-20','ariasgonzalezcamilo@gmail.com','Activo','Chrysanthemum.jpg',3),(4,202020,'Juan Fernando','Mendoza','Calle 45 no 18 22',3213991985,'1988-05-11','ariasgonzalezcamilo@gmail.com','Inactivo','Hydrangeas.jpg',4),(9,2143454,'Andrews','Sinisterra','Calle 45 no 18 22',3214333516,NULL,'asinisterra@muebleslaoficina.com','Activo','descarga.jpg',6),(13,80730206,'Howard','Mosquera','Carrera 7 A # 187 A - 38 Interior 1',3184335384,'1983-02-01','howard.mosquera@gmail.com','Activo','Kevin.jpg',1),(14,80730207,'Howard','Mosquera Lara','Carrera 7 A # 187 A - 38 Interior 1',3184335384,'1983-02-08','howard.mosquera@gmail.com','Activo','perfil.png',1),(15,21323232,'dasdada','dadadada','Carrera 7 A # 187 A - 38 Interior 1',233232323,NULL,'adsdad@hot.com','Activo','perfil.png',6),(16,101010,'Pedro','Perez','',10101010,'2015-12-19','correo@correo','Activo','perfil.png',1),(17,1232333,'Andres','Perez','Carrera 7 A # 187 A - 38 Interior 1',3184335384,'1991-05-20','ariasgonzalezcamilo@gmail.com','Activo','perfil.png',4),(19,36554,'Andres','Perez','Carrera 7 A # 187 A - 38 Interior 1',3184335384,'2000-03-12','ariasgonzalezcamilo@gmail.com','Activo','perfil.png',3),(21,365544,'Andres','Perez','Carrera 7 A # 187 A - 38 Interior 1',3184335384,'2000-03-12','ariasgonzalezcamilo@gmail.com','Activo','perfil.png',3),(22,434343432,'Pedrio','Perales','Carrera 7 A # 187 A - 38 Interior 1',32434343,'1998-01-19','ariasgonzalezcamilo@gmail.com','Activo','perfil.png',3);
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -433,7 +441,6 @@ CREATE TABLE `procesosporproyecto` (
 
 LOCK TABLES `procesosporproyecto` WRITE;
 /*!40000 ALTER TABLE `procesosporproyecto` DISABLE KEYS */;
-INSERT INTO `procesosporproyecto` VALUES (1,1,10,NULL,NULL,1),(1,2,30,NULL,NULL,1),(1,3,10,NULL,NULL,0),(1,4,40,NULL,NULL,1);
 /*!40000 ALTER TABLE `procesosporproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -462,7 +469,6 @@ CREATE TABLE `productoporproyecto` (
 
 LOCK TABLES `productoporproyecto` WRITE;
 /*!40000 ALTER TABLE `productoporproyecto` DISABLE KEYS */;
-INSERT INTO `productoporproyecto` VALUES (2,6,10);
 /*!40000 ALTER TABLE `productoporproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -478,7 +484,7 @@ CREATE TABLE `productos` (
   `nombreProducto` varchar(45) DEFAULT NULL,
   `fotoProducto` varchar(45) DEFAULT NULL,
   `descripcionProducto` varchar(200) DEFAULT NULL,
-  `estadoProducto` enum('Activo','Inactivo') DEFAULT NULL,
+  `estadoProducto` enum('Activo','Inactivo','Sin Procesos') DEFAULT NULL,
   `ganancia` double DEFAULT NULL,
   PRIMARY KEY (`idProductos`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -490,7 +496,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Silla Gerencial','6.jpg','Silla Basica','Activo',1.76),(2,'Mesa Juntas','mesa5.jpg','Mesa 40X40','Activo',0.764),(3,'Silla Ejecutiva','6.jpg','Madera','Activo',4.45),(4,'Mesa Oficina','silla.jpg','','Activo',3.65),(5,'Gerencial','1.png','','Activo',0),(6,'Mueble','6.jpg','o','',0),(7,'Gab','3.jpg','prueba','',0),(8,'Nuevo','6.jpg','N','',0),(9,'New','mesa6.jpg','aca','',5.67);
+INSERT INTO `productos` VALUES (1,'Silla Gerencial','6.jpg','Silla Basica','Activo',1.76),(2,'Mesa Juntas','mesa5.jpg','Mesa 40X40','Activo',0.764),(3,'Silla Ejecutiva','6.jpg','Madera','Activo',4.45),(4,'Mesa Oficina','silla.jpg','','Activo',3.65),(5,'Gerencial','1.png','','Activo',0),(6,'Mueble','6.jpg','o','',0),(7,'Gab','3.jpg','prueba','',0),(8,'Nuevo','6.jpg','N','',0),(9,'New','mesa6.jpg','aca','',5.67),(10,'mlñfsd','image.jpg','lllll','Inactivo',232323),(11,'lllll','Image.png','lll','Inactivo',8),(12,'dsdsds','Image.png','dsds','Inactivo',2),(13,'dsdsds','Image.png','dsds','Inactivo',2);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -512,7 +518,7 @@ CREATE TABLE `proyectos` (
   PRIMARY KEY (`idProyecto`),
   KEY `estado` (`estadoProyecto`),
   KEY `nombreProyecto` (`nombreProyecto`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -521,7 +527,6 @@ CREATE TABLE `proyectos` (
 
 LOCK TABLES `proyectos` WRITE;
 /*!40000 ALTER TABLE `proyectos` DISABLE KEYS */;
-INSERT INTO `proyectos` VALUES (1,'Muebles La oficina','2015-01-01','2015-05-30','Ejecucion',17,'Sin restriccion'),(2,'Escritorios 93','2015-12-31','2017-12-31','Sin Estudio Costos',0,'no'),(3,'PruebaProject','2015-12-31','2017-12-31','Sin Estudio Costos',0,'aca'),(4,'Prueba3','2015-12-31','2018-12-31','Sin Estudio Costos',0,'sds'),(5,'PruebasPro','2013-12-31','2016-12-31','Sin Estudio Costos',0,'dsdsa'),(6,'Proyectos Corp','2015-11-02','0000-00-00','Sin Estudio Costos',0,'dsds'),(7,'Prueba','2015-11-04','0000-00-00','Sin Produccion',0,'Nada'),(8,'Producto','2015-11-18','0000-00-00','Sin Produccion',0,'dsds'),(9,'dsds','2014-12-31','0000-00-00','Sin Produccion',0,''),(10,'Banco Pichincha','2015-11-02','0000-00-00','Sin Produccion',0,'Bancarios');
 /*!40000 ALTER TABLE `proyectos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -545,7 +550,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'Administrador'),(2,'Gerente'),(3,'Empleado'),(4,'Clientes');
+INSERT INTO `roles` VALUES (0,'default'),(1,'Administrador'),(2,'Gerente'),(3,'Empleado'),(4,'Clientes'),(5,'Auditor');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -572,7 +577,6 @@ CREATE TABLE `usuarioporproyecto` (
 
 LOCK TABLES `usuarioporproyecto` WRITE;
 /*!40000 ALTER TABLE `usuarioporproyecto` DISABLE KEYS */;
-INSERT INTO `usuarioporproyecto` VALUES (3,1),(9,1),(1,2),(9,2),(1,3),(9,3),(1,4),(9,4),(1,5),(9,5),(1,6),(1,7),(9,7),(1,8),(9,8),(1,9),(9,9),(1,10),(9,10);
 /*!40000 ALTER TABLE `usuarioporproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -600,7 +604,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1012377025,'c893bad68927b457dbed39460e6afd62',1),(101112,'c893bad68927b457dbed39460e6afd62',2),(111213,'c893bad68927b457dbed39460e6afd62',3),(202020,'c893bad68927b457dbed39460e6afd62',3);
+INSERT INTO `usuarios` VALUES (80730206,'c893bad68927b457dbed39460e6afd62',1),(1012377025,'c893bad68927b457dbed39460e6afd62',1),(101112,'c893bad68927b457dbed39460e6afd62',2),(111213,'c893bad68927b457dbed39460e6afd62',3),(202020,'c893bad68927b457dbed39460e6afd62',3),(365544,'c893bad68927b457dbed39460e6afd62',3),(434343432,'c893bad68927b457dbed39460e6afd62',3);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -959,7 +963,7 @@ BEGIN
 INSERT INTO `productivitymanager`.`personas` (`idUsuario`, `identificacion`, `nombres`, `apellidos`, `direccion`, `telefono`, `fechaNacimiento`, `email`, `estado`, `foto`, `areas_idAreas`)
  VALUES (default, doc, nombre, apellido, direccion, telefono, fecha, email, estado, foto, area);
 
-select('Usuario Registrado Con Éxito');
+select('true');
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1035,4 +1039,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-03 21:20:26
+-- Dump completed on 2015-12-12 12:15:22

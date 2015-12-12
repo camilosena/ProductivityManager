@@ -5,7 +5,7 @@ class AuditoriaDAO {
     function crearAuditoria (AuditoriaDTO $objetoAud, PDO $cnn) {
         $mensaje = '';
         try {
-            $query = $cnn->prepare("insert into auditorias values(DEFAULT,?,?,now(),?,?,?,?,?,?,?,?,?)");
+            $query = $cnn->prepare("insert into auditorias values(DEFAULT,?,?,now(),?,?,?,?,?,?,?,?,?,?)");
             $query->bindParam(1, $objetoAud->getIdProyecto());
             $query->bindParam(2, $objetoAud->getIdUsuario());
             $query->bindParam(3, $objetoAud->getDescripcion());            
@@ -17,8 +17,9 @@ class AuditoriaDAO {
             $query->bindParam(9, $objetoAud->getCalidad());
             $query->bindParam(10, $objetoAud->getProcesos());
             $query->bindParam(11, $objetoAud->getEmpleados());
+            $query->bindParam(12, $objetoAud->getResultado());
             $query->execute();
-            $mensaje = "Resultado de la auditoria: ".$objetoAud->getProducto();
+            $mensaje = "Resultado de la auditoria: ".$objetoAud->getProducto()."% ".$objetoAud->getResultado();
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }

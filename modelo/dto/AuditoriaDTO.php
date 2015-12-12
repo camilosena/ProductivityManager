@@ -14,6 +14,7 @@ class AuditoriaDTO {
     private $calidad;
     private $procesos;
     private $empleados;
+    private $resultado;
 
 
 
@@ -24,7 +25,7 @@ class AuditoriaDTO {
      * @param $descripcion
      * @param $producto
      */
-    function __construct($idAuditoria, $idUsuario, $idProyecto, $descripcion, $producto, $archivoAuditoria, $ejecucion, $presupuesto, $insumos, $calidad, $procesos, $empleados) {
+    function __construct($idAuditoria, $idUsuario, $idProyecto, $descripcion, $producto, $archivoAuditoria, $ejecucion, $presupuesto, $insumos, $calidad, $procesos, $empleados, $resultado) {
         $this->idAuditoria = $idAuditoria;
         $this->idUsuario = $idUsuario;
         $this->idProyecto = $idProyecto;
@@ -37,6 +38,7 @@ class AuditoriaDTO {
         $this->calidad = $calidad;
         $this->procesos = $procesos;
         $this->empleados = $empleados;
+        $this->resultado = $resultado;
     }
     function getIdAuditoria() {
         return $this->idAuditoria;
@@ -85,8 +87,15 @@ class AuditoriaDTO {
     function getEmpleados() {
         return $this->empleados;
     }
+    function getResultado() {
+        return $this->resultado;
+    }
 
-    function setIdAuditoria($idAuditoria) {
+    function setResultado($resultado) {
+        $this->resultado = $resultado;
+    }
+
+        function setIdAuditoria($idAuditoria) {
         $this->idAuditoria = $idAuditoria;
     }
 

@@ -36,15 +36,18 @@ if(isset($_POST['crearAuditoria'])){
      $idAuditoria ="";
      $auditoria= ($ejecucion + $presupuesto +  $insumos +  $calidad + $procesos + $empleados)/6;
      if ($auditoria >= 90) {
-         $producto = $auditoria."%  Excelente";
+         $producto = $auditoria;
+         $resultado = "Excelente";
      }else
      if ($auditoria < 90 & $auditoria >=47) {
-         $producto = $auditoria."% Plan de Mejoramiento";
+         $producto = $auditoria;
+         $resultado = "Plan de Mejoramiento";
      }else
      if ($auditoria < 47) {
-         $producto = $auditoria."% Comite Evaluador";
+         $producto = $auditoria;
+         $resultado = "Comité Evaluador";
      }
-    $objetoDTO = new AuditoriaDTO($idAuditoria, $idUsuario, $idProyecto, $descripcion, $producto, $archivoAuditoria, $ejecucion, $presupuesto, $insumos, $calidad, $procesos, $empleados);
+    $objetoDTO = new AuditoriaDTO($idAuditoria, $idUsuario, $idProyecto, $descripcion, $producto, $archivoAuditoria, $ejecucion, $presupuesto, $insumos, $calidad, $procesos, $empleados, $resultado);
     
     //Insertar Evidencia Auditor�a
     if ($_FILES['uploadedfile']['name'] == '') {
@@ -77,7 +80,7 @@ if(isset($_POST['crearAuditoria'])){
     $correoDTO->setDestinatario($email);
     $correoDTO->setContenido("Estimado señor ".$nombreGerente.",<br> se generó la auditoria N° ".$numero." el día ".$fecha." con las siguientes observaciones: "
             . $descripcion.'<br>'
-            ."El resultado de la auditoria es de un ".$producto."<br><br>"
+            ."El resultado de la auditoria es de un ".$producto."% ".$resultado."<br><br>"
             ."Auditor ".$nombreUsuario."<br><br>"
             ."Adjunto encontrara un archivo con la evidencia.".'<br>'
         .'<font style="color: #83AF44; font-size: 11px; font-weight:bold; font-family: Sans-Serif;font-style:italic; " >Prductivity Manager Software'

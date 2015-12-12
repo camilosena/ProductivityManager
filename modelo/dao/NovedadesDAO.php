@@ -59,7 +59,7 @@ join proyectos on idProyecto = proyectos_idProyecto");
 }
 public function consultarNovedad($idNovedad,PDO $cnn) {
         try {            
-            $query = $cnn->prepare("select * from novedades,proyectos where idNovedad=? and Proyectos_idProyecto=idProyecto");
+            $query = $cnn->prepare("select *, nombreProyecto from novedades,proyectos where idNovedad=? and Proyectos_idProyecto=idProyecto");
             $query->bindParam(1, $idNovedad);
             $query->execute();
             return $query->fetch();

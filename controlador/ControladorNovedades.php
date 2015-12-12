@@ -49,13 +49,13 @@ if(isset($_POST['crearNovedad'])){
         $email = $datos['email'];
         $nombreGerente = $datos['nombre'];
         $area = $usuario['nombreArea'];
-        $correoDTO = new CorreosDTO();    
+    $correoDTO = new CorreosDTO();    
     $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
     $correoDTO->setNombreRemitente("Productivity Manager");
     $correoDTO->setAsunto("Novedad de ".$categoria." creada por ". $nombreUsuario);
     $correoDTO->setContrasena("adsi2015");
     $correoDTO->setDestinatario($email);
-    $correoDTO->setContenido("Estimado señor: ".$nombreGerente.",<br> Desde el area de ".$area." se generó una novedad de ".$categoria." con las siguientes observaciones: "
+    $correoDTO->setContenido("Estimado señor ".$nombreGerente.",<br> desde el area de ".$area." se generó una novedad de ".$categoria." con las siguientes observaciones: "
             . $descripcion.'<br>'
             ."Adjunto encontrara un archivo con la evidencia.".'<br>'
         .'<font style="color: #83AF44; font-size: 11px; font-weight:bold; font-family: Sans-Serif;font-style:italic; " >Prductivity Manager Software'
@@ -97,7 +97,48 @@ if (isset ($_POST['solucionarNovedad'])) {
     session_start();
     $solucion = $_POST['solucion'];
     $idNovedad = $_SESSION['solucionNovedad']['idNovedad'];
-    $mensaje = $facadeNovedad->solucionarNovedad($solucion, $idNovedad);
-    echo $mensaje;
-header("Location: ../vista/listarNovedades.php?mensaje".$mensaje);
+    $novedad = $facadeNovedad->consultarNovedad($idNovedad);
+    $idEmpleado = $novedad['usuarios_idUsuario'];
+    $datos = $facadeUsuario->consultarUsuario($idEmpleado);
+    $email = $datos['email'];
+    $categoria = $novedad['categoria'];
+    $nombreEmpleado = $datos['nombre'];
+    $fecha = $novedad['fechaNovedad'];
+    $proyecto = $novedad['nombreProyecto'];
+    $idProyecto = $novedad['proyectos_idProyecto'];
+    $datosGerente  = $facadeNovedad->consultarGerenteParaEnvarNovedadPorCorreo($idProyecto);
+    $gerenteEncargado = $datosGerente['nombre'];
+    $correoDTO = new CorreosDTO();    
+    $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
+    $correoDTO->setNombreRemitente("Productivity Manager");
+    $correoDTO->setAsunto("Solución de la novedad de ".$categoria." del proyecto ". $proyecto);
+    $correoDTO->setContrasena("adsi2015");
+    $correoDTO->setDestinatario($email);
+    $correoDTO->setContenido("Estimado  ".$nombreEmpleado.",<br> se ha dado solución a la novedad de ".$categoria." generada el  ".$fecha." con las siguientes observaciones: "
+            . $solucion.'<br><br>'
+            .$gerenteEncargado.'<br>'
+            ."Gerente de Proyecto"
+            ."".'<br>'
+        .'<font style="color: #83AF44; font-size: 11px; font-weight:bold; font-family: Sans-Serif;font-style:italic; " >Prductivity Manager Software'
+                    . '© Todos los derechos reservados 2015.'
+                    . '<br>'.'Bogotá, Colombia'
+                    . '<br>'.'Teléfono: +57 3015782659'
+                    . '<br>'.'https://www.facebook.com/productivitymanager'
+                    . '<br>'.'https://twitter.com/Productivity_Mg'
+    . '</font>');
+    $archivo = '../'.$carpeta.'/'.$nombreImagen;
+    $correoDTO->setArchivos($archivo);
+    $facadeCorreo = new FacadeCorreos();
+    $confirmacion=$facadeCorreo->EnvioCorreo($correoDTO);
+    if ($confirmacion!='True') {
+       $mensajeCorreo=$confirmacion;  
+       $mensaje2="Error no se pudo generar la novedad";
+       $consecutivos = 0;
+       header("Location: ../vista/listarNovedades.php?errorPermiso=" . $mensajeCorreo);
+    } else {        
+    //mensaje enviado
+     $mensaje = $facadeNovedad->solucionarNovedad($solucion, $idNovedad);
+     header("Location: ../vista/listarNovedades.php?mensaje".$mensaje);
+    }
+
 }

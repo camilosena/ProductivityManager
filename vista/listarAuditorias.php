@@ -164,7 +164,7 @@ $session->Session($pagActual);
                 <td><?php echo $auditoria['nombre']; ?></td>
                 <td><?php echo $auditoria['nombreProyecto']; ?></td>
                 <td><?php echo $auditoria['fechaAuditoria']; ?></td>
-                <td><?php echo $auditoria['productoAuditoria']; ?></td>
+                <td><?php echo $auditoria['productoAuditoria']."% ".$auditoria['resultadoAuditoria']; ?></td>
                 <td>
                 <a class="me" title="Ver resultado de la auditoría" href="../controlador/ControladorAuditorias.php?idAuditoria=<?php echo $auditoria['idAuditoria'];?>"><img class="iconos" src="../img/verBino.png"></a>
                     

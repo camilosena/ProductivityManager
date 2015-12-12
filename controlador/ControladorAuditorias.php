@@ -36,15 +36,15 @@ if(isset($_POST['crearAuditoria'])){
      $idAuditoria ="";
      $auditoria= ($ejecucion + $presupuesto +  $insumos +  $calidad + $procesos + $empleados)/6;
      if ($auditoria >= 90) {
-         $producto = $auditoria;
+         $producto = round($auditoria) ;
          $resultado = "Excelente";
      }else
      if ($auditoria < 90 & $auditoria >=47) {
-         $producto = $auditoria;
+         $producto = round($auditoria);
          $resultado = "Plan de Mejoramiento";
      }else
      if ($auditoria < 47) {
-         $producto = $auditoria;
+         $producto = round($auditoria);
          $resultado = "Comité Evaluador";
      }
     $objetoDTO = new AuditoriaDTO($idAuditoria, $idUsuario, $idProyecto, $descripcion, $producto, $archivoAuditoria, $ejecucion, $presupuesto, $insumos, $calidad, $procesos, $empleados, $resultado);

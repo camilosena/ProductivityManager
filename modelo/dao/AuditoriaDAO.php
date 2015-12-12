@@ -68,4 +68,30 @@ class AuditoriaDAO {
             echo 'Error' . $ex->getMessage();
         }
     }
+    function cantidadAuditoriasPorProyecto ($idProyecto, PDO $cnn){
+        try {
+            $query = $cnn->prepare("select count(idAuditoria) as numero from auditorias where proyectoAuditado =?");
+            $query->bindParam(1, $idProyecto);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        
+    }
+    function consultarGerenteParaEnvarAuditoriaPorCorreo($idProyecto, PDO $cnn){
+          try {            
+            $query = $cnn->prepare("select idUsuario, email, concat(nombres,' ', apellidos) as nombre, rol from personas
+join usuarioporproyecto on idUsuario = usuarioAsignado
+join proyectos on proyectoAsignado = idProyecto and idproyecto = ?
+join usuarios on idLogin = identificacion
+join roles on idRoles = rolesId and rol = 'Gerente'");
+            $query->bindParam(1, $idProyecto);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }  
+    
+}
 }

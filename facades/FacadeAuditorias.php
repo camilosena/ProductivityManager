@@ -27,4 +27,12 @@ class FacadeAuditorias
     public function consultarAuditoria($idAuditoria) {
         return $this->auditoriaDAO->consultarAuditoria($idAuditoria,$this->conexionBase);
     }
+    function cantidadAuditoriasPorProyecto ($idProyecto){
+        
+        return $this->auditoriaDAO->cantidadAuditoriasPorProyecto($idProyecto, $this->conexionBase);
+    }
+    function consultarGerenteParaEnvarAuditoriaPorCorreo($idProyecto){
+        
+        return $this->auditoriaDAO->consultarGerenteParaEnvarAuditoriaPorCorreo($idProyecto, $this->conexionBase);
+    }
 }

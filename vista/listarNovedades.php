@@ -208,12 +208,12 @@ $session->Session($pagActual);
                     <td><?php echo $project['fecha']; ?></td>
                     <td>
                         <a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad']; ?>"><img class="iconos" src="../img/verBino.png"></a>
-                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
-                        <a class="me" title="Modificar Novedad" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
+                            <?php if ($_SESSION['rol'] == 'Administrador') { ?>
+                        <a name="eliminar" title="Eliminar Novedad" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $project['idNovedad']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
                         <?php
                         };
                         ?>
-                        <a name="eliminar" title="Eliminar Novedad" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
+                        
                     </td>
                 </tr>
                 <?php

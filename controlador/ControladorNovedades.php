@@ -72,7 +72,7 @@ if(isset($_POST['crearNovedad'])){
        $consecutivos = 0;
        header("Location: ../vista/listarNovedades.php?errorPermiso=" . $mensajeCorreo);
     } else {        
-    //insertar imagen
+    //mensaje enviado
          $message= $facadeNovedad->insertarNovedad($objetoDTO);
     header("location: ../vista/agregarNovedad.php?novedad=".$message."&evidencia=".$msg);
     }

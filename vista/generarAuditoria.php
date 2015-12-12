@@ -120,7 +120,7 @@ $session->Session($pagActual);
         </nav>      
         <script src="../js/Chart.js"></script>
         <div id="panelIzq"><br>
-            <div id="canvas-holder">
+            <div id="canvas-holder" style="margin-right:80px">
             <canvas id="chart-area4" width="600" height="300"></canvas>
             <canvas id="chart-area" width="300" height="300"style="display:none"></canvas>
             <canvas id="chart-area2" width="300" height="300" style="margin-left:150px; margin-top:20px"></canvas>
@@ -142,27 +142,27 @@ $session->Session($pagActual);
                             ];
 
                     var barChartData = {
-                        labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio"],
+                        labels : ["Enero","Marzo","Junio","Agosto","Octubre","Diciembre"],
                         datasets : [
                             {
                                 fillColor : "#6b9dfa",
                                 strokeColor : "#ffffff",
                                 highlightFill: "#1864f2",
                                 highlightStroke: "#ffffff",
-                                data : [90,30,10,80,15,5,15]
+                                data : [90,30,10]
                             },
                             {
                                 fillColor : "#e9e225",
                                 strokeColor : "#ffffff",
                                 highlightFill : "#ee7f49",
                                 highlightStroke : "#ffffff",
-                                data : [40,50,70,40,85,55,15]
+                                data : [40,50,70]
                             }
                         ]
 
                     }   
                         var lineChartData = {
-                            labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio"],
+                            labels : ["Enero","Marzo","Junio","Agosto","Octubre","Diciembre"],
                             datasets : [
                                 {
                                     label: "Primera serie de datos",
@@ -172,7 +172,7 @@ $session->Session($pagActual);
                                     pointStrokeColor : "#fff",
                                     pointHighlightFill : "#fff",
                                     pointHighlightStroke : "rgba(220,220,220,1)",
-                                    data : [90,30,10,80,15,5,15]
+                                    data : [90,30,10,80,15,5]
                                 },
                                 {
                                     label: "Segunda serie de datos",
@@ -182,7 +182,7 @@ $session->Session($pagActual);
                                     pointStrokeColor : "#fff",
                                     pointHighlightFill : "#fff",
                                     pointHighlightStroke : "rgba(151,187,205,1)",
-                                    data : [40,50,70,40,85,55,15]
+                                    data : [40,50,70,40,85,55]
                                 }
                             ]
 

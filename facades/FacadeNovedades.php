@@ -34,4 +34,12 @@ class FacadeNovedades {
         
         return $this->novedadDAO->consultarAreaUsuarioEnSesion($idUsuario, $this->conexionBase);
     }
+    function solucionarNovedad($solucion, $idNovedad){
+        
+        return $this->novedadDAO->solucionarNovedad($solucion, $idNovedad, $this->conexionBase);
+    }
+    function estadoNovedad($idNovedad){
+        
+        return $this->novedadDAO->estadoNovedad($idNovedad, $this->conexionBase);
+    }
 }

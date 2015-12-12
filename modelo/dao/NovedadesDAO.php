@@ -5,14 +5,18 @@ class NovedadesDAO {
     public function crearNovedad(NovedadesDTO $objetoNov, PDO $cnn) {
         $mensaje = '';
         try {
-            $query = $cnn->prepare("insert into novedades values(DEFAULT,?,?,?,?,now(),?)");
+            $query = $cnn->prepare("insert into novedades values(DEFAULT,?,?,?,?,now(),?,?,?,?)");
             $query->bindParam(1, $objetoNov->getIdUsuario());
             $query->bindParam(2, $objetoNov->getIdProyecto());
             $query->bindParam(3, $objetoNov->getCategoria());
             $query->bindParam(4, $objetoNov->getDescripcion());            
             $query->bindParam(5, $objetoNov->getArchivo());
+            $query->bindParam(6, $objetoNov->getSolucion());
+            $query->bindParam(7, $objetoNov->getFechaSolucion());
+            $query->bindParam(8, $objetoNov->getEstadoSolucion());
+            
             $query->execute();
-            $mensaje = "Novedad Generada";
+            $mensaje = "Novedad Registrada";
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }
@@ -45,10 +49,8 @@ class NovedadesDAO {
     }
       public function listarNovedades(PDO $cnn) {
         try {            
-            $query = $cnn->prepare("select n.idNovedad, p.nombreProyecto, n.categoria, n.descripcion, n.fecha
-                                    from novedades as n
-                                    inner join proyectos as p
-                                    on n.Proyectos_idProyecto=p.idProyecto");
+            $query = $cnn->prepare("select *, nombreProyecto from novedades 
+join proyectos on idProyecto = proyectos_idProyecto");
             $query->execute();
             return $query->fetchAll();
         } catch (Exception $ex) {
@@ -82,8 +84,7 @@ join roles on idRoles = rolesId and rol = 'Gerente'");
 }
 function consultarAreaUsuarioEnSesion($idUsuario, PDO $cnn){
                       try {            
-            $query = $cnn->prepare("    
-    select areas_idAreas, nombreArea from personas 
+            $query = $cnn->prepare(" select areas_idAreas, nombreArea from personas 
 join areas on idAreas = areas_idAreas and idUsuario =?");
             $query->bindParam(1, $idUsuario);
             $query->execute();
@@ -91,5 +92,29 @@ join areas on idAreas = areas_idAreas and idUsuario =?");
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         } 
+}
+function solucionarNovedad($solucion, $idNovedad, PDO $cnn){
+        try {            
+            $query = $cnn->prepare("update novedades set estadoSolucion= 'Solucionado', solucionNovedad= ?,fechaSolucionNovedad = current_date() where idNovedad =?");
+            $query->bindParam(1, $solucion);
+            $query->bindParam(2, $idNovedad);
+            $query->execute();
+            $mensaje = "Novedad Solucionada";
+            return $mensaje;
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        } 
+    
+}
+function estadoNovedad($idNovedad, PDO $cnn){
+               try {            
+            $query = $cnn->prepare(" select estadoSolucion from novedades where idNovedad =?");
+            $query->bindParam(1, $idNovedad);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        } 
+    
 }
 }

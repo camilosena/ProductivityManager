@@ -68,15 +68,17 @@ if(isset($_POST['crearAuditoria'])){
     $email = $datos['email'];
     $proyecto = $proyectos['nombreProyecto'];
     $nombreGerente = $datos['nombre'];
-    $fecha = "hoy";
+    $date = getdate();
+    $fecha = date($date);
     $correoDTO = new CorreosDTO();    
     $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
     $correoDTO->setNombreRemitente("Productivity Manager");
     $correoDTO->setAsunto("Auditoria N° ".$numero." al proyecto ". $proyecto);
     $correoDTO->setContrasena("adsi2015");
     $correoDTO->setDestinatario($email);
-    $correoDTO->setContenido("Estimado señor: ".$nombreGerente.",<br> Se generó la auditoria N° ".$numero." el día ".$fecha." con las siguientes observaciones: "
+    $correoDTO->setContenido("Estimado señor ".$nombreGerente.",<br> se generó la auditoria N° ".$numero." el día ".$fecha." con las siguientes observaciones: "
             . $descripcion.'<br>'
+            ."El resultado de la auditoria es de un ".$producto."<br><br>"
             ."Auditor ".$nombreUsuario."<br><br>"
             ."Adjunto encontrara un archivo con la evidencia.".'<br>'
         .'<font style="color: #83AF44; font-size: 11px; font-weight:bold; font-family: Sans-Serif;font-style:italic; " >Prductivity Manager Software'

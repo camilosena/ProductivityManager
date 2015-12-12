@@ -131,30 +131,18 @@ $session->Session($pagActual);
                 <th>Código</th>                
                 <th>Nombre de Proyecto</th>
                 <th>Categoria</th>
-                <th>Descripcion</th>
                 <th>Fecha</th>
+                <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-
-           <thead>
-           <tr>
-               <th><input tabindex="1" type="text" class="input11" name="idUser" value=""></th>
-               <th><input tabindex="2" type="text" class="input11" name="identification" value=""></th>
-               <th><input tabindex="3" type="text" class="input11" name="names" value=""></th>
-               <th><input tabindex="4" type="text" class="input11" name="lastNames" value=""><br></th>
-               <th><input tabindex="5" type="text" class="input11" name="rol" value=""></th>
-               <th><button tabindex="6" type="submit" value="buscarNovedades" name="buscarNovedades" id="buscar" class="boton-verde">Buscar</button></th>
-           </tr>
-           </thead>
- 
         <tfoot>
             <tr>    
                 <th>Código</th>                
                 <th>Nombre de Proyecto</th>
                 <th>Categoria</th>
-                <th>Descripcion</th>
                 <th>Fecha</th>
+                <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </tfoot>
@@ -173,17 +161,17 @@ $session->Session($pagActual);
                         <td><?php echo $project['idNovedad']; ?></td>
                         <td><?php echo $project['nombreProyecto']; ?> </td>
                         <td><?php echo $project['categoria']; ?> </td>
-                        <td><?php echo $project['descripcion']; ?></td>
-                        <td><?php echo $project['fecha']; ?></td>
+                        <td><?php echo $project['fechaNovedad']; ?></td>
+                        <td><?php echo $project['estadoSolucion']; ?></td>
 
                         <td>
                             <a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad']; ?>"><img class="iconos" src="../img/verBino.png"></a>
                             <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador') { ?>
-                                <a class="me" title="Modificar Novedad" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
+                                <a class="me" title="Solucionar Novedad" href="../vista/listarNovedades.php?id=<?php echo $project['idNovedad']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                                 <?php
                             };
                             ?>
-                            <a name="eliminar" title="Eliminar Novedad" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
+                            <a name="eliminar" title="Eliminar Novedad" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $project['idNovedad']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
                         </td>
                     </tr>
                     <?php
@@ -204,14 +192,22 @@ $session->Session($pagActual);
                     <td><?php echo $project['idNovedad']; ?></td>
                     <td><?php echo $project['nombreProyecto']; ?> </td>
                     <td><?php echo $project['categoria']; ?> </td>
-                    <td><?php echo $project['descripcion']; ?></td>
-                    <td><?php echo $project['fecha']; ?></td>
+                    <td><?php echo $project['fechaNovedad']; ?></td>
+                    <td><?php echo $project['estadoSolucion']; ?></td>
                     <td>
                         <a class="me" title="Consultar Novedad" href="../controlador/ControladorNovedades.php?idNovedad=<?php echo $project['idNovedad']; ?>"><img class="iconos" src="../img/verBino.png"></a>
-                            <?php if ($_SESSION['rol'] == 'Administrador') { ?>
-                        <a name="eliminar" title="Eliminar Novedad" class="me" href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $project['idNovedad']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
-                        <?php
-                        };
+                            <?php if ($_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == 'Gerente' ) { 
+                        $estados = $facadeNovedad->estadoNovedad($project['idNovedad']);
+                        $estado= $estados['estadoSolucion'];
+                        if ($estado == "Solucionado") {
+                                 
+                        echo '<a name="solucionado" title="Novedad solucionada" class="me" ><img class="iconos" src="../img/bien.png"></a>';
+                         
+                        }else{
+                        
+                        echo '<a name="solucionar" title="Solucionar Novedad" class="me" href="../controlador/ControladorNovedades.php?idSolucionar='.$project['idNovedad'].'"><img class="iconos" src="../img/modify.png"></a>';
+                         
+                            }}
                         ?>
                         
                     </td>
@@ -230,15 +226,32 @@ $session->Session($pagActual);
                     echo '<tr><td>Código Novedad:</td><td>' . $_SESSION['datoNovedad']['idNovedad'] . '</td></tr>';
                     echo '<tr><td>Nombre Proyecto:</td><td>' . $_SESSION['datoNovedad']['nombreProyecto'] . '</td></tr>';
                     echo '<tr><td>Categoria:</td><td>' . $_SESSION['datoNovedad']['categoria'] . '</td></tr>';
-                    echo '<tr><td>Descripción:</td><td> ' . $_SESSION['datoNovedad']['descripcion'] . '</td></tr>';
-                    echo '<tr><td>Fecha:</td><td>' . $_SESSION['datoNovedad']['fecha'] . '</td></tr>';
+                    echo '<tr><td>Descripción:</td><td> ' . $_SESSION['datoNovedad']['descripcionNovedad'] . '</td></tr>';
+                    echo '<tr><td>Fecha:</td><td>' . $_SESSION['datoNovedad']['fechaNovedad'] . '</td></tr>';
                     echo '<tr><td>Evidencia:</td><td><img style="width:280px;height:140px;" src="../evidencias/' . $_SESSION['datoNovedad']['archivo'] . '"></td></tr>';
                     echo '</table>';
                     ?>                                
                 </div>                    
             </div>
+        <div id="solucionarNovedad" class="modalDialog" title="Solucionar Novedad">
+                <div><a href="#close" title="Cerrar" class="close">X</a><br>
+                     
+                    <form class="formRegistro" id="formNovedades" method="post" action="../controlador/ControladorNovedades.php" enctype="multipart/form-data">
+                        <?php
+                    echo '<table id="muestraDatos"><tr><th colspan="2">Solución</th></tr>';
+                    echo '<tr><td>Código Novedad:</td><td>' . $_SESSION['solucionNovedad']['idNovedad'] . '</td></tr>';
+                    echo '<tr><td>Nombre Proyecto:</td><td>' . $_SESSION['solucionNovedad']['nombreProyecto'] . '</td></tr>';
+                    echo '</table>';
+                    ?>
+                        <textarea class="input4" name="solucion" title="Minimo 5 Caracteres" id="description" required ></textarea>
+                <button type="submit" name="solucionarNovedad" class="boton-verde">Solucionar</button><br>
+                        
+                    </form>                         
+                </div>                    
+            </div>
             <button class="boton-verde"  onclick="location.href='listarNovedades.php'" >Actualizar Lista</button>
             </div>
+    
  <footer class="footer-distributed">
             <div class="footer-left">
                             <span><img src="../img/logoEscala.png" width="210" height="120"></span>

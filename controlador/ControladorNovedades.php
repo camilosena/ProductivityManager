@@ -11,18 +11,21 @@ require_once '../modelo/dto/CorreosDTO.php';
 require_once '../facades/FacadeCorreos.php';
 require_once '../modelo/utilidades/EnvioCorreos.php';
 require_once '../PHPMailer/PHPMailerAutoload.php';
-
+$facadeUsuario = new FacadeUsuarios;
+$facadeNovedad = new FacadeNovedades();
 if(isset($_POST['crearNovedad'])){
     session_start();
-    $facadeUsuario = new FacadeUsuarios;
-    $facadeNovedad = new FacadeNovedades();
+    
     $idUsuario=$facadeUsuario->usuarioEnSesion($_SESSION['id']);
     $nombreUsuario = $_SESSION['nombre'];
     $idProyecto=$_POST['idProyecto'];
     $categoria=$_POST['categoria'];
     $descripcion=$_POST['descripcion'];
     $archivo=$_FILES['uploadedfile']['name'];
-    $objetoDTO = new NovedadesDTO($idUsuario, $idProyecto, $categoria, $descripcion, $archivo);
+    $solucion = "";
+    $estadoSolucion = "Pendiente";
+    $fechaSolucion = 0;
+    $objetoDTO = new NovedadesDTO($idNovedad, $idUsuario, $idProyecto, $categoria, $descripcion, $archivo, $fecha, $solucion, $fechaSolucion, $estadoSolucion);
 
     //Insertar Evidencia Novedades
     if ($_FILES['uploadedfile']['name'] == '') {
@@ -79,9 +82,22 @@ if(isset($_POST['crearNovedad'])){
    
     }
 }else if (isset($_GET['idNovedad'])) {
-    $facadeNovedad = new FacadeNovedades();
+
     session_start();
     $_SESSION['datoNovedad'] = $facadeNovedad->consultarNovedad($_GET['idNovedad']);
 
     header("Location: ../vista/listarNovedades.php?&#verUsuario");
+}else
+if (isset ($_GET['idSolucionar'])) {
+    session_start();
+    $_SESSION['solucionNovedad'] = $facadeNovedad->consultarNovedad($_GET['idSolucionar']);
+   header("Location: ../vista/listarNovedades.php?#solucionarNovedad");
+}else
+if (isset ($_POST['solucionarNovedad'])) {
+    session_start();
+    $solucion = $_POST['solucion'];
+    $idNovedad = $_SESSION['solucionNovedad']['idNovedad'];
+    $mensaje = $facadeNovedad->solucionarNovedad($solucion, $idNovedad);
+    echo $mensaje;
+header("Location: ../vista/listarNovedades.php?mensaje".$mensaje);
 }

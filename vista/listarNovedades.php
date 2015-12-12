@@ -228,7 +228,7 @@ $session->Session($pagActual);
                     echo '<tr><td>Categoria:</td><td>' . $_SESSION['datoNovedad']['categoria'] . '</td></tr>';
                     echo '<tr><td>Descripción:</td><td> ' . $_SESSION['datoNovedad']['descripcionNovedad'] . '</td></tr>';
                     echo '<tr><td>Fecha:</td><td>' . $_SESSION['datoNovedad']['fechaNovedad'] . '</td></tr>';
-                    echo '<tr><td>Evidencia:</td><td><img style="width:280px;height:140px;" src="../evidencias/' . $_SESSION['datoNovedad']['archivo'] . '"></td></tr>';
+                    echo '<tr><td>Evidencia:</td><td><img style="width:280px;height:140px;" src="../evidencias/' . $_SESSION['datoNovedad']['archivoNovedad'] . '"></td></tr>';
                     echo '</table>';
                     ?>                                
                 </div>                    

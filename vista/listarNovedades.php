@@ -205,7 +205,7 @@ $session->Session($pagActual);
                          
                         }else{
                         
-                        echo '<a name="solucionar" title="Solucionar Novedad" class="me" href="../controlador/ControladorNovedades.php?idSolucionar='.$project['idNovedad'].'"><img class="iconos" src="../img/modify.png"></a>';
+                        echo '<a name="solucionar" title="Solucionar Novedad" class="me" href="../controlador/ControladorNovedades.php?idSolucionar='.$project['idNovedad'].'"><img class="iconos" src="../img/alert.png"></a>';
                          
                             }}
                         ?>
@@ -238,12 +238,12 @@ $session->Session($pagActual);
                      
                     <form class="formRegistro" id="formNovedades" method="post" action="../controlador/ControladorNovedades.php" enctype="multipart/form-data">
                         <?php
-                    echo '<table id="muestraDatos"><tr><th colspan="2">Solución</th></tr>';
+                    echo '<table id="muestraDatos" style="margin-left:100px"><tr><th colspan="2">Solución</th></tr>';
                     echo '<tr><td>Código Novedad:</td><td>' . $_SESSION['solucionNovedad']['idNovedad'] . '</td></tr>';
                     echo '<tr><td>Nombre Proyecto:</td><td>' . $_SESSION['solucionNovedad']['nombreProyecto'] . '</td></tr>';
                     echo '</table>';
                     ?>
-                        <textarea class="input4" name="solucion" title="Minimo 5 Caracteres" id="description" required ></textarea>
+                        <textarea class="input4" style="margin-left:100px;width:250px" name="solucion" title="Minimo 5 Caracteres" id="description" required ></textarea>
                 <button type="submit" name="solucionarNovedad" class="boton-verde">Solucionar</button><br>
                         
                     </form>                         

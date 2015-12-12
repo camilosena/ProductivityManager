@@ -25,6 +25,8 @@ if(isset($_POST['crearNovedad'])){
     $solucion = "";
     $estadoSolucion = "Pendiente";
     $fechaSolucion = 0;
+    $fecha="";
+    $idNovedad="";
     $objetoDTO = new NovedadesDTO($idNovedad, $idUsuario, $idProyecto, $categoria, $descripcion, $archivo, $fecha, $solucion, $fechaSolucion, $estadoSolucion);
 
     //Insertar Evidencia Novedades
@@ -49,6 +51,7 @@ if(isset($_POST['crearNovedad'])){
         $email = $datos['email'];
         $nombreGerente = $datos['nombre'];
         $area = $usuario['nombreArea'];
+        //Envio de Correo
     $correoDTO = new CorreosDTO();    
     $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
     $correoDTO->setNombreRemitente("Productivity Manager");
@@ -73,7 +76,7 @@ if(isset($_POST['crearNovedad'])){
        $mensajeCorreo=$confirmacion;  
        $mensaje2="Error no se pudo generar la novedad";
        $consecutivos = 0;
-       header("Location: ../vista/listarNovedades.php?errorPermiso=" . $mensajeCorreo);
+       header("Location: ../vista/listarNovedades.php?errorPermiso=" . $mensajeCorreo.$mensaje2);
     } else {        
     //mensaje enviado
          $message= $facadeNovedad->insertarNovedad($objetoDTO);
@@ -108,6 +111,7 @@ if (isset ($_POST['solucionarNovedad'])) {
     $idProyecto = $novedad['proyectos_idProyecto'];
     $datosGerente  = $facadeNovedad->consultarGerenteParaEnvarNovedadPorCorreo($idProyecto);
     $gerenteEncargado = $datosGerente['nombre'];
+    //Envio de Correo
     $correoDTO = new CorreosDTO();    
     $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
     $correoDTO->setNombreRemitente("Productivity Manager");

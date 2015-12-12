@@ -30,7 +30,7 @@ $session->Session($pagActual);
         <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
-    <meta http-equiv="refresh" content="120;URL=listarProyectos.php">
+    <meta http-equiv="refresh" content="30;URL=listarProyectos.php">
     </head>
     <body>           
     <div id='cssmenu'>
@@ -344,7 +344,7 @@ $session->Session($pagActual);
                                     if ($project['estadoProyecto'] == 'Sin Produccion') { ?>
                                                     <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
                                                 <?php }
-                                                if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecucion') { ?>
+                                                if ($_SESSION['rol'] == 'Gerente'  && $project['estadoProyecto']!='Ejecucion' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecucion') { ?>
                                             <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                         <?php }
                                                  }else{

@@ -362,7 +362,7 @@ $session->Session($pagActual);
                     echo '</select></td></tr>';
                     }}  else 
                     if ($_SESSION['rol']== "Gerente" ) {
-                    if($_SESSION['datosUsuario']['rol'] =='Empleado' || $_SESSION['datosUsuario']['rol'] =='Gerente' & $_SESSION['datosUsuario']['nombre'] == $_SESSION['nombre']){
+                    if($_SESSION['datosUsuario']['rol'] =='Empleado'){
                     echo '<tr><td colspan="2" style="text-align:center">Asignar Usuario a Proyecto</td></tr>';
                     echo '<form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php?codUsuario=' . $_SESSION['datosUsuario']['idUsuario']  . '&rolUser=' . $_SESSION['datosUsuario']['rol']  . '">';
                     echo '<tr><td><label class="tag" id="labelProyecto" for="listaProyecto"><span id="lab_valCountry" class="h331">Seleccione Proyecto:</span></label></td>'

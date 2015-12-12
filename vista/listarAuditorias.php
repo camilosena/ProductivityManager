@@ -163,8 +163,8 @@ $session->Session($pagActual);
                 <td><?php echo $auditoria['idAuditoria']; ?></td>
                 <td><?php echo $auditoria['nombre']; ?></td>
                 <td><?php echo $auditoria['nombreProyecto']; ?></td>
-                <td><?php echo $auditoria['fecha']; ?></td>
-                <td><?php echo $auditoria['producto']; ?></td>
+                <td><?php echo $auditoria['fechaAuditoria']; ?></td>
+                <td><?php echo $auditoria['productoAuditoria']; ?></td>
                 <td>
                 <?php 
                 if ($_SESSION['rol'] == 'Administrador') { ?>
@@ -192,9 +192,9 @@ $session->Session($pagActual);
                 echo '<tr><td>Código Auditoría:</td><td>' . $_SESSION['datosAuditoria']['idAuditoria'] . '</td></tr>';
                 echo '<tr><td>Gerente Auditoría:</td><td>' . $_SESSION['datosAuditoria']['nombre'] . '</td></tr>';
                 echo '<tr><td>Nombre Proyecto:</td><td>' . $_SESSION['datosAuditoria']['nombreProyecto'] . '</td></tr>';
-                echo '<tr><td>Fecha:</td><td> ' . $_SESSION['datosAuditoria']['fecha'] . '</td></tr>';
+                echo '<tr><td>Fecha:</td><td> ' . $_SESSION['datosAuditoria']['fechaAuditoria'] . '</td></tr>';
                 echo '<tr><td>Descripción:</td><td>' . $_SESSION['datosAuditoria']['observacionesAuditoria'] . '</td></tr>';
-                echo '<tr><td>Producto:</td><td>' . $_SESSION['datosAuditoria']['producto'] . '</td></tr>';
+                echo '<tr><td>Producto:</td><td>' . $_SESSION['datosAuditoria']['productoAuditoria'] . '</td></tr>';
                 echo '<tr><td>Evidencia:</td><td><img style="width:280px;height:140px;" src="../evidencias/' . $_SESSION['datosAuditoria']['archivoAuditoria'] . '"></td></tr>';
                 echo '</table>';
                 ?>

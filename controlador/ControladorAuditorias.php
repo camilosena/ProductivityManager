@@ -33,7 +33,7 @@ if(isset($_POST['crearAuditoria'])){
      $calidad = $_POST['calidad'];
      $procesos = $_POST['procesos'];
      $empleados = $_POST['empleados'];
-     
+     $idAuditoria ="";
      $auditoria= ($ejecucion + $presupuesto +  $insumos +  $calidad + $procesos + $empleados)/6;
      if ($auditoria >= 90) {
          $producto = $auditoria."%  Excelente";
@@ -68,8 +68,7 @@ if(isset($_POST['crearAuditoria'])){
     $email = $datos['email'];
     $proyecto = $proyectos['nombreProyecto'];
     $nombreGerente = $datos['nombre'];
-    $date = getdate();
-    $fecha = date($date);
+    $fecha =date('Y-m-d'); 
     $correoDTO = new CorreosDTO();    
     $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
     $correoDTO->setNombreRemitente("Productivity Manager");
@@ -96,7 +95,7 @@ if(isset($_POST['crearAuditoria'])){
        $mensajeCorreo=$confirmacion;  
        $mensaje2="Error no se pudo generar la novedad";
        $consecutivos = 0;
-       header("Location: ../vista/listarNovedades.php?errorPermiso=" . $mensajeCorreo);
+       header("location: ../vista/generarAuditoria.php?errorPermiso=" . $mensajeCorreo);
     } else {        
     //mensaje enviado
          $message= $facadeAdutoria->insertarAuditoria($objetoDTO);

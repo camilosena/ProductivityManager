@@ -14,6 +14,7 @@ $session->Session($pagActual);
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/main_responsive.css">
     <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jspdf.min.js"></script>
     <link href="../js/toastr.css" rel="stylesheet"/>
     <script src="../js/toastr.js"></script>
     <script src="../js/validaciones.js"></script>
@@ -26,15 +27,35 @@ $session->Session($pagActual);
 </head>
 <body onLoad="setTimeout(window.close, 50000)">
 <div class="wrapper">
+    
+<div id="editor"></div>
+    <script type="text/javascript">
+               var doc = new jsPDF();
+            var specialElementHandlers = {
+                '#editor': function (element, renderer) {
+                    return true;
+                }
+            };
+
+            function exportPDF() {
+                doc.fromHTML($('#contenidoProyecto').html(), 15, 15, {
+                    'width': 170,
+                        'elementHandlers': specialElementHandlers
+                });
+                doc.save('ReporteProyecto.pdf');
+            };
+    </script>
     <?php if (isset($_GET['projectNum'])) { ?>
+
     <h2 class="h330"><br>Proyecto <?php echo  $_GET['nameProject']; ?>:</h2><br>
         <hr>
         <div id="exports" style="float:right;padding-bottom:10px;margin-right: 15%">
                     <img src="../img/imprimir.png">
                     <img src="../img/email.png">
                     <img src="../img/excel.png">
-                    <a href='../controlador/ControladorPDF.php?estudioPDF=<?php echo $_GET['projectNum']?>'><img src="../img/pdf.png" title="Exportar a PDF"></a></div>
+                    <a href="#" onclick="exportPDF()"><img  src="../img/pdf.png" title="Exportar a PDF"></div></a>
             </div>  
+            <div id="contenidoProyecto">
         <div>
             <?php
             require_once '../facades/FacadeProductos.php';
@@ -107,7 +128,7 @@ $session->Session($pagActual);
     <?php
     $products = $facadeProyecto->obtenerDatoProductoProyecto($_GET['projectNum']);
     if(count($products)>=1){?>
-        <div>
+        <div >
         <br><br>
             <strong><h2 class="h331" style="margin-left:14%;">Productos Requeridos:</h2></strong><br>
             <table class="tableSection">
@@ -160,7 +181,7 @@ $session->Session($pagActual);
             ?>
             
         </div>
- 
+ </div>
     <?php }?>
         
         <hr>

@@ -285,14 +285,14 @@ $session->Session($pagActual);
                 Concuerda <input  type="radio" name="empleados" value="100"  style="display: inline">
                 Menos <input  type="radio" name="empleados" value="20"  style="display: inline">
                 Más <input  type="radio" name="empleados" value="65" style="display: inline"><br>
-                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Evidencia:</span></label>
+                <label class="tag2" for="image"><span id="lab_valCompany" class="h331">Evidencia:</span></label>
                 <input name="uploadedfile" id="image"  type="file" multiple class="file"  title="Solo Foto">
                 <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                 <br>
                 <div id="cargueEvidencia">
                     <output id="list"></output>
                 </div>
-                <label class="tag2" for="description"><span id="lab_valName" class="h331">Observaciones:</span></label>
+                <label class="tag" for="description"><span id="lab_valName" class="h331">Observaciones:</span></label>
                 <textarea  name="descripcion" required  maxlength="64" id="description" class="field1"></textarea>
                 <span id="valName" style="color:Red;visibility:hidden;"></span>
                 <br>       

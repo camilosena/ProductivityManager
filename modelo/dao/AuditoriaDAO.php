@@ -42,7 +42,7 @@ class AuditoriaDAO {
             $query = $cnn->prepare("SELECT  *, nombreProyecto, concat(nombres, ' ', apellidos) as nombre from auditorias
 join proyectos on proyectoAuditado = idProyecto
 join usuarioporproyecto on idProyecto = proyectoAsignado
-join personas on usuarioAsignado = idUsuario");
+join personas on usuarioAsignado = idUsuario and fechaNacimiento!=''");
             $query->execute();
             return $query->fetchAll();
         } catch (Exception $ex) {

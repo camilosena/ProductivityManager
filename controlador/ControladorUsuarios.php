@@ -32,58 +32,65 @@ if (isset($_POST['crearUsuario'])) {
     $rol=$_POST['selectRol'];
     $contrasena=$_POST['password'];
     $area=$_POST['selectArea'];
+    $hoy = date('Y-m-d');
+    $fecha_actual = new DateTime($hoy);
+    $fecha_Nac = new DateTime($fecha);
+    if ($fecha_actual <= $fecha_Nac) {
+       header("location: ../vista/registrarUsuario.php?mensajeError=La Fecha de Nacimiento No Puede Ser Futura"); 
+   }else{
     //Enviar correo de confirmacion
     $correoDTO = new CorreosDTO();    
     $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
-     $correoDTO->setNombreRemitente("Productivity Manager");
+    $correoDTO->setNombreRemitente("Productivity Manager");
     $correoDTO->setAsunto("Registro Productivity Manager");
     $correoDTO->setContrasena("adsi2015");
     $correoDTO->setDestinatario($email);
     $correoDTO->setContenido("Bienvenido Su usuario de ingreso es: ".$identificacion."<br>Su contraseña de ingreso es: ".$contrasena.'<br>'.'<br>'
         .'<font style="color: #83AF44; font-size: 11px; font-weight:bold; font-family: Sans-Serif;font-style:italic; " >Prductivity Manager Software'
-                    . '© Todos los derechos reservados 2015.'
-                    . '<br>'.'Bogotá, Colombia'
-                    . '<br>'.'Teléfono: +57 3015782659'
-                    . '<br>'.'https://www.facebook.com/productivitymanager'
-                    . '<br>'.'https://twitter.com/Productivity_Mg'
-    . '</font>');
+        . '© Todos los derechos reservados 2015.'
+        . '<br>'.'Bogotá, Colombia'
+        . '<br>'.'Teléfono: +57 3015782659'
+        . '<br>'.'https://www.facebook.com/productivitymanager'
+        . '<br>'.'https://twitter.com/Productivity_Mg'
+        . '</font>');
     $facadeCorreo = new FacadeCorreos();
     $confirmacion=$facadeCorreo->EnvioCorreo($correoDTO);
     if ($confirmacion!='True') {
-       $mensajeCorreo=$confirmacion;  
-       $mensaje2="Error no se pudo realizar el registro";
-       $consecutivos = 0;
-    } else {        
+     $mensajeCorreo=$confirmacion;  
+     $mensaje2="Error no se pudo realizar el registro";
+     $consecutivos = 0;
+ } else {        
     //insertar imagen
-        if ($_FILES['uploadedfile']['name'] == '') {
-            $foto ='perfil.png';
-        } else {
-            $foto = $_FILES['uploadedfile']['name'];
-        }
-        $carpeta = "fotos";
-        $nombreImagen = $_FILES['uploadedfile']['name'];
-        $tamano = $_FILES['uploadedfile']['size'];
-        $tipo = $_FILES['uploadedfile']['type'];
-        $nombreTemporal = $_FILES['uploadedfile']['tmp_name'];
-        $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
-       $cargaFoto = new GestionImagenes();
-       $msg =$cargaFoto->subirImagen($dtoImagen);        
+    if ($_FILES['uploadedfile']['name'] == '') {
+        $foto ='perfil.png';
+    } else {
+        $foto = $_FILES['uploadedfile']['name'];
+    }
+    $carpeta = "fotos";
+    $nombreImagen = $_FILES['uploadedfile']['name'];
+    $tamano = $_FILES['uploadedfile']['size'];
+    $tipo = $_FILES['uploadedfile']['type'];
+    $nombreTemporal = $_FILES['uploadedfile']['tmp_name'];
+    $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
+    $cargaFoto = new GestionImagenes();
+    $msg =$cargaFoto->subirImagen($dtoImagen);        
     $dto = new UsuarioDTO($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email, $estado, $foto, $contrasena, $rol, $area);       
     $facadeUsuario = new FacadeUsuarios();
     //Insertar Tabla de personas
     $mensaje2 = $facadeUsuario->registrarUsuario($dto);
-        if($mensaje2!='true'){
-            header("location: ../vista/registrarUsuario.php?mensajeError=" . $mensaje2);
-        }else if($mensaje2=='true'){
-            $mensaje2='Usuario Registrado Con Éxito';
+    if($mensaje2!='true'){
+        header("location: ../vista/registrarUsuario.php?mensajeError=" . $mensaje2);
+    }else if($mensaje2=='true'){
+        $mensaje2='Usuario Registrado Con Éxito';
     //  Insertar tabla de usuarios login    
-    $logeo = $facadeUsuario->insertarLogeo($dto);  
-    $mensajeCorreo=$confirmacion;    
+        $logeo = $facadeUsuario->insertarLogeo($dto);  
+        $mensajeCorreo=$confirmacion;    
     //Consecutivo de Usuario
-    $consecutivos = $facadeUsuario->consecutivoUsuario();
-   header("location: ../vista/registrarUsuario.php?mensaje=" . $mensaje2 . "&consecutivo=" .$consecutivos."&foto=".$msg."&correo=".$mensajeCorreo);
+        $consecutivos = $facadeUsuario->consecutivoUsuario();
+        header("location: ../vista/registrarUsuario.php?mensaje=" . $mensaje2 . "&consecutivo=" .$consecutivos."&foto=".$msg."&correo=".$mensajeCorreo);
     }
-    }
+}
+}
 }//  Modificar
 else if (isset($_POST['modificar'])) {
      $idUsuario=$_POST['id'];

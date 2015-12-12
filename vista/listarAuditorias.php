@@ -166,13 +166,7 @@ $session->Session($pagActual);
                 <td><?php echo $auditoria['fechaAuditoria']; ?></td>
                 <td><?php echo $auditoria['productoAuditoria']; ?></td>
                 <td>
-                <?php 
-                if ($_SESSION['rol'] == 'Administrador') { ?>
-                    <a name="eliminar" title="Eliminar Auditoría" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $auditoria['idAuditoria']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>
-                    <?php
-                }
-                ?>
-                    <a class="me" title="Ver resultado de la auditoría" href="../controlador/ControladorAuditorias.php?idAuditoria=<?php echo $auditoria['idAuditoria'];?>"><img class="iconos" src="../img/verBino.png"></a>
+                <a class="me" title="Ver resultado de la auditoría" href="../controlador/ControladorAuditorias.php?idAuditoria=<?php echo $auditoria['idAuditoria'];?>"><img class="iconos" src="../img/verBino.png"></a>
                     
                 </td>
 

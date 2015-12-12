@@ -336,16 +336,18 @@ $session->Session($pagActual);
                                         <?php            if ($_SESSION['rol'] != 'Auditor') {
                 
             
-                                    if ($project['estadoProyecto'] == 'Sin Estudio Costos' || $project['estadoProyecto'] == 'Ejecucion' ) {
+                                    if ($project['estadoProyecto'] == 'Sin Estudio Costos' ) {
                                                 ?>
                                                 <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
                                     <?php }
-                                    if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecucion') { ?>
+
+                                    if ($project['estadoProyecto'] == 'Sin Produccion') { ?>
+                                                    <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
+                                                <?php }
+                                                if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecucion') { ?>
                                             <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                         <?php }
-                                    if ($project['estadoProyecto'] == 'Sin Produccion'|| $project['estadoProyecto'] == 'Ejecucion') { ?>
-                                                    <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
-                                                <?php } }else{
+                                                 }else{
                                                     
                                                     echo '<a class="me" title="Ver Novedades" href="projectNum='.$project['idProyecto'].'&nameProject='. $project['nombreProyecto'].'";"><img class="iconos" src="../img/Novedades.png"></a>';
                                                     echo '<a class="me" title="Realizar Auditoria" href="projectNum='.$project['idProyecto'].'&nameProject='. $project['nombreProyecto'] .'";"><img class="iconos" src="../img/Auditorias.png"></a>';

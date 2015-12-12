@@ -167,34 +167,53 @@ header nav ul li a:active{
                 <span class="sep_line sep_top">
                 </span>
 
-                <h2>Who Are We?</h2>
                 <div class="testi_slider" id="tslider">
-                    <div class="t">		
-                        <p>
-                            Productivity Manager &copy; 2015
-                        </p>							
-                        <p class="author">
-                            Camilo Arias González - Analyst / Developer<br>
-                            Jorge Izquierdo - Analyst / Developer<br>
-                            Howard Mosquera - Analyst / Developer<br>
-                        </p>
-                    </div>
-                    <div class="t">
-                        <p>
-                            The Productivity Manager system is developed in 2015;
-                            It is focused on improving business productivity. 
-                            Modern transparent and focused objectives; taking control of projects, 
-                            costs, time and used resources.
-                        </p>									
-                    </div>
-                    <div class="t">
-                        <p>Generating short term benefits that promote a 
-                            productive increase of Employee and Employer.</p>
-                            <p class="author">
-                             Productivity Manager &copy; 2015
-                         </p>
-                     </div>
-                 </div>
+                            <div class="t">
+                                <h2>Who Are We?</h2>
+                                <p>Productivity Manager The system is developed in 2015; It is focused on 
+                                    improving the productivity of enterprises, using transparent and modern 
+                                    objectives; taking control of projects, costs, time and resources used.
+                                </p>
+                                <p class="author">Productivity Manager &copy; 2015</p>
+                            </div>
+                            <div class="t">
+                                <h2><br><br>Who Are We?</h2>
+                                <p>
+                                    Oriented short-term benefits generating an increase in production which will favor the employee and the Employer.
+                                </p>
+                                <p class="author">Productivity Manager &copy; 2015</p>
+                            </div>
+                            <div class="t">
+                                <h2>Mission</h2>
+                                <p>
+                                    Provide technology and software solutions for society through research, partnership, training, 
+                                    certification and committed staff; allowing efficiently and systematically maximize productivity 
+                                    and resources, generating welfare and profitability.
+                                </p>
+                                <p class="author">Productivity Manager &copy; 2015</p>
+                            </div>
+                            <div class="t">
+                                <h2>Vision</h2>
+                                <p>
+                                    It is recognized as one of the top 10 technology companies and software development in Colombia 
+                                    and Latin America, specialized in providing solutions through research and innovation, 
+                                    covering all sectors of society, especially the industrial sector.
+                                </p>
+                                <p class="author">Productivity Manager &copy; 2015</p>
+                            </div>
+                            <div class="t">
+                                <p>
+                                    <br>Productivity Manager &copy; 2015
+                                    <br><br>All rights reserved.
+                                </p>
+                                <p class="author">
+                                    Developed by:<br>
+                                    Camilo Arias González - Analyst / Developer<br>
+                                    Jorge Izquierdo - Analyst / Developer<br>
+                                    Howard Mosquera - Analyst / Developer<br>
+                                </p>
+                            </div>
+                        </div>
                  <div id="t_navigation"></div>
                  <span class="sep_line sep_bottom"></span>
              </section><!--  End Testimonials  -->

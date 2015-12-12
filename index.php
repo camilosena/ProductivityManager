@@ -228,7 +228,7 @@
                                 <p>
                                     Ser reconocida como una de las 10 principales empresas de tecnología y desarrollo de software en
                                     Colombia y Latinoamérica, especializada en dar soluciones a través de la investigación e innovación,
-                                    abarcando todos los sectores de la sociedad, principalmente al sector turismo.
+                                    abarcando todos los sectores de la sociedad, principalmente al sector industrial.
                                 </p>
                                 <p class="author">Productivity Manager &copy; 2015</p>
                             </div>

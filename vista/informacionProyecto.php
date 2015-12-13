@@ -125,6 +125,7 @@ $session->Session($pagActual);
             }
             ?>
         </div>
+        </div>
     <?php
     $products = $facadeProyecto->obtenerDatoProductoProyecto($_GET['projectNum']);
     if(count($products)>=1){?>
@@ -181,7 +182,7 @@ $session->Session($pagActual);
             ?>
             
         </div>
- </div>
+ 
     <?php }?>
         
         <hr>

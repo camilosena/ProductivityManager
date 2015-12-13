@@ -95,17 +95,15 @@ $session->Session($pagActual);
                     <li><a class="twitter" href="https://twitter.com/Productivity_Mg"></a></li>
                     <li><a class="gplus" href="mailto:productivitymanagersoftware@gmail.com"></a></li>
                 </ul>
-                <p style="text-align:right; font-size:12px; font-family: sans-serif; font-weight:bold; color: white">
-                    <?php
-                    require_once '../modelo/dao/UsuarioDAO.php';
-                    require_once '../modelo/utilidades/Conexion.php';
-                    require_once '../facades/FacadeUsuarios.php';
-
-                    $facadeUsuario = new FacadeUsuarios;
-                    $_SESSION['nombre'] = $facadeUsuario->nombreUsuario($_SESSION['id']);
+              <div class="logoFoto">
+                    <div><img src="../fotos/<?php echo $_SESSION['foto'];?>"></div>
+                <p style="text-align:right; font-size:12px; font-family: sans-serif; font-weight:bold; color: white"><br><br><br><br><br>
+                    <?php                  
                     echo 'Bienvenido(a) ' . $_SESSION['nombre'];
                     ?>
                 </p>
+            </div>
+                
             </div>
         </header>        
         <div class="wrapper">
@@ -187,11 +185,51 @@ $session->Session($pagActual);
                     </table>
                     <button type="submit" value="Enviar" name="AsociarInsumos" id="crearRol" class="boton-verde" >Asignar Insumos</button>
                     
-                    </form><br>
+                    </form><hr>
                 
                 
                 </div>
-        </div>    
+        </div>
+        <footer class="footer-distributed">
+            <div class="footer-left">
+                            <span><img src="../img/logoEscala.png" width="210" height="120"></span>
+                <p class="footer-links">
+                                    <a href="../index.php">Inicio</a>
+                    ·
+                                        <a href="../nuestrosClientes.html">Clientes</a>
+                                        ·
+                                        <a href="../index.php">¿Quienes Somos?</a>                   
+                    ·
+                                        <a href="../contactecnos.html">Contacto</a>
+                </p>
+                <p class="footer-company-name">Productivity Manager &copy; 2015</p>
+            </div>
+            <div class="footer-center">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>Calle 65 No 13 - 21</span> Bogotá, Colombia</p>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+57 301 5782659</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:productivitymanagersoftware@gmail.com">productivitymanagersoftware@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p class="footer-company-about">
+                    <span>Productivity Manager</span>
+                    Para aumentar la Productividad es absolutamente necesario incorporar a los mejores trabajadores
+                </p>
+                <div class="footer-icons">
+                                    <a href="https://www.facebook.com/productivitymanager"><img src="../img/facebookFoot.png"></a>
+                                    <a href="https://twitter.com/Productivity_Mg"><img src="../img/twitterFoot.png"></a>                 
+                                    <a href="mailto:productivitymanagersoftware@gmail.com"></i><img src="../img/gmailFoot.png"></a>
+                </div>
+            </div>
+        </footer>     
       </body>
 </html>
 

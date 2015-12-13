@@ -89,7 +89,7 @@ $estado = "Sin Procesos";
     
 
     
- header("location: ../vista/insumosPorProducto.php");
+ header("location: ../vista/insumosPorProducto.php?mensaje=Insumos Asociados con Éxito");
 }else 
 if (isset ($_POST['Atras'])) {
      header("location: ../vista/agregarProductos.php");

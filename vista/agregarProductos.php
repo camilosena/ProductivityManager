@@ -139,7 +139,7 @@ $session->Session($pagActual);
                             <tr>
                                 
                                 <td style="width:200px"> <?php echo $unit['nombreProducto']; ?></td>
-                                <td style="text-align:center"><a name="InsumosProducto" title="Insumos del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/editar.png"></a>
+                                <td style="text-align:center"><a name="InsumosProducto" title="Insumos del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/insumoProducto.png"></a>
                                 <?php
                                     
                                     if ($unit['estadoProducto'] == 'Activo' ) {

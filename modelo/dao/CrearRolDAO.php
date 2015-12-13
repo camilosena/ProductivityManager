@@ -48,10 +48,6 @@ class CrearRolDAO {
             $sentencia = $cnn->prepare("Call RegistrarRol (?,?)");
             $sentencia->bindParam(1, $dto->getIdRol());
             $sentencia->bindParam(2, $dto->getRol());
-            
-            
-            
-           
             $sentencia->execute();
            
             $mensaje = "Rol Registrado Con Éxito";

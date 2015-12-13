@@ -44,13 +44,16 @@ $session->Session($pagActual);
                 });
                 doc.save('ReporteProyecto.pdf');
             };
+             function printAssessment() {
+        window.print();
+    }
     </script>
     <?php if (isset($_GET['projectNum'])) { ?>
 
     <h2 class="h330"><br>Proyecto <?php echo  $_GET['nameProject']; ?>:</h2><br>
         <hr>
         <div id="exports" style="float:right;padding-bottom:10px;margin-right: 15%">
-                    <img src="../img/imprimir.png">
+                    <a href="#" onclick="printAssessment()"><img src="../img/imprimir.png"></a>
                     <img src="../img/email.png">
                     <img src="../img/excel.png">
                     <a href="#" onclick="exportPDF()"><img  src="../img/pdf.png" title="Exportar a PDF"></div></a>

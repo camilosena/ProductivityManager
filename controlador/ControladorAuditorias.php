@@ -63,7 +63,7 @@ if(isset($_POST['crearAuditoria'])){
     $dtoImagen = new ImagenesDTO($tamano, $tipo, $nombreImagen, $nombreTemporal, $carpeta);
     $cargaFoto = new GestionImagenes();
     $msg =$cargaFoto->subirImagen($dtoImagen);
-    // enviar correo 
+     
     $proyectos = $facadeProyecto->consultarProyecto($idProyecto);
     $numeros = $facadeAdutoria->cantidadAuditoriasPorProyecto($idProyecto);
     $numero = $numeros['numero'];
@@ -72,6 +72,7 @@ if(isset($_POST['crearAuditoria'])){
     $proyecto = $proyectos['nombreProyecto'];
     $nombreGerente = $datos['nombre'];
     $fecha =date('Y-m-d'); 
+    // enviar correo
     $correoDTO = new CorreosDTO();    
     $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
     $correoDTO->setNombreRemitente("Productivity Manager");

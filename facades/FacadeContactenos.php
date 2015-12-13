@@ -28,4 +28,12 @@ class FacadeContactenos {
         
         return $this->contactenosDAO->consultarIndicativo($idPais, $this->conexionBase);
     }
+    function guardarContacto(ContactenosDTO $clienteDTO){
+        
+        return $this->contactenosDAO->guardarContacto($clienteDTO,$this->conexionBase);
+    }
+    function cantidadSolicitudes(){
+        
+        return $this->contactenosDAO->cantidadSolicitudes($this->conexionBase);
+    }
 }

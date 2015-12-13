@@ -11,7 +11,7 @@ $fContactenos = new FacadeContactenos();
 $result = $fContactenos->consultarIndicativo($idPais);
 if ($accion == "listarIndicativo") {
     foreach ($result as $fila) {
-        $html = '<option value="' . $fila['idPais'] . '">+' . $fila['indicativo'] . '</option>';
+        $html = '<option value="' . $fila['indicativo'] . '">+' . $fila['indicativo'] . '</option>';
     }
 }
 print $html;

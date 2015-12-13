@@ -132,25 +132,25 @@
                     ?>
 			<div class="caption">		
 			<h2 class="h330">Contáctese con nosotros:</h2><br>			
-					<form class="formRegistro" method="post" action="#">					    	
+                        <form class="formRegistro" method="post" action="controlador/ControladorContactenos.php"> 				    	
                         <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombre </span></label>
-                        <input class="input" name="txtName" type="text" maxlength="64" id="txtName" class="field1" autofocus required pattern= "[A-Za-z]{3,20}">
+                        <input class="input" name="nombre" type="text" maxlength="64" id="txtName" class="field1" autofocus required pattern= "[A-Za-z]{3,20}">
                         <span id="valName" style="color:Red;visibility:hidden;"></span>
                         <br>
                         <label class="tag" for="txtSurname"><span id="lab_valSurname" class="h331">Apellidos </span></label>
-                        <input class="input" name="txtSurname" type="text" maxlength="64" id="txtSurname" class="field1" required pattern= "[A-Za-z]{3,20}">
+                        <input class="input" name="apellidos" type="text" maxlength="64" id="txtSurname" class="field1" required pattern= "[A-Za-z]{3,20}">
                         <span id="valSurname" style="color:Red;visibility:hidden;"></span>
                         <br>
                         <label class="tag" for="txtCompany"><span id="lab_valCompany" class="h331">Empresa </span></label>
-                        <input class="input" name="txtCompany" type="text" maxlength="64" id="txtCompany" class="field1" required pattern= "[A-Za-z]{3,40}">
+                        <input class="input" name="empresa" type="text" maxlength="64" id="txtCompany" class="field1" required pattern= "[A-Za-z]{3,40}">
                         <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                         <br>
                         <label class="tag" for="txtEmail"><span id="lab_valEmail" class="h331">Email </span></label>
-                        <input class="input" name="txtEmail" type="text" maxlength="128" id="txtEmail" class="field1" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <input class="input" name="email" type="text" maxlength="128" id="txtEmail" class="field1" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                         <span id="valEmail" style="color:Red;visibility:hidden;"></span>
                         <br>
                         <label class="tag" for="selCountry"><span id="lab_valCountry" class="h331">País </span></label>
-                        <select class="input" name="selectPais" id="selectPais" class="list_menu">
+                        <select class="input" name="pais" id="selectPais" class="list_menu">
 									<option value="0" disabled selected> - Seleccionar - </option>
 									<?php
                                                                         $paises = $facadeContactenos->listarPaises();
@@ -164,30 +164,31 @@
                         <span id="valCountry" style="color:Red;visibility:hidden;"></span>
                         <br>
                         <label class="tag" for="selPrefix"><span id="lab_valPhone" class="h331">Teléfono </span></label>
-                        <select class="input3" name="selectIndicativo" id="selectIndicativo" class="list_menu_small">
+                        <select class="input3" name="indicativo" id="selectIndicativo" class="list_menu_small">
 									<option value=" "> - Seleccionar -  </option>
 									
 			</select>
-                    	<input class="input2" name="txtPhone" type="text" maxlength="15" id="txtPhone">
+                    	<input class="input2" name="telefono" type="text" maxlength="15" id="txtPhone">
                         <span id="valPhone" style="color:Red;visibility:hidden;"></span>
                         <div id="divPhoneData" style="display:none;">
                             <label class="tag_msg" id="lblPhoneData">&nbsp;</label>
                         </div>
                         <br>
                         <label class="tag" for="selReference"><span class="h331">¿Cómo nos conoció?</span></label>
-                        <select class="input" name="selReference" id="selReference" class="list_menu">
+                        <select class="input" name="modo" id="selReference" class="list_menu">
 							<option value="0"> - Seleccionar - </option>							
-							<option value="2">Blog o Foro</option>
-							<option value="3">Email</option>
-							<option value="4">Referencia:colega</option>
-							<option value="5">Referencia:amigo</option>
-							<option value="6">Google</option>
-							<option value="7">Facebook</option>
-							<option value="8">LinkedIn</option>
-							<option value="9">Twitter</option>
-					</select><br>			
-			<button type="submit" onclick="pregunta()" class="boton-verde">Enviar Información</button><br>
-				        </form>				
+							<option value="Blog o Foro">Blog o Foro</option>
+							<option value="Email">Email</option>
+							<option value="Referencia:colega">Referencia:colega</option>
+							<option value="Google">Google</option>
+							<option value="Facebook">Facebook</option>
+							<option value="LinkedIn">LinkedIn</option>
+							<option value="Twitter">Twitter</option>
+					</select><br>
+                        <label class="tag" for="selReference"><span class="h331">Motivo:</span></label>
+                        <textarea name="motivo"></textarea>
+                        <button type="submit" onclick="pregunta()" name="contactarme" class="boton-verde">Enviar Información</button><br>
+                        </form>				
 					</div>
 				</div>
 				<script language="JavaScript"> 

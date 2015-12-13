@@ -34,4 +34,34 @@ class ContactenosDAO {
         }
         
     }
+    function guardarContacto(ContactenosDTO $clienteDTO, PDO $cnn){
+        $mensaje = "";
+        try {
+            $sentencia = $cnn->prepare("INSERT INTO contactenos VALUES(default,?,?,?,?,?)");
+            $sentencia->bindParam(1, $clienteDTO->getIdPersona());
+            $sentencia->bindParam(2, $clienteDTO->getEmpresa());
+            $sentencia->bindParam(3, $clienteDTO->getModo());
+            $sentencia->bindParam(4, $clienteDTO->getRazon());
+            $sentencia->bindParam(5, $clienteDTO->getIdPais());
+
+            $sentencia->execute();
+            $mensaje = "Contacto Registrado";
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+        }
+        $cnn = NULL;
+        return $mensaje;
+        
+    }
+    function cantidadSolicitudes(PDO $cnn){
+
+        try {
+            $query = $cnn->prepare("SELECT count(idContacto) as numero FROM productivitymanager.contactenos");
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+    }
+       
 }

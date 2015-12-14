@@ -171,8 +171,12 @@ $session->Session($pagActual);
                         <?php
                         $cont2 = 0;
                         foreach ($progress as $progreso) {
+                            $ejecutado = $progreso['ejecutado'];
+                            if ($ejecutado > 100) {
+                                $ejecutado = $ejecutado-1;
+                            }
                             $cont2++;
-                            echo 'animateprogress("#html' . $cont2 . '", ' . $progreso['ejecutado'] . ');';
+                            echo 'animateprogress("#html' . $cont2 . '", ' . $ejecutado . ');';
                         }
                         ;
                         ?>
@@ -181,8 +185,12 @@ $session->Session($pagActual);
                         <?php
                         $cont2 = 0;
                         foreach ($progress as $progreso) {
+                            $ejecutado = $progreso['ejecutado'];
+                            if ($ejecutado > 100) {
+                                $ejecutado = $ejecutado-1;
+                            }
                             $cont2++;
-                            echo 'animateprogress("#html' . $cont2 . '", ' . $progreso['ejecutado'] . ');';
+                            echo 'animateprogress("#html' . $cont2 . '", ' . $ejecutado . ');';
                         }
                         ;
                         ?>

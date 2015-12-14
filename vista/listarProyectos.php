@@ -343,12 +343,12 @@ $correoFin->enviarCorreoFinProyecto();
                                         <?php            if ($_SESSION['rol'] != 'Auditor') {
                 
             
-                                    if ($project['estadoProyecto'] == 'Sin Estudio Costos' ) {
+                                    if ($project['estadoProyecto'] == 'Sin Estudio Costos'  ) {
                                                 ?>
                                                 <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
                                     <?php }
 
-                                    if ($project['estadoProyecto'] == 'Sin Produccion') { ?>
+                                    if ($project['estadoProyecto'] == 'Sin Producción') { ?>
                                                     <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
                                                 <?php }
                                                 if ($_SESSION['rol'] == 'Gerente'  && $project['estadoProyecto']=='Sin Estudio Costos' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']=='Sin Estudio Costos')  { ?>

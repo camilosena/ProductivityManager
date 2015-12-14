@@ -341,7 +341,8 @@ join roles on rolesId = idRoles and rol = 'Empleado'");
 
                        $mensaje = '';
         try {
-            $query = $cnn->prepare("select count(proyectoAsignado) as cantidad from usuarioporproyecto where usuarioAsignado = ? ");
+            $query = $cnn->prepare("select count(proyectoAsignado) as cantidad from usuarioporproyecto 
+join proyectos on idProyecto = proyectoAsignado and usuarioAsignado = ? and estadoProyecto = 'Ejecución' ");
             $query->bindParam(1, $idUsuario);
             $query->execute();
             return $query->fetchColumn();

@@ -120,12 +120,20 @@ $session->Session($pagActual);
         </nav>      
         <script src="../js/Chart.js"></script>
         <div id="panelIzq"><br>
-            <div id="canvas-holder" style="margin-right:80px">
-            <canvas id="chart-area4" width="600" height="300"></canvas>
-            <canvas id="chart-area" width="300" height="300"style="display:none"></canvas>
-            <canvas id="chart-area2" width="300" height="300" style="margin-left:150px; margin-top:20px"></canvas>
-            <canvas id="chart-area3" width="600" height="300" style="display:none"></canvas>
             <script>
+              function printAssessment() {
+        window.print();
+    }
+            </script>
+             <div id="exports" style="float:right;padding-bottom:10px;padding-right: 50px">
+                 <a href="#" onclick="printAssessment()"> <img src="../img/imprimir.png"></a>
+                    <img src="../img/pdf.png"></div>
+            <div id="canvas-holder" style="margin-right:80px">
+                <canvas id="chart-area2" width="300" height="300" style="margin-left:150px; margin-top:20px"></canvas>
+                <canvas id="chart-area3" width="600" height="300" style="display:none"></canvas><br><br><br>
+                <canvas id="chart-area4" width="600" height="300"></canvas>
+                <canvas id="chart-area" width="300" height="300" style="display:none"></canvas>
+                <script>
                     var pieData = [{value: 40,color:"#0b82e7",highlight: "#0c62ab",label: "Aprobados"},
                                 {
                                     value: 16,
@@ -234,7 +242,7 @@ $session->Session($pagActual);
         ?>          
          <br>
          <br>
-           <h2 class="h330">Auditar Proyecto:</h2> <br>
+           <h2 class="h330">Auditar Proyecto:</h2> <hr>
             <form class="formRegistro" method="post" action="../controlador/ControladorAuditorias.php" enctype="multipart/form-data">
                 <?php
                 require_once '../modelo/utilidades/Conexion.php';
@@ -268,36 +276,31 @@ $session->Session($pagActual);
                 <label class="tag" for="image"><span id="lab_valCompany" class="h331">Ejecución del proyecto:</span></label>
                 Si <input  type="radio" name="ejecucion" value="100"  style="display: inline">
                 No <input  type="radio" name="ejecucion" value="20"  style="display: inline"><br>
-                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Ejecución presupuestal:</span></label>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Ejecución Presupuestal:</span></label>
                 Si <input  type="radio" name="presupuesto" value="100"  style="display: inline">
                 No <input  type="radio" name="presupuesto" value="20" style="display: inline"><br>
-                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Utilización de insumos:</span></label>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Utilización de Insumos:</span></label>
                 Si <input  type="radio" name="insumos" value="100"  style="display: inline">
                 No <input  type="radio" name="insumos" value="20" style="display: inline"><br>
-                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Calidad de insumos según Proyecto:</span></label>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Calidad de Insumos:</span></label>
                 Alta <input  type="radio" name="calidad" value="100"  style="display: inline">
                 Normal <input  type="radio" name="calidad" value="65"  style="display: inline">
-                Baja <input  type="radio" name="calidad" value="20" style="display: inline"><br><br>
-                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Tiempo por procesos:</span></label>
+                Baja <input  type="radio" name="calidad" value="20" style="display: inline"><br>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Tiempo por Procesos:</span></label>
                 Si <input  type="radio" name="procesos" value="100"  style="display: inline">
                 No <input  type="radio" name="procesos" value="20" style="display: inline"><br>
-                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Cantidad de empleados:</span></label>
+                <label class="tag" for="image"><span id="lab_valCompany" class="h331">Cantidad de Empleados:</span></label>
                 Concuerda <input  type="radio" name="empleados" value="100"  style="display: inline">
                 Menos <input  type="radio" name="empleados" value="20"  style="display: inline">
                 Más <input  type="radio" name="empleados" value="65" style="display: inline"><br>
                 <label class="tag2" for="image"><span id="lab_valCompany" class="h331">Evidencia:</span></label>
                 <input name="uploadedfile" id="image"  type="file" multiple class="file"  title="Solo Foto">
-                <span id="valCompany" style="color:Red;visibility:hidden;"></span>
-                <br>
-                <div id="cargueEvidencia">
-                    <output id="list"></output>
-                </div>
                 <label class="tag" for="description"><span id="lab_valName" class="h331">Observaciones:</span></label>
                 <textarea  name="descripcion" required  maxlength="64" id="description" class="field1"></textarea>
                 <span id="valName" style="color:Red;visibility:hidden;"></span>
                 <br>       
                 <button type="submit" name="crearAuditoria" class="boton-verde">Evaluar</button><br>
-
+                <hr>
                 <script>
                     function archivo(evt) {
                         var files = evt.target.files; // FileList object

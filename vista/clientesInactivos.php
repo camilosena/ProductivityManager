@@ -185,7 +185,6 @@ $session->Session($pagActual);
     <form name="filtro" class="formRegistro" action="../controlador/ControladorFiltros.php" method="POST">
         <div id="exports" style="float:right;padding-bottom:10px;">
                     <img src="../img/imprimir.png">
-                    <img src="../img/email.png">
                     <img src="../img/pdf.png">
                     <a href='../modelo/utilidades/Reportes/ExportarClienteInactivo.php'><img src="../img/excel.png" title="Exportar a Exccel"></a></div>
 	   <table id="tabla" class="display" cellspacing="0" width="100%">

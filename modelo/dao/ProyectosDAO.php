@@ -294,5 +294,19 @@ join usuarioporproyecto on idProyecto = proyectoAsignado and usuarioAsignado = ?
         $cnn = null; 
         
     }
+    function ejecucionProyecto($idProyecto,$porcentaje, PDO $cnn){
+        $mensaje = '';
+        try {
+            $query = $cnn->prepare("update proyectos set ejecutado = ? where idProyecto = ?");
+            $query->bindParam(1, $porcentaje);
+            $query->bindParam(2, $idProyecto);
+            $query->execute();
+            $mensaje = 'Actualizado';
+            return $mensaje;
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
 
 }

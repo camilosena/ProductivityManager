@@ -146,7 +146,7 @@
                         <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                         <br>
                         <label class="tag" for="txtEmail"><span id="lab_valEmail" class="h331">Email </span></label>
-                        <input class="input" name="email" type="text" maxlength="128" id="txtEmail" class="field1" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <input class="input" name="email" type="email" maxlength="128" id="txtEmail" class="field1" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                         <span id="valEmail" style="color:Red;visibility:hidden;"></span>
                         <br>
                         <label class="tag" for="selCountry"><span id="lab_valCountry" class="h331">País </span></label>

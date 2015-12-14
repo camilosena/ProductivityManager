@@ -91,4 +91,8 @@ class FacadeProyectos {
         
         return $this->proyectosDAO->listarProyectoPorPersonal($idUsuario, $this->conexionBase);
     }
+    function ejecucionProyecto($idProyecto, $porcentaje){
+        
+        return $this->proyectosDAO->ejecucionProyecto($idProyecto, $porcentaje, $this->conexionBase);
+    }
 }

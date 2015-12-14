@@ -95,5 +95,17 @@ class FacadeProyectos {
         
         return $this->proyectosDAO->ejecucionProyecto($idProyecto, $porcentaje, $this->conexionBase);
     }
+    function cantidadUsuariosPorProyecto($idProyecto){
+        
+        return $this->proyectosDAO->cantidadUsuariosPorProyecto($idProyecto, $this->conexionBase);
+    }
+    function totalUsuariosPorProyecto($idProyecto){
+        
+        return $this->proyectosDAO->totalUsuariosPorProyecto($idProyecto, $this->conexionBase);
+    }
+    function cantidadProyectosAsignados($idUsuario){
+        
+        return $this->proyectosDAO->cantidadProyectosAsignados($idUsuario, $this->conexionBase);
+    }
     
 }

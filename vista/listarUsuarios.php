@@ -313,7 +313,7 @@ $session->Session($pagActual);
                                      if ($_SESSION['rol']=="Administrador") {
                                     echo '<a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/ascenso.png"></a>';
                                     }
-                                    if ($_SESSION['rol']=="Administrador" & $user['rol'] != "Administrador" || $_SESSION['rol']=="Gerente" & $user['rol'] != "Administrador" ) {
+                                    if ($_SESSION['rol']=="Administrador" & $user['rol'] != "Administrador" & $user['rol'] != "Auditor" || $_SESSION['rol']=="Gerente" & $user['rol'] != "Administrador" & $user['rol'] != "Auditor") {
                                     echo '<a class="me" title="Proyectos Asociados" href="../controlador/ControladorUsuarios.php?idAsociados='.$user['idUsuario'].'"><img class="iconos" src="../img/Work.png"></a>';
                                     } ?>
                                 </td>
@@ -360,6 +360,8 @@ $session->Session($pagActual);
                         echo '<option value="' . $ejecutando['idProyecto'] . '">' . $ejecutando['idProyecto'] . '-' . $ejecutando['nombreProyecto'] . '</option>';
                     }
                     echo '</select></td></tr>';
+                    echo '<tr><td colspan="2" style="border:none"><button class="boton-verde" type="submit">';
+                    echo 'Asignar a Proyecto</button></td></tr>';
                     }}  else 
                     if ($_SESSION['rol']== "Gerente" ) {
                     if($_SESSION['datosUsuario']['rol'] =='Empleado'){
@@ -375,9 +377,10 @@ $session->Session($pagActual);
                         echo '<option value="' . $ejecutando['idProyecto'] . '">' . $ejecutando['idProyecto'] . '-' . $ejecutando['nombreProyecto'] . '</option>';
                     }
                     echo '</select></td></tr>';
-                    }}
+                    
                     echo '<tr><td colspan="2" style="border:none"><button class="boton-verde" type="submit">';
                     echo 'Asignar a Proyecto</button></td></tr>';
+                    }}
                     echo '</form>';
                     echo '</table>';
                     ?>                                

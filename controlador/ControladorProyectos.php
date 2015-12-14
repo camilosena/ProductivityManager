@@ -85,8 +85,20 @@ if (isset($_POST['crearProyecto'])) {
 //Facade Para asignar usuario a tabla usuarioPorProyecto
 else if (isset($_GET['codUsuario'])) {
     $facadeProyecto = new FacadeProyectos;
-    $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);
+    $cantidadAsignada = $facadeProyecto->cantidadUsuariosPorProyecto($_POST['idProjects']);
+    $cantidadTotal = $facadeProyecto->totalUsuariosPorProyecto($_POST['idProjects']);
+    $cantidadProyectos = $facadeProyecto->cantidadProyectosAsignados($_GET['codUsuario']);
+    if ($cantidadProyectos <2){
+    if ($cantidadAsignada <= $cantidadTotal) {
+         $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);
     header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
+    }else{
+    $mensaje = " Error: No se puede asignar a este proyecto la cantidad de empleados esta completa";
+    header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
+    }}else{
+        $mensaje = " Error: No se puede asignar mas de dos proyectos";
+    header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
+    }
 } else if (isset($_POST['elementosProyecto'])) {
 //echo var_dump($_POST);    
     $fProducto = new FacadeProductos();

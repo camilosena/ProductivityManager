@@ -308,5 +308,47 @@ join usuarioporproyecto on idProyecto = proyectoAsignado and usuarioAsignado = ?
         }
         $cnn = null;
     }
+    function cantidadUsuariosPorProyecto($idProyecto, PDO $cnn){
+               $mensaje = '';
+        try {
+            $query = $cnn->prepare("select count(usuarioAsignado) as cantidad from usuarioporproyecto 
+join personas on usuarioAsignado = idUsuario and proyectoAsignado = ?
+join usuarios on identificacion = idLogin
+join roles on rolesId = idRoles and rol = 'Empleado'");
+            $query->bindParam(1, $idProyecto);
+            $query->execute();
+            return $query->fetchColumn();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null; 
+        
+    }
+    function totalUsuariosPorProyecto($idProyecto, PDO $cnn){
+                $mensaje = '';
+        try {
+            $query = $cnn->prepare("SELECT totalTrabajadores FROM estudiodecostos where idProyectoSolicitado = ?");
+            $query->bindParam(1, $idProyecto);
+            $query->execute();
+            return $query->fetchColumn();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null; 
+        
+    }
+    function cantidadProyectosAsignados($idUsuario, PDO $cnn){
+
+                       $mensaje = '';
+        try {
+            $query = $cnn->prepare("select count(proyectoAsignado) as cantidad from usuarioporproyecto where usuarioAsignado = ? ");
+            $query->bindParam(1, $idUsuario);
+            $query->execute();
+            return $query->fetchColumn();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null; 
+    }
 
 }

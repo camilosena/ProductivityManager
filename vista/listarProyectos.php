@@ -1,9 +1,12 @@
 <?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
+require_once '../modelo/utilidades/TiempoEjecucion.php';
 $pagActual = 'listarProyectos.php';
 $session = new Session($pagActual);
 $session->Session($pagActual);
+$ejecucion = new TiempoEjecucion();
+$ejecucion->ejecucionProyectoss();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -344,7 +347,7 @@ $session->Session($pagActual);
                                     if ($project['estadoProyecto'] == 'Sin Produccion') { ?>
                                                     <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
                                                 <?php }
-                                                if ($_SESSION['rol'] == 'Gerente'  && $project['estadoProyecto']!='Ejecucion' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecucion') { ?>
+                                                if ($_SESSION['rol'] == 'Gerente'  && $project['estadoProyecto']=='Sin Estudio Costos' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']=='Sin Estudio Costos')  { ?>
                                             <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                         <?php }
                                                  }else{

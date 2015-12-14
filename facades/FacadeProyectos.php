@@ -95,4 +95,5 @@ class FacadeProyectos {
         
         return $this->proyectosDAO->ejecucionProyecto($idProyecto, $porcentaje, $this->conexionBase);
     }
+    
 }

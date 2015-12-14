@@ -136,7 +136,7 @@ where idUsuario=idCliente and idUsuario=usuarioAsignado and proyectoAsignado=?")
         $cnn = null;
     }
 
-    public function cambiarEstadoProyecto($estado, $idProyecto, PDO $cnn) {
+    function cambiarEstadoProyecto($estado, $idProyecto, PDO $cnn) {
         $mensaje = '';
         try {
             $query = $cnn->prepare("UPDATE  proyectos SET estadoProyecto=? where idProyecto=?");

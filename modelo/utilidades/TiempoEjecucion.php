@@ -20,21 +20,29 @@ class TiempoEjecucion {
 
              $facadeProyectos = new FacadeProyectos();
              $datos = $facadeProyectos->listadoProyectos();
-             foreach ($datos as $fecha){
-                 $idProyecto = $fecha['idProyecto'];
-                 $fechaInicio = $fecha['fechaInicio'];
+             foreach ($datos as $dato){
+                 $ejecucion = $dato['ejecutado'];
+                 $idProyecto = $dato['idProyecto'];
+                 $fechaInicio = $dato['fechaInicio'];
                  $fechaActual= date('Y-m-d');
-                 $fechaFin = $fecha['fechaFin'];
-                 if ($fechaFin != 0) {   
-                    $datetime1 = new DateTime($fechaInicio);
-                    $datetime2 = new DateTime($fechaActual);
-                    $datetime3 = new DateTime($fechaFin);
-                    $interval1 = $datetime1->diff($datetime2);
-                    $interval2 = $datetime1->diff($datetime3);
-                 $diasTrasncurridos = $interval1->format('%a');
-                 $diasTotales = $interval2->format('%a');
-                 $porcentaje = (100*$diasTrasncurridos)/$diasTotales;
-                 $mensaje = $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
+                 $fechaFin = $dato['fechaFin'];
+                 if ($ejecucion < 100){
+                    if ($fechaFin != 0){   
+                       $datetime1 = new DateTime($fechaInicio);
+                       $datetime2 = new DateTime($fechaActual);
+                       $datetime3 = new DateTime($fechaFin);
+                       $interval1 = $datetime1->diff($datetime2);
+                       $interval2 = $datetime1->diff($datetime3);
+                    $diasTrasncurridos = $interval1->format('%a');
+                    $diasTotales = $interval2->format('%a');
+                    $porcentaje = (100*$diasTrasncurridos)/$diasTotales;
+                    $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
+                    }
+                 }else{
+                     $estado = "Finalizado";
+                     $porcentaje = 100;
+                     $facadeProyectos->cambiarEstadoProyecto($estado, $idProyecto);  
+                     $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
                  }
                }
 }

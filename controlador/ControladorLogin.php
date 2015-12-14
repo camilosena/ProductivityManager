@@ -5,7 +5,7 @@
     require_once '../modelo/utilidades/Conexion.php';
     require_once '../facades/FacadeLogin.php';
     require_once '../facades/FacadePermisos.php';
-    require_once '../modelo/utilidades/TiempoEjecucion.php';
+    
     
      if(isset($_POST['ingreso'])){        
          $facadeLogin = new FacadeLogin;        
@@ -15,8 +15,6 @@
              session_start();
              $_SESSION['id']=$validaInfo['idLogin'];
              $_SESSION['rol']=$validaInfo['rol'];
-             $ejecucion = new TiempoEjecucion();
-             $ejecucion->ejecucionProyectoss();
              if ($_POST['pass'] == "inicial") {
                  header("location: ../vista/modificarContrasena.php?mensaje= Modifique su contraseña");
              }else{

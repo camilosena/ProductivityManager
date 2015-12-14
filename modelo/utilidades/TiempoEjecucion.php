@@ -38,6 +38,8 @@ class TiempoEjecucion {
                  $fechaActual= date('Y-m-d');
                  $fechaFin = $dato['fechaFin'];
                  $estado = "Ejecución";
+              if ($fechaInicio<$fechaActual) {
+
                  if ($ejecucion < 100){
                     if ($fechaFin != 0){   
                        $datetime1 = new DateTime($fechaInicio);
@@ -62,7 +64,15 @@ class TiempoEjecucion {
                      $facadeProyectos->cambiarEstadoProyecto($estado, $idProyecto);  
                      $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
                  }
+               }else{
+                   $estado = "Ejecución";
+                     $porcentaje = 0;
+                     $facadeProyectos->cambiarEstadoProyecto($estado, $idProyecto);  
+                     $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
+                   
                }
+                                    
+                 }
                
 }
 }

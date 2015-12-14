@@ -347,4 +347,16 @@ and areas_idAreas=idAreas");
         $cnn = NULL;
         return $mensaje;
     }
+    function correosPorProyecto($idProyecto, PDO $cnn){
+     try {
+            $query = $cnn->prepare('Select email from personas 
+join usuarioporproyecto on usuarioAsignado = idUsuario and proyectoAsignado=?');
+             $query->bindParam(1,$idProyecto);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+    } 
+    
 }

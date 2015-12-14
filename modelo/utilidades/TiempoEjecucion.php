@@ -14,18 +14,30 @@
 
     require_once '../facades/FacadeProyectos.php';
     require_once '../modelo/dao/ProyectosDAO.php';
+    require_once '../modelo/utilidades/Conexion.php';
+    require_once '../modelo/utilidades/EnvioCorreos.php';
+    require_once '../PHPMailer/PHPMailerAutoload.php';
+    require_once '../facades/FacadeCorreos.php';
+    require_once '../modelo/dto/CorreosDTO.php';
+    require_once '../facades/FacadeUsuarios.php';
+    require_once '../modelo/dao/UsuarioDAO.php';
+    
 class TiempoEjecucion {
     //put your code here
-    function ejecucionProyectoss(){
+    function ejecucionProyectos(){
+        $facadeProyectos = new FacadeProyectos();
+        $facadeUsuarios = new FacadeUsuarios();
 
-             $facadeProyectos = new FacadeProyectos();
+             
              $datos = $facadeProyectos->listadoProyectos();
              foreach ($datos as $dato){
                  $ejecucion = $dato['ejecutado'];
                  $idProyecto = $dato['idProyecto'];
+                 $nombreProyecto = ['nombreProyecto'];
                  $fechaInicio = $dato['fechaInicio'];
                  $fechaActual= date('Y-m-d');
                  $fechaFin = $dato['fechaFin'];
+                 $estado = "Ejecución";
                  if ($ejecucion < 100){
                     if ($fechaFin != 0){   
                        $datetime1 = new DateTime($fechaInicio);
@@ -37,13 +49,20 @@ class TiempoEjecucion {
                     $diasTotales = $interval2->format('%a');
                     $porcentaje = (100*$diasTrasncurridos)/$diasTotales;
                     $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
+                    $facadeProyectos->cambiarEstadoProyecto($estado, $idProyecto);
                     }
-                 }else{
+                 }elseif ($ejecucion == 100) {
                      $estado = "Finalizado";
-                     $porcentaje = 100;
+                     $porcentaje = $ejecucion;
+                     $facadeProyectos->cambiarEstadoProyecto($estado, $idProyecto);  
+                     $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
+                 }  elseif($ejecucion > 100) {
+                     $estado = "Finalizado";
+                     $porcentaje = 101;
                      $facadeProyectos->cambiarEstadoProyecto($estado, $idProyecto);  
                      $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
                  }
                }
+               
 }
 }

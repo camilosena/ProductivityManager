@@ -132,4 +132,8 @@ class FacadeUsuarios{
         
         return $this->objetoDAO->actualizarLogin($dto, $this->conexionBase);
     }
+    function correosPorProyecto($idProyecto){
+        
+        return $this->objetoDAO->correosPorProyecto($idProyecto, $this->conexionBase);
+    }
 }

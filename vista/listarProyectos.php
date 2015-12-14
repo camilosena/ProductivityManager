@@ -2,11 +2,14 @@
 session_start();
 require_once '../modelo/utilidades/Session.php';
 require_once '../modelo/utilidades/TiempoEjecucion.php';
+require_once '../modelo/utilidades/CorreoFinProyecto.php';
 $pagActual = 'listarProyectos.php';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 $ejecucion = new TiempoEjecucion();
-$ejecucion->ejecucionProyectoss();
+$ejecucion->ejecucionProyectos();
+$correoFin = new CorreoFinProyecto();
+$correoFin->enviarCorreoFinProyecto();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -328,13 +331,14 @@ $ejecucion->ejecucionProyectoss();
                             $todos = $facadeProject->listadoProyectos();
                             $_SESSION['consultaProyecto']=$todos;
                             foreach ($todos as $project) {
+                                $ejecucion = $project['ejecutado'];
                                 ?>
                                 <tr><td><?php echo $project['idProyecto']; ?> </td>
                                     <td><?php echo $project['nombreProyecto']; ?> </td>
                                     <td> <?php echo $project['fechaInicio']; ?> </td>
                                     <td><?php if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
                                     <td><?php echo $project['estadoProyecto']; ?></td>  
-                                    <td><?php echo $project['ejecutado']; ?> %</td>
+                                    <td><?php if ($ejecucion >100){echo $ejecucion-1;}else{echo $ejecucion;} ?> %</td>
                                     <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
                                         <?php            if ($_SESSION['rol'] != 'Auditor') {
                 

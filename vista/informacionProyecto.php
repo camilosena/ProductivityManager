@@ -17,17 +17,23 @@ $session->Session($pagActual);
     <script type="text/javascript" src="../js/jspdf.min.js"></script>
     <link href="../js/toastr.css" rel="stylesheet"/>
     <script src="../js/toastr.js"></script>
-    <script src="../js/validaciones.js"></script>
     <link rel="stylesheet" type="text/css" href="../fonts/fonts.css">
     <link rel="stylesheet" href="../css/colorbox.css">
     <script src="../js/modalJS.min.js"></script>
     <script src="../js/jquery.colorbox.js"></script>
     <script src="../js/scriptModales.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/infoProject.css">
+      <script type="text/javascript" src="../js/tableexport.js"></script>
+    <script type="text/javascript" src="../js/jspdf.plugin.addimage.js"></script>
+     <script type="text/javascript" src="../js/jspdf.plugin.cell.js"></script>
+      <script type="text/javascript" src="../js/jspdf.plugin.from_html.js"></script>
+       <script type="text/javascript" src="../js/jspdf.plugin.split_text_to_size.js"></script>
+          <script type="text/javascript" src="../js/jspdf.plugin.standard_fonts_metrics.js"></script>
+             <script type="text/javascript" src="../js/FileSaver.js"></script>
 </head>
 <body onLoad="setTimeout(window.close, 50000)">
-<div class="wrapper">
-    
+<div id="todoProyecto" class="wrapper">
+    <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
 <div id="editor"></div>
     <script type="text/javascript">
                var doc = new jsPDF();
@@ -38,12 +44,21 @@ $session->Session($pagActual);
             };
 
             function exportPDF() {
-                doc.fromHTML($('#contenidoProyecto').html(), 15, 15, {
-                    'width': 170,
-                        'elementHandlers': specialElementHandlers
-                });
-                doc.save('ReporteProyecto.pdf');
+            var doc = new jsPDF();
+            doc.setFontSize(30);
+            doc.setTextColor(100);
+doc.text(35, 25, 'Reporte Proyecto<?php echo  $_GET["nameProject"]; ?>');
+
+        doc.fromHTML($('#contenidoProyecto').html(), 15, 15, {
+            'width': 170,'elementHandlers': specialElementHandlers
+        });
+        doc.save('ReporteProyecto <?php echo  $_GET["nameProject"]; ?>.pdf');
             };
+
+            function exportExcel(){
+               window.open('data:application/vnd.ms-excel;charset=UTF-8,' + encodeURIComponent($('#contenidoProyecto').html()));
+e.preventDefault();
+            }
              function printAssessment() {
         window.print();
     }
@@ -53,9 +68,9 @@ $session->Session($pagActual);
     <h2 class="h330"><br>Proyecto <?php echo  $_GET['nameProject']; ?>:</h2><br>
         <hr>
         <div id="exports" style="float:right;padding-bottom:10px;margin-right: 15%">
-                    <a href="#" onclick="printAssessment()"><img src="../img/imprimir.png"></a>
-                    <img src="../img/email.png">
-                    <img src="../img/excel.png">
+                    <a href="#" onclick="printAssessment()"><img src="../img/imprimir.png"></a> 
+                   <!-- <img src="../img/email.png">  -->
+                    <a href="#" onclick="exportExcel()"><img src="../img/excel.png"></a>
                     <a href="#" onclick="exportPDF()"><img  src="../img/pdf.png" title="Exportar a PDF"></div></a>
             </div>  
             <div id="contenidoProyecto">

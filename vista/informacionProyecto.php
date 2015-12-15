@@ -71,7 +71,7 @@ e.preventDefault();
                     <a href="#" onclick="printAssessment()"><img src="../img/imprimir.png"></a> 
                    <!-- <img src="../img/email.png">  -->
                     <a href="#" onclick="exportExcel()"><img src="../img/excel.png"></a>
-                    <a href="#" onclick="exportPDF()"><img  src="../img/pdf.png" title="Exportar a PDF"></div></a>
+                    <a href="#" onclick="exportPDF()"><img  src="../img/pdf.png" title="Exportar a PDF"></a></div>
             </div>  
             <div id="contenidoProyecto">
         <div>

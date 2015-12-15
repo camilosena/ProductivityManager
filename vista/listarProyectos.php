@@ -45,13 +45,13 @@ $correoFin->enviarCorreoFinProyecto();
           <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
       </form>
         <ul>
-           <li><a href="javascript:reporte('reportes.php?tipoReporte=Proyectos')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
+          <!--  <li><a href="javascript:reporte('reportes.php?tipoReporte=Proyectos')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
             <script language=javascript>
             function reporte(URL) {
                 window.open(URL, "reportes.php", "width=1250,height=645,top=30,left=30,scrollbars=NO");
             }
         </script> 
-           </li>
+           </li> -->
            <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
               <ul>
                  <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
@@ -257,7 +257,7 @@ $correoFin->enviarCorreoFinProyecto();
             <form name="filtro" class="formRegistro" action="../controlador/ControladorFiltros.php" method="POST">
                 <div id="exports" style="float:right;padding-bottom:10px;">
                     <a href="#" title="Imprimir" onclick="printAssessment()"> <img src="../img/imprimir.png"></a>
-                    <a href="#" title="Exportar a PDF" ><img src="../img/pdf.png"></a>
+                    <!-- <a href="#" title="Exportar a PDF" ><img src="../img/pdf.png"></a> -->
                     <a href='../modelo/utilidades/Reportes/ExportarProyecto.php'><img src="../img/excel.png" title="Exportar a Excel"></a></div>
                 <table id="tabla" class="display" cellspacing="0" width="100%">
                     <thead>

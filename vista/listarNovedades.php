@@ -37,7 +37,7 @@ $session->Session($pagActual);
           <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
       </form>
         <ul>
-           <li><a href='reportes.php'><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a></li>
+            <!--   <li><a href='reportes.php'><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a></li> -->
            <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
               <ul>
                  <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
@@ -120,9 +120,14 @@ $session->Session($pagActual);
     <br><br>
     <h2 class="h330">Novedades de Proyectos:</h2>
     <br>  
+      <script>
+              function printAssessment() {
+        window.print();
+    }
+            </script>
     <div id="exports" style="float:right;padding-bottom:10px;">
-                    <img src="../img/imprimir.png">
-                    <img src="../img/pdf.png">
+                   <a href="#" title="Imprimir" onclick="printAssessment()"> <img src="../img/imprimir.png"></a>
+                    <!-- <img src="../img/pdf.png"> -->
                     <a href='../modelo/utilidades/Reportes/ExportarNovedad.php'><img src="../img/excel.png" title="Exportar a Exccel"></a></div>
 	   <table id="tabla" class="display" cellspacing="0" width="100%">
         <thead>

@@ -127,22 +127,32 @@ $session->Session($pagActual);
             </script>
              <div id="exports" style="float:right;padding-bottom:10px;padding-right: 50px">
                  <a href="#" onclick="printAssessment()"> <img src="../img/imprimir.png"></a>
-                    <img src="../img/pdf.png"></div>
+                   <a href="../controlador/ControladorPDF.php?exportAudita=true"> <img src="../img/pdf.png"></div></a>
             <div id="canvas-holder" style="margin-right:80px">
                 <canvas id="chart-area2" width="300" height="300" style="margin-left:150px; margin-top:20px"></canvas>
                 <canvas id="chart-area3" width="600" height="300" style="display:none"></canvas><br><br><br>
                 <canvas id="chart-area4" width="600" height="300"></canvas>
                 <canvas id="chart-area" width="300" height="300" style="display:none"></canvas>
+                <?php 
+                require_once '../modelo/utilidades/Conexion.php';
+                require_once '../modelo/dao/ProyectosDAO.php';
+                require_once '../facades/FacadeProyectos.php';
+                require_once '../modelo/dao/AuditoriaDAO.php';
+                require_once '../facades/FacadeAuditorias.php';
+                $auditoria = new FacadeAuditorias();
+                $resultado1= $auditoria->cantidadAuditoriasPorEstado("Excelente");
+                $resultado2= $auditoria->cantidadAuditoriasPorEstado("Plan de Mejoramiento");
+                $resultado3= $auditoria->cantidadAuditoriasPorEstado("Comité Evaluador"); ?>
                 <script>
-                    var pieData = [{value: 40,color:"#0b82e7",highlight: "#0c62ab",label: "Aprobados"},
+                    var pieData = [{value: <?php echo $resultado1 ?>,color:"#0b82e7",highlight: "#0c62ab",label: "Aprobados"},
                                 {
-                                    value: 16,
+                                    value: <?php echo $resultado2 ?>,
                                     color: "#e3e860",
                                     highlight: "#a9ad47",
                                     label: "Plan de Mejoramiento"
                                 },
                                 {
-                                    value: 11,
+                                    value: <?php echo $resultado3 ?>,
                                     color: "#eb5d82",
                                     highlight: "#b74865",
                                     label: "Comité Evaluador"
@@ -157,14 +167,14 @@ $session->Session($pagActual);
                                 strokeColor : "#ffffff",
                                 highlightFill: "#1864f2",
                                 highlightStroke: "#ffffff",
-                                data : [90,30,10]
+                                data : [0,0,0]
                             },
                             {
                                 fillColor : "#e9e225",
                                 strokeColor : "#ffffff",
                                 highlightFill : "#ee7f49",
                                 highlightStroke : "#ffffff",
-                                data : [40,50,70]
+                                data : [0,0,0]
                             }
                         ]
 
@@ -180,7 +190,7 @@ $session->Session($pagActual);
                                     pointStrokeColor : "#fff",
                                     pointHighlightFill : "#fff",
                                     pointHighlightStroke : "rgba(220,220,220,1)",
-                                    data : [90,30,10,80,15,5]
+                                    data : [0,0,0,0,0,0]
                                 },
                                 {
                                     label: "Segunda serie de datos",
@@ -190,7 +200,7 @@ $session->Session($pagActual);
                                     pointStrokeColor : "#fff",
                                     pointHighlightFill : "#fff",
                                     pointHighlightStroke : "rgba(151,187,205,1)",
-                                    data : [40,50,70,40,85,55]
+                                    data : [0,0,0,0,0,0]
                                 }
                             ]
 

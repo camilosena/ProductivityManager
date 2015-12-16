@@ -35,4 +35,12 @@ class FacadeAuditorias
         
         return $this->auditoriaDAO->consultarGerenteParaEnvarAuditoriaPorCorreo($idProyecto, $this->conexionBase);
     }
+     function cantidadAuditoriasMeses($mes){
+        
+        return $this->auditoriaDAO->cantidadAuditoriasMeses($mes, $this->conexionBase);
+    }
+    function cantidadAuditoriasPorEstado($resultado){
+
+        return $this->auditoriaDAO->cantidadAuditoriasPorEstado($resultado, $this->conexionBase);
+    }
 }

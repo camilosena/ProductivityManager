@@ -92,4 +92,26 @@ join roles on idRoles = rolesId and rol = 'Gerente'");
         }  
     
 }
+  function cantidadAuditoriasMeses($mes, PDO $cnn){
+          try {            
+            $query = $cnn->prepare("select count(idAuditoria) from auditorias");
+            $query->execute();
+            return $query->fetchColumn();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }  
+    
+    }
+
+      function cantidadAuditoriasPorEstado($resultado, PDO $cnn){
+          try {            
+            $query = $cnn->prepare("select count(idAuditoria) from auditorias where resultadoAuditoria =? ");
+            $query->bindParam(1, $resultado);
+            $query->execute();
+            return $query->fetchColumn();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }  
+    
+    }
 }

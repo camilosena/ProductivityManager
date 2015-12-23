@@ -13,7 +13,7 @@ class ArchivoDAO {
 				$sql = "LOAD DATA INFILE '".$file."' INTO TABLE ".$table." FIELDS TERMINATED BY ';' escaped by '/'"; 
 				$query=$cnn->prepare($sql);
                                 $query->execute();								
-				$mensaje = 'Cargado con éxito';
+				$mensaje = 'Carga de Datos Realizada con Éxito';
 			}catch(Exception $ex){
 				$mensaje = $ex->getMessage();
 			}

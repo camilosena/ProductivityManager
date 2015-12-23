@@ -42,9 +42,9 @@ if (isset($_POST['AgregarProducto'])) {
     $productosDTO->setEstado('Inactivo');
     $productosDTO->setPorcentaje($_POST['ganancia']);
     
-    $facadeProductos->agregarProducto($productosDTO);
+    $mensaje=$facadeProductos->agregarProducto($productosDTO);
    
-     header("location: ../vista/agregarProductos.php?".$mensaje);
+     header("location: ../vista/agregarProductos.php?mensaje=".$mensaje);
     
 }else 
 if (isset ($_GET['$idInactivar'])) {
@@ -94,7 +94,7 @@ $estado = "Sin Procesos";
 if (isset ($_POST['Atras'])) {
      header("location: ../vista/agregarProductos.php");
 }else
-if (isset ($_POST['subir'])) {
+if (isset ($_POST['Change'])) {
      $table = 'productos';
         $file = realpath($_FILES['archivo']['tmp_name']);
         $file = str_replace('\\', '/', $file);

@@ -28,6 +28,7 @@ $session->Session($pagActual);
         <script src="../js/toastr.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
+    <link rel="stylesheet" href="../css/cargaPaginas.css">
     </head>
     <body>
      <div id='cssmenu'>
@@ -56,6 +57,31 @@ $session->Session($pagActual);
     </div>    
         <header>                
             <div class="wrapper">
+            <?php if (isset($_GET['mensaje'])) { ?>
+            <script language="JavaScript" type="text/javascript">
+                window.onload = function () {
+                    Command: toastr["success"]("<?php echo $_GET['mensaje']; ?>")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-full-width",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+        <?php } ?>
+        </script>
                 <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
                 <nav>
@@ -110,21 +136,16 @@ $session->Session($pagActual);
                 <span itemscope >
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
-                        <a href="CrearRol.php" title="Ir a Usuarios" itemprop="url">
-                            <span itemprop="title">Agregar Productos</span>              
+                        <a href="agregarProducto.php" title="Ir a Usuarios" itemprop="url">
+                            <span itemprop="title">Productos</span>              
                         </a>  > 
-
+                        <strong>Agregar Producto</strong>
                     </span> 
                 </span>         
             </nav>
             <div id="panelDer">
                   <div id="panelModificaPass">   
-                    <br><br><br> 
-                     <table id="muestraDatos" class="tableProductos" style="margin-top:50px">
-                         <thead>
-                         <th style="width:200px">Producto</th>
-                         <th style="width:100px" colspan="3">Acciones</th>
-                         </thead>
+                    <br><br><br>                     
                         <?php
                     require_once '../facades/FacadeProductos.php';
                     require_once '../modelo/dao/ProductosDAO.php';
@@ -132,7 +153,53 @@ $session->Session($pagActual);
                     $pDTO = new ProductosDTO();
                     $facadeProductos = new FacadeProductos();
                     $todos=$facadeProductos->listarProductos();
-                  
+                  if ($todos==Array()) {
+                      echo "<h2 class='h330'>No Existen Productos</h2>";
+                    ?> 
+                        <div class="container">
+                          <div class="gearbox">
+                          <div class="overlay"></div>
+                            <div class="gear one">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear two">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear three">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear four large">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    <?php 
+                  }else{   ?>              
+                     <table id="muestraDatos" class="tableProductos" style="margin-top:50px">
+                         <thead>
+                         <th style="width:200px">Producto</th>
+                         <th style="width:100px" colspan="3">Acciones</th>
+                         </thead>
+                <?php 
                   foreach ($todos as $unit) {
                             ?> 
                         
@@ -141,12 +208,7 @@ $session->Session($pagActual);
                                 <td style="width:200px"> <?php echo $unit['nombreProducto']; ?></td>
                                 <td style="text-align:center"><a name="InsumosProducto" title="Insumos del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/insumoProducto.png"></a>
                                 <?php
-                                    
-                                    if ($unit['estadoProducto'] == 'Activo' ) {
-                                ?>
-                                <a name="InactivarProducto" title="Inactivar Producto" class="me"  href="../controlador/ControladorProductos.php?$idInactivar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/eliminar.png"></a>
-                                <?php
-                                    }else
+                                  
                                     if ($unit['estadoProducto'] == 'Sin Procesos' ){
                                  ?>   
                                 <a name="AsociarProceso" title=" Asociar Proceso " class="me"  href="../vista/agregarProcesos.php?idProducto=<?php echo $unit['idProductos']; ?>&nombreProducto=<?php echo $unit['nombreProducto']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ascenso.png"></a>
@@ -161,6 +223,7 @@ $session->Session($pagActual);
                         
                             <?php
                         }
+                    }
                         ?>    
                     </table>
                     
@@ -173,13 +236,20 @@ $session->Session($pagActual);
             </div>
             </div>
             <div id="panelIzq">
+            <div style="text-align:right;font-weight:bold">
                 <form method="post" action="../controlador/ControladorProductos.php" enctype="multipart/form-data">
-                    <label  class="obligatoriosD">Cargar archivo:</label>
-                    <input type="file" name="archivo">
-                    <input name="subir" type="submit" value="Subir Archivo">
-            </form><br>
-                <br>
-                <br><h2 class="h330">Agregar Productos:</h2><hr>
+                    <label  class="obligatoriosD">Cargue un archivo con sus Productos : </label>
+                    <a id="loadArchivo" href="javascript:function()"><img src="../img/subirDatos.png" alt=""></a>
+                    <input type="hidden" name="Change" value="1">  
+          <input type="file" id="ArchivoProductos" class="file" name="archivo" onchange="submit();" style="display:none">                 
+            </form></div><hr>            
+            <script type="text/javascript">
+            //bind click
+            $('#loadArchivo').click(function(event) {
+              $('#ArchivoProductos').click();
+            });
+        </script>               
+               <h2 class="h330">Agregar Productos:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <form class="formRegistro" method="post" action="../controlador/ControladorProductos.php" enctype="multipart/form-data"> 
                

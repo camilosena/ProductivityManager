@@ -236,7 +236,7 @@ $session->Session($pagActual);
             </div>
             </div>
             <div id="panelIzq">
-            <div style="text-align:right;font-weight:bold">
+            <div style="text-align:right;font-weight:bold;padding-right:10px">
                 <form method="post" action="../controlador/ControladorProductos.php" enctype="multipart/form-data">
                     <label  class="obligatoriosD">Cargue un archivo con sus Productos : </label>
                     <a id="loadArchivo" href="javascript:function()"><img src="../img/subirDatos.png" alt=""></a>

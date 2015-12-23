@@ -66,7 +66,7 @@
 }
 
 .gearbox {
-  background: #111;
+  background: #2a2b2a;
   height: 150px;
   width: 200px;
   position: relative;
@@ -153,7 +153,7 @@
   -moz-border-radius: 36px;
   -webkit-border-radius: 36px;
   border-radius: 36px;
-  background: #111;
+  background: #2a2b2a;
   top: 50%;
   left: 50%;
   margin-left: -18px;
@@ -168,7 +168,7 @@
   position: relative;
   height: 100%;
   width: 100%;
-  background: #555;
+  background: #83AF44;
   -webkit-animation-iteration-count: infinite;
   -moz-animation-iteration-count: infinite;
   -moz-border-radius: 30px;
@@ -198,7 +198,7 @@
   -moz-animation: counter-clockwise 6s infinite linear;
 }
 .gear-inner .bar {
-  background: #555;
+  background: #83AF44;
   height: 16px;
   width: 76px;
   position: absolute;

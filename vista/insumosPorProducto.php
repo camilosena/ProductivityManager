@@ -123,7 +123,8 @@ $session->Session($pagActual);
             <div id="panelUnico">
                 <br>
                 <br><h2 class="h330">Materia Prima a Utilizadar en <?php echo $_SESSION['Producto']['nombreProducto']?>:</h2><hr>
-                <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
+                 <p style="font-weight:bold;font-size:13px">Nota:</p><p class="obligatoriosD">Selecione la Materia Prima segun requerimientos y su respectiva cantidad.</p><br>
+                        <p class="obligatoriosD">Los campos "Cantidad" son obligatorios por cada Materia Seleccionada.<br></p>  <br><br>
                 <form class="formRegistro" method="post" action="../controlador/ControladorProductos.php"> 
                     <?php
                     require_once '../modelo/dao/InsumosDAO.php';
@@ -142,8 +143,6 @@ $session->Session($pagActual);
                     ?>
                     <input type="hidden" name="idProducto" value="<?php echo $idProducto;?>">
                     
-                  
-                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" class="h331">Insumos: </span></label>
                     <table style="margin-left:30%" id="muestraDatos">
                     <thead>
                     <tr>
@@ -193,7 +192,7 @@ $session->Session($pagActual);
                         }
                         ?>    
                     </table>
-                    <button type="submit" value="Enviar" name="AsociarInsumos" id="crearRol" class="boton-verde" >Asignar Insumos</button>
+                    <button type="submit" value="Enviar" name="AsociarInsumos" id="crearRol" class="boton-verde" >Asociar Materia Prima</button>
                     
                     </form><hr>
                 

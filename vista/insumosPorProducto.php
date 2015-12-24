@@ -8,7 +8,7 @@ $session->Session($pagActual);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Insumos por producto</title>
+        <title>Materia Prima por producto</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="../css/reset.css">
@@ -112,17 +112,17 @@ $session->Session($pagActual);
                 <span itemscope >
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
-                        <a href="CrearRol.php" title="Ir a Usuarios" itemprop="url">
-                            <span itemprop="title">Insumos por producto</span>              
+                        <a href="agregarInsumos.php" title="Ir a Usuarios" itemprop="url">
+                            <span itemprop="title">Materia Prima</span>              
                         </a>  > 
-
+                        <strong>Asociar Materia Prima a Producto</strong>
                     </span> 
                 </span>         
             </nav>
 
             <div id="panelUnico">
                 <br>
-                <br><h2 class="h330">Insumos Utilizados para <?php echo $_SESSION['Producto']['nombreProducto']?>:</h2><hr>
+                <br><h2 class="h330">Materia Prima a Utilizadar en <?php echo $_SESSION['Producto']['nombreProducto']?>:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <form class="formRegistro" method="post" action="../controlador/ControladorProductos.php"> 
                     <?php
@@ -144,7 +144,15 @@ $session->Session($pagActual);
                     
                   
                     <label class="tag" id="Permisos" for="Permisos"><span id="permisos" class="h331">Insumos: </span></label>
-                    <table style="margin-left:30%">
+                    <table style="margin-left:30%" id="muestraDatos">
+                    <thead>
+                    <tr>
+                       <th >Materia Prima</th>
+                      <th>Medida</th>
+                     <th >Cantidad</th>
+                       <th >Seleccionar</th>
+                    </tr>
+                </thead>
                         <?php
                         $_SESSION['cantInsumos']=0;
                         foreach ($insumos as $insumo) {
@@ -153,9 +161,9 @@ $session->Session($pagActual);
                             ?>     
                             <tr>
                                
-                                <td><input name="insumo" size="7" value ="<?php echo $insumo['nombre']; ?>" readonly></td>
-                                <td><input style="width: 50px; text-align: center" name="cant<?php echo $insumo['numero']; ?>" id="cant<?php echo $insumo['numero']; ?>" type="text" value ="<?php echo $cantidadInsumos; ?>"></td>
-                                <td><input style="width: 100px; text-align: center" name="medida" size="1" value ="<?php echo $insumo['unidad']; ?>" readonly ></td>
+                                <td><?php echo $insumo['nombre']; ?></td>
+                                 <td><?php echo $insumo['unidad']; ?></td>
+                                <td><input style="width: 50px; text-align: center" name="cant<?php echo $insumo['numero']; ?>" id="cant<?php echo $insumo['numero']; ?>" type="text" value ="<?php echo $cantidadInsumos; ?>"></td>                               
                                 <td><input type="checkbox" id="insumo<?php echo $insumo['numero']; ?>" name="<?php echo $insumo['numero']; ?>" value="<?php echo $insumo['numero']; ?>"<?php 
                                 foreach ( $IxP as $IxProducto){
                                         if (($insumo['numero']==$IxProducto["insumos"])) {                           
@@ -165,7 +173,9 @@ $session->Session($pagActual);
                             </tr>
                                  <script>
                                         $(document).ready(function(){
-
+                                                $("#cant<?php echo $insumo['numero']; ?>").change(function() {
+                                         $("#insumo<?php echo $insumo['numero'];  ?>").prop( "checked", true );
+                                        });
                                             $("#insumo<?php echo $insumo['numero']; ?>").click(function() {
                                                 if($("#insumo<?php echo $insumo['numero'];  ?>").is(':checked')) {
                                                     $("#cant<?php echo $insumo['numero']; ?>").attr("required", true);

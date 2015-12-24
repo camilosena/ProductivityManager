@@ -195,18 +195,23 @@ $session->Session($pagActual);
                     <?php 
                   }else{   ?>              
                      <table id="muestraDatos" class="tableProductos" style="margin-top:50px">
-                         <thead>
-                         <th style="width:200px">Producto</th>
-                         <th style="width:100px" colspan="3">Acciones</th>
-                         </thead>
+                 <thead>
+                    <tr>
+                       <th >Código</th>
+                      <th>Producto</th>
+                     <th >Estado</th>
+                       <th >Acciones</th>
+                    </tr>
+                </thead>
                 <?php 
                   foreach ($todos as $unit) {
                             ?> 
                         
                             <tr>
-                                
-                                <td style="width:200px"> <?php echo $unit['nombreProducto']; ?></td>
-                                <td style="text-align:center"><a name="InsumosProducto" title="Insumos del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/insumoProducto.png"></a>
+                                <td style="width:90px">0<?php echo $unit['idProductos']; ?></td>
+                                <td style="width:150px"> <?php echo $unit['nombreProducto']; ?></td>
+                                <td style="width:80px"> <?php echo $unit['estadoProducto']; ?></td>
+                                <td ><a name="InsumosProducto" title="Asociar Materia Prima del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/insumoProducto.png"></a>
                                 <?php
                                   
                                     if ($unit['estadoProducto'] == 'Sin Procesos' ){
@@ -217,7 +222,8 @@ $session->Session($pagActual);
                                        <a></a>
                                    <?php }
                                  ?> 
-                               <a name="visualizarProducto" title="Ver Producto" class="me"  href="../controlador/ControladorProductos.php?idVisualizar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ojo.png"></a></td>       
+                               <a name="visualizarProducto" title="Ver Producto" class="me"  href="../controlador/ControladorProductos.php?idVisualizar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ojo.png"></a>
+                               </td>       
 
                             </tr>
                         
@@ -278,8 +284,22 @@ $session->Session($pagActual);
                         <a href="#close" title="Close" class="close">X</a><br>					
                         <h2 class="h330"><?php echo $_SESSION['VisualizarProducto']['nombreProducto']; ?> :</h2><br>
                         <div >
-                            <img src="../productos/<?php echo $_SESSION['VisualizarProducto']['fotoProducto']; ?>" onLoad="nomeImagem()" style="display: inline; width: 190 px; height: 110px" >
-                            <textarea name="descripcion" disabled style="display: inline; width: 190px; height: 110px"  ><?php echo $_SESSION['VisualizarProducto']['descripcionProducto']; ?></textarea>
+                            <img src="../productos/<?php echo $_SESSION['VisualizarProducto']['fotoProducto']; ?>" onLoad="nomeImagem()" style=" width: 190 px; height: 110px" >
+                            <div style="width:250px;height:180px;;float:right;margin-right:5%">
+                                <table id="muestraDatos">
+                                <tr>
+                                    <td>Código</td>
+                                    <td>0<?php  echo $_SESSION['VisualizarProducto']['idProductos']; ?></td>
+                                </tr> <tr>
+                                    <td>Estado</td>
+                                    <td><?php  echo $_SESSION['VisualizarProducto']['estadoProducto']; ?></td>
+                                </tr> <tr>
+                                    <td>Descripción</td>
+                                    <td ><?php  echo $_SESSION['VisualizarProducto']['descripcionProducto']; ?></td>
+                                </tr>
+                    
+                              </table>
+                            </div>
                         </div>
                     </div>
                 </div>

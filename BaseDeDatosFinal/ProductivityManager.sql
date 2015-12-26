@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `productivitymanager` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `productivitymanager`;
--- MySQL dump 10.13  Distrib 5.6.24, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win32 (AMD64)
 --
 -- Host: 127.0.0.1    Database: productivitymanager
 -- ------------------------------------------------------
--- Server version	5.6.25
+-- Server version	5.5.5-10.1.9-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -108,7 +108,6 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (9,'Muebles La Oficina',923482438,'Privado','Industrial',6324354);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +168,6 @@ CREATE TABLE `materiaprima` (
 
 LOCK TABLES `materiaprima` WRITE;
 /*!40000 ALTER TABLE `materiaprima` DISABLE KEYS */;
-INSERT INTO `materiaprima` VALUES (1,'Madera','metros',5000),(2,'Puntillas','unidad',10),(3,'Pintura','litro',20000),(4,'pegante','litro',14000),(5,'grapas','unidad',20),(6,'tela','metro',7000),(7,'espuma','metro',10000),(8,'manoDeObraDirecta','horas',3500),(9,'CIF','horas',2500);
 /*!40000 ALTER TABLE `materiaprima` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +196,6 @@ CREATE TABLE `materiaprimaporproducto` (
 
 LOCK TABLES `materiaprimaporproducto` WRITE;
 /*!40000 ALTER TABLE `materiaprimaporproducto` DISABLE KEYS */;
-INSERT INTO `materiaprimaporproducto` VALUES (1,1,2),(1,2,3),(1,3,2),(1,4,3),(1,5,2),(1,6,3),(1,7,2);
 /*!40000 ALTER TABLE `materiaprimaporproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,7 +285,7 @@ CREATE TABLE `permisos` (
 
 LOCK TABLES `permisos` WRITE;
 /*!40000 ALTER TABLE `permisos` DISABLE KEYS */;
-INSERT INTO `permisos` VALUES (1,'','Proyectos',1),(2,'crearProyecto.php','Crear Nuevo',2),(3,'listarProyectos.php','Listar Proyectos',2),(4,'','Novedades',1),(5,'agregarNovedad.php','Agregar Nueva',3),(6,'listarNovedades.php','Listar Informes de Novedad',3),(7,'','Personal',1),(8,'registrarUsuario.php','Registrar',4),(9,'listarUsuarios.php','Ver Todos',4),(10,'listarUsuariosInactivos.php','Inactivos',4),(11,'','Auditorias',1),(12,'generarAuditoria.php','Generar Nueva',5),(13,'listarAuditorias.php','Listar Auditorias',5),(14,'','Clientes',1),(15,'agregarCliente.php','Agregar',6),(16,'clientesActivos.php','Activos',6),(17,'clientesInactivos.php','Inactivos',6),(18,NULL,'Roles',1),(19,'crearRol.php','Crear Nuevo',7),(20,'agregarAreas.php','Agregar Área',7),(21,'modificarRol.php','Modificar Rol',0),(22,'asignarPermisos.php','Asignar Permisos',0),(23,'modificarUsuario.php','Modificar Usuario',0),(24,'modificarCliente.php','Modificar Cliente',0),(25,'modificarContrasena.php','Modificar Contraseña',0),(26,'estudioDeCostos.php','Estudio De Costos',0),(27,'modificarProyecto.php','Modificar Proyecto',0),(28,NULL,'Insumos',1),(29,'agregarInsumos.php','Agregar Insumo',8),(30,'actualizarRolArea.php','Actualizar Rol Area',0),(31,'agregarProcesos.php','Agregar Proceso',9),(32,NULL,'Procesos',1),(33,'asignarAreas.php','Asignar Area',0),(34,NULL,'Productos',1),(35,'agregarProductos.php','Agregar Producto',10),(36,'produccionProyecto.php','Producción Proyecto',0),(37,'crearRol.php?#ModalRoles','Ver Roles',7),(38,'informacionProyecto.php','Información Proyecto',0);
+INSERT INTO `permisos` VALUES (1,'','Proyectos',1),(2,'crearProyecto.php','Crear Nuevo',2),(3,'listarProyectos.php','Listar Proyectos',2),(4,'','Novedades',1),(5,'agregarNovedad.php','Agregar Nueva',3),(6,'listarNovedades.php','Listar Informes de Novedad',3),(7,'','Personal',1),(8,'registrarUsuario.php','Registrar',4),(9,'listarUsuarios.php','Ver Todos',4),(10,'listarUsuariosInactivos.php','Inactivos',4),(11,'','Auditorias',1),(12,'generarAuditoria.php','Generar Nueva',5),(13,'listarAuditorias.php','Listar Auditorias',5),(14,'','Clientes',1),(15,'agregarCliente.php','Agregar',6),(16,'clientesActivos.php','Activos',6),(17,'clientesInactivos.php','Inactivos',6),(18,NULL,'Roles',1),(19,'crearRol.php','Crear Nuevo',7),(20,'agregarAreas.php','Agregar Área',7),(21,'modificarRol.php','Modificar Rol',0),(22,'asignarPermisos.php','Asignar Permisos',0),(23,'modificarUsuario.php','Modificar Usuario',0),(24,'modificarCliente.php','Modificar Cliente',0),(25,'modificarContrasena.php','Modificar Contraseña',0),(26,'estudioDeCostos.php','Estudio De Costos',0),(27,'modificarProyecto.php','Modificar Proyecto',0),(28,NULL,'Insumos',1),(29,'agregarInsumos.php','Agregar Insumo',8),(30,'actualizarRolArea.php','Actualizar Rol Area',0),(31,'agregarProcesos.php','Agregar Proceso',9),(32,NULL,'Procesos',1),(33,'asignarAreas.php','Asignar Area',0),(34,NULL,'Productos',1),(35,'agregarProductos.php','Agregar Producto',10),(36,'produccionProyecto.php','Producción Proyecto',0),(37,'crearRol.php?#ModalRoles','Ver Roles',7),(38,'informacionProyecto.php','Información Proyecto',0),(39,'insumosPorProducto.php','Insumos Por Producto',0);
 /*!40000 ALTER TABLE `permisos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,7 +313,7 @@ CREATE TABLE `permisosporrol` (
 
 LOCK TABLES `permisosporrol` WRITE;
 /*!40000 ALTER TABLE `permisosporrol` DISABLE KEYS */;
-INSERT INTO `permisosporrol` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(16,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(37,1),(38,1),(1,2),(2,2),(3,2),(4,2),(6,2),(7,2),(8,2),(9,2),(11,2),(12,2),(13,2),(14,2),(15,2),(16,2),(17,2),(23,2),(24,2),(25,2),(26,2),(27,2),(1,3),(3,3),(4,3),(5,3),(6,3),(25,3);
+INSERT INTO `permisosporrol` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(16,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(37,1),(38,1);
 /*!40000 ALTER TABLE `permisosporrol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,7 +351,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (1,1012377025,'Camilo','Arias González','Cll 93 No 11-08',3015782659,'1991-05-20','carias520@misena.edu.co','Inactivo','camilo.jpg',1),(2,101112,'Christopher','Arias Rojas','Calle 45 no 18 22',3102845166,'1994-01-17','ariasgonzalezcamilo@gmail.com','Activo','Koala.jpg',2),(3,111213,'Juan','Melas','cra 68 no 45 10',3015782659,'1998-01-20','ariasgonzalezcamilo@gmail.com','Activo','Chrysanthemum.jpg',3),(4,202020,'Juan Fernando','Mendoza','Calle 45 no 18 22',3213991985,'1988-05-11','ariasgonzalezcamilo@gmail.com','Inactivo','Hydrangeas.jpg',4),(9,2143454,'Andrews','Sinisterra','Calle 45 no 18 22',3214333516,NULL,'asinisterra@muebleslaoficina.com','Activo','descarga.jpg',6),(13,80730206,'Howard','Mosquera','Carrera 7 A # 187 A - 38 Interior 1',3184335384,'1983-02-01','howard.mosquera@gmail.com','Activo','Kevin.jpg',1),(14,80730207,'Howard','Mosquera Lara','Carrera 7 A # 187 A - 38 Interior 1',3184335384,'1983-02-08','howard.mosquera@gmail.com','Activo','perfil.png',1),(15,21323232,'dasdada','dadadada','Carrera 7 A # 187 A - 38 Interior 1',233232323,NULL,'adsdad@hot.com','Activo','perfil.png',6),(16,101010,'Pedro','Perez','',10101010,'2015-12-19','correo@correo','Activo','perfil.png',1),(17,1232333,'Andres','Perez','Carrera 7 A # 187 A - 38 Interior 1',3184335384,'1991-05-20','ariasgonzalezcamilo@gmail.com','Activo','perfil.png',4),(19,36554,'Andres','Perez','Carrera 7 A # 187 A - 38 Interior 1',3184335384,'2000-03-12','ariasgonzalezcamilo@gmail.com','Activo','perfil.png',3),(21,365544,'Andres','Perez','Carrera 7 A # 187 A - 38 Interior 1',3184335384,'2000-03-12','ariasgonzalezcamilo@gmail.com','Activo','perfil.png',3),(22,434343432,'Pedrio','Perales','Carrera 7 A # 187 A - 38 Interior 1',32434343,'1998-01-19','ariasgonzalezcamilo@gmail.com','Activo','perfil.png',3);
+INSERT INTO `personas` VALUES (1,1012377025,'Camilo','Arias González','Cll 93 No 11-08',3015782659,'1991-05-20','carias520@misena.edu.co','Inactivo','camilo.jpg',1);
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -384,7 +381,6 @@ CREATE TABLE `procesoporproducto` (
 
 LOCK TABLES `procesoporproducto` WRITE;
 /*!40000 ALTER TABLE `procesoporproducto` DISABLE KEYS */;
-INSERT INTO `procesoporproducto` VALUES (1,1,2,3),(1,2,3,4),(1,3,1,2),(1,4,4,6);
 /*!40000 ALTER TABLE `procesoporproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,7 +405,6 @@ CREATE TABLE `procesos` (
 
 LOCK TABLES `procesos` WRITE;
 /*!40000 ALTER TABLE `procesos` DISABLE KEYS */;
-INSERT INTO `procesos` VALUES (1,'corte',20000),(2,'ensamble',10000),(3,'pintura',30000),(4,'acabados',8000);
 /*!40000 ALTER TABLE `procesos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -496,7 +491,6 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Silla Gerencial','6.jpg','Silla Basica','Activo',1.76),(2,'Mesa Juntas','mesa5.jpg','Mesa 40X40','Activo',0.764),(3,'Silla Ejecutiva','6.jpg','Madera','Activo',4.45),(4,'Mesa Oficina','silla.jpg','','Activo',3.65),(5,'Gerencial','1.png','','Activo',0),(6,'Mueble','6.jpg','o','',0),(7,'Gab','3.jpg','prueba','',0),(8,'Nuevo','6.jpg','N','',0),(9,'New','mesa6.jpg','aca','',5.67),(10,'mlñfsd','image.jpg','lllll','Inactivo',232323),(11,'lllll','Image.png','lll','Inactivo',8),(12,'dsdsds','Image.png','dsds','Inactivo',2),(13,'dsdsds','Image.png','dsds','Inactivo',2);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -604,7 +598,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (80730206,'c893bad68927b457dbed39460e6afd62',1),(1012377025,'c893bad68927b457dbed39460e6afd62',1),(101112,'c893bad68927b457dbed39460e6afd62',2),(111213,'c893bad68927b457dbed39460e6afd62',3),(202020,'c893bad68927b457dbed39460e6afd62',3),(365544,'c893bad68927b457dbed39460e6afd62',3),(434343432,'c893bad68927b457dbed39460e6afd62',3);
+INSERT INTO `usuarios` VALUES (1012377025,'c893bad68927b457dbed39460e6afd62',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1039,4 +1033,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-12 12:15:22
+-- Dump completed on 2015-12-23 17:34:27

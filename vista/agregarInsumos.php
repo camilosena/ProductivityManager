@@ -111,14 +111,20 @@ $session->Session($pagActual);
                 <span itemscope >
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
+<<<<<<< HEAD
                         <a href="CrearRol.php" title="Ir a Usuarios" itemprop="url">
                             <span itemprop="title">Agregar Materia Prima </span>              
+=======
+                        <a href="agregarInsumos.php" title="Ir a Usuarios" itemprop="url">
+                            <span itemprop="title">Materia Prima </span>              
+>>>>>>> origin/master
                         </a>  > 
-
+                        <strong>Agregar Materia Prima</strong>
                     </span> 
                 </span>         
             </nav>
 
+<<<<<<< HEAD
             <div id="panelUnico">
                 <form method="post" action="../controlador/ControladorInsumos.php" enctype="multipart/form-data">
                     <label>Cargar archivo:</label>
@@ -132,6 +138,11 @@ $session->Session($pagActual);
                                       
                     <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Materia Prima: </span></label>
                     <table style="margin-left:20%;">
+=======
+            <div id="panelIzq">
+                <br>                   
+                    <table id="muestraDatos" style="margin-left:20%;">
+>>>>>>> origin/master
                         <?php
                         require_once '../facades/FacadeInsumos.php';
                         require_once '../modelo/dao/InsumosDAO.php';
@@ -151,10 +162,7 @@ $session->Session($pagActual);
 
                             <?php
                         }
-                        if (isset($_GET['mensaje3'])) {
-                            echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
-                        }
-                        ?>    
+                       ?>    
                     </table>
                     
                     <?php
@@ -163,8 +171,20 @@ $session->Session($pagActual);
                         $facadeInsumos = new FacadeInsumos();
                 $consecutivo=$facadeInsumos->consecutivoInsumos();
                 ?>
-                    
+        </div>  
+         <div id="panelDer">
+          <br><h2 class="h330">Agregar Materia Prima:</h2><hr>
+          <form method="post" action="../controlador/ControladorInsumos.php" enctype="multipart/form-data">
+                    <label>Cargar archivo:</label>
+                    <input type="file" name="archivo">
+                    <input name="subir" type="submit" value="Subir Archivo">
+            </form><hr>
+                <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
+                     
                 <br>  
+                  
+            <form class="formRegistro" method="Get" action="../controlador/ControladorInsumos.php"> 
+                        
                     <label class="tag" id="IdRol" for="IdInsumo"><span id="NameRol" class="h331" style="display: inline-block">Número de Insumo: </span></label>
                     <input name="numero" class="input" style="text-align:center" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block" >Nuevo Insumo: </span></label>

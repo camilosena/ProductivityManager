@@ -25,7 +25,7 @@ class ProductosDAO {
             $sentencia->bindParam(5, $productoDTO->getEstado());
             $sentencia->bindParam(6, $productoDTO->getPorcentaje());
             $sentencia->execute();
-            $mensaje = "Prodcuto Registrado";
+            $mensaje = "Producto Registrado con Éxito";
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }

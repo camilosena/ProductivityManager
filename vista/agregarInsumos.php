@@ -8,7 +8,7 @@ $session->Session($pagActual);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Asignar Insumos</title>
+        <title>Agregar Materia Prima</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="../css/reset.css">
@@ -112,7 +112,7 @@ $session->Session($pagActual);
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
                         <a href="CrearRol.php" title="Ir a Usuarios" itemprop="url">
-                            <span itemprop="title">Agregar Insumos </span>              
+                            <span itemprop="title">Agregar Materia Prima </span>              
                         </a>  > 
 
                     </span> 
@@ -126,11 +126,11 @@ $session->Session($pagActual);
                     <input name="subir" type="submit" value="Subir Archivo">
             </form><br>
                 <br>
-                <br><h2 class="h330">Agregar Insumos:</h2><hr>
+                <br><h2 class="h330">Agregar Materia Prima:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <form class="formRegistro" method="Get" action="../controlador/ControladorInsumos.php"> 
                                       
-                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Insumos: </span></label>
+                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Materia Prima: </span></label>
                     <table style="margin-left:20%;">
                         <?php
                         require_once '../facades/FacadeInsumos.php';
@@ -174,7 +174,7 @@ $session->Session($pagActual);
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Precio base: $ </span></label>
                     <input name="precio" class="input" type="number" id="txtName"  placeholder="10000"   style="display: inline-block" required min="1"><br>
                     
-                    <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde">Agregar Insumos</button>
+                    <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde">Agregar Materia Prima</button>
                     
                     </form><hr>
             </div>

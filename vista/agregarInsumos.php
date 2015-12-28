@@ -111,38 +111,17 @@ $session->Session($pagActual);
                 <span itemscope >
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
-<<<<<<< HEAD
-                        <a href="CrearRol.php" title="Ir a Usuarios" itemprop="url">
-                            <span itemprop="title">Agregar Materia Prima </span>              
-=======
                         <a href="agregarInsumos.php" title="Ir a Usuarios" itemprop="url">
                             <span itemprop="title">Materia Prima </span>              
->>>>>>> origin/master
                         </a>  > 
                         <strong>Agregar Materia Prima</strong>
                     </span> 
                 </span>         
             </nav>
 
-<<<<<<< HEAD
-            <div id="panelUnico">
-                <form method="post" action="../controlador/ControladorInsumos.php" enctype="multipart/form-data">
-                    <label>Cargar archivo:</label>
-                    <input type="file" name="archivo">
-                    <input name="subir" type="submit" value="Subir Archivo">
-            </form><br>
-                <br>
-                <br><h2 class="h330">Agregar Materia Prima:</h2><hr>
-                <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="Get" action="../controlador/ControladorInsumos.php"> 
-                                      
-                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Materia Prima: </span></label>
-                    <table style="margin-left:20%;">
-=======
             <div id="panelIzq">
                 <br>                   
                     <table id="muestraDatos" style="margin-left:20%;">
->>>>>>> origin/master
                         <?php
                         require_once '../facades/FacadeInsumos.php';
                         require_once '../modelo/dao/InsumosDAO.php';
@@ -194,7 +173,7 @@ $session->Session($pagActual);
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Precio base: $ </span></label>
                     <input name="precio" class="input" type="number" id="txtName"  placeholder="10000"   style="display: inline-block" required min="1"><br>
                     
-                    <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde">Agregar Materia Prima</button>
+                    <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde">Agregar Insumos</button>
                     
                     </form><hr>
             </div>

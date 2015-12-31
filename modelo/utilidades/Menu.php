@@ -82,7 +82,7 @@ class Menu {
                           <?php }?>
                           </ul>
                           <?php }?>
-                          <?php  if ($general['nombreRuta'] == 'Insumos') { ?>
+                          <?php  if ($general['nombreRuta'] == 'Materia Prima') { ?>
                             <ul class="cbp-tm-submenu">
                             <?php  foreach ($insumos as $pagina) { ?>
                             <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-link"><?php echo $pagina['nombreRuta']?></a></li>

@@ -122,6 +122,13 @@ $session->Session($pagActual);
             <div id="panelIzq">
                 <br>                   
                     <table id="muestraDatos" style="margin-left:20%;">
+                        <thead>
+                        <th hidden></th>
+                        <th>Materia Prima</th>
+                        <th>Unidad de medida</th>
+                        <th>Valor unitario</th>
+                        <th>Acciones</th>
+                        </thead>
                         <?php
                         require_once '../facades/FacadeInsumos.php';
                         require_once '../modelo/dao/InsumosDAO.php';
@@ -130,10 +137,10 @@ $session->Session($pagActual);
                         foreach ($all as $unit) {
                             ?>     
                             <tr>
-                                <td> <input size="2" name="idInsumo" value ="<?php echo $unit['numero']; ?>" readonly ></td>
-                                <td> <input size="10" name="nombres" value ="<?php echo $unit['nombre']; ?>" disabled ></td>
-                                <td> <input size="10" name="unidades" value ="<?php echo $unit['unidad']; ?>" readonly ></td>
-                                <td> <input size="10" name="precios" value ="<?php echo $unit['precio']; ?>" disabled ></td>
+                                <td hidden> <?php echo $unit['numero']; ?></td>
+                                <td> <?php echo $unit['nombre']; ?></td>
+                                <td> <?php echo $unit['unidad']; ?></td>
+                                <td> <?php echo $unit['precio']; ?></td>
                                 <td><a name="eliminarInsumo" title="Eliminar Insumo" class="me"  href="../controlador/ControladorInsumos.php?idEliminar=<?php echo $unit['numero']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
                                         
 

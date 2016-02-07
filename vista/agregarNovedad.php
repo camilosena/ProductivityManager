@@ -160,7 +160,6 @@ $session->Session($pagActual);
                                     <option value="0" disabled selected> - Seleccionar - </option>
                                     <option value="Retraso" >Retraso</option>
                                     <option value="Solicitud">Solicitud</option>
-                                    <option value="Actividad" >Actividad</option>
                 </select>
              <br>
                     <label class="tag" for="image"><span id="lab_valCompany" class="h331">Evidencia:</span></label>

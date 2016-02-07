@@ -498,11 +498,6 @@ $session->Session($pagActual);
             <div id="panelDer">
                 <br>
                 <br><h2 class="h330">Registrar Nuevo Usuario:</h2><hr>
-                <form method="post" action="../controlador/ControladorUsuarios.php" enctype="multipart/form-data">
-                    <label>Cargar archivo:</label>
-                    <input type="file" name="archivo">
-                    <input name="subir" type="submit" value="Subir Archivo">
-            </form><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <form class="formRegistro" id="formUsuarios" method="post" action="../controlador/ControladorUsuarios.php" enctype="multipart/form-data"> 
                     <label class="tag" id="labelTipoUsuario" for="tipoUsuario"><span id="lab_valCountry" class="h331">Tipo de Usuario:</span></label>

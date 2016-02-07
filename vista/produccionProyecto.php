@@ -121,7 +121,9 @@ $session->Session($pagActual);
                                 require_once '../modelo/utilidades/Conexion.php';
                                 $facadeProductos = new FacadeProductos;
                                 $products = $facadeProductos->listarProductosActivos();
+                                $contProducts=0;
                                 foreach ($products as $productos) {
+                                    $contProducts++;
                                     ?>
                                     <tr>
                                         <td class="td1">0<?php echo $productos['idProductos']; ?></td>
@@ -147,9 +149,18 @@ $session->Session($pagActual);
                                         });
                                     </script>
                                 <?php }
+                                if ($contProducts==0) {
+                                    ?>
+                                    <tr>
+                                        <td class="td1"><h2>Actualmente no hay productos disponibles 
+                                            vaya al Modulo de Productos para gestionar. </h2>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
                                 ?>                               
                             </tbody>
-                        </table>                               
+                        </table>                           
                         <p style="text-align: right;margin-right: 5%;"><br>
                             <label class="tag2" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Productos Seleccionados:</span></label>
                             <input id="checkcount1" name="cantidadTipo" type="text" maxlength="64" style="text-align: center" required readonly>

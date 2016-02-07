@@ -40,46 +40,8 @@ CREATE TABLE `areas` (
 
 LOCK TABLES `areas` WRITE;
 /*!40000 ALTER TABLE `areas` DISABLE KEYS */;
-INSERT INTO `areas` VALUES (0,'default',0),(1,'Administracion',1),(2,'Privado',2),(3,'Corte',3),(4,'Ensamble',3),(5,'Publico',2),(6,'Cliente',4),(7,'Auditor',5);
+INSERT INTO `areas` VALUES (0,'default',0),(1,'Administracion',1),(2,'Privado',2),(3,'Corte',3),(4,'Ensamble',3),(5,'Publico',2),(6,'Cliente',4);
 /*!40000 ALTER TABLE `areas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `auditorias`
---
-
-DROP TABLE IF EXISTS `auditorias`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auditorias` (
-  `idAuditoria` int(11) NOT NULL AUTO_INCREMENT,
-  `proyectoAuditado` int(11) NOT NULL,
-  `gerenteAuditoria` int(11) NOT NULL,
-  `fechaAuditoria` datetime DEFAULT NULL,
-  `observacionesAuditoria` varchar(200) DEFAULT NULL,
-  `productoAuditoria` varchar(45) DEFAULT NULL,
-  `archivoAuditoria` varchar(95) DEFAULT NULL,
-  `ejecucionAuditoria` int(11) DEFAULT NULL,
-  `presupuestoAuditoria` int(11) DEFAULT NULL,
-  `insumosAuditoria` int(11) DEFAULT NULL,
-  `calidadAuditoria` int(11) DEFAULT NULL,
-  `procesosAuditoria` int(11) DEFAULT NULL,
-  `empleadosAuditoria` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idAuditoria`,`proyectoAuditado`,`gerenteAuditoria`),
-  KEY `fk_gerentesDeProyecto_has_proyectos_proyectos1_idx` (`proyectoAuditado`),
-  KEY `fk_auditorias_usuarios1_idx` (`gerenteAuditoria`),
-  CONSTRAINT `fk_auditorias_usuarios1` FOREIGN KEY (`gerenteAuditoria`) REFERENCES `personas` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_gerentesDeProyecto_has_proyectos_proyectos1` FOREIGN KEY (`proyectoAuditado`) REFERENCES `proyectos` (`idProyecto`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auditorias`
---
-
-LOCK TABLES `auditorias` WRITE;
-/*!40000 ALTER TABLE `auditorias` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auditorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -108,7 +70,39 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES (2,'Muebles La Oficina',99473843,'Publico','Industrial',7758734);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contactenos`
+--
+
+DROP TABLE IF EXISTS `contactenos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contactenos` (
+  `idContacto` int(11) NOT NULL AUTO_INCREMENT,
+  `idPersona` int(11) NOT NULL,
+  `empresa` varchar(45) DEFAULT NULL,
+  `modo` varchar(45) DEFAULT NULL,
+  `razon` varchar(45) DEFAULT NULL,
+  `indicativos_idPais` int(11) NOT NULL,
+  PRIMARY KEY (`idContacto`,`idPersona`,`indicativos_idPais`),
+  KEY `fk_contactenos_indicativos1_idx` (`indicativos_idPais`),
+  KEY `fk_contactenos_personas1_idx` (`idPersona`),
+  CONSTRAINT `fk_contactenos_indicativos1` FOREIGN KEY (`indicativos_idPais`) REFERENCES `indicativos` (`idPais`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_contactenos_personas1` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contactenos`
+--
+
+LOCK TABLES `contactenos` WRITE;
+/*!40000 ALTER TABLE `contactenos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contactenos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -144,6 +138,30 @@ CREATE TABLE `estudiodecostos` (
 LOCK TABLES `estudiodecostos` WRITE;
 /*!40000 ALTER TABLE `estudiodecostos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `estudiodecostos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `indicativos`
+--
+
+DROP TABLE IF EXISTS `indicativos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `indicativos` (
+  `idPais` int(11) NOT NULL,
+  `nombrePais` varchar(45) DEFAULT NULL,
+  `indicativo` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idPais`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `indicativos`
+--
+
+LOCK TABLES `indicativos` WRITE;
+/*!40000 ALTER TABLE `indicativos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `indicativos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -285,7 +303,7 @@ CREATE TABLE `permisos` (
 
 LOCK TABLES `permisos` WRITE;
 /*!40000 ALTER TABLE `permisos` DISABLE KEYS */;
-INSERT INTO `permisos` VALUES (1,'','Proyectos',1),(2,'crearProyecto.php','Crear Nuevo',2),(3,'listarProyectos.php','Listar Proyectos',2),(4,'','Novedades',1),(5,'agregarNovedad.php','Agregar Nueva',3),(6,'listarNovedades.php','Listar Informes de Novedad',3),(7,'','Personal',1),(8,'registrarUsuario.php','Registrar',4),(9,'listarUsuarios.php','Ver Todos',4),(10,'listarUsuariosInactivos.php','Inactivos',4),(11,'','Auditorias',1),(12,'generarAuditoria.php','Generar Nueva',5),(13,'listarAuditorias.php','Listar Auditorias',5),(14,'','Clientes',1),(15,'agregarCliente.php','Agregar',6),(16,'clientesActivos.php','Activos',6),(17,'clientesInactivos.php','Inactivos',6),(18,NULL,'Roles',1),(19,'crearRol.php','Crear Nuevo',7),(20,'agregarAreas.php','Agregar Área',7),(21,'modificarRol.php','Modificar Rol',0),(22,'asignarPermisos.php','Asignar Permisos',0),(23,'modificarUsuario.php','Modificar Usuario',0),(24,'modificarCliente.php','Modificar Cliente',0),(25,'modificarContrasena.php','Modificar Contraseña',0),(26,'estudioDeCostos.php','Estudio De Costos',0),(27,'modificarProyecto.php','Modificar Proyecto',0),(28,NULL,'Insumos',1),(29,'agregarInsumos.php','Agregar Insumo',8),(30,'actualizarRolArea.php','Actualizar Rol Area',0),(31,'agregarProcesos.php','Agregar Proceso',9),(32,NULL,'Procesos',1),(33,'asignarAreas.php','Asignar Area',0),(34,NULL,'Productos',1),(35,'agregarProductos.php','Agregar Producto',10),(36,'produccionProyecto.php','Producción Proyecto',0),(37,'crearRol.php?#ModalRoles','Ver Roles',7),(38,'informacionProyecto.php','Información Proyecto',0),(39,'insumosPorProducto.php','Insumos Por Producto',0);
+INSERT INTO `permisos` VALUES (1,'','Proyectos',1),(2,'crearProyecto.php','Crear Nuevo',2),(3,'listarProyectos.php','Listar Proyectos',2),(4,'','Novedades',1),(5,'agregarNovedad.php','Agregar Nueva',3),(6,'listarNovedades.php','Listar Informes de Novedad',3),(7,'','Personal',1),(8,'registrarUsuario.php','Registrar',4),(9,'listarUsuarios.php','Ver Todos',4),(10,'listarUsuariosInactivos.php','Inactivos',4),(11,'','Auditorias',1),(12,'generarAuditoria.php','Generar Nueva',5),(13,'listarAuditorias.php','Listar Auditorias',5),(14,'','Clientes',1),(15,'agregarCliente.php','Agregar',6),(16,'clientesActivos.php','Activos',6),(17,'clientesInactivos.php','Inactivos',6),(18,NULL,'Roles',1),(19,'crearRol.php','Crear Nuevo',7),(20,'agregarAreas.php','Agregar Área',7),(21,'modificarRol.php','Modificar Rol',0),(22,'asignarPermisos.php','Asignar Permisos',0),(23,'modificarUsuario.php','Modificar Usuario',0),(24,'modificarCliente.php','Modificar Cliente',0),(25,'modificarContrasena.php','Modificar Contraseña',0),(26,'estudioDeCostos.php','Estudio De Costos',0),(27,'modificarProyecto.php','Modificar Proyecto',0),(28,NULL,'Materia Prima',1),(29,'agregarInsumos.php','Agregar Materia Prima',8),(30,'actualizarRolArea.php','Actualizar Rol Area',0),(31,'agregarProcesos.php','Agregar Proceso',9),(32,NULL,'Procesos',1),(33,'asignarAreas.php','Asignar Area',0),(34,NULL,'Productos',1),(35,'agregarProductos.php','Agregar Producto',10),(36,'produccionProyecto.php','Producción Proyecto',0),(37,'crearRol.php?#ModalRoles','Ver Roles',7),(38,'informacionProyecto.php','Información Proyecto',0),(39,'insumosPorProducto.php','Insumos Por Producto',0);
 /*!40000 ALTER TABLE `permisos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +331,7 @@ CREATE TABLE `permisosporrol` (
 
 LOCK TABLES `permisosporrol` WRITE;
 /*!40000 ALTER TABLE `permisosporrol` DISABLE KEYS */;
-INSERT INTO `permisosporrol` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(12,1),(14,1),(15,1),(16,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(37,1),(38,1);
+INSERT INTO `permisosporrol` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(12,1),(14,1),(15,1),(16,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(37,1),(38,1),(39,1);
 /*!40000 ALTER TABLE `permisosporrol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,7 +360,7 @@ CREATE TABLE `personas` (
   KEY `identificacion` (`identificacion`),
   KEY `fk_personas_areas1_idx1` (`areas_idAreas`),
   CONSTRAINT `fk_personas_areas1` FOREIGN KEY (`areas_idAreas`) REFERENCES `areas` (`idAreas`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -351,7 +369,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (1,1012377025,'Camilo','Arias González','Cll 93 No 11-08',3015782659,'1991-05-20','carias520@misena.edu.co','Inactivo','camilo.jpg',1);
+INSERT INTO `personas` VALUES (1,1012377025,'Camilo','Arias González','Cll 93 No 11-08',3015782659,'1991-05-20','carias520@misena.edu.co','Inactivo','camilo.jpg',1),(2,378327683,'Pedro','Gonzalez','Calle 98a 12-87',77863448,NULL,'carias520@misena.edu.co','Activo','perfil.png',6);
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -491,6 +509,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+INSERT INTO `productos` VALUES (10,'Prueba1','','Carga1','Inactivo',5),(11,'Prueba2','','Carga2','Inactivo',6),(12,'Prueba3','','Carga3','Inactivo',7),(13,'Prueba4','','Carga4','Inactivo',8),(14,'Prueba5','','Carga5','Inactivo',9);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -506,13 +525,13 @@ CREATE TABLE `proyectos` (
   `nombreProyecto` varchar(45) DEFAULT NULL,
   `fechaInicio` date NOT NULL,
   `fechaFin` date DEFAULT NULL,
-  `estadoProyecto` enum('Ejecucion','Cancelado','Finalizado','Aplazado','Sin Estudio Costos','Sin Produccion') NOT NULL,
+  `estadoProyecto` enum('Ejecución','Cancelado','Finalizado','Aplazado','Sin Estudio Costos','Sin Producción') NOT NULL,
   `ejecutado` int(11) NOT NULL,
   `observaciones` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`idProyecto`),
   KEY `estado` (`estadoProyecto`),
   KEY `nombreProyecto` (`nombreProyecto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -521,6 +540,7 @@ CREATE TABLE `proyectos` (
 
 LOCK TABLES `proyectos` WRITE;
 /*!40000 ALTER TABLE `proyectos` DISABLE KEYS */;
+INSERT INTO `proyectos` VALUES (1,'dsadassad','2016-11-12','0000-00-00','Sin Producción',0,'FDSFS');
 /*!40000 ALTER TABLE `proyectos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -544,7 +564,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (0,'default'),(1,'Administrador'),(2,'Gerente'),(3,'Empleado'),(4,'Clientes'),(5,'Auditor');
+INSERT INTO `roles` VALUES (0,'default'),(1,'Administrador'),(2,'Gerente'),(3,'Empleado'),(4,'Clientes');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -571,6 +591,7 @@ CREATE TABLE `usuarioporproyecto` (
 
 LOCK TABLES `usuarioporproyecto` WRITE;
 /*!40000 ALTER TABLE `usuarioporproyecto` DISABLE KEYS */;
+INSERT INTO `usuarioporproyecto` VALUES (1,1),(2,1);
 /*!40000 ALTER TABLE `usuarioporproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -778,7 +799,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`Gerente`@`localhost` PROCEDURE `ListarRoles`()
 BEGIN
-SELECT * FROM roles where idRoles!=4;
+SELECT * FROM roles where idRoles!=4 and idRoles!=0;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1033,4 +1054,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-06 19:26:18
+-- Dump completed on 2016-02-06 21:30:29

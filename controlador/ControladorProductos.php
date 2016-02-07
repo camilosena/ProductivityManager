@@ -77,7 +77,7 @@ if (isset ($_POST['AsociarInsumos'])) {
     $facadeInsumos->eliminarInsumos($_POST['idProducto']);
    $dto->setIdProdcuto($_POST['idProducto']);
 $estado = "Sin Procesos";
-    $cantidad = $_SESSION['cantInsumos'];
+    $cantidad = $facadeInsumos->consecutivoInsumos();
     for ($i = 1; $i <= $cantidad; $i++) {
         if (isset($_POST[$i])) {
             $dto->setIdInsumo($_POST[$i]);
@@ -85,11 +85,8 @@ $estado = "Sin Procesos";
             echo $mensaje = $facadeProductos->asociarInsumos($dto);
         }
         $facadeProductos->modificarEstadoProducto($estado, $_POST['idProducto']);
-    }
-    
-
-    
- header("location: ../vista/insumosPorProducto.php?mensaje=Insumos Asociados con Éxito");
+    }    
+header("location: ../vista/insumosPorProducto.php?mensaje=Materia Prima Asociada con Éxito");
 }else 
 if (isset ($_POST['Atras'])) {
      header("location: ../vista/agregarProductos.php");

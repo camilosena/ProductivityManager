@@ -139,6 +139,9 @@ $session->Session($pagActual);
                                         $(document).ready(function(){
 
                                             $("#producto<?php echo $productos['idProductos']; ?>").click(function() {
+                                                 $("#cantidadProducto<?php echo $productos['idProductos']; ?>").change(function() {
+                                         $("#producto<?php echo $productos['idProductos'];  ?>").prop( "checked", true );
+                                        });
                                                 if($("#producto<?php echo $productos['idProductos']; ?>").is(':checked')) {
                                                     $("#cantidadProducto<?php echo $productos['idProductos']; ?>").attr("required", true);
                                                 } else {

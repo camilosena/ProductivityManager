@@ -211,7 +211,7 @@ $session->Session($pagActual);
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Cantidad de empleados: </span></label>
                     <input class="input" name="Empleados" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" min="1"><br>
                  
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Valor sugerido: </span></label>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Valor Hora sugerido: </span></label>
                     <input class="input" name="valor" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" min="1"><br>
                      
                     <button type="submit" value="Enviar" name="AgregarProceso" id="Areas" class="boton-verde">Agregar Proceso</button>

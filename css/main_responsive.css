@@ -1407,6 +1407,19 @@ table.tableProductos {
         width: 100%;
         text-align: center;      
     }    
+       table.tableProcess thead, table.tableProcess tbody {
+        float: left;
+        width: 100%;        
+    }
+    table.tableProcess tbody {
+        overflow: auto;
+        height: 390px;
+        width: 500px;
+    }
+    table.tableProcess tr {
+        width: 100%;
+        text-align: center;      
+    } 
 #mails{
     text-decoration: none;
     color: #0e408e;

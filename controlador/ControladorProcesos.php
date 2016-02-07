@@ -21,13 +21,13 @@ if (isset($_GET['AgregarProceso'])) {
     $estado= "Activo";
     $mensaje = $facadeProcesos->AgregarProceso($pDTO, $producto);
     $facadeProducto->modificarEstadoProducto($estado, $producto);
-    header("location: ../vista/agregarProcesos.php? ".$mensaje);
+    header("location: ../vista/agregarProcesos.php?mensaje= ".$mensaje);
     
 }else 
     if (isset($_GET['idProceso'])) {
     $mensaje = $facadeProcesos->eliminarProceso($_GET['idProceso']);
     
-    header("location: ../vista/agregarProcesos.php? ".$mensaje);
+    header("location: ../vista/agregarProcesos.php?mensaje= ".$mensaje);
     
 }else
 if (isset ($_GET['idConsultaProceso'])) {

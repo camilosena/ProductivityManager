@@ -119,22 +119,14 @@ $session->Session($pagActual);
                 </span>         
             </nav>
 
-            <div id="panelUnico">
-                <br>
-                <br><h2 class="h330">Agregar Procesos:</h2><hr>
+             <div id="panelDer">
                 <?php
                 require_once '../facades/FacadeUsuarios.php';
                 require_once '../modelo/dao/UsuarioDAO.php';
                 $facadeUsuarios = new FacadeUsuarios();
                 $all = $facadeUsuarios->listarAreas();
-                ?> 
-
-                <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="Get" action="../controlador/ControladorProcesos.php"> 
-                 <div id="panelModificaPass">   
-                   
-                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" >Procesos: </span></label>
-                    <table>
+                    ?>                 
+                     <table id="muestraDatos" class="tableProcess" style="margin-top:40px">
                         <?php
                         require_once '../facades/FacadeProcesos.php';
                         require_once '../modelo/dao/ProcesosDAO.php';
@@ -145,47 +137,44 @@ $session->Session($pagActual);
                         $all = $facadeProcesos->ListarProcesos();
                         
                             ?> 
-                        <thead>
                            <tr>
-                               <td>Proceso</td> 
-                               <td>Producto</td> 
-                                <td>Empleados</td>
-                                <td>Tiempo/Horas</td> 
-                                 <td>Valor</td> 
-<!--                                <td>Borrar</td><ln>-->
-                                <td>Modificar</td>
-                            
-                        </thead>
+                               <th>Proceso</th> 
+                               <th>Producto</th> 
+                                <th>Empleados</th>
+                                <th>Tiempo/Horas</th> 
+                                 <th>Valor</th> 
+                                <th>Acción</th>
+                            </tr>
                         <?php
                         foreach ($all as $unit) {
                         ?>
                             <tr>
                                 
-                                <td> <input name="proceso" size="10" value ="<?php echo $unit['tipoProceso']; ?>" disabled ></td>
-                                <td> <input name="producto" size="10" value ="<?php echo $unit['producto']; ?>" disabled ></td>
-                                <td> <input name="Empleados" size="10" value ="<?php echo $unit['empleados']; ?>" disabled ></td>
-                                <td> <input name="tiempo" size="10" value ="<?php echo $unit['tiempo']; ?>" disabled ></td>
-                                <td> <input name="valor" size="10" value ="<?php echo $unit['precioProceso']; ?>" disabled ></td>
+                                <td> <?php echo $unit['tipoProceso']; ?></td>
+                                <td> <?php echo $unit['producto']; ?></td>
+                                <td><?php echo $unit['empleados']; ?></td>
+                                <td> <?php echo $unit['tiempo']; ?> Horas</td>
+                                <td>$<?php echo $unit['precioProceso']; ?></td>
                                  <td><a name="ModificarProceso"  title="Modificar Proceso" class="me" href="../controlador/ControladorProcesos.php?idConsultaProceso=<?php echo $unit['idProceso']; ?>" ><img class="iconos" src="../img/modify.png"></a>    </td>  
 
                             </tr>
                         
                             <?php
                         }
-                        if (isset($_GET['mensaje3'])) {
-                            echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
-                        }
                         ?>    
                     </table>
-                    <hr>
-                  
-                    
                     <?php
                        
                 $consecutivo=$facadeProcesos->ConsecutivoProcesos();
                 ?>
                     
-                <br> 
+                
+                 </div>  
+            <div id="panelIzq">
+                <hr><h2 class="h330">Agregar Procesos:</h2><hr>
+                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br>
+                 <form class="formRegistro" method="Get" action="../controlador/ControladorProcesos.php"> 
+                    <div id="panelModificaPass">   
                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Producto: </span></label>
                    <?php if(isset($_GET['idProducto'])){?>
                    <input class="input" name="nombreProducto"  required readonly style="text-align: center" value="<?php echo $_GET['nombreProducto']?>"><br>  
@@ -203,22 +192,20 @@ $session->Session($pagActual);
                     <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Código Proceso: </span></label>
                     <input class="input" name="IdProceso" type="text" id="IdArea" required readonly style="text-align: center" value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>
-                    <input  class="input" name="NombreProceso" type="text" id="txtName"  placeholder="Ensamble"   style="display: inline-block" required><br>
+                    <input  class="input" name="NombreProceso" type="text" id="txtName"  placeholder="Ensamble"   style="display: inline-block" required autofocus><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Tiempo/horas: </span></label>
-                    <input class="input" name="Tiempo" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" required min="1"><br>
+                    <input class="input" name="Tiempo" type="number" id="txtName"  placeholder="8 "   style="display: inline-block" required min="1"><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Cantidad de empleados: </span></label>
-                    <input class="input" name="Empleados" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" min="1"><br>
+                    <input class="input" name="Empleados" type="number" id="txtName"  placeholder="5"   style="display: inline-block" min="1"><br>
                  
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Valor Hora sugerido: </span></label>
-                    <input class="input" name="valor" type="number" id="txtName"  placeholder="12 "   style="display: inline-block" min="1"><br>
+                    <input class="input" name="valor" type="number" id="txtName"  placeholder="13500"   style="display: inline-block" min="1"><br>
                      
                     <button type="submit" value="Enviar" name="AgregarProceso" id="Areas" class="boton-verde">Agregar Proceso</button>
-                   
-                 </div>    
-                </form><br>
-                <hr>
+                    </div>
+                    <hr>
+                   </form>
             </div>
-            
             <div id="ModalProcesos" class="modalDialog" title="ModalProcesos">
                     <div>
                         <a href="#close" title="Close" class="close">X</a><br>					
@@ -248,7 +235,7 @@ $session->Session($pagActual);
 
 
                     </div>
-        </div> 
+            </div> 
         </div>
         <footer class="footer-distributed">
             <div class="footer-left">

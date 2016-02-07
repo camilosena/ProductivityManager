@@ -17,7 +17,7 @@ class ProcesosDAO {
 
             $sentencia->execute();
             $sentencia2->execute();
-            $mensaje = "Proceso registrado ";
+            $mensaje = "Proceso Registrado con Éxito ";
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }
@@ -109,7 +109,7 @@ tiempoPorProceso as tiempo from procesos
             $query2->bindParam(1, $idProceso);
             $query->execute();
             $query2->execute();
-            $mensaje = "Registro eliminado";
+            $mensaje = "Proceso eliminado";
             return $mensaje;
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();

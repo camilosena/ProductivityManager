@@ -194,7 +194,7 @@ $session->Session($pagActual);
                         </div>
                     <?php 
                   }else{   ?>              
-                     <table id="muestraDatos" class="tableProducts" style="margin-top:10px">
+                     <table id="muestraDatos" class="tableProducts">
                 
                     <tr>
                        <th >Producto</th>

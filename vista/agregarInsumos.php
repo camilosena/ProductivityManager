@@ -186,7 +186,8 @@ $session->Session($pagActual);
                     
                     <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde">Agregar Materia Prima</button>
                     
-                    </form><hr>
+                    </form><br>
+                    <hr>
             </div>
                         <div id="ModalMateriaPrima" class="modalDialog" title="ModalProcesos">
                     <div>

@@ -71,17 +71,21 @@ if (isset($_GET['idElimirarRol'])) {
     header("location: ../vista/CrearRol.php?mensaje=" . $mensaje);
 } else
     if (isset($_GET['AgregarArea'])) {
-$idArea = $_GET['IdArea'];
-$NombreArea = $_GET['NombreArea'];
-$idRol = 1;
-$dtoAreas = new AreasDTO();
-$dtoAreas->setIdArea($idArea);
-$dtoAreas->setNombreArea($NombreArea);
-$dtoAreas->setIdRol($idRol);
-$facadeArea= new FacadeAreas();
-$mensaje = $facadeArea->AgregarArea($dtoAreas);
+        if($_GET['IdArea']>15){
+              header("location: ../vista/agregarAreas.php?errorArea=No tiene permitido crear más Áreas");
+        }else{
+        $idArea = $_GET['IdArea'];
+        $NombreArea = $_GET['NombreArea'];
+        $idRol = 1;
+        $dtoAreas = new AreasDTO();
+        $dtoAreas->setIdArea($idArea);
+        $dtoAreas->setNombreArea($NombreArea);
+        $dtoAreas->setIdRol($idRol);
+        $facadeArea= new FacadeAreas();
+        $mensaje = $facadeArea->AgregarArea($dtoAreas);
 
-   header("location: ../vista/agregarAreas.php?".$_GET['selectId'].$mensaje);
+   header("location: ../vista/agregarAreas.php?mensaje".$_GET['selectId'].$mensaje);
+    }
 } else
     
 if (isset($_GET['Areas'])) {

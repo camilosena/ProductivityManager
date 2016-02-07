@@ -18,12 +18,17 @@ $mod = new CrearRolDAO();
 
 
 if (isset($_GET['creaRol'])) {
+    if($_GET['IdRol']>5){
+        $errorRol="No tiene permitido crear más Roles";
+         header("location: ../vista/crearRol.php?errorRol=".$errorRol);
+    }else{
     $idRol = $_GET['IdRol'];
     $rol = $_GET['NameRol'];
     $dto->setIdRol($idRol);
     $dto->setRol($rol);
     $mensaje=$facadeRol->agregarRol($dto);
     header("location: ../vista/AsignarPermisos.php?mensaje=".$mensaje);
+    }
 } else
 if (isset($_GET['asignarPermiso'])) {
     $idRol = $_GET['selectId'];

@@ -73,7 +73,7 @@ function consultarGerenteParaEnvarNovedadPorCorreo($idProyecto, PDO $cnn){
 join usuarioporproyecto on idUsuario = usuarioAsignado
 join proyectos on proyectoAsignado = idProyecto and idproyecto = ?
 join usuarios on idLogin = identificacion
-join roles on idRoles = rolesId and rol = 'Gerente'");
+join roles on idRoles = rolesId and rol = 'Gerente' or rol = 'Administrador' ");
             $query->bindParam(1, $idProyecto);
             $query->execute();
             return $query->fetch();

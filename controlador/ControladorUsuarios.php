@@ -167,7 +167,7 @@ else  if (isset($_POST['ascender'])) {
         $mensaje = $facadeUsuario->ascenderUsuario($_POST['selectRol'], $_POST['identificacion']);
         $mensaje2 = $facadeUsuario->actualizarArea($_POST['id'], $_POST['selectArea']);
     
-    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje.$mensaje2); 
+    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje.' y '.$mensaje2); 
   }
 else if($_FILES['cambiaImagen']['name']!=''){
     if ($_FILES['cambiaImagen']['name'] == '') {

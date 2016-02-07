@@ -120,12 +120,12 @@ $session->Session($pagActual);
             </span>         
         </nav>        
        <div id="panelUnico">
-           <span id="fechaActual" style="float:right; margin-right:20px; font-size:12px;font-family:sans-serif;color:#0900FF">
+          <span id="fechaActual" style="float:right;font-size:12px;font-family:sans-serif;color:#0f0f0f">
                     <script>
                         var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
                         var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
                         var f=new Date();
-                        document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+                         document.write('<h3>'+diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear()+'</h3>');
                     </script>                                      
                 </span><br><br>
            <div id="panelNovedades">

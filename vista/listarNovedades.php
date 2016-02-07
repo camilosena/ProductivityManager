@@ -226,13 +226,13 @@ $session->Session($pagActual);
     <div id="verUsuario" class="modalDialog" title="Ver Novedad">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
                     <?php
-                    echo '<table id="muestraDatos"><tr><th colspan="2">Novedad</th></tr>';
-                    echo '<tr><td>Código Novedad:</td><td>' . $_SESSION['datoNovedad']['idNovedad'] . '</td></tr>';
+                    echo '<table id="muestraDatos" style="width:400px;"><tr><th colspan="2">Novedad</th></tr>';
+                    echo '<tr><td>Código Novedad:</td><td>0' . $_SESSION['datoNovedad']['idNovedad'] . '</td></tr>';
                     echo '<tr><td>Nombre Proyecto:</td><td>' . $_SESSION['datoNovedad']['nombreProyecto'] . '</td></tr>';
                     echo '<tr><td>Categoria:</td><td>' . $_SESSION['datoNovedad']['categoria'] . '</td></tr>';
                     echo '<tr><td>Descripción:</td><td> ' . $_SESSION['datoNovedad']['descripcionNovedad'] . '</td></tr>';
                     echo '<tr><td>Fecha:</td><td>' . $_SESSION['datoNovedad']['fechaNovedad'] . '</td></tr>';
-                    echo '<tr><td>Evidencia:</td><td><img style="width:280px;height:140px;" src="../evidencias/' . $_SESSION['datoNovedad']['archivoNovedad'] . '"></td></tr>';
+                    echo '<tr><td style="text-align:center;" colspan="2">Evidencia:<br><img style="width:280px;height:140px;" src="../evidencias/' . $_SESSION['datoNovedad']['archivoNovedad'] . '"></td></tr>';
                     echo '</table>';
                     ?>                                
                 </div>                    
@@ -242,13 +242,13 @@ $session->Session($pagActual);
                      
                     <form class="formRegistro" id="formNovedades" method="post" action="../controlador/ControladorNovedades.php" enctype="multipart/form-data">
                         <?php
-                    echo '<table id="muestraDatos" style="margin-left:100px"><tr><th colspan="2">Solución</th></tr>';
-                    echo '<tr><td>Código Novedad:</td><td>' . $_SESSION['solucionNovedad']['idNovedad'] . '</td></tr>';
+                    echo '<table id="muestraDatos" style="width:400px;"><tr><th colspan="2">Solución</th></tr>';
+                    echo '<tr><td>Código Novedad:</td><td>0' . $_SESSION['solucionNovedad']['idNovedad'] . '</td></tr>';
                     echo '<tr><td>Nombre Proyecto:</td><td>' . $_SESSION['solucionNovedad']['nombreProyecto'] . '</td></tr>';
                     echo '</table>';
                     ?>
-                        <textarea class="input4" style="margin-left:100px;width:250px" name="solucion" title="Minimo 5 Caracteres" id="description" required ></textarea>
-                <button type="submit" name="solucionarNovedad" class="boton-verde">Solucionar</button><br>
+                        <textarea class="input4" style="margin-left:20px;width:400px" placeholder="Describa la Solución Dada..." name="solucion" title="Minimo 5 Caracteres" id="description" required ></textarea>
+                <button type="submit" name="solucionarNovedad" class="boton-verde">Generar Solución</button><br>
                         
                     </form>                         
                 </div>                    

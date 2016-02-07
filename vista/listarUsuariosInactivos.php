@@ -243,7 +243,7 @@ $session->Session($pagActual);
             <div id="verUsuario" class="modalDialog" title="Ver Usuario">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
                     <?php
-                    echo '<table id="muestraDatos"><tr><th>Datos de Usuario</th><th><img class="fotoUsuario" src="../fotos/' . $_SESSION['datosUsuarioInactivo']['foto']  . '"></th></tr>';                    
+                    echo '<table id="muestraDatos" style="width:400px;"><tr><th>Datos de Usuario</th><th><img class="fotoUsuario" src="../fotos/' . $_SESSION['datosUsuarioInactivo']['foto']  . '"></th></tr>';                    
                     echo '<tr><td>Cargo:</td><td>' . $_SESSION['datosUsuarioInactivo']['rol']  . '</td></tr>';
                     echo '<tr><td>Área/Sector:</td><td>' . $_SESSION['datosUsuarioInactivo']['nombreArea']  . '</td></tr>';
                     echo '<tr><td>Código:</td><td>' . $_SESSION['datosUsuarioInactivo']['idUsuario'] . '</td></tr>';

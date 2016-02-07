@@ -56,10 +56,10 @@ $session->Session($pagActual);
     </div>    
         <header>       
             <div class="wrapper">
-            <?php if (isset($_GET['errorPermiso'])) { ?>
+            <?php if (isset($_GET['errorRol'])) { ?>
             <script language="JavaScript" type="text/javascript">
                 window.onload = function () {
-                    Command: toastr["error"]("<?php echo $_GET['errorPermiso']; ?>")
+                    Command: toastr["error"]("<?php echo $_GET['errorRol']; ?>")
 
                     toastr.options = {
                         "closeButton": false,

@@ -140,13 +140,13 @@ $session->Session($pagActual);
                         </thead>   
                         <?php
                         foreach ($all as $unit) {
-                            if($unit['nombreArea']!='Cliente'){
+                            if($unit['nombreArea']!='Cliente' && $unit['nombreArea']!='default'){
                             ?> 
                         
                             <tr>
                                 <td>0<?php echo $unit['idAreas']; ?></td>
                                 <td> <?php echo $unit['nombreArea']; ?></td>
-                                 <td><a name="eliminarArea" title="Eliminar Area" class="me"  href="../controlador/ControladorRol.php?idEliminar=<?php echo $unit['idAreas']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
+                                 <td><a style="color:black">Modificar</a></td>
                                         
 
                             </tr>
@@ -165,7 +165,7 @@ $session->Session($pagActual);
                 ?>
                     
                 <br>  
-                    <label class="tag" id="IdRol" for="IdArea"><span id="NameRol" class="h331" style="display: inline-block">Número de Área: </span></label>
+                    <label class="tag" id="IdRol" for="IdArea"><span id="NameRol" class="h331" style="display: inline-block">Código Área: </span></label>
                     <input name="IdArea" style="text-align:center" class="input" type="text" id="IdArea" required readonly value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nueva Área: </span></label>
                     <input name="NombreArea" class="input" type="text" id="txtName"  placeholder="Ensamble"  required style="display: inline-block"><br>

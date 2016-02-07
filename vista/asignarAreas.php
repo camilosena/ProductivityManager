@@ -152,7 +152,7 @@ $session->Session($pagActual);
                     <input name="NameRol" class="input" type="text" id="txtName" style="text-align: center"  readonly  value=" <?php echo $nombre ?> "> 
                 <br>
                 <div id="panelModificaPass">
-                <table id="muestraDatos">
+                <table id="muestraDatos" style="margin-left:12%;">
                 <tr>
                     <th>Código Área</th>
                     <th>Nombre Área</th>
@@ -171,7 +171,7 @@ $session->Session($pagActual);
                             if($unit['idAreas']!=0){
                             ?>     
                             <tr>
-                                <td> <input name="idAreas" value ="<?php echo '0'.$unit['idAreas']; ?>" style="text-align:center"  readonly ></td>
+                                <td style="text-align:center"> <?php echo '0'.$unit['idAreas']; ?></td>
                                 <td style="text-align:center"> <?php echo $unit['nombreArea']; ?></td>
                                 <td style="text-align:center" ><input type="checkbox" id="estado" name="<?php echo $unit['idAreas']; ?>" value="<?php echo $unit['idAreas']; ?>"<?php 
                                 foreach ( $APRol as $areas){
@@ -189,10 +189,10 @@ $session->Session($pagActual);
                     </div>
                     <div id="accesosRapidos">
                     <div><br>
-                        <a href="../controlador/ControladorRol.php?atras=true&idAct=<?php echo $new; ?>"><img src="../img/flechaIzquierdaHover.png" alt="Atras"></a>
+                        <a href="../controlador/ControladorRol.php?atras=true&idAct=<?php echo $new; ?>"><img src="../img/flechaAtras.png" alt="Atras"></a>
                      </div>
                     <div>
-                    <button type="submit" value="Enviar" name="ModificarArea" id="crearRol" class="boton-verde" style="display: inline">Asignar</button> 
+                    <button type="submit" value="Enviar" name="ModificarArea" id="crearRol" class="boton-verde" style="display: inline">Asignar Áreas</button> 
                     </div>
                     </div>
                     </form><br>

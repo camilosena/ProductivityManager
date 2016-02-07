@@ -208,16 +208,16 @@ $session->Session($pagActual);
                             ?> 
                         
                             <tr>
-                                <td style="width:90px">0<?php echo $unit['nombreProducto']; ?></td>
+                                <td style="width:90px"><?php echo $unit['nombreProducto']; ?></td>
                                 <td style="width:150px"> <?php echo $unit['ganancia']; ?> %</td>
                                 <td style="width:80px"> <?php echo $unit['estadoProducto']; ?></td>
                                 <td style="text-align:left"> <a name="visualizarProducto" title="Ver Producto" class="me"  href="../controlador/ControladorProductos.php?idVisualizar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ojo.png"></a>
-                                <a name="InsumosProducto" title="Asociar Materia Prima del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/insumoProducto.png"></a>
+                                <a name="InsumosProducto" title="Asociar Materia Prima a Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/insumoProducto.png"></a>
                                 
                                 <?php
                                     if ($unit['estadoProducto'] == 'Sin Procesos' ){
                                  ?>   
-                                <a name="AsociarProceso" title=" Asociar Proceso " class="me"  href="../vista/agregarProcesos.php?idProducto=<?php echo $unit['idProductos']; ?>&nombreProducto=<?php echo $unit['nombreProducto']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/work.png"></a>
+                                <a name="AsociarProceso" title=" Asociar Proceso a Producto" class="me"  href="../vista/agregarProcesos.php?idProducto=<?php echo $unit['idProductos']; ?>&nombreProducto=<?php echo $unit['nombreProducto']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/work.png"></a>
                                <?php }
                                  ?> 
                                </td>       

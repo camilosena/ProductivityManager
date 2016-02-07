@@ -1401,7 +1401,7 @@ table.tableProductos {
     table.tableMateria tbody {
         overflow: auto;
         height: 350px;
-        width: 460px;
+        width: 480px;
     }
     table.tableMateria tr {
         width: 100%;
@@ -1414,7 +1414,7 @@ table.tableProductos {
     table.tableProcess tbody {
         overflow: auto;
         height: 390px;
-        width: 500px;
+        width: 520px;
     }
     table.tableProcess tr {
         width: 100%;

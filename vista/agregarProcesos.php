@@ -57,10 +57,10 @@ $session->Session($pagActual);
         <header>
                 
             <div class="wrapper">
-            <?php if (isset($_GET['errorPermiso'])) { ?>
+            <?php if (isset($_GET['mensaje'])) { ?>
             <script language="JavaScript" type="text/javascript">
                 window.onload = function () {
-                    Command: toastr["error"]("<?php echo $_GET['errorPermiso']; ?>")
+                    Command: toastr["success"]("<?php echo $_GET['mensaje']; ?>")
 
                     toastr.options = {
                         "closeButton": false,
@@ -166,8 +166,6 @@ $session->Session($pagActual);
                                 <td> <input name="Empleados" size="10" value ="<?php echo $unit['empleados']; ?>" disabled ></td>
                                 <td> <input name="tiempo" size="10" value ="<?php echo $unit['tiempo']; ?>" disabled ></td>
                                 <td> <input name="valor" size="10" value ="<?php echo $unit['precioProceso']; ?>" disabled ></td>
-                                
-<!--                                 <td><a name="EliminarProceso" title="Eliminar Proceso" class="me"  href="../controlador/ControladorProcesos.php?idProceso=<?php echo $unit['idProceso']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>-->
                                  <td><a name="ModificarProceso"  title="Modificar Proceso" class="me" href="../controlador/ControladorProcesos.php?idConsultaProceso=<?php echo $unit['idProceso']; ?>" ><img class="iconos" src="../img/modify.png"></a>    </td>  
 
                             </tr>
@@ -219,13 +217,6 @@ $session->Session($pagActual);
                  </div>    
                 </form><br>
                 <hr>
-                
-                <?php
-                if (isset($_GET['mensaje'])) {
-                    echo $_GET['mensaje'] . '<br>';
-                    echo 'Su nuevo Código es: ' . $_GET['consecutivo'];
-                }
-                ?>
             </div>
             
             <div id="ModalProcesos" class="modalDialog" title="ModalProcesos">
@@ -248,24 +239,12 @@ $session->Session($pagActual);
                                  <input name="Tiempo" size="10" value ="<?php echo $_SESSION['consultarProcesos']['tiempo']; ?>"  style="display: inline-block"><br>
                                  <label class="tag"  for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Valor: </span></label>
                                  <input name="valor" size="10" value ="<?php echo $_SESSION['consultarProcesos']['precioProceso']; ?>"  style="display: inline-block"><br>
-                                 <input type="submit" value="Modificar" name="ModificarProceso">
+                                 <button type="submit"  class="boton-verde" value="Modificar" name="ModificarProceso">Modificar Proceso</button>
                             </form>  
 
                             
                              
                         </div>
-
-                        <?php
-                        if (isset($_GET['mensaje'])) {
-                            ?>
-                            <div class="row"><br><br>
-                                <div class="col-md-6"></div>
-                                <div class="col-md-1 text-center"><h4><?php echo $mensaje = $_GET['mensaje'] ?></h4></div>
-                                <div class="col-md-5"></div>
-                            </div>
-                            <?php
-                        }
-                        ?>
 
 
                     </div>

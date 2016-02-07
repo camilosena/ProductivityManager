@@ -1,16 +1,6 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of FacadeInsumos
- *
- * @author Jorge M. Izquierdo N
- */
 class FacadeInsumos {
 
     //put your code here
@@ -55,6 +45,17 @@ class FacadeInsumos {
     function obtenerInsumosPorID($idMateriaPrima) {
 
         return $this->insumoDAO->obtenerInsumoPorID($idMateriaPrima, $this->conexionBase);
+    }
+
+
+    function consultarMateriaPrima($idMateriaPrima) {
+
+        return $this->insumoDAO->consultarrMateriaPrima($idMateriaPrima, $this->conexionBase);
+    }
+
+        function modificarMateriaPrima(InsumosDTO $Idto) {
+
+        return $this->insumoDAO->modificarMateriaPrima($Idto, $this->conexionBase);
     }
 
 }

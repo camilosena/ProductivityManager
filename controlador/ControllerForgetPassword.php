@@ -1,12 +1,6 @@
 <?php
 
 
-/**
- * Description of ControllerForgetPassword
- *
- * @author Jorge M. Izquierdo N
- */
-
     require_once '../modelo/dao/ForgetPasswordDAO.php';
     require_once '../modelo/utilidades/Conexion.php';
     require_once '../facades/FacadeForgetPassword.php';

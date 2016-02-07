@@ -185,8 +185,8 @@
 							<option value="LinkedIn">LinkedIn</option>
 							<option value="Twitter">Twitter</option>
 					</select><br>
-                        <label class="tag" for="selReference"><span class="h331">Motivo:</span></label>
-                        <textarea name="motivo"></textarea>
+                        <label class="tag" style="position:relative;bottom:50px" for="selReference"><span class="h331">Motivo:</span></label>
+                        <textarea class="input4" name="motivo"></textarea>
                         <button type="submit" onclick="pregunta()" name="contactarme" class="boton-verde">Enviar Información</button><br>
                         </form>				
 					</div>
@@ -199,8 +199,10 @@
 						} 
 						</script> 
 	<div id="panelDer">
-			<div class="wrapper">			
+			<div class="wrapper">		
+            <br>	
 				<section class="billboard">	
+                <br><br>
 					<script src="http://maps.googleapis.com/maps/api/js"></script>
 					<script>
 					function initialize()

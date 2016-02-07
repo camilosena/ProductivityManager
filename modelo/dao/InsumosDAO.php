@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of AgregarInsumosDAO
- *
- * @author Jorge M. Izquierdo N
- */
 class InsumosDAO {
 
     //put your code here
@@ -104,4 +93,35 @@ class InsumosDAO {
         $cnn = null;
     }
 
+        function consultarrMateriaPrima($idMateriaPrima, PDO $cnn) {
+
+        try {
+            $sql = "SELECT * FROM materiaprima where idMateriaPrima=?";
+            $query = $cnn->prepare($sql);
+            $query->bindParam(1, $idMateriaPrima);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
+
+        function modificarMateriaPrima(InsumosDTO $Idto, PDO $cnn) {
+
+        $mensaje = "";
+        try {
+            $query = $cnn->prepare("update materiaprima set descripcionMateria=?, unidadDeMedida=?, precioBase=? where idMateriaPrima=?");
+            $query->bindParam(1, $Idto->getNombre());
+            $query->bindParam(2, $Idto->getMedida());
+             $query->bindParam(3, $Idto->getPrecio());
+            $query->bindParam(4, $Idto->getId());
+            $query->execute();
+            $mensaje = "Materia Prima Actualizada";
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+        }
+        $cnn = null;
+        return $mensaje;
+    }
 }

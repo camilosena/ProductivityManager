@@ -90,7 +90,7 @@ tiempoPorProceso as tiempo from procesos
 
             $query->execute();
             $query2->execute();
-            $mensaje = "Registro Actualizado";
+            $mensaje = "Proceso Actualizado";
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }

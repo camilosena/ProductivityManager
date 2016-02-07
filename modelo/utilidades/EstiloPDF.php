@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of EstiloPDF
- *
- * @author Jorge M. Izquierdo N
- */
 require_once 'Fpdf/fpdf.php';
 
 class EstiloPDF extends FPDF

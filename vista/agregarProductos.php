@@ -194,15 +194,15 @@ $session->Session($pagActual);
                         </div>
                     <?php 
                   }else{   ?>              
-                     <table id="muestraDatos" class="tableProductos" style="margin-top:50px">
-                 <thead>
+                     <table id="muestraDatos" class="tableProducts" style="margin-top:50px">
+                
                     <tr>
                        <th >Código</th>
                       <th>Producto</th>
                      <th >Estado</th>
-                       <th >Acciones</th>
+                       <th  >Acciones</th>
                     </tr>
-                </thead>
+                
                 <?php 
                   foreach ($todos as $unit) {
                             ?> 
@@ -211,18 +211,15 @@ $session->Session($pagActual);
                                 <td style="width:90px">0<?php echo $unit['idProductos']; ?></td>
                                 <td style="width:150px"> <?php echo $unit['nombreProducto']; ?></td>
                                 <td style="width:80px"> <?php echo $unit['estadoProducto']; ?></td>
-                                <td ><a name="InsumosProducto" title="Asociar Materia Prima del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/insumoProducto.png"></a>
+                                <td style="text-align:left"> <a name="visualizarProducto" title="Ver Producto" class="me"  href="../controlador/ControladorProductos.php?idVisualizar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ojo.png"></a>
+                                <a name="InsumosProducto" title="Asociar Materia Prima del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/insumoProducto.png"></a>
+                                
                                 <?php
-                                  
                                     if ($unit['estadoProducto'] == 'Sin Procesos' ){
                                  ?>   
-                                <a name="AsociarProceso" title=" Asociar Proceso " class="me"  href="../vista/agregarProcesos.php?idProducto=<?php echo $unit['idProductos']; ?>&nombreProducto=<?php echo $unit['nombreProducto']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ascenso.png"></a>
-                               <?php
-                                    }else{?> 
-                                       <a></a>
-                                   <?php }
+                                <a name="AsociarProceso" title=" Asociar Proceso " class="me"  href="../vista/agregarProcesos.php?idProducto=<?php echo $unit['idProductos']; ?>&nombreProducto=<?php echo $unit['nombreProducto']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/work.png"></a>
+                               <?php }
                                  ?> 
-                               <a name="visualizarProducto" title="Ver Producto" class="me"  href="../controlador/ControladorProductos.php?idVisualizar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ojo.png"></a>
                                </td>       
 
                             </tr>

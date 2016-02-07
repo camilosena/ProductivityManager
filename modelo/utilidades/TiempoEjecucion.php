@@ -1,17 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of TiempoEjecucion
- *
- * @author Jorge M. Izquierdo N
- */
-
     require_once '../facades/FacadeProyectos.php';
     require_once '../modelo/dao/ProyectosDAO.php';
     require_once '../modelo/utilidades/Conexion.php';

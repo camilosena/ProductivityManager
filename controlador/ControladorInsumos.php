@@ -1,19 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of ControladorInsumos
- *
- * @author Jorge M. Izquierdo N
- */
-
-    //put your code here
-
     require_once '../facades/FacadeInsumos.php';
     require_once '../modelo/dao/InsumosDAO.php';
     require_once '../modelo/dto/InsumosDTO.php';
@@ -33,10 +18,12 @@
      header("location: ../vista/agregarInsumos.php?".$mensaje);
 }
 else 
-if ($_GET['idEliminar']) {
-    $facadeInsumos = new FacadeInsumos();    
-   $mensaje= $facadeInsumos->eliminarInsumos($_GET['idEliminar']);
-     header("location: ../vista/agregarInsumos.php?".$mensaje);
+    if (isset ($_GET['idEditarMateria'])) {
+    session_start();
+    $facadeInsumos = new FacadeInsumos();
+    $_SESSION['consultarMaterias']= $facadeInsumos->consultarMateriaPrima($_GET['idEditarMateria']);
+   header("location: ../vista/agregarInsumos.php?&#ModalMateriaPrima");
+    
 }else
 if (isset ($_POST['subir'])) {
      $table = 'materiaprima';
@@ -45,4 +32,14 @@ if (isset ($_POST['subir'])) {
         $facadeArchivo = new FacadeArchivo();
         $mensaje = $facadeArchivo->cargarArchivo($table, $file);
          header("location: ../vista/agregarInsumos.php?mensaje=".$mensaje);
+}else
+if (isset ($_POST['modificarMateria'])) {
+     $facadeInsumos = new FacadeInsumos();
+    $InsumosDTO = new InsumosDTO();
+   $InsumosDTO->setNombre($_POST['descripcionMateria']);
+    $InsumosDTO->setMedida($_POST['unidadDeMedida']);
+    $InsumosDTO->setPrecio($_POST['precioBase']);
+    $InsumosDTO->setId($_POST['idMateriaPrima']);
+    $mensaje = $facadeInsumos->modificarMateriaPrima($InsumosDTO);
+    header("location: ../vista/agregarInsumos.php? mensaje=".$mensaje);
 }

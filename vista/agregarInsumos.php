@@ -56,10 +56,10 @@ $session->Session($pagActual);
     </div>    
         <header>              
             <div class="wrapper">
-            <?php if (isset($_GET['errorPermiso'])) { ?>
+            <?php if (isset($_GET['mensaje'])) { ?>
             <script language="JavaScript" type="text/javascript">
                 window.onload = function () {
-                    Command: toastr["error"]("<?php echo $_GET['errorPermiso']; ?>")
+                    Command: toastr["success"]("<?php echo $_GET['mensaje']; ?>")
 
                     toastr.options = {
                         "closeButton": false,
@@ -118,7 +118,6 @@ $session->Session($pagActual);
                     </span> 
                 </span>         
             </nav>
-
             <div id="panelIzq">
                 <br>                   
                     <table id="muestraDatos" style="margin-left:20%;">
@@ -141,9 +140,7 @@ $session->Session($pagActual);
                                 <td> <?php echo $unit['nombre']; ?></td>
                                 <td> <?php echo $unit['unidad']; ?></td>
                                 <td> <?php echo $unit['precio']; ?></td>
-                                <td><a name="eliminarInsumo" title="Eliminar Insumo" class="me"  href="../controlador/ControladorInsumos.php?idEliminar=<?php echo $unit['numero']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a></td>
-                                        
-
+                                <td><a name="editarMateriaPrima" title="Editar Materia" class="me"  href="../controlador/ControladorInsumos.php?idEditarMateria=<?php echo $unit['numero']; ?>"><img class="iconos" src="../img/editar.png"></a></td>
                             </tr>
 
                             <?php
@@ -184,6 +181,39 @@ $session->Session($pagActual);
                     
                     </form><hr>
             </div>
+                        <div id="ModalMateriaPrima" class="modalDialog" title="ModalProcesos">
+                    <div>
+                        <a href="#close" title="Close" class="close">X</a><br>                  
+                        <h2 class="h330">Modificar Materia Prima:</h2><br>
+                        <div id="panelModificaPass">
+                                    <form class="formRegistro" method="post" action="../controlador/ControladorInsumos.php"> 
+                                     <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Código Materia Prima: </span></label>
+                                     <input name="idMateriaPrima" size="10" value ="<?php echo $_SESSION['consultarMaterias']['idMateriaPrima']; ?>" readonly style="display: inline-block"><br>
+                                    <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Materia Prima: </span></label>
+                                    <input name="descripcionMateria" size="10" value ="<?php echo $_SESSION['consultarMaterias']['descripcionMateria']; ?>"  style="display: inline-block"><br>                    
+                                    <label class="tag" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Medida: </span></label>
+                                     <input name="unidadDeMedida" size="10" value ="<?php echo $_SESSION['consultarMaterias']['unidadDeMedida']; ?>"  style="display: inline-block"><br>
+                                      <label class="tag"  for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Precio Base: </span></label>
+                                 <input name="precioBase" size="10" value ="<?php echo $_SESSION['consultarMaterias']['precioBase']; ?>" style="display: inline-block"><br>
+                                 <button type="submit" class="boton-verde" value="Modificar" name="modificarMateria">Modificar Materia Prima</button>
+                            </form>       
+                        </div>
+
+                        <?php
+                        if (isset($_GET['mensaje'])) {
+                            ?>
+                            <div class="row"><br><br>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-1 text-center"><h4><?php echo $mensaje = $_GET['mensaje'] ?></h4></div>
+                                <div class="col-md-5"></div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+
+
+                    </div>
+        </div> 
         </div>    
         <footer class="footer-distributed">
             <div class="footer-left">

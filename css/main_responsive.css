@@ -1379,6 +1379,21 @@ table.tableProductos {
         text-align: center;      
     }    
 
+
+    table.tableProducts thead, table.tableProducts tbody {
+        float: left;
+        width: 100%;        
+    }
+    table.tableProducts tbody {
+        overflow: auto;
+        height: 350px;
+        width: 480px;
+    }
+    table.tableProducts tr {
+        width: 100%;
+        text-align: center;      
+    }    
+
 #mails{
     text-decoration: none;
     color: #0e408e;

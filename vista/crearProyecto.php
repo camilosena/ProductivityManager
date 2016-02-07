@@ -31,6 +31,7 @@ $session->Session($pagActual);
         <script type="text/javascript" src="../js/script2.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
+     <link rel="stylesheet" href="../css/cargaPaginas.css">
     </head>
     <body>
         <div id='cssmenu'>
@@ -143,27 +144,32 @@ $session->Session($pagActual);
             </nav>          
             <div id="panelIzq"><br>
                 <div class="center">                  
-                    <h2 class="h330" align="center"><p>Progreso de Proyectos:</p></h2>
                     <?php
                     require_once '../modelo/dao/ProyectosDAO.php';
                     require_once '../modelo/utilidades/Conexion.php';
                     require_once '../facades/FacadeProyectos.php';
                     $facadeProyecto = new FacadeProyectos;
                     $progress = $facadeProyecto->progresoProyectos();
-                    $cont = 0;
-                    foreach ($progress as $progreso) {
+                    $cont = 0;   
+                      foreach ($progress as $progreso) {
                         $cont++;
+                    } 
+                    if ($cont > 0) { ?>
+                    <h2 class="h330" align="center"><p>Progreso de Proyectos:</p></h2>
+                    <?php
+                    $cont3=0;
+                        foreach ($progress as $progreso) {
+                            $cont3++;
                         echo '<div class="progress">
                             <font class="h5">' . $progreso['nombreProyecto'] . ':</font> 
-                            <progress id="html' . $cont . '" max="100" value=""></progress>
+                            <progress id="html' . $cont3 . '" max="100" value=""></progress>
                             <span></span>                            
                         </div>  ';
-                    }
-                    if ($cont > 0) {
-                        ;
+                    } 
                         ?>     
                         <div class="clear"> <br><input type="button" id="boton" value="Recargar" /></div>                                       
-                    <?php } ?>
+                    <?php 
+                    } ?>
                 </div>
 
                 <script type="text/javascript">
@@ -180,8 +186,8 @@ $session->Session($pagActual);
                         }
                         ;
                         ?>
-                                            }
-                                            document.querySelector('#boton').addEventListener('click', function () {
+                     }
+                        document.querySelector('#boton').addEventListener('click', function () {
                         <?php
                         $cont2 = 0;
                         foreach ($progress as $progreso) {
@@ -194,17 +200,60 @@ $session->Session($pagActual);
                         }
                         ;
                         ?>
-
                     });
-                </script>              
+                </script> 
+                <?php
+                 if($cont<4 && $cont>=0){
+                        if ($cont==0) {
+                          echo "<h2 class='h330'>No Existen Proyectos</h2>";   
+                          } 
+                    ?> 
+                        <div class="container">
+                          <div class="gearbox">
+                          <div class="overlay"></div>
+                            <div class="gear one">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear two">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear three">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear four large">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    <?php 
+                  }  ?>           
             </div>
             <div id="panelDer">
-                <span id="fechaActual" style="float:right;font-size:12px;font-family:sans-serif;color:#0900FF">
+                <span id="fechaActual" style="float:right;font-size:12px;font-family:sans-serif;color:#0f0f0f">
                     <script>
                         var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
                         var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                         var f = new Date();
-                        document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+                        document.write('<h3>'+diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear()+'</h3>');
                     </script>                                      
                 </span><br><br>
                 <h2 class="h330">Crear Nuevo Proyecto:</h2><hr>

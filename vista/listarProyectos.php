@@ -6,8 +6,6 @@ require_once '../modelo/utilidades/CorreoFinProyecto.php';
 $pagActual = 'listarProyectos.php';
 $session = new Session($pagActual);
 $session->Session($pagActual);
-$ejecucion = new TiempoEjecucion();
-$ejecucion->ejecucionProyectos();
 $correoFin = new CorreoFinProyecto();
 $correoFin->enviarCorreoFinProyecto();
 ?>

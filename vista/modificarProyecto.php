@@ -29,6 +29,7 @@ $session->Session($pagActual);
         <link href="../js/toastr.css" rel="stylesheet"/>
         <script src="../js/toastr.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
+        <link rel="stylesheet" href="../css/cargaPaginas.css">
     <script src="../js/modernizr.custom.js"></script>
     </head>
     <body>
@@ -136,57 +137,108 @@ $session->Session($pagActual);
             </nav>          
             <div id="panelIzq"><br>
                 <div class="center">                  
-                    <h2 class="h330" align="center"><p>Progreso de Proyectos:</p></h1>
-                             <?php
-            require_once '../modelo/dao/ProyectosDAO.php';
-            require_once '../modelo/utilidades/Conexion.php';
-            require_once '../facades/FacadeProyectos.php';
-            $facadeProyecto = new FacadeProyectos;
-            $progress=$facadeProyecto->progresoProyectos();
-            $cont=0;
-            foreach ($progress as $progreso ) {
-                 $cont++;               
-                echo '<div class="progress">
-                            <font class="h5">'.$progreso['nombreProyecto'].':</font> 
-                            <progress id="html'.$cont.'" max="100" value=""></progress>
-                            <span></span>                            
-                        </div>  ';               
-            }
-            ?>     
-           <div class="clear"> <br><input type="button" id="boton" value="Recargar" /></div>                                       
-           </div>
-           
-                <script type="text/javascript">
-                    window.onload = function () {
+                   <?php
+                    require_once '../modelo/dao/ProyectosDAO.php';
+                    require_once '../modelo/utilidades/Conexion.php';
+                    require_once '../facades/FacadeProyectos.php';
+                    $facadeProyecto = new FacadeProyectos;
+                    $progress = $facadeProyecto->progresoProyectos();
+                    $cont = 0;   
+                      foreach ($progress as $progreso) {
+                        $cont++;
+                    } 
+                    if ($cont > 0) { ?>
+                    <h2 class="h330" align="center"><p>Progreso de Proyectos:</p></h2>
                     <?php
-                    $cont2 = 0;
-                    foreach ($progress as $progreso) {
-                        $cont2++;
-                        $ejecutado = $progreso['ejecutado'];
-                            if ($ejecutado > 100) {
-                                $ejecutado = $ejecutado-1;
-                            }
-                           echo 'animateprogress("#html' . $cont2 . '", ' . $ejecutado . ');';
-                    }
-                    ;
-                    ?>
-                    }
-                    document.querySelector('#boton').addEventListener('click', function () {
-                        <?php
-                    $cont2 = 0;
-                    foreach ($progress as $progreso) {
-                        $cont2++;
-                        $ejecutado = $progreso['ejecutado'];
-                            if ($ejecutado > 100) {
-                                $ejecutado = $ejecutado-1;
-                            }
-                            echo 'animateprogress("#html' . $cont2 . '", ' . $ejecutado . ');';
-                    }
-                    ;
-                    ?>
+                    $cont3=0;
+                        foreach ($progress as $progreso) {
+                            $cont3++;
+                        echo '<div class="progress">
+                            <font class="h5">' . $progreso['nombreProyecto'] . ':</font> 
+                            <progress id="html' . $cont3 . '" max="100" value=""></progress>
+                            <span></span>                            
+                        </div>  ';
+                    } 
+                        ?>     
+                        <div class="clear"> <br><input type="button" id="boton" value="Recargar" /></div>                                       
+                    <?php 
+                    } ?>
+                </div>
 
+                <script type="text/javascript">
+                      window.onload = function () {
+                        <?php
+                        $cont2 = 0;
+                        foreach ($progress as $progreso) {
+                            $ejecutado = $progreso['ejecutado'];
+                            if ($ejecutado > 100) {
+                                $ejecutado = $ejecutado-1;
+                            }
+                            $cont2++;
+                            echo 'animateprogress("#html' . $cont2 . '", ' . $ejecutado . ');';
+                        }
+                        ;
+                        ?>
+                     }
+                        document.querySelector('#boton').addEventListener('click', function () {
+                        <?php
+                        $cont2 = 0;
+                        foreach ($progress as $progreso) {
+                            $ejecutado = $progreso['ejecutado'];
+                            if ($ejecutado > 100) {
+                                $ejecutado = $ejecutado-1;
+                            }
+                            $cont2++;
+                            echo 'animateprogress("#html' . $cont2 . '", ' . $ejecutado . ');';
+                        }
+                        ;
+                        ?>
                     });
-                </script>              
+                </script> 
+                <?php
+                 if($cont<4 && $cont>=0){
+                        if ($cont==0) {
+                          echo "<h2 class='h330'>No Existen Proyectos</h2>";   
+                          } 
+                    ?> 
+                        <div class="container">
+                          <div class="gearbox">
+                          <div class="overlay"></div>
+                            <div class="gear one">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear two">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear three">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear four large">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    <?php 
+                  }  ?> 
             </div>
             <div id="panelDer">
                 <span id="fechaActual" style="float:right;font-size:12px;font-family:sans-serif;color:#0900FF">

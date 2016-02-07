@@ -309,15 +309,15 @@ $correoFin->enviarCorreoFinProyecto();
                                         <td><?php echo $project['estadoProyecto']; ?></td>  
                                         <td><?php echo $project['ejecutado']; ?> %</td>
                                        <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
-                                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecucion') { ?>
+                                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecucion' && $project['estadoProyecto']!='Espera') { ?>
                                                 <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                                 <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
                                                     ?>
                                                     <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
-                                                <?php }if ($project['estadoProyecto'] == 'Sin Produccion') { ?>
+                                                <?php }if ($project['estadoProyecto'] == 'Sin Producción') { ?>
                                                     <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
                                                 <?php } 
-                                            }; ?>                            
+                                            } ?>                            
                                         </td>                   
                                     </tr>                         
                                     <?php
@@ -342,26 +342,16 @@ $correoFin->enviarCorreoFinProyecto();
                                     <td><?php echo $project['estadoProyecto']; ?></td>  
                                     <td><?php if ($ejecucion >100){echo $ejecucion-1;}else{echo $ejecucion;} ?> %</td>
                                     <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
-                                        <?php            if ($_SESSION['rol'] != 'Auditor') {
-                
-            
-                                    if ($project['estadoProyecto'] == 'Sin Estudio Costos'  ) {
-                                                ?>
-                                                <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
-                                    <?php }
-
-                                    if ($project['estadoProyecto'] == 'Sin Producción') { ?>
+                                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecución' && $project['estadoProyecto']!='Espera') { ?>
+                                                <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
+                                                <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
+                                                    ?>
+                                                    <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
+                                                <?php }if ($project['estadoProyecto'] == 'Sin Producción') { ?>
                                                     <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
-                                                <?php }
-                                                if ($_SESSION['rol'] == 'Gerente'  && $project['estadoProyecto']=='Sin Estudio Costos' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']=='Sin Estudio Costos')  { ?>
-                                            <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
-                                        <?php }
-                                                 }else{
-                                                    
-                                                    echo '<a class="me" title="Ver Novedades" href="projectNum='.$project['idProyecto'].'&nameProject='. $project['nombreProyecto'].'";"><img class="iconos" src="../img/Novedades.png"></a>';
-                                                    echo '<a class="me" title="Realizar Auditoria" href="projectNum='.$project['idProyecto'].'&nameProject='. $project['nombreProyecto'] .'";"><img class="iconos" src="../img/Auditorias.png"></a>';
-                                                    }?>                            
-                                    </td>                   
+                                                <?php } 
+                                            } ?>                            
+                                        </td>                 
                                 </tr>                         
         <?php }
 }

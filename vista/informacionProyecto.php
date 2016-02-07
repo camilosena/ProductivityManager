@@ -102,13 +102,13 @@ e.preventDefault();
                 echo '<tr><td class="enunciado">Ejecutado:</td><td>' . $ejecutado . '%</td></tr>';
                 echo '<tr><td class="enunciado">Observaciones:</td><td>' . $proyectos['observaciones'] . '</td></tr>';
                 $comi = "'";
-                if ($proyectos['estadoProyecto'] != 'Ejecucion' && $ejecucion < 100) {
+                if ($proyectos['estadoProyecto'] != 'Ejecución' &&$proyectos['estadoProyecto'] != 'Espera' && $ejecucion < 100) {
                     echo '<tr><td class="enunciado">Opciones:</td><td>';
                     echo '<a class="me" title="Modificar Proyecto"href="javascript:modificarProyecto(' . $comi . 'modificarProyecto.php?idProject='. $proyectos['idProyecto'] . $comi . ');"><img class="iconos" src="../img/modify.png"></a>';
                 }
                 if ($proyectos['estadoProyecto'] == 'Sin Estudio Costos') {
                     echo '<a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos(' . $comi . 'estudioDeCostos.php?projectNum=' . $proyectos['idProyecto'] . '&nameProject=' . $proyectos['nombreProyecto'] . $comi . ');"><img class="iconos" src="../img/costos.png"></a>';
-                } elseif ($proyectos['estadoProyecto'] == 'Sin Produccion') {
+                } elseif ($proyectos['estadoProyecto'] == 'Sin Producción') {
                     echo '<a class="me" title="Incluir Producción" href="javascript:produccionProyecto(' . $comi . 'produccionProyecto.php?projectNum=' . $proyectos['idProyecto'] . '&nameProject=' . $proyectos['nombreProyecto'] . $comi . ');"><img class="iconos" src="../img/products.png"></a>';
 
                 }
@@ -187,6 +187,7 @@ e.preventDefault();
         </div>
         <div>
             <?php
+            if($proyectos['estadoProyecto']=='Ejecución' || $proyectos['estadoProyecto']=='Espera'){
                 echo '<div id="infoGere">';
                 $costosProyecto = $facadeEstudioCostos->verificaExistenciaEstudio($proyectos['idProyecto']);
                 echo '<table id="muestraDatos"><tr><th colspan="2">Relación de Costos</th></tr>';
@@ -199,6 +200,7 @@ e.preventDefault();
                 echo '<tr><td class="enunciado">Observaciones:</td><td>' . $costosProyecto['observaciones'] . '</td></tr>';
                 echo '</table>';
                 echo '</div>';
+                }
             ?>
             
         </div>

@@ -40,7 +40,7 @@ CREATE TABLE `areas` (
 
 LOCK TABLES `areas` WRITE;
 /*!40000 ALTER TABLE `areas` DISABLE KEYS */;
-INSERT INTO `areas` VALUES (0,'default',0),(1,'Administracion',1),(2,'Privado',2),(3,'Corte',3),(4,'Ensamble',3),(5,'Publico',2),(6,'Cliente',4);
+INSERT INTO `areas` VALUES (0,'default',0),(1,'Administracion',1),(2,'Privado',1),(3,'Corte',3),(4,'Ensamble',3),(6,'Cliente',4);
 /*!40000 ALTER TABLE `areas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +70,6 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (2,'Muebles La Oficina',99473843,'Publico','Industrial',7758734);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +127,7 @@ CREATE TABLE `estudiodecostos` (
   KEY `fk_estudiodecostos_usuarios1_idx` (`idGerenteACargo`),
   CONSTRAINT `fk_estudioDeCostos_Proyectos1` FOREIGN KEY (`idProyectoSolicitado`) REFERENCES `proyectos` (`idProyecto`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_estudiodecostos_usuarios1` FOREIGN KEY (`idGerenteACargo`) REFERENCES `personas` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,6 +160,7 @@ CREATE TABLE `indicativos` (
 
 LOCK TABLES `indicativos` WRITE;
 /*!40000 ALTER TABLE `indicativos` DISABLE KEYS */;
+INSERT INTO `indicativos` VALUES (1,'AfganistÃ¡n','93'),(2,'Albania','355'),(3,'Alemania','49'),(4,'Angola','244'),(5,'Anguila','1'),(6,'Antigua y Barbuda','1'),(7,'Antillas Holandesas','599'),(8,'Arabia Saudita','966'),(9,'Argelia','213'),(10,'Argentina','54'),(11,'Armenia','374'),(12,'Aruba','297'),(13,'Australia','61'),(14,'Austria','43'),(15,'AzerbaiyÃ¡n','994'),(16,'Bahamas','1'),(17,'BangladÃ©s','880'),(18,'Barbados','1'),(19,'BÃ©lgica','32'),(20,'Belice','501'),(21,'BenÃ­n','229'),(22,'Bermudas','1'),(23,'Bielorrusia','375'),(24,'Bolivia','591'),(25,'Bosnia y Herzegovina','387'),(26,'Botsuana','267'),(27,'Brasil','55'),(28,'BrunÃ©i','673'),(29,'Bulgaria','359'),(30,'Burkina Faso','226'),(31,'Burundi','257'),(32,'ButÃ¡n','975'),(33,'Cabo Verde','238'),(34,'Camboya','855'),(35,'CamerÃºn','237'),(36,'CanadÃ¡','1'),(37,'Catar','974'),(38,'Chad','235'),(39,'Chequia','420'),(40,'Chile','56'),(41,'China','86'),(42,'Chipre','357'),(43,'Colombia','57'),(44,'Comoras','269'),(45,'Congo','242'),(46,'Corea','82'),(47,'Corea del Norte','850'),(48,'Costa de Marfil','225'),(49,'Costa Rica','506'),(50,'Croacia','385'),(51,'Cuba','53'),(52,'Diego GarcÃ­a','246'),(53,'Dinamarca','45'),(54,'Dominica','1'),(55,'Ecuador','593'),(56,'Egipto','20'),(57,'El Salvador','503'),(58,'Emiratos Ãrabes Unidos','971'),(59,'Eritrea','291'),(60,'Escocia','44'),(61,'Eslovaquia','421'),(62,'Eslovenia','386'),(63,'EspaÃ±a','34'),(64,'Estonia','372'),(65,'EtiopÃ­a','251'),(66,'FederaciÃ³n Rusa','7'),(67,'Filipinas','63'),(68,'Finlandia','358'),(69,'Fiyi','679'),(70,'Francia','33'),(71,'GabÃ³n','241'),(72,'Gales','44'),(73,'Gambia','220'),(74,'Georgia','995'),(75,'Ghana','233'),(76,'Gibraltar','350'),(77,'Granada','1'),(78,'Grecia','30'),(79,'Groenlandia','299'),(80,'Guadalupe','590'),(81,'Guam','1'),(82,'Guatemala','502'),(83,'Guayana Francesa','594'),(84,'Guinea','224'),(85,'Guinea Ecuatorial','240'),(86,'Guinea-Bissau','245'),(87,'Guyana','592'),(88,'HaitÃ­','509'),(89,'Holanda','31'),(90,'Honduras','504'),(91,'HongKong','852'),(92,'HungrÃ­a','36'),(93,'India','91'),(94,'Indonesia','62'),(95,'Inglaterra','44'),(96,'Irak','964'),(97,'IrÃ¡n','98'),(98,'Irlanda','353'),(99,'Irlanda del Norte','44'),(100,'Isla AscensiÃ³n','247'),(101,'Isla Norfolk','6723'),(102,'Islandia','354'),(103,'Islas CaimÃ¡n','1'),(104,'Islas Cook','682'),(105,'Islas Feroe','298'),(106,'Islas Malvinas','500'),(107,'Islas Marianas del Norte','1'),(108,'Islas Marshall','692'),(109,'Islas SalomÃ³n','677'),(110,'Islas Turcas y Caicos','1'),(111,'Islas VÃ­rgenes BritÃ¡nicas','1'),(112,'Islas VÃ­rgenes de los Estados Unidos','1'),(113,'Israel','972'),(114,'Italia','39'),(115,'Jamaica','1'),(116,'JapÃ³n','81'),(117,'Jordania','962'),(118,'KazajistÃ¡n','7'),(119,'Kenia','254'),(120,'KirguistÃ¡n','996'),(121,'Kiribati','686'),(122,'Kuwait','965'),(123,'Laos','856'),(124,'Lesoto','266'),(125,'Letonia','371'),(126,'LÃ­bano','961'),(127,'Liberia','231'),(128,'Libia','218'),(129,'Liechtenstein','423'),(130,'Lituania','370'),(131,'Luxemburgo','352'),(132,'Macao','853'),(133,'Macedonia','389'),(134,'Madagascar','261'),(135,'Malasia','60'),(136,'Malaui','265'),(137,'Maldivas','960'),(138,'MalÃ­','223'),(139,'Malta','356'),(140,'Marruecos','212'),(141,'Martinica','596'),(142,'Mauricio','230'),(143,'Mauritania','222'),(144,'Mayotte','262'),(145,'MÃ©xico','52'),(146,'Micronesia','691'),(147,'Moldavia','373'),(148,'MÃ³naco','377'),(149,'Mongolia','976'),(150,'Montenegro','382'),(151,'Montserrat','1'),(152,'Mozambique','258'),(153,'Myanmar','95'),(154,'Namibia','264'),(155,'Nauru','674'),(156,'Nepal','977'),(157,'Nicaragua','505'),(158,'NÃ­ger','227'),(159,'Nigeria','234'),(160,'Niue','683'),(161,'Noruega','47'),(162,'Nueva Caledonia','687'),(163,'Nueva Zelanda','64'),(164,'OmÃ¡n','968'),(165,'PakistÃ¡n','92'),(166,'Palaos','680'),(167,'Palestina','970'),(168,'PanamÃ¡','507'),(169,'PapÃºa Nueva Guinea','675'),(170,'Paraguay','595'),(171,'PerÃº','51'),(172,'Polinesia Francesa','689'),(173,'Polonia','48'),(174,'Portugal','351'),(175,'Principado de Andorra','376'),(176,'Puerto Rico','1'),(177,'Reino de BahrÃ©in','973'),(178,'Rep. Dominicana','1'),(179,'RepÃºblica Centroafricana','236'),(180,'RepÃºblica DemocrÃ¡tica del Congo','243'),(181,'ReuniÃ³n','262'),(182,'Ruanda','250'),(183,'RumanÃ­a','40'),(184,'SÃ¡hara Occidental','212'),(185,'Samoa','685'),(186,'Samoa Americana','1'),(187,'San BartolomÃ©','590'),(188,'San CristÃ³bal y Nieves','1'),(189,'San Marino','378'),(190,'San MartÃ­n','590'),(191,'San Pedro y MiquelÃ³n','508'),(192,'San Vicente y las Granadinas','1'),(193,'Santa Elena','290'),(194,'Santa LucÃ­a','1'),(195,'Santo TomÃ© y PrÃ­ncipe','239'),(196,'SatÃ©lite Inmarsat','870'),(197,'SatÃ©lite Iridium','8816'),(198,'SatÃ©lite Thuraya','882 16'),(199,'Senegal','221'),(200,'Serbia','381'),(201,'Seychelles','248'),(202,'Sierra Leona','232'),(203,'Singapur','65'),(204,'Sint Maarten','1'),(205,'Siria','963'),(206,'Somalia','252'),(207,'Sri Lanka','94'),(208,'Suazilandia','268'),(209,'SudÃ¡frica','27'),(210,'SudÃ¡n','249'),(211,'SudÃ¡n del Sur','211'),(212,'Suecia','46'),(213,'Suiza','41'),(214,'Surinam','597'),(215,'Tailandia','66'),(216,'TaiwÃ¡n','886'),(217,'Tanzania','255'),(218,'TayikistÃ¡n','992'),(219,'Timor Oriental','670'),(220,'Togo','228'),(221,'Tokelau','690'),(222,'Tonga','676'),(223,'Trinidad y Tobago','1'),(224,'TÃºnez','216'),(225,'TurkmenistÃ¡n','993'),(226,'TurquÃ­a','90'),(227,'Tuvalu','688'),(228,'Ucrania','380'),(229,'Uganda','256'),(230,'Uruguay','598'),(231,'USA','1'),(232,'UzbekistÃ¡n','998'),(233,'Vanuatu','678'),(234,'Vaticano','39'),(235,'Venezuela','58'),(236,'Vietnam','84'),(237,'Wallis y Futuna','681'),(238,'Yemen','967'),(239,'Yibuti','253'),(240,'Zambia','260'),(241,'Zimbabue','263');
 /*!40000 ALTER TABLE `indicativos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +177,7 @@ CREATE TABLE `materiaprima` (
   `unidadDeMedida` varchar(45) NOT NULL,
   `precioBase` int(11) NOT NULL,
   PRIMARY KEY (`idMateriaPrima`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,7 +269,7 @@ CREATE TABLE `novedades` (
   KEY `categoria` (`categoria`),
   CONSTRAINT `fk_Usuarios_has_Proyectos_Proyectos1` FOREIGN KEY (`proyectos_idProyecto`) REFERENCES `proyectos` (`idProyecto`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_Usuarios_has_Proyectos_Usuarios1` FOREIGN KEY (`usuarios_idUsuario`) REFERENCES `personas` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -360,7 +360,7 @@ CREATE TABLE `personas` (
   KEY `identificacion` (`identificacion`),
   KEY `fk_personas_areas1_idx1` (`areas_idAreas`),
   CONSTRAINT `fk_personas_areas1` FOREIGN KEY (`areas_idAreas`) REFERENCES `areas` (`idAreas`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,7 +369,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (1,1012377025,'Camilo','Arias González','Cll 93 No 11-08',3015782659,'1991-05-20','carias520@misena.edu.co','Inactivo','camilo.jpg',1),(2,378327683,'Pedro','Gonzalez','Calle 98a 12-87',77863448,NULL,'carias520@misena.edu.co','Activo','perfil.png',6);
+INSERT INTO `personas` VALUES (1,1012377025,'Camilo','Arias González','Cll 93 No 11-08',3015782659,'1991-05-20','carias520@misena.edu.co','Inactivo','camilo.jpg',1);
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -414,7 +414,7 @@ CREATE TABLE `procesos` (
   `tipoProceso` varchar(45) NOT NULL,
   `precioProceso` int(11) DEFAULT NULL,
   PRIMARY KEY (`idProceso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -509,7 +509,6 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (10,'Prueba1','','Carga1','Inactivo',5),(11,'Prueba2','','Carga2','Inactivo',6),(12,'Prueba3','','Carga3','Inactivo',7),(13,'Prueba4','','Carga4','Inactivo',8),(14,'Prueba5','','Carga5','Inactivo',9);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -540,7 +539,6 @@ CREATE TABLE `proyectos` (
 
 LOCK TABLES `proyectos` WRITE;
 /*!40000 ALTER TABLE `proyectos` DISABLE KEYS */;
-INSERT INTO `proyectos` VALUES (1,'dsadassad','2016-11-12','0000-00-00','Sin Producción',0,'FDSFS');
 /*!40000 ALTER TABLE `proyectos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -591,7 +589,6 @@ CREATE TABLE `usuarioporproyecto` (
 
 LOCK TABLES `usuarioporproyecto` WRITE;
 /*!40000 ALTER TABLE `usuarioporproyecto` DISABLE KEYS */;
-INSERT INTO `usuarioporproyecto` VALUES (1,1),(2,1);
 /*!40000 ALTER TABLE `usuarioporproyecto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1054,4 +1051,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-06 21:30:29
+-- Dump completed on 2016-02-07 17:47:56

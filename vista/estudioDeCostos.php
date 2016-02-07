@@ -177,7 +177,7 @@ $session->Session($pagActual);
                         <textarea class="input" name="observaciones" style="width: 618px; height: 114px; maxlength:'180';border:1px solid #f0f0f0"  id="observa"></textarea>
                         <button type="submit" name="crearCosto" id="crearCosto">Guardar Costos</button>
                         <hr>
-                        <div class="modelo"><p class="obligatoriosD"><font style="font-weight:bold">Nota:</font> La fecha final esta determinada en días hábiles laborales de 8 horas diarias.</p></div>
+                        <div class="modelo"><p class="obligatoriosD"><font style="font-weight:bold">Nota:</font><br>La fecha final esta determinada en días hábiles laborales de 8 horas diarias.</p></div>
                     </div>   
                 </form>
                 </div>                

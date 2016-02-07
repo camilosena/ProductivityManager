@@ -1440,6 +1440,29 @@ table.tableProductos {
         background: #f0f0f0;
     }
 
+#fichaTecnica th{
+    text-align: center;
+    font-weight: bold;
+    background-color: #83AF44;
+    color: #fff; 
+    border: 1px solid #000;  
+}
+#fichaTecnica td{    
+    font-weight: bold;    
+    padding-left: 5px;
+    font-size: 14px;
+    font-family:  sans-serif;
+    border: 1px solid #83AF44;
+}
+
+#fichaTecnica tr:hover{
+        background: #f0f0f0;
+    }
+
+#fichaTecnica{
+    font-family: sans-serif;  
+    width: 350px;
+}
 #sectorGerente{
     display: none;    
 }

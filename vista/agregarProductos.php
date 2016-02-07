@@ -266,7 +266,7 @@ $session->Session($pagActual);
                     <input class="input" name="Imagen" type="file"  id="imagen"  style="display:inline-block" required><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">% Ganancia: </span></label>
                     <input class="input" name="ganancia"  id="txtName"  type="number" step="any" placeholder="3,453" style="display: inline-block" min="1" required=""><br>
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Descripción: </span></label>
+                    <label class="tag" for="txtName" style="position:relative;bottom:50px;"><span id="lab_valName" class="h331" style="display: inline-block">Descripción: (Material) </span></label>
                     <textarea class="input4" name="descripcion"  id="txtName"  style="display: inline-block" required></textarea><br>
                     
                     
@@ -281,21 +281,22 @@ $session->Session($pagActual);
                         <a href="#close" title="Close" class="close">X</a><br>					
                         <h2 class="h330"><?php echo $_SESSION['VisualizarProducto']['nombreProducto']; ?> :</h2><br>
                         <div >
-                            <img src="../productos/<?php echo $_SESSION['VisualizarProducto']['fotoProducto']; ?>" onLoad="nomeImagem()" style=" width: 190 px; height: 110px" >
-                            <div style="width:250px;height:180px;;float:right;margin-right:5%">
-                                <table id="muestraDatos">
+                            <div style="margin-left:10%;">
+                                <table id="fichaTecnica">
                                 <tr>
-                                    <td>Código</td>
+                                    <th>Código</th>
                                     <td>0<?php  echo $_SESSION['VisualizarProducto']['idProductos']; ?></td>
                                 </tr> <tr>
-                                    <td>Estado</td>
+                                    <th>Estado</th>
                                     <td><?php  echo $_SESSION['VisualizarProducto']['estadoProducto']; ?></td>
                                 </tr> <tr>
-                                    <td>Descripción</td>
+                                    <th>Descripción / Material</th>
                                     <td ><?php  echo $_SESSION['VisualizarProducto']['descripcionProducto']; ?></td>
-                                </tr>
-                    
+                                </tr>                    
                               </table>
+                            </div>
+                            <div style="margin-left:10%;"><br>  
+                                <img src="../productos/<?php echo $_SESSION['VisualizarProducto']['fotoProducto']; ?>" onLoad="nomeImagem()" width="350px" >
                             </div>
                         </div>
                     </div>

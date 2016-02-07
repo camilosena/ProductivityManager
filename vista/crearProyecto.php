@@ -302,7 +302,7 @@ $session->Session($pagActual);
                     <input class="input" name="fechaInicio" required type="date" maxlength="64" id="fechaInicio" class="field1">
                     <span id="valSurname" style="color:Red;visibility:hidden;"></span>                    
                     <br>    
-                    <label class="tag2" style="position:relative;bottom:50px" for="descripcion"><span id="lab_valName" class="h331">Descripción:</span></label>
+                    <label class="tag2" style="position:relative;bottom:50px;" for="descripcion"><span id="lab_valName" class="h331">Descripción:</span></label>
                     <textarea  class="input4" name="descripcion" type="text" maxlength="240" id="descripcion" class="field1" ></textarea> 
                     <span id="valName" style="color:Red;visibility:hidden;"></span>
                     <button type="submit" class="inline" name="crearProyecto" class="boton-verde">Crear Proyecto</button><hr>

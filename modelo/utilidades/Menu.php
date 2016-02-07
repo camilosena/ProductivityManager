@@ -61,13 +61,6 @@ class Menu {
                           <?php }?>
                           </ul>
                           <?php }?>
-                          <?php  if ($general['nombreRuta'] == 'Auditorias') { ?>
-                            <ul class="cbp-tm-submenu">
-                            <?php  foreach ($audita as $pagina) { ?>
-                            <li><a href="<?php echo $pagina['URL'] ?>" class="cbp-tm-icon-article"><?php echo $pagina['nombreRuta']?></a></li>
-                          <?php }?>
-                          </ul>
-                          <?php }?>
                           <?php  if ($general['nombreRuta'] == 'Clientes') { ?>
                             <ul class="cbp-tm-submenu">
                             <?php  foreach ($clientes as $pagina) { ?>

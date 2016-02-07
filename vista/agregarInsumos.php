@@ -120,14 +120,13 @@ $session->Session($pagActual);
             </nav>
             <div id="panelIzq">
                 <br>                   
-                    <table id="muestraDatos" style="margin-left:20%;">
-                        <thead>
-                        <th hidden></th>
-                        <th>Materia Prima</th>
+                    <table id="muestraDatos" class="tableMateria" style="margin-left:10%;margin-top:50px" >
+                        <tr>
+                       <th>Materia Prima</th>
                         <th>Unidad de medida</th>
                         <th>Valor unitario</th>
                         <th>Acciones</th>
-                        </thead>
+                    </tr>
                         <?php
                         require_once '../facades/FacadeInsumos.php';
                         require_once '../modelo/dao/InsumosDAO.php';
@@ -156,28 +155,36 @@ $session->Session($pagActual);
                 ?>
         </div>  
          <div id="panelDer">
-          <br><h2 class="h330">Agregar Materia Prima:</h2><hr>
-          <form method="post" action="../controlador/ControladorInsumos.php" enctype="multipart/form-data">
-                    <label>Cargar archivo:</label>
-                    <input type="file" name="archivo">
-                    <input name="subir" type="submit" value="Subir Archivo">
-            </form><hr>
+         <div style="text-align:right;font-weight:bold;padding-right:10px">
+                <form method="post" action="../controlador/ControladorInsumos.php" enctype="multipart/form-data">
+                    <label  class="obligatoriosD">Cargue un archivo con Materias Primas : </label>
+                    <a id="loadArchivo" href="javascript:function()"><img src="../img/subirDatos.png" alt=""></a>
+                    <input type="hidden" name="Change" value="1">  
+          <input type="file" id="ArchivoMaterias" class="file" name="archivo" onchange="submit();" style="display:none">                 
+            </form></div><hr>
+             <script type="text/javascript">
+            //bind click
+            $('#loadArchivo').click(function(event) {
+              $('#ArchivoMaterias').click();
+            });
+        </script> 
+          <h2 class="h330">Agregar Materia Prima:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                      
                 <br>  
                   
             <form class="formRegistro" method="Get" action="../controlador/ControladorInsumos.php"> 
                         
-                    <label class="tag" id="IdRol" for="IdInsumo"><span id="NameRol" class="h331" style="display: inline-block">Número de Insumo: </span></label>
+                    <label class="tag" id="IdRol" for="IdInsumo"><span id="NameRol" class="h331" style="display: inline-block">Código Materia Prima: </span></label>
                     <input name="numero" class="input" style="text-align:center" type="text" id="IdArea" required readonly value="<?php echo $consecutivo?>" style="display: inline-block"><br> 
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block" >Nuevo Insumo: </span></label>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block" >Materia Prima: </span></label>
                     <input name="NombreInsumo" class="input" type="text" id="txtName"  placeholder="Madera"   style="display: inline-block" required><br>
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Unidad de medida: </span></label>
-                    <input name="unidad" class="input" type="text" id="txtName"  placeholder="m3"   style="display: inline-block" required ><br>
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Precio base: $ </span></label>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Unidad de Medida: </span></label>
+                    <input name="unidad" class="input" type="text" id="txtName"  placeholder="Metros"   style="display: inline-block" required ><br>
+                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Precio Base: $ </span></label>
                     <input name="precio" class="input" type="number" id="txtName"  placeholder="10000"   style="display: inline-block" required min="1"><br>
                     
-                    <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde">Agregar Insumos</button>
+                    <button type="submit" value="Enviar" name="AgregarInsumo" id="Areas" class="boton-verde">Agregar Materia Prima</button>
                     
                     </form><hr>
             </div>
@@ -188,7 +195,7 @@ $session->Session($pagActual);
                         <div id="panelModificaPass">
                                     <form class="formRegistro" method="post" action="../controlador/ControladorInsumos.php"> 
                                      <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Código Materia Prima: </span></label>
-                                     <input name="idMateriaPrima" size="10" value ="<?php echo $_SESSION['consultarMaterias']['idMateriaPrima']; ?>" readonly style="display: inline-block"><br>
+                                     <input name="idMateriaPrima" size="10" value ="<?php echo '0'.$_SESSION['consultarMaterias']['idMateriaPrima']; ?>" readonly style="display: inline-block"><br>
                                     <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Materia Prima: </span></label>
                                     <input name="descripcionMateria" size="10" value ="<?php echo $_SESSION['consultarMaterias']['descripcionMateria']; ?>"  style="display: inline-block"><br>                    
                                     <label class="tag" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Medida: </span></label>

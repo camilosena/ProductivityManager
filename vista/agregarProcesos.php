@@ -200,7 +200,7 @@ $session->Session($pagActual);
                         }
                         ?>
                    </select><?php }?>
-                    <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Número de Proceso: </span></label>
+                    <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Código Proceso: </span></label>
                     <input class="input" name="IdProceso" type="text" id="IdArea" required readonly style="text-align: center" value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>
                     <input  class="input" name="NombreProceso" type="text" id="txtName"  placeholder="Ensamble"   style="display: inline-block" required><br>
@@ -226,7 +226,7 @@ $session->Session($pagActual);
                         <div id="panelModificaPass">
                             
                                     <form class="formRegistro" method="post" action="../controlador/ControladorProcesos.php"> 
-                                     <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Proceso Número: </span></label>
+                                     <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Código Proceso: </span></label>
                                      <input name="IdProceso" size="10" value ="<?php echo $_SESSION['consultarProcesos']['idProceso']; ?>" readonly style="display: inline-block"><br>
                                     <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Proceso: </span></label>
                                     <input name="NombreProceso" size="10" value ="<?php echo $_SESSION['consultarProcesos']['tipoProceso']; ?>" readonly style="display: inline-block"><br>

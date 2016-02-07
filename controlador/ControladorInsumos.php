@@ -25,7 +25,7 @@ else
    header("location: ../vista/agregarInsumos.php?&#ModalMateriaPrima");
     
 }else
-if (isset ($_POST['subir'])) {
+if (isset ($_POST['Change'])) {
      $table = 'materiaprima';
         $file = realpath($_FILES['archivo']['tmp_name']);
         $file = str_replace('\\', '/', $file);

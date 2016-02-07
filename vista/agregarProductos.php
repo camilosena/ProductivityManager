@@ -194,11 +194,11 @@ $session->Session($pagActual);
                         </div>
                     <?php 
                   }else{   ?>              
-                     <table id="muestraDatos" class="tableProducts" style="margin-top:50px">
+                     <table id="muestraDatos" class="tableProducts" style="margin-top:10px">
                 
                     <tr>
-                       <th >Código</th>
-                      <th>Producto</th>
+                       <th >Producto</th>
+                      <th>Ganancia</th>
                      <th >Estado</th>
                        <th  >Acciones</th>
                     </tr>
@@ -208,8 +208,8 @@ $session->Session($pagActual);
                             ?> 
                         
                             <tr>
-                                <td style="width:90px">0<?php echo $unit['idProductos']; ?></td>
-                                <td style="width:150px"> <?php echo $unit['nombreProducto']; ?></td>
+                                <td style="width:90px">0<?php echo $unit['nombreProducto']; ?></td>
+                                <td style="width:150px"> <?php echo $unit['ganancia']; ?> %</td>
                                 <td style="width:80px"> <?php echo $unit['estadoProducto']; ?></td>
                                 <td style="text-align:left"> <a name="visualizarProducto" title="Ver Producto" class="me"  href="../controlador/ControladorProductos.php?idVisualizar=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/ojo.png"></a>
                                 <a name="InsumosProducto" title="Asociar Materia Prima del Producto" class="me"  href="../controlador/ControladorProductos.php?$idIParaInsumos=<?php echo $unit['idProductos']; ?>" onclick=" return confirmacion()" ><img class="iconos" src="../img/insumoProducto.png"></a>
@@ -258,14 +258,14 @@ $session->Session($pagActual);
                
                     
                 <br>  
-                    <label class="tag" id="IdRol" for="IdProducto"><span id="NameRol" class="h331" style="display: inline-block">Producto Número: </span></label>
+                    <label class="tag" id="IdRol" for="IdProducto"><span id="NameRol" class="h331" style="display: inline-block">Código Producto: </span></label>
                     <input class="input" style="text-align: center" name="IdProducto" type="text" id="IdArea" required readonly value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Producto: </span></label>
-                    <input class="input" name="Producto" type="text" id="txtName"  placeholder="Silla"   style="display: inline-block" required><br>
+                    <input class="input" name="Producto" type="text" id="txtName"  placeholder="Silla Gerencial"   style="display: inline-block" required autofocus><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Imagen: </span></label>
                     <input class="input" name="Imagen" type="file"  id="imagen"  style="display:inline-block" required><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">% Ganancia: </span></label>
-                    <input class="input" name="ganancia"  id="txtName"  type="number" style="display: inline-block" min="1" required=""><br>
+                    <input class="input" name="ganancia"  id="txtName"  type="number" step="any" placeholder="3,453" style="display: inline-block" min="1" required=""><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Descripción: </span></label>
                     <textarea class="input4" name="descripcion"  id="txtName"  style="display: inline-block" required></textarea><br>
                     

@@ -370,7 +370,7 @@ $correoFin->enviarCorreoFinProyecto();
                     </tbody>
                 </table>
             </form>            
-            <button class="boton-verde"  onclick="location.href = 'listarProyectos.php'" >Actualizar Lista</button>            
+            <button class="boton-verde"  onclick="location.href = 'listarProyectos.php'" >Refrescar Lista</button>            
         </div>   
         <script language=javascript>
             function informacionProyecto(URL) {

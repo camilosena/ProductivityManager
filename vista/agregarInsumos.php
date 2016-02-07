@@ -189,7 +189,7 @@ $session->Session($pagActual);
                     </form><br>
                     <hr>
             </div>
-                        <div id="ModalMateriaPrima" class="modalDialog" title="ModalProcesos">
+            <div id="ModalMateriaPrima" class="modalDialog" title="ModalProcesos">
                     <div>
                         <a href="#close" title="Close" class="close">X</a><br>                  
                         <h2 class="h330">Modificar Materia Prima:</h2><br>
@@ -206,22 +206,8 @@ $session->Session($pagActual);
                                  <button type="submit" class="boton-verde" value="Modificar" name="modificarMateria">Modificar Materia Prima</button>
                             </form>       
                         </div>
-
-                        <?php
-                        if (isset($_GET['mensaje'])) {
-                            ?>
-                            <div class="row"><br><br>
-                                <div class="col-md-6"></div>
-                                <div class="col-md-1 text-center"><h4><?php echo $mensaje = $_GET['mensaje'] ?></h4></div>
-                                <div class="col-md-5"></div>
-                            </div>
-                            <?php
-                        }
-                        ?>
-
-
                     </div>
-        </div> 
+            </div> 
         </div>    
         <footer class="footer-distributed">
             <div class="footer-left">

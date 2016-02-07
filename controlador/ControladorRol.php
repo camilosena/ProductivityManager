@@ -122,10 +122,18 @@ if (isset($_GET['ModificarArea'])) {
     header("location: ../vista/asignarAreas.php?id=" . $_GET['selectId'] .'&mensaje='. $mensaje);
 }
 else
-if (isset($_GET['idEliminar'])) {
-    $facadeArea= new FacadeAreas();
-    $idArea = $_GET['idEliminar'];
-    $mensaje = $facadeArea->eliminarArea($idArea);
-
-    header("location: ../vista/agregarAreas.php?id=" . $_GET['selectId'] . $mensaje);
+  if (isset ($_GET['idEditarArea'])) {
+   $facadeArea= new FacadeAreas();
+    $_SESSION['consultarAreas']= $facadeArea->consultarArea($_GET['idEditarArea']);
+header("location: ../vista/agregarAreas.php?&#ModalAreas");
+    
+}else
+  if (isset ($_POST['modificarNombreArea'])) {
+   $facadeArea= new FacadeAreas();
+   $dtoAreas = new AreasDTO();
+   $dtoAreas->setIdArea($_POST['idArea']);
+    $dtoAreas->setNombreArea($_POST['nombreArea']);
+    $mensaje = $facadeArea->actualizarArea($dtoAreas);
+header("location: ../vista/agregarAreas.php?mensaje=".$mensaje);
+    
 }

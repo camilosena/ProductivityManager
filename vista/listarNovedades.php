@@ -253,7 +253,7 @@ $session->Session($pagActual);
                     </form>                         
                 </div>                    
             </div>
-            <button class="boton-verde"  onclick="location.href='listarNovedades.php'" >Actualizar Lista</button>
+            <button class="boton-verde"  onclick="location.href='listarNovedades.php'" >Refrescar Lista</button>
             </div>
     
  <footer class="footer-distributed">

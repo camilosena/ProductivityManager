@@ -81,10 +81,10 @@ $session->Session($pagActual);
             </div>
         </header>        
         <div class="wrapper">
-          <?php if (isset($_GET['errorPermiso'])) { ?>
+          <?php if (isset($_GET['mensaje'])) { ?>
             <script language="JavaScript" type="text/javascript">
                 window.onload = function () {
-                    Command: toastr["error"]("<?php echo $_GET['errorPermiso']; ?>")
+                    Command: toastr["success"]("<?php echo $_GET['mensaje']; ?>")
 
                     toastr.options = {
                         "closeButton": false,
@@ -144,13 +144,10 @@ $session->Session($pagActual);
                             ?> 
                         
                             <tr>
-                                <td>0<?php echo $unit['idAreas']; ?></td>
+                                <td style="text-align:center;">0<?php echo $unit['idAreas']; ?></td>
                                 <td> <?php echo $unit['nombreArea']; ?></td>
-                                 <td><a style="color:black">Modificar</a></td>
-                                        
-
-                            </tr>
-                        
+                                 <td><a name="editarMateriaPrima" title="Editar Materia" class="me"  href="../controlador/ControladorRol.php?idEditarArea=<?php echo $unit['idAreas']; ?>"><img class="iconos" src="../img/editar.png"></a></td>
+                            </tr>                        
                             <?php
                         }
                     }
@@ -174,6 +171,21 @@ $session->Session($pagActual);
                  </div>    
                 </form><hr>
             </div>
+              <div id="ModalAreas" class="modalDialog" title="ModalProcesos">
+                    <div>
+                        <a href="#close" title="Close" class="close">X</a><br>                  
+                        <h2 class="h330">Modificar Área:</h2><br>
+                        <div id="panelModificaPass">
+                                    <form class="formRegistro" method="post" action="../controlador/ControladorRol.php"> 
+                                     <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Código Área: </span></label>
+                                     <input name="idArea" size="10" value ="<?php echo '0'.$_SESSION['consultarAreas']['idAreas']; ?>" readonly style="display: inline-block;text-align:center"><br>
+                                    <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Nombre de Área: </span></label>
+                                    <input name="nombreArea" size="10" value ="<?php echo $_SESSION['consultarAreas']['nombreArea']; ?>"  style="display: inline-block"><br>                    
+                                 <button type="submit" class="boton-verde" value="modificarArea" name="modificarNombreArea">Modificar Área</button>
+                            </form>       
+                        </div>
+                    </div>
+            </div> 
         </div>    
         <footer class="footer-distributed">
             <div class="footer-left">

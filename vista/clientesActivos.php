@@ -135,7 +135,7 @@ $session->Session($pagActual);
             </span>         
         </nav>
     <br><br>
-    <h2 class="h330">Clientes con Proyectos Activos:</h2>
+    <h2 class="h330">Clientes Activos:</h2>
      <?php
         if (isset($_GET['mensaje'])) {
             echo '<script> 
@@ -309,8 +309,7 @@ $session->Session($pagActual);
                                echo '<a title="Desactivar Cliente" class="me"  href="../controlador/ControladorClientes.php?idDesactivarCliente='.$user['idUsuario'].'" onclick=" return confirmacion()"><img class="iconos" src="../img/desactivarUsuario.png"></a></td>                   '; 
                             } 
                                 ?>
-                            <a class="me" title="Asociar a proyecto" href="asociarProyecto.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/Work.png"></a>
-                    </tr>                         
+                      </tr>                         
                     <?php
                   }                  
                 }               
@@ -321,7 +320,7 @@ $session->Session($pagActual);
             <div id="verUsuario" class="modalDialog" title="Ver Usuario">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
                     <?php
-                    echo '<table id="muestraDatos"><tr><th colspan="2"><img src="../fotos/'.$_SESSION['dtoUsuario']['foto'].'" class="fotoUsuario"><br>Datos de Cliente</th></tr>';
+                    echo '<table id="muestraDatos" style="width:390px"><tr><th colspan="2"><img src="../fotos/'.$_SESSION['dtoUsuario']['foto'].'" class="fotoUsuario"><br>Datos de Cliente</th></tr>';
                     echo '<tr><td>Código:</td><td>' . $_SESSION['dtoUsuario']['idUsuario'] . '</td></tr>';
                     echo '<tr><td>Empresa:</td><td>' . $_SESSION['dtoCliente']['nombreCompania'] . '</td></tr>';
                     echo '<tr><td>NIT:</td><td>' . $_SESSION['dtoCliente']['nit'] . '</td></tr>';
@@ -336,13 +335,13 @@ $session->Session($pagActual);
                     echo '<tr><td>Teléfono:</td><td>' . $_SESSION['dtoUsuario']['telefono'] . '</td></tr>';
                     echo '<tr><td>Correo Electronico:</td><td>' . $_SESSION['dtoUsuario']['email'] . '</td></tr>';
                     echo '<tr><td>Estado:</td><td>' . $_SESSION['dtoUsuario']['estado'] . '</td></tr>';
-                    echo '<tr><td colspan="2" style="border:none"><button class="boton-verde">';
-                    echo '<a style="text-decoration:none;padding:10px 20px 10px 20px;" href="crearProyecto.php?codCliente='.$_SESSION['dtoUsuario']['idUsuario'].'&empresa='.$_SESSION['dtoCliente']['nombreCompania'].'">Crear Nuevo Proyecto</a></button></td></tr>';
+                    echo '<tr><td colspan="2" style="border:none">';
+                    echo '<a style="text-decoration:none;padding:10px 20px 10px 20px;" href="crearProyecto.php?codCliente='.$_SESSION['dtoUsuario']['idUsuario'].'&empresa='.$_SESSION['dtoCliente']['nombreCompania'].'"><button class="boton-verde">Crear Nuevo Proyecto</button></a></td></tr>';
                     echo '</table>';
                     ?>                                
                 </div>                    
             </div>
-    <button class="boton-verde"  onclick="location.href='clientesActivos.php'" >Actualizar Lista</button>    
+    <button class="boton-verde"  onclick="location.href='clientesActivos.php'" >Refrescar Lista</button>    
         </div>
 	 <footer class="footer-distributed">
             <div class="footer-left">

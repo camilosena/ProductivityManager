@@ -290,7 +290,7 @@ $session->Session($pagActual);
             <div id="verUsuario" class="modalDialog" title="Ver Usuario">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>
                     <?php
-                    echo '<table id="muestraDatos"><tr><th colspan="2"><img src="../fotos/'.$_SESSION['dtoUsuario']['foto'].'" class="fotoUsuario"><br>Datos de Cliente</th></tr>';
+                    echo '<table id="muestraDatos" style="width:390px"><tr><th colspan="2"><img src="../fotos/'.$_SESSION['dtoUsuario']['foto'].'" class="fotoUsuario"><br>Datos de Cliente</th></tr>';
                     echo '<tr><td>Código:</td><td>' . $_SESSION['dtoUsuario']['idUsuario'] . '</td></tr>';
                     echo '<tr><td>Empresa:</td><td>' . $_SESSION['dtoCliente']['nombreCompania'] . '</td></tr>';
                     echo '<tr><td>NIT:</td><td>' . $_SESSION['dtoCliente']['nit'] . '</td></tr>';

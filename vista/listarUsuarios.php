@@ -390,7 +390,7 @@ $session->Session($pagActual);
                     ?>                                
                 </div>                    
             </div>
-            <button class="boton-verde"  onclick="location.href='listarUsuarios.php'" >Actualizar Lista</button>            
+            <button class="boton-verde"  onclick="location.href='listarUsuarios.php'" >Refrescar Lista</button>            
         </div>
         <?php
                     if (isset($_SESSION['datosProyectos'])) {

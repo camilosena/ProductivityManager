@@ -25,7 +25,7 @@ class AreasDAO {
         
        try {
            
-            $query = $cnn->prepare('Call consecutivoAreas');
+            $query = $cnn->prepare('select max(idAreas) from areas');
           
             $query->execute();
             $ultimo= $query->fetchColumn();
@@ -92,9 +92,36 @@ class AreasDAO {
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }
-        $cnn = null;
-        
+        $cnn = null;        
     }
 
-    
+      function consultarArea($idArea,PDO $cnn){        
+        try {
+            $sql = 'SELECT * from areas where idAreas=?';
+            $query = $cnn->prepare($sql);
+            $query->bindParam(1, $idArea);
+            $query->execute();
+            return $query->fetch();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
+
+        function actualizarArea(AreasDTO $aDTO, PDO $cnn){
+        
+          $mensaje = "";
+        try {
+            $query = $cnn->prepare("update areas set nombreArea=? where idAreas=?");             
+            $query->bindParam(1, $aDTO->getNombreArea());
+            $query->bindParam(2, $aDTO->getIdArea());
+            $query->execute();
+            $mensaje = "Área Actualizada";
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+        }
+        $cnn = null;
+        return $mensaje;
+        
+    }
 }    

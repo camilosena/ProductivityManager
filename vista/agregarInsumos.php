@@ -28,6 +28,7 @@ $session->Session($pagActual);
         <script src="../js/toastr.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
+     <link rel="stylesheet" href="../css/cargaPaginas.css">
     </head>
     <body>
      <div id='cssmenu'>
@@ -119,7 +120,53 @@ $session->Session($pagActual);
                 </span>         
             </nav>
             <div id="panelIzq">
-                <br>                   
+                <br>   
+                <?php       
+                 require_once '../facades/FacadeInsumos.php';
+                        require_once '../modelo/dao/InsumosDAO.php';
+                        $facadeInsumos = new FacadeInsumos();
+                        $all = $facadeInsumos->listarInsumos();  
+                 if ($all==Array()) {
+                      echo "<br><br><br><h2 class='h330'>No Existe Materia Prima</h2>";
+                    ?> 
+                        <div class="container">
+                          <div class="gearbox">
+                          <div class="overlay"></div>
+                            <div class="gear one">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear two">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear three">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear four large">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    <?php 
+                  }else{   ?>                      
                     <table id="muestraDatos" class="tableMateria" style="margin-left:10%;margin-top:50px" >
                         <tr>
                        <th>Materia Prima</th>
@@ -128,10 +175,6 @@ $session->Session($pagActual);
                         <th>Acciones</th>
                     </tr>
                         <?php
-                        require_once '../facades/FacadeInsumos.php';
-                        require_once '../modelo/dao/InsumosDAO.php';
-                        $facadeInsumos = new FacadeInsumos();
-                        $all = $facadeInsumos->listarInsumos();
                         foreach ($all as $unit) {
                             ?>     
                             <tr>
@@ -148,6 +191,7 @@ $session->Session($pagActual);
                     </table>
                     
                     <?php
+                }
                          require_once '../facades/FacadeInsumos.php';
                         require_once '../modelo/dao/InsumosDAO.php';
                         $facadeInsumos = new FacadeInsumos();

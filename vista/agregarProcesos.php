@@ -28,6 +28,7 @@ $session->Session($pagActual);
         <script src="../js/toastr.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
+    <link rel="stylesheet" href="../css/cargaPaginas.css">
     </head>
     <body>
     <div id='cssmenu'>
@@ -125,19 +126,57 @@ $session->Session($pagActual);
                 require_once '../modelo/dao/UsuarioDAO.php';
                 $facadeUsuarios = new FacadeUsuarios();
                 $all = $facadeUsuarios->listarAreas();
-                    ?>                 
-                     <table id="muestraDatos" class="tableProcess" style="margin-top:40px">
-                        <?php
-                        require_once '../facades/FacadeProcesos.php';
+                require_once '../facades/FacadeProcesos.php';
                         require_once '../modelo/dao/ProcesosDAO.php';
                         require_once '../facades/FacadeProductos.php';
                         require_once '../modelo/dao/ProductosDAO.php';
                         $fProductos = new FacadeProductos();
                         $facadeProcesos = new FacadeProcesos();
-                        $all = $facadeProcesos->ListarProcesos();
-                        
-                            ?> 
-                           <tr>
+                        $all2 = $facadeProcesos->ListarProcesos();
+                if ($all2==Array()) {
+                      echo "<br><br><br><h2 class='h330'>No Existen Productos</h2>";
+                    ?> 
+                        <div class="container">
+                          <div class="gearbox">
+                          <div class="overlay"></div>
+                            <div class="gear one">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear two">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear three">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                            <div class="gear four large">
+                              <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    <?php 
+                  }else{ 
+                    ?>                 
+                     <table id="muestraDatos" class="tableProcess" style="margin-top:40px">
+                        <tr>
                                <th>Proceso</th> 
                                <th>Producto</th> 
                                 <th>Empleados</th>
@@ -146,7 +185,7 @@ $session->Session($pagActual);
                                 <th>Acción</th>
                             </tr>
                         <?php
-                        foreach ($all as $unit) {
+                        foreach ($all2 as $unit) {
                         ?>
                             <tr>
                                 
@@ -164,7 +203,7 @@ $session->Session($pagActual);
                         ?>    
                     </table>
                     <?php
-                       
+                  }     
                 $consecutivo=$facadeProcesos->ConsecutivoProcesos();
                 ?>
                     

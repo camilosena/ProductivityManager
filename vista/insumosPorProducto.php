@@ -138,12 +138,13 @@ $session->Session($pagActual);
                     $idProducto= $_SESSION['Producto']['idProductos'];
                     //Obtener insumos por producto
                     $IxP= $facadeInsumos->obtenerInsumos($idProducto);
-                    
-                    
+                    if($insumos==Array ( )){
+                        echo "<h2  style='text-align:center';>No Existe Materia Prima Disponible";
+                    }else{
                     ?>
                     <input type="hidden" name="idProducto" value="<?php echo $idProducto;?>">
                     
-                    <table style="margin-left:30%" id="muestraDatos">
+                    <table style="margin-left:30%;" id="muestraDatos">
                     <thead>
                     <tr>
                        <th >Materia Prima</th>
@@ -187,13 +188,10 @@ $session->Session($pagActual);
                                     </script>
                             <?php
                         }
-                        if (isset($_GET['mensaje3'])) {
-                            echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
-                        }
                         ?>    
-                    </table>
+                    </table>                    
                     <button type="submit" value="Enviar" name="AsociarInsumos" id="crearRol" class="boton-verde" >Asociar Materia Prima</button>
-                    
+                    <?php } ?>
                     </form><hr>
                 
                 

@@ -13,7 +13,7 @@ class AreasDAO {
             $sentencia->bindParam(3, $aDTO->getIdRol());
           
             $sentencia->execute();
-            $mensaje = "Area Registrada";
+            $mensaje = "Área Registrada con Éxito";
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }
@@ -45,7 +45,7 @@ class AreasDAO {
             $sentencia2->bindParam(2, $aDTO->getIdArea());
           
                  $sentencia2->execute();
-            $mensaje = "Areas registradas con éxito";
+            $mensaje = "Áreas Registradas con Éxito";
         } catch (Exception $ex) {
             $mensaje = $ex->getMessage();
         }
@@ -87,7 +87,7 @@ class AreasDAO {
             $query = $cnn->prepare($sql);
             $query->bindParam(1, $idArea);
             $query->execute();
-            $mensaje = "Registro eliminado";
+            $mensaje = "Área Eliminada";
             return $query->fetchAll();
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();

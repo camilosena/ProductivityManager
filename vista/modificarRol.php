@@ -173,7 +173,7 @@ $session->Session($pagActual);
                 $all = $facadeCreateRol->ListarPermisos();
                 ?> 
 
-                <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
+                <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p>
                 <div id="panelModificaPass">
                     <form class="formRegistro" method="Get" action="../controlador/ControladorRol.php"> 
                         <label class="tag" id="IdRol" for="IdRol"><span id="NameRol" class="h331">Número del Rol: </span></label>
@@ -196,11 +196,7 @@ $session->Session($pagActual);
 
                         <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombre del Rol: </span></label>
                         <input name="NameRol" class="input" type="text" id="txtName"  placeholder="Administrador" readonly  value=" <?php echo $nombre ?> " style="text-align:center"> 
-
-
-                        <span id="valName" style="color:Red;visibility:hidden;"></span><br>
-                        <label class="tag" id="Permisos" for="Permisos"><span id="permisos" class="h331">Seleccione Los Permisos: </span></label>
-                        <div id="panelModificaPass">
+                         <div id="panelModificaPass">
                             <table id="muestraDatos" style="margin-left:25%">
                                 <?php
                                 foreach ($all as $unit) {
@@ -234,10 +230,11 @@ $session->Session($pagActual);
                             }
                                 
                                 ?>    
-                            </table>                    
-                            <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
+                            </table>
+                            <div id="panelModificaPass">
                             <button type="submit" value="Enviar" name="ModificarRol"  class="boton-verde" style="display: inline">Actualizar Permisos</button>
                             <button type="submit" value="Enviar" name="ModificarAreas" id="Areas" class="boton-verde" style="display: inline">Asignar Áreas</button><br>
+                            </div>
                         </div>
                     </form>                
                 </div>

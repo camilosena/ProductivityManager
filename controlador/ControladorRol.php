@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of ControladorRol
- *
- * @author Jorge M. Izquierdo N
- */
 require_once '../modelo/dao/CrearRolDAO.php';
 require_once '../modelo/dto/CrearRolDTO.php';
 require_once '../modelo/utilidades/Conexion.php';
@@ -36,7 +25,7 @@ if (isset($_GET['creaRol'])) {
     $mensaje=$facadeRol->agregarRol($dto);
     header("location: ../vista/AsignarPermisos.php?mensaje=".$mensaje);
 } else
-if (isset($_GET['crearRol'])) {
+if (isset($_GET['asignarPermiso'])) {
     $idRol = $_GET['selectId'];
 
     $dto->setIdRol($idRol);
@@ -74,7 +63,7 @@ if (isset($_GET['idElimirarRol'])) {
     $facadeRol->ModificarRol($_GET['idElimirarRol']);
     $facadeRol->EiliminarRol($_GET['idElimirarRol']);
     $mensaje = "Rol Eliminado";
-    header("location: ../vista/CrearRol.php?" . $mensaje);
+    header("location: ../vista/CrearRol.php?mensaje=" . $mensaje);
 } else
     if (isset($_GET['AgregarArea'])) {
 $idArea = $_GET['IdArea'];
@@ -91,10 +80,10 @@ $mensaje = $facadeArea->AgregarArea($dtoAreas);
 } else
     
 if (isset($_GET['Areas'])) {
-    header("location: ../vista/agregarAreas.php?" . $mensaje);
+    header("location: ../vista/agregarAreas.php?menasje=" . $mensaje);
 } else
-if (isset($_GET['Atras'])) {
-    header("location: ../vista/CrearRol.php?" . $mensaje);
+if (isset($_GET['atras'])) {
+    header("location: ../vista/ModificarRol.php?id=" .$_GET['idAct']);
 }else
 if (isset($_GET['asignarArea'])) {
     $facadeArea= new FacadeAreas();
@@ -109,7 +98,7 @@ if (isset($_GET['asignarArea'])) {
             $mensaje = $facadeArea->AsignarAreas($dtoAreas);
         }
     }
-    header("location: ../vista/asignarAreas.php?" . $mensaje . " " . $idRol);
+    header("location: ../vista/asignarAreas.php?mensaje" . $mensaje . " " . $idRol);
 }else
 if (isset($_GET['ModificarAreas'])) {
     header("location: ../vista/asignarAreas.php?id=" . $_GET['selectId'] . $mensaje);
@@ -130,7 +119,7 @@ if (isset($_GET['ModificarArea'])) {
         }
     }
 
-    header("location: ../vista/asignarAreas.php?id=" . $_GET['selectId'] . $mensaje);
+    header("location: ../vista/asignarAreas.php?id=" . $_GET['selectId'] .'&mensaje='. $mensaje);
 }
 else
 if (isset($_GET['idEliminar'])) {

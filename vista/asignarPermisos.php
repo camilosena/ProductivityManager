@@ -179,7 +179,7 @@ $session->Session($pagActual);
                                
                                 ?>    
                             </table>
-                            <button type="submit" value="Enviar" name="crearRol" id="crearRol" class="boton-verde">Asignar Permisos</button><br>
+                            <button type="submit" value="Enviar" name="asignarPermiso" id="asignarPermiso" class="boton-verde">Asignar Permisos</button><br>
 
                         </div>
                     </form>

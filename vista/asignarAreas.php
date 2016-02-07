@@ -56,10 +56,10 @@ $session->Session($pagActual);
     </div>    
         <header>                
             <div class="wrapper">
-            <?php if (isset($_GET['errorPermiso'])) { ?>
+            <?php if (isset($_GET['mensaje'])) { ?>
             <script language="JavaScript" type="text/javascript">
                 window.onload = function () {
-                    Command: toastr["error"]("<?php echo $_GET['errorPermiso']; ?>")
+                    Command: toastr["success"]("<?php echo $_GET['mensaje']; ?>")
 
                     toastr.options = {
                         "closeButton": false,
@@ -131,10 +131,10 @@ $session->Session($pagActual);
                 $facadeUsuarios = new FacadeUsuarios();
                 $all = $facadeUsuarios->listarAreas();
                 ?> 
-
+            <div id="panelModificaPass">
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
                 <form class="formRegistro" method="Get" action="../controlador/ControladorRol.php"> 
-                    <label class="tag" id="IdRol" for="IdRol"><span id="NameRol" class="h331">Número del Rol: </span></label>
+                    <label class="tag" id="IdRol" for="IdRol"><span id="NameRol" class="h331">Código Rol: </span></label>
 
                     <?php
                     require_once '../modelo/dao/CrearRolDAO.php';
@@ -142,23 +142,22 @@ $session->Session($pagActual);
                     $facadeCreateRol = new FacadeCreateRol();
                     $idRol = $facadeCreateRol->obtenerID($_GET['id']);
                     $todosR = $facadeCreateRol->ListarRoles();
+                    $new = intval($idRol);
                     ?>
-                    <select name="selectId"> 
-
-                         <?php
-                            echo '<option value="'. $idRol['idRoles'].'">'.$idRol['idRoles'].'</option>';  
-                      ?>
-                    </select><br>
-                    
+                    <input name="selectId" class="input" value="<?php echo '0'.$new; ?>" type="text" id="selectId" required style="text-align: center" readonly> 
+                  <br>  
                     <?php $nombre = $facadeCreateRol->ObtenerNombreRol($_GET['id']); ?>
 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombre del Rol: </span></label>
-                    <input name="NameRol" type="text" id="txtName"  placeholder="Pedro" readonly  value=" <?php echo $nombre ?> "> 
-
-
-                    <span id="valName" style="color:Red;visibility:hidden;"></span><br>
-                    <label class="tag" id="Permisos" for="Permisos"><span id="permisos" class="h331">Permisos: </span></label>
-                    <table>
+                    <input name="NameRol" class="input" type="text" id="txtName" style="text-align: center"  readonly  value=" <?php echo $nombre ?> "> 
+                <br>
+                <div id="panelModificaPass">
+                <table id="muestraDatos">
+                <tr>
+                    <th>Código Área</th>
+                    <th>Nombre Área</th>
+                    <th>Seleccionar</th>
+                </tr>
                         <?php
                         require_once '../facades/FacadeUsuarios.php';
                         require_once '../modelo/dao/UsuarioDAO.php';
@@ -169,12 +168,12 @@ $session->Session($pagActual);
                         $facadeArea=new FacadeAreas();
                         $APRol = $facadeArea->obtenerAreas($_GET['id']);
                         foreach ($all as $unit) {
+                            if($unit['idAreas']!=0){
                             ?>     
                             <tr>
-                                <td> <input name="idAreas" value ="<?php echo $unit['idAreas']; ?>" readonly ></td>
-                                <td> <input name="permiso" value ="<?php echo $unit['nombreArea']; ?>" disabled ></td>
-                                <td></td>
-                                <td><input type="checkbox" id="estado" name="<?php echo $unit['idAreas']; ?>" value="<?php echo $unit['idAreas']; ?>"<?php 
+                                <td> <input name="idAreas" value ="<?php echo '0'.$unit['idAreas']; ?>" style="text-align:center"  readonly ></td>
+                                <td style="text-align:center"> <?php echo $unit['nombreArea']; ?></td>
+                                <td style="text-align:center" ><input type="checkbox" id="estado" name="<?php echo $unit['idAreas']; ?>" value="<?php echo $unit['idAreas']; ?>"<?php 
                                 foreach ( $APRol as $areas){
                                         if (($unit['idAreas']==$areas["areas"])) {                           
                                             echo 'checked="checked"';
@@ -183,24 +182,21 @@ $session->Session($pagActual);
                             </tr>
 
                             <?php
-                        }
-                        if (isset($_GET['mensaje3'])) {
-                            echo "<script>alert('" . $_GET['mensaje3'] . "')</script>";
+                            }
                         }
                         ?>    
                     </table>
-                    <button type="submit" value="Enviar" name="ModificarArea" id="crearRol" class="boton-verde" style="display: inline">Asignar</button>
-                    
-                    <button type="submit" value="Enviar" name="Atras"  class="boton-verde " style="display: inline">Atras</button>
+                    </div>
+                    <div id="accesosRapidos">
+                    <div><br>
+                        <a href="../controlador/ControladorRol.php?atras=true&idAct=<?php echo $new; ?>"><img src="../img/flechaIzquierdaHover.png" alt="Atras"></a>
+                     </div>
+                    <div>
+                    <button type="submit" value="Enviar" name="ModificarArea" id="crearRol" class="boton-verde" style="display: inline">Asignar</button> 
+                    </div>
+                    </div>
                     </form><br>
-                
-                
-                <?php
-                if (isset($_GET['mensaje'])) {
-                    echo $_GET['mensaje'] . '<br>';
-                    echo 'Su nuevo Código es: ' . $_GET['consecutivo'];
-                }
-                ?>
+                     </div>
             </div>
         </div>    
         <footer class="footer-distributed">

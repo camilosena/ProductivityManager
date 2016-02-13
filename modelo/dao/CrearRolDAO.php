@@ -124,9 +124,9 @@ class CrearRolDAO {
         
     }
             
-    function ObtenerPermisosPorRol($idRol,PDO $cnn){
+    function Obtenerpermisosporrol($idRol,PDO $cnn){
         try {
-            $sql = 'Call obtenerPermisosPorRol (?)';
+            $sql = 'Call obtenerpermisosporrol (?)';
             $query = $cnn->prepare($sql);
             $query->bindParam(1, $idRol);
             $query->execute();

@@ -188,7 +188,7 @@ $session->Session($pagActual);
                         $idRol = $facadeCreateRol->obtenerID($_GET['id']);
                         $nombre = $facadeCreateRol->ObtenerNombreRol($_GET['id']);
                         $all = $facadeCreateRol->ListarPermisos();
-                        $PPRol = $facadeCreateRol->ObtenerPermisosPorRol($_GET['id']);
+                        $PPRol = $facadeCreateRol->Obtenerpermisosporrol($_GET['id']);
                         ?>
                         <input name="selectId" class="input" type="text" id="selectId" required style="text-align: center" readonly value="<?php echo $_GET['id']?>"> 
                         <span id="valCompany"  style="color:Red;visibility:hidden;"></span><br>

@@ -154,7 +154,7 @@ $session->Session($pagActual);
                 ?> 
 
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="Get" action="../controlador/ControladorRol.php"> 
+                <form class="formRegistro" id="formArea" method="Get" action="../controlador/ControladorRol.php"> 
                  <div id="panelModificaPass">   
                
                     <table id="muestraDatos" style="margin-left:30%">
@@ -192,9 +192,12 @@ $session->Session($pagActual);
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nueva Área: </span></label>
                     <input name="NombreArea" class="input" type="text" id="txtName"  placeholder="Ensamble"  required style="display: inline-block"><br>
                     
-                    <button type="submit" value="Enviar" name="AgregarArea" id="Areas" class="boton-verde" >Agregar Áreas</button>
+                    <button type="submit" value="Enviar" name="AgregarArea" id="Areas" class="boton-verde" >Agregar Área</button>
                  </div>    
                 </form><hr>
+                <script src="../js/additional-methods.min.js" type="text/javascript"></script>
+                <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+                <script src="../js/validaciones.js"></script>  
             </div>
               <div id="ModalAreas" class="modalDialog" title="ModalProcesos">
                     <div>

@@ -21,11 +21,11 @@ class TiempoEjecucion {
              foreach ($datos as $dato){
                  $ejecucion = $dato['ejecutado'];
                  $idProyecto = $dato['idProyecto'];
-                 $nombreProyecto = ['nombreProyecto'];
+                 $nombreProyecto = $dato['nombreProyecto'];
                  $fechaInicio = $dato['fechaInicio'];
                  $fechaActual= date('Y-m-d');
                  $fechaFin = $dato['fechaFin'];
-                 $estado = "Ejecución";
+                 $estado = $dato['estadoProyecto'];
               if ($fechaInicio<$fechaActual) {
 
                  if ($ejecucion < 100){

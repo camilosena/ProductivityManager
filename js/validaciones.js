@@ -380,16 +380,19 @@ $( document ).ready(function() {
 $( document ).ready(function() {
     fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
     fuenteCierreError= '</font>';
-    $('#formRoles').submit(function(e) {
-        e.preventDefault();
-    }).validate({
-        submitHandler: function(form) {  
+     jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[a-z," "]+$/i.test(value);
+        }, "Solo letras");
+        $('#formRoles').submit(function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: function(form) {  
          if ($(form).valid())
          {
              form.submit(); 
          }
-   return false;
-},
+        return false;
+    },
 
             debug: true,
             rules: {
@@ -400,7 +403,8 @@ $( document ).ready(function() {
                     maxlength: 10
                 },
                 "NameRol": {
-                   required: true
+                   required: true,
+                   lettersonly: true
                 }
             },
 
@@ -412,7 +416,54 @@ $( document ).ready(function() {
                     maxlength: fuenteError+'Máximo 10 Caracteres'+fuenteCierreError
                 },
                 "NameRol": {
-                    required: fuenteError+'Ingrese Rol'+fuenteCierreError
+                    required: fuenteError+'Ingrese Rol'+fuenteCierreError,
+                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError
+                }
+            }
+        });
+});
+/* Validacion agregar area*/
+$( document ).ready(function() {
+    fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
+    fuenteCierreError= '</font>';
+     jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[a-z," "]+$/i.test(value);
+        }, "Solo letras");
+        $('#formArea').submit(function(e) {
+            e.preventDefault();
+        }).validate({
+            submitHandler: function(form) {  
+         if ($(form).valid())
+         {
+             form.submit(); 
+         }
+        return false;
+    },
+
+            debug: true,
+            rules: {
+                 "IdArea": { 
+                    required: true,
+                    number:true,
+                    minlength: 1,
+                    maxlength: 10
+                },
+                "NombreArea": {
+                   required: true,
+                   lettersonly: true
+                }
+            },
+
+            messages: {
+                "IdArea": { 
+                    required: fuenteError+'Ingrese Id Área'+fuenteCierreError,
+                    number: fuenteError+'Id No Valido'+fuenteCierreError,
+                    minlength: fuenteError+'Minimo 1 Caracter'+fuenteCierreError,
+                    maxlength: fuenteError+'Máximo 10 Caracteres'+fuenteCierreError
+                },
+                "NombreArea": {
+                    required: fuenteError+'Ingrese Área'+fuenteCierreError,
+                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError
                 }
             }
         });

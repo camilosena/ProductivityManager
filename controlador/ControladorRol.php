@@ -99,8 +99,7 @@ if (isset($_GET['asignarArea'])) {
     $idRol = $_GET['selectId'];
     $dtoAreas = new AreasDTO();
     $dtoAreas->setIdRol($idRol);
-
-    $cantidad = $_SESSION['cantidad'];
+    $cantidad = $facadeArea->ConsecutivoAreas();
     for ($i = 1; $i <= $cantidad; $i++) {
         if (isset($_GET[$i])) {
             $dtoAreas->setIdArea($_GET[$i]);
@@ -119,8 +118,7 @@ if (isset($_GET['ModificarArea'])) {
     $facadeArea->ModificarAreas($idRol);
     $dtoAreas = new AreasDTO();
     $dtoAreas->setIdRol($idRol);
-
-    $cantidad = $_SESSION['cantidad'];
+    $cantidad = $facadeArea->ConsecutivoAreas();
     for ($i = 1; $i <= $cantidad; $i++) {
         if (isset($_GET[$i])) {
             $dtoAreas->setIdArea($_GET[$i]);

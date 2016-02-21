@@ -48,6 +48,8 @@ class TiempoEjecucion {
         foreach ($datos2 as $dato2){
             if ($dato2['ejecutado']==100) {
                 $facadeProyectos->cambiarEstadoProyecto('Finalizado', $dato2['idProyecto']);
+            }else if ($dato2['ejecutado']>100) {
+                $facadeProyectos->ejecucionProyecto($dato2['idProyecto'], 100);
             }
         }
     }

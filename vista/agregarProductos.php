@@ -198,7 +198,7 @@ $session->Session($pagActual);
                 
                     <tr>
                        <th >Producto</th>
-                      <th>Ganancia</th>
+                      <th>% Ganancia</th>
                      <th >Estado</th>
                        <th  >Acciones</th>
                     </tr>

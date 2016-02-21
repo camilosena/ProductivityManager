@@ -8,6 +8,8 @@ $session = new Session($pagActual);
 $session->Session($pagActual);
 $correoFin = new CorreoFinProyecto();
 $correoFin->enviarCorreoFinProyecto();
+$ejecucionProyectos = new TiempoEjecucion();
+$ejecucionProyectos->ejecucionProyectos();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -302,12 +304,12 @@ $correoFin->enviarCorreoFinProyecto();
                                 $_SESSION['consultaProyecto']=$_SESSION['filtroProyectos'];
                                 foreach ($_SESSION['filtroProyectos'] as $project) {
                                     ?>
-                                    <tr><td><?php echo $project['idProyecto']; ?> </td>
-                                        <td><?php echo $project['nombreProyecto']; ?> </td>
-                                        <td> <?php echo $project['fechaInicio']; ?> </td>
-                                        <td><?php  if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
-                                        <td><?php echo $project['estadoProyecto']; ?></td>  
-                                        <td><?php echo $project['ejecutado']; ?> %</td>
+                                    <tr><td style="text-align:center">0<?php echo $project['idProyecto']; ?> </td>
+                                        <td style="text-align:center"><?php echo $project['nombreProyecto']; ?> </td>
+                                        <td style="text-align:center"> <?php echo $project['fechaInicio']; ?> </td>
+                                        <td style="text-align:center"><?php  if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
+                                        <td style="text-align:center"><?php echo $project['estadoProyecto']; ?></td>  
+                                        <td style="text-align:center"><?php echo $project['ejecutado']; ?> %</td>
                                        <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
                                             <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecucion' && $project['estadoProyecto']!='Espera') { ?>
                                                 <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
@@ -333,14 +335,13 @@ $correoFin->enviarCorreoFinProyecto();
                             $todos = $facadeProject->listadoProyectos();
                             $_SESSION['consultaProyecto']=$todos;
                             foreach ($todos as $project) {
-                                $ejecucion = $project['ejecutado'];
                                 ?>
-                                <tr><td><?php echo $project['idProyecto']; ?> </td>
-                                    <td><?php echo $project['nombreProyecto']; ?> </td>
-                                    <td> <?php echo $project['fechaInicio']; ?> </td>
-                                    <td><?php if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
-                                    <td><?php echo $project['estadoProyecto']; ?></td>  
-                                    <td><?php if ($ejecucion >100){echo $ejecucion-1;}else{echo $ejecucion;} ?> %</td>
+                                <tr><td style="text-align:center">0<?php echo $project['idProyecto']; ?> </td>
+                                    <td style="text-align:center"><?php echo $project['nombreProyecto']; ?> </td>
+                                    <td style="text-align:center"> <?php echo $project['fechaInicio']; ?> </td>
+                                    <td style="text-align:center"><?php if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
+                                    <td style="text-align:center"><?php echo $project['estadoProyecto']; ?></td>  
+                                    <td style="text-align:center"><?php echo $project['ejecutado']; ?> %</td>
                                     <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
                                             <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecución' && $project['estadoProyecto']!='Espera') { ?>
                                                 <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>

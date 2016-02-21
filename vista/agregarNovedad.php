@@ -148,7 +148,7 @@ $session->Session($pagActual);
                   <label class="tag1" for="numNovedad"><span id="lab_valSurname" class="h331">Novedad No:</span></label>
                   <input class="input" name="numNovedad" type="text" value="<?php echo $numNovedad;?>" maxlength="64" id="numNovedad" class="field1" style="text-align: center" readonly>
                         <br>
-                    <label class="tag" for="idProject"><span id="lab_valPhone" class="h331" >Seleccione Id Proyecto:</span></label>
+                    <label class="tag" for="idProject"><span id="lab_valPhone" class="h331" >Seleccione Proyecto:</span></label>
                     <select class="input" name="idProyecto" id="idProject"required class="list_menu_small" autofocus >
                         <option value="" selected> - Seleccionar Proyecto - </option>
                     <?php foreach ($proEjecucion as $enEjecucion) {

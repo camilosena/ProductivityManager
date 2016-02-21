@@ -25,6 +25,7 @@ class TiempoEjecucion {
                  $idProyecto = $dato['idProyecto'];
                  $nombreProyecto = $dato['nombreProyecto'];
                  $fechaInicio = $dato['fechaInicio'];
+                 date_default_timezone_set("America/Bogota");
                  $fechaActual= date('Y-m-d');
                  $fechaFin = $dato['fechaFin'];
                  $estado = $dato['estadoProyecto'];

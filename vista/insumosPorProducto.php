@@ -122,7 +122,7 @@ $session->Session($pagActual);
 
             <div id="panelUnico">
                 <br>
-                <br><h2 class="h330">Materia Prima a Utilizadar en <?php echo $_SESSION['Producto']['nombreProducto']?>:</h2><hr>
+                <br><h2 class="h330">Materia Prima a Utilizar en <?php echo $_SESSION['Producto']['nombreProducto']?>:</h2><hr>
                  <p style="font-weight:bold;font-size:13px">Nota:</p><p class="obligatoriosD">Selecione la Materia Prima segun requerimientos y su respectiva cantidad.</p><br>
                         <p class="obligatoriosD">Los campos "Cantidad" son obligatorios por cada Materia Seleccionada.<br></p>  <br><br>
                 <form class="formRegistro" id="insuPorProduct" method="post" action="../controlador/ControladorProductos.php"> 

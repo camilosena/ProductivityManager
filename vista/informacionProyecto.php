@@ -31,7 +31,7 @@ $session->Session($pagActual);
           <script type="text/javascript" src="../js/jspdf.plugin.standard_fonts_metrics.js"></script>
              <script type="text/javascript" src="../js/FileSaver.js"></script>
 </head>
-<body onLoad="setTimeout(window.close, 50000)">
+<body>
 <script>
      window.onunload = function(){
             window.opener.location = 'listarProyectos.php';};

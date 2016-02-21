@@ -172,6 +172,7 @@ e.preventDefault();
                 <tbody>
                <?php
                 foreach ($products as $productos) {
+                    if($productos['cantidadProductos']!=0){
                     ?>
                     <tr>
                         <td class="td1">0<?php echo $productos['idProductos']; ?></td>
@@ -182,7 +183,7 @@ e.preventDefault();
                                            title="Click En Siguiente"><img src="../img/products.png" width="20"
                                                                            height="20"></td>
                     </tr>
-                <?php }
+                <?php } }
                 ?>
                 </tbody>
             </table>

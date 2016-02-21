@@ -20,6 +20,10 @@ $session->Session($pagActual);
         <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
     </head>    
     <body>  
+    <script>
+         window.onunload = function(){
+            window.opener.location ='listarProyectos.php';};
+    </script>
          <?php
         if (isset($_GET['mensaje'])) {
             echo '<script> 

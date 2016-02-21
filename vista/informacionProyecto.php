@@ -32,6 +32,10 @@ $session->Session($pagActual);
              <script type="text/javascript" src="../js/FileSaver.js"></script>
 </head>
 <body onLoad="setTimeout(window.close, 50000)">
+<script>
+     window.onunload = function(){
+            window.opener.location = 'listarProyectos.php';};
+</script>
 <div id="todoProyecto" class="wrapper">
     <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
 <div id="editor"></div>

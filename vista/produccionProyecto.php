@@ -25,6 +25,10 @@ $session->Session($pagActual);
         <link rel="stylesheet" type="text/css" href="../css/tablaInModal.css">
     </head>    
     <body>  
+    <script>
+         window.onunload = function(){
+            window.opener.location = 'listarProyectos.php';};
+    </script>
         <?php
         if (isset($_GET['mensaje'])) {
             echo '<script> 

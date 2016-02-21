@@ -15,7 +15,7 @@
     $InsumosDTO->setId($_GET['numero']);
     $mensaje = $facadeInsumos->agregarInsumo($InsumosDTO);
      
-     header("location: ../vista/agregarInsumos.php?".$mensaje);
+     header("location: ../vista/agregarInsumos.php?mensaje=".$mensaje);
 }
 else 
     if (isset ($_GET['idEditarMateria'])) {

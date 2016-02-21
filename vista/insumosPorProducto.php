@@ -125,7 +125,7 @@ $session->Session($pagActual);
                 <br><h2 class="h330">Materia Prima a Utilizadar en <?php echo $_SESSION['Producto']['nombreProducto']?>:</h2><hr>
                  <p style="font-weight:bold;font-size:13px">Nota:</p><p class="obligatoriosD">Selecione la Materia Prima segun requerimientos y su respectiva cantidad.</p><br>
                         <p class="obligatoriosD">Los campos "Cantidad" son obligatorios por cada Materia Seleccionada.<br></p>  <br><br>
-                <form class="formRegistro" method="post" action="../controlador/ControladorProductos.php"> 
+                <form class="formRegistro" id="insuPorProduct" method="post" action="../controlador/ControladorProductos.php"> 
                     <?php
                     require_once '../modelo/dao/InsumosDAO.php';
                     require_once '../facades/FacadeInsumos.php';
@@ -172,8 +172,8 @@ $session->Session($pagActual);
                                
                             </tr>
                                  <script>
-                                        $(document).ready(function(){
-                                                $("#cant<?php echo $insumo['numero']; ?>").change(function() {
+                                 $(document).ready(function(){
+                                    $("#cant<?php echo $insumo['numero']; ?>").keyup(function() {
                                          $("#insumo<?php echo $insumo['numero'];  ?>").prop( "checked", true );
                                         });
                                             $("#insumo<?php echo $insumo['numero']; ?>").click(function() {
@@ -193,8 +193,40 @@ $session->Session($pagActual);
                     <button type="submit" value="Enviar" name="AsociarInsumos" id="crearRol" class="boton-verde" >Asociar Materia Prima</button>
                     <?php } ?>
                     </form><hr>
-                
-                
+                    <script>
+                        $("#insuPorProduct").submit(function() {
+                            var y=0;
+                            for (var i =1; i <=<?php echo $insumo['numero']; ?>; i++) {
+                                var x = $("#cant"+i).val();
+                                if(x!=''){
+                                    y++;
+                                }
+                            }
+                            if (y>0) {      
+                                return true;
+                            } else 
+                            Command: toastr["error"]("Campos Vacios")
+
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-full-width",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                        }
+                            return false;          
+                        });
+                    </script>
                 </div>
         </div>
         <footer class="footer-distributed">

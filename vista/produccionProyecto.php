@@ -86,7 +86,7 @@ $session->Session($pagActual);
             <?php if (isset($_GET['projectNum'])){?>
             <h2 class="h330"><br>Producción de Proyecto <?php echo $_GET['projectNum'] . "-" . $_GET['nameProject']; ?>:</h2><br>                
             <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-            <form class="formRegistro" method="post" action="../controlador/ControladorProyectos.php">             
+            <form class="formRegistro" id="proPorPro" method="post" action="../controlador/ControladorProyectos.php">             
                 <hr>
                 <div class="modelo">
                     <label class="tag" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Código Proyecto:</span></label>
@@ -140,12 +140,13 @@ $session->Session($pagActual);
                                         <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" type="number" maxlength="64" min="0" id="cantidadProducto<?php echo $productos['idProductos']; ?>"></td>
                                     </tr>
                                     <script>
+                                    $("#cantidadProducto<?php echo $productos['idProductos']; ?>").keyup(function() {
+                                         $("#producto<?php echo $productos['idProductos'];  ?>").prop( "checked", true );
+                                        });
+
                                         $(document).ready(function(){
 
                                             $("#producto<?php echo $productos['idProductos']; ?>").click(function() {
-                                                 $("#cantidadProducto<?php echo $productos['idProductos']; ?>").change(function() {
-                                         $("#producto<?php echo $productos['idProductos'];  ?>").prop( "checked", true );
-                                        });
                                                 if($("#producto<?php echo $productos['idProductos']; ?>").is(':checked')) {
                                                     $("#cantidadProducto<?php echo $productos['idProductos']; ?>").attr("required", true);
                                                 } else {
@@ -167,7 +168,41 @@ $session->Session($pagActual);
                                 }
                                 ?>                               
                             </tbody>
-                        </table>                           
+                        </table> 
+                        <script>
+                        $("#proPorPro").submit(function() {
+                            var y=0;
+                            for (var i =1; i <=<?php echo $productos['idProductos']; ?>; i++) {
+                                var x = $("#cantidadProducto"+i).val();
+                                if(x!=''){
+                                    y++;
+                                }
+                            }
+                            if (y>0) {      
+                                return true;
+                            } else 
+                            Command: toastr["error"]("Campos Vacios")
+
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-full-width",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                        }
+                            return false;          
+                        });
+                    </script>                          
                         <p style="text-align: right;margin-right: 5%;"><br>
                             <label class="tag2" id="labelProyecto" for="id"><span id="lab_valCountry" class="h331">Productos Seleccionados:</span></label>
                             <input id="checkcount1" name="cantidadTipo" type="text" maxlength="64" style="text-align: center" required readonly>

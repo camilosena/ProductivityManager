@@ -19,7 +19,8 @@ function enviarCorreoFinProyecto(){
         $idProyecto = $dato['idProyecto'];
         $porcentaje = $dato['ejecutado'];  
         $nombreProyecto = $dato['nombreProyecto'];
-    if ($porcentaje == 100) {
+        $estado = $dato['estadoProyecto'];
+    if ($porcentaje == 100 && $estado=='Finalizado') {
                     $correo = $facadeUsuarios->correosPorProyecto($idProyecto);
                     foreach ($correo as $correos){
                     $email = $correos['email'];
@@ -47,8 +48,7 @@ function enviarCorreoFinProyecto(){
                        $consecutivos = 0;
                     } else {        
                     //mensaje enviado
-                        $porcentaje = 101;
-                        $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
+                   $facadeProyectos->cambiarEstadoProyecto('Archivado', $idProyecto);
                }       
         }
 

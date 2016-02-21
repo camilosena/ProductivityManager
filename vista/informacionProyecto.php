@@ -195,7 +195,7 @@ e.preventDefault();
                 $costosProyecto = $facadeEstudioCostos->verificaExistenciaEstudio($proyectos['idProyecto']);
                 echo '<table id="muestraDatos"><tr><th colspan="2">Relación de Costos</th></tr>';
                 echo '<tr><td class="enunciado">Mano de Obra:</td><td>$ ' . $costosProyecto['costoManoDeObra'] . '</td></tr>';
-                echo '<tr><td class="enunciado">Materia Prima / Insumos:</td><td>$ ' . $costosProyecto['costoProduccion'] . '</td></tr>';
+                echo '<tr><td class="enunciado">Materia Prima :</td><td>$ ' . $costosProyecto['costoProduccion'] . '</td></tr>';
                 echo '<tr><td class="enunciado">Utilidad:</td><td>$ ' . $costosProyecto['utilidad'] . '</td></tr>';
                 echo '<tr><td class="enunciado">Tiempo Estimado (Horas):</td><td> ' . $costosProyecto['tiempoEstimado'] . '</td></tr>';
                 echo '<tr><td class="enunciado">Empleados Solicitados:</td><td> ' . $costosProyecto['totalTrabajadores'] . '</td></tr>';

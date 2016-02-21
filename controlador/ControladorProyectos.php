@@ -121,7 +121,7 @@ else if (isset($_GET['codUsuario'])) {
         $materias = $fMateria->obtenerInsumos($todo['Productos_idProductos']);
         //Materia Prima Por Proyecto        
         foreach ($materias as $insumo) {
-            $precioBase = $fMateria->obtenerInsumosPorID($insumo['insumos']); //Retona solo precio base
+            $precioBase = $fMateria->obtenerInsumosPorID($insumo['insumos']); //Retorna solo precio base
             $subTotal = ($insumo['cantidadMateriaPorProducto'] * $precioBase);
             $total = $subTotal * $todo['cantidadProductos'];
             $fProyecto->insertarMateriaProyecto($insumo['insumos'], $idProyecto, $total, 0);
@@ -130,8 +130,8 @@ else if (isset($_GET['codUsuario'])) {
         //Procesos por producto segun solicitud de proyecto
         foreach ($procesos as $proceso) {
             $subTotalProceso = $fProceso->obtenerProcesoPorID($proceso['procesos_idProceso']); //Retorna solo costo base
-            $totalPrecio = $subTotalProceso * $todo['cantidadProductos'];
             $totalEmp = $proceso['cantidadDeEmpleados'];
+            $totalPrecio = $subTotalProceso * $todo['cantidadProductos']*$totalEmp;
             $totalTiempo = $proceso['tiempoPorProceso'] * $todo['cantidadProductos'];
             $fProyecto->insertarProcesoProyecto($idProyecto, $proceso['procesos_idProceso'], $totalTiempo, $totalPrecio, $totalEmp, 0);
         }

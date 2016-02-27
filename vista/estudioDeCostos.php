@@ -178,13 +178,70 @@ $session->Session($pagActual);
                         <label class="tagPeso" id="labelTotal" for="total"><span id="lab_valCountry" class="h331">Costo Total Proyecto: </span></label>
                         <input class="input" name="costoProyecto" type="text" maxlength="64" value="<?php echo $costoProyecto; ?>" id="total" style="text-align: center" class="field1"  readonly required>
                         <br><label class="tag2" style="position:relative;bottom:60px" id="labelObser" for="observa"><span id="lab_valCountry" class="h331">Observaciones: </span></label>
-                        <textarea class="input" name="observaciones" style="width: 618px; height: 114px; maxlength:'180';border:1px solid #f0f0f0"  id="observa"></textarea>
+                        <textarea class="input" name="observaciones" style="width: 618px; height: 114px;border:1px solid #a0a0a0" rows="4" cols="50" maxlength="80"  id="observa"></textarea>
                         <button type="submit" name="crearCosto" id="crearCosto">Guardar Costos</button>
                         <hr>
-                        <div class="modelo"><p class="obligatoriosD"><font style="font-weight:bold">Nota:</font><br>La fecha final esta determinada en días hábiles laborales de 8 horas diarias.</p></div>
+                        <section style="widht:100%;">
+                            <div style="float:left;">
+                            <p class="obligatoriosD"><font style="font-weight:bold">Nota:</font><br>
+                            La fecha final esta determinada en días hábiles laborales de 8 horas diarias.</p>
+                            </div>
+                            <div style="float:right;">
+                            <button type="button" onclick="vDetalle()" id="verDtll">Ver Detalle</button>
+                            <button type="button" onclick="oDetalle()" id="ocDtll" style="display:none">Ocultar Detalle</button>
+                            </div>
+                            <script type="text/javascript">
+                                function vDetalle(){
+                                    document.getElementById('detallesP').style.display="block";
+                                    document.getElementById('ocDtll').style.display="block";
+                                    document.getElementById('verDtll').style.display="none";
+                                }
+                                function oDetalle(){
+                                    document.getElementById('detallesP').style.display="none";
+                                    document.getElementById('ocDtll').style.display="none";
+                                    document.getElementById('verDtll').style.display="block";
+                                }
+                            </script>
+                        </section>
                     </div>   
                 </form>
-                </div>                
+                </div> 
+    </div>
+         <section class="wrapper" id="detallesP" style="width:100%;float:left;text-align:center;background: #fff;margin-bottom:10px;margin-top:10px;display:none;">
+            <?php
+             require_once '../facades/FacadeInsumos.php';
+             require_once '../modelo/dao/InsumosDAO.php';
+            echo '<div id="infoGere" style="width:50%;float:left;">';
+                $relacionMateria = new facadeInsumos();
+                $relacionMateria = $relacionMateria->relacionMateriaPrimaProyecto($_GET['projectNum']);
+                 echo '<table id="muestraDatos" style="margin-left:20%;margin-top:30px;"><tr><th colspan="2" style="background:#fff;color:#000;border:none;">Relación de Materia Prima</th></tr>';
+                foreach ($relacionMateria as $rMateria) {
+                    echo '<tr><th colspan="2">Materia Prima Código 0'. $rMateria['idMateriaPrima'].' </th></tr>';
+                   echo '<tr><td class="enunciado">Nombre: </td><td> ' . $rMateria['descripcionMateria'] . '</td></tr>';
+                   echo '<tr><td class="enunciado">Unidad / Medida:</td><td> ' . $rMateria['unidadDeMedida'] . '</td></tr>';
+                   echo '<tr><td class="enunciado">Costo Total:</td><td> $' . $rMateria['valorTotal'] . '</td></tr>';
+                }
+                echo '</table>';
+                echo '</div>';
+            ?>
+            <?php
+                require_once '../modelo/dao/ProcesosDAO.php';
+                require_once '../facades/FacadeProcesos.php';
+             echo '<div id="infoGere" style="width:50%;float:left;">';
+                $relacionProcesos = new facadeProcesos();
+                $relacionProcesos = $relacionProcesos->relacionProcesosProyecto($_GET['projectNum']);
+                 echo '<table id="muestraDatos" style="margin-left:20%;margin-top:30px;"><tr><th colspan="2" style="background:#fff;color:#000;border:none;">Relación de Procesos</th></tr>';
+                foreach ($relacionProcesos as $rProceso) {
+                    echo '<tr><th colspan="2">Proceso Código 0'. $rProceso['idProceso'].' </th></tr>';
+                   echo '<tr><td class="enunciado">Nombre: </td><td> ' . $rProceso['tipoProceso'] . '</td></tr>';
+                   echo '<tr><td class="enunciado">Cantidad Empleados / Medida:</td><td> ' . $rProceso['totalEmpleadosProceso'] . '</td></tr>';
+                   echo '<tr><td class="enunciado">Total Horas:</td><td>' . $rProceso['totalTiempoProceso'] . '</td></tr>';
+                   echo '<tr><td class="enunciado">Costo Total:</td><td> $' . $rProceso['totalPrecioProceso'] . '</td></tr>';
+                }
+                echo '</table>';
+                echo '</div>';
+            ?> 
+    </section>          
     <?php }else{
         echo '<h2 class="h330"><br>Debe Seleccionar Un Proyecto.</h2>';
     }  ?>

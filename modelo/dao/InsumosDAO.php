@@ -124,4 +124,17 @@ class InsumosDAO {
         $cnn = null;
         return $mensaje;
     }
+
+    function relacionMateriaPrimaProyecto($idProyecto, PDO $cnn) {
+
+        try {
+            $query = $cnn->prepare("SELECT * FROM materiaprimaporproyecto, materiaprima where proyectos_idProyecto = ? and idMateriaPrima = materiaPrima_idMateriaPrima");
+            $query->bindParam(1, $idProyecto);
+                $query->execute();
+             return   $query->fetchAll();
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+        }
+        $cnn = null;
+    }
 }

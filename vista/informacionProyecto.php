@@ -190,10 +190,51 @@ e.preventDefault();
         </div>
         <div>
             <?php
-            if($proyectos['estadoProyecto']=='Ejecución' || $proyectos['estadoProyecto']=='Espera'){
+             require_once '../facades/FacadeInsumos.php';
+             require_once '../modelo/dao/InsumosDAO.php';
+            if($proyectos['estadoProyecto']=='Ejecución' || $proyectos['estadoProyecto']=='Espera' || $proyectos['estadoProyecto']=='Finalizado'){
+                echo '<div id="infoGere">';
+                $relacionMateria = new facadeInsumos();
+                $relacionMateria = $relacionMateria->relacionMateriaPrimaProyecto($proyectos['idProyecto']);
+                 echo '<table id="muestraDatos"><tr><th colspan="2" style="background:#fff;color:#000;border:none;">Relación de Materia Prima</th></tr>';
+                foreach ($relacionMateria as $rMateria) {
+                    echo '<tr><th colspan="2">Materia Prima Código 0'. $rMateria['idMateriaPrima'].' </th></tr>';
+                   echo '<tr><td class="enunciado">Nombre: </td><td> ' . $rMateria['descripcionMateria'] . '</td></tr>';
+                   echo '<tr><td class="enunciado">Unidad / Medida:</td><td> ' . $rMateria['unidadDeMedida'] . '</td></tr>';
+                   echo '<tr><td class="enunciado">Costo Total:</td><td> $' . $rMateria['valorTotal'] . '</td></tr>';
+                }
+                echo '</table>';
+                echo '</div>';
+                }
+            ?>
+        </div>
+        <div>
+            <?php
+                require_once '../modelo/dao/ProcesosDAO.php';
+                require_once '../facades/FacadeProcesos.php';
+            if($proyectos['estadoProyecto']=='Ejecución' || $proyectos['estadoProyecto']=='Espera' || $proyectos['estadoProyecto']=='Finalizado'){
+                echo '<div id="infoGere">';
+                $relacionProcesos = new facadeProcesos();
+                $relacionProcesos = $relacionProcesos->relacionProcesosProyecto($proyectos['idProyecto']);
+                 echo '<table id="muestraDatos"><tr><th colspan="2" style="background:#fff;color:#000;border:none;">Relación de Procesos</th></tr>';
+                foreach ($relacionProcesos as $rProceso) {
+                    echo '<tr><th colspan="2">Proceso Código 0'. $rProceso['idProceso'].' </th></tr>';
+                   echo '<tr><td class="enunciado">Nombre: </td><td> ' . $rProceso['tipoProceso'] . '</td></tr>';
+                   echo '<tr><td class="enunciado">Cantidad Empleados / Medida:</td><td> ' . $rProceso['totalEmpleadosProceso'] . '</td></tr>';
+                   echo '<tr><td class="enunciado">Total Horas:</td><td>' . $rProceso['totalTiempoProceso'] . '</td></tr>';
+                   echo '<tr><td class="enunciado">Costo Total:</td><td> $' . $rProceso['totalPrecioProceso'] . '</td></tr>';
+                }
+                echo '</table>';
+                echo '</div>';
+                }
+            ?>
+        </div>
+        <div>
+            <?php
+            if($proyectos['estadoProyecto']=='Ejecución' || $proyectos['estadoProyecto']=='Espera' || $proyectos['estadoProyecto']=='Finalizado'){
                 echo '<div id="infoGere">';
                 $costosProyecto = $facadeEstudioCostos->verificaExistenciaEstudio($proyectos['idProyecto']);
-                echo '<table id="muestraDatos"><tr><th colspan="2">Relación de Costos</th></tr>';
+                echo '<table id="muestraDatos"><tr><th colspan="2">Relación Total de Costos</th></tr>';
                 echo '<tr><td class="enunciado">Mano de Obra:</td><td>$ ' . $costosProyecto['costoManoDeObra'] . '</td></tr>';
                 echo '<tr><td class="enunciado">Materia Prima :</td><td>$ ' . $costosProyecto['costoProduccion'] . '</td></tr>';
                 echo '<tr><td class="enunciado">Utilidad:</td><td>$ ' . $costosProyecto['utilidad'] . '</td></tr>';

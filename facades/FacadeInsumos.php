@@ -58,4 +58,8 @@ class FacadeInsumos {
         return $this->insumoDAO->modificarMateriaPrima($Idto, $this->conexionBase);
     }
 
+        function relacionMateriaPrimaProyecto($idProyecto) {
+
+        return $this->insumoDAO->relacionMateriaPrimaProyecto($idProyecto, $this->conexionBase);
+    }
 }

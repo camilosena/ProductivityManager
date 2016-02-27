@@ -170,7 +170,7 @@ $session->Session($pagActual);
                         <output id="list"></output>
                     </div>
                 <label class="tag" for="description"><span id="lab_valPhone" class="h331">Descripción:</span></label>
-                <textarea class="input4" name="descripcion" type="text" title="Minimo 5 Caracteres" id="description" required class="field1"></textarea>
+                <textarea class="input4" name="descripcion" type="text" title="Minimo 5 Caracteres" id="description" rows="4" cols="50" maxlength="60" required class="field1"></textarea>
                 <button type="submit" name="crearNovedad" class="boton-verde">Generar Novedad</button><br>
                  <script>
                         function archivo(evt) {

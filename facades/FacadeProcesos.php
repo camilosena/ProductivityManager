@@ -54,5 +54,9 @@ class FacadeProcesos {
 
         return $this->ProcesosDAO->obtenerProcesoPorID($idProceso, $this->conexionBase);
     }
+    
+    function relacionProcesosProyecto($idProyecto) {
 
+        return $this->ProcesosDAO->relacionProcesosProyecto($idProyecto, $this->conexionBase);
+    }
 }

@@ -140,5 +140,16 @@ tiempoPorProceso as tiempo from procesos
         }
         $cnn = null;
     }
+     function relacionProcesosProyecto($idProyecto, PDO $cnn) {
 
+            try {
+                $query = $cnn->prepare("select * from procesosporproyecto, procesos where idProyecto_proyectos = ? and idProceso = procesos_idProceso");
+                $query->bindParam(1, $idProyecto);
+                    $query->execute();
+                 return   $query->fetchAll();
+            } catch (Exception $ex) {
+                $mensaje = $ex->getMessage();
+            }
+            $cnn = null;
+        }
 }

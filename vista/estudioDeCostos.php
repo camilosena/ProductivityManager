@@ -214,7 +214,7 @@ $session->Session($pagActual);
             echo '<div id="infoGere" style="width:50%;float:left;">';
                 $relacionMateria = new facadeInsumos();
                 $relacionMateria = $relacionMateria->relacionMateriaPrimaProyecto($_GET['projectNum']);
-                 echo '<table id="muestraDatos" style="margin-left:20%;margin-top:30px;"><tr><th colspan="2" style="background:#fff;color:#000;border:none;">Relación de Materia Prima</th></tr>';
+                 echo '<table id="muestraDatos" style="margin-left:5%;margin-top:30px;width:90%;"><tr><th colspan="2" style="background:#fff;color:#000;border:none;">Relación de Materia Prima</th></tr>';
                 foreach ($relacionMateria as $rMateria) {
                     echo '<tr><th colspan="2">Materia Prima Código 0'. $rMateria['idMateriaPrima'].' </th></tr>';
                    echo '<tr><td class="enunciado">Nombre: </td><td> ' . $rMateria['descripcionMateria'] . '</td></tr>';
@@ -230,7 +230,7 @@ $session->Session($pagActual);
              echo '<div id="infoGere" style="width:50%;float:left;">';
                 $relacionProcesos = new facadeProcesos();
                 $relacionProcesos = $relacionProcesos->relacionProcesosProyecto($_GET['projectNum']);
-                 echo '<table id="muestraDatos" style="margin-left:20%;margin-top:30px;"><tr><th colspan="2" style="background:#fff;color:#000;border:none;">Relación de Procesos</th></tr>';
+                 echo '<table id="muestraDatos" style="margin-left:5%;margin-top:30px;width:90%;"><tr><th colspan="2" style="background:#fff;color:#000;border:none;">Relación de Procesos</th></tr>';
                 foreach ($relacionProcesos as $rProceso) {
                     echo '<tr><th colspan="2">Proceso Código 0'. $rProceso['idProceso'].' </th></tr>';
                    echo '<tr><td class="enunciado">Nombre: </td><td> ' . $rProceso['tipoProceso'] . '</td></tr>';

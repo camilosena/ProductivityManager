@@ -60,26 +60,24 @@ $pdf->SetFont('Times','B',10);
 $pdf->SetXY(25, 80);
  date_default_timezone_set('America/Bogota');
  setlocale(LC_ALL,"es_ES");
- $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
-$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
- 
-
+    $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
+    $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
  //agregamos una pagina
-$pdf->AddPage();
-$pdf->SetFont('Helvetica');
+    $pdf->AddPage();
+    $pdf->SetFont('Arial');
  // seleccionamos la primera pagina del docuemnto importado
- $tplIdx = $pdf->importPage(1);
+    $tplIdx = $pdf->importPage(1);
  // usamos la pagina importado como template
- $pdf->useTemplate($tplIdx);
+    $pdf->useTemplate($tplIdx);
  //seteamos la posicion X 
- $pdf->SetX(25);
+    $pdf->SetX(25);
 //salto de linea
- $pdf->Ln(57.4);
- $pdf->SetFontSize(9);
- $pdf->Write(0, utf8_decode("                                     " . $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y')));
-$pdf->Ln(10);
- $pdf->SetFontSize(15);
-$pdf->write(0,'             Reporte Proyecto');
+    $pdf->Ln(55.2);
+    $pdf->SetFontSize(9);
+    $pdf->Write(0, utf8_decode("                                   " . $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y')));
+    $pdf->Ln(10);
+    $pdf->SetFontSize(15);
+    $pdf->write(15,'                                                    Proyecto');
  
 //enviamos cabezales http para no tener problemas
 header("Content-Transfer-Encoding", "binary");

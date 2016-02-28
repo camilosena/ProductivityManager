@@ -39,7 +39,7 @@ $session->Session($pagActual);
 <div id="todoProyecto" class="wrapper">
     <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
 <div id="editor"></div>
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
                var doc = new jsPDF();
             var specialElementHandlers = {
                 '#editor': function (element, renderer) {
@@ -51,12 +51,12 @@ $session->Session($pagActual);
             var doc = new jsPDF();
             doc.setFontSize(30);
             doc.setTextColor(100);
-doc.text(35, 25, 'Reporte Proyecto<?php echo  $_GET["nameProject"]; ?>');
+doc.text(35, 25, 'Reporte Proyecto<?php //echo  $_GET["nameProject"]; ?>');
 
         doc.fromHTML($('#contenidoProyecto').html(), 15, 15, {
             'width': 170,'elementHandlers': specialElementHandlers
         });
-        doc.save('ReporteProyecto <?php echo  $_GET["nameProject"]; ?>.pdf');
+        doc.save('ReporteProyecto <?php// echo  $_GET["nameProject"]; ?>.pdf');
             };
 
             function exportExcel(){
@@ -66,7 +66,7 @@ e.preventDefault();
              function printAssessment() {
         window.print();
     }
-    </script>
+    </script>-->
     <?php if (isset($_GET['projectNum'])) { ?>
 
     <h2 class="h330"><br>Proyecto <?php echo  $_GET['nameProject']; ?>:</h2><br>
@@ -75,7 +75,7 @@ e.preventDefault();
                     <a href="#" onclick="printAssessment()"><img src="../img/imprimir.png"></a> 
                    <!-- <img src="../img/email.png">  -->
                     <a href="#" onclick="exportExcel()"><img src="../img/excel.png"></a>
-                    <a href="#" onclick="exportPDF()"><img  src="../img/pdf.png" title="Exportar a PDF"></a></div>
+                    <a href="../controlador/ControladorPDF.php?exportInfoPy=true" onclick="exportPDF()"><img  src="../img/pdf.png" title="Exportar a PDF"></a></div>
             </div>  
             <div id="contenidoProyecto">
         <div>

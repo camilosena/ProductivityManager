@@ -75,7 +75,7 @@ e.preventDefault();
                     <a href="#" onclick="printAssessment()"><img src="../img/imprimir.png"></a> 
                    <!-- <img src="../img/email.png">  -->
                     <a href="#" onclick="exportExcel()"><img src="../img/excel.png"></a>
-                    <a href="../controlador/ControladorPDF.php?exportInfoPy=true" onclick="exportPDF()"><img  src="../img/pdf.png" title="Exportar a PDF"></a></div>
+                    <a href="../controlador/ControladorPDF.php?exportInfoPy=true&proNum=<?php echo $_GET['projectNum']; ?>" onclick="exportPDF()"><img  src="../img/pdf.png" title="Exportar a PDF"></a></div>
             </div>  
             <div id="contenidoProyecto">
         <div>

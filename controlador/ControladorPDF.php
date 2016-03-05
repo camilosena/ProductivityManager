@@ -93,7 +93,7 @@ else */
             $pdf->Ln(6);
             $pdf->write(15,'                                                               '.$proBasic["ejecutado"].'%');
             $pdf->Ln(5);
-            $pdf->write(15,'                                                               '.$proBasic["observaciones"]);
+            $pdf->write(15,'                                                               '.substr($proBasic["observaciones"], 0, 60));
             $pdf->Ln(12);
             $pdf->SetFontSize(15);
             $pdf->write(15,'                                                  '.$clie['nombreCompania']);

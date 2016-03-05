@@ -6,13 +6,14 @@ class ProductosDAO {
     function agregarProducto(ProductosDTO $productoDTO, PDO $cnn){
         
          try {
-            $sentencia = $cnn->prepare("INSERT INTO productos VALUES(?,?,?,?,?,?)");
+            $sentencia = $cnn->prepare("INSERT INTO productos VALUES(?,?,?,?,?,?,?)");
             $sentencia->bindParam(1, $productoDTO->getIdProducto());
             $sentencia->bindParam(2, $productoDTO->getNombre());
             $sentencia->bindParam(3, $productoDTO->getImagen());
             $sentencia->bindParam(4, $productoDTO->getDescripción());
             $sentencia->bindParam(5, $productoDTO->getEstado());
             $sentencia->bindParam(6, $productoDTO->getPorcentaje());
+            $sentencia->bindParam(7, $productoDTO->getIva());
             $sentencia->execute();
             $mensaje = "Producto Registrado con Éxito";
         } catch (Exception $ex) {

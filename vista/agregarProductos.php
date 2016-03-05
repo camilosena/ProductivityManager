@@ -264,6 +264,8 @@ $session->Session($pagActual);
                     <input class="input" name="Producto" type="text" id="txtName"  placeholder="Silla Gerencial"   style="display: inline-block" required autofocus><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Imagen: </span></label>
                     <input class="input" name="Imagen" type="file"  id="imagen"  style="display:inline-block" required><br>
+                    <label class="tag" for="iva"><span id="lab_valName" class="h331" style="display: inline-block">Excento de IVA: </span></label>
+                     Si<input type="radio" name="iva" value="Si" style="display: inline-block"> No<input checked = "checked" type="radio" name="iva" value="No" style="display: inline-block"><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">% Ganancia: </span></label>
                     <input class="input" name="ganancia"  id="txtName"  type="number" step="any" placeholder="3,453" style="display: inline-block" min="1" required=""><br>
                     <label class="tag" for="txtName" style="position:relative;bottom:50px;"><span id="lab_valName" class="h331" style="display: inline-block">Descripción: (Material) </span></label>
@@ -290,9 +292,12 @@ $session->Session($pagActual);
                                     <th>Estado</th>
                                     <td><?php  echo $_SESSION['VisualizarProducto']['estadoProducto']; ?></td>
                                 </tr> <tr>
+                                    <th>IVA</th>
+                                    <td ><?php  echo $_SESSION['VisualizarProducto']['iva']; ?></td>
+                                </tr>  <tr>
                                     <th>Descripción / Material</th>
                                     <td ><?php  echo $_SESSION['VisualizarProducto']['descripcionProducto']; ?></td>
-                                </tr>                    
+                                </tr>                  
                               </table>
                             </div>
                             <div style="margin-left:10%;"><br>  

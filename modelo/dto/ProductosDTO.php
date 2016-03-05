@@ -9,6 +9,7 @@ class ProductosDTO {
     private $estado;
     private $descripción;
     Private $porcentaje;
+    private $iva;
     
 //    function __construct($idProducto, $nombre, $imagen, $descripción) {
 //        $this->idProducto = $idProducto;
@@ -38,7 +39,13 @@ class ProductosDTO {
     function getPorcentaje() {
         return $this->porcentaje;
     }
+    function getIva() {
+        return $this->iva;
+    }
 
+    function setIva($iva) {
+        $this->iva = $iva;
+    }
     function setEstado($estado) {
         $this->estado = $estado;
     }

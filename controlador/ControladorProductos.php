@@ -29,6 +29,7 @@ if (isset($_POST['AgregarProducto'])) {
  
     $productosDTO->setIdProducto($_POST['IdProducto']);
     $productosDTO->setNombre($_POST['Producto']);
+    $productosDTO->setIva($_POST['iva']);
     $carpeta = "productos";
         $nombreImagen = $_FILES['Imagen']['name'];
         $tamano = $_FILES['Imagen']['size'];

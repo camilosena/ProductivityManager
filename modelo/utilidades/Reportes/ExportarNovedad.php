@@ -23,6 +23,7 @@ header("Expires: 0");
         <th>Categoria</th>
         <th>Descripcion</th>
         <th>Fecha</th>
+        <th>Estado</th>
     </tr>
     <?php
     foreach ($_SESSION['consultaNovedad'] as $respuesta){
@@ -31,8 +32,9 @@ header("Expires: 0");
         <td><?php echo $respuesta['idNovedad'];?></td>
         <td><?php echo $respuesta['nombreProyecto'];?></td>
         <td><?php echo $respuesta['categoria'];?></td>
-        <td><?php echo $respuesta['descripcion'];?></td>
-        <td><?php echo $respuesta['fecha'];?></td>
+        <td><?php echo $respuesta['descripcionNovedad'];?></td>
+        <td><?php echo $respuesta['fechaNovedad'];?></td>
+        <td><?php echo $respuesta['estadoSolucion'];?></td>
     </tr>
 <?php
 unset($_SESSION['consultaNovedad']);

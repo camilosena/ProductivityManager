@@ -212,7 +212,7 @@ $session->Session($pagActual);
             </script>
     <form name="filtro" class="formRegistro" action="../controlador/ControladorFiltros.php" method="POST">
         <div id="exports" style="float:right;padding-bottom:10px;">
-                     <a href="#" title="Imprimir" onclick="printAssessment()"> <img src="../img/imprimir.png"></a>
+                    <!-- <a href="#" title="Imprimir" onclick="printAssessment()"> <img src="../img/imprimir.png"></a>-->
                     <!-- <img src="../img/pdf.png"> -->
                     <a href='../modelo/utilidades/Reportes/ExportarClienteActivo.php'><img src="../img/excel.png" title="Exportar a Exccel"></a></div>
 	   <table id="tabla" class="display" cellspacing="0" width="100%">

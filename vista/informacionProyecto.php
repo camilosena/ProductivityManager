@@ -72,9 +72,10 @@ e.preventDefault();
     <h2 class="h330"><br>Proyecto <?php echo  $_GET['nameProject']; ?>:</h2><br>
         <hr>
         <div id="exports" style="float:right;padding-bottom:10px;margin-right: 15%">
-                    <a href="#" onclick="printAssessment()"><img src="../img/imprimir.png"></a> 
+                    <!--<a href="#" onclick="printAssessment()"><img src="../img/imprimir.png"></a> -->
                    <!-- <img src="../img/email.png">  -->
-                    <a href="#" onclick="exportExcel()"><img src="../img/excel.png"></a>
+                   <!-- <a href="#" onclick="exportExcel()"><img src="../img/excel.png"></a>-->
+                   <span style="font-weight:bold;font-family: sans-serif; font-size:12px;">Reporte PDF</span>
                     <a href="../controlador/ControladorPDF.php?exportInfoPy=true&proNum=<?php echo $_GET['projectNum']; ?>" onclick="exportPDF()"><img  src="../img/pdf.png" title="Exportar a PDF"></a></div>
             </div>  
             <div id="contenidoProyecto">

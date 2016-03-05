@@ -255,7 +255,7 @@ $ejecucionProyectos->ejecucionProyectos();
             </script>
             <form name="filtro" class="formRegistro" action="../controlador/ControladorFiltros.php" method="POST">
                 <div id="exports" style="float:right;padding-bottom:10px;">
-                    <a href="#" title="Imprimir" onclick="printAssessment()"> <img src="../img/imprimir.png"></a>
+                    <!--<a href="#" title="Imprimir" onclick="printAssessment()"> <img src="../img/imprimir.png"></a>-->
                     <!-- <a href="#" title="Exportar a PDF" ><img src="../img/pdf.png"></a> -->
                     <a href='../modelo/utilidades/Reportes/ExportarProyecto.php'><img src="../img/excel.png" title="Exportar a Excel"></a></div>
                 <table id="tabla" class="display" cellspacing="0" width="100%">

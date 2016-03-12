@@ -6,6 +6,23 @@
   
     
      if(isset($_POST['modificarContrasena'])){  
+       if(isset($_POST['g-recaptcha-response'])){
+          $captcha=$_POST['g-recaptcha-response'];
+        }
+        if(!$captcha){
+         // echo '<h2>Please check the the captcha form.</h2>';
+          $mensaje="Verifica el Captcha de seguridad";
+                        header("location: ../vista/modificarContrasena.php?mensaje=".$mensaje);
+          exit;
+        }
+        $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LeJoxoTAAAAAPzwJZIMROIHNr5v8Kf00iaKnL-p&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+        if($response.success==false)
+        {
+          echo '<h2>You are spammer ! Get the @$%K out</h2>';
+          $mensaje="Selecciona el Captcha de seguridad";
+                        header("location: ../vista/modificarContrasena.php?mensaje=".$mensaje);
+        }else
+        {
          $modificarContrasena= new ModificarContrasenaDAO();
          $facadeModificarContrasena = new FacadeModificarContrasena();  
          session_start();
@@ -29,7 +46,7 @@
          }
                               
              
-        
+      }  
                     
      }
      

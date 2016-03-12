@@ -30,6 +30,7 @@ $session->Session($pagActual);
         <script type="text/javascript" src="../js/script2.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body>
     <div id='cssmenu'>
@@ -149,6 +150,8 @@ $session->Session($pagActual);
                                title="No se aceptan carácteres especiales (\ / : * ? «< > |)" pattern= "[A-Za-z0-9]{1,15}" >
                         <br>
                     </div>
+                    <br>
+                    <div style="margin-left: 25%;" class="g-recaptcha" data-sitekey="6LeJoxoTAAAAAN7PHq-ehaFexLnhNiCuFEpIqpbS"></div>
                     <button type="submit" name="modificarContrasena" class="boton-verde">Modificar contraseña</button><br>
                     <hr>
                 </form>   

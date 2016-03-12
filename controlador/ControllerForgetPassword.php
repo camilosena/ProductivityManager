@@ -16,7 +16,7 @@
         }
         if(!$captcha){
          // echo '<h2>Please check the the captcha form.</h2>';
-          $mensaje="Selecciona el Captcha de seguridad";
+          $mensaje="Verifica el Captcha de seguridad";
                         header("location: ../index.php?error=".$mensaje.'#openModal');
           exit;
         }

@@ -70,7 +70,7 @@ public function consultarNovedad($idNovedad,PDO $cnn) {
 function consultarGerenteParaEnvarNovedadPorCorreo($idProyecto, PDO $cnn){
           try {            
             $query = $cnn->prepare("select idUsuario, email, concat(nombres,' ', apellidos) as nombre, rol from personas
-join usuarioporproyecto on idUsuario = usuarioAsignado
+join usuarioPorProyecto on idUsuario = usuarioAsignado
 join proyectos on proyectoAsignado = idProyecto and idproyecto = ?
 join usuarios on idLogin = identificacion
 join roles on idRoles = rolesId and rol = 'Gerente' or rol = 'Administrador' ");

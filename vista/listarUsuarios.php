@@ -318,7 +318,7 @@ $session->Session($pagActual);
                                     echo '<a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/ascenso.png"></a>';
                                     }
                                     if ($_SESSION['rol']=="Administrador" & $user['rol'] != "Administrador" & $user['rol'] != "Auditor" || $_SESSION['rol']=="Gerente" & $user['rol'] != "Administrador" & $user['rol'] != "Auditor") {
-                                    echo '<a class="me" title="Proyectos Asociados" href="../controlador/ControladorUsuarios.php?idAsociados='.$user['idUsuario'].'"><img class="iconos" src="../img/Work.png"></a>';
+                                    echo '<a class="me" title="Proyectos Asociados" href="../controlador/ControladorUsuarios.php?idAsociados='.$user['idUsuario'].'"><img class="iconos" src="../img/work.png"></a>';
                                     } ?>
                                 </td>
                                 </tr>                         

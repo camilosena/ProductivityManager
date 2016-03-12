@@ -44,13 +44,22 @@ $ejecucionProyectos->ejecucionProyectos();
           <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
       </form>
         <ul>
-          <!--  <li><a href="javascript:reporte('reportes.php?tipoReporte=Proyectos')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
+        
+          <li><a href="javascript:backup('backup.php')"><span><i class="fa fa-database fa-lg"></i> BackUp</span></a>
+            <script language=javascript>
+            function backup(URL) {
+                window.open(URL, "backup.php", "width=1250,height=645,top=30,left=30,scrollbars=NO");
+            }
+           </script> 
+           </li> 
+
+          <li><a href="javascript:reporte('reportes.php')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
             <script language=javascript>
             function reporte(URL) {
                 window.open(URL, "reportes.php", "width=1250,height=645,top=30,left=30,scrollbars=NO");
             }
-        </script> 
-           </li> -->
+           </script> 
+           </li> 
            <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
               <ul>
                  <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       

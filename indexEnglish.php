@@ -16,7 +16,8 @@
     <link href="js/toastr.css" rel="stylesheet"/>
     <script src="js/toastr.js"></script>    
     <script type="text/javascript" src="js/jquery.validate.min.js"></script>    
-    <script src="js/validaciones.js"></script>  
+    <script src="js/validaciones.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>  
 </head>
 <body>
     <div id='cssmenu' style="text-align:center">        
@@ -152,7 +153,7 @@ header nav ul li a:active{
         <label for="email2" class="tag"><span id="valCompany" style="color:Red;visibility:hidden;"></span> Confirm E-mail:</label>
         <input id="email2" name="emailConfirm" type="text" tabindex="8"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
         <br>
-
+        <div style="margin-left: 17%;" class="g-recaptcha" data-sitekey="6LeJoxoTAAAAAN7PHq-ehaFexLnhNiCuFEpIqpbS"></div>
         <button type="submit" name="solicitarContrasena" tabindex="9" class="boton-verde">Password Request</button><br>
     </form>   
 

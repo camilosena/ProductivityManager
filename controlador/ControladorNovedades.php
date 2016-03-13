@@ -142,7 +142,7 @@ if (isset ($_POST['solucionarNovedad'])) {
     } else {        
     //mensaje enviado
      $mensaje = $facadeNovedad->solucionarNovedad($solucion, $idNovedad);
-     header("Location: ../vista/listarNovedades.php?mensaje".$mensaje);
+     header("Location: ../vista/listarNovedades.php?mensaje=".$mensaje);
     }
 
 }

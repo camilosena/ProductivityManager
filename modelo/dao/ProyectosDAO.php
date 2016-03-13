@@ -196,7 +196,7 @@ where idUsuario=idCliente and idUsuario=usuarioAsignado and proyectoAsignado=?")
     public function obtenerProductoProyecto($idProyecto, PDO $cnn) {
         $mensaje = "";
         try {
-            $sentencia = $cnn->prepare("SELECT * FROM productoporproyecto where proyectosIdProyecto=?");
+            $sentencia = $cnn->prepare("SELECT * FROM productoPorProyecto where proyectosIdProyecto=?");
             $sentencia->bindParam(1, $idProyecto);
             $sentencia->execute();
             return $sentencia->fetchAll();

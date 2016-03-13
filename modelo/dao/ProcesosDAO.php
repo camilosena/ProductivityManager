@@ -9,7 +9,7 @@ class ProcesosDAO {
             $sentencia->bindParam(1, $pDTO->getIdProceso());
             $sentencia->bindParam(2, $pDTO->getTipo());
             $sentencia->bindParam(3, $pDTO->getValor());
-            $sentencia2 = $cnn->prepare("INSERT INTO procesoporproducto VALUES(?,?,?,?)");
+            $sentencia2 = $cnn->prepare("INSERT INTO procesoPorProducto VALUES(?,?,?,?)");
             $sentencia2->bindParam(1, $producto);
             $sentencia2->bindParam(2, $pDTO->getIdProceso());
             $sentencia2->bindParam(3, $pDTO->getEmpleados());
@@ -30,7 +30,7 @@ class ProcesosDAO {
         try {
             $sql = "select idProceso, tipoProceso, precioProceso, idProductos, nombreProducto as producto, cantidadDeEmpleados as empleados, 
 tiempoPorProceso as tiempo from procesos
- join procesoporproducto on  idProceso = procesos_idProceso and idProceso=?
+ join procesoPorProducto on  idProceso = procesos_idProceso and idProceso=?
  join productos on idProductos_Productos = idProductos ";
 
             $query = $cnn->prepare($sql);
@@ -48,7 +48,7 @@ tiempoPorProceso as tiempo from procesos
         try {
             $sql = "select idProceso, tipoProceso, precioProceso, nombreProducto as producto, cantidadDeEmpleados as empleados, 
 tiempoPorProceso as tiempo from procesos
- join procesoporproducto on  idProceso = procesos_idProceso
+ join procesoPorProducto on  idProceso = procesos_idProceso
  join productos on idProductos_Productos = idProductos";
 
             $query = $cnn->prepare($sql);
@@ -83,7 +83,7 @@ tiempoPorProceso as tiempo from procesos
             $query = $cnn->prepare("update procesos set precioProceso=? where idProceso=?");
             $query->bindParam(1, $procesosDTO->getValor());
             $query->bindParam(2, $procesosDTO->getIdProceso());
-            $query2 = $cnn->prepare("update procesoporproducto set cantidadDeEmpleados=?, tiempoPorProceso=? where procesos_idProceso=?");
+            $query2 = $cnn->prepare("update procesoPorProducto set cantidadDeEmpleados=?, tiempoPorProceso=? where procesos_idProceso=?");
             $query2->bindParam(1, $procesosDTO->getEmpleados());
             $query2->bindParam(2, $procesosDTO->getTiempo());
             $query2->bindParam(3, $procesosDTO->getIdProceso());
@@ -100,7 +100,7 @@ tiempoPorProceso as tiempo from procesos
 
     function eliminarProceso($idProceso, PDO $cnn) {
         try {
-            $sql = 'delete from  procesoporproducto  where procesos_idProceso =?';
+            $sql = 'delete from  procesoPorProducto  where procesos_idProceso =?';
 
             $query = $cnn->prepare($sql);
             $query->bindParam(1, $idProceso);
@@ -119,7 +119,7 @@ tiempoPorProceso as tiempo from procesos
 
     function obtenerProcesoPorProducto($idProducto, PDO $cnn) {
         try {
-            $query = $cnn->prepare('select * from procesoporproducto where idProductos_Productos=?');
+            $query = $cnn->prepare('select * from procesoPorProducto where idProductos_Productos=?');
             $query->bindParam(1, $idProducto);
             $query->execute();
             return $query->fetchAll();
@@ -143,7 +143,7 @@ tiempoPorProceso as tiempo from procesos
      function relacionProcesosProyecto($idProyecto, PDO $cnn) {
 
             try {
-                $query = $cnn->prepare("select * from procesosporproyecto, procesos where idProyecto_proyectos = ? and idProceso = procesos_idProceso");
+                $query = $cnn->prepare("select * from procesosPorProyecto, procesos where idProyecto_proyectos = ? and idProceso = procesos_idProceso");
                 $query->bindParam(1, $idProyecto);
                     $query->execute();
                  return   $query->fetchAll();

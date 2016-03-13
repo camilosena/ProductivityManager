@@ -52,11 +52,11 @@ class InsumosDAO {
 
     function eliminarInsumo($idEliminar, PDO $cnn) {
         try {
-            $query = $cnn->prepare('delete from materiaprimaporproducto where ProductosIdProductos=?');
+            $query = $cnn->prepare('delete from materiaPrimaPorProducto where ProductosIdProductos=?');
             $query->bindParam(1, $idEliminar);
             $query->execute();
             $mensaje = "Registro eliminado";
-            return $query->fetchAll();
+            return $mensaje;
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }
@@ -67,7 +67,7 @@ class InsumosDAO {
 
         try {
 
-            $sql = 'SELECT idMateriaPrima_materiaPrima insumos,cantidadMateriaPorProducto from materiaprimaporproducto where ProductosIdProductos=?';
+            $sql = 'SELECT idMateriaPrima_materiaPrima insumos,cantidadMateriaPorProducto from materiaPrimaPorProducto where ProductosIdProductos=?';
             $query = $cnn->prepare($sql);
             $query->bindParam(1, $idProducto);
             $query->execute();
@@ -82,7 +82,7 @@ class InsumosDAO {
 
         try {
 
-            $sql = 'SELECT precioBase from materiaPrima where idMateriaPrima=?';
+            $sql = 'SELECT precioBase from materiaprima where idMateriaPrima=?';
             $query = $cnn->prepare($sql);
             $query->bindParam(1, $idMateriaPrima);
             $query->execute();
@@ -128,7 +128,7 @@ class InsumosDAO {
     function relacionMateriaPrimaProyecto($idProyecto, PDO $cnn) {
 
         try {
-            $query = $cnn->prepare("SELECT * FROM materiaprimaporproyecto, materiaprima where proyectos_idProyecto = ? and idMateriaPrima = materiaPrima_idMateriaPrima");
+            $query = $cnn->prepare("SELECT * FROM materiaPrimaPorProyecto, materiaprima where proyectos_idProyecto = ? and idMateriaPrima = materiaPrima_idMateriaPrima");
             $query->bindParam(1, $idProyecto);
                 $query->execute();
              return   $query->fetchAll();

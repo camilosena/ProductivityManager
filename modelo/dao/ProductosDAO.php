@@ -126,7 +126,7 @@ class ProductosDAO {
     function asociarInsumos(InsumosPorProductoDTO $dto,  PDO $cnn){
         
         try {           
-            $sentencia = $cnn->prepare("INSERT INTO materiaprimaporproducto VALUES(?,?,?)");
+            $sentencia = $cnn->prepare("INSERT INTO materiaPrimaPorProducto VALUES(?,?,?)");
             $sentencia->bindParam(1, $dto->getIdProdcuto());
             $sentencia->bindParam(2, $dto->getIdInsumo());
             $sentencia->bindParam(3, $dto->getCantidad());
@@ -156,7 +156,7 @@ join productos on Productos_idProductos = idProductos and proyectosIdProyecto=?"
         
         
    try {
-            $sql = "select cantidadMateriaPorProducto from materiaprimaporproducto where idMateriaPrima_materiaPrima=? and ProductosIdProductos=?" ;
+            $sql = "select cantidadMateriaPorProducto from materiaPrimaPorProducto where idMateriaPrima_materiaPrima=? and ProductosIdProductos=?" ;
             $query = $cnn->prepare($sql);   
             $query->bindParam(1, $idInsumo);
             $query->bindParam(2, $idProducto);
@@ -174,8 +174,7 @@ join productos on Productos_idProductos = idProductos and proyectosIdProyecto=?"
             $query = $cnn->prepare($sql);   
             $query->bindParam(1, $estado);
             $query->bindParam(2, $idProducto);
-            $query->execute();                       
-            return $query->fetchColumn();
+            $query->execute(); 
         } catch (Exception $ex) {
             echo 'Error' . $ex->getMessage();
         }

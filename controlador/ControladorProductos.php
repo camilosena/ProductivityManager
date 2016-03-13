@@ -83,7 +83,7 @@ $estado = "Sin Procesos";
         if (isset($_POST[$i])) {
             $dto->setIdInsumo($_POST[$i]);
               $dto->setCantidad($_POST['cant'.$i]);
-            echo $mensaje = $facadeProductos->asociarInsumos($dto);
+             $facadeProductos->asociarInsumos($dto);
         }
         $facadeProductos->modificarEstadoProducto($estado, $_POST['idProducto']);
     }    

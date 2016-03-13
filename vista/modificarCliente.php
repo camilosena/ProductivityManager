@@ -506,7 +506,7 @@ $session->Session($pagActual);
                 <br>
                 <h2 class="h330">Modificar Cliente:</h2><br>
                 <p class="obligatoriosD">Todos los campos a continuación son obligatorios.</p><br><br>                
-                <form class="formRegistro" method="Get" action="../controlador/ControladorClientes.php"> 
+                <form class="formRegistro"  id="formClientes" method="Get" action="../controlador/ControladorClientes.php"> 
                     <hr>                     
                     <p style="font-weight: bold">Compañia : </p><hr>       
                     <label class="tag1" for="idCliente"><span id="documento" class="h331">Código: </span></label>
@@ -518,7 +518,7 @@ $session->Session($pagActual);
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                     <br>   
                     <label class="tag" for="txtCompany1"><span id="lab_valCompany" class="h331">NIT: </span></label>
-                    <input class="input" name="nit" required type="text" maxlength="64" value ="<?php echo $cliente['nit']; ?>" id="txtCompany1" class="field1" placeholder="Jimenez" >
+                    <input class="input" name="nit" required type="text" maxlength="64" value ="<?php echo $cliente['nit']; ?>"  class="field1" placeholder="Jimenez" >
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label class="tag" for="selCountry"><span id="lab_valCountry" class="h331">Sector Empresarial:</span></label>
@@ -557,7 +557,7 @@ $session->Session($pagActual);
                     <span id="valName" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label class="tag" for="txtSurname"><span id="lab_valSurname" class="h331">Apellidos: </span></label>
-                    <input class="input" name="apellido" type="text" value="<?php echo $usuario['apellidos']; ?>" id="txtSurname" class="field1" placeholder="Perez" required >
+                    <input class="input" name="apellido" type="text" value="<?php echo $usuario['apellidos']; ?>" class="field1" placeholder="Perez" required >
                     <span id="valSurname" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label class="tag" id="labelDocumento" for="documento"><span id="documento" class="h331">Documento: </span></label>
@@ -573,7 +573,10 @@ $session->Session($pagActual);
                     <span id="valEmail" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <button type="submit" name="modificarCliente" class="boton-verde">Actualizar Cliente</button><br>
-                </form>                  
+                </form>       
+                 <script src="../js/additional-methods.min.js" type="text/javascript"></script>
+                <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="../js/validaciones.js"></script>           
             </div>
         </div>    
        <footer class="footer-distributed">

@@ -219,6 +219,5 @@ if (isset ($_GET['idAsociados'])) {
     session_start();  
     $_SESSION['datosUsuario'] = $facadeUsuario->consultarUsuario($_GET['idAsociados']);  
     $_SESSION['datosProyectos'] = $FacadeProyectos->listarProyectoPorPersonal($_GET['idAsociados']);   
-    print_r($_SESSION['datosProyectos']);
  header("Location: ../vista/listarUsuarios.php?#verProyectos");
 }

@@ -327,7 +327,7 @@ join roles on rolesId = idRoles and rol = 'Empleado'");
     function totalUsuariosPorProyecto($idProyecto, PDO $cnn){
                 $mensaje = '';
         try {
-            $query = $cnn->prepare("SELECT totalTrabajadores FROM estudiodecostos where idProyectoSolicitado = ?");
+            $query = $cnn->prepare("SELECT totalTrabajadores FROM estudioDeCostos where idProyectoSolicitado = ?");
             $query->bindParam(1, $idProyecto);
             $query->execute();
             return $query->fetchColumn();

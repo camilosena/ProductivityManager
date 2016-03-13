@@ -108,4 +108,8 @@ class FacadeProyectos {
         return $this->proyectosDAO->cantidadProyectosAsignados($idUsuario, $this->conexionBase);
     }
     
+        function graficoCostosAnuales($anio){
+        
+        return $this->proyectosDAO->graficoCostosAnuales($anio, $this->conexionBase);
+    }
 }

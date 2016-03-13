@@ -352,4 +352,17 @@ join proyectos on idProyecto = proyectoAsignado and usuarioAsignado = ? and esta
         $cnn = null; 
     }
 
+        function graficoCostosAnuales($anio, PDO $cnn){
+
+                       $mensaje = '';
+        try {
+            $query = $cnn->prepare("SELECT costoProyecto from estudioDeCostos, proyectos 
+            where idProyecto = idProyectoSolicitado and fechaFin BETWEEN '20160301' AND '20161231'");
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null; 
+    }
 }

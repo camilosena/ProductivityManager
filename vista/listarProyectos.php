@@ -56,7 +56,7 @@ $ejecucionProyectos->ejecucionProyectos();
           <li><a href="javascript:reporte('reportes.php')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
             <script language=javascript>
             function reporte(URL) {
-                window.open(URL, "reportes.php", "width=1250,height=645,top=30,left=30,scrollbars=NO");
+                window.open(URL, "reportes.php", "width=1200,height=645,top=30,left=30,scrollbars=NO");
             }
            </script> 
            </li> 

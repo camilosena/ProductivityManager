@@ -350,7 +350,7 @@ and areas_idAreas=idAreas");
     function correosPorProyecto($idProyecto, PDO $cnn){
      try {
             $query = $cnn->prepare('Select email from personas 
-join usuarioporproyecto on usuarioAsignado = idUsuario and proyectoAsignado=?');
+join usuarioPorProyecto on usuarioAsignado = idUsuario and proyectoAsignado=?');
              $query->bindParam(1,$idProyecto);
             $query->execute();
             return $query->fetchAll();

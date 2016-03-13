@@ -79,7 +79,7 @@ class ProyectosDAO {
 
     public function obtenerClienteProyecto($idProyecto, PDO $cnn) {
         try {
-            $query = $cnn->prepare("SELECT idCliente,nombreCompania from clientes,personas,usuarioporproyecto where  idCliente=idUsuario and idUsuario=usuarioAsignado and proyectoAsignado=?");
+            $query = $cnn->prepare("SELECT idCliente,nombreCompania from clientes,personas,usuarioPorProyecto where  idCliente=idUsuario and idUsuario=usuarioAsignado and proyectoAsignado=?");
             $query->bindParam(1, $idProyecto);
             $query->execute();
             return $query->fetch();
@@ -109,7 +109,7 @@ class ProyectosDAO {
     public function obtenerGerenteEncargado($idProyecto, PDO $cnn) {
         try {
             $query = $cnn->prepare("Select idUsuario,identificacion, concat(nombres,' ',apellidos) nombre,direccion,telefono,fechaNacimiento,email,rol, nombreArea
-from usuarios, personas, roles, usuarioporproyecto,areas
+from usuarios, personas, roles, usuarioPorProyecto,areas
  where idUsuario=usuarioAsignado and proyectoAsignado=? and identificacion=idLogin and 
  rolesId=idRoles and idAreas=areas_idAreas and rol!='Empleado'");
             $query->bindParam(1, $idProyecto);
@@ -125,7 +125,7 @@ from usuarios, personas, roles, usuarioporproyecto,areas
         try {
             $query = $cnn->prepare("Select idCliente,nit, nombreCompania,sectorEmpresarial, sectorEconomico, telefonoFijo,
 idUsuario,identificacion, concat(nombres,' ',apellidos) nombre,direccion,telefono,email,foto
-from clientes, personas, usuarioporproyecto
+from clientes, personas, usuarioPorProyecto
 where idUsuario=idCliente and idUsuario=usuarioAsignado and proyectoAsignado=?");
             $query->bindParam(1, $idProyecto);
             $query->execute();
@@ -284,7 +284,7 @@ idProductos = Productos_idProductos");
        $mensaje = '';
         try {
             $query = $cnn->prepare("select idProyecto, nombreProyecto, fechaInicio, estadoProyecto from proyectos
-join usuarioporproyecto on idProyecto = proyectoAsignado and usuarioAsignado = ?");
+join usuarioPorProyecto on idProyecto = proyectoAsignado and usuarioAsignado = ?");
             $query->bindParam(1, $idUsuario);
             $query->execute();
             return $query->fetchAll();
@@ -311,7 +311,7 @@ join usuarioporproyecto on idProyecto = proyectoAsignado and usuarioAsignado = ?
     function cantidadUsuariosPorProyecto($idProyecto, PDO $cnn){
                $mensaje = '';
         try {
-            $query = $cnn->prepare("select count(usuarioAsignado) as cantidad from usuarioporproyecto 
+            $query = $cnn->prepare("select count(usuarioAsignado) as cantidad from usuarioPorProyecto 
 join personas on usuarioAsignado = idUsuario and proyectoAsignado = ?
 join usuarios on identificacion = idLogin
 join roles on rolesId = idRoles and rol = 'Empleado'");
@@ -341,7 +341,7 @@ join roles on rolesId = idRoles and rol = 'Empleado'");
 
                        $mensaje = '';
         try {
-            $query = $cnn->prepare("select count(proyectoAsignado) as cantidad from usuarioporproyecto 
+            $query = $cnn->prepare("select count(proyectoAsignado) as cantidad from usuarioPorProyecto 
 join proyectos on idProyecto = proyectoAsignado and usuarioAsignado = ? and estadoProyecto = 'Ejecución' ");
             $query->bindParam(1, $idUsuario);
             $query->execute();

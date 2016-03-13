@@ -124,9 +124,9 @@ class CrearRolDAO {
         
     }
             
-    function Obtenerpermisosporrol($idRol,PDO $cnn){
+    function ObtenerpermisosPorRol($idRol,PDO $cnn){
         try {
-            $sql = 'Call obtenerpermisosporrol (?)';
+            $sql = 'Call obtenerpermisosPorRol (?)';
             $query = $cnn->prepare($sql);
             $query->bindParam(1, $idRol);
             $query->execute();
@@ -161,7 +161,7 @@ class CrearRolDAO {
          
         $mensaje = "";
         try {
-            $query = $cnn->prepare('delete from permisosporrol where idRoles_Roles=?'); 
+            $query = $cnn->prepare('delete from permisosPorRol where idRoles_Roles=?'); 
             $query->bindParam(1, $idRol);
             $query2= $cnn->prepare('update areas set roles_idRoles=1 where roles_idRoles=?');
             $query2->bindParam(1, $idRol);

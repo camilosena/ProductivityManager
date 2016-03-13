@@ -100,7 +100,7 @@ e.preventDefault();
             require_once '../facades/FacadeProductos.php';
     require_once '../modelo/dao/ProductosDAO.php';
     require_once '../modelo/dao/ProyectosDAO.php';
-    require_once '../modelo/dao/estudioCostosDAO.php';
+    require_once '../modelo/dao/EstudioCostosDAO.php';
     require_once '../facades/FacadeProyectos.php';
     require_once '../facades/FacadeEstudioCostos.php';
     require_once '../modelo/utilidades/Conexion.php';

@@ -47,9 +47,9 @@ class FacadeCreateRol {
        return $this->crearRolDAO->ObtenerId($idRol, $this->conexionBase); 
     }
             
-    function Obtenerpermisosporrol ($idRol){
+    function ObtenerpermisosPorRol ($idRol){
         
-        return $this->crearRolDAO->Obtenerpermisosporrol($idRol, $this->conexionBase);
+        return $this->crearRolDAO->ObtenerpermisosPorRol($idRol, $this->conexionBase);
     }
             
     function ModificarRol ($idRol){

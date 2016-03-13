@@ -42,7 +42,7 @@ if (isset($_GET['asignarPermiso'])) {
             $mensaje = $facadeRol->agregarPermisos($dto);
         }
     }
-    header("location: ../vista/ModificarRol.php?id=".$idRol."&mensaje=".$mensaje);
+    header("location: ../vista/modificarRol.php?id=".$idRol."&mensaje=".$mensaje);
 } else
 if (isset($_GET['listarRol'])) {
     header("location: ../vista/CrearRol.php#ModalRoles");
@@ -62,7 +62,7 @@ if (isset($_GET['ModificarRol'])) {
             $mensaje = $facadeRol->agregarPermisos($dto);
         }
     }
-    header("location: ../vista/ModificarRol.php?id=" . $_GET['selectId'] ."&mensaje=". $mensaje);
+    header("location: ../vista/modificarRol.php?id=" . $_GET['selectId'] ."&mensaje=". $mensaje);
 } else
 if (isset($_GET['idElimirarRol'])) {
     $facadeRol->ModificarRol($_GET['idElimirarRol']);
@@ -92,7 +92,7 @@ if (isset($_GET['Areas'])) {
     header("location: ../vista/agregarAreas.php?menasje=" . $mensaje);
 } else
 if (isset($_GET['atras'])) {
-    header("location: ../vista/ModificarRol.php?id=" .$_GET['idAct']);
+    header("location: ../vista/modificarRol.php?id=" .$_GET['idAct']);
 }else
 if (isset($_GET['asignarArea'])) {
     $facadeArea= new FacadeAreas();

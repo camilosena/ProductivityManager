@@ -184,7 +184,7 @@ $session->Session($pagActual);
                                         <tr><td>0<?php echo $roles['idRoles']; ?> </td>
                                             <td>   <?php echo $roles['rol']; ?> </td>
 
-                                            <td colspan="2"><a href="ModificarRol.php?id=<?php echo $roles['idRoles']; ?>"><img src="../img/editar.png" class="iconos" width="48" height="48" alt="Modificar Registro"/>
+                                            <td colspan="2"><a href="modificarRol.php?id=<?php echo $roles['idRoles']; ?>"><img src="../img/editar.png" class="iconos" width="48" height="48" alt="Modificar Registro"/>
                                                 </a>  
                                                 
                                             </td>

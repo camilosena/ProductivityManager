@@ -58,7 +58,7 @@ if(isset($_POST['crearNovedad'])){
     $correoDTO->setAsunto("Novedad de ".$categoria." creada por ". $nombreUsuario);
     $correoDTO->setContrasena("adsi2015");
     $correoDTO->setDestinatario($email);
-    $correoDTO->setContenido("Estimado señor ".$nombreGerente.",<br> desde el area de ".$area." se generó una novedad de ".$categoria." con las siguientes observaciones: "
+    $correoDTO->setContenido("Estimado señor ".$nombreGerente.",<br> Desde el area de ".$area." se generó una novedad de ".$categoria." con las siguientes observaciones: <br> "
             . $descripcion.'<br>'
             ."Adjunto encontrara un archivo con la evidencia.".'<br>'
         .'<font style="color: #83AF44; font-size: 11px; font-weight:bold; font-family: Sans-Serif;font-style:italic; " >Prductivity Manager Software'

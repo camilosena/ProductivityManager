@@ -111,7 +111,6 @@ else if (isset($_POST['modificar'])) {
 else if (isset($_GET['idEliminar'])) {
     $facadeUsuario = new FacadeUsuarios();
     $mensaje3 = $facadeUsuario->desactivarUsuario($_GET['idEliminar'], 'Inactivo');
-    echo $mensaje3;
     header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje3);
 }//  Consultar
 else if (isset($_GET['idConsultar'])) {
@@ -132,14 +131,13 @@ else if (isset($_GET['idActivar'])) {
     $datos = $facadeUsuario->consultarUsuarioInactivo($_GET['idActivar']);
     $email = $datos['email'];
     $identificacion = $datos['identificacion'];
-    $contrasena = "inicial";
     $correoDTO = new CorreosDTO();    
     $correoDTO->setRemitente("productivitymanagersoftware@gmail.com");
     $correoDTO->setNombreRemitente("Productivity Manager");
     $correoDTO->setAsunto("Registro Productivity Manager");
     $correoDTO->setContrasena("adsi2015");
     $correoDTO->setDestinatario($email);
-    $correoDTO->setContenido("Bienvenido Su usuario de ingreso es: ".$identificacion."<br>Su contraseña de ingreso es: ".$contrasena.'<br>'.'<br>'
+    $correoDTO->setContenido("Ha sido reintegrado Su usuario de ingreso es: ".$identificacion.'<br>Puede acceder con su anterior contraseña, sino la recuerda solicite código de ingreso <br>'
         .'<font style="color: #83AF44; font-size: 11px; font-weight:bold; font-family: Sans-Serif;font-style:italic; " >Prductivity Manager Software'
                     . '© Todos los derechos reservados 2015.'
                     . '<br>'.'Bogotá, Colombia'
@@ -157,7 +155,6 @@ else if (isset($_GET['idActivar'])) {
     } else {        
     //insertar imagen
         $mensaje3 = $facadeUsuario->activarUsuario($_GET['idActivar'], 'Activo');
-       echo $mensaje3;
     header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje3); 
     }
     

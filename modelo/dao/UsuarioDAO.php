@@ -225,7 +225,7 @@ and areas_idAreas=idAreas");
         try {
             $listarUsuarios = "Select idUsuario,identificacion,nombres,apellidos,direccion,telefono,fechaNacimiento,email,rol 
                                 from usuarios, personas, roles 
-                                where estado='Inactivo' and identificacion=idLogin and rolesId=idRoles and rol<>'Administrador'";
+                                where estado='Inactivo' and identificacion=idLogin and rolesId=idRoles";
             $query = $cnn->prepare($listarUsuarios);
             $query->execute();
             return $query->fetchAll();
@@ -323,7 +323,7 @@ and areas_idAreas=idAreas");
     }
     function consultarUsuariosPorArchivo(PDO $cnn){
         try {
-            $listarUsuarios = "SELECT * FROM productivitymanager.personas where areas_idAreas = 0";
+            $listarUsuarios = "SELECT * FROM personas where areas_idAreas = 0";
             $query = $cnn->prepare($listarUsuarios);
             $query->execute();
             return $query->fetchAll();

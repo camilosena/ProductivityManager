@@ -74,9 +74,9 @@
                 $pdf->Ln(6);
                 $pdf->write(15,'                                                               '.$clie['email']);
             //enviamos cabezales http para no tener problemas
-            header("Content-Transfer-Encoding", "binary");
+          /*  header("Content-Transfer-Encoding", "binary");
             header('Cache-Control: maxage=3600'); 
-            header('Pragma: public');
+            header('Pragma: public');*/
              
             //enviamos el documento creado con un nombre nuevo y forzamos su descarga. 'recibos.pdf', 'D'
             $pdf->Output();
@@ -169,9 +169,9 @@
                    }
                
             //enviamos cabezales http para no tener problemas
-            header("Content-Transfer-Encoding", "binary");
+           /* header("Content-Transfer-Encoding", "binary");
             header('Cache-Control: maxage=3600'); 
-            header('Pragma: public');
+            header('Pragma: public');*/
              
             //enviamos el documento creado con un nombre nuevo y forzamos su descarga. 'recibos.pdf', 'D'
             $pdf->Output();
@@ -281,9 +281,9 @@
                    }
                
             //enviamos cabezales http para no tener problemas
-            header("Content-Transfer-Encoding", "binary");
+          /*  header("Content-Transfer-Encoding", "binary");
             header('Cache-Control: maxage=3600'); 
-            header('Pragma: public');
+            header('Pragma: public');*/
              
             //enviamos el documento creado con un nombre nuevo y forzamos su descarga. 'recibos.pdf', 'D'
             $pdf->Output();

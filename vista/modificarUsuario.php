@@ -514,51 +514,45 @@ $session->Session($pagActual);
                 ?> 
                 <br><br><h2 class="h330">Modificar <?php echo $usuario['rol'];?>:</h2><hr>
                 <p class="obligatorios">Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
-                <form class="formRegistro" method="post" action="../controlador/ControladorUsuarios.php"> 
+                <form class="formRegistro" id="formUsuarios" method="post" action="../controlador/ControladorUsuarios.php"> 
                     <label class="tag" for="id"><span id="documento" class="h331">Código: </span></label>
-                    <input class="input" name="id" value ="<?php echo $usuario['idUsuario']; ?>" required type="number" pattern="[0-9]{1,15}"  title="Dato no modificable" maxlength="128" id="txtEmail" class="field1" style="text-align: center" readonly>
-                    <span id="valCompany" style="color:Red;visibility:hidden;"></span>
+                    <input class="input" name="id" value ="<?php echo $usuario['idUsuario']; ?>" type="number" title="Dato no modificable" id="txtEmail" class="field1" style="text-align: center" readonly>
                     <br>               
                     <label class="tag" for="tipoUser"><span id="lab_valName" class="h331">Tipo de Usuario: </span></label>
                      <input class="input" name="tipoUser" type="text" id="tipoUser" value ="<?php echo $usuario['rol']; ?>" class="field1" style="text-align: center" readonly>
-                    <span id="valName" style="color:Red;visibility:hidden;"></span>    
                    <br>
                     <label class="tag" for="area"><span id="lab_valName" class="h331">Área o Dependencia: </span></label>
                     <input class="input" name="area" type="text" id="area" value ="<?php echo $usuario['nombreArea']; ?>" class="field1" style="text-align: center" readonly>
-                    <span id="valName" style="color:Red;visibility:hidden;"></span>    
                    <br>
                     <label class="tag" for="documento"><span id="documento" class="h331">Documento: </span></label>
-                    <input class="input" name="identificacion" value ="<?php echo $usuario['identificacion']; ?>" required type="text" pattern="[0-9]{5,15}" title="Solo números" maxlength="128" id="txtEmail" class="field1">
-                    <span id="valCompany" style="color:Red;visibility:hidden;"></span>
+                    <input class="input" name="identificacion" value ="<?php echo $usuario['identificacion']; ?>" type="text"  title="Solo números"  id="txtEmail" class="field1">
                     <br>               
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombres: </span></label>
-                    <input class="input" name="nombre" type="text" id="txtName" value="<?php echo $usuario['nombres']; ?>" class="field1"  required>
-                    <span id="valName" style="color:Red;visibility:hidden;"></span>
+                    <input class="input" name="nombre" type="text" id="txtName" value="<?php echo $usuario['nombres']; ?>" class="field1" >
                     <br>
                     <label class="tag" for="txtSurname"><span id="lab_valSurname" class="h331">Apellidos: </span></label>
-                    <input class="input" name="apellido" type="text" id="txtSurname" value="<?php echo $usuario['apellidos']; ?>" class="field1" required>
-                    <span id="valSurname" style="color:Red;visibility:hidden;"></span>                    
+                    <input class="input" name="apellido" type="text" id="txtSurname" value="<?php echo $usuario['apellidos']; ?>" class="field1" >                  
                     <br>
                     <label class="tag" for="txtCompany1"><span id="lab_valCompany" class="h331">Teléfono: </span></label>
-                    <input class="input" name="telefono" required type="text" value="<?php echo $usuario['telefono']; ?>" pattern="[0-9]{7,10}"  title="Solo números" maxlength="128" id="txtEmail" class="field1">
-                    <span id="valCompany" style="color:Red;visibility:hidden;"></span>
+                    <input class="input" name="telefono" type="text" value="<?php echo $usuario['telefono']; ?>" class="field1">
                     <br>
                     <label class="tag2" for="txtSurname1"><span id="lab_valSurname" class="h331">Dirección: </span></label>
-                    <input class="input" name="direccion" type="text" id="txtSurname" value="<?php echo $usuario['direccion']; ?>" class="field1" required>
+                    <input class="input" name="direccion" type="text" id="txtSurname" value="<?php echo $usuario['direccion']; ?>" class="field1">
 
-                    <span id="valSurname" style="color:Red;visibility:hidden;"></span>
                     <br>
 
                     <label class="tag" for="txtEmail"><span id="lab_valEmail" class="h331">Email </span></label>
-                    <input class="input" name="email" required type="text" value="<?php echo $usuario['email']; ?>" maxlength="128" id="txtEmail" class="field1" placeholder="empleado@muebleslaoficina.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                    <span id="valEmail" style="color:Red;visibility:hidden;"></span>
+                    <input class="input" name="email" type="text" value="<?php echo $usuario['email']; ?>"  class="field1" placeholder="empleado@muebleslaoficina.com">
                     <br>
                     <label class="tag" for="txtCompany2"><span id="lab_valCompany" class="h331">Fecha de Nacimiento:</span></label>
-                    <input class="input" name="fechaNacimiento" value="<?php echo $usuario['fechaNacimiento']; ?>" required type="date" id="txtCompany2" class="field1">
-                    <span id="valCompany" style="color:Red;visibility:hidden;"></span>
+                    <input class="input" name="fechaNacimiento" value="<?php echo $usuario['fechaNacimiento']; ?>" type="date" id="txtCompany2" class="field1">
                     <br> 
                     <button type="submit" value="modificar" name="modificar" id="modificar" class="boton-verde">Modificar Usuario</button><br>
                 </form>
+                <hr>
+                <script src="../js/additional-methods.min.js" type="text/javascript"></script>
+                <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+                <script src="../js/validaciones.js"></script>
             </div>
         </div>    
        <footer class="footer-distributed">

@@ -3,7 +3,7 @@
     require_once '../modelo/utilidades/Fpdf/fpdf.php';
     require_once '../modelo/utilidades/Fpdi/fpdi.php';
 //Get the base-64 string from data
-/*$filteredData=substr($_POST['img_val'], strpos($_POST['img_val'], ",")+1);
+$filteredData=substr($_POST['img_val'], strpos($_POST['img_val'], ",")+1);
 
 //Decode the string
 $unencodedData=base64_decode($filteredData);
@@ -12,7 +12,7 @@ $unencodedData=base64_decode($filteredData);
 file_put_contents('img.png', $unencodedData);
 
 //Show the image
-//echo '<img src="'.$_POST['img_val'].'" />';*/
+//echo '<img src="'.$_POST['img_val'].'" />';
     $pdf = new FPDI();
   $pdf->setSourceFile('TemplateUsuarios.pdf');
              
@@ -40,5 +40,6 @@ file_put_contents('img.png', $unencodedData);
                 $pdf->Write(0, utf8_decode("                                   " . $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y')));
                  
                  $pdf->Image('img.png', 30, 90, 150);
+                 unlink('img.png');
                  $pdf->Output();
 

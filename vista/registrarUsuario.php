@@ -30,6 +30,8 @@ $session->Session($pagActual);
         <script type="text/javascript" src="../js/script2.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="../js/html2canvas.js"></script>
+<script type="text/javascript" src="../js/jquery.plugin.html2canvas.js"></script>
            <script>
             $(document).ready(function () {
                 $("#selectrol").on("change", function () {
@@ -140,6 +142,7 @@ $session->Session($pagActual);
                 </span>         
             </nav>
             <div id="panelIzq">
+            <a href="#" id="exportarPDFimg" style="float: right;margin-right: 20%;" onclick="capture();"><img  src="../img/pdf.png" title="Exportar a PDF"></a>
                 <script>
                     // Run the code when the DOM is ready
                     $(pieChart);
@@ -494,7 +497,25 @@ $session->Session($pagActual);
                     </tr>                    
                 </table>
                 <canvas id="chart" width="600" height="500"></canvas>
+
             </div>
+             
+            <form method="POST" enctype="multipart/form-data" action="../controlador/save.php" id="myForm1">
+                <input type="hidden" name="img_val" id="img_val" value="" />
+            </form>
+             <script type="text/javascript">
+                function capture() {
+                    $('#exportarPDFimg').remove();
+                    $('#panelIzq').html2canvas({
+                        onrendered: function (canvas) {
+                            //Set hidden field's value to image data (base-64 string)
+                            $('#img_val').val(canvas.toDataURL("image/png"));
+                            //Submit the form manually
+                            document.getElementById("myForm1").submit();
+                        }
+                    });
+                }
+            </script>
             <div id="panelDer">
                 <br>
                 <br><h2 class="h330">Registrar Nuevo Usuario:</h2><hr>

@@ -4,7 +4,7 @@ class EstudioCostosDAO {
       public function generarEstudioCostos(EstudioCostosDTO $estudioDTO,PDO $cnn) {
         $mensaje="";
         try{
-            $sentencia= $cnn->prepare("INSERT INTO estudiodecostos VALUES(DEFAULT,?,?,?,?,?,?,?,?,?)");
+            $sentencia= $cnn->prepare("INSERT INTO estudioDeCostos VALUES(DEFAULT,?,?,?,?,?,?,?,?,?)");
             $sentencia->bindParam(1, $estudioDTO->getIdProyectoSolicitado());
             $sentencia->bindParam(2, $estudioDTO->getIdGerenteCargo());
             $sentencia->bindParam(3, $estudioDTO->getCostoManoDeObra());
@@ -25,7 +25,7 @@ class EstudioCostosDAO {
 
     public function costoManoDeObra($idProyecto,PDO $cnn) {
         try{
-            $sentencia= $cnn->prepare("SELECT sum(totalPrecioProceso)from procesosporproyecto where idProyecto_proyectos=?");
+            $sentencia= $cnn->prepare("SELECT sum(totalPrecioProceso)from procesosPorProyecto where idProyecto_proyectos=?");
             $sentencia->bindParam(1,$idProyecto);
             $sentencia->execute();
             return $sentencia->fetchColumn();
@@ -37,7 +37,7 @@ class EstudioCostosDAO {
 
     public function costoProduccion($idProyecto,PDO $cnn) {
         try{
-            $sentencia= $cnn->prepare("SELECT sum(valorTotal)from materiaprimaporproyecto where proyectos_idProyecto=?");
+            $sentencia= $cnn->prepare("SELECT sum(valorTotal)from materiaPrimaPorProyecto where proyectos_idProyecto=?");
             $sentencia->bindParam(1,$idProyecto);
             $sentencia->execute();
             return $sentencia->fetchColumn();
@@ -49,7 +49,7 @@ class EstudioCostosDAO {
 
     public function tiempoEstimado($idProyecto,PDO $cnn) {
         try{
-            $sentencia= $cnn->prepare("SELECT sum(totalTiempoProceso) from procesosporproyecto where idProyecto_proyectos=?");
+            $sentencia= $cnn->prepare("SELECT sum(totalTiempoProceso) from procesosPorProyecto where idProyecto_proyectos=?");
             $sentencia->bindParam(1,$idProyecto);
             $sentencia->execute();
             return $sentencia->fetchColumn();
@@ -61,7 +61,7 @@ class EstudioCostosDAO {
 
     public function empleadosSolicitados($idProyecto,PDO $cnn) {
         try{
-            $sentencia= $cnn->prepare("SELECT sum(totalEmpleadosProceso) from procesosporproyecto where idProyecto_proyectos=?");
+            $sentencia= $cnn->prepare("SELECT sum(totalEmpleadosProceso) from procesosPorProyecto where idProyecto_proyectos=?");
             $sentencia->bindParam(1,$idProyecto);
             $sentencia->execute();
             return $sentencia->fetchColumn();

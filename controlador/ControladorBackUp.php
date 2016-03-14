@@ -26,6 +26,7 @@ if (isset($_POST['backUpTablas'])) {
 if (isset($_POST['backUpGeneral'])) {
 
     $fBack->Backup_Database();
-    header("location: ../vista/backup.php");
+    $mensaje = "Backup generado con extio";
+    header("location: ../vista/backup.php?mensaje=".$mensaje);
 
 }

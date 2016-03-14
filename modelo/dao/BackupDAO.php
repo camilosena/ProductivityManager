@@ -19,6 +19,17 @@ class BackupDAO {
         $cnn = NULL;
         return $mensaje;
     }
+    function listarTablas(PDO $cnn){
+        
+        try {
+            
+            $query = $cnn->prepare("SHOW FULL TABLES  FROM productivitymanager ");
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }  
+    }
            
     
 }    

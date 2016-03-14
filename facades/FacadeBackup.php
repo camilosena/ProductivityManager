@@ -14,6 +14,10 @@ class FacadeBackup {
         
          return $this->BackDAO->BackupTablas($ruta, $tabla, $this->conexionBase);
     }
+    function listarTablas(){
+        
+        return $this->BackDAO->listarTablas($this->conexionBase);
+    }
 
   
 }

@@ -95,25 +95,41 @@ $session->Session($pagActual);
           
             <div id="panelUnico">
                 <br>
-                <h2 class="h330">Generar BackUp:</h2><br>
-                <p class="obligatoriosD">Por favor seleccione el tipo de BackUp a realizar.</p><br><br>                
+                <?php 
+                require_once '../modelo/utilidades/Conexion.php';
+                require_once '../modelo/dao/BackupDAO.php';
+                require_once '../facades/FacadeBackup.php';
+                $fBack = new FacadeBackup();
+                $tablas = $fBack->listarTablas();
+                ?>
+                <h2 class="h330">Generar BackUp:</h2><br>               
                 <form class="formRegistro"  id="formClientes" method="post" action="../controlador/ControladorBackUp.php" enctype="multipart/form-data"> 
-                    <hr>                       
-                    <select class="input" name="sectorEmp" id="sectorEmp" class="list_menu" required>                                              
-                        <option value="" selected disabled>Seleccione una opción</option>
-                        <option value="completo" >Completo</option>
-                        <option value="tablas" >Por tablas</option> 
+                    <hr>
+                    <label class="tag" for="tablas"><span id="lab_valCountry" class="h331">BackUp por tablas:</span></label>
+                    <select class="input" name="tablas" id="tablas" class="list_menu" required>                                              
+                        <?php
+                        echo '<option disabled selected>' . "Seleccione una tabla" . '</option>';
+                        foreach ($tablas as $tabla) {
+                            
+                            echo '<option value="' .$tabla['Tables_in_productivitymanager']. '">' . $tabla['Tables_in_productivitymanager'] . '</option>';                            
+                        }
+                        ?>
                     </select>
                     <br>
-                    <label class="tag" for="sectorEco"><span id="lab_valCountry" class="h331">:</span></label>
-                    <select class="input" name="tablas" id="sectorEco" class="list_menu" required>                                              
-                        <option value="" selected disabled>Seleccione una opción</option> 
-                        <option value="roles" >Completo</option>
+                    <label class="tag" for="tipo"><span id="lab_valCountry" class="h331">Tipo de archivo:</span></label>
+                    <select class="input" name="tipo" id="tablas" class="list_menu" required>                                              
+                         <option disabled selected>Seleccione un tipo de archivo</option>
+                        <option value="sql">sql</option>
+                        <option value="cvs">cvs</option>
+                        <option value="txt">txt</option>
                     </select>
                     <br>
+                    <button type="submit" name="backUpTablas" class="boton-verde">Generar</button><br>
                     
-                    <button type="submit" name="backUp" class="boton-verde">Generar</button><br>
-                </form>  
+                </form> 
+                 <form class="formRegistro"  id="formClientes" method="post" action="../controlador/ControladorBackUp.php" enctype="multipart/form-data"> 
+                <button type="submit" name="backUpGeneral" class="boton-verde">BackUp general</button><br>
+                </form> 
                 <script src="../js/additional-methods.min.js" type="text/javascript"></script>
                 <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="../js/validaciones.js"></script>

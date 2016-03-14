@@ -12,7 +12,7 @@ if (isset($_POST['backUpTablas'])) {
 //    $dbuser = "root";
 //    $dbpass = "";
     $fBack = new FacadeBackup();
-    $fecha = date('_d-m-Y/h-i-s');
+    $fecha = date('_d-m-Y_h-i-s');
     $table_name = $_POST['tablas'] ;
     $tipo_archivo = $_POST['tipo'];
     $bacup_file = 'C:/xampp/htdocs/ProductivityManager/BackUp/'.$table_name.$fecha.'.'.$tipo_archivo;
@@ -27,8 +27,8 @@ if (isset($_POST['backUpGeneral'])) {
     $dbpass = "";
     $dbname= 'productivitymanager';
     $fecha = date('dmYh-i-s');
-    $bacup_file =$dbname.$fecha.'.gz';
-    $comand = "C:\xampp\htdocs\ProductivityManager\BackUp> mysqldump --opt  --user=$dbuser $dbname > $bacup_file";
+    $bacup_file ="C:/xampp/htdocs/ProductivityManager/BackUp/".$dbname.$fecha.'.txt';
+    $comand = " mysqldump --opt  --user=$dbuser $dbname > $bacup_file";
    $mensaje =  system($comand);
     
     echo "hola". $mensaje;

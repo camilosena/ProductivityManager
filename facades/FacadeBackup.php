@@ -5,9 +5,12 @@ class FacadeBackup {
     private $conexionBase = null;
     private $BackDAO = null;
     
+    private $back = null;
+            
    function __construct() {
         $this->BackDAO = new BackupDAO();
         $this->conexionBase = Conexion::getConexion();
+        $this->back = new BackUp();
     }
  
     function BackupTablas($ruta, $tabla){
@@ -17,6 +20,10 @@ class FacadeBackup {
     function listarTablas(){
         
         return $this->BackDAO->listarTablas($this->conexionBase);
+    }
+    function Backup_Database(){
+        
+        return $this->back->backupTables($this->conexionBase);
     }
 
   

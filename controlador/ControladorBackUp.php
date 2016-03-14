@@ -2,9 +2,11 @@
 
 
 require_once '../modelo/utilidades/Conexion.php';
+require_once '../modelo/utilidades/BackUp.php';
 require_once '../modelo/dao/BackupDAO.php';
 require_once '../facades/FacadeBackup.php';
-
+$fBack = new FacadeBackup();
+$back = new BackUp();
 
 //  Generar BackUp por tablas
 if (isset($_POST['backUpTablas'])) {
@@ -22,14 +24,16 @@ if (isset($_POST['backUpTablas'])) {
     header("location: ../vista/backup.php?mensaje=".$mensaje);
 }else 
 if (isset($_POST['backUpGeneral'])) {
-    $dbhost = "localhost";
-    $dbuser = "root";
-    $dbpass = "";
-    $dbname= 'productivitymanager';
-    $fecha = date('dmYh-i-s');
-    $bacup_file ="C:/xampp/htdocs/ProductivityManager/BackUp/".$dbname.$fecha.'.txt';
-    $comand = " mysqldump --opt  --user=$dbuser $dbname > $bacup_file";
-   $mensaje =  system($comand);
+//    $host = "localhost";
+//    $username = "root";
+//    $pass = "";
+//    $dbName= 'productivitymanager';
+    $fBack->Backup_Database();
+
+//    $fecha = date('dmYh-i-s');
+//    $bacup_file ="C:/xampp/htdocs/ProductivityManager/BackUp/".$dbname.$fecha.'.txt';
+//    $comand = " mysqldump --opt  --user=$dbuser $dbname > $bacup_file";
+//   $mensaje =  system($comand);
     
-    echo "hola". $mensaje;
+    echo "hola";
 }

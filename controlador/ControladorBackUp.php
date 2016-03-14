@@ -24,16 +24,8 @@ if (isset($_POST['backUpTablas'])) {
     header("location: ../vista/backup.php?mensaje=".$mensaje);
 }else 
 if (isset($_POST['backUpGeneral'])) {
-//    $host = "localhost";
-//    $username = "root";
-//    $pass = "";
-//    $dbName= 'productivitymanager';
-    $fBack->Backup_Database();
 
-//    $fecha = date('dmYh-i-s');
-//    $bacup_file ="C:/xampp/htdocs/ProductivityManager/BackUp/".$dbname.$fecha.'.txt';
-//    $comand = " mysqldump --opt  --user=$dbuser $dbname > $bacup_file";
-//   $mensaje =  system($comand);
-    
-    echo "hola";
+    $fBack->Backup_Database();
+    header("location: ../vista/backup.php");
+
 }

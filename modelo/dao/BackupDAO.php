@@ -2,8 +2,8 @@
 
 
 class BackupDAO {
-    
-    function BackupTablas ($ruta, $tabla, PDO $cnn){
+    private $dbName = 'productivitymanager';
+            function BackupTablas ($ruta, $tabla, PDO $cnn){
         
          try {
             $sentencia = $cnn->prepare("SELECT * into outfile ? from $tabla");
@@ -29,62 +29,80 @@ class BackupDAO {
             echo 'Error' . $ex->getMessage();
         }  
     }
-    function Backup_Database( PDO $cnn) {
-    
-   $cnn->query("SET NAMES utf8");
-   $result = $cnn->query("SHOW TABLES");
-   $tablas = 1;
-   while ($row = $result->fetch()){
-       $tables []=$row['Tables_in_productivitymanager'];
-       
-   }
-   print_r($tables) ."<br>";
-   $fields = $cnn->query("select count(*) as cant from information_schema.tables where table_schema = 'productivitymanager'");
+   public function backupTables(PDO $cnn, $tables = '*', $outputDir = '../BackUp') {
+    try {
+      /* Tables to export  */
+      
+      if ($tables == '*') {
+        $tables = array();
+        $result = $cnn->query('SHOW TABLES');
+        while ($row = $result->fetch()) {
+          $tables[] = $row[0];
+        }
+      } else {
+        $tables = is_array($tables) ? $tables : explode(',', $tables);
+      }
+
+      $sql = 'CREATE DATABASE IF NOT EXISTS ' . $this->dbName  . ";\n\n";
+      $sql .= 'USE ' . $this->dbName  . ";\n\n";
+$fields = $cnn->query("select count(*) as cant from information_schema.tables where table_schema = 'productivitymanager'");
     $cantidad = $fields->fetch();
    $num_fields = $cantidad['cant'];
-   foreach ($result as $table) {
+  /* Iterate tables */
+  foreach ($tables as $table) {
+    echo "Backing up " . $table . " table...";
 
-       echo $table;
-       for ($i = 0; $i<2; $i++){
-       $result1 = $cnn->query('SELECT * FROM '.$table);
-       $return .= 'DROP TABLE IF EXIST '.$table.';';
-       $_row2 = $cnn->query('SHOW CREATE TABLE '. $table);
+    $result1 = $cnn->query('SELECT * FROM ' . $table);
+
+    $sql .= 'DROP TABLE IF EXISTS ' . $table . ';';
+    $_row2 = $cnn->query('SHOW CREATE TABLE '. $table);
        $row2 = $_row2->fetch();
-       $return .="\n\n".$row2[1]."\n\n";
-//           while ($row = $result1->fetch()){
-//               $return .= 'INSERT INTO '.$table.' VALUES(';
-//                for($j=0; $j=2; $j++){
-////                    
-//                    if (isset($row[$j])) {
-//                        $return .='"'.$row[$j].'"';
-//                    }else
-//                    {
-//                        $return .='""';
-//                    }
-//                    if ($j<($num_fields-1)) {
-//                        $return .=',';
-//                    }
-//                    $return .=");\n";
-//                }
-//          }
-           $return .="\n\n";
-       }
-       
-       echo "<pre>";
-       print_r($return);
-       echo '</pre>';
-       exit;
-       
-       $folder = "../../BackUp/";
-       $date = date('d-m-Y', time());
-       $filename = $folder."_".$date;
-       fwrite($handle, $return);
-       fclose($handle);
-       
-       $fp = fopen($filename.'.sql','w');
-       fwrite($fp, $return);
-       fclose($fp);
-   }
+    $sql.= "\n\n" . $row2[1] . ";\n\n";
+
+    for ($i = 0; $i < $num_fields; $i++) {
+      while ($row = $result1->fetch()) {
+        $sql .= 'INSERT INTO ' . $table . ' VALUES(';
+        for ($j = 0; $j < $num_fields; $j++) {
+//          $row[$j] = addslashes($row[$j]);
+          // $row[$j] = ereg_replace("\n", "\\n", $row[$j]);
+          if (isset($row[$j])) {
+            $sql .= '"' . $row[$j] . '"';
+          } else {
+            $sql.= '""';
+          }
+          if ($j < ($num_fields - 1)) {
+            $sql .= ',';
+          }
+        }
+        $sql.= ");\n";
+      }
     }
+    $sql.="\n\n\n";
+    echo " OK <br/><br/>" . "";
+  }
+} catch (Exception $e) {
+  var_dump($e->getMessage());
+  return false;
+ }
+
+    return $this->saveFile($sql, $outputDir);
+  }
+
+  /* Save SQL to file @param string $sql */
+
+  protected function saveFile(&$sql, $outputDir = '../BackUp') {
+    if (!$sql)
+      return false;
+
+    try {
+      $handle = fopen($outputDir . '/db-backup-' . $this->dbName . '-' . date("Ymd-His", time()) . '.sql', 'w+');
+      fwrite($handle, $sql);
+      fclose($handle);
+    } catch (Exception $e) {
+      var_dump($e->getMessage());
+      return false;
+    }
+    return true;
+  }
     
 }    

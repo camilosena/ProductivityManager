@@ -1,24 +1,18 @@
 <?php
 
-require_once '../facades/FacadeProyectos.php';
-require_once '../modelo/dao/ProyectosDAO.php';
-require_once '../modelo/utilidades/Conexion.php';
-require_once '../modelo/utilidades/EnvioCorreos.php';
-require_once '../PHPMailer/PHPMailerAutoload.php';
-require_once '../facades/FacadeCorreos.php';
-require_once '../modelo/dto/CorreosDTO.php';
-require_once '../facades/FacadeUsuarios.php';
-require_once '../modelo/dao/UsuarioDAO.php';
+require_once '../utilidades/Conexion.php';
+require_once '../dao/ProyectosDAO.php';
+require_once '../../facades/FacadeProyectos.php';
 
 class TiempoEjecucion {
     function dias_transcurridos($fecha_i,$fecha_f) {
         $dias   = (strtotime($fecha_i)-strtotime($fecha_f))/86400;
-        $dias   = abs($dias); $dias = floor($dias);     
+        $dias   = abs($dias); 
+        $dias = floor($dias);     
         return $dias;
     }
     function ejecucionProyectos(){
             $facadeProyectos = new FacadeProyectos();
-            $facadeUsuarios = new FacadeUsuarios();
             $datos = $facadeProyectos->listadoProyectos();
                 foreach ($datos as $dato){
                  $ejecucion = $dato['ejecutado'];
@@ -35,7 +29,7 @@ class TiempoEjecucion {
                     $totalPasado = $this->dias_transcurridos($fechaInicio,$fechaActual);
                     $porcentaje=($totalPasado*100)/$totalDias;
                     $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
-                    $facadeProyectos->cambiarEstadoProyecto('Ejecucion', $idProyecto);
+                    $facadeProyectos->cambiarEstadoProyecto('Ejecución', $idProyecto);
 
                 }
                 elseif ($estado == 'Ejecución' && $transcurrido<100) {
@@ -55,3 +49,7 @@ class TiempoEjecucion {
         }
     }
 }
+
+
+$ejecucionProyectos = new TiempoEjecucion();
+$ejecucionProyectos->ejecucionProyectos();

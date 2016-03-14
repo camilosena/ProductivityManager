@@ -1,15 +1,12 @@
 <?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
-require_once '../modelo/utilidades/TiempoEjecucion.php';
 require_once '../modelo/utilidades/CorreoFinProyecto.php';
 $pagActual = 'listarProyectos.php';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 $correoFin = new CorreoFinProyecto();
 //$correoFin->enviarCorreoFinProyecto();
-$ejecucionProyectos = new TiempoEjecucion();
-$ejecucionProyectos->ejecucionProyectos();
 ?>
 <!DOCTYPE html>
 <html lang="en">

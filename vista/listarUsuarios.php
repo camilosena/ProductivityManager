@@ -35,11 +35,11 @@ $session->Session($pagActual);
     <?php 
     $browser = new browser();
     $navegador = $browser->getBrowser($_SERVER['HTTP_USER_AGENT']);
-      if($navegador!='Google Chrome'){
+      if($navegador!='Google Chrome' && $navegador!='Safari'){
       ?>
        <script language="JavaScript" type="text/javascript">
                 window.onload = function () {
-                    Command: toastr["error"]("<?php echo 'Esta utilizando '.$navegador.'<br> Para una correcta visualización utilice Google Chrome' ?>")
+                    Command: toastr["error"]("<?php echo 'Esta utilizando '.$navegador.'<br> Para una correcta visualización utilice Google Chrome o Safai' ?>")
 
                     toastr.options = {
                         "closeButton": false,

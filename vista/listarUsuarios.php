@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
+require_once '../modelo/utilidades/browser.php';
 $pagActual = 'listarUsuarios.php';
 $session = new Session($pagActual);
 $session->Session($pagActual);
@@ -31,6 +32,35 @@ $session->Session($pagActual);
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
     </head>
+    <?php 
+    $browser = new browser();
+    $navegador = $browser->getBrowser($_SERVER['HTTP_USER_AGENT']);
+      if($navegador!='Google Chrome'){
+      ?>
+       <script language="JavaScript" type="text/javascript">
+                window.onload = function () {
+                    Command: toastr["error"]("<?php echo 'Esta utilizando '.$navegador.'<br> Para una correcta visualización utilice Google Chrome' ?>")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-full-width",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "9000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+        </script>
+      <?php } ?>
     <body>
      <div id='cssmenu'>
         <form id="frmPicture" name="frmChangePicture" action="../controlador/ControladorUsuarios.php" method="post" enctype="multipart/form-data">

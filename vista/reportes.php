@@ -145,8 +145,51 @@ $session->Session($pagActual);*/
       }else{
         ?>
         <div class="row">
-        <br><br>
-         <img src="https://chart.googleapis.com/chart?cht=p3&chs=420x220&chd=t:<?php echo $cants[0];?>,<?php echo $cants[1];?>&chl=<?php echo $states[0];?>|<?php echo $states[1];?>&chco=0072c6|ef3886&chtt=Relaci%C3%B3n+de+Proyectos+A%C3%B1o+2016" width="500" height="300" alt="Reporte Proyectos" style="margin-left: 25%;" class="animated zoomInUp">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable([
+                ['', ''],
+                ['<?php echo $states[0];?>s',    <?php echo $cants[0];?>],
+                ['<?php echo $states[1];?>s',     <?php echo $cants[1];?>]
+              ]);
+
+              var options = {
+                title: 'Relación de Proyectos para el Año <?php echo $_GET['a'];?>',
+                is3D: true,
+              };
+
+              var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+              chart.draw(data, options);
+            }
+          </script>
+          <div class="col-md-8">
+             <br>
+            <div id="piechart_3d" style="width: 900px; height: 500px;" class="animated zoomInUp"></div>
+          </div>
+          <div class="col-md-4">
+             <br>
+                <table class="table table-hover animated fadeInRight">
+                    <thead>
+                      <tr>
+                        <th>Estado Proyecto</th>
+                        <th>Cantidad Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><?php echo $states[0];?></td>
+                        <td><?php echo $cants[0];?></td>
+                      </tr>
+                      <tr>
+                        <td><?php echo $states[1];?></td>
+                        <td><?php echo $cants[1];?></td>
+                      </tr>
+                    </tbody>
+                  </table>
+             </div>
         </div>
           <?php
         }

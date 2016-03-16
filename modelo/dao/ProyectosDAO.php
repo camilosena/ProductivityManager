@@ -366,4 +366,18 @@ join proyectos on idProyecto = proyectoAsignado and usuarioAsignado = ? and esta
         }
         $cnn = null; 
     }
+            function graficoEstadosAnuales($anio, $estado, PDO $cnn){
+
+                       $mensaje = '';
+        try {
+            $query = $cnn->prepare("SELECT count(idProyecto) cantidad month(fechaFin) mes from  proyectos 
+                where estadoProyecto = '".$estado."' and fechaFin 
+                 BETWEEN '".$anio."0101' AND '".$anio."1231' group by month(fechaFin)");
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null; 
+    }
 }

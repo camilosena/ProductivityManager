@@ -1,19 +1,37 @@
-<html>
-  <head>
+<?php
+session_start();
+/*require_once '../modelo/utilidades/Session.php';
+$pagActual = 'reportes.php';
+$session = new Session($pagActual);
+$session->Session($pagActual);*/
+if(isset($_SESSION['estadosProyectos'])){
+  print_r($_SESSION['estadosProyectos']);
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Reportes</title>
+        <meta charset="utf-8">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+   <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/animate.css">
   </head>
   <body>
   
   <div class="container">
     <div class="row"> 
+    <span class="animationSandbox">
       <h1 style=" font-size:30px;font-weight: bold;
     text-align: center;
     font-family:sans-serif;   
-    color: #83AF44;">Reportes</h1>
-      <form id="formTypeReport" rol="form">
+    color: #83AF44;" class="animated zoomIn">Reportes</h1>
+    <hr>
+    <!--Formulario General-->
+      <form id="formTypeReport" rol="form" class="animated fadeInDown">
         <div class="form-group">
          <label for="reportType" >Seleccione el tipo de reporte que desea generar:</label>
         <select name="reportType" id="reportType" class="form-control" required>
@@ -26,10 +44,10 @@
         </div>
       </form>
     </div>
-
+  <!--Formulario Costos Anuales-->
      <div class="row"> 
       <?php $actualAnio = date ("Y");?>
-      <form id="graficoAnio" method="post" action="../controlador/ControladorReportes.php" style="display: none;">
+      <form id="graficoAnio" method="post" action="../controlador/ControladorReportes.php" style="display: none;" class="animated fadeInDown">
       <div class="form-group">
          <label for="anio" >Seleccione el año a evaluar:</label>
           <select name="anio" id="anio" class="form-control">
@@ -41,14 +59,46 @@
           ?>
           </select>
         </div>
-        <button type="submit" name="generarAnio" class="btn btn-success">Generar Reporte</button>
+        <div class="row text-center">
+          <button type="submit" name="generarAnio" class="btn btn-success animated zoomIn">Generar Reporte</button>
+        </div>
       </form>
     </div>
-
+  <!--Formulario Estado de Proyectos-->
+     <div class="row"> 
+      <?php $actualAnio = date ("Y");?>
+      <form id="graficoProyectos" method="post" action="../controlador/ControladorReportes.php" style="display: none;" class="animated fadeInDown">
+      <div class="form-group">
+         <label for="anio" >Seleccione el año a evaluar:</label>
+          <select name="anio" id="anio" class="form-control">
+          <?php 
+            for ($i=2015; $i <=$actualAnio ; $i++) { ?>
+              <option value="<?php echo $i;?>"><?php echo $i;?></option>
+          <?php 
+            }
+          ?>
+          </select>
+        </div>
+         <div class="form-group">
+         <label for="estadoP" >Seleccione el estado a evaluar:</label>
+          <select name="estadoP" id="estadoP" class="form-control">
+              <option value="Finalizado">Finalizados</option>
+              <option value="Cancelado">Cancelado</option>
+          </select>
+        </div>
+        <div class="row text-center">
+          <button type="submit" name="generarProyectos" class="btn btn-success animated zoomIn">Generar Reporte</button>
+        </div>
+      </form>
+    </div>
     <script>
       $( "#reportType" ).change(function() {
         if( $( "#reportType" ).val()=='Costos'){
+          $( "#graficoProyectos" ).hide();
           $( "#graficoAnio" ).show();
+        }else if( $( "#reportType" ).val()=='Proyectos'){
+          $( "#graficoAnio" ).hide();
+          $( "#graficoProyectos" ).show();
         }
       });
     </script>
@@ -70,7 +120,7 @@
             var data = google.visualization.arrayToDataTable(datos);
 
             var options = {
-              title: 'Costos Proyectos Finalizados Durante el Año',
+              title: 'Costos para Proyectos Finalizados Durante el Año <?php echo $_GET['grAnio'];?>',
               hAxis: {title: 'MESES', titleTextStyle: {color: 'black'}},
               vAxis: {title: 'PESOS COLOMBIANOS', titleTextStyle: {color: '#83AF44'}},
               backgroundColor:'#ffffcc',
@@ -83,10 +133,11 @@
             grafico.draw(data, options);
           }
     </script>
-    <div class="row"> 
-        <div id="grafica"></div>
+      <div class="row">
+        <div id="grafica" style="margin-left: 10%;"></div>
     </div>
     <?php } ?>
+
    <!--   <img src="https://chart.googleapis.com/chart?cht=p3&chs=400x200&chd=t:60,30,10&chl=Cafe|Cigarro|Ron&chco=0072c6|ef3886|ff9900&chtt=Mi+consumo+de+cafe,+cigarro+y+ron" width="400" height="200" alt="">-->
 </div>
   </body>

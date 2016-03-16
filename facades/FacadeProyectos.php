@@ -112,4 +112,8 @@ class FacadeProyectos {
         
         return $this->proyectosDAO->graficoCostosAnuales($anio, $this->conexionBase);
     }
+            function graficoEstadosAnuales($anio,$estado){
+        
+        return $this->proyectosDAO->graficoEstadosAnuales($anio,$estado, $this->conexionBase);
+    }
 }

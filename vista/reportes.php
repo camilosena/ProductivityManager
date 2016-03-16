@@ -9,7 +9,10 @@
   
   <div class="container">
     <div class="row"> 
-      <h1>Reportes</h1>
+      <h1 style=" font-size:30px;font-weight: bold;
+    text-align: center;
+    font-family:sans-serif;   
+    color: #83AF44;">Reportes</h1>
       <form id="formTypeReport" rol="form">
         <div class="form-group">
          <label for="reportType" >Seleccione el tipo de reporte que desea generar:</label>
@@ -23,18 +26,22 @@
         </div>
       </form>
     </div>
-    <div>
+
+     <div class="row"> 
       <?php $actualAnio = date ("Y");?>
       <form id="graficoAnio" method="post" action="../controlador/ControladorReportes.php" style="display: none;">
-        <select name="anio" id="anio">
-        <?php 
-          for ($i=2015; $i <=$actualAnio ; $i++) { ?>
-            <option value="<?php echo $i;?>"><?php echo $i;?></option>
-        <?php 
-          }
-        ?>
-        </select>
-        <button type="submit" name="generarAnio">Generar Reporte</button>
+      <div class="form-group">
+         <label for="anio" >Seleccione el año a evaluar:</label>
+          <select name="anio" id="anio" class="form-control">
+          <?php 
+            for ($i=2015; $i <=$actualAnio ; $i++) { ?>
+              <option value="<?php echo $i;?>"><?php echo $i;?></option>
+          <?php 
+            }
+          ?>
+          </select>
+        </div>
+        <button type="submit" name="generarAnio" class="btn btn-success">Generar Reporte</button>
       </form>
     </div>
 
@@ -76,7 +83,9 @@
             grafico.draw(data, options);
           }
     </script>
-      <div id="grafica"></div>
+    <div class="row"> 
+        <div id="grafica"></div>
+    </div>
     <?php } ?>
    <!--   <img src="https://chart.googleapis.com/chart?cht=p3&chs=400x200&chd=t:60,30,10&chl=Cafe|Cigarro|Ron&chco=0072c6|ef3886|ff9900&chtt=Mi+consumo+de+cafe,+cigarro+y+ron" width="400" height="200" alt="">-->
 </div>

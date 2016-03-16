@@ -16,6 +16,8 @@ $session->Session($pagActual);*/
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/animate.css">
+    <script type="text/javascript" src="../js/html2canvas.js"></script>
+    <script type="text/javascript" src="../js/jquery.plugin.html2canvas.js"></script>
   </head>
   <body>
   
@@ -26,6 +28,8 @@ $session->Session($pagActual);*/
     text-align: center;
     font-family:sans-serif;   
     color: #83AF44;" class="animated zoomIn">Reportes</h1>
+    <a href="#" id="exportarPDFimg" style="display:none;float:right;margin-right: 5%;" onclick="capture();"><img  src="../img/pdf.png" title="Exportar a PDF"></a>
+    <br>
     <hr>
     <!--Formulario General-->
       <form id="formTypeReport" rol="form" class="animated fadeInDown">
@@ -113,7 +117,7 @@ $session->Session($pagActual);*/
               title: 'Costos para Proyectos Finalizados Durante el Año <?php echo $_GET['grAnio'];?>',
               hAxis: {title: 'MESES', titleTextStyle: {color: 'black'}},
               vAxis: {title: 'PESOS COLOMBIANOS', titleTextStyle: {color: '#83AF44'}},
-              backgroundColor:'#ffffcc',
+              backgroundColor:'#fff',
               legend:{position: 'bottom', textStyle: {color: 'black', fontSize: 13}},
               width:900,
               height:500
@@ -121,10 +125,17 @@ $session->Session($pagActual);*/
 
             var grafico = new google.visualization.ColumnChart(document.getElementById('grafica'));
             grafico.draw(data, options);
+            var chart_div= document.getElementById('my_div');
+           google.visualization.events.addListener(grafico, 'ready', function () {
+            chart_div.innerHTML = '<img src="' + grafico.getImageURI() + '">';
+          });
+
+          grafico.draw(data, options);
           }
     </script>
-      <div class="row">
+      <div class="row" id="forExport">
         <div id="grafica" style="margin-left: 10%;" class="animated zoomIn"></div>
+        <script>$( "#exportarPDFimg" ).show();</script>
     </div>
     <?php } 
     if(isset($_SESSION['estadosProyectos'])){ 
@@ -144,7 +155,7 @@ $session->Session($pagActual);*/
           <?php
       }else{
         ?>
-        <div class="row">
+        <div class="row" id="forExport">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
             google.charts.load("current", {packages:["corechart"]});
@@ -163,13 +174,22 @@ $session->Session($pagActual);*/
 
               var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
               chart.draw(data, options);
+              var chart_div= document.getElementById('my_div3');
+           google.visualization.events.addListener(chart, 'ready', function () {
+            chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
+          });
+
+          var a = $('#tableStates').html();
+          jQuery('#my_div4').append(a);
+          chart.draw(data, options);
             }
           </script>
           <div class="col-md-8">
+          <script>$( "#exportarPDFimg" ).show();</script>
              <br>
             <div id="piechart_3d" style="width: 900px; height: 500px;" class="animated zoomInUp"></div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" id="tableStates">
              <br>
                 <table class="table table-hover animated fadeInRight">
                     <thead>
@@ -195,6 +215,28 @@ $session->Session($pagActual);*/
         }
     } 
     ?>
+</div>
+            <form method="POST" enctype="multipart/form-data" action="../controlador/saveReport.php" id="myForm1">
+                <input type="hidden" name="img_val" id="img_val" value="" />
+            </form>
+             <script type="text/javascript">
+                function capture() {
+                    $('#exportarPDFimg').remove();
+                    $('#my_div2').show();
+                    $('#my_div2').html2canvas({
+                        onrendered: function (canvas) {
+                            //Set hidden field's value to image data (base-64 string)
+                            $('#img_val').val(canvas.toDataURL("image/png"));
+                            //Submit the form manually
+                            document.getElementById("myForm1").submit();
+                        }
+                    });
+                }
+            </script>
+<div id="my_div" style="display: none;"></div>
+<div id="my_div2" class="row">
+    <div class="col-md-8" id="my_div3"></div>
+    <div class="col-md-4" id="my_div4"></div>
 </div>
   </body>
 </html>

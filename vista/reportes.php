@@ -125,7 +125,7 @@ $session->Session($pagActual);*/
 
             var grafico = new google.visualization.ColumnChart(document.getElementById('grafica'));
             grafico.draw(data, options);
-            var chart_div= document.getElementById('my_div');
+            var chart_div= document.getElementById('my_div2');
            google.visualization.events.addListener(grafico, 'ready', function () {
             chart_div.innerHTML = '<img src="' + grafico.getImageURI() + '">';
           });
@@ -233,8 +233,7 @@ $session->Session($pagActual);*/
                     });
                 }
             </script>
-<div id="my_div" style="display: none;"></div>
-<div id="my_div2" class="row">
+<div id="my_div2" class="row" style="display: none;">
     <div class="col-md-8" id="my_div3"></div>
     <div class="col-md-4" id="my_div4"></div>
 </div>

@@ -4,9 +4,6 @@ session_start();
 $pagActual = 'reportes.php';
 $session = new Session($pagActual);
 $session->Session($pagActual);*/
-if(isset($_SESSION['estadosProyectos'])){
-  print_r($_SESSION['estadosProyectos']);
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,9 +34,9 @@ if(isset($_SESSION['estadosProyectos'])){
         <select name="reportType" id="reportType" class="form-control" required>
             <option value="" disabled selected>Seleccione un Reporte</option>
             <option value="Costos">Costos Anuales Diferidos(Mes)</option>
-            <option value="Utilidad">Utilidad Anual Diferido(Mes)</option>
-            <option value="Proyectos">Cantidad Proyectos Diferido(Estado/Mes)</option>
-            <option value="Retraso">Retrasos reportados Diferido(Mes)</option>
+            <!--<option value="Utilidad">Utilidad Anual Diferido(Mes)</option>-->
+            <option value="Proyectos">Cantidad Proyectos (Estados/Anual)</option>
+            <!--<option value="Retraso">Retrasos reportados Diferido(Mes)</option>-->
         </select>
         </div>
       </form>
@@ -134,11 +131,21 @@ if(isset($_SESSION['estadosProyectos'])){
           }
     </script>
       <div class="row">
-        <div id="grafica" style="margin-left: 10%;"></div>
+        <div id="grafica" style="margin-left: 10%;" class="animated zoomIn"></div>
     </div>
-    <?php } ?>
+    <?php } 
 
-   <!--   <img src="https://chart.googleapis.com/chart?cht=p3&chs=400x200&chd=t:60,30,10&chl=Cafe|Cigarro|Ron&chco=0072c6|ef3886|ff9900&chtt=Mi+consumo+de+cafe,+cigarro+y+ron" width="400" height="200" alt="">-->
+    if(isset($_SESSION['estadosProyectos'])){ ?>
+  <div class="row">
+  <br><br>
+   <img src="https://chart.googleapis.com/chart?cht=p3&chs=420x220&chd=t:70,30&chl=Finalizados|Cancelados&chco=0072c6|ef3886&chtt=Relaci%C3%B3n+de+Proyectos+A%C3%B1o+2016" width="500" height="300" alt="Reporte Proyectos" style="margin-left: 25%;" class="animated zoomInUp">
+  </div>
+    <?php
+      print_r($_SESSION['estadosProyectos']);
+      unset($_SESSION['estadosProyectos']);
+    } 
+    ?>
+
 </div>
   </body>
 </html>

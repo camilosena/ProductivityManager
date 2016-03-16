@@ -370,7 +370,7 @@ join proyectos on idProyecto = proyectoAsignado and usuarioAsignado = ? and esta
 
                        $mensaje = '';
         try {
-            $query = $cnn->prepare("SELECT count(idProyecto) cantidad month(fechaFin) mes from  proyectos 
+            $query = $cnn->prepare("SELECT count(idProyecto) cantidad, month(fechaFin) mes from  proyectos 
                 where estadoProyecto = '".$estado."' and fechaFin 
                  BETWEEN '".$anio."0101' AND '".$anio."1231' group by month(fechaFin)");
             $query->execute();

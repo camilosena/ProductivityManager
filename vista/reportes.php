@@ -76,13 +76,6 @@ $session->Session($pagActual);*/
           ?>
           </select>
         </div>
-         <div class="form-group">
-         <label for="estadoP" >Seleccione el estado a evaluar:</label>
-          <select name="estadoP" id="estadoP" class="form-control">
-              <option value="Finalizado">Finalizados</option>
-              <option value="Cancelado">Cancelado</option>
-          </select>
-        </div>
         <div class="row text-center">
           <button type="submit" name="generarProyectos" class="btn btn-success animated zoomIn">Generar Reporte</button>
         </div>
@@ -134,18 +127,31 @@ $session->Session($pagActual);*/
         <div id="grafica" style="margin-left: 10%;" class="animated zoomIn"></div>
     </div>
     <?php } 
-
-    if(isset($_SESSION['estadosProyectos'])){ ?>
-  <div class="row">
-  <br><br>
-   <img src="https://chart.googleapis.com/chart?cht=p3&chs=420x220&chd=t:70,30&chl=Finalizados|Cancelados&chco=0072c6|ef3886&chtt=Relaci%C3%B3n+de+Proyectos+A%C3%B1o+2016" width="500" height="300" alt="Reporte Proyectos" style="margin-left: 25%;" class="animated zoomInUp">
-  </div>
-    <?php
-      print_r($_SESSION['estadosProyectos']);
+    if(isset($_SESSION['estadosProyectos'])){ 
+      $cants= array();
+    $states= array();
+      foreach ($_SESSION['estadosProyectos'] as $estado ) {
+        $cants[] = $estado['cantidad'];
+        $states[] = $estado['estadoProyecto'];
+      }
       unset($_SESSION['estadosProyectos']);
+      if(empty($cants)){
+          ?>
+            <div style="margin-top: 10%;" class="alert alert-info animated rotateInDownRight">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Lo Sentimos</strong> No existen datos para analizar.
+          </div>
+          <?php
+      }else{
+        ?>
+        <div class="row">
+        <br><br>
+         <img src="https://chart.googleapis.com/chart?cht=p3&chs=420x220&chd=t:<?php echo $cants[0];?>,<?php echo $cants[1];?>&chl=<?php echo $states[0];?>|<?php echo $states[1];?>&chco=0072c6|ef3886&chtt=Relaci%C3%B3n+de+Proyectos+A%C3%B1o+2016" width="500" height="300" alt="Reporte Proyectos" style="margin-left: 25%;" class="animated zoomInUp">
+        </div>
+          <?php
+        }
     } 
     ?>
-
 </div>
   </body>
 </html>

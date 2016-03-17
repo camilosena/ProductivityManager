@@ -119,7 +119,7 @@ if (isset ($_POST['Change'])) {
                 $sentencia->execute();
                     $mensaje = "Productos Cargados con Éxito";
                     } catch (Exception $ex) {
-                        $mensaje = $ex->getMessage().' Verifique si los productos ya se han cargado';
+                        $mensaje =' Verifique si los productos ya se han cargado';
                     }
             }
             fclose($abrete);

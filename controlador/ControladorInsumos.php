@@ -49,7 +49,7 @@ if (isset ($_POST['Change'])) {
                 $sentencia->execute();
                     $mensaje = "Materia Prima Cargada con Éxito";
                     } catch (Exception $ex) {
-                        $mensaje = $ex->getMessage().' Verifique si la materia ya se ha cargado';
+                        $mensaje = ' Verifique si la materia ya se ha cargado';
                     }
             }
             fclose($abrete);

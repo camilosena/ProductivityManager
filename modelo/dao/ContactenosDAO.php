@@ -47,7 +47,7 @@ class ContactenosDAO {
     function cantidadSolicitudes(PDO $cnn){
 
         try {
-            $query = $cnn->prepare("SELECT count(idContacto) as numero FROM productivitymanager.contactenos");
+            $query = $cnn->prepare("SELECT count(idContacto) as numero FROM contactenos");
             $query->execute();
             return $query->fetch();
         } catch (Exception $ex) {

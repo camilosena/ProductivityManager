@@ -66,7 +66,7 @@ if (isset($_POST['contactarme'])) {
        $mensajeCorreo=$confirmacion;  
        $mensaje2="Error no se pudo generar la solicitud";
        $consecutivos = 0;
-       header("location: ../contactecnos.php?errorSolicitud=" . $mensajeCorreo);
+       header("location: ../contactecnos?Solicitud=Intente Nuevamente");
     } else {        
     //mensaje enviado
     
@@ -75,6 +75,6 @@ if (isset($_POST['contactarme'])) {
         $contactenosDTO = new ContactenosDTO($idContacto, $nombres, $apellidos, $empresa, $email, $idPais, $telefono, $modo, $razon);
         $mensaje2 = $facadeContactenos->guardarContacto($contactenosDTO);
     }
-    header("location: ../contactecnos?Solicitud=".$mensaje.$mensaje2);
+    header("location: ../contactecnos?Solicitud=Gracias por escribirnos. Pronto será contactado para responder a su solicitud.");
 }
 }

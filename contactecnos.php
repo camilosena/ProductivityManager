@@ -13,26 +13,8 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/carouFredSel.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script src="../js/validaciones.js"></script>
-    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../css/main_responsive.css">
-    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/carouFredSel.js"></script>
-    <script type="text/javascript" src="../js/main.js"></script>
-    <link rel="stylesheet" href="../js/jquery.dataTables.css">
-    <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="../js/table.js"></script>
-    <link href="../js/toastr.css" rel="stylesheet"/>
-    <script src="../js/toastr.js"></script>
-    <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
-    <link rel="stylesheet" type="text/css" href="../css/stylesNavTop.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
-    <script type="text/javascript" src="../js/script.js"></script>
-    <script type="text/javascript" src="../js/script2.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/component.css" />
-    <script src="../js/modernizr.custom.js"></script>
+    <script src="js/toastr.js"></script>
+    <link href="js/toastr.css" rel="stylesheet">
     <script>
         $(document).ready(function () {
             $("#selectPais").on("change", function () {
@@ -129,6 +111,31 @@ header nav ul li a:active{
     $facadeContactenos = new FacadeContactenos();
 
     ?>
+     <?php if (isset($_GET['Solicitud'])) { ?>
+            <script language="JavaScript" type="text/javascript">
+                window.onload = function () {
+                    Command: toastr["info"]("<?php echo $_GET['Solicitud']; ?>")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-full-width",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+<?php } ?>
+        </script>
     <div class="caption">		
      <h2 class="h330">Contáctese con nosotros:</h2><br>	
      <p class="obligatorios" style="margin-left:5%;"> Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>

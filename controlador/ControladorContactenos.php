@@ -70,11 +70,11 @@ if (isset($_POST['contactarme'])) {
     } else {        
     //mensaje enviado
     
-   // if ($mensaje == true) {
+   if ($mensaje == true) {
         $idContacto = '';
         $contactenosDTO = new ContactenosDTO($idContacto, $nombres, $apellidos, $empresa, $email, $idPais, $telefono, $modo, $razon);
         $mensaje2 = $facadeContactenos->guardarContacto($contactenosDTO);
-   // }
-    header("location: ../contactecnos.php?Solicitud=".$mensaje.$mensaje2);
+    }
+    header("location: ../contactecnos?Solicitud=".$mensaje.$mensaje2);
 }
 }

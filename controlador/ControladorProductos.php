@@ -93,12 +93,39 @@ if (isset ($_POST['Atras'])) {
      header("location: ../vista/agregarProductos.php");
 }else
 if (isset ($_POST['Change'])) {
-     $table = 'productos';
+   /*  $table = 'productos';
         $file = realpath($_FILES['archivo']['tmp_name']);
         $file = str_replace('\\', '/', $file);
         $facadeArchivo = new FacadeArchivo();
         $mensaje = $facadeArchivo->cargarArchivo($table, $file);
-         header("location: ../vista/agregarProductos.php?mensaje=".$mensaje);
+        */
+        $cnn = Conexion::getConexion();
+        $script='insert into productos () values ();';
+            $archivoleer=$_FILES['archivo']['tmp_name'];
+            $abrete=fopen($archivoleer,'rb');
+            while(!feof($abrete)){
+                $script=fgets($abrete);
+                $linea=str_replace(';', ',', $script);
+                $todos=(explode(',', $linea));
+                  try {
+                $sentencia = $cnn->prepare("INSERT INTO productos VALUES(?,?,?,?,?,?,?)");
+                $sentencia->bindParam(1, $todos[0]);
+                $sentencia->bindParam(2, $todos[1]);
+                $sentencia->bindParam(3, $todos[2]);
+                $sentencia->bindParam(4, $todos[3]);
+                $sentencia->bindParam(5, $todos[4]);
+                $sentencia->bindParam(6, $todos[5]);
+                $sentencia->bindParam(7, $todos[6]);
+                $sentencia->execute();
+                    $mensaje = "Productos Cargados con Éxito";
+                    } catch (Exception $ex) {
+                        $mensaje = $ex->getMessage().' Verifique si los productos ya se han cargado';
+                    }
+            }
+            fclose($abrete);
+          /* $sentencia = $cnn->prepare("INSERT INTO productos VALUES(?,?,?,?,?,?,?)");
+            $sentencia->execute();*/
+        header("location: ../vista/agregarProductos.php?mensaje=".$mensaje);
 }
 
 

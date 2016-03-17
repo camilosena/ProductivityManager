@@ -6,77 +6,108 @@ $session = new Session($pagActual);
 $session->Session($pagActual);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
-        <title>Generar BackUp</title>
+        <title>BackUps</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="../css/reset.css">
-        <link rel="stylesheet" type="text/css" href="../css/main_responsive.css">
         <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../css/animate.css">
     </head>
     <body>
-          
-            <div id="panelUnico">
-                <br>
+           <div class="container">
+                <div class="row"> 
+                    <span class="animationSandbox">
+                      <h1 style=" font-size:30px;font-weight: bold;
+                    text-align: center;
+                    font-family:sans-serif;   
+                    color: #83AF44;" class="animated zoomIn">Generación de BackUp's</h1>
+                    </span>
+                <hr>
                 <?php 
                 require_once '../modelo/utilidades/Conexion.php';
                 require_once '../modelo/dao/BackupDAO.php';
                 require_once '../facades/FacadeBackup.php';
                 $fBack = new FacadeBackup();
                 $tablas = $fBack->listarTablas();
-                print_r($tablas);
-                ?>
-                <h2 class="h330">Generar BackUp:</h2><br>               
-                <form class="formRegistro"  id="formClientes" method="post" action="../controlador/ControladorBackUp.php" enctype="multipart/form-data"> 
-                    <hr>
-                    <label class="tag" for="tablas"><span id="lab_valCountry" class="h331">BackUp por tablas:</span></label>
-                    <select class="input" name="tablas" id="tablas" class="list_menu" required>                                              
-                        <?php
-                        echo '<option disabled selected>' . "Seleccione una tabla" . '</option>';
-                        foreach ($tablas as $tabla) {
-                            
-                            echo '<option value="' .$tabla['Tables_in_ges_productivitymanager']. '">' . $tabla['Tables_in_ges_productivitymanager'] . '</option>';                            
-                        }
-                        ?>
-                    </select>
-                    <br>
-                    <label class="tag" for="tipo"><span id="lab_valCountry" class="h331">Tipo de archivo:</span></label>
-                    <select class="input" name="tipo" id="tablas" class="list_menu" required>                                              
-                         <option disabled selected>Seleccione un tipo de archivo</option>
-                        <option value="sql">sql</option>
-                        <option value="cvs">cvs</option>
-                        <option value="txt">txt</option>
-                    </select>
-                    <br>
-                    <button type="submit" name="backUpTablas" class="boton-verde">Generar</button><br>
-                    
-                </form> 
-                 <form class="formRegistro"  id="formClientes" method="post" action="../controlador/ControladorBackUp.php" enctype="multipart/form-data"> 
-                <button type="submit" name="backUpGeneral" class="boton-verde">BackUp general</button><br>
-                </form> 
-                <form class="formRegistro"  id="formClientes" method="post" action="../controlador/ControladorBackUp.php" enctype="multipart/form-data"> 
-                
-                <?php
+                ?>  
+                <div class="row">
+                     <form rol="form" class="animated fadeInDown" method="post" action="../controlador/ControladorBackUp.php" >
+                        <div class="form-group">
+                             <label for="reportType" >BackUp por tablas:</label>
+                                <select name="reportType" name="tablas" id="tablas" class="form-control" required>
+                                    <option value="" disabled selected>Seleccione un Reporte</option>
+                                   <?php   
+                                   foreach ($tablas as $tabla) {
+                                    echo '<option value="' .$tabla['Tables_in_ges_productivitymanager']. '">' . $tabla['Tables_in_ges_productivitymanager'] . '</option>';                            
+                                        }
+                                        ?>
+                                </select>
+                        </div>
+                         <div class="form-group">
+                            <label for="reportType" >Tipo de archivo (Extensión):</label>
+                                <select name="reportType" name="tablas" id="tablas" class="form-control" required>
+                                        <option disabled selected>Seleccione un tipo de archivo</option>
+                                        <option value="sql">sql</option>
+                                        <option value="cvs">cvs</option>
+                                        <option value="txt">txt</option>
+                                </select>
+                        </div>
+                            <div class="row text-center">
+                                <button type="submit" name="backUpTablas" class="btn btn-success animated zoomIn">Generar BackUp</button>
+                            </div>
+                      </form>
+                </div>    
+                <hr>   
+                <div class="row text-center">
+                     <form rol="form" class="animated fadeInDown" method="post" action="../controlador/ControladorBackUp.php" >
+                            <div class="form-group">
+                                 <label for="reportType" >A solo un click puede generar su BackUp General de información</label><br>
+                                 <span class="glyphicon glyphicon-chevron-down"></span><br>
+                                  <button type="submit" name="backUpTablas" class="btn btn-success animated zoomIn"> BackUp general</button>
+                            </div>
+                    </form> 
+                </div> 
+                <hr>
+                <div class="row">
+                    <table class="table table-hover animated fadeInRight">
+                    <thead>
+                      <tr>
+                        <th>BackUp Generado</th>
+                        <th>Descargar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     <?php
                 $dir = "../BackUp";
-$directorio = opendir($dir); 
-while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
-{
-    if ($archivo == ".." || $archivo == ".")//verificamos si es o no un directorio
-    {
-        //de ser un directorio lo envolvemos entre corchetes
-    }
-    else
-    {
-        echo $archivo .'<a title="Descargar" class="me"  href="../controlador/ControladorBackUp.php?idDownload='.$dir."/".$archivo.'" onclick=" return confirmacion()"><img class="iconos" src="../img/desactivarUsuario.png"></a></td><br>';
-    }
-}
+                $directorio = opendir($dir); 
+                while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
+                {
+                    if ($archivo == ".." || $archivo == ".")//verificamos si es o no un directorio
+                    {
+                        
+                    }
+                    else
+                    {
+                        ?>
+                        <tr>
+                        <td class="text-center"><?php echo $archivo;?></td>
+                        <td class="text-center">><?php echo '<a title="Descargar" class="me"  href="../controlador/ControladorBackUp.php?idDownload='.$dir."/".$archivo.'" onclick=" return confirmacion()">'?<span class="glyphicon glyphicon-circle-arrow-down"></span></a>
+                        </td>
+                      </tr>
+                        <?php
+                    }
+                }
 
-?>
-                    
-                </form>
+                ?>
+                      
+                    </tbody>
+                  </table>
+                </div>
 
             </div>
-        </div>      	
+        </div>  	
     </body>
 </html>

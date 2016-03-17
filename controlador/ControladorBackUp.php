@@ -29,4 +29,15 @@ if (isset($_POST['backUpGeneral'])) {
     $mensaje = "Backup generado con extio";
     header("location: ../vista/backup.php?mensaje=".$mensaje);
 
-}
+}  else 
+    if (isset($_GET['idDownload'])) {
+   
+$enlace = $_GET['idDownload'];
+echo $enlace;
+header ("Content-Disposition: attachment; filename=$enlace ");
+header ("Content-Type: application/force-download");
+header ("Content-Length: ".filesize($enlace));
+    readfile($enlace);
+//    $mensaje = "Archivo descargado con extio";
+//    header("location: ../vista/backup.php?mensaje=".$mensaje);
+    }

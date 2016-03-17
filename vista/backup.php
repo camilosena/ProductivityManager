@@ -130,6 +130,26 @@ $session->Session($pagActual);
                  <form class="formRegistro"  id="formClientes" method="post" action="../controlador/ControladorBackUp.php" enctype="multipart/form-data"> 
                 <button type="submit" name="backUpGeneral" class="boton-verde">BackUp general</button><br>
                 </form> 
+                <form class="formRegistro"  id="formClientes" method="post" action="../controlador/ControladorBackUp.php" enctype="multipart/form-data"> 
+                
+                <?php
+                $dir = "../BackUp";
+$directorio = opendir($dir); 
+while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
+{
+    if ($archivo == ".." || $archivo == ".")//verificamos si es o no un directorio
+    {
+        //de ser un directorio lo envolvemos entre corchetes
+    }
+    else
+    {
+        echo $archivo .'<a title="Descargar" class="me"  href="../controlador/ControladorBackUp.php?idDownload='.$dir."/".$archivo.'" onclick=" return confirmacion()"><img class="iconos" src="../img/desactivarUsuario.png"></a></td><br>';
+    }
+}
+
+?>
+                    
+                </form>
                 <script src="../js/additional-methods.min.js" type="text/javascript"></script>
                 <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="../js/validaciones.js"></script>

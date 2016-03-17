@@ -4,29 +4,52 @@ class ContactenosDTO {
     //put your code here
     
   private $idContacto;
-  private $idPersona;
+  private $nombres;
+  private $apellidos;
   private $empresa;
+  private $email;
+  private $idPais;
+  private $telefono;
   private $modo;
   private $razon;
-  private $idPais;
-  function __construct($idContacto, $idPersona, $empresa, $modo, $razon, $idPais) {
+ 
+  function __construct($idContacto, $nombres, $apellidos, $empresa, $email, $idPais, $telefono, $modo, $razon) {
       $this->idContacto = $idContacto;
-      $this->idPersona = $idPersona;
+      $this->nombres = $nombres;
+      $this->apellidos = $apellidos;
       $this->empresa = $empresa;
+      $this->email = $email;
+      $this->idPais = $idPais;
+      $this->telefono = $telefono;
       $this->modo = $modo;
       $this->razon = $razon;
-      $this->idPais = $idPais;
   }
   function getIdContacto() {
       return $this->idContacto;
   }
 
-  function getIdPersona() {
-      return $this->idPersona;
+  function getNombres() {
+      return $this->nombres;
+  }
+
+  function getApellidos() {
+      return $this->apellidos;
   }
 
   function getEmpresa() {
       return $this->empresa;
+  }
+
+  function getEmail() {
+      return $this->email;
+  }
+
+  function getIdPais() {
+      return $this->idPais;
+  }
+
+  function getTelefono() {
+      return $this->telefono;
   }
 
   function getModo() {
@@ -37,20 +60,32 @@ class ContactenosDTO {
       return $this->razon;
   }
 
-  function getIdPais() {
-      return $this->idPais;
-  }
-
   function setIdContacto($idContacto) {
       $this->idContacto = $idContacto;
   }
 
-  function setIdPersona($idPersona) {
-      $this->idPersona = $idPersona;
+  function setNombres($nombres) {
+      $this->nombres = $nombres;
+  }
+
+  function setApellidos($apellidos) {
+      $this->apellidos = $apellidos;
   }
 
   function setEmpresa($empresa) {
       $this->empresa = $empresa;
+  }
+
+  function setEmail($email) {
+      $this->email = $email;
+  }
+
+  function setIdPais($idPais) {
+      $this->idPais = $idPais;
+  }
+
+  function setTelefono($telefono) {
+      $this->telefono = $telefono;
   }
 
   function setModo($modo) {
@@ -61,9 +96,6 @@ class ContactenosDTO {
       $this->razon = $razon;
   }
 
-  function setIdPais($idPais) {
-      $this->idPais = $idPais;
-  }
 
 
 }

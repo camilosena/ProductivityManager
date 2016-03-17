@@ -26,13 +26,15 @@ class ContactenosDAO {
     function guardarContacto(ContactenosDTO $clienteDTO, PDO $cnn){
         $mensaje = "";
         try {
-            $sentencia = $cnn->prepare("INSERT INTO contactenos VALUES(default,?,?,?,?,?)");
-            $sentencia->bindParam(1, $clienteDTO->getIdPersona());
-            $sentencia->bindParam(2, $clienteDTO->getEmpresa());
-            $sentencia->bindParam(3, $clienteDTO->getModo());
-            $sentencia->bindParam(4, $clienteDTO->getRazon());
+            $sentencia = $cnn->prepare("INSERT INTO contactenos VALUES(default,?,?,?,?,?,?,?,?)");
+            $sentencia->bindParam(1, $clienteDTO->getNombres());
+            $sentencia->bindParam(2, $clienteDTO->getApellidos());
+            $sentencia->bindParam(3, $clienteDTO->getEmpresa());
+            $sentencia->bindParam(4, $clienteDTO->getEmail());
             $sentencia->bindParam(5, $clienteDTO->getIdPais());
-
+            $sentencia->bindParam(6, $clienteDTO->getTelefono());
+            $sentencia->bindParam(7, $clienteDTO->getModo());
+            $sentencia->bindParam(8, $clienteDTO->getRazon());
             $sentencia->execute();
             $mensaje = "Contacto Registrado";
         } catch (Exception $ex) {

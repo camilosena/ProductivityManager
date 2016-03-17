@@ -22,8 +22,8 @@ $facadeContactenos = new FacadeContactenos();
 if (isset($_POST['contactarme'])) {
     $idUsuario = '';
     $identificacion = rand(1, 1000);
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellidos'];
+    $nombres = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
     $direccion = '';
     $fecha = '';
     $empresa = $_POST['empresa'];
@@ -35,10 +35,9 @@ if (isset($_POST['contactarme'])) {
     $rol = 0;
     $area = 9;
     $idPais = $_POST['pais'];
+    $telefono = $_POST['telefono'];
     $modo = $_POST['modo'];
     $razon = $_POST['motivo'];
-    $usuarioDTO = new UsuarioDTO($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email, $estado, $foto, $contrasena, $rol, $area);
-    $mensaje = $facadeUsuario->registrarUsuario($usuarioDTO);
     $numeros = $facadeContactenos->cantidadSolicitudes();
     $numero = $numeros['numero'];
     //envio de correo 
@@ -48,7 +47,7 @@ if (isset($_POST['contactarme'])) {
     $correoDTO->setAsunto("Solicitud de contacto N° ".$numero);
     $correoDTO->setContrasena("adsi2015");
     $correoDTO->setDestinatario("servicioalclientepms@gmail.com");
-    $correoDTO->setContenido("El señor ".$nombre. " ". $apellido.", de la empresa ".$empresa." solicita ser contactado al número de telefono +".$telefono
+    $correoDTO->setContenido("El señor ".$nombres. " ". $apellidos.", de la empresa ".$empresa." solicita ser contactado al número de telefono +".$telefono
             ." o al correo electronico ".$email.'<br>'
             ."La razón de esta solicitud es: ".$razon."<br><br>"
             ."Por favor realizar el contacto lo mas pronto posible para brinda la información solicitada.".'<br>'
@@ -71,12 +70,11 @@ if (isset($_POST['contactarme'])) {
     } else {        
     //mensaje enviado
     
-    if ($mensaje == true) {
+   // if ($mensaje == true) {
         $idContacto = '';
-        $idPersona = $facadeUsuario->consecutivoUsuario();
-        $contactenosDTO = new ContactenosDTO($idContacto, $idPersona, $empresa, $modo, $razon, $idPais);
+        $contactenosDTO = new ContactenosDTO($idContacto, $nombres, $apellidos, $empresa, $email, $idPais, $telefono, $modo, $razon);
         $mensaje2 = $facadeContactenos->guardarContacto($contactenosDTO);
-    }
+   // }
     header("location: ../contactecnos.php?Solicitud=".$mensaje.$mensaje2);
 }
 }

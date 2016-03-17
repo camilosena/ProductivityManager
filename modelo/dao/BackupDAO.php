@@ -2,11 +2,11 @@
 
 
 class BackupDAO {
-    private $dbName = 'productivitymanager';
+    private $dbName = 'ges_productivitymanager';
             function BackupTablas ($ruta, $tabla, PDO $cnn){
         
          try {
-            $sentencia = $cnn->prepare("SELECT * into outfile ? from $tabla");
+            $sentencia = $cnn->prepare("SELECT * into outfile ? from areas");
            $sentencia->bindParam(1, $ruta);
 //            $sentencia->bindParam(2, $tabla);
           
@@ -45,7 +45,7 @@ class BackupDAO {
 
       $sql = 'CREATE DATABASE IF NOT EXISTS ' . $this->dbName  . ";\n\n";
       $sql .= 'USE ' . $this->dbName  . ";\n\n";
-$fields = $cnn->query("select count(*) as cant from information_schema.tables where table_schema = 'productivitymanager'");
+$fields = $cnn->query("select count(*) as cant from information_schema.tables where table_schema = 'ges_productivitymanager'");
     $cantidad = $fields->fetch();
    $num_fields = $cantidad['cant'];
   /* Iterate tables */

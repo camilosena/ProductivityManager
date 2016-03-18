@@ -1,9 +1,9 @@
 <?php
 session_start();
-/*require_once '../modelo/utilidades/Session.php';
+require_once '../modelo/utilidades/Session.php';
 $pagActual = 'reportes.php';
 $session = new Session($pagActual);
-$session->Session($pagActual);*/
+$session->Session($pagActual);
 ?>
 <!DOCTYPE html>
 <html lang="es">

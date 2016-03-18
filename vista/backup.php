@@ -37,8 +37,8 @@ $session->Session($pagActual);
                      <form rol="form" class="animated fadeInDown" method="post" action="../controlador/ControladorBackUp.php" >
                         <div class="form-group">
                              <label for="reportType" >BackUp por tablas:</label>
-                                <select name="reportType" name="tablas" id="tablas" class="form-control" required>
-                                    <option value="" disabled selected>Seleccione un Reporte</option>
+                                <select name="tablas" class="form-control" required>
+                                    <option value="" disabled selected>Seleccione una tabla</option>
                                    <?php   
                                    foreach ($tablas as $tabla) {
                                     echo '<option value="' .$tabla['Tables_in_ges_productivitymanager']. '">' . $tabla['Tables_in_ges_productivitymanager'] . '</option>';                            
@@ -48,8 +48,8 @@ $session->Session($pagActual);
                         </div>
                          <div class="form-group">
                             <label for="reportType" >Tipo de archivo (Extensión):</label>
-                                <select name="reportType" name="tablas" id="tablas" class="form-control" required>
-                                        <option disabled selected>Seleccione un tipo de archivo</option>
+                                <select name="tipo"  class="form-control" required>
+                                        <option value="" disabled selected>Seleccione un tipo de archivo</option>
                                         <option value="sql">sql</option>
                                         <option value="cvs">cvs</option>
                                         <option value="txt">txt</option>
@@ -72,11 +72,11 @@ $session->Session($pagActual);
                 </div> 
                 <hr>
                 <div class="row">
-                    <table class="table table-hover animated fadeInRight">
+                    <table class="table table-hover animated fadeInRight" id="table-backups" style="display:none;">
                     <thead>
                       <tr>
-                        <th>BackUp Generado</th>
-                        <th>Descargar</th>
+                        <th class="text-center">BackUp Generado</th>
+                        <th class="text-center">Descargar</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -92,21 +92,23 @@ $session->Session($pagActual);
                     else
                     {
                         ?>
+                        <script>
+                            $('#table-backups').show();
+                        </script>
                         <tr>
                         <td class="text-center"><?php echo $archivo;?></td>
-                        <td class="text-center">><?php echo '<a title="Descargar" class="me"  href="../controlador/ControladorBackUp.php?idDownload='.$dir."/".$archivo.'" onclick=" return confirmacion()">'?<span class="glyphicon glyphicon-circle-arrow-down"></span></a>
+                        <td class="text-center">
+                        <a title="Descargar" href="../controlador/ControladorBackUp.php?idDownload='<?php echo $dir?>/<?php echo $archivo; ?>'"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
                         </td>
                       </tr>
                         <?php
                     }
                 }
 
-                ?>
-                      
+                ?>     
                     </tbody>
                   </table>
                 </div>
-
             </div>
         </div>  	
     </body>

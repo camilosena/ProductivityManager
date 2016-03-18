@@ -45,7 +45,7 @@ $correoFin = new CorreoFinProyecto();
           <li><a href="javascript:backup('backup.php')"><span><i class="fa fa-database fa-lg"></i> BackUp</span></a>
             <script language=javascript>
             function backup(URL) {
-                window.open(URL, "backup.php", "width=1250,height=645,top=30,left=30,scrollbars=NO");
+                window.open(URL, "backup.php", "width=1190,height=645,top=30,left=30,scrollbars=NO");
             }
            </script> 
            </li> 

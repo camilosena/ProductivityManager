@@ -16,10 +16,10 @@ if (isset($_POST['backUpTablas'])) {
     $fecha = date('_d-m-Y_h-i-s');
     $table_name = $_POST['tablas'] ;
     $tipo_archivo = $_POST['tipo'];
-    $bacup_file = '../../BackUp/'.$table_name.$fecha.'.'.$tipo_archivo;
+    $bacup_file = '../BackUp/'.$table_name.$fecha.'.'.$tipo_archivo;
     
     $mensaje = $fBack->BackupTablas($bacup_file, $table_name);
-    print_r($mensaje)
+    print_r($mensaje);
    // header("location: ../vista/backup.php?mensaje=".$mensaje);
 }/*else 
 if (isset($_POST['backUpGeneral'])) {

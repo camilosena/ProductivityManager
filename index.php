@@ -20,6 +20,36 @@
         <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body>
+    <?php 
+     require_once 'modelo/utilidades/browser.php';
+        $browser = new browser();
+        $navegador = $browser->getBrowser($_SERVER['HTTP_USER_AGENT']);
+          if($navegador!='Google Chrome' && $navegador!='Safari'){
+          ?>
+           <script language="JavaScript" type="text/javascript">
+                    window.onload = function () {
+                        Command: toastr["error"]("<?php echo 'Esta utilizando '.$navegador.'<br> Para una correcta visualización utilice Google Chrome o Safai' ?>")
+
+                        toastr.options = {
+                            "closeButton": false,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": false,
+                            "positionClass": "toast-top-full-width",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "9000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                    }
+            </script>
+          <?php } ?>      
     <div id='cssmenu' style="text-align:center">        
         <ul>
            <li><a href='index.php'><span><i class="fa fa-home fa-lg"></i>  </span></a></li>

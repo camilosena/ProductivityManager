@@ -15,9 +15,9 @@ class BackUp {
     
     //put your code here
     var $host = 'localhost';
-  var $username = 'root';
-  var $passwd = '';
-  var $dbName = 'productivitymanager';
+  var $username = 'ges_gerente';
+  var $passwd = 'Prueba1';
+  var $dbName = 'ges_productivitymanager';
   var $charset = '';
 
   /* Constructor initializes database */

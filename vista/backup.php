@@ -41,7 +41,7 @@ $session->Session($pagActual);
                                     <option value="" disabled selected>Seleccione una tabla</option>
                                    <?php   
                                    foreach ($tablas as $tabla) {
-                                    echo '<option value="' .$tabla['Tables_in_ges_productivitymanager']. '">' . $tabla['Tables_in_ges_productivitymanager'] . '</option>';                            
+                                    echo '<option value="' .$tabla['Tables_in_productivitymanager']. '">' . $tabla['Tables_in_productivitymanager'] . '</option>';                            
                                         }
                                         ?>
                                 </select>

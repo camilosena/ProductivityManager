@@ -61,11 +61,10 @@ if (isset($_POST['contactarme'])) {
     } else {        
     //mensaje enviado
     
-   if ($mensaje == true) {
-        $idContacto = '';
+        $idContacto = $numero;
         $contactenosDTO = new ContactenosDTO($idContacto, $nombres, $apellidos, $empresa, $email, $idPais, $telefono, $modo, $razon);
-        $mensaje2 = $facadeContactenos->guardarContacto($contactenosDTO);
-    }
+        $mensaje2 = $facadeContactenos->guardarContacto($contactenosDTO,$numero);
+
     header("location: ../contactecnos?Solicitud=Gracias por escribirnos. Pronto será contactado para responder a su solicitud.");
 }
 }

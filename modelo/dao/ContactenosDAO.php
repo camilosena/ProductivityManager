@@ -23,10 +23,10 @@ class ContactenosDAO {
         }
         
     }
-    function guardarContacto(ContactenosDTO $clienteDTO, PDO $cnn){
+    function guardarContacto(ContactenosDTO $clienteDTO,$numero, PDO $cnn){
         $mensaje = "";
         try {
-            $sentencia = $cnn->prepare("INSERT INTO contactenos VALUES(default,?,?,?,?,?,?,?,?)");
+            $sentencia = $cnn->prepare("INSERT INTO contactenos VALUES($numero,?,?,?,?,?,?,?,?)");
             $sentencia->bindParam(1, $clienteDTO->getNombres());
             $sentencia->bindParam(2, $clienteDTO->getApellidos());
             $sentencia->bindParam(3, $clienteDTO->getEmpresa());

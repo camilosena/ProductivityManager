@@ -111,31 +111,6 @@ header nav ul li a:active{
     $facadeContactenos = new FacadeContactenos();
 
     ?>
-     <?php if (isset($_GET['Solicitud'])) { ?>
-            <script language="JavaScript" type="text/javascript">
-                window.onload = function () {
-                    Command: toastr["info"]("<?php echo $_GET['Solicitud']; ?>")
-
-                    toastr.options = {
-                        "closeButton": false,
-                        "debug": false,
-                        "newestOnTop": false,
-                        "progressBar": false,
-                        "positionClass": "toast-top-full-width",
-                        "preventDuplicates": false,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "5000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
-                }
-<?php } ?>
-        </script>
     <div class="caption">		
      <h2 class="h330">Contáctese con nosotros:</h2><br>	
      <p class="obligatorios" style="margin-left:5%;"> Los campos marcados con asterisco ( </p><p class="obligatoriosD"> ) son obligatorios.</p><br><br>
@@ -285,6 +260,31 @@ header nav ul li a:active{
     <a href="mailto:productivitymanagersoftware@gmail.com"></i><img src="img/gmailFoot.png"></a>
 </div>
 </div>
+    <?php if (isset($_GET['Solicitud'])) { ?>
+            <script language="JavaScript" type="text/javascript">
+                window.onload = function () {
+                    Command: toastr["info"]("<?php echo $_GET['Solicitud']; ?>")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-full-width",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+<?php } ?>
+        </script>
 </footer>
 </body>
 </html>

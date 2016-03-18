@@ -382,4 +382,19 @@ join proyectos on idProyecto = proyectoAsignado and usuarioAsignado = ? and esta
         }
         $cnn = null; 
     }
+
+        function cambiarObservacionesProyecto($observaciones, $idProyecto, PDO $cnn) {
+        $mensaje = '';
+        try {
+            $query = $cnn->prepare("UPDATE  proyectos SET observaciones=? where idProyecto=?");
+            $query->bindParam(1, $observaciones);
+            $query->bindParam(2, $idProyecto);
+            $query->execute();
+            $mensaje = 'Cambio Observaciones de Proyecto';
+            return $mensaje;
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
 }

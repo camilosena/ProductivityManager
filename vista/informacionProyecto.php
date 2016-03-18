@@ -121,7 +121,7 @@ e.preventDefault();
                 echo '<tr><td class="enunciado">Ejecutado:</td><td>' . $proyectos['ejecutado'] . '%</td></tr>';
                 echo '<tr><td class="enunciado">Observaciones:</td><td>' . $proyectos['observaciones'] . '</td></tr>';
                 $comi = "'";
-                if ($proyectos['estadoProyecto'] != 'Ejecución' &&$proyectos['estadoProyecto'] != 'Espera' && $proyectos['ejecutado'] < 100) {
+                if ($proyectos['estadoProyecto'] != 'Ejecución' &&$proyectos['estadoProyecto'] != 'Espera' && $proyectos['ejecutado'] < 100 && $proyectos['estadoProyecto']!='Cancelado') {
                     echo '<tr><td class="enunciado">Opciones:</td><td>';
                     echo '<a class="me" title="Modificar Proyecto"href="javascript:modificarProyecto(' . $comi . 'modificarProyecto.php?idProject='. $proyectos['idProyecto'] . $comi . ');"><img class="iconos" src="../img/modify.png"></a>';
                 }

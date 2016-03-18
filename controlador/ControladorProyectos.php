@@ -139,3 +139,11 @@ else if (isset($_GET['codUsuario'])) {
     $fProyecto->cambiarEstadoProyecto('Sin Estudio Costos', $_POST['idProyecto']);
     header("location: ../vista/produccionProyecto.php?mensaje=" . $mensaje);
 }
+else if(isset($_GET['proCancel'])){
+  header("location: ../vista/listarProyectos?estePro=".$_GET['proCancel']."&&#cancelarProyecto");   
+}else if(isset($_POST['cancelarPro'])){
+    $facadeProyecto = new FacadeProyectos;
+    $facadeProyecto->cambiarEstadoProyecto('Cancelado', $_POST['numberPro']);
+    $facadeProyecto->cambiarObservacionesProyecto($_POST['cancelar'], $_POST['numberPro']);
+  //header("location: ../vista/listarProyectos?");   
+}

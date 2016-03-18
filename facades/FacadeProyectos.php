@@ -116,4 +116,7 @@ class FacadeProyectos {
         
         return $this->proyectosDAO->graficoEstadosAnuales($anio,$estado, $this->conexionBase);
     }
+     public function cambiarObservacionesProyecto($observaciones, $idProyecto) {
+        return $this->proyectosDAO->cambiarObservacionesProyecto($observaciones, $idProyecto, $this->conexionBase);
+    }
 }

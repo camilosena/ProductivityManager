@@ -354,7 +354,7 @@ $correoFin = new CorreoFinProyecto();
                                         <td style="text-align:center"><?php echo $project['estadoProyecto']; ?></td>  
                                         <td style="text-align:center"><?php echo $project['ejecutado']; ?> %</td>
                                        <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
-                                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecución' && $project['estadoProyecto']!='Espera' && $project['estadoProyecto']!='Finalizado') { ?>
+                                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecución' && $project['estadoProyecto']!='Espera' && $project['estadoProyecto']!='Finalizado' && $project['estadoProyecto']!='Cancelado') { ?>
                                                 <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                                 <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
                                                     ?>
@@ -362,7 +362,9 @@ $correoFin = new CorreoFinProyecto();
                                                 <?php }if ($project['estadoProyecto'] == 'Sin Producción') { ?>
                                                     <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
                                                 <?php } 
-                                            } ?>                            
+                                            }  if ($project['estadoProyecto'] != 'Cancelado' && $project['estadoProyecto'] != 'Finalizado' && $_SESSION['rol'] != 'Empleado') { ?> 
+                                            <a name="cancelar" title="Cancelar Proyecto" class="me" href="../controlador/ControladorProyectos.php?proCancel=<?php echo $project['idProyecto'] ?>"><img class="iconos" src="../img/cancel.png"></a>   
+                                            <?php } ?>                           
                                         </td>                   
                                     </tr>                         
                                     <?php
@@ -386,7 +388,7 @@ $correoFin = new CorreoFinProyecto();
                                     <td style="text-align:center"><?php echo $project['estadoProyecto']; ?></td>  
                                     <td style="text-align:center"><?php echo $project['ejecutado']; ?> %</td>
                                     <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
-                                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecución' && $project['estadoProyecto']!='Espera' && $project['estadoProyecto']!='Finalizado') { ?>
+                                            <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecución' && $project['estadoProyecto']!='Espera' && $project['estadoProyecto']!='Finalizado' && $project['estadoProyecto']!='Cancelado') { ?>
                                                 <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                                 <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
                                                     ?>
@@ -394,7 +396,9 @@ $correoFin = new CorreoFinProyecto();
                                                 <?php }if ($project['estadoProyecto'] == 'Sin Producción') { ?>
                                                     <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
                                                 <?php } 
-                                            } ?>                            
+                                            } if ($project['estadoProyecto'] != 'Cancelado' && $project['estadoProyecto'] != 'Finalizado' && $_SESSION['rol'] != 'Empleado') { ?> 
+                                            <a name="cancelar" title="Cancelar Proyecto" class="me" href="../controlador/ControladorProyectos.php?proCancel=<?php echo $project['idProyecto'] ?>"><img class="iconos" src="../img/cancel.png"></a>   
+                                            <?php } ?>
                                         </td>                 
                                 </tr>                         
         <?php }
@@ -431,6 +435,28 @@ $correoFin = new CorreoFinProyecto();
                     </script>';
         }
         ?>
+
+               <div id="cancelarProyecto" class="modalDialog" title="Cancelar Proyecto">
+                <div><a href="#close" title="Cerrar" class="close">X</a><br>
+                     
+                    <form class="formRegistro" id="formNovedades" method="post" action="../controlador/ControladorProyectos.php" enctype="multipart/form-data">
+                    <label for="numberPro" class="tag1"><strong>Código Proyeco</strong></label>
+                    <input type="text" name="numberPro" id="numberPro" class="input" value="0<?php echo $_GET['estePro'];?>" style="text-align: center;" readonly>
+                        <textarea class="input4" style="margin-left:20px;width:400px" placeholder="Se cancela proyecto porque..." name="cancelar" title="Minimo 5 Caracteres" id="description" required  ></textarea>
+                <button type="submit" name="cancelarPro" onclick="return confirmacion()" class="boton-verde">Cancelar Proyecto</button><br>
+                         <script>
+                        function confirmacion() {
+                            if (confirm('¿Seguro que desea cancelar este proyecto?. No podra deshacer esta acción, proceda con precaución.')) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    </script>
+                    </form>                         
+                </div>                    
+            </div>
+
         <footer class="footer-distributed">
             <div class="footer-left">
                 <span><img src="../img/logoEscala.png" width="210" height="120"></span>

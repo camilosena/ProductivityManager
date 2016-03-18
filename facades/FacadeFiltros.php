@@ -16,6 +16,10 @@ class FacadeFiltros {
      public function filtrarProyectos(ProyectosDTO $proyectoDTO) {
         return $this->filtroDao->busquedaProyectos($proyectoDTO, $this->conexionBase);
     }
+
+    public function filtrarProyectos2(ProyectosDTO $proyectoDTO, $cedula) {
+        return $this->filtroDao->busquedaProyectos2($proyectoDTO, $cedula, $this->conexionBase);
+    }
     
     public function filtrarClientesActivos(ClienteDTO $clienteDTO) {
         return $this->filtroDao->busquedaClientesActivos($clienteDTO, $this->conexionBase);

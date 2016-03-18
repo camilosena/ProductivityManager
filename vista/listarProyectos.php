@@ -377,7 +377,11 @@ $correoFin = new CorreoFinProyecto();
                             require_once '../modelo/dao/ProyectosDAO.php';
                             require_once '../modelo/utilidades/Conexion.php';
                             $facadeProject = new FacadeProyectos();
-                            $todos = $facadeProject->listadoProyectos();
+                            if($_SESSION['rol']!='Empleado'){
+                              $todos = $facadeProject->listadoProyectos();
+                            }elseif($_SESSION['rol']=='Empleado'){
+                             $todos= $facadeProject->listarProyectoPorPersonal2($_SESSION['id']); 
+                            }
                             $_SESSION['consultaProyecto']=$todos;
                             foreach ($todos as $project) {
                                 ?>

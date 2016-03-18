@@ -283,8 +283,22 @@ idProductos = Productos_idProductos");
     function listarProyectoPorPersonal($idUsuario, PDO $cnn){
        $mensaje = '';
         try {
-            $query = $cnn->prepare("select idProyecto, nombreProyecto, fechaInicio, estadoProyecto from proyectos
+            $query = $cnn->prepare("select * from proyectos
 join usuarioPorProyecto on idProyecto = proyectoAsignado and usuarioAsignado = ?");
+            $query->bindParam(1, $idUsuario);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null; 
+        
+    }
+        function listarProyectoPorPersonal2($idUsuario, PDO $cnn){
+       $mensaje = '';
+        try {
+            $query = $cnn->prepare("select * from proyectos, personas, usuarioPorProyecto 
+where idProyecto = proyectoAsignado and usuarioAsignado = idUsuario and identificacion = ?");
             $query->bindParam(1, $idUsuario);
             $query->execute();
             return $query->fetchAll();

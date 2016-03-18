@@ -39,7 +39,11 @@ if (isset($_POST['buscarUsuarios'])) {
     $proyectoDTO->setEstado($_POST['state']);    
     $proyectoDTO->setEjecucion($_POST['exec']); 
     $filtro = new FacadeFiltros;
-    $_SESSION['filtroProyectos'] = $filtro->filtrarProyectos($proyectoDTO);
+    if($_SESSION['rol']!='Empleado'){
+        $_SESSION['filtroProyectos'] = $filtro->filtrarProyectos($proyectoDTO);
+    }else{
+        $_SESSION['filtroProyectos'] = $filtro->filtrarProyectos2($proyectoDTO,$_SESSION['id']);
+    }
     if (empty($_SESSION['filtroProyectos'])) {
         $mensaje = "No Se Encontraron Coincidencias";
     } else {

@@ -18,6 +18,20 @@ class FiltrosDAO {
         $cnn = NULL;      
     }
     
+    public function busquedaProyectos2(ProyectosDTO $dto, $cedula, PDO $cnn) {                
+        try {             
+            $sentencia = $cnn->prepare("Select * from proyectos, personas, usuarioPorProyecto 
+where idProyecto = proyectoAsignado and usuarioAsignado = idUsuario and identificacion =$cedula and idProyecto like '%".$dto->getIdProyecto()."%' and nombreProyecto like '%".$dto->getNombreProyecto()."%'
+                                and fechaInicio like '%".$dto->getFechaInicio()."%' and fechaFin like '%".$dto->getFechaFin()."%' and estadoProyecto like '%".$dto->getEstado()."%' and ejecutado like '%".$dto->getEjecucion()."%' ");
+            $sentencia->execute();  
+            return $sentencia->fetchAll();
+        } catch (Exception $ex) {
+            $mensaje = $ex->getMessage();
+            return $mensaje;
+        }
+        $cnn = NULL;      
+    }
+    
     public function busquedaProyectos(ProyectosDTO $dto, PDO $cnn) {                
         try {             
             $sentencia = $cnn->prepare("Select * from proyectos where idProyecto like '%".$dto->getIdProyecto()."%' and nombreProyecto like '%".$dto->getNombreProyecto()."%'
@@ -30,7 +44,7 @@ class FiltrosDAO {
         }
         $cnn = NULL;      
     }
-    
+
     public function busquedaClientesActivos(ClienteDTO $dto, PDO $cnn) {                
         try {             
             $sentencia = $cnn->prepare("Select idUsuario,identificacion,nombres,apellidos,direccion,telefono,email, nombreCompania, nit, sectorEmpresarial, sectorEconomico, telefonoFijo

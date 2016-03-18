@@ -14,7 +14,7 @@ file_put_contents('img.png', $unencodedData);
 //Show the image
 //echo '<img src="'.$_POST['img_val'].'" />';
     $pdf = new FPDI();
-  $pdf->setSourceFile('TemplateUsuarios.pdf');
+  $pdf->setSourceFile('TemplateReporte.pdf');
              
              // seteamos la fuente, el estilo y el tamano 
             $pdf->SetFont('Times','B',10);
@@ -39,6 +39,8 @@ file_put_contents('img.png', $unencodedData);
                 $pdf->SetFontSize(9);
                 $pdf->Write(0, utf8_decode("                                   " . $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y')));
                  
-                 $pdf->Image('img.png', 30, 90, 150);
+                 $pdf->Image('img.png', 50, 110, 200);
                  unlink('img.png');
+                  $pdf->Ln(155);
+                  $pdf->Write(0, utf8_decode("                    Relación de costos anuales sobre proyectos ejecutados con éxito."));
                  $pdf->Output();

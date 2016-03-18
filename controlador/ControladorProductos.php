@@ -99,6 +99,7 @@ if (isset ($_POST['Change'])) {
         $facadeArchivo = new FacadeArchivo();
         $mensaje = $facadeArchivo->cargarArchivo($table, $file);
         */
+        if($_FILES['archivo']['type']=='application/vnd.ms-excel'){
         $cnn = Conexion::getConexion();
         $script='insert into productos () values ();';
             $archivoleer=$_FILES['archivo']['tmp_name'];
@@ -125,7 +126,10 @@ if (isset ($_POST['Change'])) {
             fclose($abrete);
           /* $sentencia = $cnn->prepare("INSERT INTO productos VALUES(?,?,?,?,?,?,?)");
             $sentencia->execute();*/
-        header("location: ../vista/agregarProductos.php?mensaje=".$mensaje);
+        header("location: ../vista/agregarProductos?mensaje=".$mensaje);
+    }else{
+        header("location: ../vista/agregarProductos?errorPermiso=Debe cargar un archivo con extensión .csv");
+    }
 }
 
 

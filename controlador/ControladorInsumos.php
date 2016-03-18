@@ -31,7 +31,7 @@ if (isset ($_POST['Change'])) {
         $file = str_replace('\\', '/', $file);
         $facadeArchivo = new FacadeArchivo();
         $mensaje = $facadeArchivo->cargarArchivo($table, $file);*/
-
+if($_FILES['archivo']['type']=='application/vnd.ms-excel'){
         $cnn = Conexion::getConexion();
         $script='insert into materiaprima () values ();';
             $archivoleer=$_FILES['archivo']['tmp_name'];
@@ -53,7 +53,11 @@ if (isset ($_POST['Change'])) {
                     }
             }
             fclose($abrete);
-         header("location: ../vista/agregarInsumos.php?mensaje=".$mensaje);
+         header("location: ../vista/agregarInsumos?mensaje=".$mensaje);
+     }
+     else{
+        header("location: ../vista/agregarInsumos?errorPermiso=Debe cargar un archivo con extensión .csv");
+     }
 }else
 if (isset ($_POST['modificarMateria'])) {
      $facadeInsumos = new FacadeInsumos();

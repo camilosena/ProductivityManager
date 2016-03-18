@@ -66,7 +66,7 @@ $session->Session($pagActual);
                             <div class="form-group">
                                  <label for="reportType" >A solo un click puede generar su BackUp General de información</label><br>
                                  <span class="glyphicon glyphicon-chevron-down"></span><br>
-                                  <button type="submit" name="backUpTablas" class="btn btn-success animated zoomIn"> BackUp general</button>
+                                  <button type="submit" name="backUpGeneral" class="btn btn-success animated zoomIn"> BackUp general</button>
                             </div>
                     </form> 
                 </div> 

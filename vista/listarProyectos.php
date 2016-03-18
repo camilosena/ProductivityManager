@@ -40,8 +40,41 @@ $correoFin = new CorreoFinProyecto();
           <input type="hidden" name="Change" value="1">  
           <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
       </form>
+    
+     <?php 
+     require_once '../modelo/utilidades/browser.php';
+        $browser = new browser();
+        $navegador = $browser->getBrowser($_SERVER['HTTP_USER_AGENT']);
+          if($navegador!='Google Chrome' && $navegador!='Safari'){
+          ?>
+           <script language="JavaScript" type="text/javascript">
+                    window.onload = function () {
+                        Command: toastr["error"]("<?php echo 'Esta utilizando '.$navegador.'<br> Para una correcta visualización utilice Google Chrome o Safai' ?>")
+
+                        toastr.options = {
+                            "closeButton": false,
+                            "debug": false,
+                            "newestOnTop": false,
+                            "progressBar": false,
+                            "positionClass": "toast-top-full-width",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "9000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                    }
+            </script>
+          <?php } ?>      
+  
         <ul>
-        
+
+       <?php if ($_SESSION['rol'] == 'Administrador'){ ?>
           <li><a href="javascript:backup('backup.php')"><span><i class="fa fa-database fa-lg"></i> BackUp</span></a>
             <script language=javascript>
             function backup(URL) {
@@ -49,6 +82,9 @@ $correoFin = new CorreoFinProyecto();
             }
            </script> 
            </li> 
+      <?php } ?>
+
+    <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador'){ ?>
 
           <li><a href="javascript:reporte('reportes.php')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
             <script language=javascript>
@@ -57,6 +93,8 @@ $correoFin = new CorreoFinProyecto();
             }
            </script> 
            </li> 
+      <?php } ?>
+
            <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
               <ul>
                  <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       

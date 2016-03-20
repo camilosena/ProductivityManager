@@ -27,7 +27,7 @@ $insumosDTO = new InsumosDTO;
 
 if (isset($_POST['AgregarProducto'])) {
  
-    $productosDTO->setIdProducto($_POST['IdProducto']);
+    $productosDTO->setIdProducto('DEFAULT');
     $productosDTO->setNombre($_POST['Producto']);
     $productosDTO->setIva($_POST['iva']);
     $carpeta = "productos";

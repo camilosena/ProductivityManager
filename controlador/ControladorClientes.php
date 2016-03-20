@@ -12,7 +12,7 @@ require_once '../modelo/utilidades/GestionImagenes.php';
 
 //  Registrar Cliente
 if (isset($_POST['agregarCliente'])) {
-    $idUsuario = '';
+    $idUsuario = 'DEFAULT';
     $identificacion = $_POST['identificacion'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];

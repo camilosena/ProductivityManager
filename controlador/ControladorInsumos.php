@@ -12,7 +12,7 @@
     $InsumosDTO->setNombre($_GET['NombreInsumo']);
     $InsumosDTO->setMedida($_GET['unidad']);
     $InsumosDTO->setPrecio($_GET['precio']);
-    $InsumosDTO->setId($_GET['numero']);
+    $InsumosDTO->setId('DEFAULT');
     $mensaje = $facadeInsumos->agregarInsumo($InsumosDTO);
      
      header("location: ../vista/agregarInsumos?mensaje=".$mensaje);

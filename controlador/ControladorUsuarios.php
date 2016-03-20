@@ -20,7 +20,7 @@ require_once '../modelo/dao/ProyectosDAO.php';
 
 //  Registrar Usuarios
 if (isset($_POST['crearUsuario'])) {
-    $idUsuario='';
+    $idUsuario='DEFAULT';
     $identificacion = $_POST['identificacion'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];

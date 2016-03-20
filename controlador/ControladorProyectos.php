@@ -18,7 +18,7 @@ require_once '../modelo/utilidades/festivos.php';
 //Crea Proyecto
 if (isset($_POST['crearProyecto'])) {
     session_start();
-    $idProyecto = $_POST['idProyecto'];
+    $idProyecto = 'DEFAULT';
     $nombreProyecto = $_POST['nombreProyecto'];
     $fechaInicio = $_POST['fechaInicio'];
     $fechaFin = '';

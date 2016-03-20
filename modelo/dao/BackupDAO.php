@@ -48,7 +48,6 @@ $fields = $cnn->query("select count(*) as cant from information_schema.tables wh
    $num_fields = $cantidad['cant'];
   /* Iterate tables */
   foreach ($tables as $table) {
-    echo "Backing up " . $table . " table...";
 
     $result1 = $cnn->query('SELECT * FROM ' . $table);
 
@@ -76,7 +75,6 @@ $fields = $cnn->query("select count(*) as cant from information_schema.tables wh
       }
     }
     $sql.="\n\n\n";
-    echo " OK <br/><br/>" . "";
   }
 } catch (Exception $e) {
   var_dump($e->getMessage());

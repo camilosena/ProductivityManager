@@ -15,8 +15,34 @@ $session->Session($pagActual);
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/animate.css">
+        <link href="../js/toastr.css" rel="stylesheet"/>
+        <script src="../js/toastr.js"></script>
     </head>
     <body>
+       <?php
+        if (isset($_GET['mensaje'])) {
+            echo '<script> 
+                Command: toastr["success"]("'.$_GET['mensaje'].'", "Enhorabuena")
+            toastr.options = {
+              "closeButton": false,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-top-right",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+            </script>';
+        };
+        ?>     
            <div class="container">
                 <div class="row"> 
                     <span class="animationSandbox">
@@ -29,19 +55,19 @@ $session->Session($pagActual);
                 <?php 
                 require_once '../modelo/utilidades/Conexion.php';
                 require_once '../modelo/dao/BackupDAO.php';
-                require_once '../facades/Facadebackup';
+                require_once '../facades/FacadeBackup.php';
                 $fBack = new FacadeBackup();
                 $tablas = $fBack->listarTablas();
                 ?>  
                 <div class="row">
-                     <form rol="form" class="animated fadeInDown" method="post" action="../controlador/Controladorbackup" >
+                     <form rol="form" class="animated fadeInDown" method="post" action="../controlador/ControladorBackUp.php" >
                         <div class="form-group">
                              <label for="reportType" >BackUp por tablas:</label>
                                 <select name="tablas" class="form-control" required>
                                     <option value="" disabled selected>Seleccione una tabla</option>
                                    <?php   
                                    foreach ($tablas as $tabla) {
-                                    echo '<option value="' .$tabla['Tables_in_productivitymanager']. '">' . $tabla['Tables_in_productivitymanager'] . '</option>';                            
+                                    echo '<option value="' .$tabla['Tables_in_ges_productivitymanager']. '">' . $tabla['Tables_in_ges_productivitymanager'] . '</option>';                            
                                         }
                                         ?>
                                 </select>
@@ -62,7 +88,7 @@ $session->Session($pagActual);
                 </div>    
                 <hr>   
                 <div class="row text-center">
-                     <form rol="form" class="animated fadeInDown" method="post" action="../controlador/Controladorbackup" >
+                     <form rol="form" class="animated fadeInDown" method="post" action="../controlador/ControladorBackUp.php" >
                             <div class="form-group">
                                  <label for="reportType" >A solo un click puede generar su BackUp General de información</label><br>
                                  <span class="glyphicon glyphicon-chevron-down"></span><br>
@@ -98,7 +124,7 @@ $session->Session($pagActual);
                         <tr>
                         <td class="text-center"><?php echo $archivo;?></td>
                         <td class="text-center">
-                        <a title="Descargar" href="../controlador/Controladorbackup?idDownload='<?php echo $dir?>/<?php echo $archivo; ?>'"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
+                        <a title="Descargar" href="../controlador/ControladorBackUp.php?idDownload='<?php echo $dir?>/<?php echo $archivo; ?>'"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
                         </td>
                       </tr>
                         <?php

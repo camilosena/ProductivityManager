@@ -411,4 +411,30 @@ join proyectos on idProyecto = proyectoAsignado and usuarioAsignado = ? and esta
         }
         $cnn = null;
     }
+        public function proyectoEnEjecucionEmpleado($empleado, PDO $cnn) {
+            $idsAsignados = array();
+        try {
+            $query = $cnn->prepare('SELECT proyectoAsignado FROM usuarioPorProyecto WHERE usuarioAsignado=?');
+            $query->bindParam(1, $empleado);
+            $query->execute();
+            foreach($query->fetchAll() as $asignados){
+                $idsAsignados[]=$asignados['proyectoAsignado'];
+            }
+            $stringSt = array();
+            for ($i=0; $i < count($idsAsignados); $i++) { 
+                $stringSt[]='and idProyecto!= ?';
+            }
+            $cantidadCompara = implode(" ", $stringSt);
+            $query2 = $cnn->prepare('SELECT idProyecto, nombreProyecto from proyectos where estadoProyecto="Ejecución" '.$cantidadCompara);
+            for ($i=0; $i < count($idsAsignados); $i++) { 
+                $query2->bindParam($i+1, $idsAsignados[$i]);
+            }
+            
+            $query2->execute();
+            return $query2->fetchAll();
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+        $cnn = NULL;
+    }
 }

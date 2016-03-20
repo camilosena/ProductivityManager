@@ -123,4 +123,8 @@ class FacadeProyectos {
      public function cambiarObservacionesProyecto($observaciones, $idProyecto) {
         return $this->proyectosDAO->cambiarObservacionesProyecto($observaciones, $idProyecto, $this->conexionBase);
     }
+
+        public function proyectoEnEjecucionEmpleado($empleado) {
+        return $this->proyectosDAO->proyectoEnEjecucionEmpleado($empleado, $this->conexionBase);
+    }
 }

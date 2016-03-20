@@ -2,7 +2,7 @@
 
     require_once '../modelo/dao/ModificarContrasenaDAO.php';  
     require_once '../modelo/utilidades/Conexion.php';
-    require_once '../facades/FacademodificarContrasena';
+    require_once '../facades/FacadeModificarContrasena.php';
   
     
      if(isset($_POST['modificarContrasena'])){  

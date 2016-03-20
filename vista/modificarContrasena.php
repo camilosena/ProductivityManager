@@ -185,7 +185,7 @@ $session->Session($pagActual);
                 <br>
                 <h2 class="h330">Modificar Contraseña:</h2><br><br>
                 <p class="obligatoriosD">Todos los campos a continuación son obligatorios.</p><br><br>                
-                <form class="formRegistro" method="Post" action="../controlador/ControladormodificarContrasena">                                         
+                <form class="formRegistro" method="Post" action="../controlador/ControladorModificarContrasena">                                         
                     <hr>  
                     <div id="panelModificaPass">
                         <label for="contrasena" class="tag"><span id="valCompany" style="color:Red;visibility:hidden;"></span> Contraseña Antigua:</label>

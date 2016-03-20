@@ -415,7 +415,7 @@ $session->Session($pagActual);
             require_once '../modelo/dao/ProyectosDAO.php';
             require_once '../facades/FacadeProyectos.php';
             $proyecto = new FacadeProyectos;
-            $proyectosEjecucion = $proyecto->proyectoEnEjecucion();
+            $proyectosEjecucion = $proyecto->proyectoEnEjecucionEmpleado($_SESSION['datosUsuario']['idUsuario']);
             ?>
             <div id="verUsuario" class="modalDialog" title="Ver Usuario">
                 <div><a href="#close" title="Cerrar" class="close">X</a><br>

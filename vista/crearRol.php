@@ -189,7 +189,7 @@ $session->Session($pagActual);
                         <input name="IdRol" class="input" type="text" id="IdRol" required style="text-align: center" readonly value="<?php echo $consecutivo ?>"> 
                         <span id="valCompany"  style="color:Red;visibility:hidden;"></span><br>
                         <label class="tag" for="txtName"><span id="lab_valName" class="h331">Nombre del Rol: </span></label>
-                        <input  name="NameRol" class="input" type="text" id="txtName"  placeholder="Empleado" pattern="[A-Za-z]{2,10}" title="Solo Letras" required  >
+                        <input  name="NameRol" class="input" type="text" id="txtName"  placeholder="Empleado" pattern="[A-Za-z]{2,10}" maxlength="30" title="Solo Letras" required  >
                         <span id="valName" style="color:Red;visibility:hidden;"></span><br>
                         <button type="submit" value="Enviar" name="creaRol" id="crearRol" class="boton-verde" >Crear Rol</button>
                     </form>     

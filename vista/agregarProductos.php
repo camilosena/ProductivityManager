@@ -312,15 +312,15 @@ $session->Session($pagActual);
                     <label class="tag" id="IdRol" for="IdProducto"><span id="NameRol" class="h331" style="display: inline-block">Código Producto: </span></label>
                     <input class="input" style="text-align: center" name="IdProducto" type="text" id="IdArea" required readonly value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Producto: </span></label>
-                    <input class="input" name="Producto" type="text" id="txtName"  placeholder="Silla Gerencial"   style="display: inline-block" required autofocus><br>
+                    <input class="input" name="Producto" type="text" id="txtName"  placeholder="Silla Gerencial"  maxlength="40" style="display: inline-block" required autofocus><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Imagen: </span></label>
                     <input class="input" name="Imagen" type="file"  id="imagen"  style="display:inline-block" required><br>
                     <label class="tag" for="iva"><span id="lab_valName" class="h331" style="display: inline-block">Aplica IVA: </span></label>
                      Si<input type="radio" name="iva" value="Si" style="display: inline-block"> No<input checked = "checked" type="radio" name="iva" value="No" style="display: inline-block"><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">% Ganancia: </span></label>
-                    <input class="input" name="ganancia"  id="txtName"  type="number" step="any" placeholder="3,453" style="display: inline-block" min="1" required=""><br>
+                    <input class="input" name="ganancia"  id="txtName"  type="number" step="any" placeholder="3,453" style="display: inline-block" title="Porcentaje de ganancia no debe superar 10%" max="10" min="0" required><br>
                     <label class="tag" for="txtName" style="position:relative;bottom:50px;"><span id="lab_valName" class="h331" style="display: inline-block">Descripción: (Material) </span></label>
-                    <textarea class="input4" name="descripcion"  id="txtName"  style="display: inline-block" required></textarea><br>
+                    <textarea class="input4" name="descripcion" maxlength="80" id="txtName"  style="display: inline-block" required></textarea><br>
                     
                     
                     <button type="submit" value="Enviar" name="AgregarProducto" id="Areas" class="boton-verde">Agregar Producto</button>

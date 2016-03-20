@@ -322,7 +322,7 @@ $session->Session($pagActual);
                     <span id="valSurname" style="color:Red;visibility:hidden;"></span>                    
                     <br>    
                     <label class="tag2" style="position:relative;bottom:50px;" for="descripcion"><span id="lab_valName" class="h331">Descripción:</span></label>
-                    <textarea  class="input4" name="descripcion" type="text" rows="4" cols="50" maxlength="50" id="descripcion" class="field1" ></textarea> 
+                    <textarea  class="input4" name="descripcion" type="text" rows="4" cols="50" maxlength="90" id="descripcion" class="field1" ></textarea> 
                     <span id="valName" style="color:Red;visibility:hidden;"></span>
                     <button type="submit" class="inline" name="crearProyecto" class="boton-verde">Crear Proyecto</button><hr>
                     <script language=javascript>

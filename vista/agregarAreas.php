@@ -244,7 +244,7 @@ $session->Session($pagActual);
                     <label class="tag" id="IdRol" for="IdArea"><span id="NameRol" class="h331" style="display: inline-block">Código Área: </span></label>
                     <input name="IdArea" style="text-align:center" class="input" type="text" id="IdArea" required readonly value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nueva Área: </span></label>
-                    <input name="NombreArea" class="input" type="text" id="txtName"  placeholder="Ensamble"  required style="display: inline-block"><br>
+                    <input name="NombreArea" class="input" type="text" maxlength="30" id="txtName"  placeholder="Ensamble"  required style="display: inline-block"><br>
                     
                     <button type="submit" value="Enviar" name="AgregarArea" id="Areas" class="boton-verde" >Agregar Área</button>
                  </div>    

@@ -270,10 +270,11 @@ $session->Session($pagActual);
                    <input class="input" name="nombreProducto"  required readonly style="text-align: center" value="<?php echo $_GET['nombreProducto']?>"><br>  
                    <input class="input" name="selectProducto"  required readonly style="text-align: center; display: none" value="<?php echo $_GET['idProducto']?>"> 
                    <?php }else{ ?>
-                    <select id="selectProducto" class="input" name="selectProducto" > 
+                    <select id="selectProducto" class="input" name="selectProducto" required> 
                      <?php
-                        $productos = $fProductos->listarProductosSinProcesos();
-                        echo '<option disabled selected>' . "Seleccione un producto" . '</option>';
+                        $productos = $fProductos->listarProductosSinProcesos();?>
+                        <option value="" disabled selected>Seleccione un producto</option>
+                        <?php
                         foreach ($productos as $producto) {
                             echo '<option value="' . $producto['idProductos'] . '">' . $producto['nombreProducto'] . '</option>';                            
                         }
@@ -282,14 +283,14 @@ $session->Session($pagActual);
                     <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Código Proceso: </span></label>
                     <input class="input" name="IdProceso" type="text" id="IdArea" required readonly style="text-align: center" value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>
-                    <input  class="input" name="NombreProceso" type="text" id="txtName"  placeholder="Ensamble"   style="display: inline-block" required autofocus><br>
+                    <input  class="input" name="NombreProceso" type="text" id="txtName"  placeholder="Ensamble" maxlength="40"  style="display: inline-block" required autofocus><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Tiempo/horas: </span></label>
-                    <input class="input" name="Tiempo" type="number" id="txtName"  placeholder="8 "   style="display: inline-block" required min="1"><br>
+                    <input class="input" name="Tiempo" type="number" id="txtName"  placeholder="8"  style="display: inline-block" required max="20" title="No hay procesos mayores a 20 horas" min="1"><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Cantidad de empleados: </span></label>
-                    <input class="input" name="Empleados" type="number" id="txtName"  placeholder="5"   style="display: inline-block" min="1"><br>
+                    <input class="input" name="Empleados" max="5" title="No puede incluir más de 5 empleados por proceso" type="number" id="txtName"  placeholder="5"   style="display: inline-block" min="1"><br>
                  
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Valor Hora sugerido: </span></label>
-                    <input class="input" name="valor" type="number" id="txtName"  placeholder="13500"   style="display: inline-block" min="1"><br>
+                    <input class="input" name="valor" type="number" id="txtName"  placeholder="13500"   style="display: inline-block" max="500000" title="No aplica valores superiores a $500.000"  min="1"><br>
                      
                     <button type="submit" value="Enviar" name="AgregarProceso" id="Areas" class="boton-verde">Agregar Proceso</button>
                     </div>

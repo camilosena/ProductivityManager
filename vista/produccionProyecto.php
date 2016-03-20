@@ -137,7 +137,7 @@ $session->Session($pagActual);
                                                              title="Código 0<?php echo $productos['idProductos']; ?>"><img src="../img/products.png" width="20"
                                                                                              height="20"></td>
                                         <td class="td4"><input id="producto<?php echo $productos['idProductos'];?>" type="checkbox" name="producto<?php echo $productos['idProductos']; ?>" value="<?php echo $productos['idProductos']; ?>" ></td>
-                                        <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" type="number" maxlength="64" min="0" id="cantidadProducto<?php echo $productos['idProductos']; ?>"></td>
+                                        <td class="td5"><input name="cantidad<?php echo $productos['idProductos']; ?>" type="number" max="100" min="0" id="cantidadProducto<?php echo $productos['idProductos']; ?>"></td>
                                     </tr>
                                     <script>
                                     $("#cantidadProducto<?php echo $productos['idProductos']; ?>").keyup(function() {

@@ -459,23 +459,25 @@ $session->Session($pagActual);
                         <img style="float: right"  class="fotoUsuario" src="../fotos/<?php echo $_SESSION['datosUsuario']['foto']?>">
                         <h1 style="display: inline">Proyectos Asociados </h1><br><br>
                         <thead>
-                   <tr> <th hidden="">#</th>
+                   <tr> <th >Código</th>
                     <th >Proyecto</th>
                     <th >Fecha de inicio</th>
-                    <th >Estado</th><br>
+                    <th >Estado</th>
                     </thead>
-                    
+                    <tbody>
                     <?php
                 foreach ($proyectos as $unit){
                                 
-                                echo '<tbody>';
-                                echo '<td hidden>' . $unit['idProyecto']  . '</td>'; 
+                                echo '<tr>';
+                                echo '<td style="text-align:center;">' . $unit['idProyecto']  . '</td>'; 
                                 echo '<td>' . $unit['nombreProyecto']  . '</td>'; 
                                 echo '<td>' . $unit['fechaInicio']  . '</td>'; 
-                                echo '<td>' . $unit['estadoProyecto']  . '</td><br>'; 
-                                echo '</tbody>';
+                                echo '<td>' . $unit['estadoProyecto']  . '</td>'; 
+                                echo '</tr>';
+                                echo '<tr>';
                             }
                 ?>
+                </tbody>
                     </table>
                     <?php } ?>
                     <br>

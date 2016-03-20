@@ -284,7 +284,7 @@ idProductos = Productos_idProductos");
        $mensaje = '';
         try {
             $query = $cnn->prepare("select * from proyectos
-join usuarioPorProyecto on idProyecto = proyectoAsignado and usuarioAsignado = ?");
+join usuarioPorProyecto on idProyecto = proyectoAsignado and usuarioAsignado = ? limit 20");
             $query->bindParam(1, $idUsuario);
             $query->execute();
             return $query->fetchAll();

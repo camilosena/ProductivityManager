@@ -32,5 +32,5 @@
           unset($_SESSION['id']);
            unset($_SESSION['rol']);
            session_destroy();
-           header("location: http://productivitymanager.ges.com.co/");
+           header("location: http://productivitymanager.ges.com.co");
       }

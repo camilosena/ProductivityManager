@@ -36,6 +36,7 @@ if (isset($_POST['crearUsuario'])) {
     $fecha_actual = new DateTime($hoy);
     $fecha_Nac = new DateTime($fecha);
     if ($fecha_actual <= $fecha_Nac) {
+       header("location: ../vista/registrarUsuario?mensajeError=La Fecha de Nacimiento No Puede Ser Futura"); 
    }else{
     //Enviar correo de confirmacion
     $correoDTO = new CorreosDTO();    

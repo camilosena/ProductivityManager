@@ -630,7 +630,7 @@ $session->Session($pagActual);
                     <span id="valCompany" style="color:Red;visibility:hidden;"></span>
                     <br>
                     <label for="txtSurname1"><span id="lab_valSurname" class="h331">Dirección: </span></label>
-                    <input class="input" name="direccion" type="text" id="txtSurname" placeholder="Cll 93 No 15 - 99" class="field1">
+                    <input class="input" name="direccion" type="text" id="txtSurname" placeholder="Cll 93 No 15 - 99" maxlength="40" class="field1">
                     <span id="valSurname" style="color:Red;visibility:hidden;"></span>
                     <br>
 

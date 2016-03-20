@@ -2,7 +2,7 @@ $( document ).ready(function() {
     fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
     fuenteCierreError= '</font>';
     jQuery.validator.addMethod("lettersonly", function(value, element) {
-  return this.optional(element) || /^[a-z," "]+$/i.test(value);
+  return this.optional(element) || /^[a-z áéíóúñüàè," "]+$/i.test(value);
         }, "Solo letras");
         $('#formUsuarios').submit(function(e) {
             e.preventDefault();
@@ -30,11 +30,15 @@ $( document ).ready(function() {
                 },
                 "nombre": {
                     required: true,
-                    lettersonly: true
+                    lettersonly: true,
+                    minlength: 3,
+                    maxlength: 25
                 },
                 "apellido": {
                     required: true,
-                    lettersonly: true
+                    lettersonly: true,
+                    minlength: 3,
+                    maxlength: 25
                 },
                 "telefono": {
                     required: true,
@@ -72,21 +76,25 @@ $( document ).ready(function() {
                     required: fuenteError+' Ingrese Documento'+fuenteCierreError,
                     number: fuenteError+' Documento No Valido'+fuenteCierreError,
                     minlength: fuenteError+' Minimo 3 Digitos'+fuenteCierreError,
-                    maxlength: fuenteError+' Maximo 10 Digitos'+fuenteCierreError
+                    maxlength: fuenteError+' Máximo 10 Digitos'+fuenteCierreError
                 },
                 "nombre": {
                     required: fuenteError+' Ingrese Nombre'+fuenteCierreError,
-                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError
+                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError,
+                    minlength: fuenteError+' Minimo 3 Letras'+fuenteCierreError,
+                    maxlength: fuenteError+' Máximo 25 Letras'+fuenteCierreError
                 },
                 "apellido": {
                     required: fuenteError+' Ingrese Apellidos'+fuenteCierreError,
-                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError
+                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError,
+                    minlength: fuenteError+' Minimo 3 Letras'+fuenteCierreError,
+                    maxlength: fuenteError+' Máximo 25 Letras'+fuenteCierreError
                 },
                 "telefono": {
                     required: fuenteError+' Ingrese Teléfono'+fuenteCierreError,
                     number: fuenteError+' Formato Erroneo'+fuenteCierreError,
                     minlength: fuenteError+' Minimo 7 Digitos'+fuenteCierreError,
-                    maxlength: fuenteError+' Maximo 10 Digitos'+fuenteCierreError
+                    maxlength: fuenteError+' Máximo 10 Digitos'+fuenteCierreError
                 },
                 "email": {
                     required: fuenteError+' Ingrese E-Mail'+fuenteCierreError,
@@ -99,7 +107,7 @@ $( document ).ready(function() {
                 "password": {
                     required: fuenteError+' Ingrese Contraseña'+fuenteCierreError,
                     minlength: fuenteError+' Minimo 5 Caracteres'+fuenteCierreError,
-                    maxlength: fuenteError+' Maximo 20 Caracteres'+fuenteCierreError
+                    maxlength: fuenteError+' Máximo 20 Caracteres'+fuenteCierreError
                 },
                 "password2": {
                     required: fuenteError+' Confirme Contraseña'+fuenteCierreError,
@@ -274,7 +282,10 @@ $( document ).ready(function() {
             debug: false,
             rules: {
                 "nombreCompania": {
-                    required: true
+                    required: true,
+                    minlength: 2,
+                    maxlength: 25
+
                 },
                 "nit": {
                     required: true,
@@ -289,7 +300,9 @@ $( document ).ready(function() {
                     required: true
                 },
                 "direccion": {
-                    required: true
+                    required: true,
+                    minlength: 2,
+                    maxlength: 30
                 },
                 "telefonoFijo": {
                     required: true,
@@ -299,11 +312,15 @@ $( document ).ready(function() {
                 },
                 "nombre": {
                     required: true,
-                    lettersonly: true
+                    lettersonly: true,
+                    minlength: 2,
+                    maxlength: 25
                 },
                 "apellido": {
                     required: true,
-                    lettersonly: true
+                    lettersonly: true,
+                    minlength: 2,
+                    maxlength: 25
                 },
                 "identificacion": {
                     required: true,
@@ -325,7 +342,9 @@ $( document ).ready(function() {
 
             messages: {
                 "nombreCompania": {
-                    required: fuenteError+' Ingrese Nombre Empresa'+fuenteCierreError
+                    required: fuenteError+' Ingrese Nombre Empresa'+fuenteCierreError,
+                    minlength: fuenteError+'Minimo 2 Caracteres'+fuenteCierreError,
+                    maxlength: fuenteError+'Máximo 25 Caracteres'+fuenteCierreError
                 },
                 "nit": {
                     required: fuenteError+' Ingrese N.I.T.'+fuenteCierreError,
@@ -340,7 +359,9 @@ $( document ).ready(function() {
                     required: fuenteError+'Sector Económico'+fuenteCierreError
                 },
                 "direccion": {
-                    required: fuenteError+' Ingrese una Dirección'+fuenteCierreError
+                    required: fuenteError+' Ingrese una Dirección'+fuenteCierreError,
+                    minlength: fuenteError+'Minimo 2 Caracteres'+fuenteCierreError,
+                    maxlength: fuenteError+'Máximo 30 Caracteres'+fuenteCierreError
                 },
                 "telefonoFijo": {
                     required: fuenteError+' Ingrese Teléfono Fijo'+fuenteCierreError,
@@ -350,11 +371,15 @@ $( document ).ready(function() {
                 },
                 "nombre": {
                     required: fuenteError+' Ingrese Nombre'+fuenteCierreError,
-                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError
+                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError,
+                    minlength: fuenteError+'Minimo 2 Letras'+fuenteCierreError,
+                    maxlength: fuenteError+'Máximo 25 Letras'+fuenteCierreError
                 },
                 "apellido": {
                     required: fuenteError+' Ingrese Apellidos'+fuenteCierreError,
-                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError
+                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError,
+                    minlength: fuenteError+'Minimo 2 Letras'+fuenteCierreError,
+                    maxlength: fuenteError+'Máximo 25 Letras'+fuenteCierreError
                 },
                 "identificacion": {
                     required: fuenteError+' Ingrese Documento'+fuenteCierreError,
@@ -381,7 +406,7 @@ $( document ).ready(function() {
     fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
     fuenteCierreError= '</font>';
      jQuery.validator.addMethod("lettersonly", function(value, element) {
-  return this.optional(element) || /^[a-z," "]+$/i.test(value);
+  return this.optional(element) || /^[a-z áéíóúñüàè," "]+$/i.test(value);
         }, "Solo letras");
         $('#formRoles').submit(function(e) {
             e.preventDefault();
@@ -427,7 +452,7 @@ $( document ).ready(function() {
     fuenteError = '<font style="color: red; font-size: 11px; font-family: Sans-Serif;font-style:italic; ">';
     fuenteCierreError= '</font>';
      jQuery.validator.addMethod("lettersonly", function(value, element) {
-  return this.optional(element) || /^[a-z," "]+$/i.test(value);
+  return this.optional(element) || /^[a-z áéíóúñüàè," "]+$/i.test(value);
         }, "Solo letras");
         $('#formArea').submit(function(e) {
             e.preventDefault();

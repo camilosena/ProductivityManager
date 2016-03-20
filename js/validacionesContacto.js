@@ -1,8 +1,8 @@
 $( document ).ready(function() {
-    fuenteError = '<font style="color: red; font-size: 9px; font-family: Sans-Serif;font-style:italic; ">';
+    fuenteError = '<font style="float:right; color: red; font-size: 9px; font-family: Sans-Serif;font-style:italic; ">';
     fuenteCierreError= '</font>';
     jQuery.validator.addMethod("lettersonly", function(value, element) {
-  return this.optional(element) || /^[a-z," "]+$/i.test(value);
+  return this.optional(element) || /^[a-z áéíóúñüàè," "]+$/i.test(value);
         }, "Solo letras");
         $('#formContact').submit(function(e) {
             e.preventDefault();
@@ -18,14 +18,20 @@ $( document ).ready(function() {
             rules: {
                 "nombre": {
                     required: true,
-                    lettersonly: true
+                    lettersonly: true,
+                    minlength: 3,
+                    maxlength: 25
                 },
                 "apellidos": {
                     required: true,
-                    lettersonly: true
+                    lettersonly: true,
+                    minlength: 3,
+                    maxlength: 25
                 },
                 "empresa": {
-                    required: true
+                    required: true,
+                    minlength: 3,
+                    maxlength: 25
                 },
                 "telefono": {
                     required: true,
@@ -41,27 +47,35 @@ $( document ).ready(function() {
                     required: true
                 },
                 "motivo": {
-                    required: true
+                    required: true,
+                    minlength: 5,
+                    maxlength:100
                 }
             },
 
             messages: {
                 "nombre": {
                     required: fuenteError+' Ingrese Nombre'+fuenteCierreError,
-                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError
+                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError,
+                    minlength: fuenteError+' Min. 3 Letras'+fuenteCierreError,
+                    maxlength: fuenteError+' Max. 25 Letras'+fuenteCierreError
                 },
                 "apellidos": {
                     required: fuenteError+' Ingrese Apellido'+fuenteCierreError,
-                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError
+                    lettersonly: fuenteError+' Solo Letras'+fuenteCierreError,
+                    minlength: fuenteError+' Min. 3 Letras'+fuenteCierreError,
+                    maxlength: fuenteError+' Max. 25 Letras'+fuenteCierreError
                 },
                 "empresa": {
-                    required: fuenteError+' Ingrese Empresa'+fuenteCierreError
+                    required: fuenteError+' Ingrese Empresa'+fuenteCierreError,
+                    minlength: fuenteError+' Min. 3 Caracteres'+fuenteCierreError,
+                    maxlength: fuenteError+' Max. 25 Caracteres'+fuenteCierreError
                 },
                 "telefono": {
                     required: fuenteError+' Ingrese Teléfono'+fuenteCierreError,
                     number: fuenteError+' Formato Erroneo'+fuenteCierreError,
-                    minlength: fuenteError+' Minimo 7 Digitos'+fuenteCierreError,
-                    maxlength: fuenteError+' Maximo 10 Digitos'+fuenteCierreError
+                    minlength: fuenteError+' Min. 7 Digitos'+fuenteCierreError,
+                    maxlength: fuenteError+' Max. 10 Digitos'+fuenteCierreError
                 },
                 "email": {
                     required: fuenteError+' Ingrese E-Mail'+fuenteCierreError,
@@ -71,7 +85,9 @@ $( document ).ready(function() {
                     required: fuenteError+' Seleccione País'+fuenteCierreError
                 },
                 "motivo": {
-                    required: fuenteError+' Ingrese Motivo'+fuenteCierreError
+                    required: fuenteError+' Ingrese Motivo'+fuenteCierreError,
+                    minlength: fuenteError+' Min. 5 Caracteres'+fuenteCierreError,
+                    maxlength: fuenteError+' Max. 100 Caracteres'+fuenteCierreError
                 }
             }
  

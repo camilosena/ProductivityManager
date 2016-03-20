@@ -15,14 +15,14 @@
     $InsumosDTO->setId($_GET['numero']);
     $mensaje = $facadeInsumos->agregarInsumo($InsumosDTO);
      
-     header("location: ../vista/agregarInsumos.php?mensaje=".$mensaje);
+     header("location: ../vista/agregarInsumos?mensaje=".$mensaje);
 }
 else 
     if (isset ($_GET['idEditarMateria'])) {
     session_start();
     $facadeInsumos = new FacadeInsumos();
     $_SESSION['consultarMaterias']= $facadeInsumos->consultarMateriaPrima($_GET['idEditarMateria']);
-   header("location: ../vista/agregarInsumos.php?&#ModalMateriaPrima");
+   header("location: ../vista/agregarInsumos?&#ModalMateriaPrima");
     
 }else
 if (isset ($_POST['Change'])) {
@@ -67,5 +67,5 @@ if (isset ($_POST['modificarMateria'])) {
     $InsumosDTO->setPrecio($_POST['precioBase']);
     $InsumosDTO->setId($_POST['idMateriaPrima']);
     $mensaje = $facadeInsumos->modificarMateriaPrima($InsumosDTO);
-    header("location: ../vista/agregarInsumos.php? mensaje=".$mensaje);
+    header("location: ../vista/agregarInsumos? mensaje=".$mensaje);
 }

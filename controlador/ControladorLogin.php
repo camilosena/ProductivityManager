@@ -16,9 +16,9 @@
              $_SESSION['id']=$validaInfo['idLogin'];
              $_SESSION['rol']=$validaInfo['rol'];
              if ($_POST['pass'] == "inicial") {
-                 header("location: ../vista/modificarContrasena.php?mensaje= Modifique su contraseña");
+                 header("location: ../vista/modificarContrasena?mensaje= Modifique su contraseña");
              }else{
-             header("location: ../vista/listarProyectos.php?bienvenida=Bienvenido ".$_SESSION['rol']);
+             header("location: ../vista/listarProyectos?bienvenida=Bienvenido ".$_SESSION['rol']);
              }
          }
          else{
@@ -32,5 +32,5 @@
           unset($_SESSION['id']);
            unset($_SESSION['rol']);
            session_destroy();
-           header("location: ../index.php");
+           header("location: http://productivitymanager.ges.com.co/");
       }

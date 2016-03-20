@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
-$pagActual = 'informacionProyecto.php';
+$pagActual = 'informacionProyecto';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 ?>
@@ -34,7 +34,7 @@ $session->Session($pagActual);
 <body>
 <script>
      window.onunload = function(){
-            window.opener.location = 'listarProyectos.php';};
+            window.opener.location = 'listarProyectos';};
 </script>
 <div id="todoProyecto" class="wrapper">
     <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
@@ -123,12 +123,12 @@ e.preventDefault();
                 $comi = "'";
                 if ($proyectos['estadoProyecto'] != 'Ejecución' &&$proyectos['estadoProyecto'] != 'Espera' && $proyectos['ejecutado'] < 100 && $proyectos['estadoProyecto']!='Cancelado') {
                     echo '<tr><td class="enunciado">Opciones:</td><td>';
-                    echo '<a class="me" title="Modificar Proyecto"href="javascript:modificarProyecto(' . $comi . 'modificarProyecto.php?idProject='. $proyectos['idProyecto'] . $comi . ');"><img class="iconos" src="../img/modify.png"></a>';
+                    echo '<a class="me" title="Modificar Proyecto"href="javascript:modificarProyecto(' . $comi . 'modificarProyecto?idProject='. $proyectos['idProyecto'] . $comi . ');"><img class="iconos" src="../img/modify.png"></a>';
                 }
                 if ($proyectos['estadoProyecto'] == 'Sin Estudio Costos') {
-                    echo '<a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos(' . $comi . 'estudioDeCostos.php?projectNum=' . $proyectos['idProyecto'] . '&nameProject=' . $proyectos['nombreProyecto'] . $comi . ');"><img class="iconos" src="../img/costos.png"></a>';
+                    echo '<a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos(' . $comi . 'estudioDeCostos?projectNum=' . $proyectos['idProyecto'] . '&nameProject=' . $proyectos['nombreProyecto'] . $comi . ');"><img class="iconos" src="../img/costos.png"></a>';
                 } elseif ($proyectos['estadoProyecto'] == 'Sin Producción') {
-                    echo '<a class="me" title="Incluir Producción" href="javascript:produccionProyecto(' . $comi . 'produccionProyecto.php?projectNum=' . $proyectos['idProyecto'] . '&nameProject=' . $proyectos['nombreProyecto'] . $comi . ');"><img class="iconos" src="../img/products.png"></a>';
+                    echo '<a class="me" title="Incluir Producción" href="javascript:produccionProyecto(' . $comi . 'produccionProyecto?projectNum=' . $proyectos['idProyecto'] . '&nameProject=' . $proyectos['nombreProyecto'] . $comi . ');"><img class="iconos" src="../img/products.png"></a>';
 
                 }
                 require_once '../modelo/utilidades/Conexion.php';
@@ -271,17 +271,17 @@ e.preventDefault();
         <hr>
     <script language=javascript>
         function modificarProyecto(URL) {
-            window.open(URL, "modificarProyecto.php", "width=1180,height=645,top=30,left=25,scrollbars=NO");
+            window.open(URL, "modificarProyecto", "width=1180,height=645,top=30,left=25,scrollbars=NO");
         }
     </script>
     <script language=javascript>
         function estudioCostos(URL) {
-            window.open(URL, "estudioDeCostos.php", "width=1000,height=645,top=30,left=150,scrollbars=NO");
+            window.open(URL, "estudioDeCostos", "width=1000,height=645,top=30,left=150,scrollbars=NO");
         }
     </script>
     <script language=javascript>
         function produccionProyecto(URL) {
-            window.open(URL, "produccionProyecto.php", "width=1000,height=645,top=30,left=150,scrollbars=NO");
+            window.open(URL, "produccionProyecto", "width=1000,height=645,top=30,left=150,scrollbars=NO");
         }
     </script>
 </div>

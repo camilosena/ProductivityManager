@@ -33,5 +33,5 @@
                 $facadeProyecto->cambiarEstadoProyecto('Espera', $idProyectoSolicitado);
                 $facadeProyecto->cambiarFechaFinProyecto($_POST['fechaFinal'],$idProyectoSolicitado);
             }      
-            header("location: ../vista/estudioDeCostos.php?mensaje=".$mensaje."&projectNum=".$idProyectoSolicitado."&nameProject=".$nombreProyecto);       
+            header("location: ../vista/estudioDeCostos?mensaje=".$mensaje."&projectNum=".$idProyectoSolicitado."&nameProject=".$nombreProyecto);       
     } 

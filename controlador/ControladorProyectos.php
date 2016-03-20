@@ -50,7 +50,7 @@ if (isset($_POST['crearProyecto'])) {
         $gerenteEncargado = $facadeUsuario->usuarioEnSesion($_SESSION['id']);
         $mensaje3 = $facadeUsuario->asignarUsuarioProyecto($gerenteEncargado, $_POST['idProyecto']);
         $abrirVentana = true;
-        header("location: ../vista/listarProyectos.php?mensaje=" . $mensaje . "&winOpen=" . $abrirVentana . "&mensaje2=" . $mensaje2 . "&projectNum=" . $_POST['idProyecto'] . "&nameProject=" . $_POST['nombreProyecto']);
+        header("location: ../vista/listarProyectos?mensaje=" . $mensaje . "&winOpen=" . $abrirVentana . "&mensaje2=" . $mensaje2 . "&projectNum=" . $_POST['idProyecto'] . "&nameProject=" . $_POST['nombreProyecto']);
         }
     } else {
         $fechas = 'La Fecha de Inicio debe ser Futura';
@@ -69,17 +69,17 @@ if (isset($_POST['crearProyecto'])) {
         $state = $facadeProyecto->consultarProyecto($idProyecto);
         if ($state['estadoProyecto'] == 'Ejecucion') {
             $mensaje = 'No puede modificar proyectos con estado de Ejecución';
-            header("location: ../vista/modificarProyecto.php?idProject=" . $_POST['idProyecto'] . "&errorEstado=" . $mensaje);
+            header("location: ../vista/modificarProyecto?idProject=" . $_POST['idProyecto'] . "&errorEstado=" . $mensaje);
         } else {
             $proyectoDTO = new ProyectosDTO($idProyecto, $nombreProyecto, $fechaInicio, $fechaFin, $estado, $observaciones);
             $mensaje = $facadeProyecto->actualizarProyecto($proyectoDTO);
             $facadeUsuario = new FacadeUsuarios;
             $mensaje2 = $facadeUsuario->modificarUsuarioProyecto($_POST['cliente'], $_POST['idProyecto']);
-            header("location: ../vista/listarProyectos.php?mensaje=" . $mensaje);
+            header("location: ../vista/listarProyectos?mensaje=" . $mensaje);
         }
     } else {
         $fechas = 'La Fecha de Inicio debe ser Futura';
-        header("location: ../vista/modificarProyecto.php?idProject=" . $_POST['idProyecto'] . "&mensajeFecha=" . $fechas);
+        header("location: ../vista/modificarProyecto?idProject=" . $_POST['idProyecto'] . "&mensajeFecha=" . $fechas);
     }
 }
 //Facade Para asignar usuario a tabla usuarioPorProyecto
@@ -91,13 +91,13 @@ else if (isset($_GET['codUsuario'])) {
     if ($cantidadProyectos <2){
     if ($cantidadAsignada <= $cantidadTotal) {
          $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);
-    header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
+    header("location: ../vista/listarUsuarios?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
     }else{
     $mensaje = " Error: No se puede asignar a este proyecto la cantidad de empleados esta completa";
-    header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
+    header("location: ../vista/listarUsuarios?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
     }}else{
         $mensaje = " Error: No se puede asignar mas de dos proyectos";
-    header("location: ../vista/listarUsuarios.php?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
+    header("location: ../vista/listarUsuarios?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
     }
 } else if (isset($_POST['elementosProyecto'])) {
 //echo var_dump($_POST);    

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
-$pagActual = 'estudioDeCostos.php';
+$pagActual = 'estudioDeCostos';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 ?>
@@ -22,7 +22,7 @@ $session->Session($pagActual);
     <body>  
     <script>
          window.onunload = function(){
-            window.opener.location ='listarProyectos.php';};
+            window.opener.location ='listarProyectos';};
     </script>
          <?php
         if (isset($_GET['mensaje'])) {

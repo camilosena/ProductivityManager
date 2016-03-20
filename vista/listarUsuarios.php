@@ -2,7 +2,7 @@
 session_start();
 require_once '../modelo/utilidades/Session.php';
 require_once '../modelo/utilidades/browser.php';
-$pagActual = 'listarUsuarios.php';
+$pagActual = 'listarUsuarios';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 ?>
@@ -101,10 +101,10 @@ $session->Session($pagActual);
         <ul>
 
        <?php if ($_SESSION['rol'] == 'Administrador'){ ?>
-          <li><a href="javascript:backup('backup.php')"><span><i class="fa fa-database fa-lg"></i> BackUp</span></a>
+          <li><a href="javascript:backup('backup')"><span><i class="fa fa-database fa-lg"></i> BackUp</span></a>
             <script language=javascript>
             function backup(URL) {
-                window.open(URL, "backup.php", "width=1190,height=645,top=30,left=30,scrollbars=NO");
+                window.open(URL, "backup", "width=1190,height=645,top=30,left=30,scrollbars=NO");
             }
            </script> 
            </li> 
@@ -112,17 +112,17 @@ $session->Session($pagActual);
 
     <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador'){ ?>
 
-          <li><a href="javascript:reporte('reportes.php')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
+          <li><a href="javascript:reporte('reportes')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
             <script language=javascript>
             function reporte(URL) {
-                window.open(URL, "reportes.php", "width=1200,height=645,top=30,left=30,scrollbars=NO");
+                window.open(URL, "reportes", "width=1200,height=645,top=30,left=30,scrollbars=NO");
             }
            </script> 
            </li> 
       <?php } ?>
            <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
               <ul>
-                 <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
+                 <li><a href='modificarContrasena'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
                  </li>
                  <li><a id="loadImg" href="javascript:function()"><span><i class="fa fa-picture-o fa-lg"></i> Actualizar Foto</span></a>              
                  </li>
@@ -360,10 +360,10 @@ $session->Session($pagActual);
 
                                     <td>
                                         <a class="me" title="Consultar / Asignar a Proyecto" href="../controlador/ControladorUsuarios.php?idConsultar=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/verBino.png"></a>                
-                                        <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
+                                        <a class="me" title="Modificar Usuario" href="modificarUsuario?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                                         <a name="eliminar" title="Eliminar Usuario" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar=<?php echo $user['idUsuario']; ?>" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>                                            
                                         <?php if ($_SESSION['rol']=="Administrador") {
-                                    echo '<a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/ascenso.png"></a>';
+                                    echo '<a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea?id='.$user['idUsuario'].'"><img class="iconos" src="../img/ascenso.png"></a>';
                                     } ?>
                                     </td>
                                 </tr>                         
@@ -391,12 +391,12 @@ $session->Session($pagActual);
                                 <td>
                                     
                                     <a class="me" title="Consultar / Asignar a Proyecto" href="../controlador/ControladorUsuarios.php?idConsultar=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/verBino.png"></a>                
-                                    <a class="me" title="Modificar Usuario" href="modificarUsuario.php?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
+                                    <a class="me" title="Modificar Usuario" href="modificarUsuario?id=<?php echo $user['idUsuario']; ?>"><img class="iconos" src="../img/crearUsuario.png"></a>
                                     <?php if ($_SESSION['rol']=="Administrador") {
                                     echo '<a name="eliminar" title="Eliminar Usuario" class="me"  href="../controlador/ControladorUsuarios.php?idEliminar='.$user['idUsuario'].'" onclick=" return confirmacion()"><img class="iconos" src="../img/eliminar.png"></a>';
                                     }
                                      if ($_SESSION['rol']=="Administrador") {
-                                    echo '<a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea.php?id='.$user['idUsuario'].'"><img class="iconos" src="../img/ascenso.png"></a>';
+                                    echo '<a class="me" title="Cambiar de Área / Rol" href="actualizarRolArea?id='.$user['idUsuario'].'"><img class="iconos" src="../img/ascenso.png"></a>';
                                     }
                                     if ($_SESSION['rol']=="Administrador" & $user['rol'] != "Administrador" & $user['rol'] != "Auditor" || $_SESSION['rol']=="Gerente" & $user['rol'] != "Administrador" & $user['rol'] != "Auditor") {
                                     echo '<a class="me" title="Proyectos Asociados" href="../controlador/ControladorUsuarios.php?idAsociados='.$user['idUsuario'].'"><img class="iconos" src="../img/work.png"></a>';
@@ -471,7 +471,7 @@ $session->Session($pagActual);
                     ?>                                
                 </div>                    
             </div>
-            <button class="boton-verde"  onclick="location.href='listarUsuarios.php'" >Refrescar Lista</button>            
+            <button class="boton-verde"  onclick="location.href='listarUsuarios'" >Refrescar Lista</button>            
         </div>
         <?php
                     if (isset($_SESSION['datosProyectos'])) {

@@ -32,7 +32,7 @@ if (isset($_POST['agregarCliente'])) {
     $result2 = $facadeCliente->verificarClienteRegistrado($nit);
     if ($result !='' || $result2 !='') {
         $mensajeUsuario="Este Cliente Ya Existe";
-          header("location: ../vista/agregarCliente.php?mensajeError=".$mensajeUsuario);
+          header("location: ../vista/agregarCliente?mensajeError=".$mensajeUsuario);
     
 }else{
     
@@ -56,13 +56,13 @@ if (isset($_POST['agregarCliente'])) {
     $dto = new UsuarioDTO($idUsuario, $identificacion, $nombre, $apellido, $direccion, $telefono, $fecha, $email, $estado, $foto, $contrasena, $rol, $area);
     $mensajeUsuario = $facadeUsuario->registrarUsuario($dto);
     if($mensajeUsuario!='true'){
-        header("location: ../vista/agregarCliente.php?mensajeError=".$mensajeUsuario);
+        header("location: ../vista/agregarCliente?mensajeError=".$mensajeUsuario);
     }else if($mensajeUsuario=='true') {
         $mensajeUsuario = 'Cliente Registrado Con Éxito';
         //  Insertar a tabla de Clientes
         $dtoCliente = new ClienteDTO($razonSocial, $nit, $sectorEmpresarial, $sectorEconomico, $facadeUsuario->consecutivoUsuario(), $telefonoFijo);
         $mensaje = $facadeCliente->insertarCliente($dtoCliente);
-        header("location: ../vista/clientesActivos.php?mensaje=" . $mensaje . "&consecutivo=" . $facadeUsuario->consecutivoUsuario() . "&logo=" . $msg);
+        header("location: ../vista/clientesActivos?mensaje=" . $mensaje . "&consecutivo=" . $facadeUsuario->consecutivoUsuario() . "&logo=" . $msg);
     }
 }
 }//  Modificar Cliente
@@ -74,17 +74,17 @@ else if (isset($_GET['modificarCliente'])) {
     $dtoCliente = new ClienteDTO(ucwords($_GET['nombreCompania']), $_GET['nit'], $_GET['sectorEmp'], $_GET['sectorEco'], $_GET['idCliente'], $_GET['telefonoFijo']);
     $facadeCliente = new FacadeCliente;
     $mensaje2 = $facadeCliente->actualizarCliente($dtoCliente);
-    header("Location: ../vista/clientesActivos.php?modificaCliente=" . $mensaje2);
+    header("Location: ../vista/clientesActivos?modificaCliente=" . $mensaje2);
 }//  Desactivar Cliente
 else if (isset($_GET['idDesactivarCliente'])) {
     $facadeUsuario = new FacadeUsuarios();
     $mensaje3 = $facadeUsuario->desactivarUsuario($_GET['idDesactivarCliente'], 'Inactivo');
-    header("Location: ../vista/clientesInactivos.php?modificaCliente=" . $mensaje3);
+    header("Location: ../vista/clientesInactivos?modificaCliente=" . $mensaje3);
 }// Activar Cliente
 else if (isset($_GET['idActivarCliente'])) {
     $facadeUsuario = new FacadeUsuarios();
     $mensaje3 = $facadeUsuario->activarUsuario($_GET['idActivarCliente'], 'Activo');
-    header("Location: ../vista/clientesActivos.php?modificaCliente=" . $mensaje3);
+    header("Location: ../vista/clientesActivos?modificaCliente=" . $mensaje3);
 }
 //  Consultar Cliente
 else if (isset($_GET['idConsultarCliente'])) {
@@ -94,9 +94,9 @@ else if (isset($_GET['idConsultarCliente'])) {
     $FacadeCliente = new FacadeCliente;
     $_SESSION['dtoCliente'] = $FacadeCliente->consultarCliente($_GET['idConsultarCliente']);
     if ($_SESSION['dtoUsuario']['estado'] == 'Activo') {
-        header("Location: ../vista/clientesActivos.php?&#verUsuario");
+        header("Location: ../vista/clientesActivos?&#verUsuario");
     } else if ($_SESSION['dtoUsuario']['estado'] == 'Inactivo') {
-        header("Location: ../vista/clientesInactivos.php?&#verUsuario");
+        header("Location: ../vista/clientesInactivos?&#verUsuario");
     }
 }
     

@@ -40,10 +40,10 @@ $session->Session($pagActual);
                 <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
             </form>
             <ul>
-                 <!--   <li><a href='reportes.php'><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a></li> -->
+                 <!--   <li><a href='reportes'><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a></li> -->
                 <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
                     <ul>
-                        <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
+                        <li><a href='modificarContrasena'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
                         </li>
                         <li><a id="loadImg" href="javascript:function()"><span><i class="fa fa-picture-o fa-lg"></i> Actualizar Foto</span></a>              
                         </li>
@@ -135,7 +135,7 @@ $session->Session($pagActual);
                 <span itemscope >
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
-                        <a href="listarProyectos.php" title="Ir a Proyectos" itemprop="url">
+                        <a href="listarProyectos" title="Ir a Proyectos" itemprop="url">
                             <span itemprop="title">Proyectos</span>              
                         </a>  >                        
                         <strong>Crear Nuevo Proyecto</strong> 
@@ -308,10 +308,10 @@ $session->Session($pagActual);
                     <button type="submit" class="inline" name="crearProyecto" class="boton-verde">Crear Proyecto</button><hr>
                     <script language=javascript>
                         function estudioCostos(URL) {
-                            window.open(URL, "estudioDeCostos.php", "width=1000,height=640,top=30,left=150,scrollbars=NO");
+                            window.open(URL, "estudioDeCostos", "width=1000,height=640,top=30,left=150,scrollbars=NO");
                         }
                         function produccionProyecto(URL) {
-                            window.open(URL, "produccionProyecto.php", "width=1000,height=640,top=30,left=150,scrollbars=NO");
+                            window.open(URL, "produccionProyecto", "width=1000,height=640,top=30,left=150,scrollbars=NO");
                         }
                     </script>                    
                 </form>

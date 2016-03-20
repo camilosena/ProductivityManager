@@ -45,33 +45,33 @@ if (isset($_POST['AgregarProducto'])) {
     
     $mensaje=$facadeProductos->agregarProducto($productosDTO);
    
-     header("location: ../vista/agregarProductos.php?mensaje=".$mensaje);
+     header("location: ../vista/agregarProductos?mensaje=".$mensaje);
     
 }else 
 if (isset ($_GET['$idInactivar'])) {
  
     $facadeProductos->inactivarProducto($_GET['$idInactivar']);
-     header("location: ../vista/agregarProductos.php?".$mensaje);
+     header("location: ../vista/agregarProductos?".$mensaje);
     
 }else
     if (isset ($_GET['$idActivar'])) {
     
  
     $facadeProductos->activarProducto($_GET['$idActivar']);
-     header("location: ../vista/agregarProductos.php?".$mensaje);
+     header("location: ../vista/agregarProductos?".$mensaje);
     
 }else
 if (isset ($_GET['idVisualizar'])) {
     
     
     $_SESSION['VisualizarProducto']= $facadeProductos->consultarProducto($_GET['idVisualizar']);
-   header("location: ../vista/agregarProductos.php?&#ModalImagen");
+   header("location: ../vista/agregarProductos?&#ModalImagen");
     
 }else
 if (isset ($_GET['$idIParaInsumos'])) {
          
     $_SESSION['Producto']= $facadeProductos->consultarProducto($_GET['$idIParaInsumos']);
-    header("location: ../vista/insumosPorProducto.php");
+    header("location: ../vista/insumosPorProducto");
        
 }else
 if (isset ($_POST['AsociarInsumos'])) {
@@ -87,10 +87,10 @@ $estado = "Sin Procesos";
         }
         $facadeProductos->modificarEstadoProducto($estado, $_POST['idProducto']);
     }    
-header("location: ../vista/insumosPorProducto.php?mensaje=Materia Prima Asociada con Éxito");
+header("location: ../vista/insumosPorProducto?mensaje=Materia Prima Asociada con Éxito");
 }else 
 if (isset ($_POST['Atras'])) {
-     header("location: ../vista/agregarProductos.php");
+     header("location: ../vista/agregarProductos");
 }else
 if (isset ($_POST['Change'])) {
    /*  $table = 'productos';

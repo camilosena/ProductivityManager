@@ -36,7 +36,6 @@ if (isset($_POST['crearUsuario'])) {
     $fecha_actual = new DateTime($hoy);
     $fecha_Nac = new DateTime($fecha);
     if ($fecha_actual <= $fecha_Nac) {
-       header("location: ../vista/registrarUsuario.php?mensajeError=La Fecha de Nacimiento No Puede Ser Futura"); 
    }else{
     //Enviar correo de confirmacion
     $correoDTO = new CorreosDTO();    
@@ -79,7 +78,7 @@ if (isset($_POST['crearUsuario'])) {
     //Insertar Tabla de personas
     $mensaje2 = $facadeUsuario->registrarUsuario($dto);
     if($mensaje2!='true'){
-        header("location: ../vista/registrarUsuario.php?mensajeError=" . $mensaje2);
+        header("location: ../vista/registrarUsuario?mensajeError=" . $mensaje2);
     }else if($mensaje2=='true'){
         $mensaje2='Usuario Registrado Con Éxito';
     //  Insertar tabla de usuarios login    
@@ -87,7 +86,7 @@ if (isset($_POST['crearUsuario'])) {
         $mensajeCorreo=$confirmacion;    
     //Consecutivo de Usuario
         $consecutivos = $facadeUsuario->consecutivoUsuario();
-        header("location: ../vista/registrarUsuario.php?mensaje=" . $mensaje2 . "&consecutivo=" .$consecutivos."&foto=".$msg."&correo=".$mensajeCorreo);
+        header("location: ../vista/registrarUsuario?mensaje=" . $mensaje2 . "&consecutivo=" .$consecutivos."&foto=".$msg."&correo=".$mensajeCorreo);
     }
 }
 }
@@ -106,23 +105,23 @@ else if (isset($_POST['modificar'])) {
     $mensaje = $facadeUsuario->actualizarUsuario($uDTO);   
     $facadeLogin = new FacadeLogin;
     $msg2 = $facadeLogin->modificarLogin($uDTO);
-    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje);
+    header("Location: ../vista/listarUsuarios?modificado=" . $mensaje);
 }//  Eliminar 
 else if (isset($_GET['idEliminar'])) {
     $facadeUsuario = new FacadeUsuarios();
     $mensaje3 = $facadeUsuario->desactivarUsuario($_GET['idEliminar'], 'Inactivo');
-    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje3);
+    header("Location: ../vista/listarUsuarios?modificado=" . $mensaje3);
 }//  Consultar
 else if (isset($_GET['idConsultar'])) {
     $facadeUsuario = new FacadeUsuarios();
     session_start();  
     $_SESSION['datosUsuario'] = $facadeUsuario->consultarUsuario($_GET['idConsultar']);   
- header("Location: ../vista/listarUsuarios.php?#verUsuario");
+ header("Location: ../vista/listarUsuarios?#verUsuario");
 }else if (isset($_GET['idConsultarInactivo'])) {
     $facadeUsuario = new FacadeUsuarios();
     session_start();  
     $_SESSION['datosUsuarioInactivo'] = $facadeUsuario->consultarUsuarioInactivo($_GET['idConsultarInactivo']);
- header("Location: ../vista/listarUsuariosInactivos.php?#verUsuario");
+ header("Location: ../vista/listarUsuariosInactivos?#verUsuario");
 } 
 //Activar Usuarios Inactivos Bloqueados
 else if (isset($_GET['idActivar'])) {
@@ -151,11 +150,11 @@ else if (isset($_GET['idActivar'])) {
        $mensajeCorreo=$confirmacion;  
        $mensaje2="Error no se pudo realizar la activación";
        $consecutivos = 0;
-       header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje2);
+       header("Location: ../vista/listarUsuarios?modificado=" . $mensaje2);
     } else {        
     //insertar imagen
         $mensaje3 = $facadeUsuario->activarUsuario($_GET['idActivar'], 'Activo');
-    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje3); 
+    header("Location: ../vista/listarUsuarios?modificado=" . $mensaje3); 
     }
     
 } // Ascender Usuarios
@@ -164,7 +163,7 @@ else  if (isset($_POST['ascender'])) {
         $mensaje = $facadeUsuario->ascenderUsuario($_POST['selectRol'], $_POST['identificacion']);
         $mensaje2 = $facadeUsuario->actualizarArea($_POST['id'], $_POST['selectArea']);
     
-    header("Location: ../vista/listarUsuarios.php?modificado=" . $mensaje.' y '.$mensaje2); 
+    header("Location: ../vista/listarUsuarios?modificado=" . $mensaje.' y '.$mensaje2); 
   }
 else if($_FILES['cambiaImagen']['name']!=''){
     if ($_FILES['cambiaImagen']['name'] == '') {
@@ -184,9 +183,9 @@ else if($_FILES['cambiaImagen']['name']!=''){
         session_start();                
          $facadeUsser = new FacadeUsuarios();
          $massage = $facadeUsser->actualizarFoto($foto,$_SESSION['id']);
-         header("location: ../vista/listarProyectos.php?mensaje=".$massage);
+         header("location: ../vista/listarProyectos?mensaje=".$massage);
        }else{
-         header("location: ../vista/listarProyectos.php?mensajeFoto=".$msg);
+         header("location: ../vista/listarProyectos?mensajeFoto=".$msg);
        }
 }else
 if (isset ($_POST['subir'])) {
@@ -209,7 +208,7 @@ if (isset ($_POST['subir'])) {
         $lDTO->setRol($rol);
         $mensaje = $fUsuario->actualizarLogin($lDTO);  
     }
-     header("Location: ../vista/listarUsuariosInactivos.php?mensale = ".$mensaje);
+     header("Location: ../vista/listarUsuariosInactivos?mensale = ".$mensaje);
     
 }else
 if (isset ($_GET['idAsociados'])) {
@@ -219,5 +218,5 @@ if (isset ($_GET['idAsociados'])) {
     session_start();  
     $_SESSION['datosUsuario'] = $facadeUsuario->consultarUsuario($_GET['idAsociados']);  
     $_SESSION['datosProyectos'] = $FacadeProyectos->listarProyectoPorPersonal($_GET['idAsociados']);   
- header("Location: ../vista/listarUsuarios.php?#verProyectos");
+ header("Location: ../vista/listarUsuarios?#verProyectos");
 }

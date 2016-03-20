@@ -27,7 +27,7 @@ if (isset($_POST['buscarUsuarios'])) {
     } else {
         $mensaje = "Registros Encontrados";
     }
-    header("location: ../vista/listarUsuarios.php?mensajeFiltro=" .
+    header("location: ../vista/listarUsuarios?mensajeFiltro=" .
             $mensaje . "&busqueda=true");
 } elseif (isset($_POST['buscarProyectos'])) {
     session_start();
@@ -49,7 +49,7 @@ if (isset($_POST['buscarUsuarios'])) {
     } else {
         $mensaje = "Registros Encontrados";
     }
-    header("location: ../vista/listarProyectos.php?mensajeFiltro=" .
+    header("location: ../vista/listarProyectos?mensajeFiltro=" .
             $mensaje . "&busquedaProject=true");
 } elseif (isset($_POST['buscarActivos'])) {
     session_start();
@@ -67,7 +67,7 @@ if (isset($_POST['buscarUsuarios'])) {
     } else {
         $mensaje = "Registros Encontrados";
     }
-    header("location: ../vista/clientesActivos.php?mensajeFiltro=" .
+    header("location: ../vista/clientesActivos?mensajeFiltro=" .
             $mensaje . "&busquedaActivos=true");
 } elseif (isset($_POST['buscarInactivos'])) {
     session_start();
@@ -85,7 +85,7 @@ if (isset($_POST['buscarUsuarios'])) {
     } else {
         $mensaje = "Registros Encontrados";
     }
-    header("location: ../vista/clientesInactivos.php?mensajeFiltro=" .
+    header("location: ../vista/clientesInactivos?mensajeFiltro=" .
             $mensaje . "&busquedaInactivos=true");
 
 // Filtros Novedades Howard
@@ -106,6 +106,6 @@ if (isset($_POST['buscarUsuarios'])) {
     } else {
         $mensaje = "Registros Encontrados";
     }
-    header("location: ../vista/listarNovedades.php.php?mensajeFiltro=" .
+    header("location: ../vista/listarNovedades.php?mensajeFiltro=" .
         $mensaje . "&busquedaInactivos=true");
 }

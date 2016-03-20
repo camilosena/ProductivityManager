@@ -44,7 +44,7 @@ if(isset($_POST['crearNovedad'])){
     $cargaFoto = new GestionImagenes();
     $msg =$cargaFoto->subirImagen($dtoImagen);
     if($msg!='True'){
-         header("location: ../vista/agregarNovedad.php?errorPermiso=Archivo No Valido");
+         header("location: ../vista/agregarNovedad?errorPermiso=Archivo No Valido");
     }else{
         $datos  = $facadeNovedad->consultarGerenteParaEnvarNovedadPorCorreo($idProyecto);
         $usuario = $facadeNovedad->consultarAreaUsuarioEnSesion($idUsuario);
@@ -76,11 +76,11 @@ if(isset($_POST['crearNovedad'])){
        $mensajeCorreo=$confirmacion;  
        $mensaje2="Error no se pudo generar la novedad";
        $consecutivos = 0;
-       header("Location: ../vista/listarNovedades.php?errorPermiso=" . $mensajeCorreo.$mensaje2);
+       header("Location: ../vista/listarNovedades?errorPermiso=" . $mensajeCorreo.$mensaje2);
     } else {        
     //mensaje enviado
          $message= $facadeNovedad->insertarNovedad($objetoDTO);
-    header("location: ../vista/agregarNovedad.php?novedad=".$message."&evidencia=".$msg);
+    header("location: ../vista/agregarNovedad?novedad=".$message."&evidencia=".$msg);
     }
    
     }
@@ -89,12 +89,12 @@ if(isset($_POST['crearNovedad'])){
     session_start();
     $_SESSION['datoNovedad'] = $facadeNovedad->consultarNovedad($_GET['idNovedad']);
 
-    header("Location: ../vista/listarNovedades.php?&#verUsuario");
+    header("Location: ../vista/listarNovedades?&#verUsuario");
 }else
 if (isset ($_GET['idSolucionar'])) {
     session_start();
     $_SESSION['solucionNovedad'] = $facadeNovedad->consultarNovedad($_GET['idSolucionar']);
-   header("Location: ../vista/listarNovedades.php?#solucionarNovedad");
+   header("Location: ../vista/listarNovedades?#solucionarNovedad");
 }else
 if (isset ($_POST['solucionarNovedad'])) {
     session_start();
@@ -138,11 +138,11 @@ if (isset ($_POST['solucionarNovedad'])) {
        $mensajeCorreo=$confirmacion;  
        $mensaje2="Error no se pudo generar la novedad";
        $consecutivos = 0;
-       header("Location: ../vista/listarNovedades.php?errorPermiso=" . $mensajeCorreo);
+       header("Location: ../vista/listarNovedades?errorPermiso=" . $mensajeCorreo);
     } else {        
     //mensaje enviado
      $mensaje = $facadeNovedad->solucionarNovedad($solucion, $idNovedad);
-     header("Location: ../vista/listarNovedades.php?mensaje=".$mensaje);
+     header("Location: ../vista/listarNovedades?mensaje=".$mensaje);
     }
 
 }

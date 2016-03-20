@@ -18,13 +18,13 @@ if (isset($_POST['backUpTablas'])) {
     $rute = $_SERVER['DOCUMENT_ROOT'];
     $bacup_file = $rute.'/ProductivityManager/BackUp/'.$table_name.$fecha.'.'.$tipo_archivo;
     $mensaje = $fBack->BackupTablas($bacup_file, $table_name);
-   header("location: ../vista/backup.php?mensaje=".$mensaje);
+   header("location: ../vista/backup?mensaje=".$mensaje);
 }else 
 if (isset($_POST['backUpGeneral'])) {
 
     $fBack->Backup_Database();
     $mensaje = "Backup generado con extio";
-    header("location: ../vista/backup.php?mensaje=".$mensaje);
+    header("location: ../vista/backup?mensaje=".$mensaje);
 
 }  else 
     if (isset($_GET['idDownload'])) {
@@ -36,5 +36,5 @@ header ("Content-Type: application/force-download");
 header ("Content-Length: ".filesize($enlace));
     readfile($enlace);
   $mensaje = "Archivo descargado con extio";
- header("location: ../vista/backup.php?mensaje=".$mensaje);
+ header("location: ../vista/backup?mensaje=".$mensaje);
     }

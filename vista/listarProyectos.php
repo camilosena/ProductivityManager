@@ -2,7 +2,7 @@
 session_start();
 require_once '../modelo/utilidades/Session.php';
 require_once '../modelo/utilidades/CorreoFinProyecto.php';
-$pagActual = 'listarProyectos.php';
+$pagActual = 'listarProyectos';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 $correoFin = new CorreoFinProyecto();
@@ -75,10 +75,10 @@ $correoFin = new CorreoFinProyecto();
         <ul>
 
        <?php if ($_SESSION['rol'] == 'Administrador'){ ?>
-          <li><a href="javascript:backup('backup.php')"><span><i class="fa fa-database fa-lg"></i> BackUp</span></a>
+          <li><a href="javascript:backup('backup')"><span><i class="fa fa-database fa-lg"></i> BackUp</span></a>
             <script language=javascript>
             function backup(URL) {
-                window.open(URL, "backup.php", "width=1190,height=645,top=30,left=30,scrollbars=NO");
+                window.open(URL, "backup", "width=1190,height=645,top=30,left=30,scrollbars=NO");
             }
            </script> 
            </li> 
@@ -86,10 +86,10 @@ $correoFin = new CorreoFinProyecto();
 
     <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador'){ ?>
 
-          <li><a href="javascript:reporte('reportes.php')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
+          <li><a href="javascript:reporte('reportes')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
             <script language=javascript>
             function reporte(URL) {
-                window.open(URL, "reportes.php", "width=1200,height=645,top=30,left=30,scrollbars=NO");
+                window.open(URL, "reportes", "width=1200,height=645,top=30,left=30,scrollbars=NO");
             }
            </script> 
            </li> 
@@ -97,7 +97,7 @@ $correoFin = new CorreoFinProyecto();
 
            <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
               <ul>
-                 <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
+                 <li><a href='modificarContrasena'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
                  </li>
                  <li><a id="loadImg" href="javascript:function()"><span><i class="fa fa-picture-o fa-lg"></i> Actualizar Foto</span></a>              
                  </li>
@@ -353,14 +353,14 @@ $correoFin = new CorreoFinProyecto();
                                         <td style="text-align:center"><?php  if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
                                         <td style="text-align:center"><?php echo $project['estadoProyecto']; ?></td>  
                                         <td style="text-align:center"><?php echo $project['ejecutado']; ?> %</td>
-                                       <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
+                                       <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
                                             <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecución' && $project['estadoProyecto']!='Espera' && $project['estadoProyecto']!='Finalizado' && $project['estadoProyecto']!='Cancelado') { ?>
-                                                <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
+                                                <a class="me" title="Modificar Proyecto" href="modificarProyecto?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                                 <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
                                                     ?>
-                                                    <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
+                                                    <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
                                                 <?php }if ($project['estadoProyecto'] == 'Sin Producción') { ?>
-                                                    <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
+                                                    <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
                                                 <?php } 
                                             }  if ($project['estadoProyecto'] != 'Cancelado' && $project['estadoProyecto'] != 'Finalizado' && $_SESSION['rol'] != 'Empleado') { ?> 
                                             <a name="cancelar" title="Cancelar Proyecto" class="me" href="../controlador/ControladorProyectos.php?proCancel=<?php echo $project['idProyecto'] ?>"><img class="iconos" src="../img/cancel.png"></a>   
@@ -391,14 +391,14 @@ $correoFin = new CorreoFinProyecto();
                                     <td style="text-align:center"><?php if($project['fechaFin']!='0000-00-00'){echo $project['fechaFin'];} ?></td>                      
                                     <td style="text-align:center"><?php echo $project['estadoProyecto']; ?></td>  
                                     <td style="text-align:center"><?php echo $project['ejecutado']; ?> %</td>
-                                    <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
+                                    <td><a class="me" title="Consultar Proyecto" href="javascript:produccionProyecto('informacionProyecto?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto']; ?>')"><img class="iconos" src="../img/ojo.png"></a>                
                                             <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador' && $project['estadoProyecto']!='Ejecución' && $project['estadoProyecto']!='Espera' && $project['estadoProyecto']!='Finalizado' && $project['estadoProyecto']!='Cancelado') { ?>
-                                                <a class="me" title="Modificar Proyecto" href="modificarProyecto.php?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
+                                                <a class="me" title="Modificar Proyecto" href="modificarProyecto?idProject=<?php echo $project['idProyecto']; ?>"><img class="iconos" src="../img/modify.png"></a>
                                                 <?php if ($project['estadoProyecto'] == 'Sin Estudio Costos') {
                                                     ?>
-                                                    <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
+                                                    <a class="me" title="Generar Estudio de Costos" href="javascript:estudioCostos('estudioDeCostos?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/costos.png"></a>
                                                 <?php }if ($project['estadoProyecto'] == 'Sin Producción') { ?>
-                                                    <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto.php?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
+                                                    <a class="me" title="Incluir Producción" href="javascript:produccionProyecto('produccionProyecto?projectNum=<?php echo $project['idProyecto'] ?>&nameProject=<?php echo $project['nombreProyecto'] ?>');"><img class="iconos" src="../img/products.png"></a>
                                                 <?php } 
                                             } if ($project['estadoProyecto'] != 'Cancelado' && $project['estadoProyecto'] != 'Finalizado' && $_SESSION['rol'] != 'Empleado') { ?> 
                                             <a name="cancelar" title="Cancelar Proyecto" class="me" href="../controlador/ControladorProyectos.php?proCancel=<?php echo $project['idProyecto'] ?>"><img class="iconos" src="../img/cancel.png"></a>   
@@ -412,21 +412,21 @@ $correoFin = new CorreoFinProyecto();
                     </tbody>
                 </table>
             </form>            
-            <button class="boton-verde"  onclick="location.href = 'listarProyectos.php'" >Refrescar Lista</button>            
+            <button class="boton-verde"  onclick="location.href = 'listarProyectos'" >Refrescar Lista</button>            
         </div>   
         <script language=javascript>
             function informacionProyecto(URL) {
-                window.open(URL, "informacionProyecto.php", "width=1000,height=645,top=30,left=150,scrollbars=NO");
+                window.open(URL, "informacionProyecto", "width=1000,height=645,top=30,left=150,scrollbars=NO");
             }
         </script> 
         <script language=javascript>
             function estudioCostos(URL) {
-                window.open(URL, "estudioDeCostos.php", "width=1000,height=645,top=30,left=150,scrollbars=NO");
+                window.open(URL, "estudioDeCostos", "width=1000,height=645,top=30,left=150,scrollbars=NO");
             }
         </script>    
         <script language=javascript>
             function produccionProyecto(URL) {
-                window.open(URL, "produccionProyecto.php", "width=1000,height=645,top=30,left=150,scrollbars=NO");
+                window.open(URL, "produccionProyecto", "width=1000,height=645,top=30,left=150,scrollbars=NO");
             }
         </script> 
         <?php
@@ -435,7 +435,7 @@ $correoFin = new CorreoFinProyecto();
         }
         if ($_GET['winOpen'] == true) {
             echo' <script language=javascript>                
-                        window.open("produccionProyecto.php?projectNum=' . $_GET['projectNum'] . '&nameProject=' . $_GET['nameProject'] . '",' . '"produccionProyecto.php","width=1100,height=645,top=30,left=100,scrollbars=NO");
+                        window.open("produccionProyecto?projectNum=' . $_GET['projectNum'] . '&nameProject=' . $_GET['nameProject'] . '",' . '"produccionProyecto","width=1100,height=645,top=30,left=100,scrollbars=NO");
                     </script>';
         }
         ?>

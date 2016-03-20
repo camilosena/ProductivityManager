@@ -21,19 +21,19 @@ if (isset($_GET['AgregarProceso'])) {
     $estado= "Activo";
     $mensaje = $facadeProcesos->AgregarProceso($pDTO, $producto);
     $facadeProducto->modificarEstadoProducto($estado, $producto);
-    header("location: ../vista/agregarProcesos.php?mensaje= ".$mensaje);
+    header("location: ../vista/agregarProcesos?mensaje= ".$mensaje);
     
 }else 
     if (isset($_GET['idProceso'])) {
     $mensaje = $facadeProcesos->eliminarProceso($_GET['idProceso']);
     
-    header("location: ../vista/agregarProcesos.php?mensaje= ".$mensaje);
+    header("location: ../vista/agregarProcesos?mensaje= ".$mensaje);
     
 }else
 if (isset ($_GET['idConsultaProceso'])) {
     session_start();
     $_SESSION['consultarProcesos']= $facadeProcesos->consultarProcesos($_GET['idConsultaProceso']);
-   header("location: ../vista/agregarProcesos.php?&#ModalProcesos");
+   header("location: ../vista/agregarProcesos?&#ModalProcesos");
     
 }else
 if (isset ($_POST['ModificarProceso'])) {
@@ -47,5 +47,5 @@ if (isset ($_POST['ModificarProceso'])) {
     $producto = $_POST['idProducto'];
     $mensaje = $facadeProcesos->ModificarProcesos($pDTO);
     $facadeProducto->modificarEstadoProducto($estado, $producto);
-    header("location: ../vista/agregarProcesos.php?mensaje= ".$mensaje);
+    header("location: ../vista/agregarProcesos?mensaje= ".$mensaje);
 }

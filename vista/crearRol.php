@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
-$pagActual = 'crearRol.php';
+$pagActual = 'crearRol';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 ?>
@@ -69,10 +69,10 @@ $session->Session($pagActual);
         <ul>
 
        <?php if ($_SESSION['rol'] == 'Administrador'){ ?>
-          <li><a href="javascript:backup('backup.php')"><span><i class="fa fa-database fa-lg"></i> BackUp</span></a>
+          <li><a href="javascript:backup('backup')"><span><i class="fa fa-database fa-lg"></i> BackUp</span></a>
             <script language=javascript>
             function backup(URL) {
-                window.open(URL, "backup.php", "width=1190,height=645,top=30,left=30,scrollbars=NO");
+                window.open(URL, "backup", "width=1190,height=645,top=30,left=30,scrollbars=NO");
             }
            </script> 
            </li> 
@@ -80,17 +80,17 @@ $session->Session($pagActual);
 
     <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador'){ ?>
 
-          <li><a href="javascript:reporte('reportes.php')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
+          <li><a href="javascript:reporte('reportes')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
             <script language=javascript>
             function reporte(URL) {
-                window.open(URL, "reportes.php", "width=1200,height=645,top=30,left=30,scrollbars=NO");
+                window.open(URL, "reportes", "width=1200,height=645,top=30,left=30,scrollbars=NO");
             }
            </script> 
            </li> 
       <?php } ?>
            <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
               <ul>
-                 <li><a href='modificarContrasena.php'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
+                 <li><a href='modificarContrasena'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
                  </li>
                  <li><a id="loadImg" href="javascript:function()"><span><i class="fa fa-picture-o fa-lg"></i> Actualizar Foto</span></a>              
                  </li>
@@ -162,7 +162,7 @@ $session->Session($pagActual);
                 <span itemscope >
                     <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
-                        <a href="CrearRol.php" title="Ir a Usuarios" itemprop="url">
+                        <a href="crearRol" title="Ir a Usuarios" itemprop="url">
                             <span itemprop="title">Crear Rol</span>              
                         </a>  > 
 
@@ -198,10 +198,10 @@ $session->Session($pagActual);
                 <hr>
                  <div id="accesosRapidos">
                     <div>
-                        <a href="agregarAreas.php" title="Áreas"><img src="../img/procesos.png"></a>
+                        <a href="agregarAreas" title="Áreas"><img src="../img/procesos.png"></a>
                     <p>Agregar Área</p>
                     </div>
-                 <div><a href="crearRol.php#ModalRoles" title="Roles"><img src="../img/roles.png"></a>
+                 <div><a href="crearRol#ModalRoles" title="Roles"><img src="../img/roles.png"></a>
                     <p>Ver Roles</p></div>
                 </div>
                 <hr>
@@ -235,7 +235,7 @@ $session->Session($pagActual);
                                         <tr><td>0<?php echo $roles['idRoles']; ?> </td>
                                             <td>   <?php echo $roles['rol']; ?> </td>
 
-                                            <td colspan="2"><a href="modificarRol.php?id=<?php echo $roles['idRoles']; ?>"><img src="../img/editar.png" class="iconos" width="48" height="48" alt="Modificar Registro"/>
+                                            <td colspan="2"><a href="modificarRol?id=<?php echo $roles['idRoles']; ?>"><img src="../img/editar.png" class="iconos" width="48" height="48" alt="Modificar Registro"/>
                                                 </a>  
                                                 
                                             </td>
@@ -251,7 +251,7 @@ $session->Session($pagActual);
                                 <div>
                                 </div>
                                     <div>
-                                   <a href="crearRol.php" title="Atras"><img src="../img/flechaIzquierda.png"></a>
+                                   <a href="crearRol" title="Atras"><img src="../img/flechaIzquierda.png"></a>
                                     <p>Regresar</p>
                                     </div>
                                 </div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
-$pagActual = 'backup.php';
+$pagActual = 'backup';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 ?>
@@ -29,12 +29,12 @@ $session->Session($pagActual);
                 <?php 
                 require_once '../modelo/utilidades/Conexion.php';
                 require_once '../modelo/dao/BackupDAO.php';
-                require_once '../facades/FacadeBackup.php';
+                require_once '../facades/Facadebackup';
                 $fBack = new FacadeBackup();
                 $tablas = $fBack->listarTablas();
                 ?>  
                 <div class="row">
-                     <form rol="form" class="animated fadeInDown" method="post" action="../controlador/ControladorBackUp.php" >
+                     <form rol="form" class="animated fadeInDown" method="post" action="../controlador/Controladorbackup" >
                         <div class="form-group">
                              <label for="reportType" >BackUp por tablas:</label>
                                 <select name="tablas" class="form-control" required>
@@ -62,7 +62,7 @@ $session->Session($pagActual);
                 </div>    
                 <hr>   
                 <div class="row text-center">
-                     <form rol="form" class="animated fadeInDown" method="post" action="../controlador/ControladorBackUp.php" >
+                     <form rol="form" class="animated fadeInDown" method="post" action="../controlador/Controladorbackup" >
                             <div class="form-group">
                                  <label for="reportType" >A solo un click puede generar su BackUp General de información</label><br>
                                  <span class="glyphicon glyphicon-chevron-down"></span><br>
@@ -98,7 +98,7 @@ $session->Session($pagActual);
                         <tr>
                         <td class="text-center"><?php echo $archivo;?></td>
                         <td class="text-center">
-                        <a title="Descargar" href="../controlador/ControladorBackUp.php?idDownload='<?php echo $dir?>/<?php echo $archivo; ?>'"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
+                        <a title="Descargar" href="../controlador/Controladorbackup?idDownload='<?php echo $dir?>/<?php echo $archivo; ?>'"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
                         </td>
                       </tr>
                         <?php

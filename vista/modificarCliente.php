@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
-$pagActual = 'modificarCliente.php';
+$pagActual = 'modificarCliente';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 ?>
@@ -122,7 +122,7 @@ $session->Session($pagActual);
             $roles = $facadePermmisos->permisoRoles($_SESSION['rol']);
             ?>       
             <div class="wrapper">
-                <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
+                <a href="listarProyectos"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
                <nav>
                             <?php
@@ -173,10 +173,10 @@ $session->Session($pagActual);
         </script>
             <nav class="migas"><br>
                 <span itemscope >
-                    <a href="index.html" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
+                    <a href="listarProyectos" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
-                        <a href="listarUsuarios.html" title="Usuarios" itemprop="url">
-                            <span itemprop="title">Usuarios</span>              
+                        <a href="clientesActivos" title="Clientes" itemprop="url">
+                            <span itemprop="title">Clientes</span>              
                         </a>  > 
                         <strong>Modificar Cliente</strong> 
                     </span> 

@@ -40,7 +40,26 @@ $session->Session($pagActual);
                 <input type="file" id="filein" class="file" name="cambiaImagen" onchange="submit();" style="display:none">  
             </form>
             <ul>
-                 <!--   <li><a href='reportes'><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a></li> -->
+                     <?php if ($_SESSION['rol'] == 'Administrador'){ ?>
+          <li><a href="javascript:backup('backup')"><span><i class="fa fa-database fa-lg"></i> BackUp</span></a>
+            <script language=javascript>
+            function backup(URL) {
+                window.open(URL, "backup", "width=1190,height=645,top=30,left=30,scrollbars=NO");
+            }
+           </script> 
+           </li> 
+      <?php } ?>
+
+    <?php if ($_SESSION['rol'] == 'Gerente' || $_SESSION['rol'] == 'Administrador'){ ?>
+
+          <li><a href="javascript:reporte('reportes')"><span><i class="fa fa-file-text fa-lg"></i> Reportes</span></a>
+            <script language=javascript>
+            function reporte(URL) {
+                window.open(URL, "reportes", "width=1200,height=645,top=30,left=30,scrollbars=NO");
+            }
+           </script> 
+           </li> 
+      <?php } ?>
                 <li class='active has-sub'><a id="priOpc"><span><i class="fa fa-cog fa-lg fa-spin"></i> Opciones</span></a>
                     <ul>
                         <li><a href='modificarContrasena'><span><i class="fa fa-key fa-lg"></i> Cambiar Contraseña</span></a>       
@@ -60,7 +79,7 @@ $session->Session($pagActual);
         </div>    
         <header>      
             <div class="wrapper">
-                <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
+                <a href="listarProyectos"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
                 <nav>
                             <?php
@@ -133,7 +152,7 @@ $session->Session($pagActual);
         <div class="wrapper">            
             <nav class="migas"><br>
                 <span itemscope >
-                    <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
+                    <a href="listarProyectos" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
                         <a href="listarProyectos" title="Ir a Proyectos" itemprop="url">
                             <span itemprop="title">Proyectos</span>              

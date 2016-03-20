@@ -150,7 +150,7 @@ $session->Session($pagActual);
                 }
         <?php } ?>
         </script>
-                <a href="../index.php"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
+                <a href="listarProyectos"><img src="../img/logo.png" class="logo" id="lg" onLoad="nomeImagem()" width="190px" height="110px"></a>
                 <a href="#" class="menu_icon" id="menu_icon"></a>
               <nav>
                             <?php
@@ -177,7 +177,7 @@ $session->Session($pagActual);
            
             <nav class="migas"><br>
                 <span itemscope >
-                    <a href="../index.php" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
+                    <a href="listarProyectos" title="Ir a la página de inicio" itemprop="url"><span itemprop="title">Inicio</span></a>  > 
                     <span itemprop="child" itemscope>  
                         <a href="listarProyectos" title="Ir a Proyectos" itemprop="url">
                             <span itemprop="title">Proyectos</span>              

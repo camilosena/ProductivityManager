@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../modelo/utilidades/Session.php';
-$pagActual = 'crearProyecto.php';
+$pagActual = 'crearProyecto';
 $session = new Session($pagActual);
 $session->Session($pagActual);
 ?>

@@ -38,7 +38,7 @@ if (isset($_POST['crearProyecto'])) {
                     if( in_array(strtolower($fecha_inicio->format('l')), array('sunday')) || $validaFestivo=='true' ){
                         $fechas = 'Solo se puede iniciar proyecto un dia hábil';
                         $errorFecha = 'Dia Festivo';
-                             header("location: ../vista/crearProyecto.php?mensajeFecha=" . $fechas."&error=".$errorFecha);
+                             header("location: ../vista/crearProyecto?mensajeFecha=" . $fechas."&error=".$errorFecha);
                         }
                     else{
 
@@ -54,7 +54,7 @@ if (isset($_POST['crearProyecto'])) {
         }
     } else {
         $fechas = 'La Fecha de Inicio debe ser Futura';
-        header("location: ../vista/crearProyecto.php?mensajeFecha=" . $fechas);
+        header("location: ../vista/crearProyecto?mensajeFecha=" . $fechas);
     }
 } else if (isset($_POST['modificarProyecto'])) {
     $idProyecto = $_POST['idProyecto'];

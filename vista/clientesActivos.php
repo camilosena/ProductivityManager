@@ -387,7 +387,7 @@ $session->Session($pagActual);
                     echo '<tr><td>Correo Electronico:</td><td>' . $_SESSION['dtoUsuario']['email'] . '</td></tr>';
                     echo '<tr><td>Estado:</td><td>' . $_SESSION['dtoUsuario']['estado'] . '</td></tr>';
                     echo '<tr><td colspan="2" style="border:none">';
-                    echo '<a style="text-decoration:none;padding:10px 20px 10px 20px;" href="crearProyecto.php?codCliente='.$_SESSION['dtoUsuario']['idUsuario'].'&empresa='.$_SESSION['dtoCliente']['nombreCompania'].'"><button class="boton-verde">Crear Nuevo Proyecto</button></a></td></tr>';
+                    echo '<a style="text-decoration:none;padding:10px 20px 10px 20px;" href="crearProyecto?codCliente='.$_SESSION['dtoUsuario']['idUsuario'].'&empresa='.$_SESSION['dtoCliente']['nombreCompania'].'"><button class="boton-verde">Crear Nuevo Proyecto</button></a></td></tr>';
                     echo '</table>';
                     ?>                                
                 </div>                    

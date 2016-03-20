@@ -33,35 +33,6 @@ $session->Session($pagActual);
     <script src="../js/modernizr.custom.js"></script>
     </head>
     <body>
-     <?php 
-    $browser = new browser();
-    $navegador = $browser->getBrowser($_SERVER['HTTP_USER_AGENT']);
-      if($navegador!='Google Chrome' && $navegador!='Safari'){
-      ?>
-       <script language="JavaScript" type="text/javascript">
-                window.onload = function () {
-                    Command: toastr["error"]("<?php echo 'Esta utilizando '.$navegador.'<br> Para una correcta visualización utilice Google Chrome o Safai' ?>")
-
-                    toastr.options = {
-                        "closeButton": false,
-                        "debug": false,
-                        "newestOnTop": false,
-                        "progressBar": false,
-                        "positionClass": "toast-top-full-width",
-                        "preventDuplicates": false,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "9000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
-                }
-        </script>
-      <?php } ?>
      <div id='cssmenu'>
         <form id="frmPicture" name="frmChangePicture" action="../controlador/ControladorUsuarios.php" method="post" enctype="multipart/form-data">
           <input type="hidden" name="Change" value="1">  

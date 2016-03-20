@@ -93,11 +93,11 @@ else if (isset($_GET['codUsuario'])) {
          $mensaje = $facadeProyecto->asignarUsuarioProyecto($_GET['codUsuario'], $_POST['idProjects']);
     header("location: ../vista/listarUsuarios?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
     }else{
-    $mensaje = " Error: No se puede asignar a este proyecto la cantidad de empleados esta completa";
-    header("location: ../vista/listarUsuarios?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
+    $mensaje = " No es posible asignar. Este proyecto tiene la cantidad de empleados necesaria.";
+    header("location: ../vista/listarUsuarios?errorPermiso=" . $mensaje);
     }}else{
-        $mensaje = " Error: No se puede asignar mas de dos proyectos";
-    header("location: ../vista/listarUsuarios?mensajeAsignacion=" . $_GET['rolUser'] . $mensaje);
+        $mensaje = " No puede ejecutar más de dos proyectos a la vez.";
+    header("location: ../vista/listarUsuarios?errorPermiso=" . $_GET['rolUser'] . $mensaje);
     }
 } else if (isset($_POST['elementosProyecto'])) {
 //echo var_dump($_POST);    

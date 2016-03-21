@@ -54,7 +54,7 @@
         <ul>
          <li><a href='indexEnglish.php'><span><i class="fa fa-home fa-lg"></i>  </span></a></li>
          <li><a href='ourClients.html'><span><i class="fa fa-users fa-lg"></i>  </span></a></li>
-         <li><a href='contactUs.php'><span><i class="fa fa-envelope-o fa-lg"></i>  </span></a></li>
+         <li><a href='contactUs'><span><i class="fa fa-envelope-o fa-lg"></i>  </span></a></li>
      </ul>       
  </div>    
  <style type="text/css">
@@ -105,7 +105,7 @@ header nav ul li a:active{
             <ul>
                 <li><a href="indexEnglish.php">Home</a></li>					
                 <li><a href="ourClients.html">Our Clients</a></li>
-                <li><a href="contactUs.php">Contact Us</a></li>
+                <li><a href="contactUs">Contact Us</a></li>
             </ul>
         </nav>
         <ul class="social">
@@ -255,13 +255,13 @@ header nav ul li a:active{
     <div class="footer-left">
         <span><img src="img/logoEscala.png" width="210" height="120"></span>
         <p class="footer-links">
-            <a href="index.php">Home</a>
+            <a href="indexEnglish.php">Home</a>
             ·
-            <a href="nuestrosClientes.html">Customers</a>
+            <a href="ourClients.html">Customers</a>
             ·
-            <a href="index.php">¿Who Are We?</a>					
+            <a href="indexEnglish.php">¿Who Are We?</a>					
             ·
-            <a href="contactecnos.html">Contact</a>
+            <a href="contactUs">Contact</a>
         </p>
         <p class="footer-company-name">Productivity Manager &copy; 2015</p>
     </div>

@@ -309,10 +309,10 @@ $session->Session($pagActual);
                           }
                             ?></option></optgroup>
                     </select>
-
+                    <br>
                     <label class="tag" for="idProyecto"><span id="lab_valPhone" class="h331">Código Proyecto:</span></label>
                     <input class="input" name="idProyecto" type="text" maxlength="64" value="<?php echo $idProject; ?>" id="idProyecto" style="text-align: center" class="field1" autofocus readonly required>                    	 
-                    <span id="valName" style="color:Red;visibility:hidden;"></span>
+                    <span id="valName" style="color:Red;visibility:hidden;"></span><br>
                     <label class="tag" for="nombreProyecto"><span id="lab_valName" class="h331">Nombre Proyecto:</span></label>
                     <input class="input" name="nombreProyecto" type="text" maxlength="64" placeholder="Oficinas 93" id="nombreProyecto" class="field1" autofocus required>
                     <span id="valName" style="color:Red;visibility:hidden;"></span>
@@ -348,7 +348,7 @@ $session->Session($pagActual);
                     ·
                     <a href="../index.php">¿Quienes Somos?</a>                   
                     ·
-                    <a href="../contactecnos.html">Contacto</a>
+                    <a href="../contactecnos">Contacto</a>
                 </p>
                 <p class="footer-company-name">Productivity Manager &copy; 2015</p>
             </div>

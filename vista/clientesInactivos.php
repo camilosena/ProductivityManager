@@ -370,7 +370,7 @@ $session->Session($pagActual);
                                         ·
                                         <a href="../index.php">¿Quienes Somos?</a>                   
                     ·
-                                        <a href="../contactecnos.html">Contacto</a>
+                                        <a href="../contactecnos">Contacto</a>
                 </p>
                 <p class="footer-company-name">Productivity Manager &copy; 2015</p>
             </div>

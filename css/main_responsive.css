@@ -714,6 +714,24 @@ float: left;
     bottom: 0;
     left: 0;   
     }
+     #panelDer{
+        display:  block;
+        width: 90%;
+        margin-left: 10%;
+        text-align: center;
+    }
+    #panelIzq2{
+        display :block;
+        width: 90%;
+        margin-left: 10%;
+        text-align: center;
+    }
+        #panelIzq{
+        display :block;
+        width: 90%;
+        margin-left: 10%;
+        text-align: center;
+    }
 }
 
 @media (max-width:1100px){
@@ -772,12 +790,19 @@ float: left;
      header nav{
         border: none;
     }
+    #clientesCorp div a{
+       margin-left: -20%;
+    }
    #cbp-tm-menu {
         font-size: 8px;
          position: absolute;
          top: 25px;
          left: 200px;
          border: none;
+    }
+
+    #cbp-tm-menu li>ul>li{
+        width: 42em;
     }
     header .logoFoto{
     position: absolute;
@@ -799,6 +824,12 @@ float: left;
     position: absolute;
     top: 110px;
     right: 20px;
+    }
+    #clientesCorp div a{
+       margin-left: -20%;
+    }
+    #cbp-tm-menu li>ul>li{
+        width: 42em;
     }
     ul.social{
           position: absolute;
@@ -918,7 +949,9 @@ float: left;
 
 
 @media (max-width:800px){
-
+  #cbp-tm-menu {
+        display: none;
+    }
     #menuLateral{
         display: none;
     }

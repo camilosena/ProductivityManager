@@ -18,6 +18,7 @@
         <script type="text/javascript" src="js/jquery.validate.min.js"></script>    
         <script src="js/validaciones.js"></script>  
         <script src='https://www.google.com/recaptcha/api.js'></script>
+        <link rel="stylesheet" href="css/animate.css">
     </head>
     <body>
     <?php 
@@ -54,7 +55,7 @@
         <ul>
            <li><a href='index.php'><span><i class="fa fa-home fa-lg"></i>  </span></a></li>
            <li><a href='nuestrosClientes.html'><span><i class="fa fa-users fa-lg"></i>  </span></a></li>
-           <li><a href='contactecnos.php'><span><i class="fa fa-envelope-o fa-lg"></i>  </span></a></li>
+           <li><a href='contactecnos'><span><i class="fa fa-envelope-o fa-lg"></i>  </span></a></li>
         </ul>       
     </div>    
     <style type="text/css">
@@ -105,7 +106,7 @@
                     <ul>
                         <li><a href="index.php">Inicio</a></li>					
                         <li><a href="nuestrosClientes.html">Nuestros Clientes</a></li>
-                        <li><a href="contactecnos.php">Contáctenos</a></li>
+                        <li><a href="contactecnos">Contáctenos</a></li>
                     </ul>
                 </nav>			
                 <ul class="social">
@@ -152,7 +153,7 @@
         </nav>		  
         <div id="panelIzq2">
             <div class="caption">	
-                <form class="box login"  action="controlador/ControladorLogin.php" method="post">                    	
+                <form class="box login animated zoomIn"  action="controlador/ControladorLogin.php" method="post">                    	
                     <fieldset class="boxBody">
                         <label for="usuario" class="tag">Usuario:</label>
                         <input id="usuario" name="user" type="text" tabindex="1" placeholder="1012377890" autofocus 
@@ -220,7 +221,7 @@
 
         <div id="panelDer">
             <div class="wrapper">			
-                <section class="billboard">	
+                <section class="billboard animated zoomIn">	
                     <section class="testimonials wrapper">
                         <span class="sep_line sep_top">
                         </span>
@@ -292,7 +293,7 @@
                     ·
                     <a href="index.php">¿Quienes Somos?</a>                   
                     ·
-                    <a href="contactecnos.html">Contacto</a>
+                    <a href="contactecnos">Contacto</a>
                 </p>
                 <p class="footer-company-name">Productivity Manager &copy; 2015</p>
             </div>

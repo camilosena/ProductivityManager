@@ -42,7 +42,7 @@
         <ul>
          <li><a href='index.php'><span><i class="fa fa-home fa-lg"></i>  </span></a></li>
          <li><a href='nuestrosClientes.html'><span><i class="fa fa-users fa-lg"></i>  </span></a></li>
-         <li><a href='contactecnos.php'><span><i class="fa fa-envelope-o fa-lg"></i>  </span></a></li>
+         <li><a href='contactecnos'><span><i class="fa fa-envelope-o fa-lg"></i>  </span></a></li>
      </ul>       
  </div>  
  <style type="text/css">
@@ -93,7 +93,7 @@ header nav ul li a:active{
         <ul>
            <li><a href="index.php">Inicio</a></li>					
            <li><a href="nuestrosClientes.html">Nuestros Clientes</a></li>
-           <li><a href="contactecnos.php">Contáctenos</a></li>
+           <li><a href="contactecnos">Contáctenos</a></li>
        </ul>
    </nav>
    <ul class="social">
@@ -231,7 +231,7 @@ header nav ul li a:active{
         ·
         <a href="index.php">¿Quienes Somos?</a>                   
         ·
-        <a href="contactecnos.html">Contacto</a>
+        <a href="contactecnos">Contacto</a>
     </p>
     <p class="footer-company-name">Productivity Manager &copy; 2015</p>
 </div>

@@ -279,7 +279,7 @@ $session->Session($pagActual);
                             echo '<option value="' . $producto['idProductos'] . '">' . $producto['nombreProducto'] . '</option>';                            
                         }
                         ?>
-                   </select><?php }?>
+                   </select><?php }?><br>
                     <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Código Proceso: </span></label>
                     <input class="input" name="IdProceso" type="text" id="IdArea" required readonly style="text-align: center" value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>
@@ -338,7 +338,7 @@ $session->Session($pagActual);
                     ·
                     <a href="../index.php">¿Quienes Somos?</a>                   
                     ·
-                    <a href="../contactecnos.html">Contacto</a>
+                    <a href="../contactecnos">Contacto</a>
                 </p>
                 <p class="footer-company-name">Productivity Manager &copy; 2015</p>
             </div>

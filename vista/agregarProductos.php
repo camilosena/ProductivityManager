@@ -293,7 +293,8 @@ $session->Session($pagActual);
             <div style="text-align:right;font-weight:bold;padding-right:10px">
                 <form method="post" action="../controlador/ControladorProductos.php" enctype="multipart/form-data">
                     <label  class="obligatoriosD">Cargue un archivo con sus Productos : </label>
-                    <a id="loadArchivo" href="javascript:function()"><img src="../img/subirDatos.png" alt=""></a>
+                    <a id="loadArchivo" href="javascript:function()"><img src="../img/subirDatos.png" alt=""></a>   
+        <a href="#ModalPregunta" ><img src="../img/question.png" class="iconos" alt="Ayuda"></a>
                     <input type="hidden" name="Change" value="1">  
           <input type="file" id="ArchivoProductos" class="file" name="archivo" onchange="submit();" style="display:none">                 
             </form></div><hr>            
@@ -360,6 +361,19 @@ $session->Session($pagActual);
                
             </div>
         </div> 
+                  <div id="ModalPregunta" class="modalDialog" title="Roles">
+                    <div>
+                        <a href="#close" title="Close" class="close">X</a><br>          
+                        <h2 class="h330">Instrucciones:</h2>
+                        <div id="panelModificaPass">
+                                <div>
+                                <strong class="obligatoriosD">Cargue un archivo de extensión (.CSV) delimitado por punto y coma (;) con sus productos de esta manera:</strong><br><br>
+                                <img src="../img/instruccionProducto.png" width="360" height="280">
+                                </div>
+
+                    </div>
+                    </div>
+                </div>
        <footer class="footer-distributed">
             <div class="footer-left">
                             <span><img src="../img/logoEscala.png" width="210" height="120"></span>

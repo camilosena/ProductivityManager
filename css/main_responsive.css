@@ -97,7 +97,6 @@ header .menu_icon{
     display: block;
     width: 35px;
     height: 35px;
-    background: url('../img/menu_icon.png') no-repeat;
     float: right;
     margin-top: 23px;
     display: none;
@@ -712,11 +711,27 @@ float: left;
     ul.social{
         display: none;
     }
+    #nav_menu{
+        position: absolute;
+        top: 20px;
+    }
+    #panelDer{
+        display:  block;
+    }
+    #panelIzq2{
+        display :block;
+        width: 1000px;
+        margin-left: 50px;
+    }
 }
 @media (max-width:1150px){
    
     ul.social{
         display: none;
+    }
+     #nav_menu{
+        position: absolute;
+        top: 20px;
     }
 }
 @media (max-width:1180px){
@@ -724,17 +739,29 @@ float: left;
     ul.social{
         display: none;
     }
+     #nav_menu{
+        position: absolute;
+        top: 20px;
+    }
 }
 @media (max-width:1190px){
    
     ul.social{
         display: none;
     }
+     #nav_menu{
+        position: absolute;
+        top: 20px;
+    }
 }
 @media (max-width:1195px){
    
     ul.social{
         display: none;
+    }
+     #nav_menu{
+        position: absolute;
+        top: 20px;
     }
 }
 @media (max-width:1000px){
@@ -769,6 +796,7 @@ float: left;
         display: block;
         
     }
+    
 
     ul.social{
         display: none;

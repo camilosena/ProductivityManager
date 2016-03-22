@@ -2,7 +2,7 @@
 
 
 class BackupDAO {
-    private $dbName = 'ges_productivitymanager';
+    private $dbName = 'productivitymanager';
             function BackupTablas ($ruta, $tabla, PDO $cnn){
         
          try {
@@ -27,66 +27,85 @@ class BackupDAO {
             echo 'Error' . $ex->getMessage();
         }  
     }
-   public function backupTables(PDO $cnn, $tables = '*', $outputDir = '../BackUp') {
-    try {
-      /* Tables to export  */
-      
-      if ($tables == '*') {
-        $tables = array();
-        $result = $cnn->query('SHOW TABLES');
-        while ($row = $result->fetch()) {
-          $tables[] = $row[0];
+    
+    function createTable($table, PDO $cnn){
+         try {
+            
+            $query = $cnn->prepare("SHOW CREATE TABLE ?");
+            $query->bindParam(1, $table);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
         }
-      } else {
-        $tables = is_array($tables) ? $tables : explode(',', $tables);
-      }
-
-      $sql = 'CREATE DATABASE IF NOT EXISTS ' . $this->dbName  . ";\n\n";
-      $sql .= 'USE ' . $this->dbName  . ";\n\n";
-$fields = $cnn->query("select count(*) as cant from information_schema.tables where table_schema = 'ges_productivitymanager'");
-    $cantidad = $fields->fetch();
-   $num_fields = $cantidad['cant'];
-  /* Iterate tables */
-  foreach ($tables as $table) {
-
-    $result1 = $cnn->query('SELECT * FROM ' . $table);
-
-    $sql .= 'DROP TABLE IF EXISTS ' . $table . ';';
-    $_row2 = $cnn->query('SHOW CREATE TABLE '. $table);
-       $row2 = $_row2->fetch();
-    $sql.= "\n\n" . $row2[1] . ";\n\n";
-
-    for ($i = 0; $i < $num_fields; $i++) {
-      while ($row = $result1->fetch()) {
-        $sql .= 'INSERT INTO ' . $table . ' VALUES(';
-        for ($j = 0; $j < $num_fields; $j++) {
-//          $row[$j] = addslashes($row[$j]);
-          // $row[$j] = ereg_replace("\n", "\\n", $row[$j]);
-          if (isset($row[$j])) {
-            $sql .= '"' . $row[$j] . '"';
-          } else {
-            $sql.= '""';
-          }
-          if ($j < ($num_fields - 1)) {
-            $sql .= ',';
-          }
-        }
-        $sql.= ");\n";
-      }
+        
     }
-    $sql.="\n\n\n";
-  }
-} catch (Exception $e) {
-  var_dump($e->getMessage());
-  return false;
- }
 
-    return $this->saveFile($sql, $outputDir);
+    public function backupTables(PDO $cnn) {
+   $tables = array('roles','areas','personas','clientes', 'indicativos','contactenos','proyectos','estudiodecostos','productos','materiaprima','materiaprimaporproducto',
+       'materiaprimaporproyecto','novedades','permisos','permisosporrol','procesos','procesoporproducto','procesosporproyecto','productoporproyecto',
+       'usuarioporproyecto', 'usuarios');
+   $valor ="";
+   $valor .= 'DROP DATABASE IF EXISTS '.$this->dbName.',';
+   $valor .= 'CREATE DATABASE IF NOT EXISTS '.$this->dbName.',';
+   $valor .='USE '.$this->dbName.',';
+   
+   foreach ($tables as $table){
+
+       $valor .= '<br>'.'DROP TABLE IF EXISTS ' .$table.',';
+       $creartable = $cnn->query("SHOW CREATE TABLE ".$table);
+       foreach ($creartable as $create){
+           $valor .= $create['Create Table'].'\n\n';
+       }
+
+       $rows = $cnn->query('SELECT * FROM '.$table);
+       if ($table == 'roles' || $table == 'permisosporrol' || $table == 'usuarioporproyecto') {
+        $num = 2;}elseif($table == 'areas' || $table == 'indicativos'
+               || $table == 'materiaprimaporproducto' || $table == 'materiaprimaporproyecto'
+               || $table == 'procesos' || $table == 'productoporproyecto' || $table == 'usuarios'){
+       $num = 3;}elseif($table == 'personas'){
+       $num = 11;}elseif($table == 'clientes' || $table == 'productos' || $table == 'procesosporproyecto' ){
+       $num = 6;}elseif($table == 'contactenos' ){
+       $num = 9;}elseif($table == 'proyectos'){
+       $num = 7;}elseif($table == 'estudiodecostos' || $table == 'novedades'){
+       $num = 10;}elseif($table == 'materiaprima' || $table == 'permisos' || $table == 'procesoporproducto' ){
+       $num = 4;}
+
+           foreach ($rows as $row){
+               $valor .=  'INSERT INTO '.$table.' VALUES (';
+               for ($i = 0; $i <$num; $i++) {
+                
+                   if (isset($row[$i])) {
+                    $valor .= '"' . $row[$i] . '"';
+                    }
+                    if (!isset($row[$i])) {
+                      $valor .='""';  
+                    }
+                    if ($i <($num - 1)) {
+                    $valor .= ',';
+                    }
+                    if($i >= ($num-1)) {
+                    $valor .= ');\n\n';
+                    }
+                   
+                }
+                
+            
+           }
+           
+       
+            
+//    
+//               
+       
+   }
+   
+   $this->saveFile($valor);  
   }
 
   /* Save SQL to file @param string $sql */
 
-  protected function saveFile(&$sql, $outputDir = '../BackUp') {
+  protected function saveFile($sql, $outputDir = '../BackUp') {
     if (!$sql)
       return false;
 

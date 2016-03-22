@@ -22,7 +22,7 @@ if (isset($_POST['backUpTablas'])) {
 }else 
 if (isset($_POST['backUpGeneral'])) {
      $fBack = new FacadeBackup();
-    $fBack->Backup_Database();
+    echo  '<br>'.$datos;
     $mensaje = "Backup generado con éxtio";
     header("location: ../vista/backup?mensaje=".$mensaje);
 

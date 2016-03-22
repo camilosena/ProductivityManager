@@ -31,7 +31,20 @@ $session->Session($pagActual);
           <script type="text/javascript" src="../js/jspdf.plugin.standard_fonts_metrics.js"></script>
              <script type="text/javascript" src="../js/FileSaver.js"></script>
 </head>
-<body>
+<body oncontextmenu="return false" onkeydown="checkData(event)">
+    <script>
+ function checkData(e) {
+      if(e.shiftKey) {
+        return false;
+      }
+      if(e.ctrlKey) {
+        return false;
+      }
+      if(e.altKey) {
+        return false;
+      }
+    };
+    </script>
 <script>
      window.onunload = function(){
             window.opener.location = 'listarProyectos';};

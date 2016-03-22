@@ -50,7 +50,20 @@ $session->Session($pagActual);
             });
         </script>
     </head>
-    <body>
+    <body oncontextmenu="return false" onkeydown="checkData(event)">
+    <script>
+ function checkData(e) {
+      if(e.shiftKey) {
+        return false;
+      }
+      if(e.ctrlKey) {
+        return false;
+      }
+      if(e.altKey) {
+        return false;
+      }
+    };
+    </script>
      <div id='cssmenu'>
         <form id="frmPicture" name="frmChangePicture" action="../controlador/ControladorUsuarios.php" method="post" enctype="multipart/form-data">
           <input type="hidden" name="Change" value="1">  

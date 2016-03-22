@@ -30,7 +30,20 @@ $session->Session($pagActual);
     <script src="../js/modernizr.custom.js"></script>
     <link rel="stylesheet" href="../css/cargaPaginas.css">
     </head>
-    <body>
+    <body oncontextmenu="return false" onkeydown="checkData(event)">
+    <script>
+ function checkData(e) {
+      if(e.shiftKey) {
+        return false;
+      }
+      if(e.ctrlKey) {
+        return false;
+      }
+      if(e.altKey) {
+        return false;
+      }
+    };
+    </script>
     <div id='cssmenu'>
         <form id="frmPicture" name="frmChangePicture" action="../controlador/ControladorUsuarios.php" method="post" enctype="multipart/form-data">
           <input type="hidden" name="Change" value="1">  
@@ -285,8 +298,16 @@ $session->Session($pagActual);
                    </select><?php }?><br>
                     <label class="tag" id="IdRol" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Código Proceso: </span></label>
                     <input class="input" name="IdProceso" type="text" id="IdArea" required readonly style="text-align: center" value="0<?php echo $consecutivo?>" style="display: inline-block"><br> 
-                    <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>
-                    <input  class="input" name="NombreProceso" type="text" id="txtName"  placeholder="Ensamble" maxlength="40"  style="display: inline-block" required autofocus><br>
+                    <label class="tag" for="NombreProcesoSelect"><span id="lab_valName" class="h331" style="display: inline-block">Nuevo Proceso: </span></label>
+                    <select name="NombreProceso" class="input" id="NombreProcesoSelect" required autofocus>
+                      <option value="" disabled selected>Seleccione un Proceso</option>
+                      <option value="Corte">Corte</option>
+                      <option value="Tapiceria">Tapiceria</option>
+                      <option value="Ensamble">Ensamble</option>
+                      <option value="Pintura">Pintura</option>
+                      <option value="Acabados">Acabados</option>
+                    </select>
+                    <br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Tiempo/horas: </span></label>
                     <input class="input" name="Tiempo" type="number" id="txtName"  placeholder="8"  style="display: inline-block" required max="20" title="No hay procesos mayores a 20 horas" min="1"><br>
                     <label class="tag" for="txtName"><span id="lab_valName" class="h331" style="display: inline-block">Cantidad de empleados: </span></label>

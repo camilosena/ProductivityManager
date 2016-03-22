@@ -18,7 +18,20 @@ $session->Session($pagActual);
         <link href="../js/toastr.css" rel="stylesheet"/>
         <script src="../js/toastr.js"></script>
     </head>
-    <body>
+    <body oncontextmenu="return false" onkeydown="checkData(event)">
+    <script>
+ function checkData(e) {
+      if(e.shiftKey) {
+        return false;
+      }
+      if(e.ctrlKey) {
+        return false;
+      }
+      if(e.altKey) {
+        return false;
+      }
+    };
+    </script>
        <?php
         if (isset($_GET['mensaje'])) {
             echo '<script> 

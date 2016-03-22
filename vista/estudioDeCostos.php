@@ -19,7 +19,20 @@ $session->Session($pagActual);
         <script src="../js/validaciones.js"></script>
         <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
     </head>    
-    <body>  
+    <body oncontextmenu="return false" onkeydown="checkData(event)">
+    <script>
+ function checkData(e) {
+      if(e.shiftKey) {
+        return false;
+      }
+      if(e.ctrlKey) {
+        return false;
+      }
+      if(e.altKey) {
+        return false;
+      }
+    };
+    </script> 
     <script>
          window.onunload = function(){
             window.opener.location ='listarProyectos';};

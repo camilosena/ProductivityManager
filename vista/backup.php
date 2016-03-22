@@ -67,7 +67,7 @@ $session->Session($pagActual);
                                     <option value="" disabled selected>Seleccione una tabla</option>
                                    <?php   
                                    foreach ($tablas as $tabla) {
-                                    echo '<option value="' .$tabla['Tables_in_ges_productivitymanager']. '">' . $tabla['Tables_in_ges_productivitymanager'] . '</option>';                            
+                                    echo '<option value="' .$tabla['Tables_in_productivitymanager']. '">' . $tabla['Tables_in_productivitymanager'] . '</option>';                            
                                         }
                                         ?>
                                 </select>
@@ -124,7 +124,7 @@ $session->Session($pagActual);
                         <tr>
                         <td class="text-center"><?php echo $archivo;?></td>
                         <td class="text-center">
-                        <a title="Descargar" href="../controlador/ControladorBackUp.php?idDownload='<?php echo $dir?>/<?php echo $archivo; ?>'"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
+                        <a title="Descargar" href="../controlador/ControladorBackUp.php?idDownload='<?php echo $archivo; ?>'"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
                         </td>
                       </tr>
                         <?php

@@ -17,7 +17,7 @@ if (isset($_POST['backUpTablas'])) {
     $tipo_archivo = $_POST['tipo'];
     $rute = $_SERVER['DOCUMENT_ROOT'];
     $bacup_file = $rute.'/productivityManager/BackUp/'.$table_name.$fecha.'.'.$tipo_archivo;
-    $mensaje = $fBack->BackupTablas($bacup_file, $table_name);
+    $mensaje = $fBack->BackupTablas($table_name);
    header("location: ../vista/backup?mensaje=".$mensaje);
 }else 
 if (isset($_POST['backUpGeneral'])) {
@@ -31,10 +31,11 @@ if (isset($_POST['backUpGeneral'])) {
     if (isset($_GET['idDownload'])) {
    
 $enlace = $_GET['idDownload'];
+echo $enlace;
 header ("Content-Disposition: attachment; filename=$enlace ");
 header ("Content-Type: application/force-download");
 header ("Content-Length: ".filesize($enlace));
     readfile($enlace);
-  $mensaje = "Archivo descargado con éxtio";
- //header("location: ../vista/backup?mensaje=".$mensaje);
+//  $mensaje = $enlace;
+// header("location: ../vista/backup?mensaje=".$mensaje);
     }

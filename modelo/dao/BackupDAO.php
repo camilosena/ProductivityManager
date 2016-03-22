@@ -46,16 +46,17 @@ class BackupDAO {
        'materiaprimaporproyecto','novedades','permisos','permisosporrol','procesos','procesoporproducto','procesosporproyecto','productoporproyecto',
        'usuarioporproyecto', 'usuarios');
    $valor ="";
-   $valor .= 'DROP DATABASE IF EXISTS '.$this->dbName.',';
-   $valor .= 'CREATE DATABASE IF NOT EXISTS '.$this->dbName.',';
-   $valor .='USE '.$this->dbName.',';
+   $valor .= 'DROP DATABASE IF EXISTS '.$this->dbName.';'."\r\n";
+   $valor .= 'CREATE DATABASE IF NOT EXISTS '.$this->dbName.';'."\r\n";
+   $valor .='USE '.$this->dbName.';'."\r\n";
    
    foreach ($tables as $table){
 
-       $valor .= '<br>'.'DROP TABLE IF EXISTS ' .$table.',';
+       $valor .= 'DROP TABLE IF EXISTS ' .$table.';'."\r\n";
        $creartable = $cnn->query("SHOW CREATE TABLE ".$table);
        foreach ($creartable as $create){
-           $valor .= $create['Create Table'].'\n\n';
+           $valor .= $create['Create Table'];
+           $valor .= ';'."\r\n";
        }
 
        $rows = $cnn->query('SELECT * FROM '.$table);
@@ -85,7 +86,8 @@ class BackupDAO {
                     $valor .= ',';
                     }
                     if($i >= ($num-1)) {
-                    $valor .= ');\n\n';
+                    $valor .= ');';
+                     $valor .="\r\n";
                     }
                    
                 }

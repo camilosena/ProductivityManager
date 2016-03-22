@@ -175,7 +175,7 @@ $session->Session($pagActual);
                             <input class="input" name="nombreProyecto" type="text" maxlength="64" value="<?php echo $_GET['nameProject']; ?>" id="name" style="text-align: center" class="field1"  readonly required>
                         <label class="tagPeso" id="labelManoObra" for="manoObra"><span id="lab_valCountry" class="h331">Costo Mano de Obra: </span></label>
                         <input class="input" name="manoDeObra" type="text" maxlength="64" value="<?php echo $costoManoObra; ?>" id="manoObra" style="text-align: center" class="field1"  readonly required>
-                        <label class="tagPeso" id="labelManoObra" for="produccion"><span id="lab_valCountry" class="h331">Costo Productos: </span></label>
+                        <label class="tagPeso" id="labelManoObra" for="produccion"><span id="lab_valCountry" class="h331">Costo Materia Prima: </span></label>
                         <input class="input" name="costoProduccion" type="text" maxlength="64" value="<?php echo $costoProducto; ?>" id="produccion" style="text-align: center" class="field1"  readonly required>
                         <label class="tagPeso" id="labelUtilidad" for="util"><span id="lab_valCountry" class="h331">Utilidad: </span></label>
                         <input class="input" name="utilidad" type="text" maxlength="64" value="<?php echo $utilidadT; ?>" id="util" style="text-align: center" class="field1"  readonly required>

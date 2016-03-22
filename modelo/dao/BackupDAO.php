@@ -14,16 +14,16 @@ class BackupDAO {
            $valor .= ';'."\r\n";
        }
        $rows = $cnn->query('SELECT * FROM '.$table);
-       if ($table == 'roles' || $table == 'permisosporrol' || $table == 'usuarioporproyecto') {
+       if ($table == 'roles' || $table == 'permisosPorRol' || $table == 'usuarioPorProyecto') {
         $num = 2;}elseif($table == 'areas' || $table == 'indicativos'
-               || $table == 'materiaprimaporproducto' || $table == 'materiaprimaporproyecto'
-               || $table == 'procesos' || $table == 'productoporproyecto' || $table == 'usuarios'){
+               || $table == 'materiaPrimaPorProducto' || $table == 'materiaPrimaPorProyecto'
+               || $table == 'procesos' || $table == 'productoPorProyecto' || $table == 'usuarios'){
        $num = 3;}elseif($table == 'personas'){
-       $num = 11;}elseif($table == 'clientes' || $table == 'productos' || $table == 'procesosporproyecto' ){
+       $num = 11;}elseif($table == 'clientes' || $table == 'productos' || $table == 'procesosPorProyecto' ){
        $num = 6;}elseif($table == 'contactenos' ){
        $num = 9;}elseif($table == 'proyectos'){
-       $num = 7;}elseif($table == 'estudiodecostos' || $table == 'novedades'){
-       $num = 10;}elseif($table == 'materiaprima' || $table == 'permisos' || $table == 'procesoporproducto' ){
+       $num = 7;}elseif($table == 'estudioDeCostos' || $table == 'novedades'){
+       $num = 10;}elseif($table == 'materiaprima' || $table == 'permisos' || $table == 'procesoPorProducto' ){
        $num = 4;}
 
            foreach ($rows as $row){
@@ -73,9 +73,9 @@ class BackupDAO {
     }
 
     public function backupTables(PDO $cnn) {
-   $tables = array('roles','areas','personas','clientes', 'indicativos','contactenos','proyectos','estudiodecostos','productos','materiaprima','materiaprimaporproducto',
-       'materiaprimaporproyecto','novedades','permisos','permisosporrol','procesos','procesoporproducto','procesosporproyecto','productoporproyecto',
-       'usuarioporproyecto', 'usuarios');
+   $tables = array('roles','areas','personas','clientes', 'indicativos','contactenos','proyectos','estudioDeCostos','productos','materiaprima','materiaPrimaPorProducto',
+       'materiaPrimaPorProyecto','novedades','permisos','permisosPorRol','procesos','procesoPorProducto','procesosPorProyecto','productoPorProyecto',
+       'usuarioPorProyecto', 'usuarios');
    $valor ="";
    $valor .= 'DROP DATABASE IF EXISTS '.$this->dbName.';'."\r\n";
    $valor .= 'CREATE DATABASE IF NOT EXISTS '.$this->dbName.';'."\r\n";
@@ -91,16 +91,16 @@ class BackupDAO {
        }
 
        $rows = $cnn->query('SELECT * FROM '.$table);
-       if ($table == 'roles' || $table == 'permisosporrol' || $table == 'usuarioporproyecto') {
+       if ($table == 'roles' || $table == 'permisosPorRol' || $table == 'usuarioPorProyecto') {
         $num = 2;}elseif($table == 'areas' || $table == 'indicativos'
-               || $table == 'materiaprimaporproducto' || $table == 'materiaprimaporproyecto'
-               || $table == 'procesos' || $table == 'productoporproyecto' || $table == 'usuarios'){
+               || $table == 'materiaPrimaPorProducto' || $table == 'materiaPrimaPorProyecto'
+               || $table == 'procesos' || $table == 'productoPorProyecto' || $table == 'usuarios'){
        $num = 3;}elseif($table == 'personas'){
-       $num = 11;}elseif($table == 'clientes' || $table == 'productos' || $table == 'procesosporproyecto' ){
+       $num = 11;}elseif($table == 'clientes' || $table == 'productos' || $table == 'procesosPorProyecto' ){
        $num = 6;}elseif($table == 'contactenos' ){
        $num = 9;}elseif($table == 'proyectos'){
-       $num = 7;}elseif($table == 'estudiodecostos' || $table == 'novedades'){
-       $num = 10;}elseif($table == 'materiaprima' || $table == 'permisos' || $table == 'procesoporproducto' ){
+       $num = 7;}elseif($table == 'estudioDeCostos' || $table == 'novedades'){
+       $num = 10;}elseif($table == 'materiaprima' || $table == 'permisos' || $table == 'procesoPorProducto' ){
        $num = 4;}
 
            foreach ($rows as $row){

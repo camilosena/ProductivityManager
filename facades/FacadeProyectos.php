@@ -127,4 +127,8 @@ class FacadeProyectos {
         public function proyectoEnEjecucionEmpleado($empleado) {
         return $this->proyectosDAO->proyectoEnEjecucionEmpleado($empleado, $this->conexionBase);
     }
+
+     public function obtenerEmpleadosPro($idProyecto) {
+        return $this->proyectosDAO->obtenerEmpleadosPro($idProyecto, $this->conexionBase);
+    }
 }

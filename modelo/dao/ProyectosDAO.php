@@ -437,4 +437,19 @@ join proyectos on idProyecto = proyectoAsignado and usuarioAsignado = ? and esta
         }
         $cnn = NULL;
     }
+
+        public function obtenerEmpleadosPro($idProyecto, PDO $cnn) {
+        try {
+            $query = $cnn->prepare("Select idUsuario,identificacion, concat(nombres,' ',apellidos) nombre,direccion,telefono,fechaNacimiento,email,rol, nombreArea
+from usuarios, personas, roles, usuarioPorProyecto,areas
+ where idUsuario=usuarioAsignado and proyectoAsignado=? and identificacion=idLogin and 
+ rolesId=idRoles and idAreas=areas_idAreas and rol='Empleado'");
+            $query->bindParam(1, $idProyecto);
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $ex) {
+            echo 'Error' . $ex->getMessage();
+        }
+        $cnn = null;
+    }
 }

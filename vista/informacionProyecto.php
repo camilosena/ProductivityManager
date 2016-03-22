@@ -267,7 +267,44 @@ e.preventDefault();
         </div>
  
     <?php }?>
-        
+    <?php 
+            $facadeProyecto = new FacadeProyectos;
+            $emplea = $facadeProyecto->obtenerEmpleadosPro($_GET['projectNum']);
+            if(empty($emplea)){
+            ?>
+            <div id="infoGere">
+                <h4>No existen empleados asociados al proyecto.</h4>
+            </div>
+            <?php
+            }else{
+     ?>
+        <div id="infoGere">
+             <table class="tableSection">
+                <thead>
+                <tr>
+                    <th class="th1"><span class="text">Código</span>
+                    </th>
+                    <th class="th2"><span class="text">Nombre</span>
+                    </th>
+                    <th class="th3"><span class="text">E-mail</span>
+                    </th>
+                    <th class="th5"><span class="text">Área</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($emplea as $empleado) { ?>
+                <tr>
+                    <td class="td1">0<?php echo $empleado['idUsuario']; ?></td>
+                    <td class="td2"><?php echo $empleado['nombre']; ?></td>
+                    <td class="td3"><?php echo $empleado['email']; ?></td>
+                    <td class="td5"><?php echo $empleado['nombreArea']; ?></td>
+                </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <?php } ?>
         <hr>
     <script language=javascript>
         function modificarProyecto(URL) {

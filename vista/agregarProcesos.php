@@ -233,7 +233,9 @@ $session->Session($pagActual);
                                 <th>Empleados</th>
                                 <th>Tiempo/Horas</th> 
                                  <th>Valor</th> 
+                                 <?php if ($_SESSION['rol']=="Administrador"){ ?>
                                 <th>Acción</th>
+                                <?php } ?>
                             </tr>
                         <?php
                         foreach ($all2 as $unit) {
@@ -245,8 +247,9 @@ $session->Session($pagActual);
                                 <td><?php echo $unit['empleados']; ?></td>
                                 <td> <?php echo $unit['tiempo']; ?> Horas</td>
                                 <td>$<?php echo $unit['precioProceso']; ?></td>
+                                <?php if ($_SESSION['rol']=="Administrador"){ ?>
                                  <td><a name="ModificarProceso"  title="Modificar Proceso" class="me" href="../controlador/ControladorProcesos.php?idConsultaProceso=<?php echo $unit['idProceso']; ?>" ><img class="iconos" src="../img/modify.png"></a>    </td>  
-
+                                <?php } ?>
                             </tr>
                         
                             <?php

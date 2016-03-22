@@ -248,7 +248,9 @@ $session->Session($pagActual);
                        <th>Materia Prima</th>
                         <th>Unidad de medida</th>
                         <th>Valor unitario</th>
+                        <?php if ($_SESSION['rol']=="Administrador"){ ?>
                         <th>Acciones</th>
+                        <?php } ?>
                     </tr>
                         <?php
                         foreach ($all as $unit) {
@@ -258,7 +260,9 @@ $session->Session($pagActual);
                                 <td> <?php echo $unit['nombre']; ?></td>
                                 <td> <?php echo $unit['unidad']; ?></td>
                                 <td> <?php echo $unit['precio']; ?></td>
+                                <?php if ($_SESSION['rol']=="Administrador"){ ?>
                                 <td><a name="editarMateriaPrima" title="Editar Materia" class="me"  href="../controlador/ControladorInsumos.php?idEditarMateria=<?php echo $unit['numero']; ?>"><img class="iconos" src="../img/editar.png"></a></td>
+                                <?php } ?>
                             </tr>
 
                             <?php

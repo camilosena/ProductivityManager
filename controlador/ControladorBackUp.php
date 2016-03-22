@@ -29,10 +29,10 @@ if (isset($_POST['backUpGeneral'])) {
 
 }  else 
     if (isset($_GET['idDownload'])) {
-$enlace = $_SERVER["DOCUMENT_ROOT"].'/ProductivityManager/BackUp/'.$_GET['idDownload'];
-header ("Content-Disposition: attachment; filename=$enlace ");
-header ("Content-Type: application/force-download");
-header ("Content-Length: ".filesize($enlace));
+    $enlace = $_SERVER["DOCUMENT_ROOT"].'/ProductivityManager/BackUp/'.$_GET['idDownload'];
+    header ("Content-Disposition: attachment; filename=$enlace ");
+    header ("Content-Type: application/force-download");
+    header ("Content-Length: ".filesize($enlace));
     readfile($enlace);
 //  $mensaje = $enlace;
 // header("location: ../vista/backup?mensaje=".$mensaje);

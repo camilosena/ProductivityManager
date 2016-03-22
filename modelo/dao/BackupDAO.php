@@ -100,7 +100,7 @@ class BackupDAO {
        
    }
    
-   $this->saveFile($valor);  
+   return $this->saveFile($valor);  
   }
 
   /* Save SQL to file @param string $sql */

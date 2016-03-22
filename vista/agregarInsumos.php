@@ -319,11 +319,11 @@ $session->Session($pagActual);
                                      <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Código Materia Prima: </span></label>
                                      <input name="idMateriaPrima" size="10" value ="<?php echo '0'.$_SESSION['consultarMaterias']['idMateriaPrima']; ?>" readonly style="display: inline-block"><br>
                                     <label class="tag"  for="Proceso"><span id="NameRol" class="h331" style="display: inline-block">Materia Prima: </span></label>
-                                    <input name="descripcionMateria" size="10" value ="<?php echo $_SESSION['consultarMaterias']['descripcionMateria']; ?>"  style="display: inline-block"><br>                    
+                                    <input name="descripcionMateria" size="10" value ="<?php echo $_SESSION['consultarMaterias']['descripcionMateria']; ?>" maxlength="40" style="display: inline-block"><br>                    
                                     <label class="tag" for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Medida: </span></label>
-                                     <input name="unidadDeMedida" size="10" value ="<?php echo $_SESSION['consultarMaterias']['unidadDeMedida']; ?>"  style="display: inline-block"><br>
+                                     <input name="unidadDeMedida" size="10" value ="<?php echo $_SESSION['consultarMaterias']['unidadDeMedida']; ?>" maxlength="20" required style="display: inline-block"><br>
                                       <label class="tag"  for="IdProceso"><span id="NameRol" class="h331" style="display: inline-block">Precio Base: </span></label>
-                                 <input name="precioBase" size="10" value ="<?php echo $_SESSION['consultarMaterias']['precioBase']; ?>" style="display: inline-block"><br>
+                                 <input name="precioBase" size="10" value ="<?php echo $_SESSION['consultarMaterias']['precioBase']; ?>" style="display: inline-block" required max="5000000" title="No aplica valores superiores a $5.000.000" min="1"><br>
                                  <button type="submit" class="boton-verde" value="Modificar" name="modificarMateria">Modificar Materia Prima</button>
                             </form>       
                         </div>

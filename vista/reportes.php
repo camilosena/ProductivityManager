@@ -48,7 +48,7 @@ $session->Session($pagActual);
   <!--Formulario Costos Anuales-->
      <div class="row"> 
       <?php $actualAnio = date ("Y");?>
-      <form id="graficoAnio" method="post" action="../controlador/Controladorreportes" style="display: none;" class="animated fadeInDown">
+      <form id="graficoAnio" method="post" action="../controlador/ControladorReportes" style="display: none;" class="animated fadeInDown">
       <div class="form-group">
          <label for="anio" >Seleccione el año a evaluar:</label>
           <select name="anio" id="anio" class="form-control">
@@ -68,7 +68,7 @@ $session->Session($pagActual);
   <!--Formulario Estado de Proyectos-->
      <div class="row"> 
       <?php $actualAnio = date ("Y");?>
-      <form id="graficoProyectos" method="post" action="../controlador/Controladorreportes" style="display: none;" class="animated fadeInDown">
+      <form id="graficoProyectos" method="post" action="../controlador/ControladorReportes" style="display: none;" class="animated fadeInDown">
       <div class="form-group">
          <label for="anio" >Seleccione el año a evaluar:</label>
           <select name="anio" id="anio" class="form-control">

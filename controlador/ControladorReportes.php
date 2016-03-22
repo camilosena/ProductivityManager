@@ -11,6 +11,6 @@ if(isset($_POST['generarAnio'])){
         header("location: ../vista/reportes?grAnio=".$_POST['anio']);
 }else if(isset($_POST['generarProyectos'])){
  	$facadeProyectos = new FacadeProyectos;
- 	$_SESSION['estadosProyectos']= $facadeProyectos->graficoEstadosAnuales($_POST['anio'],$_POST['estadoP']);
+ 	$_SESSION['estadosProyectos']= $facadeProyectos->graficoEstadosAnuales($_POST['anio'],$_POST['estadoP'];
  	header("location: ../vista/reportes?a=".$_POST['anio']);
 }

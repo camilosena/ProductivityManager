@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="css/main_responsive.css">
     <link rel="stylesheet" type="text/css" href="css/stylesNavTop.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/script2.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/carouFredSel.js"></script>
@@ -18,6 +17,7 @@
     <script type="text/javascript" src="js/jquery.validate.min.js"></script>    
     <script src="js/validaciones.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>  
+    <link rel="stylesheet" href="css/animate.css">
 </head>
 <body>
   <?php 
@@ -99,16 +99,16 @@ header nav ul li a:active{
 </style>
 <header>
     <div class="wrapper">
-        <a href="indexEnglish.php"><img src="img/logo.png" class="logo" width="190px" height="110px"></a>
+        <a href="indexEnglish.php"><img src="img/logo.png" class="logo animated slideInLeft" width="190px" height="110px"></a>
         <a href="#" class="menu_icon" id="menu_icon"></a>
-        <nav id="nav_menu">
+        <nav id="nav_menu" class="animated slideInDown">
             <ul>
                 <li><a href="indexEnglish.php">Home</a></li>					
                 <li><a href="ourClients.html">Our Clients</a></li>
                 <li><a href="contactUs">Contact Us</a></li>
             </ul>
         </nav>
-        <ul class="social">
+        <ul class="social animated slideInRight">
             <li><a class="fb" href="https://www.facebook.com/productivitymanager"></a></li>
             <li><a class="twitter" href="https://twitter.com/Productivity_Mg"></a></li>
             <li><a class="gplus" href="mailto:productivitymanagersoftware@gmail.com"></a></li>
@@ -127,7 +127,7 @@ header nav ul li a:active{
 </nav>      
 <div id="panelIzq2">
     <div class="caption">	
-        <form class="box login"  action="controlador/ControladorLogin.php" method="post">                    	
+        <form class="box login animated zoomIn"  action="controlador/ControladorLogin.php" method="post">                    	
             <fieldset class="boxBody">
                 <label for="usuario" class="tag">User:</label>
                 <input id="usuario" name="user" type="text" tabindex="1" placeholder="1012377890" autofocus 
@@ -193,7 +193,7 @@ header nav ul li a:active{
 </div>		
 <div id="panelDer">
     <div class="wrapper">			
-        <section class="billboard">	
+        <section class="billboard animated zoomIn">	
             <section class="testimonials wrapper">
                 <span class="sep_line sep_top">
                 </span>
@@ -292,4 +292,29 @@ header nav ul li a:active{
     </div>
 </footer>	
 </body>
+  <script>
+        $(document).ready(function(){
+        //eliminamos el scroll de la pagina
+        $("body").css({"overflow-y":"hidden"});
+        //guardamos en una variable el alto del que tiene tu browser que no es lo mismo que del DOM
+        var alto=$(window).height();
+        //agregamos en el body un div que sera que ocupe toda la pantalla y se muestra encima de todo
+        $("body").append('<div id="pre-load-web"><div id="imagen-load"><img src="img/loader.gif" alt=""></div></div>'); 
+        //le damos el alto 
+       $("#pre-load-web").css({height:alto+"px"}); 
+       //esta sera la capa que esta dento de la capa que muestra un gif 
+       $("#imagen-load").css({"margin-top":(alto/2)-30+"px"}); 
+        })     
+        $(window).load(function(){ 
+        $("#pre-load-web").fadeOut(1000,function() { //eliminamos la capa de precarga $(this).remove();
+        //permitimos scroll 
+        $("body").css({"overflow-y":"auto"}); }); 
+         
+        })
+    </script>
+    <style>
+    #pre-load-web {width:100%;position:absolute;background:#fff;left:0px;top:0px;z-index:100000}
+    /*aqui centramos la imagen si coloco margin left -30 es por que la imagen mide 60 */
+    #pre-load-web #imagen-load{left:48%;margin-left:-30px;position:absolute}
+    </style>
 </html>

@@ -16,11 +16,8 @@ $session->Session($pagActual);
         <link rel="stylesheet" type="text/css" href="../css/main_responsive.css">
         <link rel="stylesheet" type="text/css" href="../css/stylesNavTop.css">
         <link rel="stylesheet" href="../css/font-awesome.min.css">
-        <script type="text/javascript" src="../js/script.js"></script>
         <script type="text/javascript" src="../js/script2.js"></script>
         <script type="text/javascript" src="../js/jquery.js"></script>
-        <script type="text/javascript" src="../js/carouFredSel.js"></script>
-        <script type="text/javascript" src="../js/main.js"></script>
         <link rel="stylesheet" href="../js/jquery.dataTables.css">
         <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
@@ -386,6 +383,9 @@ $session->Session($pagActual);
             require_once '../modelo/dao/ProyectosDAO.php';
             require_once '../facades/FacadeProyectos.php';
             $proyecto = new FacadeProyectos;
+            if(!isset($_SESSION['datosUsuario']['idUsuario'])){
+              $_SESSION['datosUsuario']['idUsuario']=0;
+            }
             $proyectosEjecucion = $proyecto->proyectoEnEjecucionEmpleado($_SESSION['datosUsuario']['idUsuario']);
             ?>
             <div id="verUsuario" class="modalDialog" title="Ver Usuario">

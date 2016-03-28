@@ -155,11 +155,10 @@
                 <form class="box login animated zoomIn"  action="controlador/ControladorLogin.php" method="post">                    	
                     <fieldset class="boxBody">
                         <label for="usuario" class="tag">Usuario:</label>
-                        <input id="usuario" name="user" type="text" tabindex="1" placeholder="1012377890" autofocus 
+                        <input id="usuario" name="user" type="text" tabindex="1" placeholder="1012377890" autofocus maxlength="12" minlength="3" 
                                title="Ingrese su número de identificación" required pattern= [0-9]{3,10}>
                         <label for="contrasena" class="tag"> Contraseña:</label>
-                        <input id="contrasena" name="pass" type="password" tabindex="2"  required 
-                               title="No se aceptan carácteres especiales (\ / : * ? «< > |)" pattern= "[A-Za-z0-9]{1,15}" >
+                        <input id="contrasena" name="pass" type="password" tabindex="2" maxlength="25"  required>
                         <a href="#openModal" class="rLink" tabindex="3">Olvido su Contraseña?</a>
                     </fieldset>	
                     <div id="footIndex">

@@ -130,11 +130,10 @@ header nav ul li a:active{
         <form class="box login animated zoomIn"  action="controlador/ControladorLogin.php" method="post">                    	
             <fieldset class="boxBody">
                 <label for="usuario" class="tag">User:</label>
-                <input id="usuario" name="user" type="text" tabindex="1" placeholder="1012377890" autofocus 
-                title="Enter Number Identification"  required pattern= [0-9]{3,10}>
-                <label for="contrasena" class="tag"> Password:</label>
-                <input id="contrasena" name="pass" type="password" tabindex="2"  required 
-                title="Don´t characters :  (\ / : * ? «< > |)" pattern= "[A-Za-z0-9]{1,15}" >
+                <input id="usuario" name="user" type="text" tabindex="1" placeholder="1012377890" autofocus maxlength="12" minlength="3" 
+                               title="Enter number identification" required pattern= [0-9]{3,10}>
+                        <label for="contrasena" class="tag"> Password:</label>
+                        <input id="contrasena" name="pass" type="password" tabindex="2" maxlength="25"  required>
                 <a href="#openModal" class="rLink" tabindex="3">Forgot Your Password?</a>
             </fieldset>	
             <div>

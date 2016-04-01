@@ -131,7 +131,7 @@ header nav ul li a:active{
             <fieldset class="boxBody">
                 <label for="usuario" class="tag">User:</label>
                 <input id="usuario" name="user" type="text" tabindex="1" placeholder="1012377890" autofocus maxlength="12" minlength="3" 
-                               title="Enter number identification" required pattern= [0-9]{3,10}>
+                               title="Enter number identification" required pattern= [0-9]{3,12}>
                         <label for="contrasena" class="tag"> Password:</label>
                         <input id="contrasena" name="pass" type="password" tabindex="2" maxlength="25"  required>
                 <a href="#openModal" class="rLink" tabindex="3">Forgot Your Password?</a>

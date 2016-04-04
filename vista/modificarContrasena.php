@@ -203,15 +203,15 @@ $session->Session($pagActual);
                     <div id="panelModificaPass">
                         <label for="contrasena" class="tag"><span id="valCompany" style="color:Red;visibility:hidden;"></span> Contraseña Antigua:</label>
                         <input id="contrasenaAntigua" name="passOld" type="password" tabindex="2"  required 
-                               title="No se aceptan carácteres especiales (\ / : * ? «< > |)" pattern= "[A-Za-z0-9]{1,15}" autofocus>
+                               maxlength="25" autofocus>
                         <br>
                         <label for="contrasena" class="tag"><span id="valCompany" style="color:Red;visibility:hidden;"></span> Contraseña Nueva:</label>
                         <input id="contrasenaNueva" name="passNew" type="password" tabindex="2"  required 
-                               title="No se aceptan carácteres especiales (\ / : * ? «< > |)" pattern= "[A-Za-z0-9]{1,15}" >
+                               maxlength="25" >
                         <br>   
                         <label for="contrasena" class="tag"><span id="valCompany" style="color:Red;visibility:hidden;"></span> Confirmar contraseña:</label>
                         <input id="contrasenacofirmar" name="passConfirm" type="password" tabindex="2"  required 
-                               title="No se aceptan carácteres especiales (\ / : * ? «< > |)" pattern= "[A-Za-z0-9]{1,15}" >
+                               maxlength="25" >
                         <br>
                     </div>
                     <br>

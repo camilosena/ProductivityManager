@@ -37,6 +37,9 @@ class TiempoEjecucion {
                    $totalPasado = $this->dias_transcurridos($fechaInicio,$fechaActual);
                    $porcentaje=($totalPasado*100)/$totalDias;
                    $facadeProyectos->ejecucionProyecto($idProyecto, $porcentaje);
+               }elseif($fechaInicio<$fechaActual && $estado == 'Sin Estudio Costos' || $fechaInicio<$fechaActual && $estado == 'Sin Producción' ){
+                   $facadeProyectos->cambiarEstadoProyecto('Cancelado', $idProyecto);
+                   $facadeProyectos->cambiarObservacionesProyecto('No se incluyó producción o costos antes de la fecha tentativa de inicio.', $idProyecto);
                }
         }
         $datos2 = $facadeProyectos->listadoProyectos();
